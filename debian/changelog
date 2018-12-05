@@ -1,3 +1,9 @@
+openjdk-12 (12~22-1) UNRELEASED; urgency=medium
+
+  * Update VCS attributes in the control file. Addresses: #909736.
+
+ -- Matthias Klose <doko@ubuntu.com>  Wed, 05 Dec 2018 13:43:40 +0100
+
 openjdk-12 (12~22-0ubuntu2) disco; urgency=medium
 
   * OpenJDK 12 build 22.

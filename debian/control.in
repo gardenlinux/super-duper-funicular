@@ -18,8 +18,8 @@ Build-Depends: @bd_debhelper@
 Build-Depends-Indep: graphviz, pandoc,
 Standards-Version: 4.2.1
 Homepage: http://openjdk.java.net/
-Vcs-Bzr: http://bazaar.launchpad.net/~openjdk/openjdk/openjdk11
-Vcs-Browser: https://code.launchpad.net/~openjdk/openjdk/openjdk11
+Vcs-Git: https://git.launchpad.net/~openjdk/ubuntu/+source/openjdk/+git/openjdk
+Vcs-Browser: https://code.launchpad.net/~openjdk/ubuntu/+source/openjdk/+git/openjdk/+ref/master
 
 Package: @basename@-jdk-headless
 Architecture: @any_archs@
