@@ -1,0 +1,13 @@
+--- a/src/common/autoconf/flags.m4
++++ b/src/common/autoconf/flags.m4
+@@ -61,7 +61,9 @@ AC_DEFUN_ONCE([FLAGS_SETUP_INIT_FLAGS],
+   fi
+ 
+   if test "x$OPENJDK_TARGET_OS" != xwindows; then
+-    POST_STRIP_CMD="$STRIP $STRIPFLAGS"
++    if test -z "$POST_STRIP_CMD" ; then
++      POST_STRIP_CMD="$STRIP $STRIPFLAGS"
++    fi
+   fi
+   AC_SUBST(POST_STRIP_CMD)
+ 

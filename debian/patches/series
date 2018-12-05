@@ -1,0 +1,36 @@
+system-pcsclite.diff
+hotspot-mips-align.diff
+icc_loading_with_symlink.diff
+icedtea-override-redirect-compiz.diff
+libpcsclite-dlopen.diff
+jexec.diff
+default-jvm-cfg.diff
+workaround_expand_exec_shield_cs_limit.diff
+adlc-parser.diff
+multiple-pkcs11-library-init.diff
+s390x-thread-stack-size.diff
+s390x-zEC12.diff
+jdk-getAccessibleValue.diff
+jtreg-location.diff
+jdk-i18n-pt_BR.diff
+disable-doclint-by-default.diff
+8199220.diff
+machine-flag.diff
+zero-x32.diff
+mips-sigset.diff
+# s390x-zEC12.diff
+hotspot-disable-exec-shield-workaround.diff
+atk-wrapper-security.diff
+# java-access-bridge-security.diff
+# jdk-pulseaudio.diff
+# alpha-float-const.diff
+# kfreebsd-support-jdk.diff
+# kfreebsd-support-hotspot.diff
+dnd-files.diff
+hotspot-libpath.diff
+generated-headers.patch
+parallel-build-fix.diff
+m68k-support.diff
+reproducible-properties-timestamp.diff
+reproducible-javadoc-timestamp.diff
+jdk8211105-aarch64-disable_cos_sin_and_log_intrinsics.patch
