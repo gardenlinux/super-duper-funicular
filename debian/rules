@@ -170,7 +170,6 @@ endif
 export DEBIAN_JDK_BASE_DIR := /$(basedir)
 
 BOOTJDK_HOME := $(strip $(subst /bin/javac,, $(firstword $(wildcard \
-			/usr/lib/jvm/java-9-openjdk-$(DEB_BUILD_ARCH)/bin/javac \
 			/usr/lib/jvm/java-10-openjdk-$(DEB_BUILD_ARCH)/bin/javac \
 			/usr/lib/jvm/java-11-openjdk-$(DEB_BUILD_ARCH)/bin/javac \
 		))))
@@ -494,7 +493,11 @@ jre_hl_tools	:= $(filter-out $(jre_tools), $(all_jre_tools))
 # build dependencies
 bd_autotools = autoconf, automake, autotools-dev,
 
-bd_bootstrap = openjdk-10-jdk-headless | openjdk-11-jdk-headless,
+ifneq (,$(filter $(distrel),squeeze wheezy jessie precise trusty xenial))
+  bd_bootstrap = openjdk-10-jdk-headless | openjdk-11-jdk-headless,
+  else
+  bd_bootstrap = openjdk-11-jdk-headless | openjdk-10-jdk-headless,
+endif
 ifeq (,$(filter $(distrel),squeeze wheezy jessie precise trusty xenial))
   bd_cross += \
 	$(basename)-jdk-headless <cross>,
