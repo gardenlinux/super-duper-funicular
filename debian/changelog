@@ -1,3 +1,10 @@
+openjdk-12 (12~22-0ubuntu2) disco; urgency=medium
+
+  * OpenJDK 12 build 22.
+  * Disable zero build on arm64 and ppc64el, ftbfs.
+
+ -- Matthias Klose <doko@ubuntu.com>  Sun, 02 Dec 2018 21:34:27 +0100
+
 openjdk-11 (11.0.1+13-3) unstable; urgency=medium
 
   * Tighten dependency on debhelper on recent releases. Closes: #911694.

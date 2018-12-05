@@ -1,0 +1,17 @@
+debian/files
+
+.hg_archival.txt
+.hgignore
+.hgtags
+.jcheck
+ADDITIONAL_LICENSE_INFO
+ASSEMBLY_EXCEPTION
+bin
+configure
+doc
+LICENSE
+make
+Makefile
+README
+src
+test
