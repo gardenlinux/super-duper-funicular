@@ -1,3 +1,9 @@
+openjdk-11 (11.0.1+13-4) UNRELEASED; urgency=medium
+
+  * Update VCS attributes in the control file. Closes: #909736.
+
+ -- Matthias Klose <doko@ubuntu.com>  Wed, 05 Dec 2018 13:35:17 +0100
+
 openjdk-11 (11.0.1+13-3) unstable; urgency=medium
 
   * Tighten dependency on debhelper on recent releases. Closes: #911694.
