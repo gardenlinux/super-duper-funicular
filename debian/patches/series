@@ -27,7 +27,6 @@ atk-wrapper-security.diff
 # kfreebsd-support-jdk.diff
 # kfreebsd-support-hotspot.diff
 dnd-files.diff
-hotspot-libpath.diff
 generated-headers.patch
 parallel-build-fix.diff
 m68k-support.diff

@@ -1,8 +1,13 @@
-openjdk-12 (12~22-1) UNRELEASED; urgency=medium
+openjdk-12 (12~23-1) unstable; urgency=medium
 
+  * OpenJDK 12 build 23.
   * Update VCS attributes in the control file. Addresses: #909736.
+  * Re-enable the zero build on arm64 and ppc64el.
+  * Configure with --with-jni-libpath.
+  * Enable bootcycle builds for hotspot.
+  * Don't build the test-image target.
 
- -- Matthias Klose <doko@ubuntu.com>  Wed, 05 Dec 2018 13:43:40 +0100
+ -- Matthias Klose <doko@ubuntu.com>  Thu, 06 Dec 2018 16:37:32 +0100
 
 openjdk-12 (12~22-0ubuntu2) disco; urgency=medium
 

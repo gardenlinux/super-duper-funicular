@@ -49,8 +49,8 @@ multiarch_dir = /$(DEB_HOST_MULTIARCH)
 hotspot_archs	= amd64 i386 arm64 armhf ppc64 ppc64el sparc64 s390x kfreebsd-amd64 kfreebsd-i386
 # FIXME: use bootcycle builds for zero archs?
 bootcycle_build = $(if $(filter $(DEB_HOST_ARCH), $(hotspot_archs)),yes)
-bootcycle_build = $(if $(filter $(DEB_HOST_ARCH), amd64 i386),yes)
-bootcycle_build =
+#bootcycle_build = $(if $(filter $(DEB_HOST_ARCH), amd64 i386),yes)
+#bootcycle_build =
 zbootcycle_build =
 ifneq ($(DEB_HOST_ARCH),$(DEB_BUILD_ARCH))
   bootcycle_build =
@@ -115,16 +115,20 @@ security	= $(etcdir)/security
 ifeq ($(bootcycle_build),yes)
   sdkimg	= bootcycle-build/images/jdk
   build_target	= bootcycle-images test-image
+  build_target	= bootcycle-images
 else
   sdkimg	= images/jdk
   build_target	= images test-image
+  build_target	= images
 endif
 ifeq ($(zbootcycle_build),yes)
   zsdkimg	= bootcycle-build/images/jdk
   zbuild_target	= bootcycle-images test-image
+  zbuild_target	= bootcycle-images
 else
   zsdkimg	= images/jdk
   zbuild_target	= images test-image
+  zbuild_target	= images
 endif
 
 # Support parallel=<n> in DEB_BUILD_OPTIONS (see #209008)
@@ -159,9 +163,6 @@ altzero_archs = $(hotspot_archs)
 ifneq (,$(filter $(distrel),trusty))
   altzero_archs := $(filter-out arm64, $(hotspot_archs))
 endif
-
-# FIXME: 12+22 ftbfs on arm64 and ppc64el at least
-altzero_archs := $(filter-out arm64 ppc64el, $(hotspot_archs))
 
 ifneq (,$(filter noaltzero, $(DEB_BUILD_OPTIONS)))
   altzero_archs =
@@ -364,6 +365,8 @@ endif
 COMMON_CONFIGURE_ARGS =
 DEFAULT_CONFIGURE_ARGS =
 ZERO_CONFIGURE_ARGS =
+
+COMMON_CONFIGURE_ARGS += --with-jni-libpath=/usr/lib/$(DEB_HOST_MULTIARCH)/jni:/lib/$(DEB_HOST_MULTIARCH):/usr/lib/$(DEB_HOST_MULTIARCH):/usr/lib/jni:/lib:/usr/lib
 
 # FIXME: --with-jvm-variants=server,zero not supported upstream
 ifneq (,$(filter $(DEB_HOST_ARCH),$(hotspot_archs)))
@@ -1174,10 +1177,10 @@ clean: debian-clean
 	dh_testdir
 	dh_testroot
 	rm -rf stamps build build-* jtreg-test-output
-	rm -rf icedtea-sound
 	rm -rf autom4te.cache
 	rm -f bin/{jtreg.tmwrc,my-jtreg-run,my-xvfb-run}
 	rm -f buildwatch.pid
+	rm -f config.log configure.log
 	dh_clean
 
 debian-clean:
@@ -1709,6 +1712,21 @@ ifeq ($(with_docs),yes)
 	  cp -a $$i $(d_doc)/usr/share/doc/$(p_jrehl)/; \
 	  ln -sf ../$(p_jrehl)/$$b $(d_doc)/usr/share/doc/$(p_doc)/$$b; \
 	done
+	rm -v $(d_doc)/usr/share/doc/$(p_jrehl)/api/jquery/{external/jquery/jquery.js,jquery-3.3.1.js,jquery-ui.css,jquery-ui.js,jquery-ui.min.css,jquery-ui.min.js}
+	dh_link -p$(p_doc) \
+	  /usr/share/javascript/jquery/jquery.js \
+	    /usr/share/doc/openjdk-12-jre-headless/api/jquery/external/jquery/jquery.js \
+	  /usr/share/javascript/jquery/jquery.js \
+	    /usr/share/doc/openjdk-12-jre-headless/api/jquery/jquery-3.3.1.js \
+	  /usr/share/javascript/jquery-ui/themes/base/jquery-ui.css \
+	    /usr/share/doc/openjdk-12-jre-headless/api/jquery/jquery-ui.css \
+	  /usr/share/javascript/jquery-ui/jquery-ui.js \
+	    /usr/share/doc/openjdk-12-jre-headless/api/jquery/jquery-ui.js \
+	  /usr/share/javascript/jquery-ui/themes/base/jquery-ui.min.css \
+	    /usr/share/doc/openjdk-12-jre-headless/api/jquery/jquery-ui.min.css \
+	  /usr/share/javascript/jquery-ui/jquery-ui.min.js \
+	    /usr/share/doc/openjdk-12-jre-headless/api/jquery/jquery-ui.min.js
+
 endif
 # FIXME: desktop and menu files not ready for multiarch. #658321
 ifeq (,$(DEB_HOST_MULTIARCH))
@@ -1817,7 +1835,7 @@ is_release		=
 hg_project		= jdk11u
 hg_tag			= jdk-11.0.1+13
 hg_project		= jdk
-hg_tag			= jdk-12+22
+hg_tag			= jdk-12+23
 package_version		= $(subst jdk-,,$(hg_tag))
 ifneq ($(is_release),yes)
   package_version	:= $(subst +,~,$(package_version))
@@ -1846,6 +1864,7 @@ get-orig:
 	  rm -v -rf $$d/src/java.smartcardio/unix/native/libj2pcsc/MUSCLE; \
 	esac; \
 	mv $$d $(topdir); \
+	chmod +x $(topdir)/configure; \
 	tar cfJ ../$(basename)_$(package_version).orig.tar.xz $(topdir); \
 	rm -rf $(topdir)
 
