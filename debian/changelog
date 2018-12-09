@@ -1,3 +1,9 @@
+openjdk-12 (12~23-3) unstable; urgency=medium
+
+  * Disable the bootcycle build.
+
+ -- Matthias Klose <doko@ubuntu.com>  Fri, 07 Dec 2018 01:23:44 +0100
+
 openjdk-12 (12~23-1) unstable; urgency=medium
 
   * OpenJDK 12 build 23.

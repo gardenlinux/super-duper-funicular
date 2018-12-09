@@ -128,7 +128,9 @@ Pre-Depends: ${dpkg:Depends}
 Architecture: all
 Multi-Arch: foreign
 Priority: optional
-Depends: ${misc:Depends}
+Depends: ${misc:Depends},
+  libjs-jquery,
+  libjs-jquery-ui,
 Suggests: openjdk-12-jdk
 Description: OpenJDK Development Kit (JDK) documentation
  OpenJDK is a development environment for building applications,

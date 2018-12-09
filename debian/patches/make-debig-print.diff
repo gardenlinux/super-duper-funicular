@@ -1,0 +1,10 @@
+--- openjdk-12-12~23.orig/make/Main.gmk
++++ openjdk-12-12~23/make/Main.gmk
+@@ -1083,6 +1083,7 @@ ALL_TARGETS += default jdk images docs b
+ 
+ # Aliases used for running tests.
+ 
++$(call PrintVar, ALL_NAMED_TESTS)
+ # Let "run-test" be an alias for "test"
+ $(foreach t, $(ALL_NAMED_TESTS), $(eval run-test-$t: test-$t))
+ RUN_TEST_TARGETS := $(addprefix run-test-, $(ALL_NAMED_TESTS))

@@ -50,7 +50,7 @@ hotspot_archs	= amd64 i386 arm64 armhf ppc64 ppc64el sparc64 s390x kfreebsd-amd6
 # FIXME: use bootcycle builds for zero archs?
 bootcycle_build = $(if $(filter $(DEB_HOST_ARCH), $(hotspot_archs)),yes)
 #bootcycle_build = $(if $(filter $(DEB_HOST_ARCH), amd64 i386),yes)
-#bootcycle_build =
+bootcycle_build =
 zbootcycle_build =
 ifneq ($(DEB_HOST_ARCH),$(DEB_BUILD_ARCH))
   bootcycle_build =
@@ -115,20 +115,16 @@ security	= $(etcdir)/security
 ifeq ($(bootcycle_build),yes)
   sdkimg	= bootcycle-build/images/jdk
   build_target	= bootcycle-images test-image
-  build_target	= bootcycle-images
 else
   sdkimg	= images/jdk
   build_target	= images test-image
-  build_target	= images
 endif
 ifeq ($(zbootcycle_build),yes)
   zsdkimg	= bootcycle-build/images/jdk
   zbuild_target	= bootcycle-images test-image
-  zbuild_target	= bootcycle-images
 else
   zsdkimg	= images/jdk
   zbuild_target	= images test-image
-  zbuild_target	= images
 endif
 
 # Support parallel=<n> in DEB_BUILD_OPTIONS (see #209008)
