@@ -19,6 +19,8 @@ build
 build-zero
 jtreg-test-output
 stamps
+config.log
+configure.log
 
 debian/files
 debian/tmp
