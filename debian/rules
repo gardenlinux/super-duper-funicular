@@ -50,7 +50,7 @@ hotspot_archs	= amd64 i386 arm64 armhf ppc64 ppc64el sparc64 s390x kfreebsd-amd6
 # FIXME: use bootcycle builds for zero archs?
 bootcycle_build = $(if $(filter $(DEB_HOST_ARCH), $(hotspot_archs)),yes)
 #bootcycle_build = $(if $(filter $(DEB_HOST_ARCH), amd64 i386),yes)
-bootcycle_build =
+#bootcycle_build =
 zbootcycle_build =
 ifneq ($(DEB_HOST_ARCH),$(DEB_BUILD_ARCH))
   bootcycle_build =
@@ -334,7 +334,8 @@ ifeq (,$(filter $(DEB_HOST_ARCH), $(hotspot_archs)))
 endif
 
 ifeq (,$(filter $(DEB_BUILD_OPTIONS), terse))
-  EXTRA_BUILD_ENV += MAKE_VERBOSE=y QUIETLY= LOG=debug
+  #EXTRA_BUILD_ENV += MAKE_VERBOSE=y QUIETLY= LOG=debug
+  EXTRA_BUILD_ENV += MAKE_VERBOSE=y QUIETLY= LOG=info,cmdlines
 endif
 
 # timestamp skew on kFreeBSD
@@ -912,7 +913,7 @@ stamps/build: stamps/configure
 ifneq (,$(filter $(DEB_HOST_ARCH), alpha armel armhf ia64 m68k mips mipsel mips64 mips64el powerpc powerpcspe s390x sparc sparc64))
 	sh -c 'sh debian/buildwatch.sh $(CURDIR)/$(builddir) &'
 endif
-	if $(EXTRA_BUILD_ENV) $(MAKE) -C $(builddir) $(build_target); then \
+	if $(EXTRA_BUILD_ENV) $(MAKE) --no-print-directory -C $(builddir) $(build_target); then \
 	  : ; \
 	else \
 	  if [ -f buildwatch.pid ]; then \
