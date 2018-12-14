@@ -1,8 +1,10 @@
-openjdk-12 (12~23-4) UNRELEASED; urgency=medium
+openjdk-12 (12~24-1) unstable; urgency=medium
 
+  * OpenJDK 12 build 24.
   * Re-enable the bootcycle builds for hotspot targets.
+  * Enable bootcycle builds for zero targets.
 
- -- Matthias Klose <doko@ubuntu.com>  Mon, 10 Dec 2018 19:07:38 +0100
+ -- Matthias Klose <doko@ubuntu.com>  Fri, 14 Dec 2018 19:18:49 +0100
 
 openjdk-12 (12~23-3) unstable; urgency=medium
 

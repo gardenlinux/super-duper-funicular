@@ -52,6 +52,7 @@ bootcycle_build = $(if $(filter $(DEB_HOST_ARCH), $(hotspot_archs)),yes)
 #bootcycle_build = $(if $(filter $(DEB_HOST_ARCH), amd64 i386),yes)
 #bootcycle_build =
 zbootcycle_build =
+zbootcycle_build = yes
 ifneq ($(DEB_HOST_ARCH),$(DEB_BUILD_ARCH))
   bootcycle_build =
   zbootcycle_build =
@@ -928,7 +929,7 @@ endif
 stamps/zero-build: stamps/zero-configure
 	@echo '========== $@ =========='
 	: # FIXME: build using the just built jdk, and build the vm only
-	$(EXTRA_BUILD_ENV) $(MAKE) -C $(zbuilddir) $(zbuild_target)
+	$(EXTRA_BUILD_ENV) $(MAKE) --no-print-directory -C $(zbuilddir) $(zbuild_target)
 	rm -rf $(builddir)/$(sdkimg)/lib/zero
 	cp -a $(zbuilddir)/$(zsdkimg)/lib/server \
 		$(builddir)/$(sdkimg)/lib/zero
@@ -1831,8 +1832,8 @@ is_release		= yes
 is_release		=
 hg_project		= jdk11u
 hg_tag			= jdk-11.0.1+13
-hg_project		= jdk
-hg_tag			= jdk-12+23
+hg_project		= jdk12
+hg_tag			= jdk-12+24
 package_version		= $(subst jdk-,,$(hg_tag))
 ifneq ($(is_release),yes)
   package_version	:= $(subst +,~,$(package_version))

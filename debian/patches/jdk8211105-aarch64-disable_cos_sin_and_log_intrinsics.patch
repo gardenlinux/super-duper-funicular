@@ -8,17 +8,10 @@
 Summary: AArch64 cos/sin and log intrinsics are currently broken so should be disabled
 Reviewed-by: aph, shade
 
-diff --git a/src/hotspot/cpu/aarch64/stubGenerator_aarch64.cpp b/src/hotspot/cpu/aarch64/stubGenerator_aarch64.cpp
 --- a/src/hotspot/cpu/aarch64/stubGenerator_aarch64.cpp
 +++ b/src/hotspot/cpu/aarch64/stubGenerator_aarch64.cpp
-@@ -5741,15 +5741,18 @@
-     }
- 
-     if (vmIntrinsics::is_intrinsic_available(vmIntrinsics::_dlog)) {
--      StubRoutines::_dlog = generate_dlog();
-+      // disabled pending fix and retest of generated code via JDK-8210858
-+      // StubRoutines::_dlog = generate_dlog();
-     }
+@@ -5754,7 +5754,8 @@ class StubGenerator: public StubCodeGene
+     // }
  
      if (vmIntrinsics::is_intrinsic_available(vmIntrinsics::_dsin)) {
 -      StubRoutines::_dsin = generate_dsin_dcos(/* isCos = */ false);
@@ -27,9 +20,3 @@ diff --git a/src/hotspot/cpu/aarch64/stubGenerator_aarch64.cpp b/src/hotspot/cpu
      }
  
      if (vmIntrinsics::is_intrinsic_available(vmIntrinsics::_dcos)) {
--      StubRoutines::_dcos = generate_dsin_dcos(/* isCos = */ true);
-+      // disabled pending fix and retest of generated code via JDK-8210461
-+      // StubRoutines::_dcos = generate_dsin_dcos(/* isCos = */ true);
-     }
-   }
- 
