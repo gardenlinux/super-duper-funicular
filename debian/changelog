@@ -1,3 +1,17 @@
+openjdk-12 (12~27-1) unstable; urgency=medium
+
+  * OpenJDK 12 build 27.
+  * Don't run the tests on alpha, causing build failure.
+
+ -- Matthias Klose <doko@debian.org>  Thu, 10 Jan 2019 12:55:21 +0100
+
+openjdk-12 (12~25-1) unstable; urgency=medium
+
+  * OpenJDK 12 build 25.
+  * Fix Zero on sparc64 (Adrian Glaubitz). Closes: #917008.
+
+ -- Matthias Klose <doko@ubuntu.com>  Sat, 22 Dec 2018 01:12:39 +0100
+
 openjdk-12 (12~24-2) unstable; urgency=medium
 
   * Pull patches for 8215353 and 8215374, fixing build on i386.

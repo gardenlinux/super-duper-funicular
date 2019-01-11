@@ -34,5 +34,4 @@ reproducible-properties-timestamp.diff
 reproducible-javadoc-timestamp.diff
 jdk8211105-aarch64-disable_cos_sin_and_log_intrinsics.patch
 make-debig-print.diff
-8215353.diff
-8215374.diff
+Don-t-optimize-fdlibm-fork-for-Zero-on-linux-sparc-Z.patch

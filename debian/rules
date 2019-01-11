@@ -136,8 +136,8 @@ ifneq (,$(filter parallel=%,$(subst $(COMMA), ,$(DEB_BUILD_OPTIONS))))
 endif
 
 with_check = $(if $(findstring nocheck, $(DEB_BUILD_OPTIONS)),,yes)
-ifneq (,$(filter $(DEB_HOST_ARCH), armel))
-  #with_check = disabled running check on $(DEB_HOST_ARCH)
+ifneq (,$(filter $(DEB_HOST_ARCH), alpha))
+  with_check = disabled running check on $(DEB_HOST_ARCH)
 endif
 
 with_docs = $(if $(findstring nodocs, $(DEB_BUILD_OPTIONS)),,yes)
@@ -1833,7 +1833,7 @@ is_release		=
 hg_project		= jdk11u
 hg_tag			= jdk-11.0.1+13
 hg_project		= jdk12
-hg_tag			= jdk-12+24
+hg_tag			= jdk-12+27
 package_version		= $(subst jdk-,,$(hg_tag))
 ifneq ($(is_release),yes)
   package_version	:= $(subst +,~,$(package_version))
