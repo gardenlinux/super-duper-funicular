@@ -1,10 +1,12 @@
-openjdk-11 (11.0.1+13-4) UNRELEASED; urgency=medium
+openjdk-11 (11.0.2+7-1) UNRELEASED; urgency=medium
+
+  * OpenJDK 11.0.2 release.
 
   * Update VCS attributes in the control file. Closes: #909736.
   * Prefer OpenJDK 11 over OpenJDK 10 as the bootstrap OpenJDK for
     recent releases. Closes: #915600.
 
- -- Matthias Klose <doko@ubuntu.com>  Wed, 05 Dec 2018 13:35:17 +0100
+ -- Matthias Klose <doko@ubuntu.com>  Wed, 16 Jan 2019 21:40:44 +0100
 
 openjdk-11 (11.0.1+13-3) unstable; urgency=medium
 

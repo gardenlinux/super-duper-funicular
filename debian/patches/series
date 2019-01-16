@@ -33,4 +33,3 @@ parallel-build-fix.diff
 m68k-support.diff
 reproducible-properties-timestamp.diff
 reproducible-javadoc-timestamp.diff
-jdk8211105-aarch64-disable_cos_sin_and_log_intrinsics.patch
