@@ -1029,29 +1029,6 @@ ifneq (,$(filter $(VMNAME), $(with_jtreg_check)))
 	-cat jtreg-test-output/jtreg-summary-$(VMNAME).log
 	@echo "END jtreg-summary-$(VMNAME)"
 
-	: # kill testsuite processes still hanging
-	@pids=$$($(jtreg_pids)); \
-	if [ -n "$$pids" ]; then \
-	  echo "killing processes..."; \
-	  $(jtreg_processes); \
-	  kill -1 $$pids; \
-	  sleep 2; \
-	  pids=$$($(jtreg_pids)); \
-	  if [ -n "$$pids" ]; then \
-	    echo "trying harder..."; \
-	    $(jtreg_processes); \
-	    kill -9 $$pids; \
-	    sleep 2; \
-	  fi; \
-	else \
-	  echo "nothing to cleanup"; \
-	fi; \
-	pids=$$($(jtreg_pids)); \
-	if [ -n "$$pids" ]; then \
-	  echo "leftover processes..."; \
-	  $(jtreg_processes); \
-	fi
-
 	-for i in hotspot langtools nashorn jaxp jdk; do \
 	  test -f jtreg-test-output/check-$$i-$(VMNAME).log || continue; \
 	  for t in $$(egrep '^(FAILED|Error)' jtreg-test-output/check-$$i-$(VMNAME).log | grep -v '^Error: Some tests failed or other problems occurred.$$' | sed -e 's/.* \(.*\)\.[^.#]\+\(#id[0-9]*\)\?$$/\1\2/' -e 's/#id/_id/'); do \

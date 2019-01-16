@@ -16,7 +16,7 @@ Build-Depends: debhelper (>= 11),
   jtreg (>= 4.2-b10-1~), xvfb, xauth, xfonts-base, libgl1-mesa-dri [!x32], twm | metacity, twm | dbus-x11, x11-xkb-utils,
   testng, time, openjdk-11-jdk-headless <cross>,
 Build-Depends-Indep: graphviz, pandoc,
-Standards-Version: 4.2.1
+Standards-Version: 4.3.0
 Homepage: http://openjdk.java.net/
 Vcs-Git: https://git.launchpad.net/~openjdk/ubuntu/+source/openjdk/+git/openjdk -b openjdk-11
 Vcs-Browser: https://code.launchpad.net/~openjdk/ubuntu/+source/openjdk/+git/openjdk/+ref/openjdk-11
