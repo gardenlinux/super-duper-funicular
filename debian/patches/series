@@ -33,3 +33,4 @@ parallel-build-fix.diff
 m68k-support.diff
 reproducible-properties-timestamp.diff
 reproducible-javadoc-timestamp.diff
+8212233.diff
