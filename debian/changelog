@@ -1,3 +1,9 @@
+openjdk-11 (11.0.2+9-1) unstable; urgency=medium
+
+  * OpenJDK 11.0.2 release (build 9).
+
+ -- Matthias Klose <doko@ubuntu.com>  Mon, 21 Jan 2019 18:51:56 +0100
+
 openjdk-11 (11.0.2+7-1) unstable; urgency=high
 
   * OpenJDK 11.0.2 release.
