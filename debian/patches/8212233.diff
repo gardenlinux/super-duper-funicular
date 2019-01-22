@@ -48,9 +48,9 @@ Reviewed-by: hannesw, pmuthuswamy
              Map<String, Item> pkgMap = packageItems.get(configuration.utils.getModuleName(moduleElement));
              item = (pkgMap != null) ? pkgMap.get(configuration.utils.getPackageName(packageElement)) : null;
 +            if (item == null && isAutomaticModule(moduleElement)) {
-+                pkgMap = packageItems.get(utils.getModuleName(null));
++                pkgMap = packageItems.get(configuration.utils.getModuleName(null));
 +                if (pkgMap != null) {
-+                    item = pkgMap.get(utils.getPackageName(packageElement));
++                    item = pkgMap.get(configuration.utils.getPackageName(packageElement));
 +                }
 +            }
          }
@@ -64,12 +64,11 @@ Reviewed-by: hannesw, pmuthuswamy
 -                        path), null);
 +                // suppress the error message in the case of automatic modules
 +                if (!isAutomaticModule(me)) {
-+                    throw new Fault(resources.getText("doclet.linkMismatch_ModuleLinkedtoPackage",
++                    throw new Fault(configuration.getText("doclet.linkMismatch_ModuleLinkedtoPackage",
 +                            path), null);
 +                }
-         }
-     }
- }
++        }
++    }
 +
 +    // The following should be replaced by a new method such as Elements.isAutomaticModule
 +    private boolean isAutomaticModule(ModuleElement me) {
@@ -78,8 +77,9 @@ Reviewed-by: hannesw, pmuthuswamy
 +        } else {
 +            ModuleSymbol msym = (ModuleSymbol) me;
 +            return (msym.flags() & Flags.AUTOMATIC_MODULE) != 0;
-+        }
-+    }
+         }
+     }
+ }
 --- /dev/null
 +++ b/test/langtools/jdk/javadoc/doclet/testLinkOption/TestLinkOptionWithAutomaticModule.java
 @@ -0,0 +1,155 @@
