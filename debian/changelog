@@ -1,9 +1,46 @@
-openjdk-11 (11.0.2+9-1) unstable; urgency=medium
+openjdk-11 (11.0.2+9-1) unstable; urgency=high
 
   * OpenJDK 11.0.2 release (build 9).
+
+  [ Matthias Klose ]
   * Backport the fix for S8212233. Closes: #920020, #919798.
 
- -- Matthias Klose <doko@ubuntu.com>  Mon, 21 Jan 2019 18:51:56 +0100
+  [ Tiago Stürmer Daitx ]
+  * debian/buildwatch.sh: use same code from openjdk-8.
+  * debian/control.in, debian/control:
+    - add fixed build depends for jtreg and xfvb.
+    - remove Conflicts: oracle-java11-installer. (LP: #1782630)
+  * debian/rules:
+    - call the same testsuites scripts used for autopkgtest.
+    - removed jtreg and xvfb build dependency logic and moved the bdeps
+      into debian/control.in.
+    - added gen-autopackage rule to generate autopkgtest scripts from
+      templates.
+    - copy flight recorder configuration files.
+    - fix logging in langtools testing.
+    - don't ignore/exclude the release file from the jdk package, it is
+      required by jtreg tests and autopkgtests will fail without it.
+    - don't run nashorn testsuite.
+  * update dep8 tests:
+    - debian/tests/control: updated to run openjdk-11 tests.
+    - debian/tests/hotspot, debian/tests/jaxp, debian/tests/jdk,
+      debian/tests/langtools: use the new jt .sh scripts.
+    - debian/tests/jtdiff-autopkgtest.sh: diff build time and autopkgtest
+      JTreports to show what changed.
+    - debian/tests/jtreg-autopkgtest.in: template to generate the jtreg
+      script used by the autopkgtest tests.
+    - debian/tests/jtdiff-autopkgtest.sh: used by the scripts to report
+      any differences between the autopkgtest and the tests results
+      generated during the openjdk package build.
+    - debian/tests/jtreg-autopkgtest.sh: used by the scripts to run jtreg
+      and put the resulting artifacts in the right places, by default will
+      remove all non .jtr files after it is done to preserve space.
+    - debian/tests/hotspot, debian/tests/jaxp, debian/tests/jdk,
+      debian/tests/langtools: run same testsuites as build time and
+      compare the results.
+    - debian/tests/valid-tests: no longer needed, removed.
+
+ -- Matthias Klose <doko@ubuntu.com>  Mon, 21 Jan 2019 23:11:17 +0100
 
 openjdk-11 (11.0.2+7-1) unstable; urgency=high
 

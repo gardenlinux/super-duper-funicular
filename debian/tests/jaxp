@@ -1,0 +1,8 @@
+#!/bin/bash
+set -o errexit
+set -o errtrace
+set -o pipefail
+set -o nounset
+
+debian/tests/jtreg-autopkgtest.sh -exclude:test/jaxp/ProblemList.txt test/jaxp
+debian/tests/jtdiff-autopkgtest.sh jaxp

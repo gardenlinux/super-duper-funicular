@@ -6,6 +6,8 @@ Uploaders: Matthias Klose <doko@ubuntu.com>
 Build-Depends: debhelper (>= 11),
   m4, lsb-release, zip, unzip,
   sharutils, gawk, cpio, pkg-config, procps, wdiff, fastjar (>= 2:0.96-0ubuntu2),
+  jtreg, testng, time,
+  xvfb, xauth, xfonts-base, libgl1-mesa-dri [!x32], xfwm4, x11-xkb-utils, dbus-x11,
   autoconf, automake, autotools-dev, ant, ant-optional,
   g++-8,
   openjdk-11-jdk-headless | openjdk-10-jdk-headless,
@@ -13,8 +15,7 @@ Build-Depends: debhelper (>= 11),
   libffi-dev,
   zlib1g-dev, libattr1-dev, libpng-dev, libjpeg-dev, libgif-dev,  
   libnss3-dev (>= 2:3.17.1),
-  jtreg (>= 4.2-b10-1~), xvfb, xauth, xfonts-base, libgl1-mesa-dri [!x32], twm | metacity, twm | dbus-x11, x11-xkb-utils,
-  testng, time, openjdk-11-jdk-headless <cross>,
+  openjdk-11-jdk-headless <cross>,
 Build-Depends-Indep: graphviz, pandoc,
 Standards-Version: 4.3.0
 Homepage: http://openjdk.java.net/
