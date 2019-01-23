@@ -1,9 +1,22 @@
+openjdk-12 (12~28-2) UNRELEASED; urgency=medium
+
+  * Merge packaging changes from 11.0.2.
+
+ -- Matthias Klose <doko@ubuntu.com>  Wed, 23 Jan 2019 11:20:39 +0100
+
+openjdk-12 (12~28-1) unstable; urgency=medium
+
+  * OpenJDK 12 build 28.
+  * jhsdb isn't built on alpha.
+
+ -- Matthias Klose <doko@ubuntu.com>  Thu, 17 Jan 2019 13:28:33 +0100
+
 openjdk-12 (12~27-1) unstable; urgency=medium
 
   * OpenJDK 12 build 27.
   * Don't run the tests on alpha, causing build failure.
 
- -- Matthias Klose <doko@debian.org>  Thu, 10 Jan 2019 12:55:21 +0100
+ -- Matthias Klose <doko@ubuntu.com>  Thu, 10 Jan 2019 12:55:21 +0100
 
 openjdk-12 (12~25-1) unstable; urgency=medium
 
