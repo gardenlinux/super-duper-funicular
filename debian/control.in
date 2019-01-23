@@ -6,6 +6,8 @@ Uploaders: Matthias Klose <doko@ubuntu.com>
 Build-Depends: @bd_debhelper@
   m4, lsb-release, zip, unzip,
   sharutils, gawk, cpio, pkg-config, procps, wdiff, @bd_fastjar@
+  jtreg, testng, time,
+  xvfb, xauth, xfonts-base, libgl1-mesa-dri [!x32], xfwm4, x11-xkb-utils, dbus-x11,
   @bd_autotools@ @bd_ant@
   @bd_gcc@
   @bd_bootstrap@
@@ -13,10 +15,9 @@ Build-Depends: @bd_debhelper@
   @bd_zero@
   @bd_syslibs@ @bd_pulsejava@ @bd_systemtap@
   @bd_nss@
-  @bd_jtreg@ @bd_xvfb@
-  testng, time, @bd_cross@
+  @bd_cross@
 Build-Depends-Indep: graphviz, pandoc,
-Standards-Version: 4.2.1
+Standards-Version: 4.3.0
 Homepage: http://openjdk.java.net/
 Vcs-Git: https://git.launchpad.net/~openjdk/ubuntu/+source/openjdk/+git/openjdk -b openjdk-11
 Vcs-Browser: https://code.launchpad.net/~openjdk/ubuntu/+source/openjdk/+git/openjdk/+ref/openjdk-11

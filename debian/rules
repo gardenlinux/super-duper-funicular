@@ -47,6 +47,10 @@ endif
 multiarch_dir = /$(DEB_HOST_MULTIARCH)
 
 hotspot_archs	= amd64 i386 arm64 armhf ppc64 ppc64el sparc64 s390x kfreebsd-amd64 kfreebsd-i386
+jtreg_archs	= $(hotspot_archs) alpha ia64 powerpc powerpcspe ppc64 sh4 x32
+#jtreg_archs	+= armel
+#jtreg_archs	+= mips mipsel mips64 mips64el
+
 # FIXME: use bootcycle builds for zero archs?
 bootcycle_build = $(if $(filter $(DEB_HOST_ARCH), $(hotspot_archs)),yes)
 bootcycle_build = $(if $(filter $(DEB_HOST_ARCH), amd64 i386),yes)
@@ -281,36 +285,7 @@ endif
 
 with_nss = yes
 
-ifneq (,$(filter $(distrel),squeeze wheezy lucid precise trusty xenial))
-  with_check =
-endif
-ifeq (,$(filter $(distrel),squeeze wheezy jessie lucid precise trusty))
-  bd_jtreg = jtreg (>= 4.2-b10-1~),
-endif
-
 on_buildd := $(shell [ -f /CurrentlyBuilding -o "$$LOGNAME" = buildd ] && echo yes)
-
-ifeq ($(derivative),Debian)
-  with_wm = $(notdir $(firstword $(wildcard /usr/bin/metacity /usr/bin/twm)))
-  ifneq (,$(findstring twm, $(with_wm)))
-    with_wm_args = -f $(CURDIR)/bin/jtreg.tmwrc
-  endif
-  bd_wm = twm | metacity, twm | dbus-x11,
-else
-  with_wm = $(notdir $(firstword $(wildcard /usr/bin/metacity /usr/bin/twm)))
-  with_wm_args =
-  ifneq (,$(findstring twm, $(with_wm)))
-    with_wm_args = -f $(CURDIR)/bin/jtreg.tmwrc
-  endif
-  ifneq (,$(filter $(distrel),saucy raring quantal precise lucid))
-    bd_wm = metacity | twm, dbus-x11,
-  else
-    bd_wm = twm | metacity, twm | dbus-x11,
-  endif
-endif
-ifeq ($(with_wm),metacity)
-  with_wm_prefix = dbus-launch --exit-with-session
-endif
 
 CONFIGURE_ARGS =
 
@@ -553,7 +528,6 @@ bd_zero = \
 bd_ant = ant, ant-optional,
 
 bd_fastjar = fastjar (>= 2:0.96-0ubuntu2),
-bd_xvfb = xvfb, xauth, xfonts-base, libgl1-mesa-dri [!x32], $(bd_wm) x11-xkb-utils,
 ifeq ($(with_pulse),yes)
   bd_pulsejava = libpulse-dev (>= 0.9.12),
 endif
@@ -696,12 +670,10 @@ debian/control: debian/control.in debian/rules
 	      -e 's/@bd_gcc@/$(bd_gcc)/g' \
 	      -e 's/@bd_syslibs@/$(bd_syslibs)/g' \
 	      -e 's/@bd_fastjar@/$(bd_fastjar)/g' \
-	      -e 's/@bd_xvfb@/$(bd_xvfb)/g' \
 	      -e 's/@bd_pulsejava@/$(bd_pulsejava)/g' \
 	      -e 's/@bd_nss@/$(bd_nss)/g' \
 	      -e 's/@bd_systemtap@/$(bd_systemtap)/g' \
 	      -e 's/@bd_ant@/$(bd_ant)/g' \
-	      -e 's/@bd_jtreg@/$(bd_jtreg)/g' \
 	      -e 's/@core_fonts@/$(core_fonts)/g' \
 	      -e 's/@cjk_fonts@/$(cjk_fonts)/g' \
 	      -e 's/@any_archs@/$(any_archs)/g' \
@@ -719,6 +691,12 @@ debian/control: debian/control.in debian/rules
 	  rm -f debian/control.old; \
 	  exit 1; \
 	fi
+
+debian/tests/%.sh: debian/tests/%.in debian/rules
+	sed -e 's/@jtreg_archs@/$(jtreg_archs)/g' $< > $@;
+	chmod +x $@
+
+gen-autopkgtests: debian/tests/jtreg-autopkgtest.sh
 
 packaging-files:
 	for f in debian/*.in; do \
@@ -852,12 +830,8 @@ endif
 	mkdir -p stamps
 	touch $@
 
-check_archs = $(hotspot_archs) alpha ia64 powerpc powerpcspe ppc64 sh4 x32
-#check_archs += armel
-#check_archs += mips mipsel mips64 mips64el
-
 ifeq ($(with_check),yes)
-    ifneq (,$(filter $(DEB_HOST_ARCH), $(check_archs)))
+    ifneq (,$(filter $(DEB_HOST_ARCH), $(jtreg_archs)))
       with_jtreg_check = $(default_vm)
     endif
 
@@ -867,18 +841,6 @@ ifeq ($(with_check),yes)
 	with_jtreg_check += zero
       endif
     endif
-endif
-
-# these are best guesses depending on the architecture and the build machines
-# some tests require 4min to run, so set the minimum timeout to 3 x 2min.
-ifneq (,$(filter $(DEB_HOST_ARCH), alpha armel armhf ia64 m68k mips mipsel mips64 mips64el powerpc powerpcspe x32))
-  JTREG_OPTIONS = -timeout:5
-else
-  JTREG_OPTIONS = -timeout:3
-endif
-
-ifneq (,$(filter $(DEB_HOST_ARCH), armel armhf))
-  JTREG_OPTIONS += -Xmx256M -vmoption:-Xmx256M
 endif
 
 build_stamps = \
@@ -934,6 +896,11 @@ stamps/zero-build: stamps/zero-configure
 		$(builddir)/$(sdkimg)/lib/zero
 	touch $@
 
+stamps/prune-build-dir:
+	-find $(builddir) -mindepth 2 ! -path '$(builddir)/$(sdkimg)/*' -delete
+	rm -rf  $(zbuilddir)
+	touch $@
+
 stamps/build-docs: stamps/build
 	@echo '========== $@ =========='
 	mkdir -p $(builddir)/images/docs
@@ -941,59 +908,18 @@ stamps/build-docs: stamps/build
 	$(MAKE) -C $(builddir) docs
 	touch $@
 
-stamps/xvfb-check:
-	mkdir -p bin jtreg-test-output
-	( \
-	  echo '#!/bin/sh'; \
-	  echo '$(with_wm_prefix) $(with_wm) $(with_wm_args) &'; \
-	  echo 'pid=$$!'; \
-	  echo 'sleep 3'; \
-	  echo '"$$@"'; \
-	  echo 'kill -9 $$pid'; \
-	) > bin/my-jtreg-run
-	chmod 755 bin/my-jtreg-run
-	mkdir -p jtreg-test-output
-ifeq (,$(wildcard /usr/bin/$(with_wm)))
-	echo 'xvfb-run -a -e $(CURDIR)/jtreg-test-output/xvfb-run.log -s "-extension GLX" "$$@"' > bin/my-xvfb-run
-else
-	echo 'xvfb-run -a -e $(CURDIR)/jtreg-test-output/xvfb-run.log -s "-extension GLX" my-jtreg-run "$$@"' > bin/my-xvfb-run
-  ifeq ($(with_wm),twm)
-	grep -v '^include-menu-defs' /etc/X11/twm/system.twmrc-menu > bin/jtreg.tmwrc
-	echo RandomPlacement >> bin/jtreg.tmwrc
-  endif
-endif
-	if ! /bin/sh bin/my-xvfb-run true ; then \
-	  echo "error running $$(cat bin/my-xvfb-run)"; \
-	  cat jtreg-test-output/xvfb-run.log; \
-	  sed -i 's/ -s *"[^"]*"//' bin/my-xvfb-run; \
-	  if ! /bin/sh bin/my-xvfb-run true ; then \
-	    echo "error running $$(cat bin/my-xvfb-run)"; \
-	    cat jtreg-test-output/xvfb-run.log; \
-	    rm -f bin/my-xvfb-run; \
-	  fi; \
-	fi
-	if [ -f bin/my-xvfb-run ]; then \
-	  echo "using $$(cat bin/my-xvfb-run)"; \
-	fi
-	touch $@
-
-XVFB_RUN_CMD = xvfb-run -a -e $(CURDIR)/jtreg-test-output/xvfb-run.log -s "-extension GLX"
-ifneq (,$(wildcard /usr/bin/$(with_wm)))
-  XVFB_RUN_CMD += $(CURDIR)/bin/my-jtreg-run
-endif
-
-stamps/jtreg-check-default: stamps/build stamps/xvfb-check
+stamps/jtreg-check-default: stamps/build
 	$(MAKE) -f debian/rules jtreg-run-check VMNAME=$(default_vm) VMARGS= \
-		$(if $(filter $(default_vm),hotspot),TEST_SUITES='hotspot langtools jaxp nashorn jdk',TEST_SUITES='hotspot langtools jaxp nashorn')
-#		TEST_SUITES='hotspot langtools jaxp nashorn'
+		$(if $(filter $(default_vm),hotspot),TEST_SUITES='hotspot langtools jaxp jdk',TEST_SUITES='hotspot langtools jaxp')
+#		TEST_SUITES='hotspot langtools jaxp'
 	touch $@
 
-stamps/jtreg-check-zero: stamps/build stamps/xvfb-check
+stamps/jtreg-check-zero: stamps/build
 	$(MAKE) -f debian/rules jtreg-run-check VMNAME=zero VMARGS='-vmoption:-zero' \
-		TEST_SUITES='hotspot langtools jaxp nashorn'
+		TEST_SUITES='hotspot langtools jaxp'
 	touch $@
 
-jtreg-run-check:
+jtreg-run-check: stamps/prune-build-dir
 	mkdir -p jtreg-test-output
 ifneq (,$(filter $(VMNAME), $(with_jtreg_check)))
 	if [ ! -f $(builddir)/$(sdkimg)/conf/security/java.security.install ]; then \
@@ -1008,7 +934,7 @@ ifneq (,$(filter $(VMNAME), $(with_jtreg_check)))
 	@echo "BEGIN jtreg"
 	$(TIME) $(MAKE) -f debian/rules -k jtregcheck \
 		$(if $(TEST_SUITES),TEST_SUITES="$(TEST_SUITES)") \
-		JTREG_OPTIONS='$(VMARGS) $(JTREG_OPTIONS)' \
+		JTREG_OPTIONS='$(VMARGS)' \
 		2>&1 | tee jtreg-test-output/jtreg_output-$(VMNAME)
 	@echo "END jtreg"
 
@@ -1017,7 +943,7 @@ ifneq (,$(filter $(VMNAME), $(with_jtreg_check)))
 	    $(builddir)/$(sdkimg)/conf/security/java.security; \
 	fi
 
-	for i in check-hotspot.log check-jaxp.log check-jdk.log check-langtools.log check-nashorn.log jtreg-summary.log; do \
+	for i in check-hotspot.log check-jaxp.log check-jdk.log check-langtools.log jtreg-summary.log; do \
 	  if [ -f jtreg-test-output/$$i ]; then \
 	    mv jtreg-test-output/$$i jtreg-test-output/$${i%*.log}-$(VMNAME).log; \
 	  else \
@@ -1029,36 +955,13 @@ ifneq (,$(filter $(VMNAME), $(with_jtreg_check)))
 	-cat jtreg-test-output/jtreg-summary-$(VMNAME).log
 	@echo "END jtreg-summary-$(VMNAME)"
 
-	: # kill testsuite processes still hanging
-	@pids=$$($(jtreg_pids)); \
-	if [ -n "$$pids" ]; then \
-	  echo "killing processes..."; \
-	  $(jtreg_processes); \
-	  kill -1 $$pids; \
-	  sleep 2; \
-	  pids=$$($(jtreg_pids)); \
-	  if [ -n "$$pids" ]; then \
-	    echo "trying harder..."; \
-	    $(jtreg_processes); \
-	    kill -9 $$pids; \
-	    sleep 2; \
-	  fi; \
-	else \
-	  echo "nothing to cleanup"; \
-	fi; \
-	pids=$$($(jtreg_pids)); \
-	if [ -n "$$pids" ]; then \
-	  echo "leftover processes..."; \
-	  $(jtreg_processes); \
-	fi
-
-	-for i in hotspot langtools nashorn jaxp jdk; do \
+	-for i in hotspot langtools jaxp jdk; do \
 	  test -f jtreg-test-output/check-$$i-$(VMNAME).log || continue; \
 	  for t in $$(egrep '^(FAILED|Error)' jtreg-test-output/check-$$i-$(VMNAME).log | grep -v '^Error: Some tests failed or other problems occurred.$$' | sed -e 's/.* \(.*\)\.[^.#]\+\(#id[0-9]*\)\?$$/\1\2/' -e 's/#id/_id/'); do \
 	    echo jtreg-test-output/$$i/JTwork/$$t.jtr; \
 	  done; \
 	done | sort -u > jtreg-test-output/failed_tests-$(VMNAME).list; \
-	GZIP=-9vn tar -C . -c -z -f jtreg-test-output/failed_tests-$(VMNAME).tar.gz -T jtreg-test-output/failed_tests-$(VMNAME).list
+	GZIP=-9vn tar --ignore-failed-read -C . -c -z -f jtreg-test-output/failed_tests-$(VMNAME).tar.gz -T jtreg-test-output/failed_tests-$(VMNAME).list
 	GZIP=-9vn tar -C . -c -z -f jtreg-test-output/jtreport-$(VMNAME).tar.gz jtreg-test-output/*/JTreport/
 else
 	echo "jtreg harness not run for this build" > jtreg-test-output/jtreg_output-$(VMNAME)
@@ -1067,106 +970,38 @@ endif
 # ----------------------------------------------------------------------------
 # jtreg targets taken from IcedTea
 
-export JTREG_HOME=/usr/share/java
-
 TESTS_TO_RUN = $(addprefix check-,$(TEST_SUITES))
 
 check-hotspot: stamps/build
-	mkdir -p jtreg-test-output/hotspot/JTwork jtreg-test-output/hotspot/JTreport
-	JT_JAVA=$(BOOTJDK_HOME) $(TIME) jtreg -v1 -a -ignore:quiet \
-		-w:jtreg-test-output/hotspot/JTwork -r:jtreg-test-output/hotspot/JTreport \
-		-agentvm -conc:auto \
-		-jdk:$(builddir)/$(sdkimg) \
-		$(JTREG_OPTIONS) \
-		-exclude:test/hotspot/jtreg/ProblemList.txt \
-		-dir:$(CURDIR)/$(srcdir)/test/hotspot/jtreg \
-		:hotspot_compiler :hotspot_gc :hotspot_runtime :hotspot_serviceability \
-	    | tee jtreg-test-output/$@.log
+	mkdir -p jtreg-test-output/hotspot
+	JTREG_OPTIONS=$(JTREG_OPTIONS) VMNAME=$(VMNAME) JDK_DIR=$(builddir)/$(sdkimg) \
+	AUTOPKGTEST_TMP=/tmp/ AUTOPKGTEST_ARTIFACTS=jtreg-test-output/hotspot/ \
+	  $(TIME) debian/tests/hotspot | tee jtreg-test-output/$@.log
+
 
 check-langtools: stamps/build
-	mkdir -p jtreg-test-output/langtools/JTwork jtreg-test-output/langtools/JTreport
-	JT_JAVA=$(BOOTJDK_HOME) $(TIME) jtreg -v1 -a -ignore:quiet \
-		-w:jtreg-test-output/langtools/JTwork -r:jtreg-test-output/langtools/JTreport \
-		-agentvm -conc:auto \
-		-jdk:$(builddir)/$(sdkimg) \
-		$(JTREG_OPTIONS) \
-		-exclude:test/langtools/ProblemList.txt \
-		-dir:$(CURDIR)/$(srcdir)/test/langtools \
-		jdk tools lib
-	    | tee jtreg-test-output/$@.log
-
-check-nashorn: stamps/build
-	mkdir -p jtreg-test-output/nashorn/JTwork jtreg-test-output/nashorn/JTreport
-	JT_JAVA=$(BOOTJDK_HOME) $(TIME) jtreg -v1 -a -ignore:quiet \
-		-w:jtreg-test-output/nashorn/JTwork -r:jtreg-test-output/nashorn/JTreport \
-		-agentvm -conc:auto \
-		-jdk:$(builddir)/$(sdkimg) \
-		$(JTREG_OPTIONS) \
-		-exclude:test/nashorn/ProblemList.txt \
-		$(CURDIR)/$(srcdir)/test/nashorn \
-	    | tee jtreg-test-output/$@.log
+	mkdir -p jtreg-test-output/langtools
+	JTREG_OPTIONS=$(JTREG_OPTIONS) VMNAME=$(VMNAME) JDK_DIR=$(builddir)/$(sdkimg) \
+	AUTOPKGTEST_TMP=/tmp/ AUTOPKGTEST_ARTIFACTS=jtreg-test-output/langtools/ \
+	  $(TIME) debian/tests/langtools | tee jtreg-test-output/$@.log
 
 check-jaxp: stamps/build
-	mkdir -p jtreg-test-output/jaxp/JTwork jtreg-test-output/jaxp/JTreport
-	JT_JAVA=$(BOOTJDK_HOME) $(TIME) jtreg -v1 -a -ignore:quiet \
-		-w:jtreg-test-output/jaxp/JTwork -r:jtreg-test-output/jaxp/JTreport \
-		-agentvm -conc:auto \
-		-jdk:$(builddir)/$(sdkimg) \
-		$(JTREG_OPTIONS) \
-		-exclude:test/jaxp/ProblemList.txt \
-		$(CURDIR)/$(srcdir)/test/jaxp \
-	    | tee jtreg-test-output/$@.log
+	mkdir -p jtreg-test-output/jaxp
+	JTREG_OPTIONS=$(JTREG_OPTIONS) VMNAME=$(VMNAME) JDK_DIR=$(builddir)/$(sdkimg) \
+	AUTOPKGTEST_TMP=/tmp/ AUTOPKGTEST_ARTIFACTS=jtreg-test-output/langtools/ \
+	  $(TIME) debian/tests/jaxp | tee jtreg-test-output/$@.log
 
-check-jdk: stamps/build stamps/xvfb-check
-	mkdir -p jtreg-test-output/jdk/JTwork jtreg-test-output/jdk/JTreport
-	set -x; \
-	$(TIME) \
-	$(if $(DISPLAY),,$(XVFB_RUN_CMD)) \
-	env JT_JAVA=$(BOOTJDK_HOME) jtreg -v1 -a -ignore:quiet \
-		-w:jtreg-test-output/jdk/JTwork -r:jtreg-test-output/jdk/JTreport \
-		-agentvm -conc:auto \
-		-jdk:$(builddir)/$(sdkimg) \
-		$(JTREG_OPTIONS) \
-		-exclude:test/jdk/ProblemList.txt \
-		-dir:$(CURDIR)/$(srcdir)/test/jdk \
-		:jdk_stable \
-	    | tee jtreg-test-output/$@.log
-
-# FIXME: this might need some adjustment for other OS than Linux
-jtreg_processes = ps x -ww -o pid,ppid,args \
-	| awk '$$2 == 1 && $$3 ~ /^$(subst /,\/,/scratch)/' \
-	| $(SED) 's,$(CURDIR)/$(builddir)/$(sdkimg),<sdkimg>,g;s,$(CURDIR),<pwd>,g'
-jtreg_pids = ps x --no-headers -ww -o pid,ppid,args \
-	| awk '$$2 == 1 && $$3 ~ /^$(subst /,\/,$(CURDIR)/$(builddir)/$(sdkimg))/ {print $$1}'
+check-jdk: stamps/build
+	mkdir -p jtreg-test-output/jdk
+	JTREG_OPTIONS=$(JTREG_OPTIONS) VMNAME=$(VMNAME) JDK_DIR=$(builddir)/$(sdkimg) \
+	AUTOPKGTEST_TMP=/tmp/ AUTOPKGTEST_ARTIFACTS=jtreg-test-output/jdk/ \
+	  $(TIME) debian/tests/jdk | tee jtreg-test-output/$@.log
 
 jtregcheck: $(TESTS_TO_RUN)
 	for i in $(TEST_SUITES); do \
 	  echo "--------------- jtreg console summary for $$i ---------------"; \
 	  egrep -v '^(Passed:|Directory|Re[a-z]+\ written\ to)' jtreg-test-output/check-$$i.log; \
 	done | tee jtreg-test-output/jtreg-summary.log
-
-	: # kill testsuite processes still hanging
-	@pids=$$($(jtreg_pids)); \
-	if [ -n "$$pids" ]; then \
-	  echo "killing processes..."; \
-	  $(jtreg_processes); \
-	  kill -1 $$pids; \
-	  sleep 2; \
-	  pids=$$($(jtreg_pids)); \
-	  if [ -n "$$pids" ]; then \
-	    echo "try harder..."; \
-	    $(jtreg_processes); \
-	    kill -9 $$pids; \
-	    sleep 2; \
-	  fi; \
-	else \
-	  echo "nothing to cleanup"; \
-	fi; \
-	pids=$$($(jtreg_pids)); \
-	if [ -n "$$pids" ]; then \
-	  echo "leftover processes..."; \
-	  $(jtreg_processes); \
-	fi
 
 # ----------------------------------------------------------------------------
 
@@ -1238,6 +1073,7 @@ endif
 	mkdir -p $(d)/$(etcdir)/security/policy/limited
 	mkdir -p $(d)/$(etcdir)/security/policy/unlimited
 	mkdir -p $(d)/$(etcdir)/management
+	mkdir -p $(d)/$(etcdir)/jfr
 
 ifeq (0,1)
 	: # rename templates (comments only) to config files,
@@ -1290,6 +1126,8 @@ endif
 	  lib/psfontj2d.properties \
 	  lib/psfont.properties.ja \
 	  lib/swing.properties \
+	  lib/jfr/default.jfc \
+	  lib/jfr/profile.jfc \
 	  conf/management/jmxremote.access \
 	  conf/management/management.properties \
 	  conf/security/java.policy \
@@ -1482,9 +1320,9 @@ endif
 	: # FIXME: the targets are not installed ...
 	rm -rfv $(d)/$(basedir)/lib/jfr
 
-	dh_install --sourcedir=debian/tmp -XLICENSE -Xrelease
+	dh_install --sourcedir=debian/tmp -XLICENSE
 ifeq (,$(findstring old, $(old_debhelper)))
-	dh_missing --sourcedir=debian/tmp --fail-missing -XLICENSE -Xrelease
+	dh_missing --sourcedir=debian/tmp --fail-missing -XLICENSE
 endif
 
 	find $(d_jrehl) $(d_jre) $(d_jrez) \
@@ -1809,7 +1647,7 @@ endif
 
 is_release		= yes
 hg_project		= jdk11u
-hg_tag			= jdk-11.0.1+13
+hg_tag			= jdk-11.0.2+9
 package_version		= $(subst jdk-,,$(hg_tag))
 ifneq ($(is_release),yes)
   package_version	:= $(subst +,~,$(package_version))
