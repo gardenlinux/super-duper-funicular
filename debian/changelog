@@ -1,13 +1,13 @@
-openjdk-11 (11.0.2+9-3) UNRELEASED; urgency=medium
+openjdk-11 (11.0.2+9-3) unstable; urgency=medium
 
   * Fix Zero on sparc64 (Adrian Glaubitz). Closes: #920315.
-  * Link zero on alpha with --no-relax (Michael Cree). Addresses: #920161).
+  * Link zero on alpha with --no-relax (Michael Cree). Addresses: #920161.
   * Don't run the tests on alpha, causing build failure.
   * jhsdb isn't built on alpha.
   * Backport the fix for 8214002 (cannot use italic font style if the font
     has embedded bitmap). LP: #1799014.
 
- -- Matthias Klose <doko@ubuntu.com>  Thu, 24 Jan 2019 08:04:37 +0100
+ -- Matthias Klose <doko@ubuntu.com>  Thu, 24 Jan 2019 15:11:52 +0100
 
 openjdk-11 (11.0.2+9-2) unstable; urgency=medium
 
