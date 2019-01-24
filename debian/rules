@@ -221,6 +221,10 @@ export EXTRA_CFLAGS_ZERO   := $(shell $(dpkg_buildflags_zero) --get CFLAGS; $(dp
 export EXTRA_CXXFLAGS_ZERO := $(shell $(dpkg_buildflags_zero) --get CXXFLAGS)
 export EXTRA_LDFLAGS_ZERO  := $(shell $(dpkg_buildflags_zero) --get LDFLAGS)
 
+ifeq ($(DEB_HOST_ARCH),alpha)
+  export EXTRA_LDFLAGS_ZERO += -Wl,--no-relax
+endif
+
 # for JDK: jdk/make/common/Defs.gmk
 # Don't overwrite JDK opt level :
 # 1) with forced -03, it cause wrong Math.* computations, see #679292 and #678228
@@ -1694,7 +1698,7 @@ is_release		=
 hg_project		= jdk11u
 hg_tag			= jdk-11.0.1+13
 hg_project		= jdk12
-hg_tag			= jdk-12+28
+hg_tag			= jdk-12+29
 package_version		= $(subst jdk-,,$(hg_tag))
 ifneq ($(is_release),yes)
   package_version	:= $(subst +,~,$(package_version))

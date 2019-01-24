@@ -1,8 +1,10 @@
-openjdk-12 (12~28-2) UNRELEASED; urgency=medium
+openjdk-12 (12~29-1) unstable; urgency=medium
 
+  * OpenJDK 12 build 29.
   * Merge packaging changes from 11.0.2.
+  * Link zero on alpha with --no-relax (Michael Cree). Closes: #920161).
 
- -- Matthias Klose <doko@ubuntu.com>  Wed, 23 Jan 2019 11:20:39 +0100
+ -- Matthias Klose <doko@ubuntu.com>  Thu, 24 Jan 2019 09:09:16 +0100
 
 openjdk-12 (12~28-1) unstable; urgency=medium
 
