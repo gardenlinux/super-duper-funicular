@@ -35,3 +35,4 @@ reproducible-properties-timestamp.diff
 reproducible-javadoc-timestamp.diff
 8212233.diff
 Don-t-optimize-fdlibm-fork-for-Zero-on-linux-sparc-Z.patch
+8214002.diff
