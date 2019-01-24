@@ -138,8 +138,9 @@ ifneq (,$(filter parallel=%,$(subst $(COMMA), ,$(DEB_BUILD_OPTIONS))))
 endif
 
 with_check = $(if $(findstring nocheck, $(DEB_BUILD_OPTIONS)),,yes)
-ifneq (,$(filter $(DEB_HOST_ARCH), armel))
-  #with_check = disabled running check on $(DEB_HOST_ARCH)
+# see Debian #920161
+ifneq (,$(filter $(DEB_HOST_ARCH), alpha))
+  with_check = disabled running check on $(DEB_HOST_ARCH)
 endif
 
 with_docs = $(if $(findstring nodocs, $(DEB_BUILD_OPTIONS)),,yes)
@@ -218,6 +219,10 @@ export EXTRA_CPPFLAGS_ZERO := $(shell $(dpkg_buildflags_zero) --get CPPFLAGS)
 export EXTRA_CFLAGS_ZERO   := $(shell $(dpkg_buildflags_zero) --get CFLAGS; $(dpkg_buildflags_zero) --get CPPFLAGS)
 export EXTRA_CXXFLAGS_ZERO := $(shell $(dpkg_buildflags_zero) --get CXXFLAGS)
 export EXTRA_LDFLAGS_ZERO  := $(shell $(dpkg_buildflags_zero) --get LDFLAGS)
+
+ifeq ($(DEB_HOST_ARCH),alpha)
+  export EXTRA_LDFLAGS_ZERO += -Wl,--no-relax
+endif
 
 # for JDK: jdk/make/common/Defs.gmk
 # Don't overwrite JDK opt level :
@@ -455,7 +460,7 @@ jdk_hl_tools	= jar jarsigner javac javadoc javap jcmd jdb \
 ifneq (,$(filter $(DEB_HOST_ARCH), amd64 arm64))
   jdk_hl_tools	+= jaotc
 endif
-ifeq (,$(filter $(DEB_HOST_ARCH), armel ia64 m68k mips mipsel mips64el powerpc s390x x32))
+ifeq (,$(filter $(DEB_HOST_ARCH), alpha armel ia64 m68k mips mipsel mips64el powerpc s390x x32))
   jdk_hl_tools	+= jhsdb
 endif
 jdk_tools	= jconsole
