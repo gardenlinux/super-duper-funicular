@@ -1,3 +1,9 @@
+openjdk-11 (11.0.2+9-3) UNRELEASED; urgency=medium
+
+  * Fix Zero on sparc64 (Adrian Glaubitz). Closes: #920315.
+
+ -- Matthias Klose <doko@ubuntu.com>  Thu, 24 Jan 2019 08:04:37 +0100
+
 openjdk-11 (11.0.2+9-2) unstable; urgency=medium
 
   * Fix file permissions for autopkg tests.
