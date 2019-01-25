@@ -1,3 +1,9 @@
+openjdk-12 (12~29-2) unstable; urgency=medium
+
+  * Fix merging the packaging changes.
+
+ -- Matthias Klose <doko@ubuntu.com>  Fri, 25 Jan 2019 08:38:26 +0100
+
 openjdk-12 (12~29-1) unstable; urgency=medium
 
   * OpenJDK 12 build 29.
