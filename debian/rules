@@ -387,6 +387,30 @@ ifneq (,$(filter $(DEB_HOST_ARCH), amd64))
   DEFAULT_CONFIGURE_ARGS += --with-jvm-features=zgc
 endif
 
+vendor := $(shell dpkg-vendor --query Vendor)
+ifeq ($(vendor),Debian)
+  vendor_url  = https://tracker.debian.org/pkg/$(basename)
+  vendor_bugs = https://bugs.debian.org/src:$(basename)
+else ifeq ($(vendor),Ubuntu)
+  vendor_url  = https://launchpad.net/ubuntu/+source/$(basename)
+  vendor_bugs = https://bugs.launchpad.net/ubuntu/+source/$(basename)
+else
+  vendor_url  = $(shell dpkg-vendor --query Vendor-URL)
+  vendor_bugs = $(shell dpkg-vendor --query Bugs)
+endif
+
+ifneq (,$(vendor))
+  COMMON_CONFIGURE_ARGS += \
+	--with-vendor-name='$(vendor)' \
+	--with-vendor-url='$(vendor_url)' \
+	--with-vendor-bug-url='$(vendor_bugs)' \
+	--with-vendor-vm-bug-url='$(vendor_bugs)'
+endif
+
+# not sure if this is a good idea, might change parsing of java -version
+#COMMON_CONFIGURE_ARGS += \
+#	--with-vendor-version-string='$(PKGVERSION)'
+
 COMMON_CONFIGURE_ARGS += \
 	--with-version-pre='' \
 	--with-version-build='$(v_upbuild)' \
@@ -1675,7 +1699,7 @@ is_release		=
 hg_project		= jdk11u
 hg_tag			= jdk-11.0.1+13
 hg_project		= jdk12
-hg_tag			= jdk-12+29
+hg_tag			= jdk-12+31
 package_version		= $(subst jdk-,,$(hg_tag))
 ifneq ($(is_release),yes)
   package_version	:= $(subst +,~,$(package_version))

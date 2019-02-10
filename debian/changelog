@@ -1,3 +1,16 @@
+openjdk-12 (12~31-1) unstable; urgency=medium
+
+  * OpenJDK 12 build 31.
+  * Configure with vendor flags.
+
+ -- Matthias Klose <doko@ubuntu.com>  Thu, 07 Feb 2019 11:50:45 +0100
+
+openjdk-12 (12~30-1) unstable; urgency=medium
+
+  * OpenJDK 12 build 30.
+
+ -- Matthias Klose <doko@ubuntu.com>  Fri, 01 Feb 2019 23:30:59 +0100
+
 openjdk-12 (12~29-2) unstable; urgency=medium
 
   * Fix merging the packaging changes.
