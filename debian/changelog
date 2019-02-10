@@ -1,3 +1,9 @@
+openjdk-11 (11.0.2+9-4) UNRELEASED; urgency=medium
+
+  * Attribute test dependencies with <!nocheck>.
+
+ -- Matthias Klose <doko@ubuntu.com>  Sun, 10 Feb 2019 10:16:55 +0100
+
 openjdk-11 (11.0.2+9-3) unstable; urgency=medium
 
   * Fix Zero on sparc64 (Adrian Glaubitz). Closes: #920315.

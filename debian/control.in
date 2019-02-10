@@ -5,9 +5,9 @@ Maintainer: OpenJDK Team <openjdk@lists.launchpad.net>
 Uploaders: Matthias Klose <doko@ubuntu.com>
 Build-Depends: @bd_debhelper@
   m4, lsb-release, zip, unzip,
-  sharutils, gawk, cpio, pkg-config, procps, wdiff, @bd_fastjar@
-  jtreg, testng, time,
-  xvfb, xauth, xfonts-base, libgl1-mesa-dri [!x32], xfwm4, x11-xkb-utils, dbus-x11,
+  sharutils, gawk, cpio, pkg-config, procps, wdiff, time, @bd_fastjar@
+  jtreg  <!nocheck>, testng  <!nocheck>,
+  xvfb <!nocheck>, xauth <!nocheck>, xfonts-base <!nocheck>, libgl1-mesa-dri [!x32] <!nocheck>, xfwm4 <!nocheck>, x11-xkb-utils <!nocheck>, dbus-x11 <!nocheck>,
   @bd_autotools@ @bd_ant@
   @bd_gcc@
   @bd_bootstrap@
