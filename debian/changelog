@@ -1,3 +1,9 @@
+openjdk-12 (12~32-2) UNRELEASED; urgency=medium
+
+  * Add support for DCEVM on am64 and i386. Closes: #921419.
+
+ -- Matthias Klose <doko@ubuntu.com>  Tue, 19 Feb 2019 15:15:25 +0100
+
 openjdk-12 (12~32-1) unstable; urgency=medium
 
   * OpenJDK 12 build 32.
