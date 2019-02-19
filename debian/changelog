@@ -1,8 +1,9 @@
 openjdk-11 (11.0.2+9-4) UNRELEASED; urgency=medium
 
   * Attribute test dependencies with <!nocheck>.
+  * Add support for DCEVM on am64 and i386. Closes: #921419.
 
- -- Matthias Klose <doko@ubuntu.com>  Sun, 10 Feb 2019 10:16:55 +0100
+ -- Matthias Klose <doko@ubuntu.com>  Tue, 19 Feb 2019 15:13:02 +0100
 
 openjdk-11 (11.0.2+9-3) unstable; urgency=medium
 

@@ -1160,6 +1160,9 @@ ifneq (,$(filter $(DEB_HOST_ARCH), $(hotspot_archs)))
 else
 	printf -- '-zero ALIASED_TO -server\n' >> $(d)/$(etcdir)/jvm.cfg
 endif
+ifneq (,$(filter $(DEB_HOST_ARCH), amd64 i386))
+	printf -- '-dcevm KNOWN\n' >> $(d)/$(etcdir)/jvm.cfg
+endif
 
 	: # remove files which we do not want to distribute
 
