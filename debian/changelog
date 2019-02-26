@@ -1,8 +1,12 @@
-openjdk-12 (12~32-2) UNRELEASED; urgency=medium
+openjdk-12 (12~33-1) unstable; urgency=medium
 
-  * Add support for DCEVM on am64 and i386. Closes: #921419.
+  * OpenJDK 12 build 33 (release candidate 2).
+  * Add support for DCEVM on am64 and i386. Addresses: #921419.
+  * openjdk-12-dbg: Conflict with openjdk-11-dbg. Some object files are
+    identical across OpenJDK versions. Closes: #919790.
+  * Check for nodoc instead of nodocs in DEB_BUILD_OPTIONS. Closes: #922761.
 
- -- Matthias Klose <doko@ubuntu.com>  Tue, 19 Feb 2019 15:15:25 +0100
+ -- Matthias Klose <doko@ubuntu.com>  Tue, 26 Feb 2019 11:24:37 +0100
 
 openjdk-12 (12~32-1) unstable; urgency=medium
 
