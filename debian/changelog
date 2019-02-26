@@ -2,6 +2,7 @@ openjdk-11 (11.0.2+9-4) UNRELEASED; urgency=medium
 
   * Attribute test dependencies with <!nocheck>.
   * Add support for DCEVM on am64 and i386. Closes: #921419.
+  * Check for nodoc instead of nodocs in DEB_BUILD_OPTIONS. Addresses: #922761.
 
  -- Matthias Klose <doko@ubuntu.com>  Tue, 19 Feb 2019 15:13:02 +0100
 
