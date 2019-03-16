@@ -1,3 +1,9 @@
+openjdk-12 (12~33-2) UNRELEASED; urgency=medium
+
+  * Use openjdk-12 in the autopkg tests.
+
+ -- Matthias Klose <doko@ubuntu.com>  Sat, 16 Mar 2019 17:47:08 +0100
+
 openjdk-12 (12~33-1) unstable; urgency=medium
 
   * OpenJDK 12 build 33 (release candidate 2).

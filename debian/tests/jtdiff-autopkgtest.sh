@@ -15,11 +15,11 @@ fi
 host_arch=${DEB_HOST_ARCH:-$(dpkg --print-architecture)}
 
 export JTREG_HOME=/usr/share/java
-export JT_JAVA="${JT_JAVA:-/usr/lib/jvm/java-11-openjdk-${host_arch}}"
+export JT_JAVA="${JT_JAVA:-/usr/lib/jvm/java-12-openjdk-${host_arch}}"
 
 vmname=${VMNAME:-hotspot}
 
-jt_report_tb="/usr/share/doc/openjdk-11-jdk/test-${host_arch}/jtreport-${vmname}.tar.gz"
+jt_report_tb="/usr/share/doc/openjdk-12-jdk/test-${host_arch}/jtreport-${vmname}.tar.gz"
 build_report_dir="${AUTOPKGTEST_TMP}/jtreg-test-output/${testsuite}/JTreport"
 
 if [ ! -f "${jt_report_tb}" ]; then

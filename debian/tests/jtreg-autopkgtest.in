@@ -12,7 +12,7 @@ fi
 host_arch=${DEB_HOST_ARCH:-$(dpkg --print-architecture)}
 
 export JTREG_HOME=/usr/share/java
-export JT_JAVA="${JT_JAVA:-/usr/lib/jvm/java-11-openjdk-${host_arch}}"
+export JT_JAVA="${JT_JAVA:-/usr/lib/jvm/java-12-openjdk-${host_arch}}"
 JDK_DIR="${JDK_DIR:-$JT_JAVA}"
 
 jtreg_version="$(dpkg-query -W jtreg | cut -f2)"
