@@ -698,7 +698,10 @@ debian/control: debian/control.in debian/rules
 	fi
 
 debian/tests/%.sh: debian/tests/%.in debian/rules
-	sed -e 's/@jtreg_archs@/$(jtreg_archs)/g' $< > $@;
+	sed \
+		-e 's,@JDK_TO_TEST@,/$(basedir),g' \
+		-e 's/@jtreg_archs@/$(jtreg_archs)/g' \
+		$< > $@;
 	chmod +x $@
 
 gen-autopkgtests: debian/tests/jtreg-autopkgtest.sh
@@ -979,26 +982,26 @@ TESTS_TO_RUN = $(addprefix check-,$(TEST_SUITES))
 
 check-hotspot: stamps/build
 	mkdir -p jtreg-test-output/hotspot
-	JTREG_OPTIONS=$(JTREG_OPTIONS) VMNAME=$(VMNAME) JDK_DIR=$(builddir)/$(sdkimg) \
+	JTREG_OPTIONS=$(JTREG_OPTIONS) VMNAME=$(VMNAME) JDK_TO_TEST=$(builddir)/$(sdkimg) \
 	AUTOPKGTEST_TMP=/tmp/ AUTOPKGTEST_ARTIFACTS=jtreg-test-output/hotspot/ \
 	  $(TIME) debian/tests/hotspot | tee jtreg-test-output/$@.log
 
 
 check-langtools: stamps/build
 	mkdir -p jtreg-test-output/langtools
-	JTREG_OPTIONS=$(JTREG_OPTIONS) VMNAME=$(VMNAME) JDK_DIR=$(builddir)/$(sdkimg) \
+	JTREG_OPTIONS=$(JTREG_OPTIONS) VMNAME=$(VMNAME) JDK_TO_TEST=$(builddir)/$(sdkimg) \
 	AUTOPKGTEST_TMP=/tmp/ AUTOPKGTEST_ARTIFACTS=jtreg-test-output/langtools/ \
 	  $(TIME) debian/tests/langtools | tee jtreg-test-output/$@.log
 
 check-jaxp: stamps/build
 	mkdir -p jtreg-test-output/jaxp
-	JTREG_OPTIONS=$(JTREG_OPTIONS) VMNAME=$(VMNAME) JDK_DIR=$(builddir)/$(sdkimg) \
+	JTREG_OPTIONS=$(JTREG_OPTIONS) VMNAME=$(VMNAME) JDK_TO_TEST=$(builddir)/$(sdkimg) \
 	AUTOPKGTEST_TMP=/tmp/ AUTOPKGTEST_ARTIFACTS=jtreg-test-output/langtools/ \
 	  $(TIME) debian/tests/jaxp | tee jtreg-test-output/$@.log
 
 check-jdk: stamps/build
 	mkdir -p jtreg-test-output/jdk
-	JTREG_OPTIONS=$(JTREG_OPTIONS) VMNAME=$(VMNAME) JDK_DIR=$(builddir)/$(sdkimg) \
+	JTREG_OPTIONS=$(JTREG_OPTIONS) VMNAME=$(VMNAME) JDK_TO_TEST=$(builddir)/$(sdkimg) \
 	AUTOPKGTEST_TMP=/tmp/ AUTOPKGTEST_ARTIFACTS=jtreg-test-output/jdk/ \
 	  $(TIME) debian/tests/jdk | tee jtreg-test-output/$@.log
 
