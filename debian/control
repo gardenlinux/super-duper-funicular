@@ -1,4 +1,4 @@
-Source: openjdk-12
+Source: openjdk-13
 Section: java
 Priority: optional
 Maintainer: OpenJDK Team <openjdk@lists.launchpad.net>
@@ -15,20 +15,20 @@ Build-Depends: debhelper (>= 11),
   libffi-dev,
   zlib1g-dev, libattr1-dev, libpng-dev, libjpeg-dev, libgif-dev,  
   libnss3-dev (>= 2:3.17.1),
-  openjdk-12-jdk-headless <cross>,
+  openjdk-13-jdk-headless <cross>,
 Build-Depends-Indep: graphviz, pandoc,
 Standards-Version: 4.3.0
 Homepage: http://openjdk.java.net/
 Vcs-Git: https://git.launchpad.net/~openjdk/ubuntu/+source/openjdk/+git/openjdk
 Vcs-Browser: https://code.launchpad.net/~openjdk/ubuntu/+source/openjdk/+git/openjdk/+ref/master
 
-Package: openjdk-12-jdk-headless
+Package: openjdk-13-jdk-headless
 Architecture: alpha amd64 armel armhf arm64 i386 ia64 mips mipsel mips64 mips64el powerpc powerpcspe ppc64 ppc64el m68k sh4 sparc sparc64 s390x x32 kfreebsd-i386 kfreebsd-amd64
 Multi-Arch: same
 Pre-Depends: ${dpkg:Depends}
-Depends: openjdk-12-jre-headless (= ${binary:Version}),
+Depends: openjdk-13-jre-headless (= ${binary:Version}),
   ${shlibs:Depends}, ${misc:Depends}
-Suggests: openjdk-12-demo, openjdk-12-source
+Suggests: openjdk-13-demo, openjdk-13-source
 Provides: java-sdk-headless, java2-sdk-headless,
   java5-sdk-headless, java6-sdk-headless,
   java7-sdk-headless, java8-sdk-headless,
@@ -40,7 +40,7 @@ Description: OpenJDK Development Kit (JDK) (headless)
  OpenJDK is a development environment for building applications,
  applets, and components using the Java programming language.
 
-Package: openjdk-12-jre-headless
+Package: openjdk-13-jre-headless
 Architecture: alpha amd64 armel armhf arm64 i386 ia64 mips mipsel mips64 mips64el powerpc powerpcspe ppc64 ppc64el m68k sh4 sparc sparc64 s390x x32 kfreebsd-i386 kfreebsd-amd64
 Multi-Arch: same
 Pre-Depends: ${dpkg:Depends}
@@ -65,15 +65,15 @@ Description: OpenJDK Java runtime, using ${vm:Name} (headless)
  Minimal Java runtime - needed for executing non GUI Java programs,
  using ${vm:Name}.
 
-Package: openjdk-12-jdk
+Package: openjdk-13-jdk
 Architecture: alpha amd64 armel armhf arm64 i386 ia64 mips mipsel mips64 mips64el powerpc powerpcspe ppc64 ppc64el m68k sh4 sparc sparc64 s390x x32 kfreebsd-i386 kfreebsd-amd64
 Multi-Arch: same
 Pre-Depends: ${dpkg:Depends}
-Depends: openjdk-12-jre (= ${binary:Version}),
-  openjdk-12-jdk-headless (= ${binary:Version}),
+Depends: openjdk-13-jre (= ${binary:Version}),
+  openjdk-13-jdk-headless (= ${binary:Version}),
   ${shlibs:Depends}, ${misc:Depends}
 Recommends: libxt-dev
-Suggests: openjdk-12-demo, openjdk-12-source, visualvm
+Suggests: openjdk-13-demo, openjdk-13-source, visualvm
 Provides: java-sdk, java2-sdk, java5-sdk, java6-sdk,
   java7-sdk, java8-sdk, java9-sdk, java10-sdk, java11-sdk,
   java-compiler
@@ -83,11 +83,11 @@ Description: OpenJDK Development Kit (JDK)
  OpenJDK is a development environment for building applications,
  applets, and components using the Java programming language.
 
-Package: openjdk-12-jre
+Package: openjdk-13-jre
 Architecture: alpha amd64 armel armhf arm64 i386 ia64 mips mipsel mips64 mips64el powerpc powerpcspe ppc64 ppc64el m68k sh4 sparc sparc64 s390x x32 kfreebsd-i386 kfreebsd-amd64
 Multi-Arch: same
 Pre-Depends: ${dpkg:Depends}
-Depends: openjdk-12-jre-headless (= ${binary:Version}),
+Depends: openjdk-13-jre-headless (= ${binary:Version}),
   ${xandsound:Depends}, ${dlopenjre:Depends},
   ${shlibs:Depends}, ${misc:Depends}
 Recommends: ${dlopenjre:Recommends}, ${bridge:Recommends}, fonts-dejavu-extra
@@ -101,20 +101,20 @@ Description: OpenJDK Java runtime, using ${vm:Name}
  Full Java runtime environment - needed for executing Java GUI and Webstart
  programs, using ${vm:Name}.
 
-Package: openjdk-12-demo
+Package: openjdk-13-demo
 Architecture: alpha amd64 armel armhf arm64 i386 ia64 mips mipsel mips64 mips64el powerpc powerpcspe ppc64 ppc64el m68k sh4 sparc sparc64 s390x x32 kfreebsd-i386 kfreebsd-amd64
 Priority: optional
 Pre-Depends: ${dpkg:Depends}
-Depends: openjdk-12-jre (= ${binary:Version}),
+Depends: openjdk-13-jre (= ${binary:Version}),
   ${shlibs:Depends}, ${misc:Depends}
 Description: Java runtime based on OpenJDK (demos and examples)
  OpenJDK Java runtime
 
-Package: openjdk-12-source
+Package: openjdk-13-source
 Architecture: all
 Priority: optional
 Pre-Depends: ${dpkg:Depends}
-Depends: openjdk-12-jdk (>= ${source:Version}),
+Depends: openjdk-13-jdk (>= ${source:Version}),
   ${misc:Depends}
 Description: OpenJDK Development Kit (JDK) source files
  OpenJDK is a development environment for building applications,
@@ -123,7 +123,7 @@ Description: OpenJDK Development Kit (JDK) source files
  This package contains the Java programming language source files
  (src.zip) for all classes that make up the Java core API.
 
-Package: openjdk-12-doc
+Package: openjdk-13-doc
 Section: doc
 Pre-Depends: ${dpkg:Depends}
 Architecture: all
@@ -132,23 +132,23 @@ Priority: optional
 Depends: ${misc:Depends},
   libjs-jquery,
   libjs-jquery-ui,
-Suggests: openjdk-12-jdk
+Suggests: openjdk-13-jdk
 Description: OpenJDK Development Kit (JDK) documentation
  OpenJDK is a development environment for building applications,
  applets, and components using the Java programming language.
  .
  This package contains the API documentation.
 
-Package: openjdk-12-dbg
+Package: openjdk-13-dbg
 Architecture: alpha amd64 armel armhf arm64 i386 ia64 mips mipsel mips64 mips64el powerpc powerpcspe ppc64 ppc64el m68k sh4 sparc sparc64 s390x x32 kfreebsd-i386 kfreebsd-amd64
 Multi-Arch: same
 Priority: optional
 Section: debug
 Pre-Depends: ${dpkg:Depends}
-Depends: openjdk-12-jre-headless (= ${binary:Version}),
+Depends: openjdk-13-jre-headless (= ${binary:Version}),
    ${misc:Depends}
-Recommends: openjdk-12-jre (= ${binary:Version})
-Suggests: openjdk-12-jdk (= ${binary:Version})
+Recommends: openjdk-13-jre (= ${binary:Version})
+Suggests: openjdk-13-jdk (= ${binary:Version})
 Conflicts: openjdk-11-dbg
 Description: Java runtime based on OpenJDK (debugging symbols)
  OpenJDK is a development environment for building applications,
@@ -156,12 +156,12 @@ Description: Java runtime based on OpenJDK (debugging symbols)
  .
  This package contains the debugging symbols.
 
-Package: openjdk-12-jre-zero
+Package: openjdk-13-jre-zero
 Architecture: amd64 i386 arm64 armhf ppc64 ppc64el sparc64 s390x kfreebsd-amd64 kfreebsd-i386
 Multi-Arch: same
 Priority: optional
 Pre-Depends: ${dpkg:Depends}
-Depends: openjdk-12-jre-headless (= ${binary:Version}), ${shlibs:Depends}, ${misc:Depends}
+Depends: openjdk-13-jre-headless (= ${binary:Version}), ${shlibs:Depends}, ${misc:Depends}
 Provides: ${zerovm:Provides}
 Description: Alternative JVM for OpenJDK, using Zero
  The package provides an alternative runtime using the Zero VM. Built on

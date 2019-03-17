@@ -36,7 +36,7 @@
    AC_MSG_RESULT([$boot_jdk_jvmargs_small])
 --- a/make/autoconf/build-performance.m4
 +++ b/make/autoconf/build-performance.m4
-@@ -440,6 +440,9 @@ AC_DEFUN_ONCE([BPERF_SETUP_SMART_JAVAC],
+@@ -443,6 +443,9 @@ AC_DEFUN_ONCE([BPERF_SETUP_SMART_JAVAC],
      MX_VALUE=512
    fi
    ADD_JVM_ARG_IF_OK([-Xms${MS_VALUE}M -Xmx${MX_VALUE}M],SJAVAC_SERVER_JAVA_FLAGS,[$SJAVAC_SERVER_JAVA])

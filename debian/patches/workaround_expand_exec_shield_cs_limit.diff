@@ -11,7 +11,7 @@
    /*
 --- a/src/hotspot/os/linux/os_linux.cpp
 +++ b/src/hotspot/os/linux/os_linux.cpp
-@@ -4988,7 +4988,7 @@ jint os::init_2(void) {
+@@ -5072,7 +5072,7 @@ jint os::init_2(void) {
      Linux::capture_initial_stack(JavaThread::stack_size_at_create());
    }
  

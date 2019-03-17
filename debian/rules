@@ -84,8 +84,8 @@ else
   priority	= $(if $(filter yes, $(is_default)),1204,1203)
   vm_name	= Hotspot Zero
 endif
-jvmver		= 1.12.0
-shortver	= 12
+jvmver		= 1.13.0
+shortver	= 13
 v_upstream	:= $(shell echo $(PKGVERSION) | sed 's/-[^-][^-]*$$//')
 v_pkgrel	:= $(shell echo $(PKGVERSION) | sed 's/^.*-//')
 # FIXME. currently v_upstream like 11~4
@@ -178,6 +178,7 @@ export DEBIAN_JDK_BASE_DIR := /$(basedir)
 BOOTJDK_HOME := $(strip $(subst /bin/javac,, $(firstword $(wildcard \
 			/usr/lib/jvm/java-11-openjdk-$(DEB_BUILD_ARCH)/bin/javac \
 			/usr/lib/jvm/java-12-openjdk-$(DEB_BUILD_ARCH)/bin/javac \
+			/usr/lib/jvm/java-13-openjdk-$(DEB_BUILD_ARCH)/bin/javac \
 		))))
 
 ifeq ($(DEB_BUILD_ARCH),$(DEB_HOST_ARCH))
@@ -722,7 +723,10 @@ debian/control: debian/control.in debian/rules
 	fi
 
 debian/tests/%.sh: debian/tests/%.in debian/rules
-	sed -e 's/@jtreg_archs@/$(jtreg_archs)/g' $< > $@;
+	sed \
+		-e 's,@JDK_TO_TEST@,/$(basedir),g' \
+		-e 's/@jtreg_archs@/$(jtreg_archs)/g' \
+		$< > $@;
 	chmod +x $@
 
 gen-autopkgtests: debian/tests/jtreg-autopkgtest.sh
@@ -1003,26 +1007,26 @@ TESTS_TO_RUN = $(addprefix check-,$(TEST_SUITES))
 
 check-hotspot: stamps/build
 	mkdir -p jtreg-test-output/hotspot
-	JTREG_OPTIONS=$(JTREG_OPTIONS) VMNAME=$(VMNAME) JDK_DIR=$(builddir)/$(sdkimg) \
+	JTREG_OPTIONS=$(JTREG_OPTIONS) VMNAME=$(VMNAME) JDK_TO_TEST=$(builddir)/$(sdkimg) \
 	AUTOPKGTEST_TMP=/tmp/ AUTOPKGTEST_ARTIFACTS=jtreg-test-output/hotspot/ \
 	  $(TIME) debian/tests/hotspot | tee jtreg-test-output/$@.log
 
 
 check-langtools: stamps/build
 	mkdir -p jtreg-test-output/langtools
-	JTREG_OPTIONS=$(JTREG_OPTIONS) VMNAME=$(VMNAME) JDK_DIR=$(builddir)/$(sdkimg) \
+	JTREG_OPTIONS=$(JTREG_OPTIONS) VMNAME=$(VMNAME) JDK_TO_TEST=$(builddir)/$(sdkimg) \
 	AUTOPKGTEST_TMP=/tmp/ AUTOPKGTEST_ARTIFACTS=jtreg-test-output/langtools/ \
 	  $(TIME) debian/tests/langtools | tee jtreg-test-output/$@.log
 
 check-jaxp: stamps/build
 	mkdir -p jtreg-test-output/jaxp
-	JTREG_OPTIONS=$(JTREG_OPTIONS) VMNAME=$(VMNAME) JDK_DIR=$(builddir)/$(sdkimg) \
+	JTREG_OPTIONS=$(JTREG_OPTIONS) VMNAME=$(VMNAME) JDK_TO_TEST=$(builddir)/$(sdkimg) \
 	AUTOPKGTEST_TMP=/tmp/ AUTOPKGTEST_ARTIFACTS=jtreg-test-output/langtools/ \
 	  $(TIME) debian/tests/jaxp | tee jtreg-test-output/$@.log
 
 check-jdk: stamps/build
 	mkdir -p jtreg-test-output/jdk
-	JTREG_OPTIONS=$(JTREG_OPTIONS) VMNAME=$(VMNAME) JDK_DIR=$(builddir)/$(sdkimg) \
+	JTREG_OPTIONS=$(JTREG_OPTIONS) VMNAME=$(VMNAME) JDK_TO_TEST=$(builddir)/$(sdkimg) \
 	AUTOPKGTEST_TMP=/tmp/ AUTOPKGTEST_ARTIFACTS=jtreg-test-output/jdk/ \
 	  $(TIME) debian/tests/jdk | tee jtreg-test-output/$@.log
 
@@ -1703,6 +1707,8 @@ hg_project		= jdk11u
 hg_tag			= jdk-11.0.1+13
 hg_project		= jdk12
 hg_tag			= jdk-12+33
+hg_project		= jdk
+hg_tag			= jdk-13+12
 package_version		= $(subst jdk-,,$(hg_tag))
 ifneq ($(is_release),yes)
   package_version	:= $(subst +,~,$(package_version))
