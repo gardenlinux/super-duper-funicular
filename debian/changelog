@@ -1,9 +1,11 @@
-openjdk-11 (11.0.3+1-2) UNRELEASED; urgency=medium
+openjdk-11 (11.0.3+4-1) unstable; urgency=medium
 
+  * OpenJDK 11.0.3+4 build.
   * Fix the wrong assumption in the autopkg tests that the OpenJDK is
     the same as the default JDK.
+  * Don't prune the build trees before running the tests.
 
- -- Matthias Klose <doko@ubuntu.com>  Sun, 17 Mar 2019 13:38:12 +0100
+ -- Matthias Klose <doko@ubuntu.com>  Thu, 21 Mar 2019 14:57:00 +0100
 
 openjdk-11 (11.0.3+1-1) unstable; urgency=medium
 
