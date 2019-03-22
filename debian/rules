@@ -91,16 +91,19 @@ v_pkgrel	:= $(shell echo $(PKGVERSION) | sed 's/^.*-//')
 # FIXME. currently v_upstream like 11~4
 v_upbase	:= $(word 1, $(subst +, , $(v_upstream)))
 v_upbuild	:= $(word 2, $(subst +, , $(v_upstream)))
-v_upbase	:= $(word 1, $(subst ~, , $(v_upstream)))
-v_upbuild	:= $(word 2, $(subst ~, , $(v_upstream)))
+#v_upbase	:= $(word 1, $(subst ~, , $(v_upstream)))
+#v_upbuild	:= $(word 2, $(subst ~, , $(v_upstream)))
 # that should be the package version ...
 
+ifneq ($(PKGVERSION),$(v_upbase)$(v_upbuild)-$(v_pkgrel))
+  $(error wrong version: $(v_upbase)$(v_upbuild)-$(v_pkgrel) should be: $(PKGVERSION))
+endif
 #ifneq ($(PKGVERSION),$(v_upbase)+$(v_upbuild)-$(v_pkgrel))
 #  $(error wrong version: $(v_upbase)+$(v_upbuild)-$(v_pkgrel) should be: $(PKGVERSION))
 #endif
-ifneq ($(PKGVERSION),$(v_upbase)~$(v_upbuild)-$(v_pkgrel))
-  $(error wrong version: $(v_upbase)~$(v_upbuild)-$(v_pkgrel) should be: $(PKGVERSION))
-endif
+#ifneq ($(PKGVERSION),$(v_upbase)~$(v_upbuild)-$(v_pkgrel))
+#  $(error wrong version: $(v_upbase)~$(v_upbuild)-$(v_pkgrel) should be: $(PKGVERSION))
+#endif
 
 ifneq (,$(DEB_HOST_MULTIARCH))
   jdirname	= java-$(shortver)-$(origin)-$(DEB_HOST_ARCH)
@@ -413,7 +416,7 @@ endif
 
 COMMON_CONFIGURE_ARGS += \
 	--with-version-pre='' \
-	--with-version-build='$(v_upbuild)' \
+	--with-version-build='$(if $(v_upbuild),$(v_upbuild),0)' \
 	--with-version-opt='$(distribution)-$(v_pkgrel)' \
 
 COMMON_CONFIGURE_ARGS += \
@@ -928,11 +931,6 @@ stamps/zero-build: stamps/zero-configure
 		$(builddir)/$(sdkimg)/lib/zero
 	touch $@
 
-stamps/prune-build-dir:
-	-find $(builddir) -mindepth 2 ! -path '$(builddir)/$(sdkimg)/*' -delete
-	rm -rf  $(zbuilddir)
-	touch $@
-
 stamps/build-docs: stamps/build
 	@echo '========== $@ =========='
 	mkdir -p $(builddir)/images/docs
@@ -951,7 +949,7 @@ stamps/jtreg-check-zero: stamps/build
 		TEST_SUITES='hotspot langtools jaxp'
 	touch $@
 
-jtreg-run-check: stamps/prune-build-dir
+jtreg-run-check:
 	mkdir -p jtreg-test-output
 ifneq (,$(filter $(VMNAME), $(with_jtreg_check)))
 	if [ ! -f $(builddir)/$(sdkimg)/conf/security/java.security.install ]; then \
@@ -1700,13 +1698,14 @@ endif
 	NO_PKG_MANGLE=1 \
 	dh_builddeb -a $(nodemo) $(nojrez) #$(bd_options)
 
-is_release		= yes
 is_release		=
+is_release		= yes
 hg_project		= jdk11u
 hg_tag			= jdk-11.0.1+13
 hg_project		= jdk12
-hg_tag			= jdk-12+33
+hg_tag			= jdk-12-ga
 package_version		= $(subst jdk-,,$(hg_tag))
+package_version		= 12.0.0
 ifneq ($(is_release),yes)
   package_version	:= $(subst +,~,$(package_version))
 endif
