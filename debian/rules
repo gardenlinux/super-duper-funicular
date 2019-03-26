@@ -412,6 +412,35 @@ endif
 #COMMON_CONFIGURE_ARGS += \
 #	--with-vendor-version-string='$(PKGVERSION)'
 
+ifeq ($(distribution),Debian)
+  COMMON_CONFIGURE_ARGS += \
+	--with-vendor-name='$(distribution)' \
+	--with-vendor-url='https://tracker.debian.org/$(basename)' \
+	--with-vendor-bug-url='https://bugs.debian.org/$(basename)' \
+	--with-vendor-vm-bug-url='https://bugs.debian.org/$(basename)'
+else ifeq ($(distribution),Ubuntu)
+  ppa_build := $(shell if echo 'v_pkgrel' | egrep '^[0-9]+(ubuntu[0-9]+)?(~[0-9.]+)?$$'; then echo no; else echo yes; fi)
+  ifeq ($(ppa_build),yes)
+    COMMON_CONFIGURE_ARGS += \
+	--with-vendor-name='Private Build' \
+	--with-vendor-url='Unknown' \
+	--with-vendor-bug-url='Unknown' \
+	--with-vendor-vm-bug-url='Unknown'
+  else
+    COMMON_CONFIGURE_ARGS += \
+	--with-vendor-name='$(distribution)' \
+	--with-vendor-url='https://ubuntu.com/' \
+	--with-vendor-bug-url='https://bugs.launchpad.net/ubuntu/+source/$(basename)' \
+	--with-vendor-vm-bug-url='https://bugs.launchpad.net/ubuntu/+source/$(basename)'
+  endif
+else
+  COMMON_CONFIGURE_ARGS += \
+	--with-vendor-name='$(distribution)' \
+	--with-vendor-url='Unknown' \
+	--with-vendor-bug-url='Unknown' \
+	--with-vendor-vm-bug-url='Unknown'
+endif
+
 COMMON_CONFIGURE_ARGS += \
 	--with-version-pre='' \
 	--with-version-build='$(v_upbuild)' \
