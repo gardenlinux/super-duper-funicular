@@ -1,3 +1,9 @@
+openjdk-12 (12.0.0-3) UNRELEASED; urgency=medium
+
+  * Configure with vendor flags.
+
+ -- Matthias Klose <doko@ubuntu.com>  Tue, 26 Mar 2019 14:29:24 +0100
+
 openjdk-12 (12.0.0-2) unstable; urgency=medium
 
   * OpenJDK 12 release.
