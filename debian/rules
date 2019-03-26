@@ -413,6 +413,7 @@ else
 endif
 
 COMMON_CONFIGURE_ARGS += \
+	--with-version-pre='' \
 	--with-version-build='$(v_upbuild)' \
 	--with-version-opt='$(distribution)-$(v_pkgrel)' \
 
