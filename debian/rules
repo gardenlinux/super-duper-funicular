@@ -929,11 +929,6 @@ stamps/zero-build: stamps/zero-configure
 		$(builddir)/$(sdkimg)/lib/zero
 	touch $@
 
-stamps/prune-build-dir:
-	-find $(builddir) -mindepth 2 ! -path '$(builddir)/$(sdkimg)/*' -delete
-	rm -rf  $(zbuilddir)
-	touch $@
-
 stamps/build-docs: stamps/build
 	@echo '========== $@ =========='
 	mkdir -p $(builddir)/images/docs
@@ -952,7 +947,7 @@ stamps/jtreg-check-zero: stamps/build
 		TEST_SUITES='hotspot langtools jaxp'
 	touch $@
 
-jtreg-run-check: stamps/prune-build-dir
+jtreg-run-check:
 	mkdir -p jtreg-test-output
 ifneq (,$(filter $(VMNAME), $(with_jtreg_check)))
 	if [ ! -f $(builddir)/$(sdkimg)/conf/security/java.security.install ]; then \
@@ -1708,7 +1703,7 @@ hg_tag			= jdk-11.0.1+13
 hg_project		= jdk12
 hg_tag			= jdk-12+33
 hg_project		= jdk
-hg_tag			= jdk-13+12
+hg_tag			= jdk-13+13
 package_version		= $(subst jdk-,,$(hg_tag))
 ifneq ($(is_release),yes)
   package_version	:= $(subst +,~,$(package_version))
