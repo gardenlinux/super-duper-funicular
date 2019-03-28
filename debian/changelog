@@ -2,6 +2,7 @@ openjdk-12 (12.0.0-3) UNRELEASED; urgency=medium
 
   [ Matthias Klose ]
   * Configure with vendor flags.
+  * Backport fix for 8221083, wrong oop compare in C1-generated code (PPC).
 
   [ Tiago Stürmer Daitx ]
   * Revert to GTK2 as default since GTK3 still has padding and

@@ -1,0 +1,139 @@
+
+# HG changeset patch
+# User simonis
+# Date 1553597501 -3600
+# Node ID 5487a925f70d3c32aa8bd21901135b431b639942
+# Parent  5ee30b6991a750746ed219719e9dbfbec9dff56d
+8221083: [ppc64] Wrong oop compare in C1-generated code
+Reviewed-by: mdoerr, goetz
+
+diff -r 5ee30b6991a7 -r 5487a925f70d src/hotspot/cpu/ppc/c1_LIRAssembler_ppc.cpp
+--- a/src/hotspot/cpu/ppc/c1_LIRAssembler_ppc.cpp	Mon Dec 03 16:25:27 2018 +0100
++++ b/src/hotspot/cpu/ppc/c1_LIRAssembler_ppc.cpp	Tue Mar 26 11:51:41 2019 +0100
+@@ -1455,13 +1455,11 @@
+           break;
+       }
+     } else {
+-      if (opr2->is_address()) {
+-        DEBUG_ONLY( Unimplemented(); ) // Seems to be unused at the moment.
+-        LIR_Address *addr = opr2->as_address_ptr();
+-        BasicType type = addr->type();
+-        if (type == T_OBJECT) { __ ld(R0, index_or_disp(addr), addr->base()->as_register()); }
+-        else                  { __ lwa(R0, index_or_disp(addr), addr->base()->as_register()); }
+-        __ cmpd(BOOL_RESULT, opr1->as_register(), R0);
++      assert(opr1->type() != T_ADDRESS && opr2->type() != T_ADDRESS, "currently unsupported");
++      if (opr1->type() == T_OBJECT || opr1->type() == T_ARRAY) {
++        // There are only equal/notequal comparisons on objects.
++        assert(condition == lir_cond_equal || condition == lir_cond_notEqual, "oops");
++        __ cmpd(BOOL_RESULT, opr1->as_register(), opr2->as_register());
+       } else {
+         if (unsigned_comp) {
+           __ cmplw(BOOL_RESULT, opr1->as_register(), opr2->as_register());
+@@ -1497,14 +1495,6 @@
+     } else {
+       ShouldNotReachHere();
+     }
+-  } else if (opr1->is_address()) {
+-    DEBUG_ONLY( Unimplemented(); ) // Seems to be unused at the moment.
+-    LIR_Address * addr = opr1->as_address_ptr();
+-    BasicType type = addr->type();
+-    assert (opr2->is_constant(), "Checking");
+-    if (type == T_OBJECT) { __ ld(R0, index_or_disp(addr), addr->base()->as_register()); }
+-    else                  { __ lwa(R0, index_or_disp(addr), addr->base()->as_register()); }
+-    __ cmpdi(BOOL_RESULT, R0, opr2->as_constant_ptr()->as_jint());
+   } else {
+     ShouldNotReachHere();
+   }
+diff -r 5ee30b6991a7 -r 5487a925f70d test/hotspot/jtreg/compiler/codegen/TestOopCmp.java
+--- /dev/null	Thu Jan 01 00:00:00 1970 +0000
++++ b/test/hotspot/jtreg/compiler/codegen/TestOopCmp.java	Tue Mar 26 11:51:41 2019 +0100
+@@ -0,0 +1,88 @@
++/*
++ * Copyright (c) 2019 SAP SE. All rights reserved.
++ * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
++ *
++ * This code is free software; you can redistribute it and/or modify it
++ * under the terms of the GNU General Public License version 2 only, as
++ * published by the Free Software Foundation.
++ *
++ * This code is distributed in the hope that it will be useful, but WITHOUT
++ * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
++ * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
++ * version 2 for more details (a copy is included in the LICENSE file that
++ * accompanied this code).
++ *
++ * You should have received a copy of the GNU General Public License version
++ * 2 along with this work; if not, write to the Free Software Foundation,
++ * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
++ *
++ * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
++ * or visit www.oracle.com if you need additional information or have any
++ * questions.
++ */
++
++/**
++ * @test
++ * @bug 8221083
++ * @requires vm.bits == 64 & vm.opt.final.UseCompressedOops == true
++ * @summary On ppc64, C1 erroneously emits a 32-bit compare instruction for oop compares.
++ * @modules java.base/jdk.internal.misc:+open
++ * @library /test/lib /
++ * @build sun.hotspot.WhiteBox
++ * @run driver ClassFileInstaller sun.hotspot.WhiteBox
++ *                                sun.hotspot.WhiteBox$WhiteBoxPermission
++ * @run main/othervm -Xbatch -XX:-UseTLAB -Xmx4m -XX:+UseSerialGC -XX:HeapBaseMinAddress=0x700000000
++ *      -XX:CompileCommand=compileonly,compiler.codegen.TestOopCmp::nullTest
++ *      -XX:+UnlockDiagnosticVMOptions -XX:+WhiteBoxAPI -Xbootclasspath/a:.
++ *      compiler.codegen.TestOopCmp
++ * @author volker.simonis@gmail.com
++ */
++
++package compiler.codegen;
++
++import sun.hotspot.WhiteBox;
++
++public class TestOopCmp {
++
++    private static Object nullObj = null;
++
++    public static boolean nullTest(Object o) {
++        if (o == nullObj) {
++            return true;
++        } else {
++            return false;
++        }
++    }
++
++    public static void main(String args[]) {
++
++        WhiteBox WB = WhiteBox.getWhiteBox();
++
++        // The test is started with -XX:HeapBaseMinAddress=0x700000000 and a
++        // small heap of only 4mb. This works pretty reliable and at least on
++        // Linux/Windows/Solaris we will get a heap starting at 0x700000000.
++        // The test also runs with -XX:+UseSerialGC which means that we'll get
++        // eden starting at 0x700000000.
++        // Calling 'System.gc()' will clean up all the objects from eden, so if
++        // eden starts at 0x700000000 the first allocation right after the
++        // system GC will be allcoated right at address 0x700000000.
++        System.gc();
++        String s = new String("I'm not null!!!");
++        if (WB.getObjectAddress(s) == 0x700000000L) {
++            System.out.println("Got object at address 0x700000000");
++        }
++
++        // We call 'nullTest()' with the newly allocated String object. If it was
++        // allocated at 0x700000000, its 32 least-significant bits will be 0 and a
++        // 32-bit comparison with 'nullObj' (which is 'null') will yield true and
++        // result in a test failure.
++        // If the code generated for 'nullTest()' correctly performs a 64-bit
++        // comparison or if we didn't manage to allcoate 's' at 0x700000000 the
++        // test will always succeed.
++        for (int i = 0; i < 30_000; i++) {
++            if (nullTest(s)) {
++                throw new RuntimeException("Comparing non-null object with null returned 'true'");
++            }
++        }
++    }
++}
+
