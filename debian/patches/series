@@ -35,3 +35,5 @@ reproducible-javadoc-timestamp.diff
 jdk8211105-aarch64-disable_cos_sin_and_log_intrinsics.patch
 make-debig-print.diff
 Don-t-optimize-fdlibm-fork-for-Zero-on-linux-sparc-Z.patch
+jdk-improve-gtk3-compatibility.patch
+keep-gtk2-as-default.patch
