@@ -4,7 +4,7 @@ openjdk-12 (12.0.0-3) unstable; urgency=medium
   * Configure with vendor flags.
   * Update package provides for 12.
   * Backport fix for 8221083, wrong oop compare in C1-generated code (PPC).
-  * Woark around the missing gcc-for-host b-d for cross builds.
+  * Work around the missing gcc-for-host b-d for cross builds.
 
   [ Tiago Stürmer Daitx ]
   * Revert to GTK2 as default since GTK3 still has padding and
