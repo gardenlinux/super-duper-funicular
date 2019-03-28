@@ -1,6 +1,18 @@
 openjdk-11 (11.0.3+4-2) UNRELEASED; urgency=medium
 
+  [ Matthias Klose ]
   * Configure with vendor flags.
+
+  [ Tiago Stürmer Daitx ]
+  * Revert to GTK2 as default since GTK3 still has padding and
+    component issues, apply upstream changeset to fix a few GTK3
+    components: LP: #1770278.
+    - debian/patches/jdk-improve-gtk3-compatibility.patch: upstream
+      fix for JDK-8218469, JDK-8218470, JDK-8218472, and JDK-8203627.
+    - debian/patches/keep-gtk2-as-default.patch: revert upstream so
+      GTK2 is loaded before GTK3 when available.
+    - debian/rules, debian/control: Set jre to depend on libgtk2.0-0
+      and alternatively to libgtk-3-0.
 
  -- Matthias Klose <doko@ubuntu.com>  Tue, 26 Mar 2019 13:55:25 +0100
 

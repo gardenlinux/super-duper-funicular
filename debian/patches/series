@@ -35,3 +35,5 @@ reproducible-properties-timestamp.diff
 reproducible-javadoc-timestamp.diff
 Don-t-optimize-fdlibm-fork-for-Zero-on-linux-sparc-Z.patch
 8214002.diff
+jdk-improve-gtk3-compatibility.patch
+keep-gtk2-as-default.patch
