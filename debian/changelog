@@ -1,5 +1,9 @@
 openjdk-11 (11.0.3+4-3) UNRELEASED; urgency=medium
 
+  [ Matthias Klose ]
+  * Build the alternate zero VM using the just built hotspot VM.
+  * Remove the icedtea-sound/pulseaudio build support.
+
   [ Tiago Stürmer Daitx ]
   * Install swing.properties into <java-home>/conf instead of <java-home>/lib.
 
