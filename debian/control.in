@@ -33,7 +33,8 @@ Provides: java-sdk-headless, java2-sdk-headless,
   java5-sdk-headless, java6-sdk-headless,
   java7-sdk-headless, java8-sdk-headless,
   java9-sdk-headless, java10-sdk-headless,
-  java11-sdk-headless, java-compiler
+  java11-sdk-headless, java12-sdk-headless,
+  java13-sdk-headless, java-compiler
 Conflicts: openjdk-11-jre-headless (<< 11~19-2)
 Replaces: openjdk-11-jre-headless (<< 11~19-2)
 Description: OpenJDK Development Kit (JDK) (headless)
@@ -56,7 +57,8 @@ Provides: java-runtime-headless, java2-runtime-headless,
   java5-runtime-headless, java6-runtime-headless,
   java7-runtime-headless, java8-runtime-headless,
   java9-runtime-headless, java10-runtime-headless,
-  java11-runtime-headless,
+  java11-runtime-headless, java12-runtime-headless,
+  java13-runtime-headless,
   ${defaultvm:Provides}, ${jvm:Provides}
 Breaks: clojure1.8 (<= 1.8.0-7ubuntu1~)
 Conflicts: oracle-java11-installer, openjdk-11-jdk-headless (<< 11~18-2)
@@ -76,7 +78,7 @@ Recommends: libxt-dev
 Suggests: @basename@-demo, @basename@-source, visualvm
 Provides: java-sdk, java2-sdk, java5-sdk, java6-sdk,
   java7-sdk, java8-sdk, java9-sdk, java10-sdk, java11-sdk,
-  java-compiler
+  java12-sdk, java13-sdk, java-compiler
 Conflicts: openjdk-11-jre-headless (<< 11~19-2)
 Replaces: openjdk-11-jre-headless (<< 11~19-2)
 Description: OpenJDK Development Kit (JDK)
@@ -96,7 +98,8 @@ Provides: java-runtime, java2-runtime,
   java5-runtime, java6-runtime,
   java7-runtime, java8-runtime,
   java9-runtime, java10-runtime,
-  java11-runtime,
+  java11-runtime, java12-runtime,
+  java13-runtime,
 Description: OpenJDK Java runtime, using ${vm:Name}
  Full Java runtime environment - needed for executing Java GUI and Webstart
  programs, using ${vm:Name}.
