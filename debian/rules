@@ -654,7 +654,6 @@ control_vars = \
 	'-Vdlopenhl:Recommends=$(dlopen_hl_recommends)' \
 	'-Vdlopenjre:Depends=$(dlopen_jre_depends)' \
 	'-Vdlopenjre:Recommends=$(dlopen_jre_recommends)' \
-	'-Vxulrunner:Depends=$(xulrunner_depends)' \
 
 ifeq ($(with_bridge),atk)
   control_vars += '-Vbridge:Recommends=libatk-wrapper-java-jni (>= 0.30.4-0ubuntu2)'
@@ -1546,7 +1545,7 @@ endif
 	dh_builddeb -i $(nodocs) $(bd_options)
 
 absarchdir = $(CURDIR)/$(d_jrehl)/$(basedir)/lib
-shlibdeps_ld_path =$(absarchdir):$(absarchdir)/client:$(absarchdir)/server:$(absarchdir)/native_threads$(if $(xulrunner_depends),:$(shell pkg-config --libs-only-L libxul | sed  's/^-L//;s/-devel//;s,/lib *$$,,'))
+shlibdeps_ld_path =$(absarchdir):$(absarchdir)/client:$(absarchdir)/server:$(absarchdir)/native_threads
 
 # pass vm name as first argument
 define install_test_results
