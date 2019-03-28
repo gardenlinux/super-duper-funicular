@@ -288,9 +288,6 @@ ifneq ($(DEB_BUILD_GNU_TYPE),$(DEB_HOST_GNU_TYPE))
   export CXX = $(DEB_HOST_GNU_TYPE)-g++
 endif
 
-with_pulse = yes
-with_pulse =
-
 ifneq (,$(filter $(distrel),squeeze lucid))
   with_bridge = bridge
   with_jni_bridge = yes
@@ -332,10 +329,6 @@ EXTRA_BUILD_ENV += IGNORE_OLD_CONFIG=true
 
 EXTRA_BUILD_ENV += LIBFFI_LIBS=-lffi_pic
 
-ifeq ($(with_pulse),yes)
-  CONFIGURE_ARGS += --enable-pulse-java
-endif
-
 CONFIGURE_ARGS += --enable-system-kerberos
 
 ifeq ($(with_nss),yes)
@@ -368,9 +361,7 @@ endif
 ZERO_CONFIGURE_ARGS += --with-jvm-variants=zero
 
 DEFAULT_CONFIGURE_ARGS += --with-boot-jdk=$(BOOTJDK_HOME)
-# FIXME: fails on some targets, e.g. ...
-#ZERO_CONFIGURE_ARGS += --with-boot-jdk=$(BUILDJDK_HOME)
-ZERO_CONFIGURE_ARGS += --with-boot-jdk=$(BOOTJDK_HOME)
+ZERO_CONFIGURE_ARGS += --with-boot-jdk=$(BUILDJDK_HOME)
 
 COMMON_CONFIGURE_ARGS += --disable-ccache
 
@@ -595,9 +586,6 @@ bd_zero = \
 bd_ant = ant, ant-optional,
 
 bd_fastjar = fastjar (>= 2:0.96-0ubuntu2),
-ifeq ($(with_pulse),yes)
-  bd_pulsejava = libpulse-dev (>= 0.9.12),
-endif
 ifeq ($(with_nss),yes)
   ifneq (,$(filter $(distrel),squeeze lucid precise quantal))
     bd_nss = libnss3-dev (>= 3.12.3),
@@ -693,8 +681,6 @@ control_vars = \
 	'-Vdlopenhl:Recommends=$(dlopen_hl_recommends)' \
 	'-Vdlopenjre:Depends=$(dlopen_jre_depends)' \
 	'-Vdlopenjre:Recommends=$(dlopen_jre_recommends)' \
-	'-Vpkg:pulseaudio=$(pkg_pulseaudio)' \
-	'-Vxulrunner:Depends=$(xulrunner_depends)' \
 
 ifeq ($(with_bridge),atk)
   control_vars += '-Vbridge:Recommends=libatk-wrapper-java-jni (>= 0.30.4-0ubuntu2)'
@@ -737,7 +723,6 @@ debian/control: debian/control.in debian/rules
 	      -e 's/@bd_gcc@/$(bd_gcc)/g' \
 	      -e 's/@bd_syslibs@/$(bd_syslibs)/g' \
 	      -e 's/@bd_fastjar@/$(bd_fastjar)/g' \
-	      -e 's/@bd_pulsejava@/$(bd_pulsejava)/g' \
 	      -e 's/@bd_nss@/$(bd_nss)/g' \
 	      -e 's/@bd_systemtap@/$(bd_systemtap)/g' \
 	      -e 's/@bd_ant@/$(bd_ant)/g' \
@@ -859,33 +844,6 @@ stamps/zero-configure: stamps/build stamps/unpack
 
 	touch $@
 
-stamps/sound-configure: stamps/build
-	@echo '========== $@ =========='
-	rm -rf icedtea-sound
-	tar xf icedtea-sound.tar.xz
-	mv $$(tar tf icedtea-sound.tar.xz | head -1 | sed 's,/.*,,') \
-	  icedtea-sound
-	patch -p1 -R < debian/patches/icedtea-sound.diff
-	patch -p1 < debian/patches/icedtea-sound2.diff
-	if [ -x icedtea-sound/autogen.sh ]; then \
-	  cd icedtea-sound && ./autogen.sh; \
-	fi
-	cd icedtea-sound && ./configure \
-		--build=$(DEB_BUILD_GNU_TYPE) \
-		--host=$(DEB_HOST_GNU_TYPE) \
-		--disable-maintainer-mode \
-		--with-jdk-home=$(BUILDJDK_HOME) \
-		CPPFLAGS="$(EXTRA_CPPFLAGS_IT)" \
-		CFLAGS="$(EXTRA_CFLAGS_IT)" \
-		CXXFLAGS="$(EXTRA_CXXFLAGS_IT)" \
-		LDFLAGS="$(EXTRA_LDFLAGS_IT)"
-	touch $@
-
-stamps/sound-build: stamps/sound-configure
-	@echo '========== $@ =========='
-	$(MAKE) -C icedtea-sound
-	touch $@
-
 stamps/unpack:
 	: # apply some architecture specific patches ...
 ifeq ($(DEB_HOST_ARCH),alpha)
@@ -916,10 +874,6 @@ endif
 build_stamps = \
 	stamps/build \
 	$(if $(filter $(DEB_HOST_ARCH),$(altzero_archs)),stamps/zero-build)
-
-ifeq ($(with_pulse),yes)
-  build_stamps += stamps/sound-build
-endif
 
 build_stamps +=  stamps/jtreg-check-default
 
@@ -1115,13 +1069,6 @@ install: packaging-files
 	mkdir -p $(d)/$(basedir)
 	cp -a $(builddir)/$(sdkimg)/* $(d)/$(basedir)/
 
-ifeq ($(with_pulse),yes)
-# FIXME: ext no longer supported
-#	cp icedtea-sound/icedtea-sound.jar $(d)/$(basedir)/lib/ext/.
-#	cp icedtea-sound/build/native/libicedtea-sound.so \
-#	  $(d)/$(basedir)/lib/.
-endif
-
 	chmod -R u+w $(d)
 
 	: # use javaws from icedtea-netx 
@@ -1290,7 +1237,7 @@ endif
 	cd $(CURDIR)/$(d); \
 	for i in $(basedir)/lib/*.so; do \
 	  case "$$i" in \
-	    */libjavagtk.so|*/libsplashscreen.so|*/libjsoundalsa.so|$(if $(with_pulse),*/libicedtea-sound.so|)*/xawt) echo $$i >> ../$(p_jre).install;; \
+	    */libjavagtk.so|*/libsplashscreen.so|*/libjsoundalsa.so|*/xawt) echo $$i >> ../$(p_jre).install;; \
 	    */zero) echo $$i >> ../$(p_jrez).install;; \
 	    *) echo $$i >> ../$(p_jrehl).install; \
 	  esac; \
@@ -1646,7 +1593,7 @@ endif
 	dh_builddeb -i $(nodocs) $(bd_options)
 
 absarchdir = $(CURDIR)/$(d_jrehl)/$(basedir)/lib
-shlibdeps_ld_path =$(absarchdir):$(absarchdir)/client:$(absarchdir)/server:$(absarchdir)/native_threads$(if $(xulrunner_depends),:$(shell pkg-config --libs-only-L libxul | sed  's/^-L//;s/-devel//;s,/lib *$$,,'))
+shlibdeps_ld_path =$(absarchdir):$(absarchdir)/client:$(absarchdir)/server:$(absarchdir)/native_threads
 
 # pass vm name as first argument
 define install_test_results
