@@ -1,9 +1,10 @@
-openjdk-12 (12.0.0-3) UNRELEASED; urgency=medium
+openjdk-12 (12.0.0-3) unstable; urgency=medium
 
   [ Matthias Klose ]
   * Configure with vendor flags.
   * Update package provides for 12.
   * Backport fix for 8221083, wrong oop compare in C1-generated code (PPC).
+  * Woark around the missing gcc-for-host b-d for cross builds.
 
   [ Tiago Stürmer Daitx ]
   * Revert to GTK2 as default since GTK3 still has padding and
@@ -16,7 +17,7 @@ openjdk-12 (12.0.0-3) UNRELEASED; urgency=medium
     - debian/rules, debian/control: Set jre to depend on libgtk2.0-0
       and alternatively to libgtk-3-0.
 
- -- Matthias Klose <doko@ubuntu.com>  Tue, 26 Mar 2019 14:29:24 +0100
+ -- Matthias Klose <doko@ubuntu.com>  Thu, 28 Mar 2019 09:11:35 +0100
 
 openjdk-12 (12.0.0-2) unstable; urgency=medium
 
