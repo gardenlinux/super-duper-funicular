@@ -3,6 +3,7 @@ openjdk-11 (11.0.3+4-2) UNRELEASED; urgency=medium
   [ Matthias Klose ]
   * Configure with vendor flags.
   * Work around the missing gcc-for-host b-d for cross builds.
+  * Backport fix for 8221083, wrong oop compare in C1-generated code (PPC).
 
   [ Tiago Stürmer Daitx ]
   * Revert to GTK2 as default since GTK3 still has padding and
