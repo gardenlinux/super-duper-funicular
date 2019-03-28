@@ -278,6 +278,12 @@ else
   export CXX = $(DEB_HOST_GNU_TYPE)-g++-8
 endif
 
+# until we are able to b-d on gcc-for-host ...
+ifneq ($(DEB_BUILD_GNU_TYPE),$(DEB_HOST_GNU_TYPE))
+  export CC = $(DEB_HOST_GNU_TYPE)-gcc
+  export CXX = $(DEB_HOST_GNU_TYPE)-g++
+endif
+
 with_pulse = yes
 with_pulse =
 
@@ -530,11 +536,11 @@ else ifneq (,$(filter $(distrel),utopic vivid jessie))
 else ifneq (,$(filter $(distrel),wily xenial))
   bd_gcc = g++-5 [$(hotspot_archs)], g++-4.9 [$(strip $(foreach a,$(hotspot_archs), !$(a)))], g++-4.9 [arm64],
 else ifneq (,$(filter $(distrel),stretch))
-  bd_gcc = g++-6,
+  bd_gcc = g++-6 <!cross>,
 else ifneq (,$(filter $(distrel),artful bionic))
-  bd_gcc = g++-7,
+  bd_gcc = g++-7 <!cross>,
 else
-  bd_gcc = g++-8,
+  bd_gcc = g++-8 <!cross>,
 endif
 bd_syslibs = zlib1g-dev, libattr1-dev,
 ifneq (,$(filter $(distrel),squeeze lucid))
