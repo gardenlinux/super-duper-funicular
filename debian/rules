@@ -624,7 +624,7 @@ ifneq ($(with_nss),no)
 endif
 dlopen_hl_recommends =
 dlopen_jre_depends = \
-	libglib2.0-0 (>= 2.24), libgtk-3-0, libxrandr2, libxinerama1, libgl1-mesa-glx | libgl1
+	libglib2.0-0 (>= 2.24), libgtk2.0-0 | libgtk-3-0, libxrandr2, libxinerama1, libgl1-mesa-glx | libgl1
 dlopen_jre_recommends =
 
 # .desktop files need to be multiarch installable
