@@ -1174,7 +1174,7 @@ ifeq ($(with_bridge),atk)
 else
 	cp -p debian/accessibility.properties $(d)/$(basedir)/conf/
 endif
-	cp -p debian/swing.properties $(d)/$(basedir)/lib/
+	cp -p debian/swing.properties $(d)/$(basedir)/conf/
 
 ifneq (,$(pkg_certs))
 	rm -f $(d)/$(basedir)/lib/security/cacerts
@@ -1192,9 +1192,9 @@ endif
 	  conf/net.properties \
 	  lib/psfontj2d.properties \
 	  lib/psfont.properties.ja \
-	  lib/swing.properties \
 	  lib/jfr/default.jfc \
 	  lib/jfr/profile.jfc \
+	  conf/swing.properties \
 	  conf/management/jmxremote.access \
 	  conf/management/management.properties \
 	  conf/security/java.policy \
