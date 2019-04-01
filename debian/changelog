@@ -1,3 +1,9 @@
+openjdk-11 (11.0.3+4-4) UNRELEASED; urgency=medium
+
+  * Annotate the bootstrap dependency with :native.
+
+ -- Matthias Klose <doko@ubuntu.com>  Tue, 02 Apr 2019 01:43:10 +0200
+
 openjdk-11 (11.0.3+4-3) unstable; urgency=medium
 
   [ Matthias Klose ]

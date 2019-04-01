@@ -500,9 +500,9 @@ jre_hl_tools	:= $(filter-out $(jre_tools), $(all_jre_tools))
 bd_autotools = autoconf, automake, autotools-dev,
 
 ifneq (,$(filter $(distrel),squeeze wheezy jessie precise trusty xenial))
-  bd_bootstrap = openjdk-10-jdk-headless | openjdk-11-jdk-headless,
+    bd_bootstrap = openjdk-10-jdk-headless:native | openjdk-11-jdk-headless:native,
   else
-  bd_bootstrap = openjdk-11-jdk-headless | openjdk-10-jdk-headless,
+    bd_bootstrap = openjdk-11-jdk-headless:native | openjdk-10-jdk-headless:native,
 endif
 ifeq (,$(filter $(distrel),squeeze wheezy jessie precise trusty xenial))
   bd_cross += \
