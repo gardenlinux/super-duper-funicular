@@ -1,4 +1,4 @@
-openjdk-11 (11.0.3+4-3) UNRELEASED; urgency=medium
+openjdk-11 (11.0.3+4-3) unstable; urgency=medium
 
   [ Matthias Klose ]
   * Build the alternate zero VM using the just built hotspot VM.
@@ -8,7 +8,7 @@ openjdk-11 (11.0.3+4-3) UNRELEASED; urgency=medium
   [ Tiago Stürmer Daitx ]
   * Install swing.properties into <java-home>/conf instead of <java-home>/lib.
 
- -- Matthias Klose <doko@ubuntu.com>  Thu, 28 Mar 2019 18:24:13 +0100
+ -- Matthias Klose <doko@ubuntu.com>  Fri, 29 Mar 2019 09:06:03 +0100
 
 openjdk-11 (11.0.3+4-2) unstable; urgency=medium
 
