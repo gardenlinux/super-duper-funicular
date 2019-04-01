@@ -521,7 +521,7 @@ jre_hl_tools	:= $(filter-out $(jre_tools), $(all_jre_tools))
 # build dependencies
 bd_autotools = autoconf, automake, autotools-dev,
 
-bd_bootstrap = openjdk-12-jdk-headless | openjdk-13-jdk-headless,
+bd_bootstrap = openjdk-12-jdk-headless:native | openjdk-13-jdk-headless:native,
 ifeq (,$(filter $(distrel),squeeze wheezy jessie precise trusty xenial))
   bd_cross += \
 	$(basename)-jdk-headless <cross>,

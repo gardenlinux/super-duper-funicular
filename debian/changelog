@@ -4,6 +4,7 @@ openjdk-13 (13~14-2) UNRELEASED; urgency=medium
   * Build the alternate zero VM using the just built hotspot VM.
   * Remove the icedtea-sound/pulseaudio build support.
   * Remove some xulrunner build bits.
+  * Annotate the bootstrap dependency with :native.
 
   [ Tiago Stürmer Daitx ]
   * Install swing.properties into <java-home>/conf instead of <java-home>/lib.
