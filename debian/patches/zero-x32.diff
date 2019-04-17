@@ -1,8 +1,6 @@
-Index: b/src/hotspot/os/linux/os_linux.cpp
-===================================================================
 --- a/src/hotspot/os/linux/os_linux.cpp
 +++ b/src/hotspot/os/linux/os_linux.cpp
-@@ -1757,7 +1757,7 @@ void * os::dll_load(const char *filename
+@@ -1755,7 +1755,7 @@ void * os::dll_load(const char *filename
  
  #if  (defined IA32)
    static  Elf32_Half running_arch_code=EM_386;
@@ -11,8 +9,6 @@ Index: b/src/hotspot/os/linux/os_linux.cpp
    static  Elf32_Half running_arch_code=EM_X86_64;
  #elif  (defined IA64)
    static  Elf32_Half running_arch_code=EM_IA_64;
-Index: b/make/autoconf/platform.m4
-===================================================================
 --- a/make/autoconf/platform.m4
 +++ b/make/autoconf/platform.m4
 @@ -35,6 +35,10 @@ AC_DEFUN([PLATFORM_EXTRACT_VARS_FROM_CPU

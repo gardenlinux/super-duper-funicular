@@ -387,7 +387,7 @@ ifeq ($(distribution),Debian)
 	--with-vendor-bug-url='https://bugs.debian.org/$(basename)' \
 	--with-vendor-vm-bug-url='https://bugs.debian.org/$(basename)'
 else ifeq ($(distribution),Ubuntu)
-  ppa_build := $(shell if echo 'v_pkgrel' | egrep '^[0-9]+(ubuntu[0-9]+)?(~[0-9.]+)?$$'; then echo no; else echo yes; fi)
+  ppa_build := $(shell if echo '$(v_pkgrel)' | egrep '^[0-9]+(ubuntu[0-9]+)?(~[0-9.]+)?$$'; then echo no; else echo yes; fi)
   ifeq ($(ppa_build),yes)
     COMMON_CONFIGURE_ARGS += \
 	--with-vendor-name='Private Build' \
@@ -398,8 +398,8 @@ else ifeq ($(distribution),Ubuntu)
     COMMON_CONFIGURE_ARGS += \
 	--with-vendor-name='$(distribution)' \
 	--with-vendor-url='https://ubuntu.com/' \
-	--with-vendor-bug-url='https://bugs.launchpad.net/ubuntu/+source/$(basename)' \
-	--with-vendor-vm-bug-url='https://bugs.launchpad.net/ubuntu/+source/$(basename)'
+	--with-vendor-bug-url='https://bugs.launchpad.net/ubuntu/+source/openjdk-lts' \
+	--with-vendor-vm-bug-url='https://bugs.launchpad.net/ubuntu/+source/openjdk-lts'
   endif
 else
   COMMON_CONFIGURE_ARGS += \
@@ -1427,23 +1427,26 @@ ifneq (,$(filter $(DEB_HOST_ARCH),amd64 kfreebsd-amd64))
   endif
 endif
 
-ifeq (0,1)
-# FIXME: ext not longer supported
 ifeq ($(with_bridge),atk)
 	: # create links for the atk wrapper
+  ifeq (0,1)
+  # FIXME: ext no longer supported
 	echo "usr/share/java/java-atk-wrapper.jar $(basedir)/lib/ext/java-atk-wrapper.jar" \
 	    >> $(d_jre).links
-	echo "usr/lib$(multiarch_dir)/jni/libatk-wrapper.so $(basedir)/lib/ext/libatk-wrapper.so" \
+  endif
+	echo "usr/lib$(multiarch_dir)/jni/libatk-wrapper.so $(basedir)/lib/libatk-wrapper.so" \
 	    >> $(d_jre).links
 else ifeq ($(with_bridge),yes)
+ ifeq (0,1)
+# FIXME: ext no longer supported
 	: # create links for the gnome accessibility bridge
 	echo "usr/share/java/gnome-java-bridge.jar $(basedir)/lib/ext/gnome-java-bridge.jar" \
 	    >> $(d_jre).links
   ifeq ($(with_jni_bridge),yes)
-	  echo "usr/lib$(multiarch_dir)/jni/libjava-access-bridge-jni.so $(basedir)/lib/ext/libjava-access-bridge-jni.so" \
+	  echo "usr/lib$(multiarch_dir)/jni/libjava-access-bridge-jni.so $(basedir)/lib/libjava-access-bridge-jni.so" \
 	    >> $(d_jre).links
   endif
-endif
+ endif
 endif
 
 	: # create links for the config/lib files
@@ -1634,7 +1637,7 @@ endif
 
 is_release		= yes
 hg_project		= jdk11u
-hg_tag			= jdk-11.0.3+4
+hg_tag			= jdk-11.0.3+7
 package_version		= $(subst jdk-,,$(hg_tag))
 ifneq ($(is_release),yes)
   package_version	:= $(subst +,~,$(package_version))
@@ -1644,7 +1647,8 @@ origdir = ../$(basename)-$(package_version).orig
 topdir = $(basename)-$(package_version)
 get-orig:
 	mkdir $(origdir)
-	wget -O $(origdir)/jdk.tar.bz2 $(hg_url)/archive/$(hg_tag).tar.bz2
+#	wget -O $(origdir)/jdk.tar.bz2 $(hg_url)/archive/$(hg_tag).tar.bz2
+	cp -p ~/jdk.tar.bz2 $(origdir)/jdk.tar.bz2
 
 	set -ex; \
 	repo=jdk; \

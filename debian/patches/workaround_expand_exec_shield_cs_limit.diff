@@ -1,6 +1,6 @@
 --- a/src/hotspot/os_cpu/linux_x86/os_linux_x86.cpp
 +++ b/src/hotspot/os_cpu/linux_x86/os_linux_x86.cpp
-@@ -841,7 +841,7 @@ void os::verify_stack_alignment() {
+@@ -837,7 +837,7 @@ void os::verify_stack_alignment() {
   * updates (JDK-8023956).
   */
  void os::workaround_expand_exec_shield_cs_limit() {
@@ -11,7 +11,7 @@
    /*
 --- a/src/hotspot/os/linux/os_linux.cpp
 +++ b/src/hotspot/os/linux/os_linux.cpp
-@@ -5057,7 +5057,7 @@ jint os::init_2(void) {
+@@ -5054,7 +5054,7 @@ jint os::init_2(void) {
      Linux::capture_initial_stack(JavaThread::stack_size_at_create());
    }
  

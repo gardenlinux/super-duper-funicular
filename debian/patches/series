@@ -38,3 +38,5 @@ Don-t-optimize-fdlibm-fork-for-Zero-on-linux-sparc-Z.patch
 jdk-improve-gtk3-compatibility.patch
 keep-gtk2-as-default.patch
 8221083.diff
+jaw-classpath.diff
+jaw-optional.diff
