@@ -7,6 +7,10 @@ openjdk-12 (12.0.1+12-1) unstable; urgency=medium
   * Remove the icedtea-sound/pulseaudio build support.
   * Remove some xulrunner build bits.
   * Annotate the bootstrap dependency with :native.
+  * Support using the Java ATK wrapper (Samuel Thibault). Addresses: #900912.
+    - patches/jaw-classpath.diff: Fix finding the Java ATK wrapper.
+    - patches/jaw-optional.diff: Make failing to load the Java ATK wrapper
+      non-fatal.
 
   [ Tiago Stürmer Daitx ]
   * Install swing.properties into <java-home>/conf instead of <java-home>/lib.
