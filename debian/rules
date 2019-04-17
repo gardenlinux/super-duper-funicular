@@ -1647,8 +1647,7 @@ origdir = ../$(basename)-$(package_version).orig
 topdir = $(basename)-$(package_version)
 get-orig:
 	mkdir $(origdir)
-#	wget -O $(origdir)/jdk.tar.bz2 $(hg_url)/archive/$(hg_tag).tar.bz2
-	cp -p ~/jdk.tar.bz2 $(origdir)/jdk.tar.bz2
+	wget -O $(origdir)/jdk.tar.bz2 $(hg_url)/archive/$(hg_tag).tar.bz2
 
 	set -ex; \
 	repo=jdk; \
