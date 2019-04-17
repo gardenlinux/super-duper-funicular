@@ -1,4 +1,6 @@
-openjdk-12 (12.0.0-4) UNRELEASED; urgency=medium
+openjdk-12 (12.0.1+12-1) unstable; urgency=medium
+
+  * OpenJDK 12.0.1 release.
 
   [ Matthias Klose ]
   * Build the alternate zero VM using the just built hotspot VM.
@@ -9,7 +11,7 @@ openjdk-12 (12.0.0-4) UNRELEASED; urgency=medium
   [ Tiago Stürmer Daitx ]
   * Install swing.properties into <java-home>/conf instead of <java-home>/lib.
 
- -- Matthias Klose <doko@ubuntu.com>  Thu, 28 Mar 2019 18:27:44 +0100
+ -- Matthias Klose <doko@ubuntu.com>  Wed, 17 Apr 2019 04:08:58 +0200
 
 openjdk-12 (12.0.0-3) unstable; urgency=medium
 
