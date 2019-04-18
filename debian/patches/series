@@ -40,3 +40,5 @@ keep-gtk2-as-default.patch
 8221083.diff
 jaw-classpath.diff
 jaw-optional.diff
+8210483.diff
+8210739.diff
