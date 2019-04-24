@@ -651,6 +651,24 @@ else
   cjk_fonts += fonts-indic,
 endif
 
+jrehl_breaks = clojure1.8 (<= 1.8.0-7ubuntu1~),
+ifneq (,$(filter $(distrel),buster sid bionc cosmic disco eoan))
+  jrehl_breaks += \
+	jetty9 (<< 9.4.15-1~), netbeans (<< 10.0-3~), visualvm (<< 1.4.2-2~), \
+	eclipse-platform (<< 3.8.1-11),
+endif
+ifneq (,$(filter $(distrel),bionc cosmic disco eoan))
+  jrehl_breaks += \
+	tomcat8 (<< 8.5.39-1ubuntu1~),
+endif
+ifneq (,$(filter $(distrel),buster sid))
+  jrehl_breaks += \
+	libreoffice-core (<< 1:6.1.5-2~),
+else ifneq (,$(filter $(distrel),disco))
+  jrehl_breaks += \
+	libreoffice-core (<< 1:6.2.2-0ubuntu2),
+endif
+
 p_jre	= $(basename)-jre
 p_jrehl	= $(basename)-jre-headless
 p_jrez	= $(basename)-jre-zero
@@ -706,6 +724,8 @@ endif
 
 pkg_jcommon = java-common (>= 0.28)
 control_vars += '-Vjcommon:Depends=$(pkg_jcommon)'
+
+control_vars += '-Vjrehl:Breaks=$(jrehl_breaks)'
 
 debian/control: debian/control.in debian/rules
 	@cp -p debian/control debian/control.old
