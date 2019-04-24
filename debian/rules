@@ -639,10 +639,10 @@ ifneq (,$(filter $(distrel),bionc cosmic disco eoan))
 endif
 ifneq (,$(filter $(distrel),buster sid))
   jrehl_breaks += \
-	libreoffice-java-common (<< 1:6.2.3~rc1-1~),
+	libreoffice-core (<< 1:6.1.5-2~),
 else ifneq (,$(filter $(distrel),disco))
   jrehl_breaks += \
-	libreoffice-java-common (<< 1:6.2.2-0ubuntu2),
+	libreoffice-core (<< 1:6.2.2-0ubuntu2),
 endif
 
 p_jre	= $(basename)-jre
