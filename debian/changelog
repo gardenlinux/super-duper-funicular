@@ -1,3 +1,12 @@
+openjdk-11 (11.0.3+7-3) unstable; urgency=medium
+
+  * Add breaks to the openjdk-11-jre-headless package:
+    - For unattended upgrades: jetty9, netbeans, tomcat8, visualvm.
+    - For eclipse 3.8 removal: eclipse-platform. Closes: #925071.
+    - For configuration with vendor flag: libreoffice-java-common.
+
+ -- Matthias Klose <doko@ubuntu.com>  Wed, 24 Apr 2019 10:21:11 +0200
+
 openjdk-11 (11.0.3+7-2) unstable; urgency=medium
 
   * Fix 8210739: Calling JSpinner's setFont with null throws

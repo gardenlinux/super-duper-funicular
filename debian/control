@@ -58,7 +58,7 @@ Provides: java-runtime-headless, java2-runtime-headless,
   java9-runtime-headless, java10-runtime-headless,
   java11-runtime-headless,
   ${defaultvm:Provides}, ${jvm:Provides}
-Breaks: clojure1.8 (<= 1.8.0-7ubuntu1~)
+Breaks: ${jrehl:Breaks}
 Conflicts: oracle-java11-installer, openjdk-11-jdk-headless (<< 11~18-2)
 Replaces: openjdk-11-jdk-headless (<< 11~18-2)
 Description: OpenJDK Java runtime, using ${vm:Name} (headless)
