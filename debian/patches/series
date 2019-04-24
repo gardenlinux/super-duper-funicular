@@ -1,3 +1,4 @@
+jdk11u-dev-updates.diff
 system-pcsclite.diff
 hotspot-mips-align.diff
 icc_loading_with_symlink.diff
@@ -34,11 +35,6 @@ m68k-support.diff
 reproducible-properties-timestamp.diff
 reproducible-javadoc-timestamp.diff
 Don-t-optimize-fdlibm-fork-for-Zero-on-linux-sparc-Z.patch
-8214002.diff
-jdk-improve-gtk3-compatibility.patch
 keep-gtk2-as-default.patch
-8221083.diff
 jaw-classpath.diff
 jaw-optional.diff
-8210483.diff
-8210739.diff

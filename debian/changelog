@@ -5,6 +5,50 @@ openjdk-11 (11.0.3+7-3) unstable; urgency=medium
     - For eclipse 3.8 removal: eclipse-platform. Closes: #925071.
     - For configuration with vendor flag: libreoffice-java-common.
 
+  * Apply updates from jdk11u-dev, and remove locally applied patches:
+    - 8206955: MethodHandleProxies.asInterfaceInstance does not support default
+      methodsdefault tip.
+    - 8221304: Problem list java/awt/FontMetrics/MaxAdvanceIsMax.java.
+    - 8218854: FontMetrics.getMaxAdvance may be less than the maximum
+      FontMetrics.charWidth.
+    - 8214002: Cannot use italic font style if the font has embedded bitmap.
+    - 8222522: Add configure options for Mac Bundle creation.
+    - 8221880: Better customization for Windows RC properties FileDescription
+      and ProductName.
+    - 8222133: Add temporary exceptions for root certs that are due to expire
+      soon.
+    - 8222089: [TESTBUG] sun/security/lib/cacerts/VerifyCACerts.java fails due
+      to cert within 90-day expiry window.
+    - 8170494: JNI exception pending in PlainDatagramSocketImpl.c.
+    - 8217879: hs_err should print more instructions in hex dump.
+    - 8222410: java/nio/file/attribute/BasicFileAttributeView/UnixSocketFile
+      hangs when "nc" does not accept "-U".
+    - 8222397: x86_32 tests with UseSHA1Intrinsics SEGV due to garbled
+      registers.
+    - 8209914: javadoc search sometimes generates bad URIs.
+    - 8218020: Fix version number in mesa.md 3rd party legal file.
+    - 8188133: C2: Static field accesses in clinit can trigger
+      deoptimizations.
+    - 8215472: (zipfs) Cleanups in implementation classes of jdk.zipfs and
+      tests.
+    - 8211266: [TESTBUG] ZipFSTester.java failed intermittently in
+      ZipFSTester.checkRead(): bound must be positive.
+    - 8210899: (zipfs) ZipFileSystem.EntryOutputStreamCRC32 mistakenly set the
+      crc32 value into size field.
+    - 8217647: JFR: recordings on 32-bit systems unreadable.
+    - 8216970: condy causes JVM crash.
+    - 8222032: x86_32 fails with "wrong size of mach node" on AVX-512 machine.
+    - 8221917: serviceability/sa/TestPrintMdo.java fails on 32-bit platforms.
+    - 8220349: The fix done for JDK-8214253 have caused issues in JTree
+      behaviour.
+    - 8221833: Readability check in Symbol::is_valid not performed for some
+      addresses.
+    - 8220441: [PPC64] Clobber memory effect missing for memory barriers in
+      atomics.
+    - 8218991: s390: Add intrinsic for GHASH algorithm.
+    - 8220625: tools/javac/classreader/8171132/BadConstantValue.java failed
+      with "did not see expected error".
+
  -- Matthias Klose <doko@ubuntu.com>  Wed, 24 Apr 2019 10:21:11 +0200
 
 openjdk-11 (11.0.3+7-2) unstable; urgency=medium
