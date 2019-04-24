@@ -78,10 +78,10 @@ TOP		= usr/lib/jvm
 origin		= openjdk
 basename	= openjdk-$(shortver)
 ifneq (,$(filter $(DEB_HOST_ARCH), $(hotspot_archs)))
-  priority	= $(if $(filter yes, $(is_default)),1211,1209)
+  priority	= $(if $(filter yes, $(is_default)),1311,1309)
   vm_name	= Hotspot JIT
 else
-  priority	= $(if $(filter yes, $(is_default)),1204,1203)
+  priority	= $(if $(filter yes, $(is_default)),1304,1303)
   vm_name	= Hotspot Zero
 endif
 jvmver		= 1.13.0
@@ -143,6 +143,7 @@ with_check = $(if $(findstring nocheck, $(DEB_BUILD_OPTIONS)),,yes)
 ifneq (,$(filter $(DEB_HOST_ARCH), alpha))
   with_check = disabled running check on $(DEB_HOST_ARCH)
 endif
+with_check =
 
 with_docs = $(if $(findstring nodoc, $(DEB_BUILD_OPTIONS)),,yes)
 
@@ -164,6 +165,7 @@ altzero_archs = $(hotspot_archs)
 ifneq (,$(filter $(distrel),trusty))
   altzero_archs := $(filter-out arm64, $(hotspot_archs))
 endif
+altzero_archs := $(filter-out armhf, $(hotspot_archs))
 
 ifneq (,$(filter noaltzero, $(DEB_BUILD_OPTIONS)))
   altzero_archs =
@@ -645,6 +647,24 @@ else
   cjk_fonts += fonts-indic,
 endif
 
+jrehl_breaks = clojure1.8 (<= 1.8.0-7ubuntu1~),
+ifneq (,$(filter $(distrel),buster sid bionc cosmic disco eoan))
+  jrehl_breaks += \
+	jetty9 (<< 9.4.15-1~), netbeans (<< 10.0-3~), visualvm (<< 1.4.2-2~), \
+	eclipse-platform (<< 3.8.1-11),
+endif
+ifneq (,$(filter $(distrel),bionc cosmic disco eoan))
+  jrehl_breaks += \
+	tomcat8 (<< 8.5.39-1ubuntu1~),
+endif
+ifneq (,$(filter $(distrel),buster sid))
+  jrehl_breaks += \
+	libreoffice-core (<< 1:6.1.5-2~),
+else ifneq (,$(filter $(distrel),disco))
+  jrehl_breaks += \
+	libreoffice-core (<< 1:6.2.2-0ubuntu2),
+endif
+
 p_jre	= $(basename)-jre
 p_jrehl	= $(basename)-jre-headless
 p_jrez	= $(basename)-jre-zero
@@ -700,6 +720,8 @@ endif
 
 pkg_jcommon = java-common (>= 0.28)
 control_vars += '-Vjcommon:Depends=$(pkg_jcommon)'
+
+control_vars += '-Vjrehl:Breaks=$(jrehl_breaks)'
 
 debian/control: debian/control.in debian/rules
 	@cp -p debian/control debian/control.old
@@ -1553,20 +1575,20 @@ ifeq ($(with_docs),yes)
 	  cp -a $$i $(d_doc)/usr/share/doc/$(p_jrehl)/; \
 	  ln -sf ../$(p_jrehl)/$$b $(d_doc)/usr/share/doc/$(p_doc)/$$b; \
 	done
-	rm -v $(d_doc)/usr/share/doc/$(p_jrehl)/api/jquery/{external/jquery/jquery.js,jquery-3.3.1.js,jquery-ui.css,jquery-ui.js,jquery-ui.min.css,jquery-ui.min.js}
+	rm -v $(d_doc)/usr/share/doc/$(p_jrehl)/api/script-dir/{external/jquery/jquery.js,jquery-3.3.1.js,jquery-ui.css,jquery-ui.js,jquery-ui.min.css,jquery-ui.min.js}
 	dh_link -p$(p_doc) \
 	  /usr/share/javascript/jquery/jquery.js \
-	    /usr/share/doc/openjdk-12-jre-headless/api/jquery/external/jquery/jquery.js \
+	    /usr/share/doc/$(p_jrehl)/api/script-dir/external/jquery/jquery.js \
 	  /usr/share/javascript/jquery/jquery.js \
-	    /usr/share/doc/openjdk-12-jre-headless/api/jquery/jquery-3.3.1.js \
+	    /usr/share/doc/$(p_jrehl)/api/script-dir/jquery-3.3.1.js \
 	  /usr/share/javascript/jquery-ui/themes/base/jquery-ui.css \
-	    /usr/share/doc/openjdk-12-jre-headless/api/jquery/jquery-ui.css \
+	    /usr/share/doc/$(p_jrehl)/api/script-dir/jquery-ui.css \
 	  /usr/share/javascript/jquery-ui/jquery-ui.js \
-	    /usr/share/doc/openjdk-12-jre-headless/api/jquery/jquery-ui.js \
+	    /usr/share/doc/$(p_jrehl)/api/script-dir/jquery-ui.js \
 	  /usr/share/javascript/jquery-ui/themes/base/jquery-ui.min.css \
-	    /usr/share/doc/openjdk-12-jre-headless/api/jquery/jquery-ui.min.css \
+	    /usr/share/doc/$(p_jrehl)/api/script-dir/jquery-ui.min.css \
 	  /usr/share/javascript/jquery-ui/jquery-ui.min.js \
-	    /usr/share/doc/openjdk-12-jre-headless/api/jquery/jquery-ui.min.js
+	    /usr/share/doc/$(p_jrehl)/api/script-dir/jquery-ui.min.js
 
 endif
 # FIXME: desktop and menu files not ready for multiarch. #658321
@@ -1678,7 +1700,7 @@ hg_tag			= jdk-11.0.1+13
 hg_project		= jdk12
 hg_tag			= jdk-12+33
 hg_project		= jdk
-hg_tag			= jdk-13+14
+hg_tag			= jdk-13+17
 package_version		= $(subst jdk-,,$(hg_tag))
 ifneq ($(is_release),yes)
   package_version	:= $(subst +,~,$(package_version))

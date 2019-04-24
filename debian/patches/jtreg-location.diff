@@ -1,6 +1,6 @@
 --- a/make/autoconf/toolchain.m4
 +++ b/make/autoconf/toolchain.m4
-@@ -1085,7 +1085,7 @@ AC_DEFUN_ONCE([TOOLCHAIN_SETUP_JTREG],
+@@ -1092,7 +1092,7 @@ AC_DEFUN_ONCE([TOOLCHAIN_SETUP_JTREG],
        AC_MSG_ERROR([jtreg home directory from --with-jtreg=$with_jtreg does not exist])
      fi
  
@@ -9,7 +9,7 @@
        AC_MSG_ERROR([jtreg home directory from --with-jtreg=$with_jtreg is not a valid jtreg home])
      fi
  
-@@ -1104,7 +1104,7 @@ AC_DEFUN_ONCE([TOOLCHAIN_SETUP_JTREG],
+@@ -1111,7 +1111,7 @@ AC_DEFUN_ONCE([TOOLCHAIN_SETUP_JTREG],
          AC_MSG_WARN([Ignoring JT_HOME pointing to invalid directory: $JT_HOME])
          JT_HOME=
        else
@@ -18,7 +18,7 @@
            AC_MSG_WARN([Ignoring JT_HOME which is not a valid jtreg home: $JT_HOME])
            JT_HOME=
          elif test ! -x "$JT_HOME/bin/jtreg"; then
-@@ -1124,7 +1124,7 @@ AC_DEFUN_ONCE([TOOLCHAIN_SETUP_JTREG],
+@@ -1131,7 +1131,7 @@ AC_DEFUN_ONCE([TOOLCHAIN_SETUP_JTREG],
        if test "x$JTREGEXE" != x; then
          # That's good, now try to derive JT_HOME
          JT_HOME=`(cd $($DIRNAME $JTREGEXE)/.. && pwd)`

@@ -1,15 +1,32 @@
-openjdk-13 (13~14-2) UNRELEASED; urgency=medium
+openjdk-13 (13~17-3) UNRELEASED; urgency=medium
+
+  * Add breaks to the openjdk-13-jre-headless package:
+    - For unattended upgrades: jetty9, netbeans, tomcat8, visualvm.
+    - For eclipse 3.8 removal: eclipse-platform. Addresses: #925071.
+    - For configuration with vendor flag: libreoffice-core.
+
+ -- Matthias Klose <doko@ubuntu.com>  Wed, 24 Apr 2019 12:44:49 +0200
+
+openjdk-13 (13~17-2) experimental; urgency=medium
+
+  * Fix the build of the -doc package.
+  * Don't build zero on armhf for now.
+
+ -- Matthias Klose <doko@ubuntu.com>  Fri, 19 Apr 2019 03:00:51 +0200
+
+openjdk-13 (13~17-1) experimental; urgency=medium
 
   [ Matthias Klose ]
   * Build the alternate zero VM using the just built hotspot VM.
   * Remove the icedtea-sound/pulseaudio build support.
   * Remove some xulrunner build bits.
   * Annotate the bootstrap dependency with :native.
+  * Fix installation of the -doc package. Closes: #926845, #926917.
 
   [ Tiago Stürmer Daitx ]
   * Install swing.properties into <java-home>/conf instead of <java-home>/lib.
 
- -- Matthias Klose <doko@ubuntu.com>  Thu, 28 Mar 2019 18:29:21 +0100
+ -- Matthias Klose <doko@ubuntu.com>  Thu, 18 Apr 2019 06:33:56 +0200
 
 openjdk-13 (13~14-1) experimental; urgency=medium
 
