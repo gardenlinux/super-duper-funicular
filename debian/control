@@ -151,7 +151,7 @@ Depends: openjdk-13-jre-headless (= ${binary:Version}),
    ${misc:Depends}
 Recommends: openjdk-13-jre (= ${binary:Version})
 Suggests: openjdk-13-jdk (= ${binary:Version})
-Conflicts: openjdk-11-dbg
+Conflicts: openjdk-11-dbg, openjdk-12-dbg,
 Description: Java runtime based on OpenJDK (debugging symbols)
  OpenJDK is a development environment for building applications,
  applets, and components using the Java programming language.
