@@ -93,32 +93,6 @@ configure)
         update-binfmts --package @basename@ --import jar || true
     fi
 
-    # activate class data sharing
-    case @jvmarch@ in i386|i586|sparc)
-	rm -f $basedir/lib/client/classes.jsa
-	log=$(tempfile)
-	if ! $basedir/bin/java -client -Xshare:dump -XX:PermSize=128m > $log; then
-	    cat >&2 $log
-	    rm -f $log
-	    # this may fail on some machines/configurations, just ignore it.
-	    echo >&2 "ignoring dump failure"
-	    #exit 1
-	fi
-	rm -f $log
-    esac
-    case @jvmarch@ in amd64|i386|i586|sparc)
-	rm -f $basedir/lib/server/classes.jsa
-	log=$(tempfile)
-	if ! $basedir/bin/java -server -Xshare:dump > $log; then
-	    cat >&2 $log
-	    rm -f $log
-	    # this may fail on some machines/configurations, just ignore it.
-	    echo >&2 "ignoring dump failure"
-	    #exit 1
-	fi
-	rm -f $log
-    esac
-
     ;;
 
 esac

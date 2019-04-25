@@ -19,8 +19,6 @@ if [ "$1" = "remove" ] || [ "$1" = "deconfigure" ]; then
     fi
 
     update-alternatives --remove jexec $basedir/lib/jexec
-
-    rm -f $basedir/lib/*/classes.jsa
 fi
 
 #DEBHELPER#

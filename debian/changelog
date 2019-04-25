@@ -5,6 +5,8 @@ openjdk-13 (13~17-3) UNRELEASED; urgency=medium
     - For eclipse 3.8 removal: eclipse-platform. Addresses: #925071.
     - For configuration with vendor flag: libreoffice-core.
   * Add more -dbg package conflicts. Closes: #927745.
+  * Class data sharing is enabled during the build where available.
+    Just use the shipped classes.jsa files. Closes: #927441.
 
  -- Matthias Klose <doko@ubuntu.com>  Wed, 24 Apr 2019 12:44:49 +0200
 
