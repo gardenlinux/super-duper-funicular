@@ -1,3 +1,14 @@
+openjdk-11 (11.0.3+7-4) unstable; urgency=medium
+
+  * Apply updates from jdk11u-dev:
+    - 8218618: Program fails when using JDK addressed by UNC path and using
+      Security Managerdefault tip.
+    - 8221924: get(null) on single-entry unmodifiable Map returns null
+      instead of throwing NPE.
+  * Install jspawnhelper.
+
+ -- Matthias Klose <doko@ubuntu.com>  Thu, 25 Apr 2019 10:13:49 +0200
+
 openjdk-11 (11.0.3+7-3) unstable; urgency=medium
 
   * Add breaks to the openjdk-11-jre-headless package:

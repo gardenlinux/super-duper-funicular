@@ -1187,6 +1187,7 @@ endif
 	  echo '$(basedir)/lib/jli/libjli.so'; \
 	  echo '$(basedir)/lib/ct.sym'; \
 	  echo '$(basedir)/lib/jexec'; \
+	  echo '$(basedir)/lib/jspawnhelper'; \
 	  echo '$(basedir)/lib/jrt-fs.jar'; \
 	  echo '$(basedir)/release'; \
 	  echo '$(basedir)/lib/tzdb.dat'; \
