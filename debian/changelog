@@ -1,5 +1,6 @@
-openjdk-13 (13~17-3) UNRELEASED; urgency=medium
+openjdk-13 (13~18-1) experimental; urgency=medium
 
+  * OpenJDK 13 snapshot, build 18.
   * Add breaks to the openjdk-13-jre-headless package:
     - For unattended upgrades: jetty9, netbeans, tomcat8, visualvm.
     - For eclipse 3.8 removal: eclipse-platform. Addresses: #925071.
@@ -8,7 +9,7 @@ openjdk-13 (13~17-3) UNRELEASED; urgency=medium
   * Class data sharing is enabled during the build where available.
     Just use the shipped classes.jsa files. Closes: #927441.
 
- -- Matthias Klose <doko@ubuntu.com>  Wed, 24 Apr 2019 12:44:49 +0200
+ -- Matthias Klose <doko@ubuntu.com>  Thu, 25 Apr 2019 10:56:56 +0200
 
 openjdk-13 (13~17-2) experimental; urgency=medium
 

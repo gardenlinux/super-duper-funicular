@@ -1700,7 +1700,7 @@ hg_tag			= jdk-11.0.1+13
 hg_project		= jdk12
 hg_tag			= jdk-12+33
 hg_project		= jdk
-hg_tag			= jdk-13+17
+hg_tag			= jdk-13+18
 package_version		= $(subst jdk-,,$(hg_tag))
 ifneq ($(is_release),yes)
   package_version	:= $(subst +,~,$(package_version))
