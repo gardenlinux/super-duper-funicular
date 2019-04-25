@@ -4,6 +4,8 @@ openjdk-12 (12.0.1+12-2) UNRELEASED; urgency=medium
     - For unattended upgrades: jetty9, netbeans, tomcat8, visualvm.
     - For eclipse 3.8 removal: eclipse-platform. Closes: #925071.
     - For configuration with vendor flag: libreoffice-core.
+  * Class data sharing is enabled during the build where available.
+    Just use the shipped classes.jsa files. Closes: #916302.
 
  -- Matthias Klose <doko@ubuntu.com>  Wed, 24 Apr 2019 12:42:30 +0200
 
