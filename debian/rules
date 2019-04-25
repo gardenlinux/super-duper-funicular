@@ -713,7 +713,7 @@ ifeq (,$(filter $(DEB_HOST_ARCH), $(hotspot_archs)))
   control_vars += '-Vdefaultvm:Provides=$(p_jre)-zero'
 endif
 
-pkg_certs = ca-certificates-java
+pkg_certs = ca-certificates-java (>= 20190405~)
 control_vars += '-Vcacert:Depends=$(pkg_certs)'
 
 ifneq (,$(filter $(distrel), squeeze wheezy jessie lucid precise quantal raring saucy trusty utopic vivid))
