@@ -6,17 +6,17 @@
  void os::workaround_expand_exec_shield_cs_limit() {
 -#if defined(IA32)
 +#if defined(IA32) && !defined(ZERO)
+   assert(Linux::initial_thread_stack_bottom() != NULL, "sanity");
    size_t page_size = os::vm_page_size();
  
-   /*
 --- a/src/hotspot/os/linux/os_linux.cpp
 +++ b/src/hotspot/os/linux/os_linux.cpp
-@@ -5054,7 +5054,7 @@ jint os::init_2(void) {
-     Linux::capture_initial_stack(JavaThread::stack_size_at_create());
+@@ -5111,7 +5111,7 @@ jint os::init_2(void) {
+     return JNI_ERR;
    }
  
 -#if defined(IA32)
 +#if defined(IA32) && !defined(ZERO)
-   workaround_expand_exec_shield_cs_limit();
- #endif
- 
+   // Need to ensure we've determined the process's initial stack to
+   // perform the workaround
+   Linux::capture_initial_stack(JavaThread::stack_size_at_create());

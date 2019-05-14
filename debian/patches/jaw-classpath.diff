@@ -1,10 +1,8 @@
 Fix finding the Java ATK wrapper, see #900912
 
-Index: openjdk-10-10.0.1+10/src/hotspot/os/linux/os_linux.cpp
-===================================================================
---- openjdk-10-10.0.1+10.orig/src/hotspot/os/linux/os_linux.cpp
-+++ openjdk-10-10.0.1+10/src/hotspot/os/linux/os_linux.cpp
-@@ -369,6 +369,7 @@ void os::init_system_properties_values()
+--- a/src/hotspot/os/linux/os_linux.cpp
++++ b/src/hotspot/os/linux/os_linux.cpp
+@@ -368,6 +368,7 @@ void os::init_system_properties_values()
      }
      Arguments::set_java_home(buf);
      set_boot_path('/', ':');

@@ -1,6 +1,6 @@
 --- a/src/hotspot/os/linux/os_linux.cpp
 +++ b/src/hotspot/os/linux/os_linux.cpp
-@@ -4505,14 +4505,16 @@ bool os::Linux::signal_handlers_are_inst
+@@ -4567,14 +4567,16 @@ bool os::Linux::signal_handlers_are_inst
  
  // For signal-chaining
  struct sigaction sigact[NSIG];
@@ -21,7 +21,7 @@
  struct sigaction* os::Linux::get_chained_signal_action(int sig) {
    struct sigaction *actp = NULL;
  
-@@ -4587,7 +4589,7 @@ bool os::Linux::chained_handler(int sig,
+@@ -4649,7 +4651,7 @@ bool os::Linux::chained_handler(int sig,
  }
  
  struct sigaction* os::Linux::get_preinstalled_handler(int sig) {
@@ -30,7 +30,7 @@
      return &sigact[sig];
    }
    return NULL;
-@@ -4596,7 +4598,7 @@ struct sigaction* os::Linux::get_preinst
+@@ -4658,7 +4660,7 @@ struct sigaction* os::Linux::get_preinst
  void os::Linux::save_preinstalled_handler(int sig, struct sigaction& oldAct) {
    assert(sig > 0 && sig < NSIG, "vm signal out of expected range");
    sigact[sig] = oldAct;
