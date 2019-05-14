@@ -1,4 +1,4 @@
-jdk11u-dev-updates.diff
+# jdk11u-dev-updates.diff
 system-pcsclite.diff
 hotspot-mips-align.diff
 icc_loading_with_symlink.diff

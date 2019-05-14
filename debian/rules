@@ -638,11 +638,13 @@ ifneq (,$(filter $(distrel),bionc cosmic disco eoan))
 	tomcat8 (<< 8.5.39-1ubuntu1~),
 endif
 ifneq (,$(filter $(distrel),buster sid))
-  jrehl_breaks += \
-	libreoffice-core (<< 1:6.1.5-2~),
+  jrehl_breaks += libreoffice-core (<< 1:6.1.5-2~),
+else ifneq (,$(filter $(distrel),xenial))
+  jrehl_breaks += libreoffice-core (<< 1:5.1.6~rc2-0ubuntu1~xenial7),
+else ifneq (,$(filter $(distrel),bionic))
+  jrehl_breaks += libreoffice-core (<< 1:6.0.7-0ubuntu0.18.04.6),
 else ifneq (,$(filter $(distrel),disco))
-  jrehl_breaks += \
-	libreoffice-core (<< 1:6.2.2-0ubuntu2),
+  jrehl_breaks += libreoffice-core (<< 1:6.2.2-0ubuntu2),
 endif
 
 p_jre	= $(basename)-jre
@@ -1658,7 +1660,8 @@ endif
 
 is_release		= yes
 hg_project		= jdk11u
-hg_tag			= jdk-11.0.3+7
+hg_project		= jdk11u-dev
+hg_tag			= jdk-11.0.4+1
 package_version		= $(subst jdk-,,$(hg_tag))
 ifneq ($(is_release),yes)
   package_version	:= $(subst +,~,$(package_version))

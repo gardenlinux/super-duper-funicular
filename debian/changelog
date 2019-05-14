@@ -1,3 +1,9 @@
+openjdk-11 (11.0.4+1-1) unstable; urgency=medium
+
+  * OpenJDK 11.0.4+1 build.
+
+ -- Matthias Klose <doko@debian.org>  Sun, 05 May 2019 17:45:57 +0200
+
 openjdk-11 (11.0.3+7-4) unstable; urgency=medium
 
   * Apply updates from jdk11u-dev:
