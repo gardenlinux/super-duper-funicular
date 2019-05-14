@@ -692,7 +692,11 @@ ifeq (,$(filter $(DEB_HOST_ARCH), $(hotspot_archs)))
 endif
 
 pkg_certs = ca-certificates-java
-control_vars += '-Vcacert:Depends=$(pkg_certs)'
+ifneq (,$(filter $(distrel), squeeze wheezy jessie stretch precise trusty xenial bionic cosmic disco))
+  control_vars += '-Vcacert:Depends=$(pkg_certs)'
+else
+  control_vars += '-Vcacert:Depends=$(pkg_certs) (>= 20190405~)'
+endif
 
 ifneq (,$(filter $(distrel), squeeze wheezy jessie lucid precise quantal raring saucy trusty utopic vivid))
   control_vars += '-Vmountpoint:Depends=initscripts'
@@ -1661,8 +1665,7 @@ endif
 
 is_release		= yes
 hg_project		= jdk11u
-hg_project		= jdk11u-dev
-hg_tag			= jdk-11.0.4+1
+hg_tag			= jdk-11.0.4+2
 package_version		= $(subst jdk-,,$(hg_tag))
 ifneq ($(is_release),yes)
   package_version	:= $(subst +,~,$(package_version))

@@ -1,6 +1,7 @@
 openjdk-11 (11.0.4+1-2) UNRELEASED; urgency=medium
 
   * Fix src.zip symlink. Closes: #928369.
+  * Tighten dependency on ca-certificates-java. Closes: #914860.
 
  -- Matthias Klose <doko@ubuntu.com>  Tue, 14 May 2019 17:42:59 +0200
 
