@@ -1,3 +1,9 @@
+openjdk-11 (11.0.4+1-2) UNRELEASED; urgency=medium
+
+  * Fix src.zip symlink. Closes: #928369.
+
+ -- Matthias Klose <doko@ubuntu.com>  Tue, 14 May 2019 17:42:59 +0200
+
 openjdk-11 (11.0.4+1-1) unstable; urgency=medium
 
   * OpenJDK 11.0.4+1 build.
