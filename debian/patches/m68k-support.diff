@@ -1,13 +1,9 @@
-# HG changeset patch
-# User glaubitz
-# Date 1532184301 -7200
-#      Sat Jul 21 16:45:01 2018 +0200
-# Node ID 418a697aef91a730b942129d5d41b6c68a871cd8
-# Parent  b0fcf59be3918afcaa13d1f97343968c2c467ffe
-JDK-NNNNNNN: Zero needs alignment fixes for linux-m68k
+Subject: Fix alignment issues on m68k
+Author: John Paul Adrian Glaubitz <glaubitz@physik.fu-berlin.de>
+Last Update: 2019-04-29
 
 --- /dev/null
-+++ b/make/data/x11wrappergen/sizes-32-linux-m68k.txt
++++ openjdk-13-13~18/make/data/x11wrappergen/sizes-32-linux-m68k.txt
 @@ -0,0 +1,1017 @@
 +long	4
 +int	4
@@ -1026,11 +1022,11 @@ JDK-NNNNNNN: Zero needs alignment fixes for linux-m68k
 +XTextProperty.format	8
 +XTextProperty.nitems	12
 +XTextProperty	16
---- a/make/gensrc/GensrcX11Wrappers.gmk
-+++ b/make/gensrc/GensrcX11Wrappers.gmk
-@@ -33,9 +33,14 @@ GENSRC_X11WRAPPERS_MARKER := $(GENSRC_X1
+--- openjdk-13-13~18.orig/make/gensrc/GensrcX11Wrappers.gmk
++++ openjdk-13-13~18/make/gensrc/GensrcX11Wrappers.gmk
+@@ -29,9 +29,14 @@
  # Put the generated Java classes used to interface X11 from awt here.
- GENSRC_X11WRAPPERS_OUTPUTDIR := $(GENSRC_X11WRAPPERS_OUTPUT_TOP)/sun/awt/X11
+ GENSRC_X11WRAPPERS_OUTPUTDIR := $(SUPPORT_OUTPUTDIR)/gensrc/java.desktop/sun/awt/X11
  
 +GENSRC_X11_VERSION_VARIANT :=
 +ifeq ($(OPENJDK_TARGET_OS)-$(OPENJDK_TARGET_CPU), linux-m68k)
@@ -1043,10 +1039,10 @@ JDK-NNNNNNN: Zero needs alignment fixes for linux-m68k
 +GENSRC_X11WRAPPERS_DATA := $(GENSRC_X11WRAPPERS_DATADIR)/sizes-$(OPENJDK_TARGET_CPU_BITS)$(GENSRC_X11_VERSION_VARIANT).txt
  
  # Run the tool on the offset files to generate several Java classes used in awt.
- $(GENSRC_X11WRAPPERS_MARKER): $(BUILD_TOOLS_JDK) $(GENSRC_X11WRAPPERS_DATA) \
---- a/src/hotspot/share/memory/allocation.hpp
-+++ b/src/hotspot/share/memory/allocation.hpp
-@@ -216,7 +216,7 @@ template <MEMFLAGS F> class CHeapObj ALL
+ $(eval $(call SetupExecute, gen_x11wrappers, \
+--- openjdk-13-13~18.orig/src/hotspot/share/memory/allocation.hpp
++++ openjdk-13-13~18/src/hotspot/share/memory/allocation.hpp
+@@ -219,7 +219,7 @@ template <MEMFLAGS F> class CHeapObj ALL
  
    void  operator delete(void* p)     { FreeHeap(p); }
    void  operator delete [] (void* p) { FreeHeap(p); }
@@ -1055,7 +1051,7 @@ JDK-NNNNNNN: Zero needs alignment fixes for linux-m68k
  
  // Base class for objects allocated on the stack only.
  // Calling new or delete will result in fatal error.
-@@ -230,7 +230,7 @@ class StackObj ALLOCATION_SUPER_CLASS_SP
+@@ -233,7 +233,7 @@ class StackObj ALLOCATION_SUPER_CLASS_SP
  #endif
    void  operator delete(void* p);
    void  operator delete [](void* p);
@@ -1064,7 +1060,7 @@ JDK-NNNNNNN: Zero needs alignment fixes for linux-m68k
  
  // Base class for objects stored in Metaspace.
  // Calling delete will result in fatal error.
-@@ -325,7 +325,7 @@ class MetaspaceObj {
+@@ -335,7 +335,7 @@ class MetaspaceObj {
    // that should be read-only by default. See symbol.hpp for an example. This function
    // is used by the templates in metaspaceClosure.hpp
    static bool is_read_only_by_default() { return false; }
@@ -1073,7 +1069,7 @@ JDK-NNNNNNN: Zero needs alignment fixes for linux-m68k
  
  // Base class for classes that constitute name spaces.
  
-@@ -415,7 +415,7 @@ class ResourceObj ALLOCATION_SUPER_CLASS
+@@ -427,7 +427,7 @@ protected:
  
    void  operator delete(void* p);
    void  operator delete [](void* p);
@@ -1082,68 +1078,23 @@ JDK-NNNNNNN: Zero needs alignment fixes for linux-m68k
  
  // One of the following macros must be used when allocating an array
  // or object to determine whether it should reside in the C heap on in
---- a/src/hotspot/share/oops/constMethod.hpp
-+++ b/src/hotspot/share/oops/constMethod.hpp
-@@ -559,6 +559,6 @@ private:
+--- openjdk-13-13~18.orig/src/hotspot/share/oops/constMethod.hpp
++++ openjdk-13-13~18/src/hotspot/share/oops/constMethod.hpp
+@@ -557,6 +557,6 @@ private:
  
    // Verify
    void verify_on(outputStream* st);
 -};
 +} __attribute__ ((aligned (4)));
  
- #endif // SHARE_VM_OOPS_CONSTMETHODOOP_HPP
---- a/src/hotspot/share/oops/oop.hpp
-+++ b/src/hotspot/share/oops/oop.hpp
-@@ -332,6 +332,6 @@ class oopDesc {
+ #endif // SHARE_OOPS_CONSTMETHOD_HPP
+--- openjdk-13-13~18.orig/src/hotspot/share/oops/oop.hpp
++++ openjdk-13-13~18/src/hotspot/share/oops/oop.hpp
+@@ -328,6 +328,6 @@ class oopDesc {
    static void* load_oop_raw(oop obj, int offset);
    static bool  is_valid(oop obj);
    static oop   oop_or_null(address addr);
 -};
 +} __attribute__ ((aligned (4)));
  
- #endif // SHARE_VM_OOPS_OOP_HPP
---- a/src/java.base/unix/native/libjli/java_md_solinux.c
-+++ b/src/java.base/unix/native/libjli/java_md_solinux.c
-@@ -727,12 +727,24 @@ void SplashFreeLibrary() {
-     }
- }
- 
-+struct call_continuation_args {
-+  int (JNICALL *continuation)(void *);
-+  void *args;
-+};
-+
-+static void *call_continuation(void *_args)
-+{
-+  struct call_continuation_args *args = _args;
-+  return (void *)args->continuation(args->args);
-+}
-+
- /*
-  * Block current thread and continue execution in a new thread
-  */
- int
- ContinueInNewThread0(int (JNICALL *continuation)(void *), jlong stack_size, void * args) {
-     int rslt;
-+    struct call_continuation_args ccargs = { continuation, args };
- #ifndef __solaris__
-     pthread_t tid;
-     pthread_attr_t attr;
-@@ -744,7 +756,7 @@ ContinueInNewThread0(int (JNICALL *conti
-     }
-     pthread_attr_setguardsize(&attr, 0); // no pthread guard page on java threads
- 
--    if (pthread_create(&tid, &attr, (void *(*)(void*))continuation, (void*)args) == 0) {
-+    if (pthread_create(&tid, &attr, call_continuation, &ccargs) == 0) {
-       void * tmp;
-       pthread_join(tid, &tmp);
-       rslt = (int)(intptr_t)tmp;
-@@ -762,7 +774,7 @@ ContinueInNewThread0(int (JNICALL *conti
- #else /* __solaris__ */
-     thread_t tid;
-     long flags = 0;
--    if (thr_create(NULL, stack_size, (void *(*)(void *))continuation, args, flags, &tid) == 0) {
-+    if (thr_create(NULL, stack_size, call_continuation, &ccargs, flags, &tid) == 0) {
-       void * tmp;
-       thr_join(tid, NULL, &tmp);
-       rslt = (int)(intptr_t)tmp;
+ #endif // SHARE_OOPS_OOP_HPP
