@@ -1453,7 +1453,8 @@ endif
 	) > $(d_jdk).links
 # doesn't work, no package dependency
 ifneq (,$(DEB_HOST_MULTIARCH))
-	  echo '$(TOP)/$(basename)/src.zip $(basedir)/src.zip' >> $(d_jdkhl).links
+	  echo '$(TOP)/$(basename)/src.zip $(basedir)/lib/src.zip' >> $(d_jdkhl).links
+	  echo '$(TOP)/$(basename)/lib/src.zip $(basedir)/lib/src.zip' >> $(d_jdkhl).links
 endif
 
 	: # create docdir symlinks for $(p_dbg)
