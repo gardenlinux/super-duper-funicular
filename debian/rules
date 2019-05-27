@@ -68,6 +68,8 @@ else
   is_default = yes
 endif
 
+#is_upstream_release = yes
+
 srcdir		= .
 builddir	= build
 zbuilddir	= build-zero
@@ -441,6 +443,11 @@ COMMON_CONFIGURE_ARGS += \
 	--with-version-pre='' \
 	--with-version-build='$(if $(v_upbuild),$(v_upbuild),0)' \
 	--with-version-opt='$(distribution)-$(v_pkgrel)' \
+
+ifeq ($(is_upstream_release),yes)
+  COMMON_CONFIGURE_ARGS += \
+	--with-version-opt='-ga'
+endif
 
 COMMON_CONFIGURE_ARGS += \
 	--with-debug-level=release \
