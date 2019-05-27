@@ -61,6 +61,10 @@ ifneq ($(DEB_HOST_ARCH),$(DEB_BUILD_ARCH))
   bootcycle_build =
   zbootcycle_build =
 endif
+ifneq (,$(filter nobootcycle, $(DEB_BUILD_OPTIONS)))
+  bootcycle_build =
+  zbootcycle_build =
+endif
 
 ifneq (,$(filter $(distrel),lucid precise quantal raring saucy trusty utopic vivid wily lenny etch squeeze wheezy jessie))
   is_default = no
@@ -436,14 +440,9 @@ else
 endif
 
 COMMON_CONFIGURE_ARGS += \
-	--with-version-pre='' \
+	--with-version-pre='$(if $(filter yes, $(is_upstream_release)),,ea)' \
 	--with-version-build='$(v_upbuild)' \
 	--with-version-opt='$(distribution)-$(v_pkgrel)' \
-
-ifeq ($(is_upstream_release),yes)
-  COMMON_CONFIGURE_ARGS += \
-	--with-version-opt='-ga'
-endif
 
 COMMON_CONFIGURE_ARGS += \
 	--with-debug-level=release \
@@ -1708,7 +1707,7 @@ hg_tag			= jdk-11.0.1+13
 hg_project		= jdk12
 hg_tag			= jdk-12+33
 hg_project		= jdk
-hg_tag			= jdk-13+18
+hg_tag			= jdk-13+22
 package_version		= $(subst jdk-,,$(hg_tag))
 ifneq ($(is_release),yes)
   package_version	:= $(subst +,~,$(package_version))
