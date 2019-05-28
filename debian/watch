@@ -1,0 +1,4 @@
+version=4
+opts="pagemangle=s{<a href=\"/jdk-updates/jdk11u/rev/[^\"]*\">\s*(jdk-11\.[^<\s]*)}{<a href=\"archive/$1.tar.gz">$1}g" \
+https://hg.openjdk.java.net/jdk-updates/jdk11u/tags \
+.*/jdk-(.*).tar.gz
