@@ -1,8 +1,10 @@
 openjdk-11 (11.0.4+4-1) unstable; urgency=medium
 
   * OpenJDK 11.0.4+4 build.
-  * Configure with --with-version-opt='-ga' for upstream releases (has to
-    be set manually)..
+  * Configure with --with-version-pre='ea' for upstream tags which are
+    not upstream releases (has to be set manually). Not enabled during
+    the buster freeze.
+  * Allow to skip the bootcycle build (DEB_BUILD_OPTIONS=nobootcycle).
 
  -- Matthias Klose <doko@ubuntu.com>  Mon, 27 May 2019 16:24:23 +0200
 

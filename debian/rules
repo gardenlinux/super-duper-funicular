@@ -59,6 +59,10 @@ ifneq ($(DEB_HOST_ARCH),$(DEB_BUILD_ARCH))
   bootcycle_build =
   zbootcycle_build =
 endif
+ifneq (,$(filter nobootcycle, $(DEB_BUILD_OPTIONS)))
+  bootcycle_build =
+  zbootcycle_build =
+endif
 
 ifneq (,$(filter $(distrel),lucid precise quantal raring saucy trusty utopic vivid wily lenny etch squeeze wheezy jessie))
   is_default = no
@@ -66,7 +70,8 @@ else
   is_default = yes
 endif
 
-#is_upstream_release = yes
+# FIXME: change that after the buster freeze for ea builds
+is_upstream_release = yes
 
 srcdir		= .
 builddir	= build
@@ -412,14 +417,9 @@ else
 endif
 
 COMMON_CONFIGURE_ARGS += \
-	--with-version-pre='' \
+	--with-version-pre='$(if $(filter yes, $(is_upstream_release)),,ea)' \
 	--with-version-build='$(v_upbuild)' \
-	--with-version-opt='$(distribution)-$(v_pkgrel)' \
-
-ifeq ($(is_upstream_release),yes)
-  COMMON_CONFIGURE_ARGS += \
-	--with-version-opt='-ga'
-endif
+	--with-version-opt='post-$(distribution)-$(v_pkgrel)' \
 
 COMMON_CONFIGURE_ARGS += \
 	--with-debug-level=release \
@@ -1037,6 +1037,7 @@ clean: debian-clean
 	rm -rf autom4te.cache
 	rm -f bin/{jtreg.tmwrc,my-jtreg-run,my-xvfb-run}
 	rm -f buildwatch.pid
+	rm -f config.log configure.log
 	dh_clean
 
 debian-clean:
