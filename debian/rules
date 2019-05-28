@@ -794,7 +794,6 @@ packaging-files:
 configure: stamps/configure
 stamps/configure: stamps/unpack
 	@echo '========== $@ =========='
-ifeq (0,1)
 	@echo "Build options: $(DEB_BUILD_OPTIONS), Processors: $$(nproc)"
 	@echo '========== $@ =========='
 	-cat /proc/meminfo |egrep '^(Mem|Swap)'
@@ -808,6 +807,7 @@ ifeq (0,1)
 	-cat /proc/mounts
 	@echo '========== $@ =========='
 
+ifeq (0,1)
 	mkdir -p bin
 ifeq (,$(filter $(DEB_HOST_ARCH), alpha amd64 arm64 hppa mips64 mips64el ppc64 ppc64el s390x sparc64 x32))
 	( \
@@ -822,12 +822,12 @@ ifeq (,$(filter $(DEB_HOST_ARCH), alpha amd64 arm64 hppa mips64 mips64el ppc64 p
 	echo "UNAME checks"
 	uname -a
 endif
+endif
 	/bin/uname -a
 	lsb_release -a
 
 	-cat /proc/sys/kernel/random/entropy_avail
 
-endif
 	mkdir -p stamps
 	rm -rf $(builddir)
 	mkdir -p $(builddir)
