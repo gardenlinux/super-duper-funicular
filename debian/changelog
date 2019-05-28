@@ -4,6 +4,8 @@ openjdk-13 (13~22-2) UNRELEASED; urgency=medium
   * Print some information about the host configuration before starting
     the build.
   * Add a watch file (Emmanuel Bourg).
+  * Apply the updated patch for m68k support (Adrian Glaubitz).
+    Closes: #928167.
 
  -- Matthias Klose <doko@ubuntu.com>  Tue, 28 May 2019 11:44:34 +0000
 
