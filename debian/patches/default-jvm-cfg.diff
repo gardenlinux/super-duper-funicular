@@ -1,6 +1,6 @@
 --- a/src/java.base/share/native/libjli/java.c
 +++ b/src/java.base/share/native/libjli/java.c
-@@ -2074,7 +2074,7 @@ jint
+@@ -2079,7 +2079,7 @@ jint
  ReadKnownVMs(const char *jvmCfgName, jboolean speculative)
  {
      FILE *jvmCfg;
@@ -9,7 +9,7 @@
      int cnt = 0;
      int lineno = 0;
      jlong start, end;
-@@ -2089,6 +2089,11 @@ ReadKnownVMs(const char *jvmCfgName, jbo
+@@ -2094,6 +2094,11 @@ ReadKnownVMs(const char *jvmCfgName, jbo
  
      jvmCfg = fopen(jvmCfgName, "r");
      if (jvmCfg == NULL) {
