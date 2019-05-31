@@ -6,10 +6,10 @@
      CFLAGS := $(CFLAGS_JDKLIB) \
 -        $(LCMS_CFLAGS), \
 +        $(LCMS_CFLAGS) -I$(SUPPORT_OUTPUTDIR)/headers/java.desktop, \
-     CFLAGS_solaris := -xc99=no_lib, \
      CFLAGS_windows := -DCMS_IS_WINDOWS_, \
      EXTRA_HEADER_DIRS := \
-@@ -427,7 +427,7 @@ $(eval $(call SetupJdkLibrary, BUILD_LIB
+         common/awt/debug \
+@@ -426,7 +426,7 @@ $(eval $(call SetupJdkLibrary, BUILD_LIB
      NAME := javajpeg, \
      INCLUDE_FILES := $(BUILD_LIBJAVAJPEG_INCLUDE_FILES), \
      OPTIMIZATION := HIGHEST, \

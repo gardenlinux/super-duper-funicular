@@ -1,13 +1,15 @@
-openjdk-13 (13~22-2) UNRELEASED; urgency=medium
+openjdk-13 (13~23-1) experimental; urgency=medium
 
+  * OpenJDK 13 snapshot, build 23.
   * Fix version number for updated jquery file.
   * Print some information about the host configuration before starting
     the build.
   * Add a watch file (Emmanuel Bourg).
   * Apply the updated patch for m68k support (Adrian Glaubitz).
     Closes: #928167.
+  * Apply fix for 8222252, fixing 32bit builds.
 
- -- Matthias Klose <doko@ubuntu.com>  Tue, 28 May 2019 11:44:34 +0000
+ -- Matthias Klose <doko@ubuntu.com>  Fri, 31 May 2019 10:12:20 +0200
 
 openjdk-13 (13~22-1) experimental; urgency=medium
 

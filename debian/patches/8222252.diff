@@ -1,0 +1,29 @@
+# HG changeset patch
+# User shade
+# Date 1559289979 -7200
+#      Fri May 31 10:06:19 2019 +0200
+# Node ID 1dadad457b5395a128e4170370695b9c983a012b
+# Parent  d4475420fb9a70b22616d2d20bbdc68205839dc4
+8225104: 32-bit build failures after JDK-8222252
+Reviewed-by: XXX
+
+--- a/src/hotspot/share/runtime/arguments.cpp
++++ b/src/hotspot/share/runtime/arguments.cpp
+@@ -1758,6 +1758,8 @@ void Arguments::set_heap_size() {
+       // Limit the heap size to ErgoHeapSizeLimit
+       reasonable_max = MIN2(reasonable_max, (julong)ErgoHeapSizeLimit);
+     }
++
++#ifdef _LP64
+     if (UseCompressedOops) {
+       // Limit the heap size to the maximum possible when using compressed oops
+       julong max_coop_heap = (julong)max_heap_for_compressed_oops();
+@@ -1782,6 +1784,8 @@ void Arguments::set_heap_size() {
+       }
+       reasonable_max = MIN2(reasonable_max, max_coop_heap);
+     }
++#endif // _LP64
++
+     reasonable_max = limit_by_allocatable_memory(reasonable_max);
+ 
+     if (!FLAG_IS_DEFAULT(InitialHeapSize)) {
