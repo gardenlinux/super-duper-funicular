@@ -1,3 +1,15 @@
+openjdk-13 (13~25-1) experimental; urgency=medium
+
+  * OpenJDK 13 snapshot, build 25.
+
+ -- Matthias Klose <doko@ubuntu.com>  Fri, 14 Jun 2019 09:47:38 +0200
+
+openjdk-13 (13~24-1) experimental; urgency=medium
+
+  * OpenJDK 13 snapshot, build 24.
+
+ -- Matthias Klose <doko@ubuntu.com>  Fri, 07 Jun 2019 09:58:37 +0200
+
 openjdk-13 (13~23-1) experimental; urgency=medium
 
   * OpenJDK 13 snapshot, build 23.
