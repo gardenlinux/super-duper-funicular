@@ -84,14 +84,14 @@ TOP		= usr/lib/jvm
 origin		= openjdk
 basename	= openjdk-$(shortver)
 ifneq (,$(filter $(DEB_HOST_ARCH), $(hotspot_archs)))
-  priority	= $(if $(filter yes, $(is_default)),1311,1309)
+  priority	= $(if $(filter yes, $(is_default)),1411,1409)
   vm_name	= Hotspot JIT
 else
-  priority	= $(if $(filter yes, $(is_default)),1304,1303)
+  priority	= $(if $(filter yes, $(is_default)),1404,1403)
   vm_name	= Hotspot Zero
 endif
-jvmver		= 1.13.0
-shortver	= 13
+jvmver		= 1.14.0
+shortver	= 14
 v_upstream	:= $(shell echo $(PKGVERSION) | sed 's/-[^-][^-]*$$//')
 v_pkgrel	:= $(shell echo $(PKGVERSION) | sed 's/^.*-//')
 # FIXME. currently v_upstream like 11~4
@@ -186,6 +186,7 @@ export DEBIAN_JDK_BASE_DIR := /$(basedir)
 BOOTJDK_HOME := $(strip $(subst /bin/javac,, $(firstword $(wildcard \
 			/usr/lib/jvm/java-12-openjdk-$(DEB_BUILD_ARCH)/bin/javac \
 			/usr/lib/jvm/java-13-openjdk-$(DEB_BUILD_ARCH)/bin/javac \
+			/usr/lib/jvm/java-14-openjdk-$(DEB_BUILD_ARCH)/bin/javac \
 		))))
 
 ifeq ($(DEB_BUILD_ARCH),$(DEB_HOST_ARCH))
@@ -529,7 +530,7 @@ jre_hl_tools	:= $(filter-out $(jre_tools), $(all_jre_tools))
 # build dependencies
 bd_autotools = autoconf, automake, autotools-dev,
 
-bd_bootstrap = openjdk-12-jdk-headless:native | openjdk-13-jdk-headless:native,
+bd_bootstrap = openjdk-12-jdk-headless:native | openjdk-13-jdk-headless:native | openjdk-14-jdk-headless:native,
 ifeq (,$(filter $(distrel),squeeze wheezy jessie precise trusty xenial))
   bd_cross += \
 	$(basename)-jdk-headless <cross>,
@@ -1705,7 +1706,8 @@ is_release		=
 hg_project		= jdk11u
 hg_tag			= jdk-11.0.1+13
 hg_project		= jdk13
-hg_tag			= jdk-13+25
+hg_project		= jdk
+hg_tag			= jdk-14+1
 package_version		= $(subst jdk-,,$(hg_tag))
 ifneq ($(is_release),yes)
   package_version	:= $(subst +,~,$(package_version))
