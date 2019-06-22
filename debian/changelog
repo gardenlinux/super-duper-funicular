@@ -1,8 +1,10 @@
-openjdk-13 (13~25-2) UNRELEASED; urgency=medium
+openjdk-13 (13~26-1) experimental; urgency=medium
 
+  * OpenJDK 13 snapshot, build 26.
   * Update VCS attributes to point to the openjdk-13 branch.
+  * Apply work around for ftbfs in bootcycle builds on i386 (JDK-8226404).
 
- -- Matthias Klose <doko@ubuntu.com>  Fri, 14 Jun 2019 10:19:35 +0200
+ -- Matthias Klose <doko@ubuntu.com>  Sat, 22 Jun 2019 17:37:51 +0200
 
 openjdk-13 (13~25-1) experimental; urgency=medium
 

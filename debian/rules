@@ -296,6 +296,12 @@ endif
 
 with_nss = yes
 
+# FIXME: class data sharing not working on i386
+with_cds = yes
+#ifneq (,$(filter $(DEB_HOST_ARCH), i386))
+#  with_cds =
+#endif
+
 on_buildd := $(shell [ -f /CurrentlyBuilding -o "$$LOGNAME" = buildd ] && echo yes)
 
 CONFIGURE_ARGS =
@@ -384,6 +390,10 @@ endif
 
 ifneq (,$(filter $(DEB_HOST_ARCH), amd64))
   DEFAULT_CONFIGURE_ARGS += --with-jvm-features=zgc
+endif
+
+ifneq ($(with_cds),yes)
+  DEFAULT_CONFIGURE_ARGS += --disable-cds
 endif
 
 vendor := $(shell dpkg-vendor --query Vendor)
@@ -1220,7 +1230,7 @@ endif
 	  echo '$(basedir)/lib/jrt-fs.jar'; \
 	  echo '$(basedir)/release'; \
 	  echo '$(basedir)/lib/tzdb.dat'; \
-	  if [ "$(default_vm)" = hotspot ]; then \
+	  if [ "$(default_vm)" = hotspot ] && [ "$(with_cds)" = yes ]; then \
 	    echo '$(basedir)/lib/classlist'; \
 	  fi; \
 	  echo '$(basedir)/lib/modules'; \
@@ -1705,7 +1715,7 @@ is_release		=
 hg_project		= jdk11u
 hg_tag			= jdk-11.0.1+13
 hg_project		= jdk13
-hg_tag			= jdk-13+25
+hg_tag			= jdk-13+26
 package_version		= $(subst jdk-,,$(hg_tag))
 ifneq ($(is_release),yes)
   package_version	:= $(subst +,~,$(package_version))

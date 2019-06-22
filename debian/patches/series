@@ -8,7 +8,7 @@ default-jvm-cfg.diff
 workaround_expand_exec_shield_cs_limit.diff
 adlc-parser.diff
 multiple-pkcs11-library-init.diff
-s390x-thread-stack-size.diff
+#s390x-thread-stack-size.diff
 s390x-zEC12.diff
 jdk-getAccessibleValue.diff
 jtreg-location.diff
@@ -35,3 +35,4 @@ jdk8211105-aarch64-disable_cos_sin_and_log_intrinsics.patch
 make-debig-print.diff
 Don-t-optimize-fdlibm-fork-for-Zero-on-linux-sparc-Z.patch
 keep-gtk2-as-default.patch
+8226404.diff
