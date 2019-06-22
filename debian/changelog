@@ -1,6 +1,19 @@
+openjdk-11 (11.0.4+8-1) unstable; urgency=medium
+
+  * OpenJDK 11.0.4+8 build (early access).
+  * Apply patch for JDK-8225716.
+
+ -- Matthias Klose <doko@ubuntu.com>  Sat, 22 Jun 2019 17:58:57 +0200
+
+openjdk-11 (11.0.4+6-1) experimental; urgency=medium
+
+  * OpenJDK 11.0.4+6 build (early access).
+
+ -- Matthias Klose <doko@ubuntu.com>  Thu, 06 Jun 2019 07:28:57 +0200
+
 openjdk-11 (11.0.4+4-1) unstable; urgency=medium
 
-  * OpenJDK 11.0.4+4 build.
+  * OpenJDK 11.0.4+4 build (early access).
   * Configure with --with-version-pre='ea' for upstream tags which are
     not upstream releases (has to be set manually). Not enabled during
     the buster freeze.
@@ -9,7 +22,7 @@ openjdk-11 (11.0.4+4-1) unstable; urgency=medium
   * Print some information about the host configuration before starting
     the build.
 
- -- Matthias Klose <doko@ubuntu.com>  Mon, 27 May 2019 16:24:23 +0200
+ -- Matthias Klose <doko@ubuntu.com>  Wed, 29 May 2019 07:56:31 +0200
 
 openjdk-11 (11.0.4+2-1) unstable; urgency=medium
 

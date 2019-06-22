@@ -71,7 +71,7 @@ else
 endif
 
 # FIXME: change that after the buster freeze for ea builds
-is_upstream_release = yes
+#is_upstream_release = yes
 
 srcdir		= .
 builddir	= build
@@ -1673,7 +1673,7 @@ endif
 
 is_release		= yes
 hg_project		= jdk11u
-hg_tag			= jdk-11.0.4+4
+hg_tag			= jdk-11.0.4+8
 package_version		= $(subst jdk-,,$(hg_tag))
 ifneq ($(is_release),yes)
   package_version	:= $(subst +,~,$(package_version))
@@ -1689,6 +1689,7 @@ get-orig:
 	repo=jdk; \
 	d=$$(tar tf $(origdir)/$$repo.tar.bz2 | head -1 | sed 's,/.*,,'); \
 	tar xf $(origdir)/$$repo.tar.bz2; \
+	chmod 755 $$d/configure; \
 	case $$repo in jdk) \
 	  rm -v -rf $$d/src/java.base/share/native/libzip/zlib; \
 	  find $$d/src/java.desktop/share/native/libjavajpeg \
