@@ -1,3 +1,10 @@
+openjdk-11 (11.0.4+9-1) unstable; urgency=medium
+
+  * OpenJDK 11.0.4+9 build (early access).
+  * Add another break for libequinox-osgi-java (<< 3.9.1). Closes: #931115.
+
+ -- Matthias Klose <doko@debian.org>  Wed, 26 Jun 2019 13:51:07 +0200
+
 openjdk-11 (11.0.4+8-1) unstable; urgency=medium
 
   * OpenJDK 11.0.4+8 build (early access).

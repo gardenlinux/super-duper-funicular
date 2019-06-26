@@ -635,10 +635,10 @@ else
 endif
 
 jrehl_breaks = clojure1.8 (<= 1.8.0-7ubuntu1~),
-ifneq (,$(filter $(distrel),buster sid bionc cosmic disco eoan))
+ifneq (,$(filter $(distrel),buster bionc cosmic disco eoan))
   jrehl_breaks += \
 	jetty9 (<< 9.4.15-1~), netbeans (<< 10.0-3~), visualvm (<< 1.4.2-2~), \
-	eclipse-platform (<< 3.8.1-11),
+	eclipse-platform (<< 3.8.1-11), libequinox-osgi-java (<< 3.9.1),
 endif
 ifneq (,$(filter $(distrel),bionc cosmic disco eoan))
   jrehl_breaks += \
@@ -1673,7 +1673,7 @@ endif
 
 is_release		= yes
 hg_project		= jdk11u
-hg_tag			= jdk-11.0.4+8
+hg_tag			= jdk-11.0.4+9
 package_version		= $(subst jdk-,,$(hg_tag))
 ifneq ($(is_release),yes)
   package_version	:= $(subst +,~,$(package_version))
