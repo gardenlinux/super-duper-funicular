@@ -1,3 +1,10 @@
+openjdk-13 (13~27-1) experimental; urgency=medium
+
+  * OpenJDK 13 snapshot, build 27.
+  * Add riscv64 support for zero (Ed Nevill).
+
+ -- Matthias Klose <doko@ubuntu.com>  Thu, 27 Jun 2019 12:01:47 +0200
+
 openjdk-13 (13~26-1) experimental; urgency=medium
 
   * OpenJDK 13 snapshot, build 26.
