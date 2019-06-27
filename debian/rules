@@ -1490,23 +1490,26 @@ ifneq (,$(filter $(DEB_HOST_ARCH),amd64 kfreebsd-amd64))
   endif
 endif
 
-ifeq (0,1)
-# FIXME: ext not longer supported
 ifeq ($(with_bridge),atk)
 	: # create links for the atk wrapper
+  ifeq (0,1)
+  # FIXME: ext no longer supported
 	echo "usr/share/java/java-atk-wrapper.jar $(basedir)/lib/ext/java-atk-wrapper.jar" \
 	    >> $(d_jre).links
-	echo "usr/lib$(multiarch_dir)/jni/libatk-wrapper.so $(basedir)/lib/ext/libatk-wrapper.so" \
+  endif
+	echo "usr/lib$(multiarch_dir)/jni/libatk-wrapper.so $(basedir)/lib/libatk-wrapper.so" \
 	    >> $(d_jre).links
 else ifeq ($(with_bridge),yes)
+ ifeq (0,1)
+# FIXME: ext no longer supported
 	: # create links for the gnome accessibility bridge
 	echo "usr/share/java/gnome-java-bridge.jar $(basedir)/lib/ext/gnome-java-bridge.jar" \
 	    >> $(d_jre).links
   ifeq ($(with_jni_bridge),yes)
-	  echo "usr/lib$(multiarch_dir)/jni/libjava-access-bridge-jni.so $(basedir)/lib/ext/libjava-access-bridge-jni.so" \
+	  echo "usr/lib$(multiarch_dir)/jni/libjava-access-bridge-jni.so $(basedir)/lib/libjava-access-bridge-jni.so" \
 	    >> $(d_jre).links
   endif
-endif
+ endif
 endif
 
 	: # create links for the config/lib files
