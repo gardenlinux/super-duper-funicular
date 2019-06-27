@@ -542,7 +542,10 @@ bd_autotools = autoconf, automake, autotools-dev,
 bd_bootstrap = openjdk-12-jdk-headless:native | openjdk-13-jdk-headless:native,
 ifeq (,$(filter $(distrel),squeeze wheezy jessie precise trusty xenial))
   bd_cross += \
+  bd_cross += \
 	$(basename)-jdk-headless <cross>,
+else
+	file,
 endif
 
 ifneq (,$(filter $(distrel),squeeze wheezy jessie precise trusty))
