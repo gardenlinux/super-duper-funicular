@@ -1,3 +1,14 @@
+openjdk-14 (14~3-1) UNRELEASED; urgency=medium
+
+  * OpenJDK 14 snapshot, build 3.
+  * Add riscv64 support for zero (Ed Nevill).
+  * Support using the Java ATK wrapper (Samuel Thibault). Addresses: #900912.
+    - patches/jaw-classpath.diff: Fix finding the Java ATK wrapper.
+    - patches/jaw-optional.diff: Make failing to load the Java ATK wrapper
+      non-fatal.
+
+ -- Matthias Klose <doko@ubuntu.com>  Thu, 27 Jun 2019 13:04:16 +0200
+
 openjdk-14 (14~1-1) experimental; urgency=medium
 
   * OpenJDK 14 snapshot, build 1.

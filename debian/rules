@@ -155,7 +155,7 @@ with_docs = $(if $(findstring nodoc, $(DEB_BUILD_OPTIONS)),,yes)
 
 with_wqy_zenhai = $(if $(filter $(distrel),lenny),,yes)
 
-arch_map	:= alpha=alpha arm=arm armel=arm armhf=arm arm64=aarch64 amd64=amd64 hppa=parisc i386=i586 m68k=m68k mips=mips mipsel=mipsel mips64=mips64 mips64el=mips64el powerpc=ppc powerpcspe=ppc ppc64=ppc64 ppc64el=ppc64le sparc=sparc sparc64=sparcv9 sh4=sh s390x=s390x ia64=ia64 x32=x32
+arch_map	:= alpha=alpha arm=arm armel=arm armhf=arm arm64=aarch64 amd64=amd64 hppa=parisc i386=i586 m68k=m68k mips=mips mipsel=mipsel mips64=mips64 mips64el=mips64el powerpc=ppc powerpcspe=ppc ppc64=ppc64 ppc64el=ppc64le sparc=sparc sparc64=sparcv9 sh4=sh s390x=s390x ia64=ia64 x32=x32 riscv64=riscv
 
 jvmarch		:= $(strip $(patsubst $(DEB_HOST_ARCH_CPU)=%, %, \
 			$(filter $(DEB_HOST_ARCH_CPU)=%, $(arch_map))))
@@ -165,7 +165,7 @@ endif
 
 default_vm = $(if $(filter $(DEB_HOST_ARCH), $(hotspot_archs)),hotspot,zero)
 
-any_archs = alpha amd64 armel armhf arm64 i386 ia64 mips mipsel mips64 mips64el powerpc powerpcspe ppc64 ppc64el m68k sh4 sparc sparc64 s390x x32 kfreebsd-i386 kfreebsd-amd64
+any_archs = alpha amd64 armel armhf arm64 i386 ia64 mips mipsel mips64 mips64el powerpc powerpcspe ppc64 ppc64el m68k riscv64 sh4 sparc sparc64 s390x x32 kfreebsd-i386 kfreebsd-amd64
 
 altzero_archs = $(hotspot_archs)
 ifneq (,$(filter $(distrel),trusty))
@@ -1481,23 +1481,26 @@ ifneq (,$(filter $(DEB_HOST_ARCH),amd64 kfreebsd-amd64))
   endif
 endif
 
-ifeq (0,1)
-# FIXME: ext not longer supported
 ifeq ($(with_bridge),atk)
 	: # create links for the atk wrapper
+  ifeq (0,1)
+  # FIXME: ext no longer supported
 	echo "usr/share/java/java-atk-wrapper.jar $(basedir)/lib/ext/java-atk-wrapper.jar" \
 	    >> $(d_jre).links
-	echo "usr/lib$(multiarch_dir)/jni/libatk-wrapper.so $(basedir)/lib/ext/libatk-wrapper.so" \
+  endif
+	echo "usr/lib$(multiarch_dir)/jni/libatk-wrapper.so $(basedir)/lib/libatk-wrapper.so" \
 	    >> $(d_jre).links
 else ifeq ($(with_bridge),yes)
+ ifeq (0,1)
+# FIXME: ext no longer supported
 	: # create links for the gnome accessibility bridge
 	echo "usr/share/java/gnome-java-bridge.jar $(basedir)/lib/ext/gnome-java-bridge.jar" \
 	    >> $(d_jre).links
   ifeq ($(with_jni_bridge),yes)
-	  echo "usr/lib$(multiarch_dir)/jni/libjava-access-bridge-jni.so $(basedir)/lib/ext/libjava-access-bridge-jni.so" \
+	  echo "usr/lib$(multiarch_dir)/jni/libjava-access-bridge-jni.so $(basedir)/lib/libjava-access-bridge-jni.so" \
 	    >> $(d_jre).links
   endif
-endif
+ endif
 endif
 
 	: # create links for the config/lib files
@@ -1707,7 +1710,7 @@ hg_project		= jdk11u
 hg_tag			= jdk-11.0.1+13
 hg_project		= jdk13
 hg_project		= jdk
-hg_tag			= jdk-14+1
+hg_tag			= jdk-14+3
 package_version		= $(subst jdk-,,$(hg_tag))
 ifneq ($(is_release),yes)
   package_version	:= $(subst +,~,$(package_version))
