@@ -534,6 +534,9 @@ bd_bootstrap = openjdk-12-jdk-headless:native | openjdk-13-jdk-headless:native |
 ifeq (,$(filter $(distrel),squeeze wheezy jessie precise trusty xenial))
   bd_cross += \
 	$(basename)-jdk-headless <cross>,
+else
+  bd_cross += \
+	file,
 endif
 
 ifneq (,$(filter $(distrel),squeeze wheezy jessie precise trusty))

@@ -1,4 +1,4 @@
-openjdk-14 (14~3-1) UNRELEASED; urgency=medium
+openjdk-14 (14~3-0ubuntu1) eoan; urgency=medium
 
   * OpenJDK 14 snapshot, build 3.
   * Add riscv64 support for zero (Ed Nevill).
