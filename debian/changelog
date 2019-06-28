@@ -1,4 +1,4 @@
-openjdk-14 (14~3-0ubuntu1) eoan; urgency=medium
+openjdk-14 (14~3-1) experimental; urgency=medium
 
   * OpenJDK 14 snapshot, build 3.
   * Add riscv64 support for zero (Ed Nevill).
@@ -6,8 +6,9 @@ openjdk-14 (14~3-0ubuntu1) eoan; urgency=medium
     - patches/jaw-classpath.diff: Fix finding the Java ATK wrapper.
     - patches/jaw-optional.diff: Make failing to load the Java ATK wrapper
       non-fatal.
+  * Apply proposed fix for zero builds.
 
- -- Matthias Klose <doko@ubuntu.com>  Thu, 27 Jun 2019 13:04:16 +0200
+ -- Matthias Klose <doko@ubuntu.com>  Fri, 28 Jun 2019 12:13:08 +0200
 
 openjdk-14 (14~1-1) experimental; urgency=medium
 

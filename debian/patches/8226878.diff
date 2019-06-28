@@ -1,0 +1,15 @@
+diff -r 91b38bfb9079 src/hotspot/cpu/zero/stubGenerator_zero.cpp
+--- a/src/hotspot/cpu/zero/stubGenerator_zero.cpp       Thu Jun 27 18:00:54 2019 +0800
++++ b/src/hotspot/cpu/zero/stubGenerator_zero.cpp       Thu Jun 27 13:37:47 2019 +0200
+@@ -157,7 +157,9 @@
+
+     StubRoutines::_checkcast_arraycopy       = ShouldNotCallThisStub();
+-    StubRoutines::_unsafe_arraycopy          = ShouldNotCallThisStub();
+     StubRoutines::_generic_arraycopy         = ShouldNotCallThisStub();
+
++    // Shared code tests for "NULL" to discover the stub is not generated.
++    StubRoutines::_unsafe_arraycopy          = NULL;
++
+     // We don't generate specialized code for HeapWord-aligned source
+     // arrays, so just use the code we've already generated
+
