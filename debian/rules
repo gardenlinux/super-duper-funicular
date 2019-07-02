@@ -154,7 +154,7 @@ with_docs = $(if $(findstring nodoc, $(DEB_BUILD_OPTIONS)),,yes)
 
 with_wqy_zenhai = $(if $(filter $(distrel),lenny),,yes)
 
-arch_map	:= alpha=alpha arm=arm armel=arm armhf=arm arm64=aarch64 amd64=amd64 hppa=parisc i386=i586 m68k=m68k mips=mips mipsel=mipsel mips64=mips64 mips64el=mips64el powerpc=ppc powerpcspe=ppc ppc64=ppc64 ppc64el=ppc64le sparc=sparc sparc64=sparcv9 sh4=sh s390x=s390x ia64=ia64 x32=x32 riscv64=riscv
+arch_map	:= alpha=alpha arm=arm armel=arm armhf=arm arm64=aarch64 amd64=amd64 hppa=parisc i386=i586 m68k=m68k mips=mips mipsel=mipsel mips64=mips64 mips64el=mips64el powerpc=ppc powerpcspe=ppc ppc64=ppc64 ppc64el=ppc64le riscv64=riscv64 sparc=sparc sparc64=sparcv9 sh4=sh s390x=s390x ia64=ia64 x32=x32
 
 jvmarch		:= $(strip $(patsubst $(DEB_HOST_ARCH_CPU)=%, %, \
 			$(filter $(DEB_HOST_ARCH_CPU)=%, $(arch_map))))
@@ -493,7 +493,7 @@ jdk_hl_tools	= jar jarsigner javac javadoc javap jcmd jdb \
 ifneq (,$(filter $(DEB_HOST_ARCH), amd64 arm64))
   jdk_hl_tools	+= jaotc
 endif
-ifeq (,$(filter $(DEB_HOST_ARCH), alpha armel ia64 m68k mips mipsel mips64el powerpc s390x x32))
+ifeq (,$(filter $(DEB_HOST_ARCH), alpha armel ia64 m68k mips mipsel mips64el powerpc riscv64 s390x x32))
   jdk_hl_tools	+= jhsdb
 endif
 jdk_tools	= jconsole
@@ -514,6 +514,9 @@ endif
 ifeq (,$(filter $(distrel),squeeze wheezy jessie precise trusty xenial))
   bd_cross += \
 	$(basename)-jdk-headless <cross>,
+else
+  bd_cross += \
+	file,
 endif
 
 ifneq (,$(filter $(distrel),squeeze wheezy jessie precise trusty))
@@ -558,6 +561,10 @@ bd_openjdk = \
 
 pkg_ffidev = libffi-dev
 
+ifeq (,$(filter $(distrel),precise))
+  nocheck_profile = $(EMPTY) <!nocheck>
+endif
+
 bd_zero = \
 	$(pkg_ffidev) [$(foreach a,$(hotspot_archs),!$(a))],
 bd_zero = \
@@ -581,12 +588,18 @@ endif
 
 dlopen_hl_depends = \
 	libcups2, liblcms2-2,
-ifneq (,$(filter $(distrel),squeeze lucid))
-  dlopen_hl_depends += libjpeg62,
-else ifneq (,$(filter $(distrel), jessie stretch buster sid))
-  dlopen_hl_depends += libjpeg62-turbo,
+ifeq ($(derivative),Ubuntu)
+  ifneq (,$(filter $(distrel),lucid))
+    dlopen_hl_depends += libjpeg62,
+  else
+    dlopen_hl_depends += libjpeg8,
+  endif
 else
-  dlopen_hl_depends += libjpeg8,
+  ifneq (,$(filter $(distrel),squeeze))
+    dlopen_hl_depends += libjpeg62,
+  else
+    dlopen_hl_depends += libjpeg62-turbo,
+  endif
 endif
 dlopen_hl_depends += libfontconfig1,
 ifneq ($(with_nss),no)
@@ -600,7 +613,12 @@ ifneq ($(with_nss),no)
 endif
 dlopen_hl_recommends =
 dlopen_jre_depends = \
-	libglib2.0-0 (>= 2.24), libgtk2.0-0 | libgtk-3-0, libxrandr2, libxinerama1, libgl1-mesa-glx | libgl1
+	libglib2.0-0 (>= 2.24), libgtk2.0-0 | libgtk-3-0, libxrandr2, libxinerama1,
+ifneq (,$(filter $(distrel),squeeze wheezy jessie stretch lucid precise xenial))
+  dlopen_jre_depends = libgl1-mesa-glx | libgl1,
+else
+  dlopen_jre_depends = libgl1,
+endif
 dlopen_jre_recommends =
 
 # .desktop files need to be multiarch installable
@@ -737,6 +755,7 @@ debian/control: debian/control.in debian/rules
 	      -e 's/@any_archs@/$(any_archs)/g' \
 	      -e 's/@hotspot_archs@/$(hotspot_archs)/g' \
 	      -e 's/@altzero_archs@/$(altzero_archs)/g' \
+	      -e 's/@nocheck@/$(nocheck_profile)/g' \
 	    debian/control.in \
 	    $(if $(altzero_archs), debian/control.zero-jre) \
 	    $(if $(DEB_HOST_MULTIARCH),,| grep -v '^Multi-Arch') \
@@ -902,7 +921,7 @@ build: pre-build $(build_stamps)
 
 stamps/build: stamps/configure
 	@echo '========== $@ =========='
-ifneq (,$(filter $(DEB_HOST_ARCH), alpha armel armhf ia64 m68k mips mipsel mips64 mips64el powerpc powerpcspe s390x sparc sparc64))
+ifneq (,$(filter $(DEB_HOST_ARCH), alpha armel armhf ia64 m68k mips mipsel mips64 mips64el powerpc powerpcspe riscv64 s390x sparc sparc64))
 	sh -c 'sh debian/buildwatch.sh $(CURDIR)/$(builddir) &'
 endif
 	if $(EXTRA_BUILD_ENV) $(MAKE) -C $(builddir) $(build_target); then \
@@ -1673,7 +1692,7 @@ endif
 
 is_release		= yes
 hg_project		= jdk11u
-hg_tag			= jdk-11.0.4+9
+hg_tag			= jdk-11.0.4+10
 package_version		= $(subst jdk-,,$(hg_tag))
 ifneq ($(is_release),yes)
   package_version	:= $(subst +,~,$(package_version))
