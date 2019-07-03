@@ -1,3 +1,11 @@
+openjdk-14 (14~3-2) UNRELEASED; urgency=medium
+
+  * Fix dependency generation on the libjpeg runtime. Addresses: #927965.
+  * Drop dependency on transitional libgl1-mesa-glx package. Addresses: #930611.
+  * Fix more build issues for Ubuntu precise builds.
+
+ -- Matthias Klose <doko@ubuntu.com>  Mon, 01 Jul 2019 15:44:58 +0200
+
 openjdk-14 (14~3-1) experimental; urgency=medium
 
   * OpenJDK 14 snapshot, build 3.

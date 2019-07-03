@@ -64,7 +64,7 @@ Reviewed-by: aph, erikj, ehelin, ihse
        ;;
 +    riscv64)
 +      VAR_CPU=riscv64
-+      VAR_CPU_ARCH=riscv
++      VAR_CPU_ARCH=riscv64
 +      VAR_CPU_BITS=64
 +      VAR_CPU_ENDIAN=little
 +      ;;
