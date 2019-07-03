@@ -1,3 +1,11 @@
+openjdk-12 (12.0.1+12-4) UNRELEASED; urgency=medium
+
+  * Fix dependency generation on the libjpeg runtime. Addresses: #927965.
+  * Drop dependency on transitional libgl1-mesa-glx package. Addresses: #930611.
+  * Fix more build issues for Ubuntu precise builds.
+
+ -- Matthias Klose <doko@ubuntu.com>  Mon, 01 Jul 2019 15:43:36 +0200
+
 openjdk-12 (12.0.1+12-3) unstable; urgency=medium
 
   * Fix src.zip symlink. Closes: #923118.
