@@ -622,10 +622,6 @@ bd_openjdk = \
 
 pkg_ffidev = libffi-dev
 
-ifeq (,$(filter $(distrel),precise))
-  nocheck_profile = $(EMPTY) <!nocheck>
-endif
-
 bd_zero = \
 	$(pkg_ffidev) [$(foreach a,$(hotspot_archs),!$(a))],
 bd_zero = \
@@ -827,7 +823,6 @@ debian/control: debian/control.in debian/rules
 	      -e 's/@any_archs@/$(any_archs)/g' \
 	      -e 's/@hotspot_archs@/$(hotspot_archs)/g' \
 	      -e 's/@altzero_archs@/$(altzero_archs)/g' \
-	      -e 's/@nocheck@/$(nocheck_profile)/g' \
 	    debian/control.in \
 	    $(if $(altzero_archs), debian/control.zero-jre) \
 	    $(if $(DEB_HOST_MULTIARCH),,| grep -v '^Multi-Arch') \
@@ -1542,6 +1537,7 @@ endif
 	: # create docdir symlinks for $(p_jdk)
 	( \
 	  echo usr/share/doc/$(p_jre) usr/share/doc/$(p_jdk); \
+	  echo $(TOP)/$(basename)/lib/src.zip $(TOP)/$(basename)/src.zip; \
 	) > $(d_jdk).links
 # doesn't work, no package dependency
 ifneq (,$(DEB_HOST_MULTIARCH))
