@@ -1527,6 +1527,7 @@ endif
 	: # create docdir symlinks for $(p_jdk)
 	( \
 	  echo usr/share/doc/$(p_jre) usr/share/doc/$(p_jdk); \
+	  echo $(TOP)/$(basename)/lib/src.zip $(TOP)/$(basename)/src.zip; \
 	) > $(d_jdk).links
 # doesn't work, no package dependency
 ifneq (,$(DEB_HOST_MULTIARCH))
