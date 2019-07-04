@@ -556,14 +556,13 @@ else
 endif
 
 ifneq (,$(filter $(distrel),precise))
-    bd_bootstrap = openjdk-10-jdk-headless | openjdk-11-jdk-headless,
+    bd_bootstrap = openjdk-11-jdk-headless | openjdk-12-jdk-headless,
 else ifneq (,$(filter $(distrel),squeeze wheezy jessie trusty xenial))
-    bd_bootstrap = openjdk-10-jdk-headless:native | openjdk-11-jdk-headless:native,
+    bd_bootstrap = openjdk-11-jdk-headless:native | openjdk-12-jdk-headless:native,
 else
-    bd_bootstrap = openjdk-11-jdk-headless:native | openjdk-10-jdk-headless:native,
+    bd_bootstrap = openjdk-12-jdk-headless:native | openjdk-11-jdk-headless:native,
 endif
 
-bd_bootstrap = openjdk-11-jdk-headless:native | openjdk-10-jdk-headless:native,
 ifeq (,$(filter $(distrel),squeeze wheezy jessie precise trusty xenial))
   bd_cross += \
 	$(basename)-jdk-headless <cross>,
@@ -1532,6 +1531,7 @@ endif
 	: # create docdir symlinks for $(p_jdk)
 	( \
 	  echo usr/share/doc/$(p_jre) usr/share/doc/$(p_jdk); \
+	  echo $(TOP)/$(basename)/lib/src.zip $(TOP)/$(basename)/src.zip; \
 	) > $(d_jdk).links
 # doesn't work, no package dependency
 ifneq (,$(DEB_HOST_MULTIARCH))
