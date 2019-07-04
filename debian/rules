@@ -893,8 +893,8 @@ stamps/configure: stamps/unpack
 	-cat /proc/mounts
 	@echo '========== $@ =========='
 
-ifeq (0,1)
 	mkdir -p bin
+ifeq (0,1)
 ifeq (,$(filter $(DEB_HOST_ARCH), alpha amd64 arm64 hppa mips64 mips64el ppc64 ppc64el s390x sparc64 x32))
 	( \
 	  echo '#! /bin/sh'; \
@@ -1784,7 +1784,7 @@ is_release		=
 hg_project		= jdk11u
 hg_tag			= jdk-11.0.1+13
 hg_project		= jdk13
-hg_tag			= jdk-13+27
+hg_tag			= jdk-13+28
 package_version		= $(subst jdk-,,$(hg_tag))
 ifneq ($(is_release),yes)
   package_version	:= $(subst +,~,$(package_version))
