@@ -262,13 +262,13 @@ export EXTRA_CXXFLAGS_IT := $(shell $(dpkg_buildflags_it) --get CXXFLAGS)
 export EXTRA_LDFLAGS_IT  := $(shell $(dpkg_buildflags_it) --get LDFLAGS)
 
 # This section should be in sync with "bd_gcc" definition
-ifneq (,$(filter $(distrel),saucy trusty))
+ifneq (,$(filter $(distrel),saucy))
   export CC = gcc-4.8
   export CXX = g++-4.8
 else ifneq (,$(filter $(distrel),utopic vivid jessie))
   export CC = gcc-4.9
   export CXX = g++-4.9
-else ifneq (,$(filter $(distrel),wily xenial))
+else ifneq (,$(filter $(distrel),wily))
   ifneq (,$(filter $(DEB_HOST_ARCH), $(hotspot_archs)))
     export CC = $(DEB_HOST_GNU_TYPE)-gcc-5
     export CXX = $(DEB_HOST_GNU_TYPE)-g++-5
@@ -288,7 +288,7 @@ else ifneq (,$(filter $(distrel),stretch))
 else ifneq (,$(filter $(distrel),artful bionic))
   export CC = $(DEB_HOST_GNU_TYPE)-gcc-7
   export CXX = $(DEB_HOST_GNU_TYPE)-g++-7
-else ifneq (,$(filter $(distrel),precise))
+else ifneq (,$(filter $(distrel),precise trusty xenial))
   export CC = $(DEB_HOST_GNU_TYPE)-gcc-8
   export CXX = $(DEB_HOST_GNU_TYPE)-g++-8
 else
@@ -476,7 +476,7 @@ COMMON_CONFIGURE_ARGS += \
 	--disable-warnings-as-errors \
 	--disable-javac-server \
 
-ifneq (,$(filter $(distrel),precise))
+ifneq (,$(filter $(distrel),precise trusty xenial))
   # building with a GCC from a PPA ...
   COMMON_CONFIGURE_ARGS += \
 	--with-stdc++lib=static
@@ -543,7 +543,7 @@ jdk_hl_tools	= jar jarsigner javac javadoc javap jcmd jdb \
 ifneq (,$(filter $(DEB_HOST_ARCH), amd64 arm64))
   jdk_hl_tools	+= jaotc
 endif
-ifeq (,$(filter $(DEB_HOST_ARCH), alpha armel ia64 m68k mips mipsel mips64el powerpc s390x x32))
+ifeq (,$(filter $(DEB_HOST_ARCH), alpha armel ia64 m68k mips mipsel mips64el powerpc riscv64 s390x x32))
   jdk_hl_tools	+= jhsdb
 endif
 jdk_tools	= jconsole
@@ -568,7 +568,6 @@ else
     bd_bootstrap = openjdk-13-jdk-headless:native | openjdk-12-jdk-headless:native,
 endif
 
-bd_bootstrap = openjdk-12-jdk-headless:native | openjdk-13-jdk-headless:native,
 ifeq (,$(filter $(distrel),squeeze wheezy jessie precise trusty xenial))
   bd_cross += \
 	$(basename)-jdk-headless <cross>,
@@ -588,17 +587,17 @@ else
 endif
 
 # This section should be in sync with "CC/CXX" definition
-ifneq (,$(filter $(distrel), saucy trusty))
+ifneq (,$(filter $(distrel), saucy))
   bd_gcc = g++-4.8,
 else ifneq (,$(filter $(distrel),utopic vivid jessie))
   bd_gcc = g++-4.9,
-else ifneq (,$(filter $(distrel),wily xenial))
+else ifneq (,$(filter $(distrel),wily))
   bd_gcc = g++-5 [$(hotspot_archs)], g++-4.9 [$(strip $(foreach a,$(hotspot_archs), !$(a)))], g++-4.9 [arm64],
 else ifneq (,$(filter $(distrel),stretch))
   bd_gcc = g++-6,
 else ifneq (,$(filter $(distrel),artful bionic))
   bd_gcc = g++-7,
-else ifneq (,$(filter $(distrel),precise))
+else ifneq (,$(filter $(distrel),precise trusty xenial))
   # FIXME: ftbfs on armhf with the default GCC
   bd_gcc = g++-8,
 else
@@ -788,7 +787,11 @@ ifeq (,$(filter $(DEB_HOST_ARCH), $(hotspot_archs)))
 endif
 
 pkg_certs = ca-certificates-java
-control_vars += '-Vcacert:Depends=$(pkg_certs)'
+ifneq (,$(filter $(distrel), squeeze wheezy jessie stretch precise trusty xenial bionic cosmic disco))
+  control_vars += '-Vcacert:Depends=$(pkg_certs)'
+else
+  control_vars += '-Vcacert:Depends=$(pkg_certs) (>= 20190405~)'
+endif
 
 ifneq (,$(filter $(distrel), squeeze wheezy jessie lucid precise quantal raring saucy trusty utopic vivid))
   control_vars += '-Vmountpoint:Depends=initscripts'
