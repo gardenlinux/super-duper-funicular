@@ -1,3 +1,9 @@
+openjdk-12 (12.0.1+12-5) UNRELEASED; urgency=low
+
+  * Don't install jhsdb on riscv64 (Aurelian Jarno).
+
+ -- Matthias Klose <doko@ubuntu.com>  Sat, 06 Jul 2019 15:24:03 +0200
+
 openjdk-12 (12.0.1+12-4) unstable; urgency=medium
 
   * Fix dependency generation on the libjpeg runtime. Addresses: #927965.
