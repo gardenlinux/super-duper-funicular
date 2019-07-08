@@ -29,7 +29,7 @@
            JTREGEXE=
 --- a/make/RunTests.gmk
 +++ b/make/RunTests.gmk
-@@ -919,7 +919,7 @@ define SetupRunJtregTestBody
+@@ -920,7 +920,7 @@ define SetupRunJtregTestBody
  	$$(call ExecuteWithLog, $$($1_TEST_SUPPORT_DIR)/jtreg, \
  	    $$(COV_ENVIRONMENT) \
  	    $$(JAVA) $$($1_JTREG_LAUNCHER_OPTIONS) \
