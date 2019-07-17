@@ -149,7 +149,7 @@ with_check = $(if $(findstring nocheck, $(DEB_BUILD_OPTIONS)),,yes)
 ifneq (,$(filter $(DEB_HOST_ARCH), alpha))
   with_check = disabled running check on $(DEB_HOST_ARCH)
 endif
-ifneq (,$(filter $(distrel), precise trusty))
+ifneq (,$(filter $(distrel), precise trusty precise))
   with_check = disabled for $(distrel)
 endif
 
