@@ -71,7 +71,7 @@ else
 endif
 
 # FIXME: change that after the buster freeze for ea builds
-#is_upstream_release = yes
+is_upstream_release = yes
 
 srcdir		= .
 builddir	= build
@@ -884,8 +884,8 @@ ifneq (,$(filter $(distrel),precise))
 	for i in autoreconf autoheader autoupdate autoscan autom4te ifnames autoconf; do \
 	  ln -sf /usr/bin/$${i}2.69 bin/$${i}; \
 	done
-	which autoconf
 endif
+	which autoconf
 	/bin/uname -a
 	lsb_release -a
 
@@ -1739,7 +1739,7 @@ endif
 
 is_release		= yes
 hg_project		= jdk11u
-hg_tag			= jdk-11.0.4+10
+hg_tag			= jdk-11.0.4+11
 package_version		= $(subst jdk-,,$(hg_tag))
 ifneq ($(is_release),yes)
   package_version	:= $(subst +,~,$(package_version))
