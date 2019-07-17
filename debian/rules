@@ -1772,7 +1772,7 @@ endif
 is_release		=
 is_release		= yes
 hg_project		= jdk12u
-hg_tag			= jdk-12.0.1+12
+hg_tag			= jdk-12.0.2+9
 package_version		= $(subst jdk-,,$(hg_tag))
 ifneq ($(is_release),yes)
   package_version	:= $(subst +,~,$(package_version))

@@ -1,3 +1,23 @@
+openjdk-12 (12.0.2+9-1) unstable; urgency=high
+
+  * OpenJDK 12.0.2+9 release.
+    - S8212328, CVE-2019-2762: Exceptional throw cases.
+    - S8213431, CVE-2019-2766: Improve file protocol handling.
+    - S8213432, CVE-2019-2769: Better copies of CopiesList.
+    - S8216381, CVE-2019-2786: More limited privilege usage.
+    - S8217563: Improve realm maintenance.
+    - S8218863: Better endpoint checks.
+    - S8218873: Improve JSSE endpoint checking.
+    - S8218876, CVE-2019-7317: Improve PNG support options.
+    - S8219775: Certificate validation improvements.
+    - S8220517: Enhanced GIF support.
+    - S8221345, CVE-2019-2818: Better Poly1305 support.
+    - S8221518, CVE-2019-2816: Normalize normalization.
+    - S8222678, CVE-2019-2821: Improve TLS negotiation.
+  * Bump standards version.
+
+ -- Matthias Klose <doko@ubuntu.com>  Wed, 17 Jul 2019 16:23:55 +0200
+
 openjdk-12 (12.0.1+12-5) unstable; urgency=low
 
   * Don't install jhsdb on riscv64 (Aurelian Jarno).
