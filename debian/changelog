@@ -1,8 +1,9 @@
-openjdk-13 (13~28-2) UNRELEASED; urgency=low
+openjdk-13 (13~30-1) unstable; urgency=low
 
+  * OpenJDK 13 snapshot, build 30.
   * Don't install jhsdb on riscv64 (Aurelian Jarno).
 
- -- Matthias Klose <doko@ubuntu.com>  Sat, 06 Jul 2019 15:25:21 +0200
+ -- Matthias Klose <doko@ubuntu.com>  Thu, 18 Jul 2019 16:35:24 +0200
 
 openjdk-13 (13~28-1) unstable; urgency=medium
 
