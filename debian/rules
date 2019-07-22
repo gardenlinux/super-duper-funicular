@@ -647,7 +647,7 @@ ifeq (,$(filter $(distrel),precise))
 endif
 
 bd_check = \
-  jtreg$(nocheck_profile), testng$(nocheck_profile), \
+  jtreg (>= 4.2-b12-1~)$(nocheck_profile), testng$(nocheck_profile), \
   xvfb$(nocheck_profile), xauth$(nocheck_profile), \
   xfonts-base$(nocheck_profile), libgl1-mesa-dri [!x32]$(nocheck_profile), \
   xfwm4$(nocheck_profile), x11-xkb-utils$(nocheck_profile), \
