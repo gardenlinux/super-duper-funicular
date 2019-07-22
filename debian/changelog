@@ -1,10 +1,11 @@
-openjdk-14 (14~6-1) UNRELEASED; urgency=medium
+openjdk-14 (14~6-0ubuntu1) eoan; urgency=medium
 
   * OpenJDK 14 snapshot, build 6.
   * Fix dependency generation on the libjpeg runtime. Addresses: #927965.
   * Drop dependency on transitional libgl1-mesa-glx package. Addresses: #930611.
   * Fix more build issues for Ubuntu precise builds.
   * Don't install jhsdb on riscv64 (Aurelian Jarno).
+  * Tighten dependency on jtreg.
 
  -- Matthias Klose <doko@ubuntu.com>  Thu, 18 Jul 2019 17:44:41 +0200
 
