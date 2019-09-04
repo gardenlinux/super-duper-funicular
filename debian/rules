@@ -71,7 +71,7 @@ else
 endif
 
 # FIXME: change that after the buster freeze for ea builds
-is_upstream_release = yes
+#is_upstream_release = yes
 
 srcdir		= .
 builddir	= build
@@ -286,12 +286,12 @@ else ifneq (,$(filter $(distrel),stretch))
 else ifneq (,$(filter $(distrel),artful bionic))
   export CC = $(DEB_HOST_GNU_TYPE)-gcc-7
   export CXX = $(DEB_HOST_GNU_TYPE)-g++-7
-else ifneq (,$(filter $(distrel),precise))
+else ifneq (,$(filter $(distrel),buster precise bionic cosmic disco))
   export CC = $(DEB_HOST_GNU_TYPE)-gcc-8
   export CXX = $(DEB_HOST_GNU_TYPE)-g++-8
 else
-  export CC = $(DEB_HOST_GNU_TYPE)-gcc-8
-  export CXX = $(DEB_HOST_GNU_TYPE)-g++-8
+  export CC = $(DEB_HOST_GNU_TYPE)-gcc-9
+  export CXX = $(DEB_HOST_GNU_TYPE)-g++-9
 endif
 
 # until we are able to b-d on gcc-for-host ...
@@ -566,8 +566,10 @@ else ifneq (,$(filter $(distrel),artful bionic))
 else ifneq (,$(filter $(distrel),precise))
   # FIXME: ftbfs on armhf with the default GCC
   bd_gcc = g++-8,
-else
+else ifneq (,$(filter $(distrel),buster bionic cosmic disco))
   bd_gcc = g++-8 <!cross>,
+else
+  bd_gcc = g++-9 <!cross>,
 endif
 bd_syslibs = zlib1g-dev, libattr1-dev,
 ifneq (,$(filter $(distrel),squeeze lucid))
@@ -583,7 +585,7 @@ bd_openjdk = \
 	libxtst-dev, libxi-dev, libxt-dev, libxaw7-dev, libxrender-dev, libcups2-dev, \
 	libasound2-dev, liblcms2-dev, libfreetype6-dev (>= 2.2.1), \
 	libxinerama-dev, libkrb5-dev, xsltproc, libpcsclite-dev, libxrandr-dev, \
-	libelf-dev, libfontconfig1-dev, libgtk2.0-0 | libgtk-3-0
+	libelf-dev, libfontconfig1-dev, libgtk2.0-0 | libgtk-3-0,
 
 pkg_ffidev = libffi-dev
 
@@ -1751,7 +1753,7 @@ endif
 
 is_release		= yes
 hg_project		= jdk11u
-hg_tag			= jdk-11.0.4+11
+hg_tag			= jdk-11.0.5+6
 package_version		= $(subst jdk-,,$(hg_tag))
 ifneq ($(is_release),yes)
   package_version	:= $(subst +,~,$(package_version))

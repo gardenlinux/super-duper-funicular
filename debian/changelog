@@ -1,7 +1,10 @@
-openjdk-11 (11.0.4+11-2) UNRELEASED; urgency=medium
+openjdk-11 (11.0.5+6-1) UNRELEASED; urgency=medium
+
+  * OpenJDK 11.0.5+6 build (early access).
 
   [ Matthias Klose ]
   * Tighten dependency on jtreg.
+  * Build using GCC 9 on recent development releases.
 
   [ Tiago Stürmer Daitx ]
   * Properly generate Breaks: rules for bionic (fix typo).
@@ -36,7 +39,7 @@ openjdk-11 (11.0.4+11-2) UNRELEASED; urgency=medium
       + Package all .jtr files from JTwork as jtreg-autopkgtest.sh
         makes sure it contains only failing tests.
 
- -- Matthias Klose <doko@ubuntu.com>  Wed, 17 Jul 2019 14:49:36 +0200
+ -- Matthias Klose <doko@ubuntu.com>  Wed, 04 Sep 2019 15:01:28 +0200
 
 openjdk-11 (11.0.4+11-1) unstable; urgency=high
 
