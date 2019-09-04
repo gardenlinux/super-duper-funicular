@@ -582,8 +582,8 @@ bd_syslibs += \
 bd_openjdk = \
 	libxtst-dev, libxi-dev, libxt-dev, libxaw7-dev, libxrender-dev, libcups2-dev, \
 	libasound2-dev, liblcms2-dev, libfreetype6-dev (>= 2.2.1), \
-	libxinerama-dev, libkrb5-dev, xsltproc, libpcsclite-dev, libgtk-3-dev, \
-	libelf-dev, libfontconfig1-dev,
+	libxinerama-dev, libkrb5-dev, xsltproc, libpcsclite-dev, libxrandr-dev, \
+	libelf-dev, libfontconfig1-dev, libgtk2.0-0 | libgtk-3-0
 
 pkg_ffidev = libffi-dev
 

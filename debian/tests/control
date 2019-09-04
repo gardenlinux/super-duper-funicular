@@ -3,5 +3,5 @@ Depends: @, jtreg, testng, gcc
 Restrictions: allow-stderr, skippable
 
 Tests: jdk
-Depends: @, jtreg (>= 4.2-b12-1~), testng, gcc, xfwm4, xvfb, dbus-x11
+Depends: @, jtreg (>= 4.2-b12-1~), testng, gcc, xfwm4, xvfb, dbus-x11, libgtk2.0-0 | libgtk-3-0
 Restrictions: allow-stderr, skippable
