@@ -1,4 +1,4 @@
-openjdk-11 (11.0.5+6-1) UNRELEASED; urgency=medium
+openjdk-11 (11.0.5+6-1) unstable; urgency=medium
 
   * OpenJDK 11.0.5+6 build (early access).
 
@@ -40,7 +40,7 @@ openjdk-11 (11.0.5+6-1) UNRELEASED; urgency=medium
       + Package all .jtr files from JTwork as jtreg-autopkgtest.sh
         makes sure it contains only failing tests.
 
- -- Matthias Klose <doko@ubuntu.com>  Wed, 04 Sep 2019 15:01:28 +0200
+ -- Matthias Klose <doko@ubuntu.com>  Wed, 04 Sep 2019 16:48:18 +0200
 
 openjdk-11 (11.0.4+11-1) unstable; urgency=high
 
