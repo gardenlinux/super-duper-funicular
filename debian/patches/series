@@ -18,7 +18,7 @@ disable-doclint-by-default.diff
 8199220.diff
 machine-flag.diff
 zero-x32.diff
-mips-sigset.diff
+# mips-sigset.diff
 # s390x-zEC12.diff
 hotspot-disable-exec-shield-workaround.diff
 atk-wrapper-security.diff

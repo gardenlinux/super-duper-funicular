@@ -1,5 +1,3 @@
-Index: b/src/hotspot/os_cpu/linux_zero/globals_linux_zero.hpp
-===================================================================
 --- a/src/hotspot/os_cpu/linux_zero/globals_linux_zero.hpp
 +++ b/src/hotspot/os_cpu/linux_zero/globals_linux_zero.hpp
 @@ -34,7 +34,11 @@
@@ -14,8 +12,6 @@ Index: b/src/hotspot/os_cpu/linux_zero/globals_linux_zero.hpp
  #else
  define_pd_global(intx,  VMThreadStackSize,       512);
  #endif // _LP64
-Index: b/make/autoconf/boot-jdk.m4
-===================================================================
 --- a/make/autoconf/boot-jdk.m4
 +++ b/make/autoconf/boot-jdk.m4
 @@ -431,6 +431,9 @@ AC_DEFUN_ONCE([BOOTJDK_SETUP_BOOT_JDK_AR
@@ -38,11 +34,9 @@ Index: b/make/autoconf/boot-jdk.m4
    ADD_JVM_ARG_IF_OK([-XX:TieredStopAtLevel=1],boot_jdk_jvmargs_small,[$JAVA])
  
    AC_MSG_RESULT([$boot_jdk_jvmargs_small])
-Index: b/make/autoconf/build-performance.m4
-===================================================================
 --- a/make/autoconf/build-performance.m4
 +++ b/make/autoconf/build-performance.m4
-@@ -440,6 +440,9 @@ AC_DEFUN_ONCE([BPERF_SETUP_SMART_JAVAC],
+@@ -443,6 +443,9 @@ AC_DEFUN_ONCE([BPERF_SETUP_SMART_JAVAC],
      MX_VALUE=512
    fi
    ADD_JVM_ARG_IF_OK([-Xms${MS_VALUE}M -Xmx${MX_VALUE}M],SJAVAC_SERVER_JAVA_FLAGS,[$SJAVAC_SERVER_JAVA])

@@ -1,5 +1,3 @@
-Index: b/src/java.desktop/share/classes/javax/swing/JTree.java
-===================================================================
 --- a/src/java.desktop/share/classes/javax/swing/JTree.java
 +++ b/src/java.desktop/share/classes/javax/swing/JTree.java
 @@ -5063,7 +5063,7 @@ public class JTree extends JComponent im
@@ -29,8 +27,6 @@ Index: b/src/java.desktop/share/classes/javax/swing/JTree.java
                  } else {
                      return null;
                  }
-Index: b/src/java.desktop/share/classes/javax/swing/table/JTableHeader.java
-===================================================================
 --- a/src/java.desktop/share/classes/javax/swing/table/JTableHeader.java
 +++ b/src/java.desktop/share/classes/javax/swing/table/JTableHeader.java
 @@ -1114,7 +1114,12 @@ public class JTableHeader extends JCompo
@@ -81,8 +77,6 @@ Index: b/src/java.desktop/share/classes/javax/swing/table/JTableHeader.java
              }
  
  
-Index: b/src/java.desktop/share/classes/javax/swing/JTable.java
-===================================================================
 --- a/src/java.desktop/share/classes/javax/swing/JTable.java
 +++ b/src/java.desktop/share/classes/javax/swing/JTable.java
 @@ -8346,7 +8346,12 @@ public class JTable extends JComponent i
@@ -197,11 +191,9 @@ Index: b/src/java.desktop/share/classes/javax/swing/JTable.java
              }
  
  
-Index: b/src/jdk.accessibility/windows/classes/com/sun/java/accessibility/internal/AccessBridge.java
-===================================================================
 --- a/src/jdk.accessibility/windows/classes/com/sun/java/accessibility/internal/AccessBridge.java
 +++ b/src/jdk.accessibility/windows/classes/com/sun/java/accessibility/internal/AccessBridge.java
-@@ -6560,7 +6560,7 @@ final public class AccessBridge {
+@@ -6549,7 +6549,7 @@ final public class AccessBridge {
          public AccessibleSelection getAccessibleSelection() {
              AccessibleContext ac = getCurrentAccessibleContext();
              if (ac != null && isLeaf) {
@@ -210,7 +202,7 @@ Index: b/src/jdk.accessibility/windows/classes/com/sun/java/accessibility/intern
              } else {
                  return this;
              }
-@@ -6575,7 +6575,7 @@ final public class AccessBridge {
+@@ -6564,7 +6564,7 @@ final public class AccessBridge {
          public AccessibleText getAccessibleText() {
              AccessibleContext ac = getCurrentAccessibleContext();
              if (ac != null) {
@@ -219,7 +211,7 @@ Index: b/src/jdk.accessibility/windows/classes/com/sun/java/accessibility/intern
              } else {
                  return null;
              }
-@@ -6590,7 +6590,7 @@ final public class AccessBridge {
+@@ -6579,7 +6579,7 @@ final public class AccessBridge {
          public AccessibleValue getAccessibleValue() {
              AccessibleContext ac = getCurrentAccessibleContext();
              if (ac != null) {

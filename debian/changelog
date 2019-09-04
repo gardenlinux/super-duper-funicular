@@ -5,6 +5,7 @@ openjdk-11 (11.0.5+6-1) UNRELEASED; urgency=medium
   [ Matthias Klose ]
   * Tighten dependency on jtreg.
   * Build using GCC 9 on recent development releases.
+  * Refresh patches.
 
   [ Tiago Stürmer Daitx ]
   * Properly generate Breaks: rules for bionic (fix typo).

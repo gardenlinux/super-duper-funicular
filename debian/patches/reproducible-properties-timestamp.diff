@@ -3,7 +3,7 @@ Author: Emmanuel Bourg <ebourg@apache.org>
 Forwarded: no
 --- a/src/java.base/share/classes/java/util/Properties.java
 +++ b/src/java.base/share/classes/java/util/Properties.java
-@@ -905,7 +905,7 @@
+@@ -926,7 +926,7 @@ class Properties extends Hashtable<Objec
          if (comments != null) {
              writeComments(bw, comments);
          }
@@ -12,7 +12,7 @@ Forwarded: no
          bw.newLine();
          synchronized (this) {
              for (Map.Entry<Object, Object> e : entrySet()) {
-@@ -1555,4 +1555,22 @@
+@@ -1576,4 +1576,22 @@ class Properties extends Hashtable<Objec
          }
          this.map = map;
      }

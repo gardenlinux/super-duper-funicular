@@ -14,7 +14,7 @@
          errorExit(errno, BAD_ARG_MSG);
 --- a/make/launcher/Launcher-java.base.gmk
 +++ b/make/launcher/Launcher-java.base.gmk
-@@ -72,6 +72,9 @@ $(eval $(call SetupBuildLauncher, keytoo
+@@ -68,6 +68,9 @@ $(eval $(call SetupBuildLauncher, keytoo
  ################################################################################
  
  ifeq ($(OPENJDK_TARGET_OS), linux)
@@ -24,7 +24,7 @@
    $(eval $(call SetupJdkExecutable, BUILD_JEXEC, \
        NAME := jexec, \
        SRC := $(TOPDIR)/src/$(MODULE)/unix/native/launcher, \
-@@ -79,7 +82,7 @@ ifeq ($(OPENJDK_TARGET_OS), linux)
+@@ -75,7 +78,7 @@ ifeq ($(OPENJDK_TARGET_OS), linux)
        OPTIMIZATION := LOW, \
        CFLAGS := $(CFLAGS_JDKEXE) \
            -I$(TOPDIR)/src/$(MODULE)/share/native/libjli, \

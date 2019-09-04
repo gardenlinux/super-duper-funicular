@@ -132,10 +132,10 @@
  
 +#ifndef USE_SYSTEM_LIBPCSCLITE
 +
- typedef LONG (*FPTR_SCardEstablishContext)(ULONG dwScope,
-                 const void *pvReserved1,
-                 const void *pvReserved2,
-@@ -110,3 +112,41 @@ extern FPTR_SCardListReaders scardListRe
+ typedef LONG (*FPTR_SCardEstablishContext)(DWORD dwScope,
+                 LPCVOID pvReserved1,
+                 LPCVOID pvReserved2,
+@@ -111,3 +113,41 @@ extern FPTR_SCardListReaders scardListRe
  extern FPTR_SCardBeginTransaction scardBeginTransaction;
  extern FPTR_SCardEndTransaction scardEndTransaction;
  extern FPTR_SCardControl scardControl;

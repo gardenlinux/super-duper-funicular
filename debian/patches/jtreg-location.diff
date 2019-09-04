@@ -29,7 +29,7 @@
            JTREGEXE=
 --- a/make/RunTests.gmk
 +++ b/make/RunTests.gmk
-@@ -564,7 +564,7 @@ define SetupRunJtregTestBody
+@@ -581,7 +581,7 @@ define SetupRunJtregTestBody
  	$$(call MakeDir, $$($1_TEST_RESULTS_DIR) $$($1_TEST_SUPPORT_DIR))
  	$$(call ExecuteWithLog, $$($1_TEST_SUPPORT_DIR)/jtreg, \
  	    $$(JAVA) $$($1_JTREG_LAUNCHER_OPTIONS) \

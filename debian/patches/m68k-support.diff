@@ -1046,7 +1046,7 @@ JDK-NNNNNNN: Zero needs alignment fixes for linux-m68k
  $(GENSRC_X11WRAPPERS_MARKER): $(BUILD_TOOLS_JDK) $(GENSRC_X11WRAPPERS_DATA) \
 --- a/src/hotspot/share/memory/allocation.hpp
 +++ b/src/hotspot/share/memory/allocation.hpp
-@@ -209,7 +209,7 @@ template <MEMFLAGS F> class CHeapObj ALL
+@@ -211,7 +211,7 @@ template <MEMFLAGS F> class CHeapObj ALL
  
    void  operator delete(void* p)     { FreeHeap(p); }
    void  operator delete [] (void* p) { FreeHeap(p); }
@@ -1055,7 +1055,7 @@ JDK-NNNNNNN: Zero needs alignment fixes for linux-m68k
  
  // Base class for objects allocated on the stack only.
  // Calling new or delete will result in fatal error.
-@@ -223,7 +223,7 @@ class StackObj ALLOCATION_SUPER_CLASS_SP
+@@ -225,7 +225,7 @@ class StackObj ALLOCATION_SUPER_CLASS_SP
  #endif
    void  operator delete(void* p);
    void  operator delete [](void* p);
@@ -1064,7 +1064,7 @@ JDK-NNNNNNN: Zero needs alignment fixes for linux-m68k
  
  // Base class for objects stored in Metaspace.
  // Calling delete will result in fatal error.
-@@ -317,7 +317,7 @@ class MetaspaceObj {
+@@ -319,7 +319,7 @@ class MetaspaceObj {
    // that should be read-only by default. See symbol.hpp for an example. This function
    // is used by the templates in metaspaceClosure.hpp
    static bool is_read_only_by_default() { return false; }
@@ -1073,7 +1073,7 @@ JDK-NNNNNNN: Zero needs alignment fixes for linux-m68k
  
  // Base class for classes that constitute name spaces.
  
-@@ -407,7 +407,7 @@ class ResourceObj ALLOCATION_SUPER_CLASS
+@@ -409,7 +409,7 @@ class ResourceObj ALLOCATION_SUPER_CLASS
  
    void  operator delete(void* p);
    void  operator delete [](void* p);
