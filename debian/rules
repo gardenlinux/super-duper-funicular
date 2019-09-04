@@ -612,8 +612,11 @@ ifeq (,$(filter $(distrel),precise))
   nocheck_profile = $(EMPTY) <!nocheck>
 endif
 
+# look at all TEST.ROOT for the required jtreg version, sorted by newest
+min_jtreg_version := $(shell find test/ -name TEST.ROOT -exec grep -hr "^requiredVersion=" {} \; | sed -e 's:^requiredVersion=::' -e 's:$$:-0~:' | sort -uVr | head -n1 | tr ' ' '-')
+
 bd_check = \
-  jtreg (>= 4.2-b12-1~)$(nocheck_profile), testng$(nocheck_profile), \
+  jtreg (>= $(min_jtreg_version))$(nocheck_profile), testng$(nocheck_profile), \
   xvfb$(nocheck_profile), xauth$(nocheck_profile), \
   xfonts-base$(nocheck_profile), libgl1-mesa-dri [!x32]$(nocheck_profile), \
   xfwm4$(nocheck_profile), x11-xkb-utils$(nocheck_profile), \
@@ -772,7 +775,7 @@ control_vars += '-Vjcommon:Depends=$(pkg_jcommon)'
 
 control_vars += '-Vjrehl:Breaks=$(jrehl_breaks)'
 
-debian/control: debian/control.in debian/rules
+debian/control: debian/control.in debian/tests/control debian/rules
 	@cp -p debian/control debian/control.old
 	sed \
 	      -e 's/@basename@/$(basename)/g' \
@@ -806,6 +809,11 @@ debian/control: debian/control.in debian/rules
 	  rm -f debian/control.old; \
 	  exit 1; \
 	fi
+
+debian/tests/control: debian/tests/control.in debian/rules
+	sed \
+		-e 's/@min_jtreg_version@/$(min_jtreg_version)/g' \
+		$< > $@;
 
 debian/tests/%.sh: debian/tests/%.in debian/rules
 	sed \
@@ -947,6 +955,12 @@ build_stamps = \
 build_stamps +=  stamps/jtreg-check-default
 
 pre-build:
+	jtreg_version="$$(dpkg-query -f '$${Version}\n' -W jtreg)"; \
+	if ! dpkg --compare-versions $(min_jtreg_version) le $$jtreg_version; then \
+	  echo "Error: testsuite requires jtreg $(min_jtreg_version) but $$jtreg_version is installed"; \
+	  echo "Please update the jtreg dependency and regenerate debian/control"; \
+	  false; \
+	fi
 ifneq (,$(filter $(DEB_HOST_ARCH),s390))
 	@echo explicitely fail the build for $(DEB_HOST_ARCH), patches not updated
 #else ifneq (,$(filter $(DEB_HOST_ARCH),armel))
