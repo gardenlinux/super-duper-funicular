@@ -4,5 +4,5 @@ set -o errtrace
 set -o pipefail
 set -o nounset
 
-debian/tests/jtreg-autopkgtest.sh -exclude:test/jaxp/ProblemList.txt test/jaxp
+debian/tests/jtreg-autopkgtest.sh jaxp -exclude:test/jaxp/ProblemList.txt test/jaxp || true
 debian/tests/jtdiff-autopkgtest.sh jaxp

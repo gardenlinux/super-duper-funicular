@@ -817,12 +817,13 @@ debian/tests/control: debian/tests/control.in debian/rules
 
 debian/tests/%.sh: debian/tests/%.in debian/rules
 	sed \
-		-e 's,@JDK_TO_TEST@,/$(basedir),g' \
+		-e 's,@JDK_DIR@,/$(basedir),g' \
 		-e 's/@jtreg_archs@/$(jtreg_archs)/g' \
+		-e 's:@doc_dir@:/usr/share/doc/$(p_jrehl)/:g' \
 		$< > $@;
 	chmod +x $@
 
-gen-autopkgtests: debian/tests/jtreg-autopkgtest.sh
+gen-autopkgtests: debian/tests/jtdiff-autopkgtest.sh debian/tests/jtreg-autopkgtest.sh
 
 packaging-files:
 	for f in debian/*.in; do \
@@ -1060,13 +1061,10 @@ ifneq (,$(filter $(VMNAME), $(with_jtreg_check)))
 	@echo "END jtreg-summary-$(VMNAME)"
 
 	-for i in hotspot langtools jaxp jdk; do \
-	  test -f jtreg-test-output/check-$$i-$(VMNAME).log || continue; \
-	  for t in $$(egrep '^(FAILED|Error)' jtreg-test-output/check-$$i-$(VMNAME).log | grep -v '^Error: Some tests failed or other problems occurred.$$' | sed -e 's/.* \(.*\)\.[^.#]\+\(#id[0-9]*\)\?$$/\1\2/' -e 's/#id/_id/'); do \
-	    echo jtreg-test-output/$$i/JTwork/$$t.jtr; \
-	  done; \
+	  find jtreg-test-output/$$i/JTwork/ -name '*.jtr'; \
 	done | sort -u > jtreg-test-output/failed_tests-$(VMNAME).list; \
 	GZIP=-9vn tar --ignore-failed-read -C . -c -z -f jtreg-test-output/failed_tests-$(VMNAME).tar.gz -T jtreg-test-output/failed_tests-$(VMNAME).list
-	GZIP=-9vn tar -C . -c -z -f jtreg-test-output/jtreport-$(VMNAME).tar.gz jtreg-test-output/*/JTreport/
+	GZIP=-9vn tar -C . -c -z -f jtreg-test-output/jtreport-$(VMNAME).tar.gz $$(find jtreg-test-output -name JTreport)
 else
 	echo "jtreg harness not run for this build" > jtreg-test-output/jtreg_output-$(VMNAME)
 endif
@@ -1079,26 +1077,26 @@ TESTS_TO_RUN = $(addprefix check-,$(TEST_SUITES))
 check-hotspot: stamps/build
 	mkdir -p jtreg-test-output/hotspot
 	JTREG_OPTIONS=$(JTREG_OPTIONS) VMNAME=$(VMNAME) JDK_TO_TEST=$(builddir)/$(sdkimg) \
-	AUTOPKGTEST_TMP=/tmp/ AUTOPKGTEST_ARTIFACTS=jtreg-test-output/hotspot/ \
+	AUTOPKGTEST_TMP=/tmp/ AUTOPKGTEST_ARTIFACTS=jtreg-test-output/ \
 	  $(TIME) debian/tests/hotspot | tee jtreg-test-output/$@.log
 
 
 check-langtools: stamps/build
 	mkdir -p jtreg-test-output/langtools
 	JTREG_OPTIONS=$(JTREG_OPTIONS) VMNAME=$(VMNAME) JDK_TO_TEST=$(builddir)/$(sdkimg) \
-	AUTOPKGTEST_TMP=/tmp/ AUTOPKGTEST_ARTIFACTS=jtreg-test-output/langtools/ \
+	AUTOPKGTEST_TMP=/tmp/ AUTOPKGTEST_ARTIFACTS=jtreg-test-output/ \
 	  $(TIME) debian/tests/langtools | tee jtreg-test-output/$@.log
 
 check-jaxp: stamps/build
 	mkdir -p jtreg-test-output/jaxp
 	JTREG_OPTIONS=$(JTREG_OPTIONS) VMNAME=$(VMNAME) JDK_TO_TEST=$(builddir)/$(sdkimg) \
-	AUTOPKGTEST_TMP=/tmp/ AUTOPKGTEST_ARTIFACTS=jtreg-test-output/langtools/ \
+	AUTOPKGTEST_TMP=/tmp/ AUTOPKGTEST_ARTIFACTS=jtreg-test-output/ \
 	  $(TIME) debian/tests/jaxp | tee jtreg-test-output/$@.log
 
 check-jdk: stamps/build
 	mkdir -p jtreg-test-output/jdk
 	JTREG_OPTIONS=$(JTREG_OPTIONS) VMNAME=$(VMNAME) JDK_TO_TEST=$(builddir)/$(sdkimg) \
-	AUTOPKGTEST_TMP=/tmp/ AUTOPKGTEST_ARTIFACTS=jtreg-test-output/jdk/ \
+	AUTOPKGTEST_TMP=/tmp/ AUTOPKGTEST_ARTIFACTS=jtreg-test-output/ \
 	  $(TIME) debian/tests/jdk | tee jtreg-test-output/$@.log
 
 jtregcheck: $(TESTS_TO_RUN)

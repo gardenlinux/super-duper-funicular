@@ -22,5 +22,5 @@ export DISPLAY=:10
 debian/tests/start-xvfb.sh 10 &
 sleep 3
 
-debian/tests/jtreg-autopkgtest.sh -exclude:test/jdk/ProblemList.txt test/jdk:jdk_stable
+debian/tests/jtreg-autopkgtest.sh jdk -exclude:test/jdk/ProblemList.txt test/jdk:jdk_stable || true
 debian/tests/jtdiff-autopkgtest.sh jdk
