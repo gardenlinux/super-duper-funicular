@@ -16,7 +16,7 @@ host_arch=${DEB_HOST_ARCH:-$(dpkg --print-architecture)}
 
 vmname=${VMNAME:-hotspot}
 
-jt_report_tb="/usr/share/doc/openjdk-11-jre-headless//test-${host_arch}/jtreport-${vmname}.tar.gz"
+jt_report_tb="@doc_dir@/test-${host_arch}/jtreport-${vmname}.tar.gz"
 
 if [ ! -f "${jt_report_tb}" ]; then
   echo "Unable to compare jtreg results: no build jtreport found for ${vmname}/${host_arch}."
