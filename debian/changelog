@@ -1,3 +1,9 @@
+openjdk-11 (11.0.5+6-2) UNRELEASED; urgency=medium
+
+  * Fix 8230708, build failure on sparc64 (Adrian Glaubitz).
+
+ -- Matthias Klose <doko@debian.org>  Fri, 06 Sep 2019 17:54:18 +0200
+
 openjdk-11 (11.0.5+6-1) unstable; urgency=medium
 
   * OpenJDK 11.0.5+6 build (early access).
