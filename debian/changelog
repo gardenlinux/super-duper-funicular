@@ -1,3 +1,42 @@
+openjdk-14 (14~13-1) experimental; urgency=medium
+
+  * OpenJDK 14 snapshot, build 13.
+  * Properly generate Breaks: rules for bionic (fix typo).
+  * Remove libgtk-3-dev from build-deps: libgtk-3-dev is not actually
+    required, package builds fine without it; libgtk2.0-0 or libgtk-3-0
+    should be explicitly declared instead in bdeps and tests;
+    libxrandr-dev should be explicitly added as it is required and was
+    being included due to libgtk-3-dev dependency.
+  * Set minimum dependency on jtreg based on testsuite requirements.
+  * Fail during pre-build if installed jtreg version is lower then
+    the minimum required version.
+  * Improve and fix build tests and autopkgtests:
+    - Depend on default-jre-headless so jtreg will use the
+      JRE from /usr/default-java; remove JT_JAVA exports as it
+      no longer needs to be set.
+    - Update debian/tests/hotspot,jdk,langtools to ignore
+      jtreg-autopkgtest.sh return code.
+    - Create debian/tests/jtdiff-autopkgtest.in as it depends
+      on debian/rules variables.
+    - debian/tests/jtreg-autopkgtest.sh:
+      + Enable retry of failed tests to trim out flaky tests.
+      + Fix unbound variable.
+      + Keep .jtr files from failed tests only.
+    - debian/tests/jtdiff-autopkgtest.sh:
+      + Fail only if an actual regression is detected.
+      + Add the super-diff comparison from jtdiff.
+    - debian/rules:
+      + Preserve all JTreport directories in the test output
+        directory.
+      + Use JDK_DIR instead of JDK_TO_TEST for autopkgtest
+        generation.
+      + Package all .jtr files from JTwork as jtreg-autopkgtest.sh
+        makes sure it contains only failing tests.
+  * Bump standards version.
+  * Try to build zero on armhf again.
+
+ -- Matthias Klose <doko@ubuntu.com>  Fri, 06 Sep 2019 08:22:27 +0200
+
 openjdk-14 (14~6-0ubuntu1) eoan; urgency=medium
 
   * OpenJDK 14 snapshot, build 6.
