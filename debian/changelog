@@ -1,3 +1,10 @@
+openjdk-14 (14~14-2) experimental; urgency=medium
+
+  * OpenJDK 14 snapshot, build 14.
+  * Don't build zero on armhf, still broken.
+
+ -- Matthias Klose <doko@ubuntu.com>  Thu, 12 Sep 2019 17:54:43 +0200
+
 openjdk-14 (14~13-1) experimental; urgency=medium
 
   * OpenJDK 14 snapshot, build 13.

@@ -177,7 +177,7 @@ altzero_archs = $(hotspot_archs)
 ifneq (,$(filter $(distrel),trusty))
   altzero_archs := $(filter-out arm64, $(hotspot_archs))
 endif
-#altzero_archs := $(filter-out armhf, $(hotspot_archs))
+altzero_archs := $(filter-out armhf, $(hotspot_archs))
 
 ifneq (,$(filter noaltzero, $(DEB_BUILD_OPTIONS)))
   altzero_archs =
@@ -1793,7 +1793,7 @@ is_release		=
 hg_project		= jdk14u
 hg_tag			= jdk-11.0.1+13
 hg_project		= jdk
-hg_tag			= jdk-14+13
+hg_tag			= jdk-14+14
 package_version		= $(subst jdk-,,$(hg_tag))
 ifneq ($(is_release),yes)
   package_version	:= $(subst +,~,$(package_version))
