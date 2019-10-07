@@ -1,3 +1,11 @@
+# HG changeset patch
+# User glaubitz
+# Date 1567771866 -7200
+#      Fri Sep 06 14:11:06 2019 +0200
+# Node ID 637bd9437c111a9a80a3371807775d725dca0734
+# Parent  d6e2dbf20eaa4e85525f94ed4d3eff5266fb0d18
+8230708: Linux-sparc fails to build with gcc-9
+
 --- a/src/hotspot/cpu/sparc/nativeInst_sparc.hpp
 +++ b/src/hotspot/cpu/sparc/nativeInst_sparc.hpp
 @@ -313,7 +313,7 @@ inline NativeInstruction* nativeInstruct
