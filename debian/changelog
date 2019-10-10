@@ -1,3 +1,15 @@
+openjdk-14 (14~18-1) experimental; urgency=medium
+
+  * OpenJDK 14 snapshot, build 18.
+  * Bump standards version.
+  * Use dh_strip_nondeterminism (Emmanuel Bourg). Addresses: #933389.
+  * Fix 8230708, server build on sparc64 (Adrian Glaubitz). Closes: #939565.
+  * Fix FTBFS with DEB_BUILD_PROFILES=nocheck (Helmut Grohne).
+    Addresses: #939521.
+  * Fix debug and src symlinks. Addresses: #893134, #910694, #910696.
+
+ -- Matthias Klose <doko@ubuntu.com>  Thu, 10 Oct 2019 11:05:23 +0200
+
 openjdk-14 (14~14-2) experimental; urgency=medium
 
   * OpenJDK 14 snapshot, build 14.

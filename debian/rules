@@ -190,7 +190,6 @@ endif
 export DEBIAN_JDK_BASE_DIR := /$(basedir)
 
 BOOTJDK_HOME := $(strip $(subst /bin/javac,, $(firstword $(wildcard \
-			/usr/lib/jvm/java-12-openjdk-$(DEB_BUILD_ARCH)/bin/javac \
 			/usr/lib/jvm/java-13-openjdk-$(DEB_BUILD_ARCH)/bin/javac \
 			/usr/lib/jvm/java-14-openjdk-$(DEB_BUILD_ARCH)/bin/javac \
 		))))
@@ -725,7 +724,8 @@ jrehl_breaks = clojure1.8 (<= 1.8.0-7ubuntu1~),
 ifneq (,$(filter $(distrel),buster sid bionic cosmic disco eoan))
   jrehl_breaks += \
 	jetty9 (<< 9.4.15-1~), netbeans (<< 10.0-3~), visualvm (<< 1.4.2-2~), \
-	eclipse-platform (<< 3.8.1-11),
+	eclipse-platform (<< 3.8.1-11), eclipse-rcp (<< 3.8.1-11), \
+	libequinox-osgi-java (<< 3.9.1),
 endif
 ifneq (,$(filter $(distrel),bionic cosmic disco eoan))
   jrehl_breaks += \
@@ -982,12 +982,14 @@ build_stamps = \
 build_stamps +=  stamps/jtreg-check-default
 
 pre-build:
+ifeq (,$(filter nocheck,$(DEB_BUILD_OPTIONS)))
 	jtreg_version="$$(dpkg-query -f '$${Version}\n' -W jtreg)"; \
 	if ! dpkg --compare-versions $(min_jtreg_version) le $$jtreg_version; then \
 	  echo "Error: testsuite requires jtreg $(min_jtreg_version) but $$jtreg_version is installed"; \
 	  echo "Please update the jtreg dependency and regenerate debian/control"; \
 	  false; \
 	fi
+endif
 ifneq (,$(filter $(DEB_HOST_ARCH),s390))
 	@echo explicitely fail the build for $(DEB_HOST_ARCH), patches not updated
 #else ifneq (,$(filter $(DEB_HOST_ARCH),armel))
@@ -1644,7 +1646,8 @@ endif
 
 	: # another jvm symlink
 	ln -sf $(jdirname) $(d_jrehl)/usr/lib/jvm/$(jdiralias)
-	mkdir -p $(d_jrehl)/usr/lib/debug/usr/lib/jvm
+	: # the debug link only needed for debhelper << 9
+	mkdir -p $(d_jrehl)/usr/lib/debug/usr/lib/jvm/$(jdirname)
 	ln -sf $(jdirname) $(d_jrehl)/usr/lib/debug/usr/lib/jvm/$(jdiralias)
 
 ifeq ($(with_systemtap),yes FIXME)
@@ -1699,6 +1702,7 @@ endif
 	-dh_icons -i $(nodocs) || dh_iconcache -i $(nodocs)
 #	dh_installdebconf -i $(nodocs)
 	dh_link -i $(nodocs)
+	dh_strip_nondeterminism -i $(nodocs)
 	dh_compress -i $(nodocs) -Xexamples -Xdemo -Xpackage-list -Xelement-list
 	dh_fixperms -i $(nodocs)
 	dh_installdeb -i $(nodocs)
@@ -1745,6 +1749,7 @@ endif
 		|| dh_iconcache -a $(nodemo) $(nojrez)
 #	dh_installdebconf -a $(nodemo) $(nojrez)
 	dh_link -a $(nodemo) $(nojrez)
+	dh_strip_nondeterminism -a $(nodemo) $(nojrez)
 	dh_strip -a $(nodemo) $(nojrez) \
 		-Xlibjvm.so -X.debuginfo --dbg-package=$(p_dbg)
 
@@ -1793,7 +1798,7 @@ is_release		=
 hg_project		= jdk14u
 hg_tag			= jdk-11.0.1+13
 hg_project		= jdk
-hg_tag			= jdk-14+14
+hg_tag			= jdk-14+18
 package_version		= $(subst jdk-,,$(hg_tag))
 ifneq ($(is_release),yes)
   package_version	:= $(subst +,~,$(package_version))

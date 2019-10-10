@@ -16,7 +16,7 @@ Build-Depends: @bd_debhelper@
   @bd_nss@
   @bd_cross@
 Build-Depends-Indep: graphviz, pandoc,
-Standards-Version: 4.4.0
+Standards-Version: 4.4.1
 Homepage: http://openjdk.java.net/
 Vcs-Git: https://git.launchpad.net/~openjdk/ubuntu/+source/openjdk/+git/openjdk
 Vcs-Browser: https://code.launchpad.net/~openjdk/ubuntu/+source/openjdk/+git/openjdk/+ref/master
