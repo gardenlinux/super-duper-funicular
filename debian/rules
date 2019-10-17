@@ -149,6 +149,7 @@ with_check = $(if $(findstring nocheck, $(DEB_BUILD_OPTIONS)),,yes)
 ifneq (,$(filter $(DEB_HOST_ARCH), alpha))
   with_check = disabled running check on $(DEB_HOST_ARCH)
 endif
+# no jtreg backport yet
 ifneq (,$(filter $(distrel), precise trusty xenial))
   with_check = disabled for $(distrel)
 endif
@@ -648,18 +649,17 @@ ifeq (,$(filter $(distrel),precise))
   nocheck_profile = $(EMPTY) <!nocheck>
 endif
 
-# look at all TEST.ROOT for the required jtreg version, sorted by newest
-min_jtreg_version := $(shell find test/ -name TEST.ROOT -exec grep -hr "^requiredVersion=" {} \; | sed -e 's:^requiredVersion=::' -e 's:$$:-0~:' | sort -uVr | head -n1 | tr ' ' '-')
+ifeq ($(with_check),yes)
+  # look at all TEST.ROOT for the required jtreg version, sorted by newest
+  min_jtreg_version := $(shell find test/ -name TEST.ROOT -exec grep -hr "^requiredVersion=" {} \; | sed -e 's:^requiredVersion=::' -e 's:$$:-0~:' | sort -uVr | head -n1 | tr ' ' '-')
 
-bd_check = \
-  jtreg (>= $(min_jtreg_version))$(nocheck_profile), testng$(nocheck_profile), \
-  xvfb$(nocheck_profile), xauth$(nocheck_profile), \
-  xfonts-base$(nocheck_profile), libgl1-mesa-dri [!x32]$(nocheck_profile), \
-  xfwm4$(nocheck_profile), x11-xkb-utils$(nocheck_profile), \
-  dbus-x11$(nocheck_profile),
-
-ifneq (,$(filter $(distrel),precise trusty xenial))
-  # no jtreg backport yet
+  bd_check = \
+    jtreg (>= $(min_jtreg_version))$(nocheck_profile), testng$(nocheck_profile), \
+    xvfb$(nocheck_profile), xauth$(nocheck_profile), \
+    xfonts-base$(nocheck_profile), libgl1-mesa-dri [!x32]$(nocheck_profile), \
+    xfwm4$(nocheck_profile), x11-xkb-utils$(nocheck_profile), \
+    dbus-x11$(nocheck_profile),
+else
   bd_check = file,
 endif
 
@@ -990,6 +990,7 @@ build_stamps = \
 build_stamps +=  stamps/jtreg-check-default
 
 pre-build:
+ifeq ($(with_check),yes)
 	jtreg_version="$$(dpkg-query -f '$${Version}\n' -W jtreg)"; \
 	if ! dpkg --compare-versions $(min_jtreg_version) le $$jtreg_version; then \
 	  echo "Error: testsuite requires jtreg $(min_jtreg_version) but $$jtreg_version is installed"; \
