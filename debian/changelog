@@ -1,3 +1,9 @@
+openjdk-13 (13.0.1+9-1) unstable; urgency=high
+
+  * OpenJDK 13.0.1 release, build 9.
+
+ -- Matthias Klose <doko@ubuntu.com>  Thu, 17 Oct 2019 08:15:02 +0200
+
 openjdk-13 (13+33-1) unstable; urgency=low
 
   * OpenJDK 13 release, build 33.

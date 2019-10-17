@@ -1798,16 +1798,13 @@ endif
 
 is_release		= yes
 #is_release		=
-hg_project		= jdk11u
-hg_tag			= jdk-11.0.1+13
-hg_project		= jdk13
-hg_tag			= jdk-13+33
+hg_project		= jdk13u
+hg_tag			= jdk-13.0.1+9
 package_version		= $(subst jdk-,,$(hg_tag))
 ifneq ($(is_release),yes)
   package_version	:= $(subst +,~,$(package_version))
 endif
 hg_url			= http://hg.openjdk.java.net/jdk-updates/$(hg_project)
-hg_url			= http://hg.openjdk.java.net/jdk/$(hg_project)
 origdir = ../$(basename)-$(package_version).orig
 topdir = $(basename)-$(package_version)
 get-orig:
