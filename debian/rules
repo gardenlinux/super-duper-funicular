@@ -1702,7 +1702,9 @@ endif
 	-dh_icons -i $(nodocs) || dh_iconcache -i $(nodocs)
 #	dh_installdebconf -i $(nodocs)
 	dh_link -i $(nodocs)
-	dh_strip_nondeterminism -i $(nodocs)
+	set -e; if which dh_strip_nondeterminism >/dev/null; then \
+	  dh_strip_nondeterminism -i $(nodocs); \
+	fi
 	dh_compress -i $(nodocs) -Xexamples -Xdemo -Xpackage-list -Xelement-list
 	dh_fixperms -i $(nodocs)
 	dh_installdeb -i $(nodocs)
@@ -1749,7 +1751,9 @@ endif
 		|| dh_iconcache -a $(nodemo) $(nojrez)
 #	dh_installdebconf -a $(nodemo) $(nojrez)
 	dh_link -a $(nodemo) $(nojrez)
-	dh_strip_nondeterminism -a $(nodemo) $(nojrez)
+	set -e; if which dh_strip_nondeterminism >/dev/null; then \
+	  dh_strip_nondeterminism -a $(nodemo) $(nojrez); \
+	fi
 	dh_strip -a $(nodemo) $(nojrez) \
 		-Xlibjvm.so -X.debuginfo --dbg-package=$(p_dbg)
 
