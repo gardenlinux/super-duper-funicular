@@ -176,9 +176,11 @@ any_archs = alpha amd64 armel armhf arm64 i386 ia64 mips mipsel mips64 mips64el 
 
 altzero_archs = $(hotspot_archs)
 ifneq (,$(filter $(distrel),trusty))
-  altzero_archs := $(filter-out arm64, $(hotspot_archs))
+  altzero_archs := $(filter-out arm64, $(altzero_archs))
 endif
-altzero_archs := $(filter-out armhf, $(hotspot_archs))
+# FIXME: https://launchpad.net/ubuntu/+source/openjdk-lts/11.0.5+6-1ubuntu1
+# ftbfs on armhf
+altzero_archs := $(filter-out armhf, $(altzero_archs))
 
 ifneq (,$(filter noaltzero, $(DEB_BUILD_OPTIONS)))
   altzero_archs =
