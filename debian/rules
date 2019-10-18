@@ -149,6 +149,7 @@ with_check = $(if $(findstring nocheck, $(DEB_BUILD_OPTIONS)),,yes)
 ifneq (,$(filter $(DEB_HOST_ARCH), alpha))
   with_check = disabled running check on $(DEB_HOST_ARCH)
 endif
+# no jtreg backport yet
 ifneq (,$(filter $(distrel), precise trusty xenial))
   with_check = disabled for $(distrel)
 endif
@@ -616,18 +617,17 @@ ifeq (,$(filter $(distrel),precise))
   nocheck_profile = $(EMPTY) <!nocheck>
 endif
 
-# look at all TEST.ROOT for the required jtreg version, sorted by newest
-min_jtreg_version := $(shell find test/ -name TEST.ROOT -exec grep -hr "^requiredVersion=" {} \; | sed -e 's:^requiredVersion=::' -e 's:$$:-0~:' | sort -uVr | head -n1 | tr ' ' '-')
+ifeq ($(with_check),yes)
+  # look at all TEST.ROOT for the required jtreg version, sorted by newest
+  min_jtreg_version := $(shell find test/ -name TEST.ROOT -exec grep -hr "^requiredVersion=" {} \; | sed -e 's:^requiredVersion=::' -e 's:$$:-0~:' | sort -uVr | head -n1 | tr ' ' '-')
 
-bd_check = \
-  jtreg (>= $(min_jtreg_version))$(nocheck_profile), testng$(nocheck_profile), \
-  xvfb$(nocheck_profile), xauth$(nocheck_profile), \
-  xfonts-base$(nocheck_profile), libgl1-mesa-dri [!x32]$(nocheck_profile), \
-  xfwm4$(nocheck_profile), x11-xkb-utils$(nocheck_profile), \
-  dbus-x11$(nocheck_profile),
-
-ifneq (,$(filter $(distrel),precise trusty xenial))
-  # no jtreg backport yet
+  bd_check = \
+    jtreg (>= $(min_jtreg_version))$(nocheck_profile), testng$(nocheck_profile), \
+    xvfb$(nocheck_profile), xauth$(nocheck_profile), \
+    xfonts-base$(nocheck_profile), libgl1-mesa-dri [!x32]$(nocheck_profile), \
+    xfwm4$(nocheck_profile), x11-xkb-utils$(nocheck_profile), \
+    dbus-x11$(nocheck_profile),
+else
   bd_check = file,
 endif
 
@@ -961,7 +961,7 @@ build_stamps = \
 build_stamps +=  stamps/jtreg-check-default
 
 pre-build:
-ifeq (,$(filter nocheck,$(DEB_BUILD_OPTIONS)))
+ifeq ($(with_check),yes)
 	jtreg_version="$$(dpkg-query -f '$${Version}\n' -W jtreg)"; \
 	if ! dpkg --compare-versions $(min_jtreg_version) le $$jtreg_version; then \
 	  echo "Error: testsuite requires jtreg $(min_jtreg_version) but $$jtreg_version is installed"; \
@@ -1662,7 +1662,9 @@ endif
 	-dh_icons -i $(nodocs) || dh_iconcache -i $(nodocs)
 #	dh_installdebconf -i $(nodocs)
 	dh_link -i $(nodocs)
-	dh_strip_nondeterminism -i $(nodocs)
+	set -e; if which dh_strip_nondeterminism >/dev/null; then \
+	  dh_strip_nondeterminism -i $(nodocs); \
+	fi
 	dh_compress -i $(nodocs) -Xexamples -Xdemo -Xpackage-list -Xelement-list
 	dh_fixperms -i $(nodocs)
 	dh_installdeb -i $(nodocs)
@@ -1715,7 +1717,9 @@ endif
 		|| dh_iconcache -a $(nodemo) $(nojrez)
 #	dh_installdebconf -a $(nodemo) $(nojrez)
 	dh_link -a $(nodemo) $(nojrez)
-	dh_strip_nondeterminism -a $(nodemo) $(nojrez)
+	set -e; if which dh_strip_nondeterminism >/dev/null; then \
+	  dh_strip_nondeterminism -a $(nodemo) $(nojrez); \
+	fi
 	dh_strip -a $(nodemo) $(nojrez) \
 		-Xlibjvm.so -X.debuginfo --dbg-package=$(p_dbg)
 
