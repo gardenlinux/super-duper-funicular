@@ -1,11 +1,12 @@
-openjdk-14 (14~19-2) UNRELEASED; urgency=medium
+openjdk-14 (14~27-1) unstable; urgency=medium
 
+  * OpenJDK 14 snapshot, build 27.
   * Fix the jtreg consistency check when building without jtreg.
   * Don't call dh_strip_nondeterminism when building for older releases.
   * Fix disabling the zero build on arm64 on trusty.
   * Re-enable running the tests.
 
- -- Matthias Klose <doko@ubuntu.com>  Thu, 17 Oct 2019 22:13:59 +0200
+ -- Matthias Klose <doko@ubuntu.com>  Sat, 14 Dec 2019 11:21:53 +0100
 
 openjdk-14 (14~19-1) unstable; urgency=medium
 
