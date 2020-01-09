@@ -181,6 +181,9 @@ endif
 # ftbfs on armhf
 altzero_archs := $(filter-out armhf, $(altzero_archs))
 
+# FIXME: Zero currently FTBFS on sparc64 with gcc-9
+altzero_archs := $(filter-out sparc64, $(altzero_archs))
+
 ifneq (,$(filter noaltzero, $(DEB_BUILD_OPTIONS)))
   altzero_archs =
 else ifneq (,$(filter $(DEB_HOST_ARCH), $(altzero_archs)))
@@ -387,6 +390,10 @@ endif
 
 ifneq (,$(filter $(DEB_HOST_ARCH), ppc64 ppc64el))
   ZERO_CONFIGURE_ARGS += --with-boot-jdk-jvmargs="-XX:ThreadStackSize=2240"
+endif
+
+ifneq (,$(filter $(DEB_HOST_ARCH), sparc64))
+  DEFAULT_CONFIGURE_ARGS += --enable-deprecated-ports=yes
 endif
 
 ifeq ($(with_check),yes)
@@ -1803,7 +1810,7 @@ is_release		=
 hg_project		= jdk14u
 hg_tag			= jdk-11.0.1+13
 hg_project		= jdk14
-hg_tag			= jdk-14+27
+hg_tag			= jdk-14+31
 package_version		= $(subst jdk-,,$(hg_tag))
 ifneq ($(is_release),yes)
   package_version	:= $(subst +,~,$(package_version))

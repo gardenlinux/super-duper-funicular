@@ -1,3 +1,12 @@
+openjdk-14 (14~31-1) unstable; urgency=medium
+
+  * OpenJDK 14 snapshot, build 31.
+  * openjdk-14-dbg: Conflict with openjdk-13-dbg as well. Closes: #942783.
+  * Configure with --enable-deprecated-ports=yes on sparc64. Closes: #946723.
+  * disable Zero on sparc64. Closes: #946766.
+
+ -- Matthias Klose <doko@ubuntu.com>  Thu, 09 Jan 2020 15:19:43 +0100
+
 openjdk-14 (14~27-1) unstable; urgency=medium
 
   * OpenJDK 14 snapshot, build 27.
