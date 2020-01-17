@@ -287,7 +287,7 @@ else ifneq (,$(filter $(distrel),stretch))
   # FIXME: still hotspot core dumps with GCC 6
   export CC = $(DEB_HOST_GNU_TYPE)-gcc-6
   export CXX = $(DEB_HOST_GNU_TYPE)-g++-6
-else ifneq (,$(filter $(distrel),artful bionic))
+else ifneq (,$(filter $(distrel),artful))
   export CC = $(DEB_HOST_GNU_TYPE)-gcc-7
   export CXX = $(DEB_HOST_GNU_TYPE)-g++-7
 else ifneq (,$(filter $(distrel),buster precise trusty xenial bionic cosmic disco))
@@ -597,12 +597,12 @@ else ifneq (,$(filter $(distrel),wily))
   bd_gcc = g++-5 [$(hotspot_archs)], g++-4.9 [$(strip $(foreach a,$(hotspot_archs), !$(a)))], g++-4.9 [arm64],
 else ifneq (,$(filter $(distrel),stretch))
   bd_gcc = g++-6,
-else ifneq (,$(filter $(distrel),artful bionic))
+else ifneq (,$(filter $(distrel),artful))
   bd_gcc = g++-7,
 else ifneq (,$(filter $(distrel),precise))
   # FIXME: ftbfs on armhf with the default GCC
   bd_gcc = g++-8,
-else ifneq (,$(filter $(distrel),buster bionic cosmic disco))
+else ifneq (,$(filter $(distrel),buster trusty xenial bionic cosmic disco))
   bd_gcc = g++-8 <!cross>,
 else
   bd_gcc = g++-9 <!cross>,
