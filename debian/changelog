@@ -1,5 +1,6 @@
-openjdk-14 (14~31-2) UNRELEASED; urgency=medium
+openjdk-14 (14~32-1) unstable; urgency=medium
 
+  * OpenJDK 14 snapshot, build 32.
   * Make the generated character data source files reproducible (Emmanuel
     Bourg). Addresses: #933339.
   * Make the generated module-info.java files reproducible (Emmanuel Bourg).
@@ -8,7 +9,7 @@ openjdk-14 (14~31-2) UNRELEASED; urgency=medium
     Addresses: #933349.
   * Make the build user reproducible (Emmanuel Bourg). Addresses: #933373.
 
- -- Matthias Klose <doko@ubuntu.com>  Wed, 15 Jan 2020 02:09:42 +0100
+ -- Matthias Klose <doko@ubuntu.com>  Thu, 16 Jan 2020 23:31:42 +0100
 
 openjdk-14 (14~31-1) unstable; urgency=medium
 
