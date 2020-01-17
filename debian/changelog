@@ -1,3 +1,42 @@
+openjdk-11 (11.0.6+10-1) unstable; urgency=high
+
+  * OpenJDK 11.0.5+10 build (release).
+    - S8220598: Malformed copyright year range in a few files in java.base.
+    - S8224909, CVE-2020-2583: Unlink Set of LinkedHashSets.
+    - S8225261: Better method resolutions.
+    - S8225279: Better XRender interpolation.
+    - S8226352, CVE-2020-2590: Improve Kerberos interop capabilities.
+    - S8227758: More valid PKIX processing.
+    - S8227816: More Colorful ICC profiles.
+    - S8228548, CVE-2020-2593: Normalize normalization for all.
+    - S8229728: Implement negotiation parameters.
+    - S8229951, CVE-2020-2601: Better Ticket Granting Services.
+    - S8230279: Improve Pack200 file reading.
+    - S8230318: Better trust store usage.
+    - S8230967: Improve Registry support of clients.
+    - S8231139: Improved keystore support.
+    - S8231422, CVE-2020-2604: Better serial filter handling.
+    - S8231780, CVE-2020-2655: Better TLS messaging support.
+    - S8231790: Provide better FileSystemProviders.
+    - S8232419: Improve Registry registration.
+    - S8234037, CVE-2020-2654: Improve Object Identifier Processing.
+  * Disable zero on sparc64 (Adrian Glaubitz). Closes: #942030.
+  * Make the generated character data source files reproducible (Emmanuel
+    Bourg). Closes: #933339.
+  * Make the generated module-info.java files reproducible (Emmanuel Bourg).
+    Closes: #933342.
+  * Make the generated copyright headers reproducible (Emmanuel Bourg).
+    Closes: #933349.
+  * Make the build user reproducible (Emmanuel Bourg). Closes: #933373.
+
+ -- Matthias Klose <doko@ubuntu.com>  Wed, 15 Jan 2020 01:09:36 +0100
+
+openjdk-11 (11.0.6+7-1) unstable; urgency=medium
+
+  * OpenJDK 11.0.5+7 build (early access).
+
+ -- Matthias Klose <doko@ubuntu.com>  Fri, 13 Dec 2019 14:52:21 +0100
+
 openjdk-11 (11.0.5+10-2) unstable; urgency=medium
 
   * Fix the jtreg consistency check when building without jtreg.

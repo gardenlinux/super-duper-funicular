@@ -180,6 +180,9 @@ endif
 # ftbfs in 11.0.5+bx, and 13+17
 altzero_archs := $(filter-out armhf, $(altzero_archs))
 
+# FIXME: Zero currently FTBFS on sparc64 with gcc-9
+altzero_archs := $(filter-out sparc64, $(altzero_archs))
+
 ifneq (,$(filter noaltzero, $(DEB_BUILD_OPTIONS)))
   altzero_archs =
 else ifneq (,$(filter $(DEB_HOST_ARCH), $(altzero_archs)))
@@ -617,10 +620,10 @@ ifeq (,$(filter $(distrel),precise))
   nocheck_profile = $(EMPTY) <!nocheck>
 endif
 
-ifeq ($(with_check),yes)
-  # look at all TEST.ROOT for the required jtreg version, sorted by newest
-  min_jtreg_version := $(shell find test/ -name TEST.ROOT -exec grep -hr "^requiredVersion=" {} \; | sed -e 's:^requiredVersion=::' -e 's:$$:-0~:' | sort -uVr | head -n1 | tr ' ' '-')
+# look at all TEST.ROOT for the required jtreg version, sorted by newest
+min_jtreg_version := $(shell find test/ -name TEST.ROOT -exec grep -hr "^requiredVersion=" {} \; | sed -e 's:^requiredVersion=::' -e 's:$$:-0~:' | sort -uVr | head -n1 | tr ' ' '-')
 
+ifeq ($(with_check),yes)
   bd_check = \
     jtreg (>= $(min_jtreg_version))$(nocheck_profile), testng$(nocheck_profile), \
     xvfb$(nocheck_profile), xauth$(nocheck_profile), \
@@ -1765,7 +1768,7 @@ endif
 
 is_release		= yes
 hg_project		= jdk11u
-hg_tag			= jdk-11.0.5+10
+hg_tag			= jdk-11.0.6+10
 package_version		= $(subst jdk-,,$(hg_tag))
 ifneq ($(is_release),yes)
   package_version	:= $(subst +,~,$(package_version))

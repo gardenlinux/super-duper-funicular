@@ -40,3 +40,7 @@ jaw-classpath.diff
 jaw-optional.diff
 riscv64.diff
 8230708.diff
+reproducible-character-data.diff
+reproducible-module-info.diff
+reproducible-copyright-headers.diff
+reproducible-build-user.diff
