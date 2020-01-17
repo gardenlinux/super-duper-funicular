@@ -1,5 +1,6 @@
-openjdk-13 (13.0.1+9-3) unstable; urgency=medium
+openjdk-13 (13.0.2+8-1) unstable; urgency=medium
 
+  * OpenJDK 13.0.2 release, build 8.
   * Make the generated character data source files reproducible (Emmanuel
     Bourg). Addresses: #933339.
   * Make the generated module-info.java files reproducible (Emmanuel Bourg).
