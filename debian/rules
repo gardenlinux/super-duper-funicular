@@ -28,6 +28,9 @@ DEB_BUILD_ARCH		?= $(call vafilt,$(DPKG_VARS),DEB_BUILD_ARCH)
 DEB_HOST_ARCH_CPU	?= $(call vafilt,$(DPKG_VARS),DEB_HOST_ARCH_CPU)
 DEB_HOST_MULTIARCH	?= $(call vafilt,$(DPKG_VARS),DEB_HOST_MULTIARCH)
 
+OBJCOPY := $(DEB_HOST_GNU_TYPE)-objcopy
+STRIP := $(DEB_HOST_GNU_TYPE)-strip
+
 PATH := $(CURDIR)/bin:$(PATH)
 export PATH
 
@@ -605,7 +608,7 @@ else ifneq (,$(filter $(distrel),buster bionic cosmic disco))
 else
   bd_gcc = g++-9 <!cross>,
 endif
-bd_syslibs = zlib1g-dev, libattr1-dev,
+bd_syslibs = zlib1g-dev:native, zlib1g-dev, libattr1-dev,
 ifneq (,$(filter $(distrel),squeeze lucid))
   bd_syslibs += libpng12-dev, libjpeg62-dev,
 else ifneq (,$(filter $(distrel),wheezy precise quantal raring saucy))
@@ -1774,18 +1777,18 @@ ifeq (,$(findstring nostrip, $(DEB_BUILD_OPTIONS)))
 	    id=$$(echo $$i | sed -r 's,debian/[^/]+,$(d_dbg)/usr/lib/debug,'); \
 	    echo strip $$i; \
 	    mkdir -p $$(dirname $$id); \
-	    objcopy --only-keep-debug $$i $$id; \
+	    $(OBJCOPY) --only-keep-debug $$i $$id; \
 	    chmod 644 $$id; \
-	    strip --remove-section=.comment --remove-section=.note \
+	    $(STRIP) --remove-section=.comment --remove-section=.note \
 	      --strip-debug $$i; \
-	    objcopy --add-gnu-debuglink $$id $$i; \
+	    $(OBJCOPY) --add-gnu-debuglink $$id $$i; \
 	  else \
 	    d=usr/lib/debug/.build-id/$${b_id:0:2}; \
 	    f=$${b_id:2}.debug; \
 	    mkdir -p $(d_dbg)/$$d; \
-	    objcopy --only-keep-debug --compress-debug-sections $$i $(d_dbg)/$$d/$$f; \
+	    $(OBJCOPY) --only-keep-debug --compress-debug-sections $$i $(d_dbg)/$$d/$$f; \
 	    chmod 644 $(d_dbg)/$$d/$$f; \
-	    strip --remove-section=.comment --remove-section=.note $$i; \
+	    $(STRIP) --remove-section=.comment --remove-section=.note $$i; \
 	  fi; \
 	done
 endif
@@ -1810,7 +1813,7 @@ is_release		=
 hg_project		= jdk14u
 hg_tag			= jdk-11.0.1+13
 hg_project		= jdk14
-hg_tag			= jdk-14+32
+hg_tag			= jdk-14+36
 package_version		= $(subst jdk-,,$(hg_tag))
 ifneq ($(is_release),yes)
   package_version	:= $(subst +,~,$(package_version))

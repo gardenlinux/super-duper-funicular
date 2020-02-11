@@ -1,3 +1,14 @@
+openjdk-14 (14~36-1) unstable; urgency=medium
+
+  * OpenJDK 14 snapshot, build 36 (first release candidate).
+  * Regenerate the control file. Closes: #942783.
+  * Fix FTCBFS (Helmut Grohne). Closes: #949460.
+    - Missing Build-Depends: zlib1g-dev:native.
+    - Use triplet-prefixed objcopy and strip.
+  * Bump standards version.
+
+ -- Matthias Klose <doko@ubuntu.com>  Tue, 11 Feb 2020 09:08:15 +0100
+
 openjdk-14 (14~32-1) unstable; urgency=medium
 
   * OpenJDK 14 snapshot, build 32.
