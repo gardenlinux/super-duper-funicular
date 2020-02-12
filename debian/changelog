@@ -1,3 +1,16 @@
+openjdk-13 (13.0.2+8-1) unstable; urgency=medium
+
+  * OpenJDK 13.0.2 release, build 8.
+  * Make the generated character data source files reproducible (Emmanuel
+    Bourg). Addresses: #933339.
+  * Make the generated module-info.java files reproducible (Emmanuel Bourg).
+    Addresses: #933342.
+  * Make the generated copyright headers reproducible (Emmanuel Bourg).
+    Addresses: #933349.
+  * Make the build user reproducible (Emmanuel Bourg). Addresses: #933373.
+
+ -- Matthias Klose <doko@ubuntu.com>  Fri, 17 Jan 2020 10:22:49 +0100
+
 openjdk-13 (13.0.1+9-2) unstable; urgency=medium
 
   * Fix the jtreg consistency check when building without jtreg.
