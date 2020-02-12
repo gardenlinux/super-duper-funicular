@@ -12,11 +12,11 @@ Build-Depends: debhelper (>= 11),
   openjdk-11-jdk-headless:native | openjdk-10-jdk-headless:native,
   libxtst-dev, libxi-dev, libxt-dev, libxaw7-dev, libxrender-dev, libcups2-dev, libasound2-dev, liblcms2-dev, libfreetype6-dev (>= 2.2.1), libxinerama-dev, libkrb5-dev, xsltproc, libpcsclite-dev, libxrandr-dev, libelf-dev, libfontconfig1-dev, libgtk2.0-0 | libgtk-3-0,
   libffi-dev,
-  zlib1g-dev, libattr1-dev, libpng-dev, libjpeg-dev, libgif-dev, 
+  zlib1g-dev:native, zlib1g-dev, libattr1-dev, libpng-dev, libjpeg-dev, libgif-dev, 
   libnss3-dev (>= 2:3.17.1),
   openjdk-11-jdk-headless <cross>,
 Build-Depends-Indep: graphviz, pandoc,
-Standards-Version: 4.4.1
+Standards-Version: 4.5.0
 Homepage: http://openjdk.java.net/
 Vcs-Git: https://git.launchpad.net/~openjdk/ubuntu/+source/openjdk/+git/openjdk -b openjdk-11
 Vcs-Browser: https://code.launchpad.net/~openjdk/ubuntu/+source/openjdk/+git/openjdk/+ref/openjdk-11
@@ -152,7 +152,7 @@ Description: Java runtime based on OpenJDK (debugging symbols)
  This package contains the debugging symbols.
 
 Package: openjdk-11-jre-zero
-Architecture: amd64 i386 arm64 ppc64 ppc64el sparc64 s390x kfreebsd-amd64 kfreebsd-i386
+Architecture: amd64 i386 arm64 ppc64 ppc64el s390x kfreebsd-amd64 kfreebsd-i386
 Multi-Arch: same
 Priority: optional
 Pre-Depends: ${dpkg:Depends}
