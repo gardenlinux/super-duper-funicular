@@ -1,3 +1,12 @@
+openjdk-13 (13.0.2+8-2) unstable; urgency=medium
+
+  * Fix FTCBFS (Helmut Grohne). Addresses: #949460.
+    - Missing Build-Depends: zlib1g-dev:native.
+    - Use triplet-prefixed objcopy and strip.
+  * Bump standards version.
+
+ -- Matthias Klose <doko@ubuntu.com>  Wed, 12 Feb 2020 08:20:23 +0100
+
 openjdk-13 (13.0.2+8-1) unstable; urgency=medium
 
   * OpenJDK 13.0.2 release, build 8.
