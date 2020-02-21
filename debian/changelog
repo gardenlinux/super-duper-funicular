@@ -1,8 +1,14 @@
-openjdk-14 (14~36-2) UNRELEASED; urgency=medium
+openjdk-14 (14~36-2) unstable; urgency=medium
 
   * Update VCS attributes.
+  * Disable zero on Debian/arm64 for now.
+  * Make autopkgtests cross-test-friendly (Steve Langasek). LP: #1861467.
+  * d/tests/jtreg-autopkgtest.in: keep generated hs_err log files
+    with test artifacts to improve later debug (Tiago Stürmer Daitx).
+  * d/tests/jtdiff-autopkgtest.in: set default vm to correctly locate (Tiago
+    Stürmer Daitx)
 
- -- Matthias Klose <doko@ubuntu.com>  Thu, 20 Feb 2020 17:41:28 +0100
+ -- Matthias Klose <doko@ubuntu.com>  Fri, 21 Feb 2020 11:59:43 +0100
 
 openjdk-14 (14~36-1) unstable; urgency=medium
 

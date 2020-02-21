@@ -14,7 +14,13 @@ fi
 
 host_arch=${DEB_HOST_ARCH:-$(dpkg --print-architecture)}
 
-vmname=${VMNAME:-hotspot}
+if grep -q -w "${host_arch}" debian/tests/hotspot-archs; then
+  default_vm=hotspot
+else
+  default_vm=zero
+fi
+
+vmname=${VMNAME:-${default_vm}}
 
 jt_report_tb="/usr/share/doc/openjdk-11-jre-headless//test-${host_arch}/jtreport-${vmname}.tar.gz"
 
