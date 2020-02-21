@@ -1,3 +1,9 @@
+openjdk-14 (14~36-3) UNRELEASED; urgency=medium
+
+  * jhsdb isn't built on sh4 (Adrian Glaubitz). Addresses: #951774.
+
+ -- Matthias Klose <doko@ubuntu.com>  Fri, 21 Feb 2020 19:34:36 +0100
+
 openjdk-14 (14~36-2) unstable; urgency=medium
 
   * Update VCS attributes.
