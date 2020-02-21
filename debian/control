@@ -110,6 +110,7 @@ Description: Java runtime based on OpenJDK (demos and examples)
 
 Package: openjdk-11-source
 Architecture: all
+Multi-Arch: foreign
 Priority: optional
 Pre-Depends: ${dpkg:Depends}
 Depends: openjdk-11-jdk (>= ${source:Version}),
