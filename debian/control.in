@@ -113,6 +113,7 @@ Description: Java runtime based on OpenJDK (demos and examples)
 
 Package: @basename@-source
 Architecture: all
+Multi-Arch: foreign
 Priority: optional
 Pre-Depends: ${dpkg:Depends}
 Depends: @basename@-jdk (>= ${source:Version}),

@@ -113,6 +113,7 @@ Description: Java runtime based on OpenJDK (demos and examples)
 
 Package: openjdk-13-source
 Architecture: all
+Multi-Arch: foreign
 Priority: optional
 Pre-Depends: ${dpkg:Depends}
 Depends: openjdk-13-jdk (>= ${source:Version}),

@@ -1,3 +1,13 @@
+openjdk-13 (13.0.2+8-3) UNRELEASED; urgency=medium
+
+  * Make autopkgtests cross-test-friendly (Steve Langasek). LP: #1861467.
+  * d/tests/jtreg-autopkgtest.in: keep generated hs_err log files
+    with test artifacts to improve later debug (Tiago Stürmer Daitx).
+  * d/tests/jtdiff-autopkgtest.in: set default vm to correctly locate (Tiago
+    Stürmer Daitx)
+
+ -- Matthias Klose <doko@ubuntu.com>  Fri, 21 Feb 2020 12:13:57 +0100
+
 openjdk-13 (13.0.2+8-2) unstable; urgency=medium
 
   * Fix FTCBFS (Helmut Grohne). Addresses: #949460.

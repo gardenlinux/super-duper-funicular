@@ -98,13 +98,20 @@ for i in 0 1 2 3; do
     -reportDir:"${report_dir}" \
     -jdk:${JDK_TO_TEST} \
     ${on_retry:-} $@ \
-      && exit_code=0 && break || exit_code=$?
+      && exit_code=0 || exit_code=$?
 
   # copy .jtr files from failed tests for latter debugging
   find "${jtwork_dir}" -name '*.jtr' -exec egrep -q '^execStatus=[^Pass]' {} \; -printf "%P\n" \
     | while IF= read -r jtr; do
-        mkdir -p "$(dirname "${output_dir}/JTwork/${jtr}")"
-        cp --update --preserve --backup=numbered "${jtwork_dir}/${jtr}" "${output_dir}/JTwork/$jtr"
+        jtr_dir=$(dirname "${output_dir}/JTwork/${jtr}")
+        mkdir -p "${jtr_dir}"
+        cp --update --preserve --backup=numbered "${jtwork_dir}/${jtr}" "${output_dir}/JTwork/${jtr}"
+        # copy all generated hs_err_pid log into the jtr's directory to easy debugging
+        if grep -qhE 'hs_err_pid[0-9]+\.log' "${output_dir}/JTwork/${jtr}"; then
+            grep -hEo '/[^ ]*/hs_err_pid[0-9]+\.log' "${output_dir}/JTwork/${jtr}" \
+                | xargs cp --update --preserve --backup=numbered -t "${jtr_dir}" \
+                || echo "Warning: unable to find hs_err log for ${jtr}"
+        fi
     done
 
   # break if jtdiff reports no difference from previous run
@@ -115,6 +122,11 @@ for i in 0 1 2 3; do
 
   # link latest JTreport to output_dir
   ln -sf -t "${output_dir}" "${report_path}"
+
+  # if all test passed there is not need for a retry
+  if [ "x${exit_code}" == "x0" ]; then break; fi
+
+  # only retry tests with fail/error status
   on_retry="-status:fail,error"
 done
 
