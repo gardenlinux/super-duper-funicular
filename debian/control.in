@@ -33,7 +33,7 @@ Provides: java-sdk-headless, java2-sdk-headless,
   java7-sdk-headless, java8-sdk-headless,
   java9-sdk-headless, java10-sdk-headless,
   java11-sdk-headless, java12-sdk-headless,
-  java13-sdk-headless, java-compiler
+  java13-sdk-headless, java14-sdk-headless, java15-sdk-headless, java-compiler
 Conflicts: openjdk-11-jre-headless (<< 11~19-2)
 Replaces: openjdk-11-jre-headless (<< 11~19-2)
 Description: OpenJDK Development Kit (JDK) (headless)
@@ -57,7 +57,7 @@ Provides: java-runtime-headless, java2-runtime-headless,
   java7-runtime-headless, java8-runtime-headless,
   java9-runtime-headless, java10-runtime-headless,
   java11-runtime-headless, java12-runtime-headless,
-  java13-runtime-headless,
+  java13-runtime-headless, java14-runtime-headless, java15-runtime-headless,
   ${defaultvm:Provides}, ${jvm:Provides}
 Breaks: ${jrehl:Breaks}
 Conflicts: oracle-java11-installer, openjdk-11-jdk-headless (<< 11~18-2)
@@ -77,7 +77,7 @@ Recommends: libxt-dev
 Suggests: @basename@-demo, @basename@-source, visualvm
 Provides: java-sdk, java2-sdk, java5-sdk, java6-sdk,
   java7-sdk, java8-sdk, java9-sdk, java10-sdk, java11-sdk,
-  java12-sdk, java13-sdk, java-compiler
+  java12-sdk, java13-sdk, java14-sdk, java15-sdk, java-compiler
 Conflicts: openjdk-11-jre-headless (<< 11~19-2)
 Replaces: openjdk-11-jre-headless (<< 11~19-2)
 Description: OpenJDK Development Kit (JDK)
@@ -97,7 +97,7 @@ Provides: java-runtime, java2-runtime,
   java7-runtime, java8-runtime,
   java9-runtime, java10-runtime,
   java11-runtime, java12-runtime,
-  java13-runtime,
+  java13-runtime, java14-runtime, java15-runtime,
 Description: OpenJDK Java runtime, using ${vm:Name}
  Full Java runtime environment - needed for executing Java GUI and Webstart
  programs, using ${vm:Name}.
@@ -150,7 +150,7 @@ Depends: @basename@-jre-headless (= ${binary:Version}),
    ${misc:Depends}
 Recommends: @basename@-jre (= ${binary:Version})
 Suggests: @basename@-jdk (= ${binary:Version})
-Conflicts: openjdk-11-dbg, openjdk-12-dbg, openjdk-13-dbg,
+Conflicts: openjdk-11-dbg, openjdk-12-dbg, openjdk-13-dbg, openjdk-14-dbg,
 Description: Java runtime based on OpenJDK (debugging symbols)
  OpenJDK is a development environment for building applications,
  applets, and components using the Java programming language.

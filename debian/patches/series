@@ -13,7 +13,7 @@ s390x-zEC12.diff
 jdk-getAccessibleValue.diff
 jtreg-location.diff
 jdk-i18n-pt_BR.diff
-disable-doclint-by-default.diff
+#disable-doclint-by-default.diff
 8199220.diff
 machine-flag.diff
 zero-x32.diff
@@ -30,7 +30,7 @@ generated-headers.patch
 parallel-build-fix.diff
 m68k-support.diff
 reproducible-properties-timestamp.diff
-reproducible-javadoc-timestamp.diff
+# reproducible-javadoc-timestamp.diff
 jdk8211105-aarch64-disable_cos_sin_and_log_intrinsics.patch
 make-debig-print.diff
 Don-t-optimize-fdlibm-fork-for-Zero-on-linux-sparc-Z.patch

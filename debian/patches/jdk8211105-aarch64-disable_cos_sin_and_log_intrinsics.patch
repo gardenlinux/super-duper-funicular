@@ -8,9 +8,11 @@
 Summary: AArch64 cos/sin and log intrinsics are currently broken so should be disabled
 Reviewed-by: aph, shade
 
+Index: b/src/hotspot/cpu/aarch64/stubGenerator_aarch64.cpp
+===================================================================
 --- a/src/hotspot/cpu/aarch64/stubGenerator_aarch64.cpp
 +++ b/src/hotspot/cpu/aarch64/stubGenerator_aarch64.cpp
-@@ -5703,7 +5703,8 @@ class StubGenerator: public StubCodeGene
+@@ -5698,7 +5698,8 @@ class StubGenerator: public StubCodeGene
      // }
  
      if (vmIntrinsics::is_intrinsic_available(vmIntrinsics::_dsin)) {

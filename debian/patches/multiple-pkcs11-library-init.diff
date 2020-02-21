@@ -30,7 +30,7 @@ Index: b/src/jdk.crypto.cryptoki/share/classes/sun/security/pkcs11/SunPKCS11.jav
 ===================================================================
 --- a/src/jdk.crypto.cryptoki/share/classes/sun/security/pkcs11/SunPKCS11.java
 +++ b/src/jdk.crypto.cryptoki/share/classes/sun/security/pkcs11/SunPKCS11.java
-@@ -174,26 +174,37 @@ public final class SunPKCS11 extends Aut
+@@ -173,26 +173,37 @@ public final class SunPKCS11 extends Aut
                  String nssLibraryDirectory = config.getNssLibraryDirectory();
                  String nssSecmodDirectory = config.getNssSecmodDirectory();
                  boolean nssOptimizeSpace = config.getNssOptimizeSpace();

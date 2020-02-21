@@ -1,9 +1,11 @@
 Description: Makes the generated module-info.java files reproducible (removes a captured build path)
 Author: Emmanuel Bourg <ebourg@apache.org>
 Forwarded: no
+Index: b/make/jdk/src/classes/build/tools/module/GenModuleInfoSource.java
+===================================================================
 --- a/make/jdk/src/classes/build/tools/module/GenModuleInfoSource.java
 +++ b/make/jdk/src/classes/build/tools/module/GenModuleInfoSource.java
-@@ -147,9 +147,10 @@
+@@ -149,9 +149,10 @@ public class GenModuleInfoSource {
                  writer.println(l);
                  if (l.trim().startsWith("module ")) {
                      // print URI rather than file path to avoid escape

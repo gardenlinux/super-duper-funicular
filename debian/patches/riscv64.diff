@@ -7,6 +7,8 @@
 8199138: Add RISC-V support to Zero
 Reviewed-by: aph, erikj, ehelin, ihse
 
+Index: b/make/autoconf/build-aux/config.guess
+===================================================================
 --- a/make/autoconf/build-aux/config.guess
 +++ b/make/autoconf/build-aux/config.guess
 @@ -27,6 +27,13 @@
@@ -23,6 +25,8 @@ Reviewed-by: aph, erikj, ehelin, ihse
  DIR=`dirname $0`
  OUT=`. $DIR/autoconf-config.guess`
  
+Index: b/make/autoconf/build-aux/config.sub
+===================================================================
 --- a/make/autoconf/build-aux/config.sub
 +++ b/make/autoconf/build-aux/config.sub
 @@ -35,8 +35,8 @@ if echo $* | grep x86_64-pc-wsl >/dev/nu
@@ -56,6 +60,8 @@ Reviewed-by: aph, erikj, ehelin, ihse
  
  echo $result
  exit $exitcode
+Index: b/make/autoconf/platform.m4
+===================================================================
 --- a/make/autoconf/platform.m4
 +++ b/make/autoconf/platform.m4
 @@ -124,6 +124,12 @@ AC_DEFUN([PLATFORM_EXTRACT_VARS_FROM_CPU
@@ -80,9 +86,11 @@ Reviewed-by: aph, erikj, ehelin, ihse
    elif test "x$OPENJDK_$1_CPU" = xs390; then
      HOTSPOT_$1_CPU_DEFINE=S390
    elif test "x$OPENJDK_$1_CPU" = xs390x; then
+Index: b/src/hotspot/os/linux/os_linux.cpp
+===================================================================
 --- a/src/hotspot/os/linux/os_linux.cpp
 +++ b/src/hotspot/os/linux/os_linux.cpp
-@@ -1778,6 +1778,9 @@ void * os::dll_load(const char *filename
+@@ -1853,6 +1853,9 @@ void * os::dll_load(const char *filename
  #ifndef EM_AARCH64
    #define EM_AARCH64    183               /* ARM AARCH64 */
  #endif
@@ -92,7 +100,7 @@ Reviewed-by: aph, erikj, ehelin, ihse
  
    static const arch_t arch_array[]={
      {EM_386,         EM_386,     ELFCLASS32, ELFDATA2LSB, (char*)"IA 32"},
-@@ -1804,6 +1807,7 @@ void * os::dll_load(const char *filename
+@@ -1879,6 +1882,7 @@ void * os::dll_load(const char *filename
      {EM_PARISC,      EM_PARISC,  ELFCLASS32, ELFDATA2MSB, (char*)"PARISC"},
      {EM_68K,         EM_68K,     ELFCLASS32, ELFDATA2MSB, (char*)"M68k"},
      {EM_AARCH64,     EM_AARCH64, ELFCLASS64, ELFDATA2LSB, (char*)"AARCH64"},
@@ -100,7 +108,7 @@ Reviewed-by: aph, erikj, ehelin, ihse
    };
  
  #if  (defined IA32)
-@@ -1820,6 +1824,8 @@ void * os::dll_load(const char *filename
+@@ -1895,6 +1899,8 @@ void * os::dll_load(const char *filename
    static  Elf32_Half running_arch_code=EM_PPC64;
  #elif  (defined __powerpc__)
    static  Elf32_Half running_arch_code=EM_PPC;
@@ -109,7 +117,7 @@ Reviewed-by: aph, erikj, ehelin, ihse
  #elif  (defined AARCH64)
    static  Elf32_Half running_arch_code=EM_AARCH64;
  #elif  (defined ARM)
-@@ -1840,7 +1846,7 @@ void * os::dll_load(const char *filename
+@@ -1915,7 +1921,7 @@ void * os::dll_load(const char *filename
    static  Elf32_Half running_arch_code=EM_SH;
  #else
      #error Method os::dll_load requires that one of following is defined:\
@@ -118,7 +126,7 @@ Reviewed-by: aph, erikj, ehelin, ihse
  #endif
  
    // Identify compatibility class for VM's architecture and library's architecture
-@@ -2466,6 +2472,8 @@ void os::get_summary_cpu_info(char* cpui
+@@ -2557,6 +2563,8 @@ void os::get_summary_cpu_info(char* cpui
    strncpy(cpuinfo, "IA64", length);
  #elif defined(PPC)
    strncpy(cpuinfo, "PPC64", length);

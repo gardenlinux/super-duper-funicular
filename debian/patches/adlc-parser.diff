@@ -3,7 +3,7 @@ Index: b/src/hotspot/share/adlc/formsopt.cpp
 ===================================================================
 --- a/src/hotspot/share/adlc/formsopt.cpp
 +++ b/src/hotspot/share/adlc/formsopt.cpp
-@@ -439,6 +439,7 @@ FrameForm::FrameForm() {
+@@ -448,6 +448,7 @@ FrameForm::FrameForm() {
    _return_value = NULL;
    _c_return_value = NULL;
    _interpreter_frame_pointer_reg = NULL;

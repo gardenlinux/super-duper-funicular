@@ -1,3 +1,14 @@
+openjdk-15 (15~11-1) unstable; urgency=medium
+
+  * OpenJDK 15 snapshot, build 11.
+  * Don't apply the disable-doclint-by-default patch, it should be possible
+    to disable those by command line options.
+  * Don't apply the reproducible-javadoc-timestamp patch. Needs an update.
+  * Refresh patches.
+  * Update all the provides for 15.
+
+ -- Matthias Klose <doko@ubuntu.com>  Fri, 21 Feb 2020 09:48:57 +0100
+
 openjdk-14 (14~36-1) unstable; urgency=medium
 
   * OpenJDK 14 snapshot, build 36 (first release candidate).

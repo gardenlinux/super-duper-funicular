@@ -7,9 +7,11 @@
 8199220: Zero build broken after 8195103, 8191102 and 8189871
 Reviewed-by: dholmes, stuefe, eosterlund, glaubitz, coleenp
 
+Index: b/src/hotspot/share/utilities/debug.hpp
+===================================================================
 --- a/src/hotspot/share/utilities/debug.hpp
 +++ b/src/hotspot/share/utilities/debug.hpp
-@@ -185,6 +185,7 @@ void warning(const char* format, ...) AT
+@@ -179,6 +179,7 @@ void warning(const char* format, ...) AT
  // use of an array type.
  
  template<bool x> struct STATIC_ASSERT_FAILURE;
