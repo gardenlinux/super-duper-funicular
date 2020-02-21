@@ -5,6 +5,7 @@ openjdk-13 (13.0.2+8-3) UNRELEASED; urgency=medium
     with test artifacts to improve later debug (Tiago Stürmer Daitx).
   * d/tests/jtdiff-autopkgtest.in: set default vm to correctly locate (Tiago
     Stürmer Daitx)
+  * jhsdb isn't built on sh4 (Adrian Glaubitz). Addresses: #951774.
 
  -- Matthias Klose <doko@ubuntu.com>  Fri, 21 Feb 2020 12:13:57 +0100
 

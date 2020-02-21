@@ -548,7 +548,7 @@ jdk_hl_tools	= jar jarsigner javac javadoc javap jcmd jdb \
 ifneq (,$(filter $(DEB_HOST_ARCH), amd64 arm64))
   jdk_hl_tools	+= jaotc
 endif
-ifeq (,$(filter $(DEB_HOST_ARCH), alpha armel ia64 m68k mips mipsel mips64el powerpc riscv64 s390x x32))
+ifeq (,$(filter $(DEB_HOST_ARCH), alpha armel ia64 m68k mips mipsel mips64el powerpc riscv64 s390x sh4 x32))
   jdk_hl_tools	+= jhsdb
 endif
 jdk_tools	= jconsole
