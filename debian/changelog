@@ -1,5 +1,6 @@
-openjdk-15 (15~11-2) UNRELEASED; urgency=medium
+openjdk-15 (15~15-1) UNRELEASED; urgency=medium
 
+  * OpenJDK 15 snapshot, build 15.
   * Make autopkgtests cross-test-friendly (Steve Langasek). LP: #1861467.
   * d/tests/jtreg-autopkgtest.in: keep generated hs_err log files
     with test artifacts to improve later debug (Tiago Stürmer Daitx).
@@ -7,7 +8,7 @@ openjdk-15 (15~11-2) UNRELEASED; urgency=medium
     Stürmer Daitx)
   * jhsdb isn't built on sh4 (Adrian Glaubitz). Addresses: #951774.
 
- -- Matthias Klose <doko@ubuntu.com>  Fri, 21 Feb 2020 12:07:57 +0100
+ -- Matthias Klose <doko@ubuntu.com>  Fri, 20 Mar 2020 15:42:38 +0100
 
 openjdk-15 (15~11-1) unstable; urgency=medium
 

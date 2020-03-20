@@ -156,6 +156,7 @@ endif
 ifneq (,$(filter $(distrel), precise trusty xenial))
   with_check = disabled for $(distrel)
 endif
+with_check = disabled, more recent jtreg needed
 
 with_docs = $(if $(findstring nodoc, $(DEB_BUILD_OPTIONS)),,yes)
 ifneq (,$(filter $(distrel), precise trusty))
@@ -401,6 +402,8 @@ endif
 
 ifeq ($(with_check),yes)
   COMMON_CONFIGURE_ARGS += --with-jtreg=/usr
+else
+  COMMON_CONFIGURE_ARGS += --disable-jtreg-failure-handler
 endif
 
 ifneq (,$(filter $(DEB_HOST_ARCH), amd64))
@@ -1811,7 +1814,7 @@ is_release		=
 hg_project		= jdk15u
 hg_tag			= jdk-15.0.1+11
 hg_project		= jdk
-hg_tag			= jdk-15+11
+hg_tag			= jdk-15+15
 package_version		= $(subst jdk-,,$(hg_tag))
 ifneq ($(is_release),yes)
   package_version	:= $(subst +,~,$(package_version))
