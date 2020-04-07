@@ -1,5 +1,6 @@
-openjdk-11 (11.0.6+10-3) UNRELEASED; urgency=medium
+openjdk-11 (11.0.7+9-1) unstable; urgency=medium
 
+  * OpenJDK 11.0.7+9 build (early access).
   * Make autopkgtests cross-test-friendly (Steve Langasek). LP: #1861467.
   * d/tests/jtreg-autopkgtest.in: keep generated hs_err log files
     with test artifacts to improve later debug (Tiago Stürmer Daitx).
@@ -7,7 +8,7 @@ openjdk-11 (11.0.6+10-3) UNRELEASED; urgency=medium
     Stürmer Daitx)
   * jhsdb isn't built on sh4 (Adrian Glaubitz). Closes: #951774.
 
- -- Matthias Klose <doko@ubuntu.com>  Fri, 21 Feb 2020 12:17:05 +0100
+ -- Matthias Klose <doko@ubuntu.com>  Thu, 26 Mar 2020 08:33:35 +0100
 
 openjdk-11 (11.0.6+10-2) unstable; urgency=medium
 
@@ -53,7 +54,7 @@ openjdk-11 (11.0.6+10-1) unstable; urgency=high
 
 openjdk-11 (11.0.6+7-1) unstable; urgency=medium
 
-  * OpenJDK 11.0.5+7 build (early access).
+  * OpenJDK 11.0.6+7 build (early access).
 
  -- Matthias Klose <doko@ubuntu.com>  Fri, 13 Dec 2019 14:52:21 +0100
 
