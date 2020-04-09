@@ -183,7 +183,7 @@ ifneq (,$(filter $(distrel),trusty))
 endif
 # FIXME: https://launchpad.net/ubuntu/+source/openjdk-lts/11.0.5+6-1ubuntu1
 # ftbfs on armhf
-altzero_archs := $(filter-out armhf, $(altzero_archs))
+#altzero_archs := $(filter-out armhf, $(altzero_archs))
 
 # FIXME: Zero currently FTBFS on sparc64 with gcc-9
 altzero_archs := $(filter-out sparc64, $(altzero_archs))
