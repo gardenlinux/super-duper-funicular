@@ -2,7 +2,7 @@ Index: b/src/hotspot/os_cpu/linux_x86/os_linux_x86.cpp
 ===================================================================
 --- a/src/hotspot/os_cpu/linux_x86/os_linux_x86.cpp
 +++ b/src/hotspot/os_cpu/linux_x86/os_linux_x86.cpp
-@@ -835,7 +835,7 @@ void os::verify_stack_alignment() {
+@@ -831,7 +831,7 @@ void os::verify_stack_alignment() {
   * updates (JDK-8023956).
   */
  void os::workaround_expand_exec_shield_cs_limit() {
