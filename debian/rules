@@ -385,7 +385,7 @@ ifneq (,$(filter $(DEB_HOST_ARCH), ppc64 ppc64el))
 endif
 
 ifeq ($(with_check),yes)
-  COMMON_CONFIGURE_ARGS += --with-jtreg=/usr
+  COMMON_CONFIGURE_ARGS += --with-jtreg=/usr/share/jtreg
 endif
 
 ifneq (,$(filter $(DEB_HOST_ARCH), amd64))

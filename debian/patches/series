@@ -11,7 +11,6 @@ multiple-pkcs11-library-init.diff
 s390x-thread-stack-size.diff
 s390x-zEC12.diff
 jdk-getAccessibleValue.diff
-jtreg-location.diff
 jdk-i18n-pt_BR.diff
 disable-doclint-by-default.diff
 8199220.diff
