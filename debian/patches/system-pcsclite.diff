@@ -52,7 +52,7 @@
 +])
 --- a/make/autoconf/spec.gmk.in
 +++ b/make/autoconf/spec.gmk.in
-@@ -772,6 +772,7 @@ ENABLE_AOT:=@ENABLE_AOT@
+@@ -775,6 +775,7 @@ ENABLE_AOT:=@ENABLE_AOT@
  ENABLE_INTREE_EC:=@ENABLE_INTREE_EC@
  USE_EXTERNAL_LIBJPEG:=@USE_EXTERNAL_LIBJPEG@
  USE_EXTERNAL_LIBGIF:=@USE_EXTERNAL_LIBGIF@
