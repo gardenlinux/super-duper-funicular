@@ -75,7 +75,7 @@ else
   is_default = yes
 endif
 
-#is_upstream_release = yes
+is_upstream_release = yes
 
 srcdir		= .
 builddir	= build
@@ -100,16 +100,16 @@ v_pkgrel	:= $(shell echo $(PKGVERSION) | sed 's/^.*-//')
 # FIXME. currently v_upstream like 11~4
 v_upbase	:= $(word 1, $(subst +, , $(v_upstream)))
 v_upbuild	:= $(word 2, $(subst +, , $(v_upstream)))
-v_upbase	:= $(word 1, $(subst ~, , $(v_upstream)))
-v_upbuild	:= $(word 2, $(subst ~, , $(v_upstream)))
+#v_upbase	:= $(word 1, $(subst ~, , $(v_upstream)))
+#v_upbuild	:= $(word 2, $(subst ~, , $(v_upstream)))
 # that should be the package version ...
 
-#ifneq ($(PKGVERSION),$(v_upbase)+$(v_upbuild)-$(v_pkgrel))
-#  $(error wrong version: $(v_upbase)+$(v_upbuild)-$(v_pkgrel) should be: $(PKGVERSION))
-#endif
-ifneq ($(PKGVERSION),$(v_upbase)~$(v_upbuild)-$(v_pkgrel))
-  $(error wrong version: $(v_upbase)~$(v_upbuild)-$(v_pkgrel) should be: $(PKGVERSION))
+ifneq ($(PKGVERSION),$(v_upbase)+$(v_upbuild)-$(v_pkgrel))
+  $(error wrong version: $(v_upbase)+$(v_upbuild)-$(v_pkgrel) should be: $(PKGVERSION))
 endif
+#ifneq ($(PKGVERSION),$(v_upbase)~$(v_upbuild)-$(v_pkgrel))
+#  $(error wrong version: $(v_upbase)~$(v_upbuild)-$(v_pkgrel) should be: $(PKGVERSION))
+#endif
 
 ifneq (,$(DEB_HOST_MULTIARCH))
   jdirname	= java-$(shortver)-$(origin)-$(DEB_HOST_ARCH)
@@ -347,7 +347,7 @@ EXTRA_BUILD_ENV += LIBFFI_LIBS=-lffi_pic
 
 ifeq ($(derivative),Ubuntu)
   ifeq ($(DEB_HOST_ARCH),s390x)
-    ifneq (,$(filter $(distrel), trusty xenial bionic eoan))
+    ifneq (,$(filter $(distrel), trusty xenial bionic eoan focal))
       export VENDOR_FLAGS_CPU = -march=zEC12
     else
       export VENDOR_FLAGS_CPU = -march=z13 -mtune=z15
@@ -1819,17 +1819,13 @@ endif
 	dh_builddeb -a $(nodemo) $(nojrez) #$(bd_options)
 
 is_release		= yes
-is_release		=
 hg_project		= jdk14u
-hg_tag			= jdk-11.0.1+13
-hg_project		= jdk14
-hg_tag			= jdk-14+36
+hg_tag			= jdk-14.0.1+7
 package_version		= $(subst jdk-,,$(hg_tag))
 ifneq ($(is_release),yes)
   package_version	:= $(subst +,~,$(package_version))
 endif
 hg_url			= http://hg.openjdk.java.net/jdk-updates/$(hg_project)
-hg_url			= http://hg.openjdk.java.net/jdk/$(hg_project)
 origdir = ../$(basename)-$(package_version).orig
 topdir = $(basename)-$(package_version)
 get-orig:

@@ -1,6 +1,6 @@
 --- a/src/hotspot/cpu/zero/cppInterpreter_zero.cpp
 +++ b/src/hotspot/cpu/zero/cppInterpreter_zero.cpp
-@@ -368,7 +368,7 @@ int CppInterpreter::native_entry(Method*
+@@ -366,7 +366,7 @@ int CppInterpreter::native_entry(Method*
    ThreadStateTransition::transition_from_java(thread, _thread_in_native);
  
    // Make the call

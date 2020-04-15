@@ -5,8 +5,6 @@
 # Parent  1406789608b76d0906881979335d685855f44190
 Allow multiple PKCS11 library initialisation to be a non-critical error.
 
-Index: b/src/jdk.crypto.cryptoki/share/classes/sun/security/pkcs11/Config.java
-===================================================================
 --- a/src/jdk.crypto.cryptoki/share/classes/sun/security/pkcs11/Config.java
 +++ b/src/jdk.crypto.cryptoki/share/classes/sun/security/pkcs11/Config.java
 @@ -52,6 +52,7 @@ final class Config {
@@ -26,11 +24,9 @@ Index: b/src/jdk.crypto.cryptoki/share/classes/sun/security/pkcs11/Config.java
          } else {
              throw excToken("Invalid value for handleStartupErrors:");
          }
-Index: b/src/jdk.crypto.cryptoki/share/classes/sun/security/pkcs11/SunPKCS11.java
-===================================================================
 --- a/src/jdk.crypto.cryptoki/share/classes/sun/security/pkcs11/SunPKCS11.java
 +++ b/src/jdk.crypto.cryptoki/share/classes/sun/security/pkcs11/SunPKCS11.java
-@@ -174,26 +174,37 @@ public final class SunPKCS11 extends Aut
+@@ -173,26 +173,37 @@ public final class SunPKCS11 extends Aut
                  String nssLibraryDirectory = config.getNssLibraryDirectory();
                  String nssSecmodDirectory = config.getNssSecmodDirectory();
                  boolean nssOptimizeSpace = config.getNssOptimizeSpace();
