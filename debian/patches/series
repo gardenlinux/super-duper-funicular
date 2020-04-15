@@ -9,7 +9,7 @@ workaround_expand_exec_shield_cs_limit.diff
 adlc-parser.diff
 multiple-pkcs11-library-init.diff
 s390x-thread-stack-size.diff
-s390x-zEC12.diff
+s390x-opt.diff
 jdk-getAccessibleValue.diff
 jtreg-location.diff
 jdk-i18n-pt_BR.diff

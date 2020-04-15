@@ -1,8 +1,10 @@
-openjdk-14 (14~36-3) UNRELEASED; urgency=medium
+openjdk-14 (14~36-4) UNRELEASED; urgency=medium
 
   * jhsdb isn't built on sh4 (Adrian Glaubitz). Addresses: #951774.
+  * Enable the buildwatch script on sh4 (Adrian Glaubitz). Addresses: #956728.
+  * Build with -march=z13 -mtune=z15 on Ubuntu/s390x.
 
- -- Matthias Klose <doko@ubuntu.com>  Fri, 21 Feb 2020 19:34:36 +0100
+ -- Matthias Klose <doko@ubuntu.com>  Wed, 15 Apr 2020 07:56:13 +0200
 
 openjdk-14 (14~36-2) unstable; urgency=medium
 

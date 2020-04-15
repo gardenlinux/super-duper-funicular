@@ -345,6 +345,16 @@ EXTRA_BUILD_ENV += IGNORE_OLD_CONFIG=true
 
 EXTRA_BUILD_ENV += LIBFFI_LIBS=-lffi_pic
 
+ifeq ($(derivative),Ubuntu)
+  ifeq ($(DEB_HOST_ARCH),s390x)
+    ifneq (,$(filter $(distrel), trusty xenial bionic eoan))
+      export VENDOR_FLAGS_CPU = -march=zEC12
+    else
+      export VENDOR_FLAGS_CPU = -march=z13 -mtune=z15
+    endif
+  endif
+endif
+
 CONFIGURE_ARGS += --enable-system-kerberos
 
 ifeq ($(with_nss),yes)
