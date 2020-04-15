@@ -4,8 +4,8 @@
        fi
      elif test "x$FLAGS_CPU" = xs390x; then
        $1_CFLAGS_CPU="-mbackchain -march=z10"
-+      if dpkg-vendor --derives-from Ubuntu; then
-+        $1_CFLAGS_CPU="-mbackchain -march=zEC12"
++      if test "x$VENDOR_FLAGS_CPU" != x; then
++        $1_CFLAGS_CPU="-mbackchain $VENDOR_FLAGS_CPU"
 +      fi
      fi
  
