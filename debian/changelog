@@ -1,17 +1,22 @@
-openjdk-13 (13.0.2+8-3) UNRELEASED; urgency=medium
+openjdk-13 (13.0.3+3-1) unstable; urgency=medium
 
+  * OpenJDK 13.0.3 release, build 3.
   * Make autopkgtests cross-test-friendly (Steve Langasek). LP: #1861467.
   * d/tests/jtreg-autopkgtest.in: keep generated hs_err log files
     with test artifacts to improve later debug (Tiago Stürmer Daitx).
   * d/tests/jtdiff-autopkgtest.in: set default vm to correctly locate (Tiago
     Stürmer Daitx)
   * jhsdb isn't built on sh4 (Adrian Glaubitz). Addresses: #951774.
+  * Configure --with-jtreg=/usr/share/jtreg.
+  * Enable the buildwatch script on sh4 (Adrian Glaubitz). Addresses: #956728.
+  * Fix the build on sparc64 (Adrian Glaubitz). Closes: #943898.
+  * Disable the zero build on sparc64. Closes: #946762.
 
- -- Matthias Klose <doko@ubuntu.com>  Fri, 21 Feb 2020 12:13:57 +0100
+ -- Matthias Klose <doko@ubuntu.com>  Wed, 15 Apr 2020 08:04:07 +0200
 
 openjdk-13 (13.0.2+8-2) unstable; urgency=medium
 
-  * Fix FTCBFS (Helmut Grohne). Addresses: #949460.
+  * Fix FTCBFS (Helmut Grohne). Closes: #944272.
     - Missing Build-Depends: zlib1g-dev:native.
     - Use triplet-prefixed objcopy and strip.
   * Bump standards version.
