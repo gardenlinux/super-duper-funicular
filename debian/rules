@@ -74,7 +74,6 @@ else
 endif
 
 is_upstream_release = yes
-is_upstream_release =
 
 srcdir		= .
 builddir	= build
@@ -349,6 +348,18 @@ EXTRA_BUILD_ENV += IGNORE_OLD_CONFIG=true
 
 EXTRA_BUILD_ENV += LIBFFI_LIBS=-lffi_pic
 
+EXTRA_BUILD_ENV += JOBS=$(NJOBS)
+
+ifeq ($(derivative),Ubuntu)
+  ifeq ($(DEB_HOST_ARCH),s390x)
+    ifneq (,$(filter $(distrel), trusty xenial bionic eoan))
+      export VENDOR_FLAGS_CPU = -march=zEC12
+    else
+      export VENDOR_FLAGS_CPU = -march=z13 -mtune=z15
+    endif
+  endif
+endif
+
 CONFIGURE_ARGS += --enable-system-kerberos
 
 ifeq ($(with_nss),yes)
@@ -398,7 +409,11 @@ ifneq (,$(filter $(DEB_HOST_ARCH), ppc64 ppc64el))
 endif
 
 ifeq ($(with_check),yes)
-  COMMON_CONFIGURE_ARGS += --with-jtreg=/usr
+  ifneq (,$(filter $(distrel), precise trusty xenial bionic eoan etch wheezy jessie stretch buster))
+    COMMON_CONFIGURE_ARGS += --with-jtreg=/usr
+  else
+    COMMON_CONFIGURE_ARGS += --with-jtreg=/usr/share/jtreg
+  endif
 endif
 
 ifneq (,$(filter $(DEB_HOST_ARCH), amd64))
@@ -993,7 +1008,7 @@ build: pre-build $(build_stamps)
 
 stamps/build: stamps/configure
 	@echo '========== $@ =========='
-ifneq (,$(filter $(DEB_HOST_ARCH), alpha armel armhf ia64 m68k mips mipsel mips64 mips64el powerpc powerpcspe riscv64 s390x sparc sparc64))
+ifneq (,$(filter $(DEB_HOST_ARCH), alpha armel armhf ia64 m68k mips mipsel mips64 mips64el powerpc powerpcspe riscv64 s390x sh4 sparc sparc64))
 	sh -c 'sh debian/buildwatch.sh $(CURDIR)/$(builddir) &'
 endif
 	if $(EXTRA_BUILD_ENV) $(MAKE) -C $(builddir) $(build_target); then \
@@ -1771,7 +1786,7 @@ endif
 
 is_release		= yes
 hg_project		= jdk11u
-hg_tag			= jdk-11.0.7+9
+hg_tag			= jdk-11.0.7+10
 package_version		= $(subst jdk-,,$(hg_tag))
 ifneq ($(is_release),yes)
   package_version	:= $(subst +,~,$(package_version))

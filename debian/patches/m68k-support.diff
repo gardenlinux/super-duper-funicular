@@ -1064,7 +1064,7 @@ JDK-NNNNNNN: Zero needs alignment fixes for linux-m68k
  
  // Base class for objects stored in Metaspace.
  // Calling delete will result in fatal error.
-@@ -319,7 +319,7 @@ class MetaspaceObj {
+@@ -326,7 +326,7 @@ class MetaspaceObj {
    // that should be read-only by default. See symbol.hpp for an example. This function
    // is used by the templates in metaspaceClosure.hpp
    static bool is_read_only_by_default() { return false; }
@@ -1073,7 +1073,7 @@ JDK-NNNNNNN: Zero needs alignment fixes for linux-m68k
  
  // Base class for classes that constitute name spaces.
  
-@@ -409,7 +409,7 @@ class ResourceObj ALLOCATION_SUPER_CLASS
+@@ -416,7 +416,7 @@ class ResourceObj ALLOCATION_SUPER_CLASS
  
    void  operator delete(void* p);
    void  operator delete [](void* p);
@@ -1104,7 +1104,7 @@ JDK-NNNNNNN: Zero needs alignment fixes for linux-m68k
  #endif // SHARE_VM_OOPS_OOP_HPP
 --- a/src/java.base/unix/native/libjli/java_md_solinux.c
 +++ b/src/java.base/unix/native/libjli/java_md_solinux.c
-@@ -727,12 +727,24 @@ void SplashFreeLibrary() {
+@@ -728,12 +728,24 @@ void SplashFreeLibrary() {
      }
  }
  
@@ -1129,7 +1129,7 @@ JDK-NNNNNNN: Zero needs alignment fixes for linux-m68k
  #ifndef __solaris__
      pthread_t tid;
      pthread_attr_t attr;
-@@ -744,7 +756,7 @@ ContinueInNewThread0(int (JNICALL *conti
+@@ -745,7 +757,7 @@ ContinueInNewThread0(int (JNICALL *conti
      }
      pthread_attr_setguardsize(&attr, 0); // no pthread guard page on java threads
  
@@ -1138,7 +1138,7 @@ JDK-NNNNNNN: Zero needs alignment fixes for linux-m68k
        void * tmp;
        pthread_join(tid, &tmp);
        rslt = (int)(intptr_t)tmp;
-@@ -762,7 +774,7 @@ ContinueInNewThread0(int (JNICALL *conti
+@@ -763,7 +775,7 @@ ContinueInNewThread0(int (JNICALL *conti
  #else /* __solaris__ */
      thread_t tid;
      long flags = 0;

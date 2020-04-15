@@ -1,8 +1,6 @@
-Index: b/src/java.desktop/share/classes/java/awt/color/ICC_Profile.java
-===================================================================
 --- a/src/java.desktop/share/classes/java/awt/color/ICC_Profile.java
 +++ b/src/java.desktop/share/classes/java/awt/color/ICC_Profile.java
-@@ -1837,9 +1837,6 @@ public class ICC_Profile implements Seri
+@@ -1821,9 +1821,6 @@ public class ICC_Profile implements Seri
                      dir = st.nextToken();
                          fullPath = dir + File.separatorChar + fileName;
                      f = new File(fullPath);
@@ -12,7 +10,7 @@ Index: b/src/java.desktop/share/classes/java/awt/color/ICC_Profile.java
                  }
              }
  
-@@ -1879,26 +1876,6 @@ public class ICC_Profile implements Seri
+@@ -1863,26 +1860,6 @@ public class ICC_Profile implements Seri
      }
  
      /**
