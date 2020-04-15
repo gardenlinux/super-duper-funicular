@@ -1,3 +1,11 @@
+openjdk-11 (11.0.7+10-2) unstable; urgency=medium
+
+  * Backport the fix for 8228407, JVM crashes with shared archive file mismatch.
+  * Enable again bootcycle build for all hotspot architectures.
+  * Build again with -march=zEC12 on Ubuntu/s390x.
+
+ -- Matthias Klose <doko@ubuntu.com>  Wed, 15 Apr 2020 14:26:16 +0200
+
 openjdk-11 (11.0.7+10-1) unstable; urgency=medium
 
   * OpenJDK 11.0.7+10 build (release).
@@ -43,12 +51,14 @@ openjdk-11 (11.0.7+10-1) unstable; urgency=medium
     - S8237879: make 4.3 breaks build
     - S8238960: linux-i586 builds are inconsistent as the newly build jdk
       is not able to reserve enough space for object heap
+
+  [ Matthias Klose ]
   * Refresh patches.
   * Configure --with-jtreg=/usr/share/jtreg.
   * Enable the buildwatch script on sh4 (Adrian Glaubitz). Closes: #956728.
   * Build with -march=z13 -mtune=z15 on Ubuntu/s390x.
 
- -- Matthias Klose <doko@ubuntu.com>  Wed, 15 Apr 2020 10:18:47 +0200
+ -- Matthias Klose <doko@ubuntu.com>  Wed, 15 Apr 2020 11:11:42 +0200
 
 openjdk-11 (11.0.7+9-1) unstable; urgency=medium
 
