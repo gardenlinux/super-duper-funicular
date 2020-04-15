@@ -1,56 +1,39 @@
-openjdk-11 (11.0.7+10-2) unstable; urgency=medium
+openjdk-11 (11.0.7+10-2) unstable; urgency=high
 
   * Backport the fix for 8228407, JVM crashes with shared archive file mismatch.
   * Enable again bootcycle build for all hotspot architectures.
   * Build again with -march=zEC12 on Ubuntu/s390x.
 
- -- Matthias Klose <doko@ubuntu.com>  Wed, 15 Apr 2020 14:26:16 +0200
+ -- Matthias Klose <doko@ubuntu.com>  Wed, 15 Apr 2020 16:03:23 +0200
 
-openjdk-11 (11.0.7+10-1) unstable; urgency=medium
+openjdk-11 (11.0.7+10-1) unstable; urgency=high
 
   * OpenJDK 11.0.7+10 build (release).
-    - S8160926: FLAGS_COMPILER_CHECK_ARGUMENTS doesn't handle
-      cross-compilation
-    - S8189861: Refactor CacheFind
-    - S8204551: Event descriptions are truncated in logs
-    - S8210459: Add support for generating compile_commands.json
-    - S8214534: Setting of THIS_FILE in the build is broken
-    - S8217728: Speed up incremental rerun of "make hotspot"
-    - S8219597: (bf) Heap buffer state changes could provoke unexpected
-      exceptions
-    - S8220613: java/util/Arrays/TimSortStackSize2.java times out with
-      fastdebug build
-    - S8221851: Use of THIS_FILE in hotspot invalidates precompiled header
-      on Linux/GCC
-    - S8222264: Windows incremental build is broken with JDK-8217728
-    - S8223678: Add Visual Studio Code workspace generation support (for
-      native code)
-    - S8223898: Forward references to Nashorn
-    - S8223904: Improve Nashorn matching
-    - S8224541: Better mapping of serial ENUMs
-    - S8224549: Less Blocking Array Queues
-    - S8225603: Enhancement for big integers
-    - S8226346: Build better binary builders
-    - S8227467: Better class method invocations
-    - S8227542: Manifest improved jar headers
-    - S8229733: TLS message handling improvements
-    - S8231415: Better signatures in XML
-    - S8231785: Improved socket permissions
-    - S8232424: More constrained algorithms
-    - S8232581: Improve TLS verification
-    - S8233250: Better X11 rendering
-    - S8233383: Various minor fixes
-    - S8233410: Better Build Scripting
-    - S8234027: Better JCEKS key support
-    - S8234408: Improve TLS session handling
-    - S8234825: Better Headings for HTTP Servers
-    - S8234841: Enhance buffering of byte buffers
-    - S8235274: Enhance typing of methods
-    - S8235691: Enhance TLS connectivity
-    - S8236201: Better Scanner conversions
-    - S8237879: make 4.3 breaks build
-    - S8238960: linux-i586 builds are inconsistent as the newly build jdk
-      is not able to reserve enough space for object heap
+  * Security fixes
+    - JDK-8223898, CVE-2020-2754: Forward references to Nashorn
+    - JDK-8223904, CVE-2020-2755: Improve Nashorn matching
+    - JDK-8224541, CVE-2020-2756: Better mapping of serial ENUMs
+    - JDK-8224549, CVE-2020-2757: Less Blocking Array Queues
+    - JDK-8225603: Enhancement for big integers
+    - JDK-8226346: Build better binary builders
+    - JDK-8227467: Better class method invocations
+    - JDK-8227542: Manifest improved jar headers
+    - JDK-8229733: TLS message handling improvements
+    - JDK-8231415, CVE-2020-2773: Better signatures in XML
+    - JDK-8231785: Improved socket permissions
+    - JDK-8232424, CVE-2020-2778: More constrained algorithms
+    - JDK-8232581, CVE-2020-2767: Improve TLS verification
+    - JDK-8233250: Better X11 rendering
+    - JDK-8233410: Better Build Scripting
+    - JDK-8234027: Better JCEKS key support
+    - JDK-8234408, CVE-2020-2781: Improve TLS session handling
+    - JDK-8234825, CVE-2020-2800: Better Headings for HTTP Servers
+    - JDK-8234841, CVE-2020-2803: Enhance buffering of byte buffers
+    - JDK-8235274, CVE-2020-2805: Enhance typing of methods
+    - JDK-8235691, CVE-2020-2816: Enhance TLS connectivity
+    - JDK-8236201, CVE-2020-2830: Better Scanner conversions
+    - JDK-8238960: linux-i586 builds are inconsistent as the newly build
+      jdk is not able to reserve enough space for object heap
 
   [ Matthias Klose ]
   * Refresh patches.
