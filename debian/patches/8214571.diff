@@ -1,0 +1,181 @@
+
+# HG changeset patch
+# User hannesw
+# Date 1544096068 -3600
+# Node ID 7f1d59ca120715bc64fb0c8c0797d568a97ec6f3
+# Parent  966fc6d784a737ec25cd0b1be48109a4a3fa02ad
+8214571: -Xdoclint of array serialField gives "error: array type not allowed here"
+Reviewed-by: jjg, sundar
+
+diff -r 966fc6d784a7 -r 7f1d59ca1207 src/jdk.compiler/share/classes/com/sun/tools/doclint/Checker.java
+--- a/src/jdk.compiler/share/classes/com/sun/tools/doclint/Checker.java	Mon Mar 02 12:30:59 2020 +0100
++++ b/src/jdk.compiler/share/classes/com/sun/tools/doclint/Checker.java	Thu Dec 06 12:34:28 2018 +0100
+@@ -869,8 +869,6 @@
+         String sig = tree.getSignature();
+         if (sig.contains("<") || sig.contains(">")) {
+             env.messages.error(REFERENCE, tree, "dc.type.arg.not.allowed");
+-        } else if (isArrayType(sig)) {
+-            env.messages.error(REFERENCE, tree, "dc.array.type.not.allowed");
+         } else {
+             Element e = env.trees.getElement(getCurrentPath());
+             if (e == null)
+@@ -948,12 +946,6 @@
+         return scan(tree.getDescription(), ignore);
+     }
+ 
+-    private boolean isArrayType(String signature) {
+-        int brackets = signature.indexOf('[');
+-        int parens = signature.indexOf('(');
+-        return brackets >= 0 && (parens < 0 || brackets < parens);
+-    }
+-
+     private boolean isThrowable(TypeMirror tm) {
+         switch (tm.getKind()) {
+             case DECLARED:
+diff -r 966fc6d784a7 -r 7f1d59ca1207 src/jdk.compiler/share/classes/com/sun/tools/doclint/resources/doclint.properties
+--- a/src/jdk.compiler/share/classes/com/sun/tools/doclint/resources/doclint.properties	Mon Mar 02 12:30:59 2020 +0100
++++ b/src/jdk.compiler/share/classes/com/sun/tools/doclint/resources/doclint.properties	Thu Dec 06 12:34:28 2018 +0100
+@@ -25,7 +25,6 @@
+ 
+ dc.anchor.already.defined = anchor already defined: "{0}"
+ dc.anchor.value.missing = no value given for anchor
+-dc.array.type.not.allowed = array type not allowed here
+ dc.attr.lacks.value = attribute lacks value
+ dc.attr.not.number = attribute value is not a number
+ dc.attr.not.supported.html4 = attribute not supported in HTML4: {0}
+diff -r 966fc6d784a7 -r 7f1d59ca1207 src/jdk.compiler/share/classes/com/sun/tools/javac/api/JavacTrees.java
+--- a/src/jdk.compiler/share/classes/com/sun/tools/javac/api/JavacTrees.java	Mon Mar 02 12:30:59 2020 +0100
++++ b/src/jdk.compiler/share/classes/com/sun/tools/javac/api/JavacTrees.java	Thu Dec 06 12:34:28 2018 +0100
+@@ -443,11 +443,7 @@
+                 // we first check if qualifierExpression identifies a type,
+                 // and if not, then we check to see if it identifies a package.
+                 Type t = attr.attribType(ref.qualifierExpression, env);
+-
+-                if (t.getKind() == TypeKind.ARRAY) {
+-                    // cannot refer to an array type
+-                    return null;
+-                } else if (t.isErroneous()) {
++                if (t.isErroneous()) {
+                     JCCompilationUnit toplevel =
+                         treeMaker.TopLevel(List.nil());
+                     final ModuleSymbol msym = modules.getDefaultModule();
+@@ -478,7 +474,11 @@
+                         }
+                     }
+                 } else {
+-                    tsym = t.tsym;
++                    Type e = t;
++                    // If this is an array type convert to element type
++                    while (e instanceof ArrayType)
++                        e = ((ArrayType)e).elemtype;
++                    tsym = e.tsym;
+                     memberName = (Name) ref.memberName;
+                 }
+             }
+diff -r 966fc6d784a7 -r 7f1d59ca1207 test/langtools/jdk/javadoc/doclet/testSeeTag/TestSeeTag.java
+--- a/test/langtools/jdk/javadoc/doclet/testSeeTag/TestSeeTag.java	Mon Mar 02 12:30:59 2020 +0100
++++ b/test/langtools/jdk/javadoc/doclet/testSeeTag/TestSeeTag.java	Thu Dec 06 12:34:28 2018 +0100
+@@ -95,7 +95,7 @@
+         checkOutput("badref/Test.html", true,
+                 "<dl>\n"
+                 + "<dt><span class=\"seeLabel\">See Also:</span></dt>\n"
+-                + "<dd><code>Object[]</code>, \n"
++                + "<dd><code>Object</code>, \n"
+                 + "<code>Foo<String></code></dd>\n"
+                 + "</dl>");
+     }
+diff -r 966fc6d784a7 -r 7f1d59ca1207 test/langtools/jdk/javadoc/doclet/testSerializedForm/SerializedForm.java
+--- a/test/langtools/jdk/javadoc/doclet/testSerializedForm/SerializedForm.java	Mon Mar 02 12:30:59 2020 +0100
++++ b/test/langtools/jdk/javadoc/doclet/testSerializedForm/SerializedForm.java	Thu Dec 06 12:34:28 2018 +0100
+@@ -31,13 +31,15 @@
+ 
+     /**
+      * @serialField name String a test
++     * @serialField longs Long[] the longs
+      * @see TestSerializedForm
+      */
+     @Deprecated
+     private static final ObjectStreamField[] serialPersistentFields = {
+         new ObjectStreamField("i", int.class),
+         new ObjectStreamField("count", Integer.TYPE),
+-        new ObjectStreamField("name", String.class)
++        new ObjectStreamField("name", String.class),
++        new ObjectStreamField("longs", Long[].class)
+     };
+ 
+     /**
+diff -r 966fc6d784a7 -r 7f1d59ca1207 test/langtools/jdk/javadoc/doclet/testSerializedForm/TestSerializedForm.java
+--- a/test/langtools/jdk/javadoc/doclet/testSerializedForm/TestSerializedForm.java	Mon Mar 02 12:30:59 2020 +0100
++++ b/test/langtools/jdk/javadoc/doclet/testSerializedForm/TestSerializedForm.java	Thu Dec 06 12:34:28 2018 +0100
+@@ -84,6 +84,19 @@
+                 + "pkg1.ProtectedInnerClass.ProInnerClass</a> extends java.lang.Object implements Serializable</h3>",
+                 "<h3>Class pkg1.PublicExcludeInnerClass.PubInnerClass extends java.lang.Object implements "
+                 + "Serializable</h3>");
++
++        checkOutput("serialized-form.html", true,
++                "<h3>Serialized Fields</h3>\n" +
++                "<ul class=\"blockList\">\n" +
++                "<li class=\"blockList\">\n" +
++                "<h4>longs</h4>\n" +
++                "<pre>Long[] longs</pre>\n" +
++                "<div class=\"block\">the longs</div>\n" +
++                "</li>\n" +
++                "<li class=\"blockListLast\">\n" +
++                "<h4>name</h4>\n" +
++                "<pre>java.lang.String name</pre>\n" +
++                "<div class=\"block\">a test</div>");
+     }
+ 
+     @Test
+@@ -113,6 +126,19 @@
+                 "<h3>Class <a href=\"pkg1/PublicExcludeInnerClass.PubInnerClass.html\" "
+                 + "title=\"class in pkg1\">pkg1.PublicExcludeInnerClass.PubInnerClass</a> "
+                 + "extends java.lang.Object implements Serializable</h3>");
++
++        checkOutput("serialized-form.html", true,
++                "<h3>Serialized Fields</h3>\n" +
++                "<ul class=\"blockList\">\n" +
++                "<li class=\"blockList\">\n" +
++                "<h4>longs</h4>\n" +
++                "<pre>Long[] longs</pre>\n" +
++                "<div class=\"block\">the longs</div>\n" +
++                "</li>\n" +
++                "<li class=\"blockListLast\">\n" +
++                "<h4>name</h4>\n" +
++                "<pre>java.lang.String name</pre>\n" +
++                "<div class=\"block\">a test</div>");
+     }
+ 
+     @Test
+diff -r 966fc6d784a7 -r 7f1d59ca1207 test/langtools/tools/doclint/ReferenceTest.out
+--- a/test/langtools/tools/doclint/ReferenceTest.out	Mon Mar 02 12:30:59 2020 +0100
++++ b/test/langtools/tools/doclint/ReferenceTest.out	Thu Dec 06 12:34:28 2018 +0100
+@@ -43,24 +43,12 @@
+ ReferenceTest.java:65: error: type arguments not allowed here
+      * @see not.Found<String>
+             ^
+-ReferenceTest.java:70: error: array type not allowed here
+-     * {@link java.lang.String[]}
+-              ^
+-ReferenceTest.java:71: error: array type not allowed here
+-     * {@link java.lang.String[]#equals}
+-              ^
+-ReferenceTest.java:72: error: array type not allowed here
++ReferenceTest.java:72: error: reference not found
+      * {@link not.Found[]}
+               ^
+-ReferenceTest.java:73: error: array type not allowed here
+-     * @see java.lang.String[]
+-            ^
+-ReferenceTest.java:74: error: array type not allowed here
+-     * @see java.lang.String[]#equals
+-            ^
+-ReferenceTest.java:75: error: array type not allowed here
++ReferenceTest.java:75: error: reference not found
+      * @see not.Found[]
+             ^
+-20 errors
++16 errors
+ 1 warning
+ 
+

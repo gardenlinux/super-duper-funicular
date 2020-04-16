@@ -1,3 +1,11 @@
+openjdk-11 (11.0.7+10-3) unstable; urgency=high
+
+  * Backport the fix for JDK-8214571, -Xdoclint of array serialField gives
+    "error: array type not allowed here". Introduced with 11.0.7.
+  * Enable running the testsuite on release architectures.
+
+ -- Matthias Klose <doko@ubuntu.com>  Thu, 16 Apr 2020 14:40:58 +0200
+
 openjdk-11 (11.0.7+10-2) unstable; urgency=high
 
   * Backport the fix for 8228407, JVM crashes with shared archive file mismatch.
