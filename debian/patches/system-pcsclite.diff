@@ -1,5 +1,3 @@
-Index: b/make/autoconf/lib-bundled.m4
-===================================================================
 --- a/make/autoconf/lib-bundled.m4
 +++ b/make/autoconf/lib-bundled.m4
 @@ -40,6 +40,7 @@ AC_DEFUN_ONCE([LIB_SETUP_BUNDLED_LIBS],
@@ -52,11 +50,9 @@ Index: b/make/autoconf/lib-bundled.m4
 +
 +  AC_SUBST(USE_EXTERNAL_PCSCLITE)
 +])
-Index: b/make/autoconf/spec.gmk.in
-===================================================================
 --- a/make/autoconf/spec.gmk.in
 +++ b/make/autoconf/spec.gmk.in
-@@ -778,6 +778,7 @@ ENABLE_AOT:=@ENABLE_AOT@
+@@ -781,6 +781,7 @@ ENABLE_AOT:=@ENABLE_AOT@
  ENABLE_INTREE_EC:=@ENABLE_INTREE_EC@
  USE_EXTERNAL_LIBJPEG:=@USE_EXTERNAL_LIBJPEG@
  USE_EXTERNAL_LIBGIF:=@USE_EXTERNAL_LIBGIF@
@@ -64,8 +60,6 @@ Index: b/make/autoconf/spec.gmk.in
  USE_EXTERNAL_LIBZ:=@USE_EXTERNAL_LIBZ@
  LIBZ_CFLAGS:=@LIBZ_CFLAGS@
  LIBZ_LIBS:=@LIBZ_LIBS@
-Index: b/make/lib/Lib-java.smartcardio.gmk
-===================================================================
 --- a/make/lib/Lib-java.smartcardio.gmk
 +++ b/make/lib/Lib-java.smartcardio.gmk
 @@ -30,12 +30,12 @@ include LibCommon.gmk
@@ -84,8 +78,6 @@ Index: b/make/lib/Lib-java.smartcardio.gmk
      LIBS_windows := winscard.lib, \
  ))
  
-Index: b/src/java.smartcardio/unix/native/libj2pcsc/pcsc_md.c
-===================================================================
 --- a/src/java.smartcardio/unix/native/libj2pcsc/pcsc_md.c
 +++ b/src/java.smartcardio/unix/native/libj2pcsc/pcsc_md.c
 @@ -36,6 +36,7 @@
@@ -132,8 +124,6 @@ Index: b/src/java.smartcardio/unix/native/libj2pcsc/pcsc_md.c
  #endif // __APPLE__
 +#endif
  }
-Index: b/src/java.smartcardio/unix/native/libj2pcsc/pcsc_md.h
-===================================================================
 --- a/src/java.smartcardio/unix/native/libj2pcsc/pcsc_md.h
 +++ b/src/java.smartcardio/unix/native/libj2pcsc/pcsc_md.h
 @@ -23,6 +23,8 @@

@@ -1,13 +1,11 @@
-Index: b/make/autoconf/flags-cflags.m4
-===================================================================
 --- a/make/autoconf/flags-cflags.m4
 +++ b/make/autoconf/flags-cflags.m4
-@@ -798,6 +798,9 @@ AC_DEFUN([FLAGS_SETUP_CFLAGS_CPU_DEP],
+@@ -789,6 +789,9 @@ AC_DEFUN([FLAGS_SETUP_CFLAGS_CPU_DEP],
        fi
      elif test "x$FLAGS_CPU" = xs390x; then
        $1_CFLAGS_CPU="-mbackchain -march=z10"
-+      if dpkg-vendor --derives-from Ubuntu; then
-+        $1_CFLAGS_CPU="-mbackchain -march=zEC12"
++      if test "x$VENDOR_FLAGS_CPU" != x; then
++        $1_CFLAGS_CPU="-mbackchain $VENDOR_FLAGS_CPU"
 +      fi
      fi
  

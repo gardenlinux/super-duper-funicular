@@ -346,6 +346,18 @@ EXTRA_BUILD_ENV += IGNORE_OLD_CONFIG=true
 
 EXTRA_BUILD_ENV += LIBFFI_LIBS=-lffi_pic
 
+EXTRA_BUILD_ENV += JOBS=$(NJOBS)
+
+ifeq ($(derivative),Ubuntu)
+  ifeq ($(DEB_HOST_ARCH),s390x)
+    ifneq (,$(filter $(distrel), trusty xenial bionic eoan focal))
+      export VENDOR_FLAGS_CPU = -march=zEC12
+    else
+      export VENDOR_FLAGS_CPU = -march=z13 -mtune=z15
+    endif
+  endif
+endif
+
 CONFIGURE_ARGS += --enable-system-kerberos
 
 ifeq ($(with_nss),yes)
@@ -401,7 +413,7 @@ ifneq (,$(filter $(DEB_HOST_ARCH), sparc64))
 endif
 
 ifeq ($(with_check),yes)
-  COMMON_CONFIGURE_ARGS += --with-jtreg=/usr
+  COMMON_CONFIGURE_ARGS += --with-jtreg=/usr/share/jtreg
 else
   COMMON_CONFIGURE_ARGS += --disable-jtreg-failure-handler
 endif
@@ -544,7 +556,7 @@ all_tools	= $(notdir $(wildcard $(builddir)/$(sdkimg)/bin/*))
 
 jdk_hl_tools	= jar jarsigner javac javadoc javap jcmd jdb \
 	jdeprscan jdeps jimage jinfo jlink jmap jmod jps \
-	jrunscript jshell jstack jstat jstatd rmic serialver
+	jrunscript jshell jstack jstat jstatd serialver
 ifneq (,$(filter $(DEB_HOST_ARCH), amd64 arm64))
   jdk_hl_tools	+= jaotc
 endif
@@ -1022,7 +1034,7 @@ build: pre-build $(build_stamps)
 
 stamps/build: stamps/configure
 	@echo '========== $@ =========='
-ifneq (,$(filter $(DEB_HOST_ARCH), alpha armel armhf ia64 m68k mips mipsel mips64 mips64el powerpc powerpcspe s390x sparc sparc64))
+ifneq (,$(filter $(DEB_HOST_ARCH), alpha armel armhf ia64 m68k mips mipsel mips64 mips64el powerpc powerpcspe riscv64 s390x sh4 sparc sparc64))
 	sh -c 'sh debian/buildwatch.sh $(CURDIR)/$(builddir) &'
 endif
 	if $(EXTRA_BUILD_ENV) $(MAKE) --no-print-directory -C $(builddir) $(build_target); then \
@@ -1814,7 +1826,7 @@ is_release		=
 hg_project		= jdk15u
 hg_tag			= jdk-15.0.1+11
 hg_project		= jdk
-hg_tag			= jdk-15+18
+hg_tag			= jdk-15+19
 package_version		= $(subst jdk-,,$(hg_tag))
 ifneq ($(is_release),yes)
   package_version	:= $(subst +,~,$(package_version))
