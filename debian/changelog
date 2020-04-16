@@ -1,6 +1,8 @@
 openjdk-15 (15~19-1) unstable; urgency=medium
 
   * OpenJDK 15 snapshot, build 19.
+  * Configure --with-jtreg=/usr/share/jtreg
+  * Build with -march=z13 -mtune=z15 on Ubuntu/s390x.
 
  -- Matthias Klose <doko@ubuntu.com>  Thu, 16 Apr 2020 11:53:19 +0200
 
@@ -16,8 +18,6 @@ openjdk-15 (15~18-1) unstable; urgency=medium
   * jhsdb isn't built on sh4 (Adrian Glaubitz). Addresses: #951774.
   * Enable zero for armhf again.
   * Enable running the tests again, jtreg now updated to 6.0.
-  * Configure --with-jtreg=/usr/share/jtreg
-  * Build with -march=z13 -mtune=z15 on Ubuntu/s390x.
 
  -- Matthias Klose <doko@ubuntu.com>  Mon, 13 Apr 2020 21:16:21 +0200
 
