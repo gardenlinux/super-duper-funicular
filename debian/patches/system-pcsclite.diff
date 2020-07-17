@@ -50,18 +50,8 @@
 +
 +  AC_SUBST(USE_EXTERNAL_PCSCLITE)
 +])
---- a/make/autoconf/spec.gmk.in
-+++ b/make/autoconf/spec.gmk.in
-@@ -783,6 +783,7 @@ ENABLE_AOT:=@ENABLE_AOT@
- ENABLE_INTREE_EC:=@ENABLE_INTREE_EC@
- USE_EXTERNAL_LIBJPEG:=@USE_EXTERNAL_LIBJPEG@
- USE_EXTERNAL_LIBGIF:=@USE_EXTERNAL_LIBGIF@
-+USE_EXTERNAL_LIBPCSCLITE:=@USE_EXTERNAL_LIBPCSCLITE@
- USE_EXTERNAL_LIBZ:=@USE_EXTERNAL_LIBZ@
- LIBZ_CFLAGS:=@LIBZ_CFLAGS@
- LIBZ_LIBS:=@LIBZ_LIBS@
---- a/make/lib/Lib-java.smartcardio.gmk
-+++ b/make/lib/Lib-java.smartcardio.gmk
+--- a/make/modules/java.smartcardio/Lib.gmk
++++ b/make/modules/java.smartcardio/Lib.gmk
 @@ -30,12 +30,12 @@ include LibCommon.gmk
  $(eval $(call SetupJdkLibrary, BUILD_LIBJ2PCSC, \
      NAME := j2pcsc, \
@@ -78,6 +68,16 @@
      LIBS_windows := winscard.lib, \
  ))
  
+--- a/make/autoconf/spec.gmk.in
++++ b/make/autoconf/spec.gmk.in
+@@ -761,6 +761,7 @@ ENABLE_AOT:=@ENABLE_AOT@
+ ENABLE_INTREE_EC:=@ENABLE_INTREE_EC@
+ USE_EXTERNAL_LIBJPEG:=@USE_EXTERNAL_LIBJPEG@
+ USE_EXTERNAL_LIBGIF:=@USE_EXTERNAL_LIBGIF@
++USE_EXTERNAL_LIBPCSCLITE:=@USE_EXTERNAL_LIBPCSCLITE@
+ USE_EXTERNAL_LIBZ:=@USE_EXTERNAL_LIBZ@
+ LIBZ_CFLAGS:=@LIBZ_CFLAGS@
+ LIBZ_LIBS:=@LIBZ_LIBS@
 --- a/src/java.smartcardio/unix/native/libj2pcsc/pcsc_md.c
 +++ b/src/java.smartcardio/unix/native/libj2pcsc/pcsc_md.c
 @@ -36,6 +36,7 @@

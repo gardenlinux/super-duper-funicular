@@ -1026,8 +1026,8 @@ Index: b/make/data/x11wrappergen/sizes-32-linux-m68k.txt
 +XTextProperty	16
 Index: b/make/gensrc/GensrcX11Wrappers.gmk
 ===================================================================
---- a/make/gensrc/GensrcX11Wrappers.gmk
-+++ b/make/gensrc/GensrcX11Wrappers.gmk
+--- a/make/modules/java.desktop/gensrc/GensrcX11Wrappers.gmk
++++ b/make/modules/java.desktop/gensrc/GensrcX11Wrappers.gmk
 @@ -29,9 +29,14 @@
  # Put the generated Java classes used to interface X11 from awt here.
  GENSRC_X11WRAPPERS_OUTPUTDIR := $(SUPPORT_OUTPUTDIR)/gensrc/java.desktop/sun/awt/X11

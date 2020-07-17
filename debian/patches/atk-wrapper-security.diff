@@ -1,8 +1,6 @@
-Index: b/src/java.base/share/conf/security/java.security
-===================================================================
 --- a/src/java.base/share/conf/security/java.security
 +++ b/src/java.base/share/conf/security/java.security
-@@ -321,6 +321,7 @@ keystore.type.compat=true
+@@ -307,6 +307,7 @@ keystore.type.compat=true
  #
  package.access=sun.misc.,\
                 sun.reflect.,\

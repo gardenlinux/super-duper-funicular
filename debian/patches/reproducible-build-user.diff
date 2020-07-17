@@ -3,7 +3,7 @@ Author: Emmanuel Bourg <ebourg@apache.org>
 Forwarded: no
 --- a/make/autoconf/basic.m4
 +++ b/make/autoconf/basic.m4
-@@ -102,7 +102,7 @@ AC_DEFUN_ONCE([BASIC_SETUP_PATHS],
+@@ -103,7 +103,7 @@ AC_DEFUN_ONCE([BASIC_SETUP_PATHS],
  
    # Setup username (for use in adhoc version strings etc)
    # Outer [ ] to quote m4.

@@ -3,7 +3,7 @@ hotspot-mips-align.diff
 icc_loading_with_symlink.diff
 icedtea-override-redirect-compiz.diff
 libpcsclite-dlopen.diff
-jexec.diff
+#jexec.diff
 default-jvm-cfg.diff
 workaround_expand_exec_shield_cs_limit.diff
 adlc-parser.diff

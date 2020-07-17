@@ -157,7 +157,6 @@ ifneq (,$(filter $(distrel), precise trusty xenial))
   with_check = disabled for $(distrel)
 endif
 #with_check = disabled, more recent jtreg needed
-with_check = disabled
 
 with_docs = $(if $(findstring nodoc, $(DEB_BUILD_OPTIONS)),,yes)
 ifneq (,$(filter $(distrel), precise trusty))
@@ -301,9 +300,12 @@ else ifneq (,$(filter $(distrel),artful))
 else ifneq (,$(filter $(distrel),buster precise trusty xenial bionic cosmic disco))
   export CC = $(DEB_HOST_GNU_TYPE)-gcc-8
   export CXX = $(DEB_HOST_GNU_TYPE)-g++-8
-else
+else ifneq (,$(filter $(distrel),focal ))
   export CC = $(DEB_HOST_GNU_TYPE)-gcc-9
   export CXX = $(DEB_HOST_GNU_TYPE)-g++-9
+else
+  export CC = $(DEB_HOST_GNU_TYPE)-gcc-10
+  export CXX = $(DEB_HOST_GNU_TYPE)-g++-10
 endif
 
 ifneq (,$(filter $(distrel),squeeze lucid))
@@ -623,8 +625,10 @@ else ifneq (,$(filter $(distrel),precise))
   bd_gcc = g++-8,
 else ifneq (,$(filter $(distrel),buster bionic cosmic disco))
   bd_gcc = g++-8 <!cross>,
-else
+else ifneq (,$(filter $(distrel),focal))
   bd_gcc = g++-9 <!cross>,
+else
+  bd_gcc = g++-10 <!cross>,
 endif
 bd_syslibs = zlib1g-dev:native, zlib1g-dev, libattr1-dev,
 ifneq (,$(filter $(distrel),squeeze lucid))
@@ -1708,14 +1712,10 @@ ifeq ($(with_docs),yes)
 	  cp -a $$i $(d_doc)/usr/share/doc/$(p_jrehl)/; \
 	  ln -sf ../$(p_jrehl)/$$b $(d_doc)/usr/share/doc/$(p_doc)/$$b; \
 	done
-	rm -v $(d_doc)/usr/share/doc/$(p_jrehl)/api/script-dir/{jquery-3.4.1.js,jquery-ui.css,jquery-ui.js,jquery-ui.min.css,jquery-ui.min.js}
+	rm -v $(d_doc)/usr/share/doc/$(p_jrehl)/api/script-dir/{jquery-3.5.1.min.js,jquery-ui.min.css,jquery-ui.min.js}
 	dh_link -p$(p_doc) \
-	  /usr/share/javascript/jquery/jquery.js \
-	    /usr/share/doc/$(p_jrehl)/api/script-dir/jquery-3.4.1.js \
-	  /usr/share/javascript/jquery-ui/themes/base/jquery-ui.css \
-	    /usr/share/doc/$(p_jrehl)/api/script-dir/jquery-ui.css \
-	  /usr/share/javascript/jquery-ui/jquery-ui.js \
-	    /usr/share/doc/$(p_jrehl)/api/script-dir/jquery-ui.js \
+	  /usr/share/javascript/jquery-ui/jquery-ui.min.js \
+	    /usr/share/doc/$(p_jrehl)/api/script-dir/jquery-3.5.1.min.js \
 	  /usr/share/javascript/jquery-ui/themes/base/jquery-ui.min.css \
 	    /usr/share/doc/$(p_jrehl)/api/script-dir/jquery-ui.min.css \
 	  /usr/share/javascript/jquery-ui/jquery-ui.min.js \
@@ -1829,7 +1829,7 @@ is_release		=
 hg_project		= jdk15u
 hg_tag			= jdk-15.0.1+11
 hg_project		= jdk
-hg_tag			= jdk-15+20
+hg_tag			= jdk-15+32
 package_version		= $(subst jdk-,,$(hg_tag))
 ifneq ($(is_release),yes)
   package_version	:= $(subst +,~,$(package_version))
