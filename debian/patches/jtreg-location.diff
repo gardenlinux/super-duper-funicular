@@ -1,5 +1,3 @@
-Index: b/make/autoconf/toolchain.m4
-===================================================================
 --- a/make/autoconf/toolchain.m4
 +++ b/make/autoconf/toolchain.m4
 @@ -1088,7 +1088,7 @@ AC_DEFUN_ONCE([TOOLCHAIN_SETUP_JTREG],
@@ -7,7 +5,7 @@ Index: b/make/autoconf/toolchain.m4
      fi
  
 -    if test ! -e "$JT_HOME/lib/jtreg.jar"; then
-+    if test ! -e "$JT_HOME/share/java/jtreg.jar"; then
++    if test ! -e "$JT_HOME/lib/jtreg.jar" && test ! -e "$JT_HOME/share/java/jtreg.jar"; then
        AC_MSG_ERROR([jtreg home directory from --with-jtreg=$with_jtreg is not a valid jtreg home])
      fi
  
@@ -16,7 +14,7 @@ Index: b/make/autoconf/toolchain.m4
          JT_HOME=
        else
 -        if test ! -e "$JT_HOME/lib/jtreg.jar"; then
-+        if test ! -e "$JT_HOME/share/java/jtreg.jar"; then
++        if test ! -e "$JT_HOME/lib/jtreg.jar" && test ! -e "$JT_HOME/share/java/jtreg.jar"; then
            AC_MSG_WARN([Ignoring JT_HOME which is not a valid jtreg home: $JT_HOME])
            JT_HOME=
          else
@@ -25,25 +23,21 @@ Index: b/make/autoconf/toolchain.m4
          # That's good, now try to derive JT_HOME
          JT_HOME=`(cd $($DIRNAME $JTREGEXE)/.. && pwd)`
 -        if test ! -e "$JT_HOME/lib/jtreg.jar"; then
-+        if test ! -e "$JT_HOME/share/java/jtreg.jar"; then
++        if test ! -e "$JT_HOME/lib/jtreg.jar" && test ! -e "$JT_HOME/share/java/jtreg.jar"; then
            AC_MSG_WARN([Ignoring jtreg from path since a valid jtreg home cannot be found])
            JT_HOME=
          else
-Index: b/make/RunTests.gmk
-===================================================================
 --- a/make/RunTests.gmk
 +++ b/make/RunTests.gmk
-@@ -947,7 +947,7 @@ define SetupRunJtregTestBody
+@@ -946,7 +946,7 @@ define SetupRunJtregTestBody
  
    $1_COMMAND_LINE := \
        $$(JAVA) $$($1_JTREG_LAUNCHER_OPTIONS) \
 -          -Dprogram=jtreg -jar $$(JT_HOME)/lib/jtreg.jar \
-+          -Dprogram=jtreg -jar $$(JT_HOME)/share/java/jtreg.jar \
++          -Dprogram=jtreg -jar $$(if $$(wildcard $$(JT_HOME)/lib/jtreg.jar),$$(JT_HOME)/lib/jtreg.jar,$$(JT_HOME)/share/java/jtreg.jar) \
            $$($1_JTREG_BASIC_OPTIONS) \
            -testjdk:$$(JDK_UNDER_TEST) \
            -dir:$$(JTREG_TOPDIR) \
-Index: b/make/test/BuildFailureHandler.gmk
-===================================================================
 --- a/make/test/BuildFailureHandler.gmk
 +++ b/make/test/BuildFailureHandler.gmk
 @@ -39,7 +39,7 @@ FH_BASEDIR := $(TOPDIR)/test/failure_han
@@ -51,7 +45,7 @@ Index: b/make/test/BuildFailureHandler.gmk
  FH_JAR := $(FH_SUPPORT)/jtregFailureHandler.jar
  
 -JTREG_JAR := $(JT_HOME)/lib/jtreg.jar
-+JTREG_JAR := $(JT_HOME)/share/java/jtreg.jar
++JTREG_JAR := $(if $(wildcard $(JT_HOME)/lib/jtreg.jar),$(JT_HOME)/lib/jtreg.jar,$(JT_HOME)/share/java/jtreg.jar)
  ifeq ($(wildcard $(JTREG_JAR)), )
    $(error Cannot build failure handler without jtreg)
  endif

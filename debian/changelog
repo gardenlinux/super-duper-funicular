@@ -1,3 +1,12 @@
+openjdk-15 (15~20-1) unstable; urgency=medium
+
+  * OpenJDK 15 snapshot, build 19.
+  * Build again with -march=zEC12 on Ubuntu/s390x.
+  * Re-add missing parts of the riscv64 patch.
+  * Run the tests on release architectures.
+
+ -- Matthias Klose <doko@ubuntu.com>  Thu, 23 Apr 2020 13:44:45 +0200
+
 openjdk-15 (15~19-1) unstable; urgency=medium
 
   * OpenJDK 15 snapshot, build 19.
