@@ -1,3 +1,10 @@
+openjdk-14 (14.0.2+12-1) unstable; urgency=medium
+
+  * OpenJDK 14.0.2 release, build 12 (release build).
+  * Build again with -march=zEC12 on Ubuntu/s390x.
+
+ -- Matthias Klose <doko@ubuntu.com>  Fri, 17 Jul 2020 18:20:10 +0200
+
 openjdk-14 (14.0.1+7-1) unstable; urgency=medium
 
   * OpenJDK 14.0.1 release, build 7.

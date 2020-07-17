@@ -293,15 +293,18 @@ else ifneq (,$(filter $(distrel),stretch))
   # FIXME: still hotspot core dumps with GCC 6
   export CC = $(DEB_HOST_GNU_TYPE)-gcc-6
   export CXX = $(DEB_HOST_GNU_TYPE)-g++-6
-else ifneq (,$(filter $(distrel),artful bionic))
+else ifneq (,$(filter $(distrel),artful))
   export CC = $(DEB_HOST_GNU_TYPE)-gcc-7
   export CXX = $(DEB_HOST_GNU_TYPE)-g++-7
 else ifneq (,$(filter $(distrel),buster precise trusty xenial bionic cosmic disco))
   export CC = $(DEB_HOST_GNU_TYPE)-gcc-8
   export CXX = $(DEB_HOST_GNU_TYPE)-g++-8
-else
+else ifneq (,$(filter $(distrel),bullseye sid focal groovy))
   export CC = $(DEB_HOST_GNU_TYPE)-gcc-9
   export CXX = $(DEB_HOST_GNU_TYPE)-g++-9
+else
+  export CC = $(DEB_HOST_GNU_TYPE)-gcc-10
+  export CXX = $(DEB_HOST_GNU_TYPE)-g++-10
 endif
 
 ifneq (,$(filter $(distrel),squeeze lucid))
@@ -608,15 +611,17 @@ else ifneq (,$(filter $(distrel),wily))
   bd_gcc = g++-5 [$(hotspot_archs)], g++-4.9 [$(strip $(foreach a,$(hotspot_archs), !$(a)))], g++-4.9 [arm64],
 else ifneq (,$(filter $(distrel),stretch))
   bd_gcc = g++-6,
-else ifneq (,$(filter $(distrel),artful bionic))
+else ifneq (,$(filter $(distrel),artful))
   bd_gcc = g++-7,
 else ifneq (,$(filter $(distrel),precise))
   # FIXME: ftbfs on armhf with the default GCC
   bd_gcc = g++-8,
 else ifneq (,$(filter $(distrel),buster bionic cosmic disco))
   bd_gcc = g++-8 <!cross>,
-else
+else ifneq (,$(filter $(distrel),bullseye sid focal groovy))
   bd_gcc = g++-9 <!cross>,
+else
+  bd_gcc = g++-10 <!cross>,
 endif
 bd_syslibs = zlib1g-dev:native, zlib1g-dev, libattr1-dev,
 ifneq (,$(filter $(distrel),squeeze lucid))
@@ -1029,7 +1034,7 @@ build: pre-build $(build_stamps)
 
 stamps/build: stamps/configure
 	@echo '========== $@ =========='
-ifneq (,$(filter $(DEB_HOST_ARCH), alpha armel armhf ia64 m68k mips mipsel mips64 mips64el powerpc powerpcspe s390x sparc sparc64))
+ifneq (,$(filter $(DEB_HOST_ARCH), alpha armel armhf ia64 m68k mips mipsel mips64 mips64el powerpc powerpcspe riscv64 s390x sh4 sparc sparc64))
 	sh -c 'sh debian/buildwatch.sh $(CURDIR)/$(builddir) &'
 endif
 	if $(EXTRA_BUILD_ENV) $(MAKE) --no-print-directory -C $(builddir) $(build_target); then \
@@ -1820,7 +1825,7 @@ endif
 
 is_release		= yes
 hg_project		= jdk14u
-hg_tag			= jdk-14.0.1+7
+hg_tag			= jdk-14.0.2+12
 package_version		= $(subst jdk-,,$(hg_tag))
 ifneq ($(is_release),yes)
   package_version	:= $(subst +,~,$(package_version))
