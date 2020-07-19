@@ -1,3 +1,11 @@
+openjdk-15 (15~32-2) unstable; urgency=medium
+
+  * debian/copyright (remove licenses not found anymore in the sources):
+    - Little CMS, libpng, GIFLIB.
+  * Stop building zero on armhf, ftbfs.
+
+ -- Matthias Klose <doko@ubuntu.com>  Sun, 19 Jul 2020 10:36:08 +0200
+
 openjdk-15 (15~32-1) unstable; urgency=medium
 
   * OpenJDK 15 snapshot, build 32.
