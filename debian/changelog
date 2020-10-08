@@ -1,5 +1,6 @@
-openjdk-11 (11.0.8+10-2) UNRELEASED; urgency=high
+openjdk-11 (11.0.9+10-1) UNRELEASED; urgency=medium
 
+  * OpenJDK 11.0.9+10 build (early access).
   * debian/rules:
     - copy apport hook to source_$(PKGSOURCE).py, fixes apport on
       Ubuntu where source name is openjdk-lts instead of openjdk-11. 

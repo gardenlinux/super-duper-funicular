@@ -1787,9 +1787,9 @@ endif
 	NO_PKG_MANGLE=1 \
 	dh_builddeb -a $(nodemo) $(nojrez) #$(bd_options)
 
-is_release		= yes
+#is_release		= yes
 hg_project		= jdk11u
-hg_tag			= jdk-11.0.8+10
+hg_tag			= jdk-11.0.9+10
 package_version		= $(subst jdk-,,$(hg_tag))
 ifneq ($(is_release),yes)
   package_version	:= $(subst +,~,$(package_version))
