@@ -1821,7 +1821,6 @@ is_release		= yes
 #is_release		=
 hg_project		= jdk15u
 hg_tag			= jdk-15.0.1+11
-hg_project		= jdk
 hg_tag			= jdk-15+36
 package_version		= $(subst jdk-,,$(hg_tag))
 ifneq ($(is_release),yes)
