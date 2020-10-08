@@ -1,8 +1,45 @@
-openjdk-11 (11.0.7+10-4) UNRELEASED; urgency=medium
+openjdk-11 (11.0.8+10-1) unstable; urgency=high
 
+  * OpenJDK 11.0.8+10 build (release).
+  * Security fixes:
+    - JDK-8233239, CVE-2020-14562: Enhance TIFF support
+    - JDK-8236867, CVE-2020-14573: Enhance Graal interface handling
+    - JDK-8237117, CVE-2020-14556: Better ForkJoinPool behavior
+    - JDK-8237592, CVE-2020-14577: Enhance certificate verification
+    - JDK-8238002, CVE-2020-14581: Better matrix operations
+    - JDK-8238920, CVE-2020-14583: Better Buffer support
+    - JDK-8240119, CVE-2020-14593: Less Affine Transformations
+    - JDK-8242136, CVE-2020-14621: Better XML namespace handling
+    - JDK-8230613: Better ASCII conversions
+    - JDK-8231800: Better listing of arrays
+    - JDK-8232014: Expand DTD support
+    - JDK-8233234: Better Zip Naming
+    - JDK-8233255: Better Swing Buttons
+    - JDK-8234032: Improve basic calendar services
+    - JDK-8234042: Better factory production of certificates
+    - JDK-8234418: Better parsing with CertificateFactory
+    - JDK-8234836: Improve serialization handling
+    - JDK-8236191: Enhance OID processing
+    - JDK-8238013: Enhance String writing
+    - JDK-8238804: Enhance key handling process
+    - JDK-8238842: AIOOBE in GIFImageReader.initializeStringTable
+    - JDK-8238843: Enhanced font handing
+    - JDK-8238925: Enhance WAV file playback
+    - JDK-8240482: Improved WAV file playback
+    - JDK-8241379: Update JCEKS support
+    - JDK-8241522: Manifest improved jar headers redux
+
+  [ Tiago Stürmer Daitx ]
+  * d/p/default-jvm-cfg.diff: updated patch.
+  * d/p/8214571.diff, d/p/8228407.diff: applied by upstream, removed patches.
+
+  [ Matthias Klose ]
   * Don't try to run autopkg tests on armel, mipsel, mips64el.
+  * debian/copyright (remove licenses not found anymore in the sources):
+    - Little CMS, libpng, GIFLIB.
+  * Prepare to Build using GCC 10.
 
- -- Matthias Klose <doko@ubuntu.com>  Fri, 17 Jul 2020 19:00:12 +0200
+ -- Matthias Klose <doko@ubuntu.com>  Wed, 22 Jul 2020 14:26:43 +0200
 
 openjdk-11 (11.0.7+10-3) unstable; urgency=high
 

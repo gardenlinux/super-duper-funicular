@@ -295,9 +295,12 @@ else ifneq (,$(filter $(distrel),artful bionic))
 else ifneq (,$(filter $(distrel),buster precise bionic cosmic disco))
   export CC = $(DEB_HOST_GNU_TYPE)-gcc-8
   export CXX = $(DEB_HOST_GNU_TYPE)-g++-8
-else
+else ifneq (,$(filter $(distrel),sid unstable focal groovy))
   export CC = $(DEB_HOST_GNU_TYPE)-gcc-9
   export CXX = $(DEB_HOST_GNU_TYPE)-g++-9
+else
+  export CC = $(DEB_HOST_GNU_TYPE)-gcc-10
+  export CXX = $(DEB_HOST_GNU_TYPE)-g++-10
 endif
 
 # until we are able to b-d on gcc-for-host ...
@@ -590,8 +593,10 @@ else ifneq (,$(filter $(distrel),precise))
   bd_gcc = g++-8,
 else ifneq (,$(filter $(distrel),buster bionic cosmic disco))
   bd_gcc = g++-8 <!cross>,
-else
+else ifneq (,$(filter $(distrel),sid unstable focal groovy))
   bd_gcc = g++-9 <!cross>,
+else
+  bd_gcc = g++-10 <!cross>,
 endif
 bd_syslibs = zlib1g-dev:native, zlib1g-dev, libattr1-dev,
 ifneq (,$(filter $(distrel),squeeze lucid))
@@ -1784,7 +1789,7 @@ endif
 
 is_release		= yes
 hg_project		= jdk11u
-hg_tag			= jdk-11.0.7+10
+hg_tag			= jdk-11.0.8+10
 package_version		= $(subst jdk-,,$(hg_tag))
 ifneq ($(is_release),yes)
   package_version	:= $(subst +,~,$(package_version))
