@@ -1,6 +1,14 @@
 openjdk-15 (15+36-2) UNRELEASED; urgency=medium
 
+  [ Matthias Klose ]
   * Build just zero on sparc64 (Adrian Glaubitz). Closes: #965342.
+
+  [ Tiago Stürmer Daitx ]
+  * debian/rules:
+    - untar upstream tarball directly and avoid the unnecessary
+      intermediate directory.
+    - get tar to clamp mtime based on changelog's date entry and
+      name the origtarball from $PKGSOURCE instead of basename.
 
  -- Matthias Klose <doko@ubuntu.com>  Mon, 21 Sep 2020 12:33:17 +0200
 
