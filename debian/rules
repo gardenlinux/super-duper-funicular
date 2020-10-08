@@ -1410,7 +1410,7 @@ endif
 	: # copy apport hook
 ifeq ($(derivative),Ubuntu)
 	mkdir -p $(d)/usr/share/apport/package-hooks/
-	cp debian/apport-hook.py $(d)/usr/share/apport/package-hooks/source_$(basename).py
+	cp debian/apport-hook.py $(d)/usr/share/apport/package-hooks/source_$(PKGSOURCE).py
 endif
 
 	: # move demos and samples, create symlinks for $(p_demo)
