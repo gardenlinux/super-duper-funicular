@@ -1836,34 +1836,25 @@ ifneq ($(is_release),yes)
   package_version	:= $(subst +,~,$(package_version))
 endif
 hg_url			= http://hg.openjdk.java.net/jdk-updates/$(hg_project)
-#hg_url			= http://hg.openjdk.java.net/jdk/$(hg_project)
-origdir = ../$(basename)-$(package_version).orig
-topdir = $(basename)-$(package_version)
+origdir			= ../$(basename)-$(package_version).orig
+orig_tarball		= ../$(PKGSOURCE)_$(package_version).orig.tar.xz
+source_date		:= $(shell dpkg-parsechangelog | sed -n '/^Date: /{s///p;q;}')
 get-orig:
-	mkdir $(origdir)
-	wget -O $(origdir)/jdk.tar.bz2 $(hg_url)/archive/$(hg_tag).tar.bz2
-
 	set -ex; \
-	repo=jdk; \
-	d=$$(tar tf $(origdir)/$$repo.tar.bz2 | head -1 | sed 's,/.*,,'); \
-	tar xf $(origdir)/$$repo.tar.bz2; \
-	case $$repo in jdk) \
-	  rm -v -rf $$d/src/java.base/share/native/libzip/zlib; \
-	  find $$d/src/java.desktop/share/native/libjavajpeg \
-	    ! -name imageioJPEG.c ! -name jpegdecoder.c ! -name jinclude.h \
-	    -type f -print -delete; \
-	  rm -v -rf $$d/src/java.desktop/share/native/libsplashscreen/giflib; \
-	  rm -v -rf $$d/src/java.desktop/share/native/libsplashscreen/libpng; \
-	  rm -v -f $$d/src/java.desktop/share/native/liblcms/cms*.c; \
-	  rm -v -f $$d/src/java.desktop/share/native/liblcms/lcms2*.h; \
-	  rm -v -rf $$d/src/java.smartcardio/unix/native/libj2pcsc/MUSCLE; \
-	esac; \
-	mv $$d $(topdir); \
-	chmod +x $(topdir)/configure; \
-	tar cfJ ../$(basename)_$(package_version).orig.tar.xz $(topdir); \
-	rm -rf $(topdir)
+	mkdir -p $(origdir); \
+	wget -O- $(hg_url)/archive/$(hg_tag).tar.bz2 | tar -xj --strip-components=1 -C $(origdir); \
+	chmod +x $(origdir)/configure; \
+	rm -v -rf $(origdir)/src/java.base/share/native/libzip/zlib; \
+	find $(origdir)/src/java.desktop/share/native/libjavajpeg \
+	  ! -name imageioJPEG.c ! -name jpegdecoder.c ! -name jinclude.h \
+	  -type f -print -delete; \
+	rm -v -rf $(origdir)/src/java.desktop/share/native/libsplashscreen/giflib; \
+	rm -v -rf $(origdir)/src/java.desktop/share/native/libsplashscreen/libpng; \
+	rm -v -f $(origdir)/src/java.desktop/share/native/liblcms/cms*.c; \
+	rm -v -f $(origdir)/src/java.desktop/share/native/liblcms/lcms2*.h; \
+	rm -v -rf $(origdir)/src/java.smartcardio/unix/native/libj2pcsc/MUSCLE; \
+	tar --clamp-mtime --mtime="$(source_date)" -cJf $(orig_tarball) -C.. $$(basename $(origdir))
 
-	rm -rf ../$(origdir)
 
 binary: binary-arch binary-indep
 .PHONY: build build-arch build-indep clean binary-indep binary-arch binary install packaging-files
