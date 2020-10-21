@@ -2,6 +2,6 @@ Tests: hotspot, jaxp, langtools
 Depends: @, default-jre-headless, jtreg:native (>= 4.2-b13-0~), testng:native, build-essential
 Restrictions: allow-stderr, skippable, flaky
 
-Tests: jdk
-Depends: @, default-jre-headless, jtreg:native (>= 4.2-b13-0~), testng:native, build-essential, xfwm4:native, xvfb, dbus-x11
-Restrictions: allow-stderr, skippable, flaky
+#Tests: jdk
+#Depends: @, default-jre-headless, jtreg:native (>= 4.2-b13-0~), testng:native, build-essential, xfwm4:native, xvfb, dbus-x11
+#Restrictions: allow-stderr, skippable, flaky

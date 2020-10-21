@@ -1,6 +1,6 @@
-openjdk-11 (11.0.9+11-1) UNRELEASED; urgency=medium
+openjdk-11 (11.0.9+11-1) unstable; urgency=medium
 
-  * OpenJDK 11.0.9+10 build (release).
+  * OpenJDK 11.0.9+11 build (release).
 
   [ Tiago Stürmer Daitx ]
   * debian/rules:
@@ -12,6 +12,7 @@ openjdk-11 (11.0.9+11-1) UNRELEASED; urgency=medium
   * Don't run the jdk tests as an autopkg test, taking too long.
   * Call strip-nondeterminism before computing jmod hashes (Julian Gilbey).
     Closes: #944738.
+  * Build with GCC 10 in current development versions. Closes: #972288.
 
  -- Matthias Klose <doko@ubuntu.com>  Wed, 21 Oct 2020 19:38:16 +0200
 

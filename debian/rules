@@ -158,6 +158,7 @@ with_docs = $(if $(findstring nodoc, $(DEB_BUILD_OPTIONS)),,yes)
 ifneq (,$(filter $(distrel), precise trusty))
   with_docs =
 endif
+with_check = disabled for this upload
 
 with_wqy_zenhai = $(if $(filter $(distrel),lenny),,yes)
 
@@ -593,7 +594,7 @@ else ifneq (,$(filter $(distrel),precise))
   bd_gcc = g++-8,
 else ifneq (,$(filter $(distrel),buster bionic cosmic disco))
   bd_gcc = g++-8 <!cross>,
-else ifneq (,$(filter $(distrel),sid unstable focal groovy))
+else ifneq (,$(filter $(distrel),focal))
   bd_gcc = g++-9 <!cross>,
 else
   bd_gcc = g++-10 <!cross>,
@@ -1106,29 +1107,36 @@ endif
 TESTS_TO_RUN = $(addprefix check-,$(TEST_SUITES))
 
 check-hotspot: stamps/build
+	@echo '===== START $@ ====='
 	mkdir -p jtreg-test-output/hotspot
 	JTREG_OPTIONS=$(JTREG_OPTIONS) VMNAME=$(VMNAME) JDK_TO_TEST=$(builddir)/$(sdkimg) \
 	AUTOPKGTEST_TMP=/tmp/ AUTOPKGTEST_ARTIFACTS=jtreg-test-output/ \
 	  $(TIME) debian/tests/hotspot | tee jtreg-test-output/$@.log
-
+	@echo '===== END $@ ====='
 
 check-langtools: stamps/build
+	@echo '===== START $@ ====='
 	mkdir -p jtreg-test-output/langtools
 	JTREG_OPTIONS=$(JTREG_OPTIONS) VMNAME=$(VMNAME) JDK_TO_TEST=$(builddir)/$(sdkimg) \
 	AUTOPKGTEST_TMP=/tmp/ AUTOPKGTEST_ARTIFACTS=jtreg-test-output/ \
 	  $(TIME) debian/tests/langtools | tee jtreg-test-output/$@.log
+	@echo '===== END $@ ====='
 
 check-jaxp: stamps/build
+	@echo '===== START $@ ====='
 	mkdir -p jtreg-test-output/jaxp
 	JTREG_OPTIONS=$(JTREG_OPTIONS) VMNAME=$(VMNAME) JDK_TO_TEST=$(builddir)/$(sdkimg) \
 	AUTOPKGTEST_TMP=/tmp/ AUTOPKGTEST_ARTIFACTS=jtreg-test-output/ \
 	  $(TIME) debian/tests/jaxp | tee jtreg-test-output/$@.log
+	@echo '===== END $@ ====='
 
 check-jdk: stamps/build
+	@echo '===== START $@ ====='
 	mkdir -p jtreg-test-output/jdk
 	JTREG_OPTIONS=$(JTREG_OPTIONS) VMNAME=$(VMNAME) JDK_TO_TEST=$(builddir)/$(sdkimg) \
 	AUTOPKGTEST_TMP=/tmp/ AUTOPKGTEST_ARTIFACTS=jtreg-test-output/ \
 	  $(TIME) debian/tests/jdk | tee jtreg-test-output/$@.log
+	@echo '===== END $@ ====='
 
 jtregcheck: $(TESTS_TO_RUN)
 	for i in $(TEST_SUITES); do \
