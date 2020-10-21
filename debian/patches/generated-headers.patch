@@ -1,6 +1,6 @@
 --- a/make/lib/Awt2dLibraries.gmk
 +++ b/make/lib/Awt2dLibraries.gmk
-@@ -377,7 +377,7 @@ $(eval $(call SetupJdkLibrary, BUILD_LIB
+@@ -384,7 +384,7 @@ $(eval $(call SetupJdkLibrary, BUILD_LIB
      INCLUDE_FILES := $(BUILD_LIBLCMS_INCLUDE_FILES), \
      OPTIMIZATION := HIGHEST, \
      CFLAGS := $(CFLAGS_JDKLIB) \
@@ -9,7 +9,7 @@
      CFLAGS_windows := -DCMS_IS_WINDOWS_, \
      EXTRA_HEADER_DIRS := \
          common/awt/debug \
-@@ -426,7 +426,7 @@ $(eval $(call SetupJdkLibrary, BUILD_LIB
+@@ -433,7 +433,7 @@ $(eval $(call SetupJdkLibrary, BUILD_LIB
      NAME := javajpeg, \
      INCLUDE_FILES := $(BUILD_LIBJAVAJPEG_INCLUDE_FILES), \
      OPTIMIZATION := HIGHEST, \

@@ -10,7 +10,7 @@ Reviewed-by: aph, shade
 
 --- a/src/hotspot/cpu/aarch64/stubGenerator_aarch64.cpp
 +++ b/src/hotspot/cpu/aarch64/stubGenerator_aarch64.cpp
-@@ -5693,7 +5693,8 @@ class StubGenerator: public StubCodeGene
+@@ -5649,7 +5649,8 @@ class StubGenerator: public StubCodeGene
      // }
  
      if (vmIntrinsics::is_intrinsic_available(vmIntrinsics::_dsin)) {

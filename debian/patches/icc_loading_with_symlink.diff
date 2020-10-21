@@ -1,6 +1,6 @@
 --- a/src/java.desktop/share/classes/java/awt/color/ICC_Profile.java
 +++ b/src/java.desktop/share/classes/java/awt/color/ICC_Profile.java
-@@ -1795,9 +1795,6 @@ public class ICC_Profile implements Seri
+@@ -1790,9 +1790,6 @@ public class ICC_Profile implements Seri
                      dir = st.nextToken();
                          fullPath = dir + File.separatorChar + fileName;
                      f = new File(fullPath);
@@ -10,7 +10,7 @@
                  }
              }
  
-@@ -1836,26 +1833,6 @@ public class ICC_Profile implements Seri
+@@ -1831,26 +1828,6 @@ public class ICC_Profile implements Seri
      }
  
      /**

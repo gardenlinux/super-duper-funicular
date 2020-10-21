@@ -1,3 +1,10 @@
+openjdk-13 (13.0.4+8-1) unstable; urgency=medium
+
+  * OpenJDK 13.0.4 release, build 8.
+  * Build again with -march=zEC12 on Ubuntu/s390x.
+
+ -- Matthias Klose <doko@ubuntu.com>  Fri, 17 Jul 2020 20:24:46 +0200
+
 openjdk-13 (13.0.3+3-1) unstable; urgency=medium
 
   * OpenJDK 13.0.3 release, build 3.
