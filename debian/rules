@@ -299,9 +299,12 @@ else ifneq (,$(filter $(distrel),artful))
 else ifneq (,$(filter $(distrel),buster precise trusty xenial bionic cosmic disco))
   export CC = $(DEB_HOST_GNU_TYPE)-gcc-8
   export CXX = $(DEB_HOST_GNU_TYPE)-g++-8
-else
+else ifneq (,$(filter $(distrel),bullseye focal groovy))
   export CC = $(DEB_HOST_GNU_TYPE)-gcc-9
   export CXX = $(DEB_HOST_GNU_TYPE)-g++-9
+else
+  export CC = $(DEB_HOST_GNU_TYPE)-gcc-10
+  export CXX = $(DEB_HOST_GNU_TYPE)-g++-10
 endif
 
 ifneq (,$(filter $(distrel),squeeze lucid))
@@ -1828,7 +1831,7 @@ endif
 is_release		= yes
 #is_release		=
 hg_project		= jdk13u
-hg_tag			= jdk-13.0.3+3
+hg_tag			= jdk-13.0.5+3
 package_version		= $(subst jdk-,,$(hg_tag))
 ifneq ($(is_release),yes)
   package_version	:= $(subst +,~,$(package_version))

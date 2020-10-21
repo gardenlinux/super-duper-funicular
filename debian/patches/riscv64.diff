@@ -118,7 +118,7 @@ Reviewed-by: aph, erikj, ehelin, ihse
  #endif
  
    // Identify compatability class for VM's architecture and library's architecture
-@@ -2474,6 +2480,8 @@ void os::get_summary_cpu_info(char* cpui
+@@ -2472,6 +2478,8 @@ void os::get_summary_cpu_info(char* cpui
    strncpy(cpuinfo, "IA64", length);
  #elif defined(PPC)
    strncpy(cpuinfo, "PPC64", length);
