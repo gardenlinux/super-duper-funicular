@@ -2,8 +2,7 @@ This package was debianized by Matthias Klose <doko@ubuntu.com> on
 Wed, 08 Aug 2007 15:55:39 +0200.
 
 It was downloaded from
-	http://download.java.net/openjdk/jdk7/
-	http://ftp.gnome.org/pub/GNOME/sources/java-access-bridge/
+	https://hg.openjdk.java.net/jdk-updates/jdk11u/
 
 ------------------------------------------------------------------------------
 Upstream Authors:
@@ -11,16 +10,6 @@ Upstream Authors:
 OpenJDK:
     Sun Microsystems, Inc.
     Oracle and/or its affiliates.
-
-Java Access Bridge:
-    Bill Haneman <bill.haneman@sun.com>
-    Louise Miller
-    Gergõ Érdi <cactus@cactus.rulez.org>
-    Laszlo (Laca) Peter <laszlo.peter@sun.com>
-    Jeff Cai<jeff.cai@sun.com>
-    George Kraft IV <gk4@us.ibm.com>
-    Padraig O'Briain <padraig.obriain@sun.com>
-    Darren Kenny <darren.kenny@sun.com>
 
 Packaging:
     Matthias Klose
@@ -47,7 +36,7 @@ Java Access Bridge:
     Portions Copyright © 2002-2007 Darren Kenny <darren.kenny@sun.com>
 
 Packaging:
-    Copyright © 2007-2014 Canonical Ltd.
+    Copyright © 2007-2020 Canonical Ltd.
 
 ------------------------------------------------------------------------------
 License:

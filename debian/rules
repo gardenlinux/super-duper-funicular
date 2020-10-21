@@ -295,7 +295,7 @@ else ifneq (,$(filter $(distrel),artful bionic))
 else ifneq (,$(filter $(distrel),buster precise bionic cosmic disco))
   export CC = $(DEB_HOST_GNU_TYPE)-gcc-8
   export CXX = $(DEB_HOST_GNU_TYPE)-g++-8
-else ifneq (,$(filter $(distrel),sid unstable focal groovy))
+else ifneq (,$(filter $(distrel),focal))
   export CC = $(DEB_HOST_GNU_TYPE)-gcc-9
   export CXX = $(DEB_HOST_GNU_TYPE)-g++-9
 else
@@ -1787,33 +1787,41 @@ endif
 	NO_PKG_MANGLE=1 \
 	dh_builddeb -a $(nodemo) $(nojrez) #$(bd_options)
 
-#is_release		= yes
+is_release		= yes
 hg_project		= jdk11u
-hg_tag			= jdk-11.0.9+10
+hg_tag			= jdk-11.0.9+11
 package_version		= $(subst jdk-,,$(hg_tag))
 ifneq ($(is_release),yes)
   package_version	:= $(subst +,~,$(package_version))
 endif
 hg_url			= http://hg.openjdk.java.net/jdk-updates/$(hg_project)
-origdir			= ../$(basename)-$(package_version).orig
-orig_tarball		= ../$(PKGSOURCE)_$(package_version).orig.tar.xz
-source_date		:= $(shell dpkg-parsechangelog | sed -n '/^Date: /{s///p;q;}')
+origdir = ../$(basename)-$(package_version).orig
+topdir = $(basename)-$(package_version)
 get-orig:
-	set -ex; \
-	mkdir -p $(origdir); \
-	wget -O- $(hg_url)/archive/$(hg_tag).tar.bz2 | tar -xj --strip-components=1 -C $(origdir); \
-	chmod 755 $(origdir)/configure; \
-	rm -v -rf $(origdir)/src/java.base/share/native/libzip/zlib; \
-	find $(origdir)/src/java.desktop/share/native/libjavajpeg \
-	  ! -name imageioJPEG.c ! -name jpegdecoder.c ! -name jinclude.h \
-	  -type f -print -delete; \
-	rm -v -rf $(origdir)/src/java.desktop/share/native/libsplashscreen/giflib; \
-	rm -v -rf $(origdir)/src/java.desktop/share/native/libsplashscreen/libpng; \
-	rm -v -f $(origdir)/src/java.desktop/share/native/liblcms/cms*.c; \
-	rm -v -f $(origdir)/src/java.desktop/share/native/liblcms/lcms2*.h; \
-	rm -v -rf $(origdir)/src/java.smartcardio/unix/native/libj2pcsc/MUSCLE; \
-	tar --clamp-mtime --mtime="$(source_date)" -cJf $(orig_tarball) -C.. $$(basename $(origdir)); \
+	mkdir $(origdir)
+	wget -O $(origdir)/jdk.tar.bz2 $(hg_url)/archive/$(hg_tag).tar.bz2
 
+	set -ex; \
+	repo=jdk; \
+	d=$$(tar tf $(origdir)/$$repo.tar.bz2 | head -1 | sed 's,/.*,,'); \
+	tar xf $(origdir)/$$repo.tar.bz2; \
+	chmod 755 $$d/configure; \
+	case $$repo in jdk) \
+	  rm -v -rf $$d/src/java.base/share/native/libzip/zlib; \
+	  find $$d/src/java.desktop/share/native/libjavajpeg \
+	    ! -name imageioJPEG.c ! -name jpegdecoder.c ! -name jinclude.h \
+	    -type f -print -delete; \
+	  rm -v -rf $$d/src/java.desktop/share/native/libsplashscreen/giflib; \
+	  rm -v -rf $$d/src/java.desktop/share/native/libsplashscreen/libpng; \
+	  rm -v -f $$d/src/java.desktop/share/native/liblcms/cms*.c; \
+	  rm -v -f $$d/src/java.desktop/share/native/liblcms/lcms2*.h; \
+	  rm -v -rf $$d/src/java.smartcardio/unix/native/libj2pcsc/MUSCLE; \
+	esac; \
+	mv $$d $(topdir); \
+	tar cfJ ../$(basename)_$(package_version).orig.tar.xz $(topdir); \
+	rm -rf $(topdir)
+
+	rm -f ../$(origdir)
 
 binary: binary-arch binary-indep
 .PHONY: build build-arch build-indep clean binary-indep binary-arch binary install packaging-files
