@@ -1,6 +1,6 @@
 --- a/make/autoconf/flags.m4
 +++ b/make/autoconf/flags.m4
-@@ -246,6 +246,7 @@ AC_DEFUN_ONCE([FLAGS_PRE_TOOLCHAIN],
+@@ -248,6 +248,7 @@ AC_DEFUN_ONCE([FLAGS_PRE_TOOLCHAIN],
          test "x$OPENJDK_TARGET_CPU_ARCH" = xppc; then
        MACHINE_FLAG="-m${OPENJDK_TARGET_CPU_BITS}"
      fi
@@ -8,7 +8,7 @@
    fi
  
    # FIXME: global flags are not used yet...
-@@ -315,11 +316,8 @@ AC_DEFUN([FLAGS_SETUP_TOOLCHAIN_CONTROL]
+@@ -317,11 +318,8 @@ AC_DEFUN([FLAGS_SETUP_TOOLCHAIN_CONTROL]
    AC_SUBST(COMPILER_COMMAND_FILE_FLAG)
    AC_SUBST(COMPILER_BINDCMD_FILE_FLAG)
  
