@@ -156,6 +156,7 @@ endif
 ifneq (,$(filter $(distrel), precise trusty xenial))
   with_check = disabled for $(distrel)
 endif
+#with_check = disabled for this upload
 
 with_docs = $(if $(findstring nodoc, $(DEB_BUILD_OPTIONS)),,yes)
 ifneq (,$(filter $(distrel), precise trusty))
@@ -299,7 +300,7 @@ else ifneq (,$(filter $(distrel),artful))
 else ifneq (,$(filter $(distrel),buster precise trusty xenial bionic cosmic disco))
   export CC = $(DEB_HOST_GNU_TYPE)-gcc-8
   export CXX = $(DEB_HOST_GNU_TYPE)-g++-8
-else ifneq (,$(filter $(distrel),bullseye focal groovy))
+else ifneq (,$(filter $(distrel),focal))
   export CC = $(DEB_HOST_GNU_TYPE)-gcc-9
   export CXX = $(DEB_HOST_GNU_TYPE)-g++-9
 else
@@ -627,8 +628,10 @@ else ifneq (,$(filter $(distrel),precise))
   bd_gcc = g++-8,
 else ifneq (,$(filter $(distrel),buster trusty xenial bionic cosmic disco))
   bd_gcc = g++-8 <!cross>,
-else
+else ifneq (,$(filter $(distrel),focal))
   bd_gcc = g++-9 <!cross>,
+else
+  bd_gcc = g++-10 <!cross>,
 endif
 bd_syslibs = zlib1g-dev:native, zlib1g-dev, libattr1-dev,
 ifneq (,$(filter $(distrel),squeeze lucid))
@@ -1135,29 +1138,36 @@ endif
 TESTS_TO_RUN = $(addprefix check-,$(TEST_SUITES))
 
 check-hotspot: stamps/build
+	@echo '===== START $@ ====='
 	mkdir -p jtreg-test-output/hotspot
 	JTREG_OPTIONS=$(JTREG_OPTIONS) VMNAME=$(VMNAME) JDK_TO_TEST=$(builddir)/$(sdkimg) \
 	AUTOPKGTEST_TMP=/tmp/ AUTOPKGTEST_ARTIFACTS=jtreg-test-output/ \
 	  $(TIME) debian/tests/hotspot | tee jtreg-test-output/$@.log
-
+	@echo '===== END $@ ====='
 
 check-langtools: stamps/build
+	@echo '===== START $@ ====='
 	mkdir -p jtreg-test-output/langtools
 	JTREG_OPTIONS=$(JTREG_OPTIONS) VMNAME=$(VMNAME) JDK_TO_TEST=$(builddir)/$(sdkimg) \
 	AUTOPKGTEST_TMP=/tmp/ AUTOPKGTEST_ARTIFACTS=jtreg-test-output/ \
 	  $(TIME) debian/tests/langtools | tee jtreg-test-output/$@.log
+	@echo '===== END $@ ====='
 
 check-jaxp: stamps/build
+	@echo '===== START $@ ====='
 	mkdir -p jtreg-test-output/jaxp
 	JTREG_OPTIONS=$(JTREG_OPTIONS) VMNAME=$(VMNAME) JDK_TO_TEST=$(builddir)/$(sdkimg) \
 	AUTOPKGTEST_TMP=/tmp/ AUTOPKGTEST_ARTIFACTS=jtreg-test-output/ \
 	  $(TIME) debian/tests/jaxp | tee jtreg-test-output/$@.log
+	@echo '===== END $@ ====='
 
 check-jdk: stamps/build
+	@echo '===== START $@ ====='
 	mkdir -p jtreg-test-output/jdk
 	JTREG_OPTIONS=$(JTREG_OPTIONS) VMNAME=$(VMNAME) JDK_TO_TEST=$(builddir)/$(sdkimg) \
 	AUTOPKGTEST_TMP=/tmp/ AUTOPKGTEST_ARTIFACTS=jtreg-test-output/ \
 	  $(TIME) debian/tests/jdk | tee jtreg-test-output/$@.log
+	@echo '===== END $@ ====='
 
 jtregcheck: $(TESTS_TO_RUN)
 	for i in $(TEST_SUITES); do \

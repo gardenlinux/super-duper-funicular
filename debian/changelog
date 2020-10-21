@@ -1,8 +1,13 @@
-openjdk-13 (13.0.5+3-1) unstable; urgency=medium
+openjdk-13 (13.0.5+3-2) unstable; urgency=medium
 
   * OpenJDK 13.0.5 release, build 3.
+  * Call strip-nondeterminism before computing jmod hashes (Julian Gilbey).
+    Closes: #971247.
+  * Bump standards version.
+  * Build with GCC 10 in current development versions.
+  * Don't run the jdk tests as an autopkg test, taking too long.
 
- -- Matthias Klose <doko@ubuntu.com>  Wed, 21 Oct 2020 14:13:31 +0200
+ -- Matthias Klose <doko@ubuntu.com>  Wed, 21 Oct 2020 16:54:07 +0200
 
 openjdk-13 (13.0.4+8-1) unstable; urgency=medium
 
