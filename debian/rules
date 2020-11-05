@@ -158,7 +158,7 @@ with_docs = $(if $(findstring nodoc, $(DEB_BUILD_OPTIONS)),,yes)
 ifneq (,$(filter $(distrel), precise trusty))
   with_docs =
 endif
-with_check = disabled for this upload
+# with_check = disabled for this upload
 
 with_wqy_zenhai = $(if $(filter $(distrel),lenny),,yes)
 
@@ -418,8 +418,12 @@ ifeq ($(with_check),yes)
   endif
 endif
 
-ifneq (,$(filter $(DEB_HOST_ARCH), amd64))
-  DEFAULT_CONFIGURE_ARGS += --with-jvm-features=zgc
+ifneq (,$(filter $(DEB_HOST_ARCH),$(hotspot_archs)))
+  ifneq (,$(filter $(DEB_HOST_ARCH), amd64))
+    jvm_features = zgc
+  endif
+  jvm_features += shenandoahgc
+  DEFAULT_CONFIGURE_ARGS += --with-jvm-features=$(subst $(SPACE),$(COMMA),$(strip $(jvm_features)))
 endif
 
 ifeq ($(distribution),Debian)
@@ -1797,7 +1801,7 @@ endif
 
 is_release		= yes
 hg_project		= jdk11u
-hg_tag			= jdk-11.0.9+11
+hg_tag			= jdk-11.0.9.1+1
 package_version		= $(subst jdk-,,$(hg_tag))
 ifneq ($(is_release),yes)
   package_version	:= $(subst +,~,$(package_version))

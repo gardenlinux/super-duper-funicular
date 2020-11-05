@@ -1,3 +1,11 @@
+openjdk-11 (11.0.9.1+1-1) unstable; urgency=medium
+
+  * OpenJDK 11.0.9.1+1 build (release).
+  * Configure --with-jvm-features=shenandoahgc for hotspot builds.
+    LP: #1902029.
+
+ -- Matthias Klose <doko@ubuntu.com>  Thu, 05 Nov 2020 14:32:42 +0100
+
 openjdk-11 (11.0.9+11-1) unstable; urgency=medium
 
   * OpenJDK 11.0.9+11 build (release).
