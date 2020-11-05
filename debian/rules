@@ -417,8 +417,12 @@ endif
 
 COMMON_CONFIGURE_ARGS += --disable-warnings-as-errors
 
-ifneq (,$(filter $(DEB_HOST_ARCH), amd64))
-  DEFAULT_CONFIGURE_ARGS += --with-jvm-features=zgc
+ifneq (,$(filter $(DEB_HOST_ARCH),$(hotspot_archs)))
+  ifneq (,$(filter $(DEB_HOST_ARCH), amd64))
+    jvm_features = zgc
+  endif
+  jvm_features += shenandoahgc
+  DEFAULT_CONFIGURE_ARGS += --with-jvm-features=$(subst $(SPACE),$(COMMA),$(strip $(jvm_features)))
 endif
 
 vendor := $(shell dpkg-vendor --query Vendor)

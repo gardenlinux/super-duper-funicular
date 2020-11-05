@@ -1,3 +1,4 @@
 version=4
-opts="repack,compression=xz,pagemangle=s%(jdk-.*)%<a href='http://hg.openjdk.java.net/jdk/jdk/archive/$1.tar.gz'>$1</a>%g,uversionmangle=s/\+/~/" \
-http://hg.openjdk.java.net/jdk/jdk/tags .*/archive/jdk-(13.*).tar.gz
+opts="pagemangle=s{<a href=\"/jdk-updates/jdk15u/rev/[^\"]*\">\s*(jdk-15\.[^<\s]*)}{<a href=\"archive/$1.tar.gz">$1}g" \
+https://hg.openjdk.java.net/jdk-updates/jdk15u/tags \
+.*/jdk-([0-9.]*\+[0-9]*).tar.gz
