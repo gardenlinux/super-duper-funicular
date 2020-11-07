@@ -162,7 +162,7 @@ with_docs = $(if $(findstring nodoc, $(DEB_BUILD_OPTIONS)),,yes)
 ifneq (,$(filter $(distrel), precise trusty))
   with_docs =
 endif
-#with_check = disabled for this upload
+with_check = disabled for this upload
 
 with_wqy_zenhai = $(if $(filter $(distrel),lenny),,yes)
 
@@ -421,7 +421,8 @@ ifneq (,$(filter $(DEB_HOST_ARCH),$(hotspot_archs)))
   ifneq (,$(filter $(DEB_HOST_ARCH), amd64))
     jvm_features = zgc
   endif
-  jvm_features += shenandoahgc
+  # not needed explicitly?
+  #jvm_features += shenandoahgc
   DEFAULT_CONFIGURE_ARGS += --with-jvm-features=$(subst $(SPACE),$(COMMA),$(strip $(jvm_features)))
 endif
 
