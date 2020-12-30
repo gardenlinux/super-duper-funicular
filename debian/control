@@ -15,6 +15,7 @@ Build-Depends: debhelper (>= 11),
   zlib1g-dev:native, zlib1g-dev, libattr1-dev, libpng-dev, libjpeg-dev, libgif-dev, 
   libnss3-dev (>= 2:3.17.1),
   openjdk-14-jdk-headless <cross>,
+  strip-nondeterminism,
 Build-Depends-Indep: graphviz, pandoc,
 Standards-Version: 4.5.0
 Homepage: http://openjdk.java.net/

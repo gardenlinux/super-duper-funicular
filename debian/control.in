@@ -15,6 +15,7 @@ Build-Depends: @bd_debhelper@
   @bd_syslibs@ @bd_systemtap@
   @bd_nss@
   @bd_cross@
+  strip-nondeterminism,
 Build-Depends-Indep: graphviz, pandoc,
 Standards-Version: 4.5.0
 Homepage: http://openjdk.java.net/
