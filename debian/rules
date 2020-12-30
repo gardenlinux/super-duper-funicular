@@ -87,14 +87,14 @@ TOP		= usr/lib/jvm
 origin		= openjdk
 basename	= openjdk-$(shortver)
 ifneq (,$(filter $(DEB_HOST_ARCH), $(hotspot_archs)))
-  priority	= $(if $(filter yes, $(is_default)),1611,1609)
+  priority	= $(if $(filter yes, $(is_default)),1711,1709)
   vm_name	= Hotspot JIT
 else
-  priority	= $(if $(filter yes, $(is_default)),1604,1603)
+  priority	= $(if $(filter yes, $(is_default)),1704,1703)
   vm_name	= Hotspot Zero
 endif
-jvmver		= 1.16.0
-shortver	= 16
+jvmver		= 1.17.0
+shortver	= 17
 v_upstream	:= $(shell echo $(PKGVERSION) | sed 's/-[^-][^-]*$$//')
 v_pkgrel	:= $(shell echo $(PKGVERSION) | sed 's/^.*-//')
 # FIXME. currently v_upstream like 11~4
@@ -585,12 +585,12 @@ else
 endif
 
 ifneq (,$(filter $(distrel),precise))
-    bd_bootstrap = openjdk-15-jdk-headless | openjdk-16-jdk-headless,
+    bd_bootstrap = openjdk-16-jdk-headless | openjdk-17-jdk-headless,
 else ifneq (,$(filter $(distrel),squeeze wheezy jessie trusty xenial))
-    bd_bootstrap = openjdk-15-jdk-headless:native | openjdk-16-jdk-headless:native,
+    bd_bootstrap = openjdk-16-jdk-headless:native | openjdk-17-jdk-headless:native,
 else
-    bd_bootstrap = openjdk-16-jdk-headless:native | openjdk-15-jdk-headless:native,
-    bd_bootstrap = openjdk-15-jdk-headless:native | openjdk-16-jdk-headless:native,
+    bd_bootstrap = openjdk-16-jdk-headless:native | openjdk-16-jdk-headless:native,
+    bd_bootstrap = openjdk-16-jdk-headless:native | openjdk-17-jdk-headless:native,
 endif
 
 ifeq (,$(filter $(distrel),squeeze wheezy jessie precise trusty xenial))
@@ -1838,7 +1838,7 @@ endif
 #is_release		= yes
 is_release		=
 git_project		= jdk
-git_tag			= jdk-16+29
+git_tag			= jdk-17+3
 package_version		= $(subst jdk-,,$(git_tag))
 ifneq ($(is_release),yes)
   package_version	:= $(subst +,~,$(package_version))

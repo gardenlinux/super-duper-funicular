@@ -1,3 +1,11 @@
+openjdk-17 (17~3-1) experimental; urgency=medium
+
+  * OpenJDK 17 snapshot, build 3.
+  * OpenJDK 17 is supposed to be the next OpenJDK LTS release seeing extended
+    updates and security support.
+
+ -- Matthias Klose <doko@ubuntu.com>  Mon, 28 Dec 2020 13:57:12 +0100
+
 openjdk-16 (16~29-1) unstable; urgency=medium
 
   * OpenJDK 16 snapshot, build 29.
