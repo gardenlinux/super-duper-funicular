@@ -1,3 +1,9 @@
+openjdk-16 (16~29-2) UNRELEASED; urgency=medium
+
+  * Update VCS attributes.
+
+ -- Matthias Klose <doko@ubuntu.com>  Wed, 30 Dec 2020 13:39:42 +0100
+
 openjdk-16 (16~29-1) unstable; urgency=medium
 
   * OpenJDK 16 snapshot, build 29.
