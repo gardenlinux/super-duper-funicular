@@ -1,8 +1,6 @@
-Index: b/src/java.desktop/share/classes/java/awt/color/ICC_Profile.java
-===================================================================
 --- a/src/java.desktop/share/classes/java/awt/color/ICC_Profile.java
 +++ b/src/java.desktop/share/classes/java/awt/color/ICC_Profile.java
-@@ -1790,9 +1790,6 @@ public class ICC_Profile implements Seri
+@@ -1783,9 +1783,6 @@ public class ICC_Profile implements Seri
                      dir = st.nextToken();
                          fullPath = dir + File.separatorChar + fileName;
                      f = new File(fullPath);
@@ -12,30 +10,3 @@ Index: b/src/java.desktop/share/classes/java/awt/color/ICC_Profile.java
                  }
              }
  
-@@ -1831,26 +1828,6 @@ public class ICC_Profile implements Seri
-     }
- 
-     /**
--     * Checks whether given file resides inside give directory.
--     */
--    private static boolean isChildOf(File f, String dirName) {
--        try {
--            File dir = new File(dirName);
--            String canonicalDirName = dir.getCanonicalPath();
--            if (!canonicalDirName.endsWith(File.separator)) {
--                canonicalDirName += File.separator;
--            }
--            String canonicalFileName = f.getCanonicalPath();
--            return canonicalFileName.startsWith(canonicalDirName);
--        } catch (IOException e) {
--            /* we do not expect the IOException here, because invocation
--             * of this function is always preceded by isFile() call.
--             */
--            return false;
--        }
--    }
--
--    /**
-      * Checks whether built-in profile specified by fileName exists.
-      */
-     private static boolean standardProfileExists(final String fileName) {

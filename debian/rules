@@ -185,8 +185,8 @@ ifneq (,$(filter $(distrel),trusty))
   altzero_archs := $(filter-out arm64, $(altzero_archs))
 endif
 # FIXME: https://launchpad.net/ubuntu/+source/openjdk-lts/11.0.5+6-1ubuntu1
-# ftbfs on armhf, also in OpenJDK 15
-altzero_archs := $(filter-out armhf, $(altzero_archs))
+# ftbfs on armhf, also in OpenJDK 15, now fixed in 16?
+#altzero_archs := $(filter-out armhf, $(altzero_archs))
 
 ifneq (,$(filter noaltzero, $(DEB_BUILD_OPTIONS)))
   altzero_archs =
@@ -567,7 +567,7 @@ jdk_hl_tools	= jar jarsigner javac javadoc javap jcmd jdb \
 ifneq (,$(filter $(DEB_HOST_ARCH), amd64 arm64))
   jdk_hl_tools	+= jaotc
 endif
-ifeq (,$(filter $(DEB_HOST_ARCH), alpha armel ia64 m68k mips mipsel mips64el powerpc riscv64 s390x sh4 x32))
+ifeq (,$(filter $(DEB_HOST_ARCH), alpha armel ia64 m68k mips mipsel mips64el powerpc riscv64 s390x sh4 sparc64 x32))
   jdk_hl_tools	+= jhsdb
 endif
 jdk_tools	= jconsole

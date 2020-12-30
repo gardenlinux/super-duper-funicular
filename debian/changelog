@@ -1,3 +1,18 @@
+openjdk-16 (16~27-2) unstable; urgency=medium
+
+  * Fix installation on sparc64.
+  * Link with libatomic for more zero builds.
+  * Re-enable zero on armhf.
+
+ -- Matthias Klose <doko@debian.org>  Fri, 04 Dec 2020 10:01:45 +0100
+
+openjdk-16 (16~27-1) unstable; urgency=medium
+
+  * OpenJDK 16 snapshot, build 27.
+  * Bump standards version.
+
+ -- Matthias Klose <doko@ubuntu.com>  Thu, 03 Dec 2020 16:42:51 +0100
+
 openjdk-16 (16~14-1) experimental; urgency=medium
 
   * OpenJDK 16 snapshot, build 14.

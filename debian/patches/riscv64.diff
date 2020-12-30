@@ -25,7 +25,7 @@ Reviewed-by: aph, erikj, ehelin, ihse
  
 --- a/make/autoconf/build-aux/config.sub
 +++ b/make/autoconf/build-aux/config.sub
-@@ -35,8 +35,8 @@ if echo $* | grep x86_64-pc-wsl >/dev/nu
+@@ -40,8 +40,8 @@ if echo $* | grep x86_64-pc-wsl >/dev/nu
      exit
  fi
  
@@ -36,7 +36,7 @@ Reviewed-by: aph, erikj, ehelin, ihse
      . $DIR/autoconf-config.sub "$@"
      # autoconf-config.sub exits, so we never reach here, but just in
      # case we do:
-@@ -51,6 +51,10 @@ while test $# -gt 0 ; do
+@@ -56,6 +56,10 @@ while test $# -gt 0 ; do
              config=`echo $1 | sed 's/^aarch64-/arm-/'`
              sub_args="$sub_args $config"
              shift; ;;
@@ -47,7 +47,7 @@ Reviewed-by: aph, erikj, ehelin, ihse
          - )    # Use stdin as input.
              sub_args="$sub_args $1"
              shift; break ;;
-@@ -63,7 +67,7 @@ done
+@@ -68,7 +72,7 @@ done
  result=`. $DIR/autoconf-config.sub $sub_args "$@"`
  exitcode=$?
  
@@ -58,7 +58,7 @@ Reviewed-by: aph, erikj, ehelin, ihse
  exit $exitcode
 --- a/src/hotspot/os/linux/os_linux.cpp
 +++ b/src/hotspot/os/linux/os_linux.cpp
-@@ -2697,6 +2697,8 @@ void os::get_summary_cpu_info(char* cpui
+@@ -2610,6 +2610,8 @@ void os::get_summary_cpu_info(char* cpui
    strncpy(cpuinfo, "IA64", length);
  #elif defined(PPC)
    strncpy(cpuinfo, "PPC64", length);

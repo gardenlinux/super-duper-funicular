@@ -1,6 +1,6 @@
 --- a/src/java.desktop/share/classes/javax/swing/JTree.java
 +++ b/src/java.desktop/share/classes/javax/swing/JTree.java
-@@ -5063,7 +5063,7 @@ public class JTree extends JComponent im
+@@ -5079,7 +5079,7 @@ public class JTree extends JComponent im
              public AccessibleSelection getAccessibleSelection() {
                  AccessibleContext ac = getCurrentAccessibleContext();
                  if (ac != null && isLeaf) {
@@ -9,7 +9,7 @@
                  } else {
                      return this;
                  }
-@@ -5078,7 +5078,7 @@ public class JTree extends JComponent im
+@@ -5094,7 +5094,7 @@ public class JTree extends JComponent im
              public AccessibleText getAccessibleText() {
                  AccessibleContext ac = getCurrentAccessibleContext();
                  if (ac != null) {
@@ -18,7 +18,7 @@
                  } else {
                      return null;
                  }
-@@ -5093,7 +5093,7 @@ public class JTree extends JComponent im
+@@ -5109,7 +5109,7 @@ public class JTree extends JComponent im
              public AccessibleValue getAccessibleValue() {
                  AccessibleContext ac = getCurrentAccessibleContext();
                  if (ac != null) {
@@ -29,7 +29,7 @@
                  }
 --- a/src/java.desktop/share/classes/javax/swing/table/JTableHeader.java
 +++ b/src/java.desktop/share/classes/javax/swing/table/JTableHeader.java
-@@ -1113,7 +1113,12 @@ public class JTableHeader extends JCompo
+@@ -1118,7 +1118,12 @@ public class JTableHeader extends JCompo
              }
  
              public AccessibleAction getAccessibleAction() {
@@ -43,7 +43,7 @@
              }
  
             /**
-@@ -1129,15 +1134,30 @@ public class JTableHeader extends JCompo
+@@ -1134,15 +1139,30 @@ public class JTableHeader extends JCompo
              }
  
              public AccessibleSelection getAccessibleSelection() {

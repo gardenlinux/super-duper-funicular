@@ -25,10 +25,9 @@ This patch header follows DEP-3: http://dep.debian.net/deps/dep3/
 8198649: Switch AWT/Swing's default GTK version to 3
 Reviewed-by: psadhukhan, kaddepalli
 
-diff -r 79f6a4dc221e -r 3e3696a308e1 src/java.desktop/unix/native/libawt_xawt/awt/gtk_interface.c
---- a/src/java.desktop/unix/native/libawt_xawt/awt/gtk_interface.c	Mon Mar 19 10:46:31 2018 -0700
-+++ b/src/java.desktop/unix/native/libawt_xawt/awt/gtk_interface.c	Mon Mar 19 11:29:50 2018 -0700
-@@ -45,18 +45,18 @@
+--- a/src/java.desktop/unix/native/libawt_xawt/awt/gtk_interface.c
++++ b/src/java.desktop/unix/native/libawt_xawt/awt/gtk_interface.c
+@@ -50,18 +50,18 @@ typedef struct {
  
  static GtkLib gtk_libs[] = {
      {
@@ -54,4 +53,3 @@ diff -r 79f6a4dc221e -r 3e3696a308e1 src/java.desktop/unix/native/libawt_xawt/aw
      }
  };
  
-
