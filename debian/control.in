@@ -1,7 +1,7 @@
 Source: @basename@
 Section: java
 Priority: optional
-Maintainer: OpenJDK Team <openjdk@lists.launchpad.net>
+Maintainer: OpenJDK Team <openjdk-13@packages.debian.org>
 Uploaders: Matthias Klose <doko@ubuntu.com>
 Build-Depends: @bd_debhelper@
   m4, lsb-release, zip, unzip,
@@ -17,10 +17,10 @@ Build-Depends: @bd_debhelper@
   @bd_nss@
   @bd_cross@
 Build-Depends-Indep: graphviz, pandoc,
-Standards-Version: 4.5.0
+Standards-Version: 4.5.1
 Homepage: http://openjdk.java.net/
-Vcs-Git: https://git.launchpad.net/~openjdk/ubuntu/+source/openjdk/+git/openjdk -b openjdk-13
-Vcs-Browser: https://code.launchpad.net/~openjdk/ubuntu/+source/openjdk/+git/openjdk/+ref/openjdk-13
+Vcs-Browser: https://salsa.debian.org/openjdk-team/openjdk/tree/openjdk-13
+Vcs-Git: https://salsa.debian.org/openjdk-team/openjdk.git -b openjdk-13
 
 Package: @basename@-jdk-headless
 Architecture: @any_archs@

@@ -1,3 +1,13 @@
+openjdk-13 (13.0.5.1+1-1) unstable; urgency=medium
+
+  * OpenJDK 13.0.5.1 release, build 1.
+  * Don't run the autopkg tests. There's no value running all the internal
+    tests as an autopkg test, when these are already run during the build.
+  * Move VCS to salsa.debian.org.
+  * Bump standards version.
+
+ -- Matthias Klose <doko@ubuntu.com>  Wed, 30 Dec 2020 14:46:30 +0100
+
 openjdk-13 (13.0.5+3-2) unstable; urgency=medium
 
   * OpenJDK 13.0.5 release, build 3.
