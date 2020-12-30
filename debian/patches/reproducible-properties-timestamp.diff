@@ -1,8 +1,6 @@
 Description: Makes the timestamp in the properties files header reproducible when SOURCE_DATE_EPOCH is specified
 Author: Emmanuel Bourg <ebourg@apache.org>
 Forwarded: no
-Index: b/src/java.base/share/classes/java/util/Properties.java
-===================================================================
 --- a/src/java.base/share/classes/java/util/Properties.java
 +++ b/src/java.base/share/classes/java/util/Properties.java
 @@ -923,7 +923,7 @@ public class Properties extends Hashtabl
@@ -14,7 +12,7 @@ Index: b/src/java.base/share/classes/java/util/Properties.java
          bw.newLine();
          synchronized (this) {
              for (Map.Entry<Object, Object> e : entrySet()) {
-@@ -1573,4 +1573,22 @@ public class Properties extends Hashtabl
+@@ -1588,4 +1588,22 @@ public class Properties extends Hashtabl
          }
          this.map = map;
      }

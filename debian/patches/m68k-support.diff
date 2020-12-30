@@ -2,8 +2,6 @@ Subject: Fix alignment issues on m68k
 Author: John Paul Adrian Glaubitz <glaubitz@physik.fu-berlin.de>
 Last Update: 2019-04-29
 
-Index: b/make/data/x11wrappergen/sizes-32-linux-m68k.txt
-===================================================================
 --- /dev/null
 +++ b/make/data/x11wrappergen/sizes-32-linux-m68k.txt
 @@ -0,0 +1,1017 @@
@@ -1024,8 +1022,6 @@ Index: b/make/data/x11wrappergen/sizes-32-linux-m68k.txt
 +XTextProperty.format	8
 +XTextProperty.nitems	12
 +XTextProperty	16
-Index: b/make/gensrc/GensrcX11Wrappers.gmk
-===================================================================
 --- a/make/modules/java.desktop/gensrc/GensrcX11Wrappers.gmk
 +++ b/make/modules/java.desktop/gensrc/GensrcX11Wrappers.gmk
 @@ -29,9 +29,14 @@
@@ -1044,11 +1040,9 @@ Index: b/make/gensrc/GensrcX11Wrappers.gmk
  
  # Run the tool on the offset files to generate several Java classes used in awt.
  $(eval $(call SetupExecute, gen_x11wrappers, \
-Index: b/src/hotspot/share/memory/allocation.hpp
-===================================================================
 --- a/src/hotspot/share/memory/allocation.hpp
 +++ b/src/hotspot/share/memory/allocation.hpp
-@@ -227,7 +227,7 @@ template <MEMFLAGS F> class CHeapObj ALL
+@@ -229,7 +229,7 @@ template <MEMFLAGS F> class CHeapObj ALL
  
    void  operator delete(void* p)     { FreeHeap(p); }
    void  operator delete [] (void* p) { FreeHeap(p); }
@@ -1057,7 +1051,7 @@ Index: b/src/hotspot/share/memory/allocation.hpp
  
  // Base class for objects allocated on the stack only.
  // Calling new or delete will result in fatal error.
-@@ -238,7 +238,7 @@ class StackObj ALLOCATION_SUPER_CLASS_SP
+@@ -240,7 +240,7 @@ class StackObj ALLOCATION_SUPER_CLASS_SP
    void* operator new [](size_t size) throw();
    void  operator delete(void* p);
    void  operator delete [](void* p);
@@ -1066,7 +1060,7 @@ Index: b/src/hotspot/share/memory/allocation.hpp
  
  // Base class for objects stored in Metaspace.
  // Calling delete will result in fatal error.
-@@ -342,7 +342,7 @@ class MetaspaceObj {
+@@ -344,7 +344,7 @@ class MetaspaceObj {
    // that should be read-only by default. See symbol.hpp for an example. This function
    // is used by the templates in metaspaceClosure.hpp
    static bool is_read_only_by_default() { return false; }
@@ -1075,7 +1069,7 @@ Index: b/src/hotspot/share/memory/allocation.hpp
  
  // Base class for classes that constitute name spaces.
  
-@@ -434,7 +434,7 @@ protected:
+@@ -429,7 +429,7 @@ protected:
  
    void  operator delete(void* p);
    void  operator delete [](void* p);
@@ -1084,11 +1078,9 @@ Index: b/src/hotspot/share/memory/allocation.hpp
  
  // One of the following macros must be used when allocating an array
  // or object to determine whether it should reside in the C heap on in
-Index: b/src/hotspot/share/oops/constMethod.hpp
-===================================================================
 --- a/src/hotspot/share/oops/constMethod.hpp
 +++ b/src/hotspot/share/oops/constMethod.hpp
-@@ -561,6 +561,6 @@ private:
+@@ -553,6 +553,6 @@ private:
  
    // Verify
    void verify_on(outputStream* st);
@@ -1096,11 +1088,9 @@ Index: b/src/hotspot/share/oops/constMethod.hpp
 +} __attribute__ ((aligned (4)));
  
  #endif // SHARE_OOPS_CONSTMETHOD_HPP
-Index: b/src/hotspot/share/oops/oop.hpp
-===================================================================
 --- a/src/hotspot/share/oops/oop.hpp
 +++ b/src/hotspot/share/oops/oop.hpp
-@@ -322,6 +322,6 @@ class oopDesc {
+@@ -320,6 +320,6 @@ class oopDesc {
    // for error reporting
    static void* load_klass_raw(oop obj);
    static void* load_oop_raw(oop obj, int offset);

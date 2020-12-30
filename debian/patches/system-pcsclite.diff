@@ -1,16 +1,16 @@
 --- a/make/autoconf/lib-bundled.m4
 +++ b/make/autoconf/lib-bundled.m4
-@@ -40,6 +40,7 @@ AC_DEFUN_ONCE([LIB_SETUP_BUNDLED_LIBS],
-   LIB_SETUP_LIBPNG
+@@ -41,6 +41,7 @@ AC_DEFUN_ONCE([LIB_SETUP_BUNDLED_LIBS],
    LIB_SETUP_ZLIB
    LIB_SETUP_LCMS
+   LIB_SETUP_HARFBUZZ
 +  LIB_SETUP_PCSCLITE
  ])
  
  ################################################################################
-@@ -263,3 +264,41 @@ AC_DEFUN_ONCE([LIB_SETUP_LCMS],
-   AC_SUBST(LCMS_CFLAGS)
-   AC_SUBST(LCMS_LIBS)
+@@ -304,3 +305,41 @@ AC_DEFUN_ONCE([LIB_SETUP_HARFBUZZ],
+   AC_SUBST(HARFBUZZ_CFLAGS)
+   AC_SUBST(HARFBUZZ_LIBS)
  ])
 +
 +################################################################################
@@ -70,7 +70,7 @@
  
 --- a/make/autoconf/spec.gmk.in
 +++ b/make/autoconf/spec.gmk.in
-@@ -761,6 +761,7 @@ ENABLE_AOT:=@ENABLE_AOT@
+@@ -754,6 +754,7 @@ ENABLE_AOT:=@ENABLE_AOT@
  ENABLE_INTREE_EC:=@ENABLE_INTREE_EC@
  USE_EXTERNAL_LIBJPEG:=@USE_EXTERNAL_LIBJPEG@
  USE_EXTERNAL_LIBGIF:=@USE_EXTERNAL_LIBGIF@

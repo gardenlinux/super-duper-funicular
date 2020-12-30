@@ -75,7 +75,7 @@ else
   is_default = yes
 endif
 
-is_upstream_release = yes
+#is_upstream_release = yes
 
 srcdir		= .
 builddir	= build
@@ -93,23 +93,25 @@ else
   priority	= $(if $(filter yes, $(is_default)),1504,1503)
   vm_name	= Hotspot Zero
 endif
-jvmver		= 1.15.0
-shortver	= 15
+jvmver		= 1.16.0
+shortver	= 16
 v_upstream	:= $(shell echo $(PKGVERSION) | sed 's/-[^-][^-]*$$//')
 v_pkgrel	:= $(shell echo $(PKGVERSION) | sed 's/^.*-//')
 # FIXME. currently v_upstream like 11~4
-v_upbase	:= $(word 1, $(subst +, , $(v_upstream)))
-v_upbuild	:= $(word 2, $(subst +, , $(v_upstream)))
-#v_upbase	:= $(word 1, $(subst ~, , $(v_upstream)))
-#v_upbuild	:= $(word 2, $(subst ~, , $(v_upstream)))
+#v_upbase	:= $(word 1, $(subst +, , $(v_upstream)))
+#v_upbuild	:= $(word 2, $(subst +, , $(v_upstream)))
+v_upbase	:= $(word 1, $(subst ~, , $(v_upstream)))
+v_upbuild	:= $(word 2, $(subst ~, , $(v_upstream)))
 # that should be the package version ...
 
-ifneq ($(PKGVERSION),$(v_upbase)+$(v_upbuild)-$(v_pkgrel))
-  $(error wrong version: $(v_upbase)+$(v_upbuild)-$(v_pkgrel) should be: $(PKGVERSION))
-endif
-#ifneq ($(PKGVERSION),$(v_upbase)~$(v_upbuild)-$(v_pkgrel))
-#  $(error wrong version: $(v_upbase)~$(v_upbuild)-$(v_pkgrel) should be: $(PKGVERSION))
+#$(warning XXXXX $(v_upstream) / $(v_pkgrel) / $(v_upbase) / $(v_upbuild))
+
+#ifneq ($(PKGVERSION),$(v_upbase)+$(v_upbuild)-$(v_pkgrel))
+#  $(error wrong version: $(v_upbase)+$(v_upbuild)-$(v_pkgrel) should be: $(PKGVERSION))
 #endif
+ifneq ($(PKGVERSION),$(v_upbase)~$(v_upbuild)-$(v_pkgrel))
+  $(error wrong version: $(v_upbase)~$(v_upbuild)-$(v_pkgrel) should be: $(PKGVERSION))
+endif
 
 ifneq (,$(DEB_HOST_MULTIARCH))
   jdirname	= java-$(shortver)-$(origin)-$(DEB_HOST_ARCH)
@@ -197,8 +199,8 @@ endif
 export DEBIAN_JDK_BASE_DIR := /$(basedir)
 
 BOOTJDK_HOME := $(strip $(subst /bin/javac,, $(firstword $(wildcard \
-			/usr/lib/jvm/java-14-openjdk-$(DEB_BUILD_ARCH)/bin/javac \
 			/usr/lib/jvm/java-15-openjdk-$(DEB_BUILD_ARCH)/bin/javac \
+			/usr/lib/jvm/java-16-openjdk-$(DEB_BUILD_ARCH)/bin/javac \
 		))))
 
 ifeq ($(DEB_BUILD_ARCH),$(DEB_HOST_ARCH))
@@ -493,6 +495,7 @@ COMMON_CONFIGURE_ARGS += \
 	--with-libpng=system \
 	--with-libjpeg=system \
 	--with-lcms=system \
+	--with-harfbuzz=system \
 	--with-pcsclite=system \
 	--disable-warnings-as-errors \
 	--disable-javac-server \
@@ -582,12 +585,12 @@ else
 endif
 
 ifneq (,$(filter $(distrel),precise))
-    bd_bootstrap = openjdk-14-jdk-headless | openjdk-15-jdk-headless,
+    bd_bootstrap = openjdk-15-jdk-headless | openjdk-16-jdk-headless,
 else ifneq (,$(filter $(distrel),squeeze wheezy jessie trusty xenial))
-    bd_bootstrap = openjdk-14-jdk-headless:native | openjdk-15-jdk-headless:native,
+    bd_bootstrap = openjdk-15-jdk-headless:native | openjdk-16-jdk-headless:native,
 else
-    bd_bootstrap = openjdk-15-jdk-headless:native | openjdk-14-jdk-headless:native,
-    bd_bootstrap = openjdk-14-jdk-headless:native | openjdk-15-jdk-headless:native,
+    bd_bootstrap = openjdk-16-jdk-headless:native | openjdk-15-jdk-headless:native,
+    bd_bootstrap = openjdk-15-jdk-headless:native | openjdk-16-jdk-headless:native,
 endif
 
 ifeq (,$(filter $(distrel),squeeze wheezy jessie precise trusty xenial))
@@ -642,6 +645,7 @@ bd_syslibs += \
 bd_openjdk = \
 	libxtst-dev, libxi-dev, libxt-dev, libxaw7-dev, libxrender-dev, libcups2-dev, \
 	libasound2-dev, liblcms2-dev, libfreetype6-dev (>= 2.2.1), \
+	libharfbuzz-dev, \
 	libxinerama-dev, libkrb5-dev, xsltproc, libpcsclite-dev, libxrandr-dev, \
 	libelf-dev, libfontconfig1-dev, libgtk2.0-0 | libgtk-3-0,
 
@@ -715,10 +719,11 @@ dlopen_hl_recommends =
 dlopen_jre_depends = \
 	libglib2.0-0 (>= 2.24), libgtk2.0-0 | libgtk-3-0, libxrandr2, libxinerama1,
 ifneq (,$(filter $(distrel),squeeze wheezy jessie stretch lucid precise xenial))
-  dlopen_jre_depends = libgl1-mesa-glx | libgl1,
+  dlopen_jre_depends += libgl1-mesa-glx | libgl1,
 else
-  dlopen_jre_depends = libgl1,
+  dlopen_jre_depends += libgl1,
 endif
+dlopen_jre_depends += libharfbuzz0b,
 dlopen_jre_recommends =
 
 # .desktop files need to be multiarch installable
@@ -1830,28 +1835,25 @@ endif
 	NO_PKG_MANGLE=1 \
 	dh_builddeb -a $(nodemo) $(nojrez) #$(bd_options)
 
-is_release		= yes
-#is_release		=
-hg_project		= jdk15u
-hg_tag			= jdk-15.0.1+9
-#hg_project		= jdk
-#hg_tag			= jdk-15+36
-package_version		= $(subst jdk-,,$(hg_tag))
+#is_release		= yes
+is_release		=
+git_project		= jdk
+git_tag			= jdk-16+27
+package_version		= $(subst jdk-,,$(git_tag))
 ifneq ($(is_release),yes)
   package_version	:= $(subst +,~,$(package_version))
 endif
-hg_url			= http://hg.openjdk.java.net/jdk-updates/$(hg_project)
-#hg_url			= http://hg.openjdk.java.net/jdk/$(hg_project)
+git_url			= https://github.com/openjdk/jdk
 origdir = ../$(basename)-$(package_version).orig
 topdir = $(basename)-$(package_version)
 get-orig:
 	mkdir $(origdir)
-	wget -O $(origdir)/jdk.tar.bz2 $(hg_url)/archive/$(hg_tag).tar.bz2
+	wget -O $(origdir)/jdk.tar.gz $(git_url)/archive/$(git_tag).tar.gz
 
 	set -ex; \
 	repo=jdk; \
-	d=$$(tar tf $(origdir)/$$repo.tar.bz2 | head -1 | sed 's,/.*,,'); \
-	tar xf $(origdir)/$$repo.tar.bz2; \
+	d=$$(tar tf $(origdir)/$$repo.tar.gz | head -1 | sed 's,/.*,,'); \
+	tar xf $(origdir)/$$repo.tar.gz; \
 	case $$repo in jdk) \
 	  rm -v -rf $$d/src/java.base/share/native/libzip/zlib; \
 	  find $$d/src/java.desktop/share/native/libjavajpeg \
@@ -1861,6 +1863,7 @@ get-orig:
 	  rm -v -rf $$d/src/java.desktop/share/native/libsplashscreen/libpng; \
 	  rm -v -f $$d/src/java.desktop/share/native/liblcms/cms*.c; \
 	  rm -v -f $$d/src/java.desktop/share/native/liblcms/lcms2*.h; \
+	  rm -v -rf $$d/src/java.desktop/share/native/libharfbuzz; \
 	  rm -v -rf $$d/src/java.smartcardio/unix/native/libj2pcsc/MUSCLE; \
 	esac; \
 	mv $$d $(topdir); \

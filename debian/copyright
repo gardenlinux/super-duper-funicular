@@ -2,8 +2,7 @@ This package was debianized by Matthias Klose <doko@ubuntu.com> on
 Wed, 08 Aug 2007 15:55:39 +0200.
 
 It was downloaded from
-	https://hg.openjdk.java.net/jdk
-	https://hg.openjdk.java.net/jdk-updates
+	https://github.com/openjdk/jdk/releases
 
 ------------------------------------------------------------------------------
 Upstream Authors:

@@ -58,7 +58,7 @@ Reviewed-by: aph, erikj, ehelin, ihse
  exit $exitcode
 --- a/src/hotspot/os/linux/os_linux.cpp
 +++ b/src/hotspot/os/linux/os_linux.cpp
-@@ -2625,6 +2625,8 @@ void os::get_summary_cpu_info(char* cpui
+@@ -2697,6 +2697,8 @@ void os::get_summary_cpu_info(char* cpui
    strncpy(cpuinfo, "IA64", length);
  #elif defined(PPC)
    strncpy(cpuinfo, "PPC64", length);

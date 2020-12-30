@@ -1,9 +1,9 @@
 Test-Command: java --version
-Depends: openjdk-15-jre-headless
+Depends: openjdk-16-jre-headless
 Restrictions: superficial
 
 Test-Command: javac --version
-Depends: openjdk-15-jdk-headless
+Depends: openjdk-16-jdk-headless
 Restrictions: superficial
 
 #Tests: hotspot, jaxp, langtools
