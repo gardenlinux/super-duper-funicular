@@ -1,7 +1,7 @@
 Source: openjdk-14
 Section: java
 Priority: optional
-Maintainer: OpenJDK Team <openjdk@lists.launchpad.net>
+Maintainer: OpenJDK Team <openjdk-14@packages.debian.org>
 Uploaders: Matthias Klose <doko@ubuntu.com>
 Build-Depends: debhelper (>= 11),
   m4, lsb-release, zip, unzip,
