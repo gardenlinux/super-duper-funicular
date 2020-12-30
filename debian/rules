@@ -87,10 +87,10 @@ TOP		= usr/lib/jvm
 origin		= openjdk
 basename	= openjdk-$(shortver)
 ifneq (,$(filter $(DEB_HOST_ARCH), $(hotspot_archs)))
-  priority	= $(if $(filter yes, $(is_default)),1511,1509)
+  priority	= $(if $(filter yes, $(is_default)),1611,1609)
   vm_name	= Hotspot JIT
 else
-  priority	= $(if $(filter yes, $(is_default)),1504,1503)
+  priority	= $(if $(filter yes, $(is_default)),1604,1603)
   vm_name	= Hotspot Zero
 endif
 jvmver		= 1.16.0
@@ -1838,7 +1838,7 @@ endif
 #is_release		= yes
 is_release		=
 git_project		= jdk
-git_tag			= jdk-16+27
+git_tag			= jdk-16+29
 package_version		= $(subst jdk-,,$(git_tag))
 ifneq ($(is_release),yes)
   package_version	:= $(subst +,~,$(package_version))
