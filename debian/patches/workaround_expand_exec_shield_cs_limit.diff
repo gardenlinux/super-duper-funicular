@@ -1,6 +1,6 @@
 --- a/src/hotspot/os_cpu/linux_x86/os_linux_x86.cpp
 +++ b/src/hotspot/os_cpu/linux_x86/os_linux_x86.cpp
-@@ -837,7 +837,7 @@ void os::verify_stack_alignment() {
+@@ -858,7 +858,7 @@ void os::verify_stack_alignment() {
   * updates (JDK-8023956).
   */
  void os::workaround_expand_exec_shield_cs_limit() {
@@ -9,14 +9,3 @@
    assert(Linux::initial_thread_stack_bottom() != NULL, "sanity");
    size_t page_size = os::vm_page_size();
  
---- a/src/hotspot/os/linux/os_linux.cpp
-+++ b/src/hotspot/os/linux/os_linux.cpp
-@@ -5227,7 +5227,7 @@ jint os::init_2(void) {
-     return JNI_ERR;
-   }
- 
--#if defined(IA32)
-+#if defined(IA32) && !defined(ZERO)
-   // Need to ensure we've determined the process's initial stack to
-   // perform the workaround
-   Linux::capture_initial_stack(JavaThread::stack_size_at_create());

@@ -1,16 +1,16 @@
 --- a/make/autoconf/lib-bundled.m4
 +++ b/make/autoconf/lib-bundled.m4
-@@ -37,6 +37,7 @@ AC_DEFUN_ONCE([LIB_SETUP_BUNDLED_LIBS],
-   LIB_SETUP_LIBPNG
+@@ -38,6 +38,7 @@ AC_DEFUN_ONCE([LIB_SETUP_BUNDLED_LIBS],
    LIB_SETUP_ZLIB
    LIB_SETUP_LCMS
+   LIB_SETUP_HARFBUZZ
 +  LIB_SETUP_PCSCLITE
  ])
  
  ################################################################################
-@@ -260,3 +261,41 @@ AC_DEFUN_ONCE([LIB_SETUP_LCMS],
-   AC_SUBST(LCMS_CFLAGS)
-   AC_SUBST(LCMS_LIBS)
+@@ -301,3 +302,41 @@ AC_DEFUN_ONCE([LIB_SETUP_HARFBUZZ],
+   AC_SUBST(HARFBUZZ_CFLAGS)
+   AC_SUBST(HARFBUZZ_LIBS)
  ])
 +
 +################################################################################

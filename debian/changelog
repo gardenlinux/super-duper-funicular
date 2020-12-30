@@ -1,3 +1,15 @@
+openjdk-11 (11.0.10+8-1) unstable; urgency=medium
+
+  * OpenJDK 11.0.10+8 build (early access).
+  * Build with system harfbuzz.
+  * Refresh patches.
+  * Don't run the autopkg tests. There's no value running all the internal
+    tests as an autopkg test, when these are already run during the build.
+  * Update VCS attributes.
+  * Bump standards version.
+
+ -- Matthias Klose <doko@ubuntu.com>  Wed, 30 Dec 2020 13:50:32 +0100
+
 openjdk-11 (11.0.9.1+1-1) unstable; urgency=medium
 
   * OpenJDK 11.0.9.1+1 build (release).
