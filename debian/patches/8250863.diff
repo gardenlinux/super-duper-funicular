@@ -1,0 +1,46 @@
+diff --git a/src/java.base/share/native/libfdlibm/k_standard.c b/src/java.base/share/native/libfdlibm/k_standard.c
+index c0f8d936770..d6e18e2d72d 100644
+--- a/src/java.base/share/native/libfdlibm/k_standard.c
++++ b/src/java.base/share/native/libfdlibm/k_standard.c
+@@ -1,5 +1,5 @@
+ /*
+- * Copyright (c) 1998, 2001, Oracle and/or its affiliates. All rights reserved.
++ * Copyright (c) 1998, 2020, Oracle and/or its affiliates. All rights reserved.
+  * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
+  *
+  * This code is free software; you can redistribute it and/or modify it
+@@ -739,6 +739,10 @@ static double zero = 0.0;       /* used as const */
+                         errno = EDOM;
+                 }
+                 break;
++            default:
++                exc.retval = zero / zero;
++                errno = EINVAL;
++                break;
+         }
+         return exc.retval;
+ }
+diff --git a/src/java.base/unix/native/libnet/NetworkInterface.c b/src/java.base/unix/native/libnet/NetworkInterface.c
+index fa145b5af41..0581b8e90ec 100644
+--- a/src/java.base/unix/native/libnet/NetworkInterface.c
++++ b/src/java.base/unix/native/libnet/NetworkInterface.c
+@@ -1296,7 +1296,8 @@ static netif *enumIPv6Interfaces(JNIEnv *env, int sock, netif *ifs) {
+ static int getIndex(int sock, const char *name) {
+     struct ifreq if2;
+     memset((char *)&if2, 0, sizeof(if2));
+-    strncpy(if2.ifr_name, name, sizeof(if2.ifr_name) - 1);
++    strncpy(if2.ifr_name, name, sizeof(if2.ifr_name));
++    if2.ifr_name[sizeof(if2.ifr_name) - 1] = 0;
+ 
+     if (ioctl(sock, SIOCGIFINDEX, (char *)&if2) < 0) {
+         return -1;
+@@ -1359,7 +1360,8 @@ static int getMTU(JNIEnv *env, int sock, const char *ifname) {
+ static int getFlags(int sock, const char *ifname, int *flags) {
+     struct ifreq if2;
+     memset((char *)&if2, 0, sizeof(if2));
+-    strncpy(if2.ifr_name, ifname, sizeof(if2.ifr_name) - 1);
++    strncpy(if2.ifr_name, ifname, sizeof(if2.ifr_name));
++    if2.ifr_name[sizeof(if2.ifr_name) - 1] = 0;
+ 
+     if (ioctl(sock, SIOCGIFFLAGS, (char *)&if2) < 0) {
+         return -1;
