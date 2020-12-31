@@ -1,3 +1,10 @@
+openjdk-16 (16~30-1) unstable; urgency=medium
+
+  * OpenJDK 16 snapshot, build 30.
+  * Prefer openjdk-16-jdk for the build.
+
+ -- Matthias Klose <doko@ubuntu.com>  Thu, 31 Dec 2020 09:32:12 +0100
+
 openjdk-16 (16~29-1) unstable; urgency=medium
 
   * OpenJDK 16 snapshot, build 29.
