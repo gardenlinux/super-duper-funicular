@@ -1838,12 +1838,12 @@ endif
 #is_release		= yes
 is_release		=
 git_project		= jdk
-git_tag			= jdk-17+3
+git_tag			= jdk-17+4
 package_version		= $(subst jdk-,,$(git_tag))
 ifneq ($(is_release),yes)
   package_version	:= $(subst +,~,$(package_version))
 endif
-git_url			= https://github.com/openjdk/jdk
+git_url			= https://github.com/openjdk/$(git_project)
 origdir = ../$(basename)-$(package_version).orig
 topdir = $(basename)-$(package_version)
 get-orig:
@@ -1868,10 +1868,13 @@ get-orig:
 	esac; \
 	mv $$d $(topdir); \
 	chmod +x $(topdir)/configure; \
+	rm -f $(topdir)/.hgtags; \
+	rm -f $(topdir)/.gitattributes; \
+	rm -rf $(topdir)/.github; \
 	tar cfJ ../$(basename)_$(package_version).orig.tar.xz $(topdir); \
 	rm -rf $(topdir)
 
-	rm -rf ../$(origdir)
+	rm -rf $(origdir)
 
 binary: binary-arch binary-indep
 .PHONY: build build-arch build-indep clean binary-indep binary-arch binary install packaging-files
