@@ -1838,7 +1838,7 @@ endif
 #is_release		= yes
 is_release		=
 git_project		= jdk16
-git_tag			= jdk-16+30
+git_tag			= jdk-16+31
 package_version		= $(subst jdk-,,$(git_tag))
 ifneq ($(is_release),yes)
   package_version	:= $(subst +,~,$(package_version))
@@ -1865,11 +1865,11 @@ get-orig:
 	  rm -v -f $$d/src/java.desktop/share/native/liblcms/lcms2*.h; \
 	  rm -v -rf $$d/src/java.desktop/share/native/libharfbuzz; \
 	  rm -v -rf $$d/src/java.smartcardio/unix/native/libj2pcsc/MUSCLE; \
-	  rm -f $$d/.gitattributes; \
-	  rm -rf $$d/.github; \
 	esac; \
 	mv $$d $(topdir); \
 	chmod +x $(topdir)/configure; \
+	rm -f $$d/.gitattributes; \
+	rm -rf $$d/.github; \
 	tar cfJ ../$(basename)_$(package_version).orig.tar.xz $(topdir); \
 	rm -rf $(topdir)
 

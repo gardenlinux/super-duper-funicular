@@ -44,4 +44,4 @@ reproducible-build-user.diff
 riscv64.diff
 reproducible-build-jmod.diff
 harfbuzz-cflags.diff
-link-libatomic.diff
+8259043.diff
