@@ -1,3 +1,9 @@
+openjdk-17 (17~5-1) unstable; urgency=medium
+
+  * OpenJDK 17 snapshot, build 5.
+
+ -- Matthias Klose <doko@ubuntu.com>  Tue, 19 Jan 2021 10:29:50 +0100
+
 openjdk-17 (17~4-0ubuntu1) hirsute; urgency=medium
 
   * OpenJDK 17 snapshot, build 4.
