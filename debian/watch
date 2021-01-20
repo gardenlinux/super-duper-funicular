@@ -1,3 +1,4 @@
 version=4
-opts="repack,compression=xz,pagemangle=s%(jdk-.*)%<a href='http://hg.openjdk.java.net/jdk/jdk/archive/$1.tar.gz'>$1</a>%g,uversionmangle=s/\+/~/" \
-http://hg.openjdk.java.net/jdk/jdk/tags .*/archive/jdk-(13.*).tar.gz
+opts="filenamemangle=s%(?:.*?)?jdk-(\d[\d.]*\+\d[\d]*)\.tar\.gz%<project>-$1.tar.gz%" \
+   https://github.com/openjdk/jdk13u/tags \
+   (?:.*?/)?jdk-(\d[\d.]*\+\d[\d]*)\.tar\.gz debian uupdate

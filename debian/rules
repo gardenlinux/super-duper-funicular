@@ -1840,23 +1840,23 @@ endif
 
 is_release		= yes
 #is_release		=
-hg_project		= jdk13u
-hg_tag			= jdk-13.0.5.1+1
-package_version		= $(subst jdk-,,$(hg_tag))
+git_project		= jdk13u
+git_tag			= jdk-13.0.6+5
+package_version		= $(subst jdk-,,$(git_tag))
 ifneq ($(is_release),yes)
   package_version	:= $(subst +,~,$(package_version))
 endif
-hg_url			= http://hg.openjdk.java.net/jdk-updates/$(hg_project)
+git_url			= https://github.com/openjdk/$(git_project)
 origdir = ../$(basename)-$(package_version).orig
 topdir = $(basename)-$(package_version)
 get-orig:
 	mkdir $(origdir)
-	wget -O $(origdir)/jdk.tar.bz2 $(hg_url)/archive/$(hg_tag).tar.bz2
+	wget -O $(origdir)/jdk.tar.gz $(git_url)/archive/$(git_tag).tar.gz
 
 	set -ex; \
 	repo=jdk; \
-	d=$$(tar tf $(origdir)/$$repo.tar.bz2 | head -1 | sed 's,/.*,,'); \
-	tar xf $(origdir)/$$repo.tar.bz2; \
+	d=$$(tar tf $(origdir)/$$repo.tar.gz | head -1 | sed 's,/.*,,'); \
+	tar xf $(origdir)/$$repo.tar.gz; \
 	case $$repo in jdk) \
 	  rm -v -rf $$d/src/java.base/share/native/libzip/zlib; \
 	  find $$d/src/java.desktop/share/native/libjavajpeg \
@@ -1873,7 +1873,7 @@ get-orig:
 	tar cfJ ../$(basename)_$(package_version).orig.tar.xz $(topdir); \
 	rm -rf $(topdir)
 
-	rm -rf ../$(origdir)
+	rm -rf $(origdir)
 
 binary: binary-arch binary-indep
 .PHONY: build build-arch build-indep clean binary-indep binary-arch binary install packaging-files

@@ -1,3 +1,10 @@
+openjdk-13 (13.0.6+5-1) unstable; urgency=medium
+
+  * OpenJDK 13.0.6 release, build 5.
+  * Update download location and watch file.
+
+ -- Matthias Klose <doko@ubuntu.com>  Wed, 20 Jan 2021 12:07:56 +0100
+
 openjdk-13 (13.0.5.1+1-1) unstable; urgency=medium
 
   * OpenJDK 13.0.5.1 release, build 1.
