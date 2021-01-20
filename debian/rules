@@ -1833,7 +1833,7 @@ endif
 is_release		= yes
 #is_release		=
 hg_project		= jdk15u
-hg_tag			= jdk-15.0.1+9
+hg_tag			= jdk-15.0.2+7
 #hg_project		= jdk
 #hg_tag			= jdk-15+36
 package_version		= $(subst jdk-,,$(hg_tag))
@@ -1868,7 +1868,7 @@ get-orig:
 	tar cfJ ../$(basename)_$(package_version).orig.tar.xz $(topdir); \
 	rm -rf $(topdir)
 
-	rm -rf ../$(origdir)
+	rm -rf $(origdir)
 
 binary: binary-arch binary-indep
 .PHONY: build build-arch build-indep clean binary-indep binary-arch binary install packaging-files

@@ -5,7 +5,7 @@ icedtea-override-redirect-compiz.diff
 libpcsclite-dlopen.diff
 #jexec.diff
 default-jvm-cfg.diff
-workaround_expand_exec_shield_cs_limit.diff
+#workaround_expand_exec_shield_cs_limit.diff
 adlc-parser.diff
 multiple-pkcs11-library-init.diff
 #s390x-thread-stack-size.diff
@@ -18,7 +18,7 @@ jdk-i18n-pt_BR.diff
 machine-flag.diff
 zero-x32.diff
 # s390x-zEC12.diff
-hotspot-disable-exec-shield-workaround.diff
+#hotspot-disable-exec-shield-workaround.diff
 atk-wrapper-security.diff
 # java-access-bridge-security.diff
 # jdk-pulseaudio.diff

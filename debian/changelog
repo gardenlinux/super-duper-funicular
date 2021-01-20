@@ -1,9 +1,10 @@
-openjdk-15 (15.0.1+9-4) UNRELEASED; urgency=medium
+openjdk-15 (15.0.2+7-1) unstable; urgency=medium
 
+  * OpenJDK 15.0.2 release, build 7.
   * Move VCS to salsa.debian.org.
   * Bump standards version.
 
- -- Matthias Klose <doko@ubuntu.com>  Wed, 30 Dec 2020 13:05:57 +0100
+ -- Matthias Klose <doko@ubuntu.com>  Wed, 20 Jan 2021 22:11:40 +0100
 
 openjdk-15 (15.0.1+9-3) unstable; urgency=medium
 
