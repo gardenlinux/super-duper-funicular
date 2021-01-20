@@ -1,3 +1,9 @@
+openjdk-16 (16~32-1) unstable; urgency=medium
+
+  * OpenJDK 16 snapshot, build 32.
+
+ -- Matthias Klose <doko@ubuntu.com>  Thu, 14 Jan 2021 21:37:08 +0100
+
 openjdk-16 (16~31-1) unstable; urgency=medium
 
   * OpenJDK 16 snapshot, build 31.

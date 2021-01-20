@@ -1838,7 +1838,7 @@ endif
 #is_release		= yes
 is_release		=
 git_project		= jdk16
-git_tag			= jdk-16+31
+git_tag			= jdk-16+32
 package_version		= $(subst jdk-,,$(git_tag))
 ifneq ($(is_release),yes)
   package_version	:= $(subst +,~,$(package_version))
@@ -1868,8 +1868,8 @@ get-orig:
 	esac; \
 	mv $$d $(topdir); \
 	chmod +x $(topdir)/configure; \
-	rm -f $$d/.gitattributes; \
-	rm -rf $$d/.github; \
+	rm -f $(topdir)/.gitattributes; \
+	rm -rf $(topdir)/.github; \
 	tar cfJ ../$(basename)_$(package_version).orig.tar.xz $(topdir); \
 	rm -rf $(topdir)
 
