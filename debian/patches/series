@@ -25,8 +25,6 @@ atk-wrapper-security.diff
 # java-access-bridge-security.diff
 # jdk-pulseaudio.diff
 # alpha-float-const.diff
-# kfreebsd-support-jdk.diff
-# kfreebsd-support-hotspot.diff
 dnd-files.diff
 hotspot-libpath.diff
 generated-headers.patch

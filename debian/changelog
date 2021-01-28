@@ -2,6 +2,7 @@ openjdk-11 (11.0.10+9-2) UNRELEASED; urgency=medium
 
   * Use debugedit to generate unique build-id's and remove the openjdk-N-dbg
     file conflicts.
+  * Remove KFreeBSD build support and patches, not updated since OpenJDK 8.
 
  -- Matthias Klose <doko@ubuntu.com>  Thu, 28 Jan 2021 15:19:57 +0100
 
