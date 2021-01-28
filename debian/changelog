@@ -5,6 +5,8 @@ openjdk-17 (17~7-1) unstable; urgency=medium
   * Use debugedit to generate unique build-id's and remove the openjdk-N-dbg
     file conflicts.
   * Remove KFreeBSD build support and patches, not updated since OpenJDK 8.
+  * Remove obsolete patches: alpha-float-const, libpcsclite-dlopen,
+    parallel-build-fix, s390x-thread-stack-size.
 
  -- Matthias Klose <doko@ubuntu.com>  Thu, 28 Jan 2021 11:48:53 +0100
 
