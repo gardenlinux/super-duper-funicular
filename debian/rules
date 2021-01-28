@@ -672,6 +672,12 @@ ifeq ($(with_systemtap),yes)
   bd_systemtap = systemtap-sdt-dev [!sh4],
 endif
 
+ifeq (,$(filter $(distrel),jessie stretch buster precise trusty xenial bionic focal groovy))
+  with_debugedit = yes
+  bd_debugedit = debugedit (>= 4.16),
+  build_id_seed = $(PKGSOURCE)-$(PKGVERSION)
+endif
+
 ifeq (,$(filter $(distrel),precise))
   nocheck_profile = $(EMPTY) <!nocheck>
 endif
@@ -838,6 +844,10 @@ control_vars += '-Vjcommon:Depends=$(pkg_jcommon)'
 
 control_vars += '-Vjrehl:Breaks=$(jrehl_breaks)'
 
+ifneq ($(with_debugedit),yes)
+  control_vars += '-Vdbg:Conflicts=openjdk-11-dbg, openjdk-12-dbg, openjdk-13-dbg, openjdk-14-dbg, openjdk-15-dbg, openjdk-16-dbg'
+endif
+
 debian/control: debian/control.in debian/tests/control debian/rules
 	@cp -p debian/control debian/control.old
 	sed \
@@ -854,6 +864,7 @@ debian/control: debian/control.in debian/tests/control debian/rules
 	      -e 's/@bd_nss@/$(bd_nss)/g' \
 	      -e 's/@bd_systemtap@/$(bd_systemtap)/g' \
 	      -e 's/@bd_ant@/$(bd_ant)/g' \
+	      -e 's/@bd_debugedit@/$(bd_debugedit)/g' \
 	      -e 's/@bd_check@/$(bd_check)/g' \
 	      -e 's/@core_fonts@/$(core_fonts)/g' \
 	      -e 's/@cjk_fonts@/$(cjk_fonts)/g' \
@@ -1236,6 +1247,13 @@ install: packaging-files
 	: # compress manpages
 	find $(d)/$(basedir)/man -type f ! -type l | xargs gzip -9v -n
 
+ifeq ($(with_debugedit),yes)
+	: # rewrite build-id
+	for i in $$(find $(d)/$(basedir) -type f | xargs -r file | sed -n '/ELF/s/:.*//p'); do \
+	  debugedit --build-id --build-id-seed='$(build_id_seed)' $$i; \
+	done
+endif
+
 	mkdir -p $(d)/$(etcdir)/security
 	mkdir -p $(d)/$(etcdir)/security/policy/limited
 	mkdir -p $(d)/$(etcdir)/security/policy/unlimited
@@ -1310,7 +1328,7 @@ endif
 	  $$([ -f $(d)/$(basedir)/conf/security/nss.cfg ] && echo conf/security/nss.cfg) \
 	  $(if $(findstring ca-cert,$(pkg_certs)),,lib/security/cacerts) \
 	  lib/security/default.policy \
-	  lib/security/blacklisted.certs \
+	  lib/security/blocked.certs \
 	  lib/security/public_suffix_list.dat; \
 	do \
 	  dest=$$(echo $$i | sed 's,^[^/]*/,,'); \
@@ -1792,7 +1810,7 @@ endif
 	set -e; if which dh_strip_nondeterminism >/dev/null; then \
 	  dh_strip_nondeterminism -a $(nodemo) $(nojrez); \
 	fi
-	dh_strip -a $(nodemo) $(nojrez) \
+	dh_strip -v -a $(nodemo) $(nojrez) \
 		-Xlibjvm.so -X.debuginfo --dbg-package=$(p_dbg)
 
 ifeq (,$(findstring nostrip, $(DEB_BUILD_OPTIONS)))

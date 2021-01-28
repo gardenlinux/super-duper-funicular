@@ -2,6 +2,8 @@ openjdk-17 (17~7-1) unstable; urgency=medium
 
   * OpenJDK 17 snapshot, build 7.
   * Update watch file.
+  * Use debugedit to generate unique build-id's and remove the openjdk-N-dbg
+    file conflicts.
 
  -- Matthias Klose <doko@ubuntu.com>  Thu, 28 Jan 2021 11:48:53 +0100
 
