@@ -1,3 +1,11 @@
+openjdk-16 (16~33-2) UNRELEASED; urgency=medium
+
+  * Use debugedit to generate unique build-id's and remove the openjdk-N-dbg
+    file conflicts.
+  * 
+
+ -- Matthias Klose <doko@ubuntu.com>  Thu, 28 Jan 2021 15:05:39 +0100
+
 openjdk-16 (16~33-1) unstable; urgency=medium
 
   * OpenJDK 16 snapshot, build 33.

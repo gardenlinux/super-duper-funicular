@@ -6,7 +6,7 @@ Uploaders: Matthias Klose <doko@ubuntu.com>
 Build-Depends: debhelper (>= 11),
   m4, lsb-release, zip, unzip,
   sharutils, gawk, cpio, pkg-config, procps, wdiff, time, fastjar (>= 2:0.96-0ubuntu2),
-  strip-nondeterminism,
+  strip-nondeterminism, debugedit (>= 4.16),
   file,
   autoconf, automake, autotools-dev, ant, ant-optional,
   g++-10 <!cross>,
@@ -158,8 +158,7 @@ Depends: openjdk-16-jre-headless (= ${binary:Version}),
    ${misc:Depends}
 Recommends: openjdk-16-jre (= ${binary:Version})
 Suggests: openjdk-16-jdk (= ${binary:Version})
-Conflicts: openjdk-11-dbg, openjdk-12-dbg, openjdk-13-dbg, openjdk-14-dbg,
-  openjdk-15-dbg,
+Conflicts: ${dbg:Conflicts}
 Description: Java runtime based on OpenJDK (debugging symbols)
  OpenJDK is a development environment for building applications,
  applets, and components using the Java programming language.
