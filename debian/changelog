@@ -8,7 +8,7 @@ openjdk-17 (17~7-1) unstable; urgency=medium
   * Remove obsolete patches: alpha-float-const, libpcsclite-dlopen,
     parallel-build-fix, s390x-thread-stack-size.
 
- -- Matthias Klose <doko@ubuntu.com>  Thu, 28 Jan 2021 11:48:53 +0100
+ -- Matthias Klose <doko@ubuntu.com>  Thu, 28 Jan 2021 14:52:27 +0100
 
 openjdk-17 (17~5-1) unstable; urgency=medium
 
