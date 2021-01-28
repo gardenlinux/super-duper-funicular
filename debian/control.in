@@ -6,7 +6,7 @@ Uploaders: Matthias Klose <doko@ubuntu.com>
 Build-Depends: @bd_debhelper@
   m4, lsb-release, zip, unzip,
   sharutils, gawk, cpio, pkg-config, procps, wdiff, time, @bd_fastjar@
-  strip-nondeterminism,
+  strip-nondeterminism, @bd_debugedit@
   @bd_check@
   @bd_autotools@ @bd_ant@
   @bd_gcc@
@@ -147,6 +147,7 @@ Depends: @basename@-jre-headless (= ${binary:Version}),
    ${misc:Depends}
 Recommends: @basename@-jre (= ${binary:Version})
 Suggests: @basename@-jdk (= ${binary:Version})
+Conflicts: ${dbg:Conflicts}
 Description: Java runtime based on OpenJDK (debugging symbols)
  OpenJDK is a development environment for building applications,
  applets, and components using the Java programming language.
