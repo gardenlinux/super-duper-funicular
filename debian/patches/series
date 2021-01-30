@@ -2,13 +2,11 @@ system-pcsclite.diff
 hotspot-mips-align.diff
 icc_loading_with_symlink.diff
 icedtea-override-redirect-compiz.diff
-libpcsclite-dlopen.diff
 #jexec.diff
 default-jvm-cfg.diff
 workaround_expand_exec_shield_cs_limit.diff
 adlc-parser.diff
 multiple-pkcs11-library-init.diff
-#s390x-thread-stack-size.diff
 s390x-opt.diff
 jdk-getAccessibleValue.diff
 jtreg-location.diff
@@ -25,7 +23,6 @@ atk-wrapper-security.diff
 # alpha-float-const.diff
 dnd-files.diff
 generated-headers.patch
-#parallel-build-fix.diff
 m68k-support.diff
 reproducible-properties-timestamp.diff
 # reproducible-javadoc-timestamp.diff

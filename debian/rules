@@ -992,9 +992,6 @@ stamps/zero-configure: stamps/build stamps/unpack
 
 stamps/unpack:
 	: # apply some architecture specific patches ...
-ifeq ($(DEB_HOST_ARCH),alpha)
-	patch -p1 < debian/patches/alpha-float-const.diff
-endif
 
 	$(MAKE) -f debian/rules packaging-files
 
