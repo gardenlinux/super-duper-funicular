@@ -50,7 +50,7 @@ endif
 multiarch_dir = /$(DEB_HOST_MULTIARCH)
 
 hotspot_archs	= amd64 i386 arm64 armhf ppc64 ppc64el s390x
-jtreg_archs	= $(hotspot_archs) alpha ia64 powerpc powerpcspe ppc64 sh4 x32
+jtreg_archs	= $(hotspot_archs) alpha ia64 powerpc ppc64 sh4 x32
 jtreg_archs	+= armel mipsel mips64el
 jtreg_archs	+= riscv64
 
@@ -168,7 +168,7 @@ with_check = disabled for this upload
 
 with_wqy_zenhai = $(if $(filter $(distrel),lenny),,yes)
 
-arch_map	:= alpha=alpha arm=arm armel=arm armhf=arm arm64=aarch64 amd64=amd64 hppa=parisc i386=i586 m68k=m68k mips=mips mipsel=mipsel mips64=mips64 mips64el=mips64el powerpc=ppc powerpcspe=ppc ppc64=ppc64 ppc64el=ppc64le riscv64=riscv64 sparc=sparc sparc64=sparcv9 sh4=sh s390x=s390x ia64=ia64 x32=x32
+arch_map	:= alpha=alpha arm=arm armel=arm armhf=arm arm64=aarch64 amd64=amd64 hppa=parisc i386=i586 m68k=m68k mips=mips mipsel=mipsel mips64=mips64 mips64el=mips64el powerpc=ppc ppc64=ppc64 ppc64el=ppc64le riscv64=riscv64 sparc=sparc sparc64=sparcv9 sh4=sh s390x=s390x ia64=ia64 x32=x32
 
 jvmarch		:= $(strip $(patsubst $(DEB_HOST_ARCH_CPU)=%, %, \
 			$(filter $(DEB_HOST_ARCH_CPU)=%, $(arch_map))))
@@ -178,7 +178,7 @@ endif
 
 default_vm = $(if $(filter $(DEB_HOST_ARCH), $(hotspot_archs)),hotspot,zero)
 
-any_archs = alpha amd64 armel armhf arm64 i386 ia64 mips mipsel mips64 mips64el powerpc powerpcspe ppc64 ppc64el m68k riscv64 sh4 sparc sparc64 s390x x32
+any_archs = alpha amd64 armel armhf arm64 i386 ia64 mips mipsel mips64 mips64el powerpc ppc64 ppc64el m68k riscv64 sh4 sparc sparc64 s390x x32
 
 altzero_archs = $(hotspot_archs)
 ifneq (,$(filter $(distrel),trusty))
@@ -325,7 +325,7 @@ CONFIGURE_ARGS =
 # see http://icedtea.classpath.org/bugzilla/show_bug.cgi?id=217
 # only use it for zero ports except powerpc (which we assume as
 # fast enough to build.
-ifeq (,$(filter $(DEB_HOST_ARCH), $(hotspot_archs) ia64 powerpc powerpcspe))
+ifeq (,$(filter $(DEB_HOST_ARCH), $(hotspot_archs) ia64 powerpc))
   CONFIGURE_ARGS += --with-alt-jar=/usr/bin/fastjar
 endif
 
@@ -995,9 +995,6 @@ stamps/unpack:
 ifeq ($(DEB_HOST_ARCH),alpha)
 	patch -p1 < debian/patches/alpha-float-const.diff
 endif
-ifeq ($(DEB_HOST_ARCH),powerpcspe)
-	patch -p1 < debian/patches/powerpcspe-float-const.diff
-endif
 
 	$(MAKE) -f debian/rules packaging-files
 
@@ -1050,7 +1047,7 @@ build: pre-build $(build_stamps)
 
 stamps/build: stamps/configure
 	@echo '========== $@ =========='
-ifneq (,$(filter $(DEB_HOST_ARCH), alpha armel armhf ia64 m68k mips mipsel mips64 mips64el powerpc powerpcspe riscv64 s390x sh4 sparc sparc64))
+ifneq (,$(filter $(DEB_HOST_ARCH), alpha armel armhf ia64 m68k mips mipsel mips64 mips64el powerpc riscv64 s390x sh4 sparc sparc64))
 	sh -c 'sh debian/buildwatch.sh $(CURDIR)/$(builddir) &'
 endif
 	if $(EXTRA_BUILD_ENV) $(MAKE) --no-print-directory -C $(builddir) $(build_target); then \
@@ -1207,7 +1204,7 @@ debian-clean:
 
 lib_ext_dirs = common $(sort $(foreach arch,$(arch_map),$(firstword $(subst =,$(SPACE),$(arch)))))
 ifeq ($(derivative),Ubuntu)
-  lib_ext_dirs := $(filter-out arm hppa m68k mips% powerpcspe s390% sh%, $(lib_ext_dirs))
+  lib_ext_dirs := $(filter-out arm hppa m68k mips% s390% sh%, $(lib_ext_dirs))
 else
   lib_ext_dirs := $(filter-out arm hppa, $(lib_ext_dirs))
 endif
