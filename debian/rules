@@ -494,9 +494,6 @@ COMMON_CONFIGURE_ARGS += \
 	--disable-warnings-as-errors \
 	--disable-javac-server \
 
-COMMON_CONFIGURE_ARGS += \
-	--enable-jvm-feature-link-time-opt
-
 ifneq (,$(filter $(distrel),precise trusty xenial))
   # building with a GCC from a PPA ...
   COMMON_CONFIGURE_ARGS += \
@@ -842,7 +839,7 @@ control_vars += '-Vjcommon:Depends=$(pkg_jcommon)'
 control_vars += '-Vjrehl:Breaks=$(jrehl_breaks)'
 
 ifneq ($(with_debugedit),yes)
-  control_vars += '-Vdbg:Conflicts=openjdk-11-dbg, openjdk-12-dbg, openjdk-13-dbg, openjdk-14-dbg, openjdk-15-dbg, openjdk-16-dbg'
+  control_vars += '-Vdbg:Conflicts=openjdk-11-dbg, openjdk-12-dbg, openjdk-13-dbg, openjdk-14-dbg, openjdk-15-dbg, openjdk-17-dbg'
 endif
 
 debian/control: debian/control.in debian/tests/control debian/rules
@@ -1853,7 +1850,7 @@ endif
 #is_release		= yes
 is_release		=
 git_project		= jdk16
-git_tag			= jdk-16+33
+git_tag			= jdk-16+34
 package_version		= $(subst jdk-,,$(git_tag))
 ifneq ($(is_release),yes)
   package_version	:= $(subst +,~,$(package_version))
