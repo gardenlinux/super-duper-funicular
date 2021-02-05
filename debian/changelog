@@ -1,3 +1,9 @@
+openjdk-16 (16~35-1) unstable; urgency=medium
+
+  * OpenJDK 16 snapshot, build 35 (first OpenJDK 16 release candidate).
+
+ -- Matthias Klose <doko@ubuntu.com>  Fri, 05 Feb 2021 13:08:21 +0100
+
 openjdk-16 (16~34-1) unstable; urgency=medium
 
   * OpenJDK 16 snapshot, build 34.
