@@ -11,7 +11,6 @@ s390x-opt.diff
 jdk-getAccessibleValue.diff
 jtreg-location.diff
 jdk-i18n-pt_BR.diff
-#disable-doclint-by-default.diff
 8199220.diff
 machine-flag.diff
 zero-x32.diff

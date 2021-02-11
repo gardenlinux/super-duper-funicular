@@ -1844,7 +1844,7 @@ endif
 #is_release		= yes
 is_release		=
 git_project		= jdk16
-git_tag			= jdk-16+35
+git_tag			= jdk-16+36
 package_version		= $(subst jdk-,,$(git_tag))
 ifneq ($(is_release),yes)
   package_version	:= $(subst +,~,$(package_version))

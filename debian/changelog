@@ -1,3 +1,11 @@
+openjdk-16 (16~36-1) UNRELEASED; urgency=medium
+
+  * OpenJDK 16 snapshot, build 36.
+  * Remove the disable-doclint-by-default patch, already disabled.
+    Addresses: #982521.
+
+ -- Matthias Klose <doko@ubuntu.com>  Thu, 11 Feb 2021 07:49:04 +0100
+
 openjdk-16 (16~35-1) unstable; urgency=medium
 
   * OpenJDK 16 snapshot, build 35 (first OpenJDK 16 release candidate).
