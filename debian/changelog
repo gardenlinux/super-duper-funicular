@@ -1,3 +1,12 @@
+openjdk-17 (17~9-1) unstable; urgency=medium
+
+  * OpenJDK 17 snapshot, build 9.
+  * Enable running the tests.
+  * Remove the disable-doclint-by-default patch. Was not applied anymore
+    in 17.  Closes: #982521.
+
+ -- Matthias Klose <doko@ubuntu.com>  Thu, 11 Feb 2021 10:13:25 +0000
+
 openjdk-17 (17~8-1) unstable; urgency=medium
 
   * OpenJDK 17 snapshot, build 8.
