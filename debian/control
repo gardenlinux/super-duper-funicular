@@ -17,6 +17,7 @@ Build-Depends: debhelper (>= 11),
   libnss3-dev (>= 2:3.17.1),
   openjdk-16-jdk-headless <cross>,
 Build-Depends-Indep: graphviz, pandoc,
+Rules-Requires-Root: no
 Standards-Version: 4.5.1
 Homepage: https://openjdk.java.net/
 Vcs-Browser: https://salsa.debian.org/openjdk-team/openjdk/tree/openjdk-16
