@@ -553,15 +553,20 @@ endif
 # dups in heimdal-clients, krb5-user: kinit, klist, ktab, no alternatives
 # have jrunscript in the jdk packages
 
-all_tools	= $(notdir $(wildcard $(builddir)/$(sdkimg)/bin/*))
+all_tools	=  jaotc jar jarsigner java javac javadoc javap jcmd \
+	jconsole jdb jdeprscan jdeps jfr jhsdb jimage jinfo jlink jmap \
+	jmod jpackage jps jrunscript jshell jstack jstat jstatd keytool \
+	rmid rmiregistry serialver
 
 jdk_hl_tools	= jar jarsigner javac javadoc javap jcmd jdb \
-	jdeprscan jdeps jimage jinfo jlink jmap jmod jps \
+	jdeprscan jdeps jfr jimage jinfo jlink jmap jmod jps \
 	jrunscript jshell jstack jstat jstatd serialver
 ifneq (,$(filter $(DEB_HOST_ARCH), amd64 arm64))
+  all_tools	+= jaotc
   jdk_hl_tools	+= jaotc
 endif
 ifeq (,$(filter $(DEB_HOST_ARCH), alpha armel ia64 m68k mips mipsel mips64el powerpc riscv64 s390x sh4 sparc64 x32))
+  all_tools	+= jhsdb
   jdk_hl_tools	+= jhsdb
 endif
 jdk_tools	= jconsole
@@ -1401,7 +1406,7 @@ endif
 	cd $(CURDIR)/$(d); \
 	for i in $(basedir)/lib/*.so; do \
 	  case "$$i" in \
-	    */libjavagtk.so|*/libsplashscreen.so|*/libjsoundalsa.so|*/xawt) echo $$i >> ../$(p_jre).install;; \
+	    */libawt_xawt.so|*/libjawt.so|*/libsplashscreen.so|*/xawt) echo $$i >> ../$(p_jre).install;; \
 	    */zero) echo $$i >> ../$(p_jrez).install;; \
 	    *) echo $$i >> ../$(p_jrehl).install; \
 	  esac; \

@@ -38,8 +38,8 @@ Provides: java-sdk-headless, java2-sdk-headless,
   java13-sdk-headless, java14-sdk-headless, java15-sdk-headless,
   java16-sdk-headless, java17-sdk-headless,
   java-compiler
-Conflicts: openjdk-11-jre-headless (<< 11~19-2)
-Replaces: openjdk-11-jre-headless (<< 11~19-2)
+Breaks: openjdk-17-jre-headless (<< 17~10)
+Replaces: openjdk-17-jre-headless (<< 17~10)
 Description: OpenJDK Development Kit (JDK) (headless)
  OpenJDK is a development environment for building applications,
  applets, and components using the Java programming language.
@@ -84,8 +84,6 @@ Provides: java-sdk, java2-sdk, java5-sdk, java6-sdk,
   java7-sdk, java8-sdk, java9-sdk, java10-sdk, java11-sdk,
   java12-sdk, java13-sdk, java14-sdk, java15-sdk, java16-sdk, java17-sdk,
   java-compiler
-Conflicts: openjdk-11-jre-headless (<< 11~19-2)
-Replaces: openjdk-11-jre-headless (<< 11~19-2)
 Description: OpenJDK Development Kit (JDK)
  OpenJDK is a development environment for building applications,
  applets, and components using the Java programming language.
@@ -105,6 +103,8 @@ Provides: java-runtime, java2-runtime,
   java11-runtime, java12-runtime,
   java13-runtime, java14-runtime, java15-runtime,
   java16-runtime, java17-runtime,
+Breaks: openjdk-17-jre-headless (<< 17~10)
+Replaces: openjdk-17-jre-headless (<< 17~10)
 Description: OpenJDK Java runtime, using ${vm:Name}
  Full Java runtime environment - needed for executing Java GUI and Webstart
  programs, using ${vm:Name}.

@@ -3,6 +3,8 @@ openjdk-17 (17~10-1) UNRELEASED; urgency=medium
   * OpenJDK 17 snapshot, build 10.
   * Fix building with OpenJDK 17 as the boot jdk.
   * Build with Rules-Requires-Root: no.
+  * Move libawt_xawt.so, libjawt.so into the jre package. Addresses: #908058.
+  * Move the jfr binary from -jre-headless to -jdk-headless. Development tool.
 
  -- Matthias Klose <doko@ubuntu.com>  Fri, 19 Feb 2021 10:28:38 +0100
 
