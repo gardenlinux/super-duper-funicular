@@ -71,7 +71,7 @@ else
   is_default = yes
 endif
 
-is_upstream_release = yes
+#is_upstream_release = yes
 
 srcdir		= .
 builddir	= build
@@ -1816,7 +1816,7 @@ endif
 
 is_release		= yes
 hg_project		= jdk11u
-hg_tag			= jdk-11.0.10+9
+hg_tag			= jdk-11.0.11+3
 package_version		= $(subst jdk-,,$(hg_tag))
 ifneq ($(is_release),yes)
   package_version	:= $(subst +,~,$(package_version))
