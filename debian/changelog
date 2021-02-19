@@ -1,4 +1,4 @@
-openjdk-16 (16~36-1) UNRELEASED; urgency=medium
+openjdk-16 (16~36-1) unstable; urgency=medium
 
   * OpenJDK 16 snapshot, build 36.
   * Remove the disable-doclint-by-default patch, already disabled.
@@ -7,7 +7,7 @@ openjdk-16 (16~36-1) UNRELEASED; urgency=medium
   * Move libawt_xawt.so, libjawt.so into the jre package. Addresses: #908058.
   * Move the jfr binary from -jre-headless to -jdk-headless. Development tool.
 
- -- Matthias Klose <doko@ubuntu.com>  Thu, 11 Feb 2021 07:49:04 +0100
+ -- Matthias Klose <doko@ubuntu.com>  Fri, 19 Feb 2021 13:48:21 +0100
 
 openjdk-16 (16~35-1) unstable; urgency=medium
 
