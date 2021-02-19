@@ -5,6 +5,7 @@ openjdk-11 (11.0.11+3-1) UNRELEASED; urgency=medium
     file conflicts.
   * Remove KFreeBSD build support and patches, not updated since OpenJDK 8.
   * Backport JDK-8222825. Closes: #960153.
+  * Build with Rules-Requires-Root: no.
 
  -- Matthias Klose <doko@ubuntu.com>  Fri, 19 Feb 2021 09:06:06 +0100
 
