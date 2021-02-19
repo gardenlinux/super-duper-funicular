@@ -2,7 +2,7 @@ openjdk-11 (11.0.11+3-1) UNRELEASED; urgency=medium
 
   * OpenJDK 11.0.11+3 build (early access).
   * Use debugedit to generate unique build-id's and remove the openjdk-N-dbg
-    file conflicts.
+    file conflicts. Closes: #919671.
   * Remove KFreeBSD build support and patches, not updated since OpenJDK 8.
   * Backport JDK-8222825. Closes: #960153.
   * Build with Rules-Requires-Root: no.
