@@ -1,6 +1,7 @@
 openjdk-17 (17~9-2) UNRELEASED; urgency=medium
 
   * Fix building with OpenJDK 17 as the boot jdk.
+  * Build with Rules-Requires-Root: no.
 
  -- Matthias Klose <doko@ubuntu.com>  Thu, 18 Feb 2021 11:15:12 +0100
 
