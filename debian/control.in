@@ -105,6 +105,8 @@ Provides: java-runtime, java2-runtime,
   java11-runtime, java12-runtime,
   java13-runtime, java14-runtime, java15-runtime,
   java16-runtime,
+Breaks: openjdk-16-jre-headless (<< 16~36)
+Replaces: openjdk-16-jre-headless (<< 16~36)
 Description: OpenJDK Java runtime, using ${vm:Name}
  Full Java runtime environment - needed for executing Java GUI and Webstart
  programs, using ${vm:Name}.

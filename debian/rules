@@ -1398,7 +1398,7 @@ endif
 	cd $(CURDIR)/$(d); \
 	for i in $(basedir)/lib/*.so; do \
 	  case "$$i" in \
-	    */libjavagtk.so|*/libsplashscreen.so|*/libjsoundalsa.so|*/xawt) echo $$i >> ../$(p_jre).install;; \
+	    */libawt_xawt.so|*/libjawt.so|*/libsplashscreen.so|*/xawt) echo $$i >> ../$(p_jre).install;; \
 	    */zero) echo $$i >> ../$(p_jrez).install;; \
 	    *) echo $$i >> ../$(p_jrehl).install; \
 	  esac; \

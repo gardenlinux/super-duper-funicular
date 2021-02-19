@@ -4,6 +4,7 @@ openjdk-16 (16~36-1) UNRELEASED; urgency=medium
   * Remove the disable-doclint-by-default patch, already disabled.
     Addresses: #982521.
   * Build with Rules-Requires-Root: no.
+  * Move libawt_xawt.so, libjawt.so into the jre package. Addresses: #908058.
 
  -- Matthias Klose <doko@ubuntu.com>  Thu, 11 Feb 2021 07:49:04 +0100
 
