@@ -1,4 +1,4 @@
-openjdk-11 (11.0.11+3-1) experimental; urgency=medium
+openjdk-11 (11.0.11+3-2) experimental; urgency=medium
 
   * OpenJDK 11.0.11+3 build (early access).
   * Use debugedit to generate unique build-id's and remove the openjdk-N-dbg
@@ -6,8 +6,9 @@ openjdk-11 (11.0.11+3-1) experimental; urgency=medium
   * Remove KFreeBSD build support and patches, not updated since OpenJDK 8.
   * Backport JDK-8222825. Closes: #960153.
   * Build with Rules-Requires-Root: no.
+  * Move the jfr binary from -jre-headless to -jdk-headless. Development tool.
 
- -- Matthias Klose <doko@ubuntu.com>  Fri, 19 Feb 2021 10:20:38 +0100
+ -- Matthias Klose <doko@ubuntu.com>  Fri, 19 Feb 2021 13:54:09 +0100
 
 openjdk-11 (11.0.10+9-1) unstable; urgency=high
 
