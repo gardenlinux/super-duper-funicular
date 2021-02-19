@@ -5,6 +5,7 @@ openjdk-16 (16~36-1) UNRELEASED; urgency=medium
     Addresses: #982521.
   * Build with Rules-Requires-Root: no.
   * Move libawt_xawt.so, libjawt.so into the jre package. Addresses: #908058.
+  * Move the jfr binary from -jre-headless to -jdk-headless. Development tool.
 
  -- Matthias Klose <doko@ubuntu.com>  Thu, 11 Feb 2021 07:49:04 +0100
 
