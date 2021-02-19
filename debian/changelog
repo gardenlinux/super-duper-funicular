@@ -1,4 +1,4 @@
-openjdk-11 (11.0.11+3-1) UNRELEASED; urgency=medium
+openjdk-11 (11.0.11+3-1) experimental; urgency=medium
 
   * OpenJDK 11.0.11+3 build (early access).
   * Use debugedit to generate unique build-id's and remove the openjdk-N-dbg
@@ -7,7 +7,7 @@ openjdk-11 (11.0.11+3-1) UNRELEASED; urgency=medium
   * Backport JDK-8222825. Closes: #960153.
   * Build with Rules-Requires-Root: no.
 
- -- Matthias Klose <doko@ubuntu.com>  Fri, 19 Feb 2021 09:06:06 +0100
+ -- Matthias Klose <doko@ubuntu.com>  Fri, 19 Feb 2021 10:20:38 +0100
 
 openjdk-11 (11.0.10+9-1) unstable; urgency=high
 
