@@ -473,7 +473,7 @@ ifeq (,$(filter $(distrel),jessie stretch precise trusty xenial))
   with_system_hb = yes
 endif
 
-ifneq (,$(filter $(distrel),precise trusty))
+ifneq (,$(filter $(distrel),precise trusty xenial))
   # building with a GCC from a PPA ...
   COMMON_CONFIGURE_ARGS += \
 	--with-stdc++lib=static
