@@ -1,3 +1,10 @@
+openjdk-11 (11.0.11+3-3) experimental; urgency=medium
+
+  * Fix the build logic, jaotc and jhsdb tools not available on all archs.
+  * Ship the jfc files used by jfr.
+
+ -- Matthias Klose <doko@ubuntu.com>  Sat, 20 Feb 2021 09:12:35 +0100
+
 openjdk-11 (11.0.11+3-2) experimental; urgency=medium
 
   * OpenJDK 11.0.11+3 build (early access).

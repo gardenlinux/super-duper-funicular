@@ -527,8 +527,8 @@ endif
 # dups in heimdal-clients, krb5-user: kinit, klist, ktab, no alternatives
 # have jrunscript in the jdk packages
 
-all_tools	=  jaotc jar jarsigner java javac javadoc javap jcmd \
-	jconsole jdb jdeprscan jdeps jfr jhsdb jimage jinfo jjs jlink jmap \
+all_tools	=  jar jarsigner java javac javadoc javap jcmd \
+	jconsole jdb jdeprscan jdeps jfr jimage jinfo jjs jlink jmap \
 	jmod jps jrunscript jshell jstack jstat jstatd keytool \
 	rmid rmiregistry serialver pack200 unpack200
 
@@ -1478,9 +1478,6 @@ ifneq (,$(wildcard $(builddir)/$(sdkimg)/lib/*.debuginfo))
 	  echo '$(basedir)/lib/*/*.debuginfo'; \
 	) > debian/$(p_dbg).install
 endif
-
-	: # FIXME: the targets are not installed ...
-	rm -rfv $(d)/$(basedir)/lib/jfr
 
 	dh_install --sourcedir=debian/tmp -XLICENSE
 ifeq (,$(findstring old, $(old_debhelper)))
