@@ -19,7 +19,7 @@ Forwarded: not-needed
 +# strip-nondeterminism requires the same timestamp as
 +# dh_strip_nondeterminism uses, so we determine this first.
 +# Fall back to the original behavior if the tools are missing for backports
-+DSN_TIMESTAMP := $(shell perl -MDebian::Debhelper::Dh_Lib -e 'print get_source_date_epoch() 2>/dev/null')
++DSN_TIMESTAMP := $(shell perl -MDebian::Debhelper::Dh_Lib -e 'print get_source_date_epoch()' 2>/dev/null)
 +ifneq (,$(DSN_TIMESTAMP))
 +  ifneq (,$(wildcard /bin/strip-nondeterminism /usr/bin/strip-nondeterminism))
 +    use_snt = yes
