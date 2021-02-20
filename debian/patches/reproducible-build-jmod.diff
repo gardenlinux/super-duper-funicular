@@ -12,22 +12,31 @@ Forwarded: not-needed
 
 --- a/make/CreateJmods.gmk
 +++ b/make/CreateJmods.gmk
-@@ -213,6 +213,9 @@
+@@ -213,6 +213,15 @@ endif
  
  # Create jmods in a temp dir and then move them into place to keep the
  # module path in $(IMAGES_OUTPUTDIR)/jmods valid at all times.
 +# strip-nondeterminism requires the same timestamp as
 +# dh_strip_nondeterminism uses, so we determine this first.
-+DSN_TIMESTAMP := $(shell perl -MDebian::Debhelper::Dh_Lib -e 'print get_source_date_epoch()')
++# Fall back to the original behavior if the tools are missing for backports
++DSN_TIMESTAMP := $(shell perl -MDebian::Debhelper::Dh_Lib -e 'print get_source_date_epoch() 2>/dev/null')
++ifneq (,$(DSN_TIMESTAMP))
++  ifneq (,$(wildcard /bin/strip-nondeterminism /usr/bin/strip-nondeterminism))
++    use_snt = yes
++  endif
++endif
  $(JMODS_DIR)/$(MODULE).jmod: $(DEPS)
  	$(call LogWarn, Creating $(patsubst $(OUTPUTDIR)/%, %, $@))
  	$(call MakeDir, $(JMODS_DIR) $(JMODS_TEMPDIR))
-@@ -224,7 +227,7 @@
+@@ -224,7 +233,11 @@ $(JMODS_DIR)/$(MODULE).jmod: $(DEPS)
  	        --module-path $(JMODS_DIR) \
  	        $(JMOD_FLAGS) $(JMODS_TEMPDIR)/$(notdir $@) \
  	)
--	$(MV) $(JMODS_TEMPDIR)/$(notdir $@) $@
++ifeq ($(use_snt),yes)
 +	strip-nondeterminism --timestamp $(DSN_TIMESTAMP) $(JMODS_TEMPDIR)/$(notdir $@) && $(MV) $(JMODS_TEMPDIR)/$(notdir $@) $@
++else
+ 	$(MV) $(JMODS_TEMPDIR)/$(notdir $@) $@
++endif
  
  TARGETS += $(JMODS_DIR)/$(MODULE).jmod
  
