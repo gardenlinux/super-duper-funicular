@@ -97,6 +97,8 @@ Provides: java-runtime, java2-runtime,
   java7-runtime, java8-runtime,
   java9-runtime, java10-runtime,
   java11-runtime,
+Breaks: openjdk-11-jre-headless (<< 11.0.11+3-3~)
+Replaces: openjdk-11-jre-headless (<< 11.0.11+3-3~)
 Description: OpenJDK Java runtime, using ${vm:Name}
  Full Java runtime environment - needed for executing Java GUI and Webstart
  programs, using ${vm:Name}.

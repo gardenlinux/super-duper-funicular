@@ -2,6 +2,7 @@ openjdk-11 (11.0.11+3-3) experimental; urgency=medium
 
   * Fix the build logic, jaotc and jhsdb tools not available on all archs.
   * Ship the jfc files used by jfr.
+  * Move libawt_xawt.so, libjawt.so into the jre package. Closes: #908058.
 
  -- Matthias Klose <doko@ubuntu.com>  Sat, 20 Feb 2021 09:12:35 +0100
 
