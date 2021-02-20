@@ -463,10 +463,15 @@ COMMON_CONFIGURE_ARGS += \
 	--with-libpng=system \
 	--with-libjpeg=system \
 	--with-lcms=system \
-	--with-harfbuzz=system \
 	--with-pcsclite=system \
 	--disable-warnings-as-errors \
 	--disable-javac-server \
+
+ifeq (,$(filter $(distrel),jessie stretch precise trusty xenial))
+  COMMON_CONFIGURE_ARGS += \
+	--with-harfbuzz=system
+  with_system_hb = yes
+endif
 
 ifneq (,$(filter $(distrel),precise))
   # building with a GCC from a PPA ...
@@ -616,9 +621,11 @@ bd_syslibs += \
 bd_openjdk = \
 	libxtst-dev, libxi-dev, libxt-dev, libxaw7-dev, libxrender-dev, libcups2-dev, \
 	libasound2-dev, liblcms2-dev, libfreetype6-dev (>= 2.2.1), \
-	libharfbuzz-dev, \
 	libxinerama-dev, libkrb5-dev, xsltproc, libpcsclite-dev, libxrandr-dev, \
 	libelf-dev, libfontconfig1-dev, libgtk2.0-0 | libgtk-3-0,
+ifeq ($(with_system_hb),yes)
+  bd_openjdk += libharfbuzz-dev,
+endif
 
 pkg_ffidev = libffi-dev
 
@@ -704,7 +711,9 @@ ifneq (,$(filter $(distrel),squeeze wheezy jessie stretch lucid precise xenial))
 else
   dlopen_jre_depends = libgl1,
 endif
-dlopen_jre_depends += libharfbuzz0b,
+ifeq ($(with_system_hb),yes)
+  dlopen_jre_depends += libharfbuzz0b,
+endif
 dlopen_jre_recommends =
 
 # .desktop files need to be multiarch installable
