@@ -5,8 +5,8 @@ Maintainer: OpenJDK Team <openjdk-16@packages.debian.org>
 Uploaders: Matthias Klose <doko@ubuntu.com>
 Build-Depends: @bd_debhelper@
   m4, lsb-release, zip, unzip,
-  sharutils, gawk, cpio, pkg-config, procps, wdiff, time, @bd_fastjar@
-  strip-nondeterminism, @bd_debugedit@
+  sharutils, gawk, cpio, pkg-config, procps, wdiff, @bd_fastjar@
+  time, @bd_strip_ndt@ @bd_debugedit@
   @bd_check@
   @bd_autotools@ @bd_ant@
   @bd_gcc@

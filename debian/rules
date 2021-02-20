@@ -489,10 +489,15 @@ COMMON_CONFIGURE_ARGS += \
 	--with-libpng=system \
 	--with-libjpeg=system \
 	--with-lcms=system \
-	--with-harfbuzz=system \
 	--with-pcsclite=system \
 	--disable-warnings-as-errors \
 	--disable-javac-server \
+
+ifeq (,$(filter $(distrel),jessie stretch precise trusty xenial))
+  COMMON_CONFIGURE_ARGS += \
+	--with-harfbuzz=system
+  with_system_hb = yes
+endif
 
 ifneq (,$(filter $(distrel),precise trusty xenial))
   # building with a GCC from a PPA ...
@@ -644,9 +649,11 @@ bd_syslibs += \
 bd_openjdk = \
 	libxtst-dev, libxi-dev, libxt-dev, libxaw7-dev, libxrender-dev, libcups2-dev, \
 	libasound2-dev, liblcms2-dev, libfreetype6-dev (>= 2.2.1), \
-	libharfbuzz-dev, \
 	libxinerama-dev, libkrb5-dev, xsltproc, libpcsclite-dev, libxrandr-dev, \
 	libelf-dev, libfontconfig1-dev, libgtk2.0-0 | libgtk-3-0,
+ifeq ($(with_system_hb),yes)
+  bd_openjdk += libharfbuzz-dev,
+endif
 
 pkg_ffidev = libffi-dev
 
@@ -675,6 +682,10 @@ ifeq (,$(filter $(distrel),jessie stretch buster precise trusty xenial bionic fo
   with_debugedit = yes
   bd_debugedit = debugedit (>= 4.16),
   build_id_seed = $(PKGSOURCE)-$(PKGVERSION)
+endif
+
+ifeq (,$(filter $(distrel),jessie stretch buster precise trusty xenial bionic))
+  bd_strip_ndt = strip-nondeterminism,
 endif
 
 ifeq (,$(filter $(distrel),precise))
@@ -728,7 +739,9 @@ ifneq (,$(filter $(distrel),squeeze wheezy jessie stretch lucid precise xenial))
 else
   dlopen_jre_depends += libgl1,
 endif
-dlopen_jre_depends += libharfbuzz0b,
+ifeq ($(with_system_hb),yes)
+  dlopen_jre_depends += libharfbuzz0b,
+endif
 dlopen_jre_recommends =
 
 # .desktop files need to be multiarch installable
@@ -864,6 +877,7 @@ debian/control: debian/control.in debian/tests/control debian/rules
 	      -e 's/@bd_systemtap@/$(bd_systemtap)/g' \
 	      -e 's/@bd_ant@/$(bd_ant)/g' \
 	      -e 's/@bd_debugedit@/$(bd_debugedit)/g' \
+	      -e 's/@bd_strip_ndt@/$(bd_strip_ndt)/g' \
 	      -e 's/@bd_check@/$(bd_check)/g' \
 	      -e 's/@core_fonts@/$(core_fonts)/g' \
 	      -e 's/@cjk_fonts@/$(cjk_fonts)/g' \
@@ -1871,7 +1885,6 @@ get-orig:
 	  rm -v -rf $$d/src/java.desktop/share/native/libsplashscreen/libpng; \
 	  rm -v -f $$d/src/java.desktop/share/native/liblcms/cms*.c; \
 	  rm -v -f $$d/src/java.desktop/share/native/liblcms/lcms2*.h; \
-	  rm -v -rf $$d/src/java.desktop/share/native/libharfbuzz; \
 	  rm -v -rf $$d/src/java.smartcardio/unix/native/libj2pcsc/MUSCLE; \
 	esac; \
 	mv $$d $(topdir); \
