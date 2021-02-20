@@ -37,6 +37,7 @@ export PATH
 CHANGELOG_VARS := $(shell dpkg-parsechangelog | sed -n 's/ /_/g;/^[^_]/s/^\([^:]*\):_\(.*\)/\1=\2/p')
 PKGSOURCE := $(call vafilt,$(CHANGELOG_VARS),Source)
 PKGVERSION := $(call vafilt,$(CHANGELOG_VARS),Version)
+PKGYEAR := $(shell echo $(call vafilt,$(CHANGELOG_VARS),Timestamp) | date --utc +%Y)
 
 distribution := $(shell lsb_release --id --short)
 distrel := $(shell lsb_release --codename --short)
@@ -479,6 +480,7 @@ COMMON_CONFIGURE_ARGS += \
 	--with-version-pre='$(if $(filter yes, $(is_upstream_release)),,ea)' \
 	--with-version-build='$(v_upbuild)' \
 	--with-version-opt='$(distribution)-$(v_pkgrel)' \
+	--with-copyright-year=$(PKGYEAR) \
 
 COMMON_CONFIGURE_ARGS += \
 	--with-debug-level=release \

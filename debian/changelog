@@ -1,4 +1,10 @@
-openjdk-17 (17~10-2) UNRELEASED; urgency=medium
+openjdk-17 (17~10-3) UNRELEASED; urgency=medium
+
+  * Configure --with-copyright-year. Addresses: #956154.
+
+ -- Matthias Klose <doko@ubuntu.com>  Sat, 20 Feb 2021 18:42:52 +0100
+
+openjdk-17 (17~10-2) unstable; urgency=medium
 
   * Fix the build logic, jaotc and jhsdb tools not available on all archs.
   * Ship the jfc files used by jfr.
@@ -6,7 +12,7 @@ openjdk-17 (17~10-2) UNRELEASED; urgency=medium
     for backports.
   * Only build with system harfbuzz for recent releases.
 
- -- Matthias Klose <doko@ubuntu.com>  Sat, 20 Feb 2021 11:02:05 +0100
+ -- Matthias Klose <doko@ubuntu.com>  Sat, 20 Feb 2021 12:02:45 +0100
 
 openjdk-17 (17~10-1) unstable; urgency=medium
 
