@@ -2,6 +2,7 @@ openjdk-17 (17~11-1) unstable; urgency=medium
 
   * OpenJDK 17 snapshot, build 11.
   * Configure --with-copyright-year. Addresses: #956154.
+  * Restore the libpcsclite-dlopen patch. Closes: #983465.
 
  -- Matthias Klose <doko@ubuntu.com>  Thu, 25 Feb 2021 10:33:32 +0100
 
