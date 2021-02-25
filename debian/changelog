@@ -1,11 +1,12 @@
-openjdk-11 (11.0.11+3-4) UNRELEASED; urgency=medium
+openjdk-11 (11.0.11+4-1) UNRELEASED; urgency=medium
 
+  * OpenJDK 11.0.11+4 build (early access).
   * reproducible-build-jmod.diff: Fall back to the unpatched behavior
     for backports.
   * Only build with system harfbuzz for recent releases.
   * Configure --with-copyright-year. Closes: #956154.
 
- -- Matthias Klose <doko@ubuntu.com>  Sat, 20 Feb 2021 10:34:03 +0100
+ -- Matthias Klose <doko@ubuntu.com>  Thu, 25 Feb 2021 11:54:00 +0100
 
 openjdk-11 (11.0.11+3-3) experimental; urgency=medium
 
