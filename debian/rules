@@ -99,20 +99,20 @@ shortver	= 16
 v_upstream	:= $(shell echo $(PKGVERSION) | sed 's/-[^-][^-]*$$//')
 v_pkgrel	:= $(shell echo $(PKGVERSION) | sed 's/^.*-//')
 # FIXME. currently v_upstream like 11~4
-#v_upbase	:= $(word 1, $(subst +, , $(v_upstream)))
-#v_upbuild	:= $(word 2, $(subst +, , $(v_upstream)))
-v_upbase	:= $(word 1, $(subst ~, , $(v_upstream)))
-v_upbuild	:= $(word 2, $(subst ~, , $(v_upstream)))
+v_upbase	:= $(word 1, $(subst +, , $(v_upstream)))
+v_upbuild	:= $(word 2, $(subst +, , $(v_upstream)))
+#v_upbase	:= $(word 1, $(subst ~, , $(v_upstream)))
+#v_upbuild	:= $(word 2, $(subst ~, , $(v_upstream)))
 # that should be the package version ...
 
 #$(warning XXXXX $(v_upstream) / $(v_pkgrel) / $(v_upbase) / $(v_upbuild))
 
-#ifneq ($(PKGVERSION),$(v_upbase)+$(v_upbuild)-$(v_pkgrel))
-#  $(error wrong version: $(v_upbase)+$(v_upbuild)-$(v_pkgrel) should be: $(PKGVERSION))
-#endif
-ifneq ($(PKGVERSION),$(v_upbase)~$(v_upbuild)-$(v_pkgrel))
-  $(error wrong version: $(v_upbase)~$(v_upbuild)-$(v_pkgrel) should be: $(PKGVERSION))
+ifneq ($(PKGVERSION),$(v_upbase)+$(v_upbuild)-$(v_pkgrel))
+  $(error wrong version: $(v_upbase)+$(v_upbuild)-$(v_pkgrel) should be: $(PKGVERSION))
 endif
+#ifneq ($(PKGVERSION),$(v_upbase)~$(v_upbuild)-$(v_pkgrel))
+#  $(error wrong version: $(v_upbase)~$(v_upbuild)-$(v_pkgrel) should be: $(PKGVERSION))
+#endif
 
 ifneq (,$(DEB_HOST_MULTIARCH))
   jdirname	= java-$(shortver)-$(origin)-$(DEB_HOST_ARCH)
@@ -1859,8 +1859,7 @@ endif
 	NO_PKG_MANGLE=1 \
 	dh_builddeb -a $(nodemo) $(nojrez) #$(bd_options)
 
-#is_release		= yes
-is_release		=
+is_release		= yes
 git_project		= jdk16
 git_tag			= jdk-16+36
 package_version		= $(subst jdk-,,$(git_tag))
