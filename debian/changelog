@@ -2,6 +2,7 @@ openjdk-16 (16+36-1) UNRELEASED; urgency=medium
 
   * Build as 16+36, the build has a release candidate status.
   * Configure --with-copyright-year. Addresses: #956154.
+  * Restore the libpcsclite-dlopen patch. Addresses: #983465.
 
  -- Matthias Klose <doko@ubuntu.com>  Thu, 25 Feb 2021 11:11:44 +0100
 
