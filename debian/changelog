@@ -1,6 +1,7 @@
-openjdk-16 (16+36-1) UNRELEASED; urgency=medium
+openjdk-16 (16+36-1) unstable; urgency=medium
 
   * Build as 16+36, the build has a release candidate status.
+    Still marked as an early access build.
   * Configure --with-copyright-year. Addresses: #956154.
   * Restore the libpcsclite-dlopen patch. Addresses: #983465.
 
