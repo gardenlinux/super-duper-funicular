@@ -152,7 +152,7 @@ ifneq (,$(filter parallel=%,$(subst $(COMMA), ,$(DEB_BUILD_OPTIONS))))
 endif
 
 with_check = $(if $(findstring nocheck, $(DEB_BUILD_OPTIONS)),,yes)
-ifneq (,$(filter $(DEB_HOST_ARCH), alpha))
+ifneq (,$(filter $(DEB_HOST_ARCH), alpha armel riscv64))
   with_check = disabled running check on $(DEB_HOST_ARCH)
 endif
 # no jtreg backport yet
