@@ -9,6 +9,7 @@ Build-Depends: @bd_debhelper@
   strip-nondeterminism,
   @bd_check@
   @bd_autotools@ @bd_ant@
+  @bd_autotools@ @bd_ant@ @bd_strip_ndt@
   @bd_gcc@
   @bd_bootstrap@
   @bd_openjdk@

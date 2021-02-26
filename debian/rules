@@ -497,6 +497,12 @@ COMMON_CONFIGURE_ARGS += \
 	--disable-warnings-as-errors \
 	--disable-javac-server \
 
+ifeq (,$(filter $(distrel),jessie stretch precise trusty xenial))
+  COMMON_CONFIGURE_ARGS += \
+	--with-harfbuzz=system
+  with_system_hb = yes
+endif
+
 ifneq (,$(filter $(distrel),precise trusty xenial))
   # building with a GCC from a PPA ...
   COMMON_CONFIGURE_ARGS += \
@@ -617,9 +623,9 @@ else ifneq (,$(filter $(distrel),wily))
   bd_gcc = g++-5 [$(hotspot_archs)], g++-4.9 [$(strip $(foreach a,$(hotspot_archs), !$(a)))], g++-4.9 [arm64],
 else ifneq (,$(filter $(distrel),stretch))
   bd_gcc = g++-6,
-else ifneq (,$(filter $(distrel),artful bionic))
+else ifneq (,$(filter $(distrel),artful))
   bd_gcc = g++-7,
-else ifneq (,$(filter $(distrel),precise))
+else ifneq (,$(filter $(distrel),precise bionic))
   # FIXME: ftbfs on armhf with the default GCC
   bd_gcc = g++-8,
 else ifneq (,$(filter $(distrel),buster bionic cosmic disco))
@@ -629,7 +635,11 @@ else ifneq (,$(filter $(distrel),focal))
 else
   bd_gcc = g++-10 <!cross>,
 endif
-bd_syslibs = zlib1g-dev:native, zlib1g-dev, libattr1-dev,
+ifneq (,$(filter $(distrel),precise))
+  bd_syslibs = zlib1g-dev, libattr1-dev,
+else
+  bd_syslibs = zlib1g-dev:native, zlib1g-dev, libattr1-dev,
+endif
 ifneq (,$(filter $(distrel),squeeze lucid))
   bd_syslibs += libpng12-dev, libjpeg62-dev,
 else ifneq (,$(filter $(distrel),wheezy precise quantal raring saucy))
@@ -666,6 +676,10 @@ ifeq ($(with_nss),yes)
 endif
 ifeq ($(with_systemtap),yes)
   bd_systemtap = systemtap-sdt-dev [!sh4],
+endif
+
+ifeq (,$(filter $(distrel),jessie stretch buster precise trusty xenial bionic))
+  bd_strip_ndt = strip-nondeterminism,
 endif
 
 ifeq (,$(filter $(distrel),precise))
@@ -849,6 +863,7 @@ debian/control: debian/control.in debian/tests/control debian/rules
 	      -e 's/@bd_nss@/$(bd_nss)/g' \
 	      -e 's/@bd_systemtap@/$(bd_systemtap)/g' \
 	      -e 's/@bd_ant@/$(bd_ant)/g' \
+	      -e 's/@bd_strip_ndt@/$(bd_strip_ndt)/g' \
 	      -e 's/@bd_check@/$(bd_check)/g' \
 	      -e 's/@core_fonts@/$(core_fonts)/g' \
 	      -e 's/@cjk_fonts@/$(cjk_fonts)/g' \

@@ -1,3 +1,10 @@
+openjdk-15 (15.0.2+7-2) UNRELEASED; urgency=medium
+
+  * reproducible-build-jmod.diff: Fall back to the unpatched behavior
+    for backports.
+
+ -- Matthias Klose <doko@ubuntu.com>  Fri, 26 Feb 2021 18:36:06 +0100
+
 openjdk-15 (15.0.2+7-1) unstable; urgency=medium
 
   * OpenJDK 15.0.2 release, build 7.
