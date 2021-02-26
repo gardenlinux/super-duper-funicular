@@ -7,7 +7,7 @@ Build-Depends: @bd_debhelper@
   m4, lsb-release, zip, unzip,
   sharutils, gawk, cpio, pkg-config, procps, wdiff, time, @bd_fastjar@
   @bd_check@
-  @bd_autotools@ @bd_ant@
+  @bd_autotools@ @bd_ant@ @bd_strip_ndt@
   @bd_gcc@
   @bd_bootstrap@
   @bd_openjdk@
@@ -15,7 +15,6 @@ Build-Depends: @bd_debhelper@
   @bd_syslibs@ @bd_systemtap@
   @bd_nss@
   @bd_cross@
-  strip-nondeterminism,
 Build-Depends-Indep: graphviz, pandoc,
 Standards-Version: 4.5.1
 Homepage: https://openjdk.java.net/

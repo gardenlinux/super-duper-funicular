@@ -1,3 +1,10 @@
+openjdk-14 (14.0.2+12-3) UNRELEASED; urgency=medium
+
+  * reproducible-build-jmod.diff: Fall back to the unpatched behavior
+    for backports.
+
+ -- Matthias Klose <doko@ubuntu.com>  Fri, 26 Feb 2021 20:02:44 +0100
+
 openjdk-14 (14.0.2+12-2) unstable; urgency=medium
 
   * Backport GCC 10 fixes, build using GCC 10. Closes: #978518.
