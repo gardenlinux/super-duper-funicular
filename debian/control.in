@@ -6,7 +6,6 @@ Uploaders: Matthias Klose <doko@ubuntu.com>
 Build-Depends: @bd_debhelper@
   m4, lsb-release, zip, unzip,
   sharutils, gawk, cpio, pkg-config, procps, wdiff, time, @bd_fastjar@
-  strip-nondeterminism,
   @bd_check@
   @bd_autotools@ @bd_ant@
   @bd_autotools@ @bd_ant@ @bd_strip_ndt@
