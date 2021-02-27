@@ -28,9 +28,6 @@ DEB_BUILD_ARCH		?= $(call vafilt,$(DPKG_VARS),DEB_BUILD_ARCH)
 DEB_HOST_ARCH_CPU	?= $(call vafilt,$(DPKG_VARS),DEB_HOST_ARCH_CPU)
 DEB_HOST_MULTIARCH	?= $(call vafilt,$(DPKG_VARS),DEB_HOST_MULTIARCH)
 
-OBJCOPY := $(DEB_HOST_GNU_TYPE)-objcopy
-STRIP := $(DEB_HOST_GNU_TYPE)-strip
-
 PATH := $(CURDIR)/bin:$(PATH)
 export PATH
 
@@ -46,6 +43,14 @@ derivative := $(shell if dpkg-vendor --derives-from Ubuntu; then echo Ubuntu; \
                else echo Unknown; fi)
 ifeq ($(distrel),n/a)
   distrel := sid
+endif
+
+ifneq (,$(filter $(distrel),precise))
+  OBJCOPY := objcopy
+  STRIP := strip
+else
+  OBJCOPY := $(DEB_HOST_GNU_TYPE)-objcopy
+  STRIP := $(DEB_HOST_GNU_TYPE)-strip
 endif
 
 multiarch_dir = /$(DEB_HOST_MULTIARCH)
@@ -501,7 +506,7 @@ ifeq (,$(filter $(distrel),jessie stretch precise trusty xenial))
   with_system_hb = yes
 endif
 
-ifneq (,$(filter $(distrel),precise trusty xenial))
+ifneq (,$(filter $(distrel),precise trusty xenial bionic))
   # building with a GCC from a PPA ...
   COMMON_CONFIGURE_ARGS += \
 	--with-stdc++lib=static
@@ -638,7 +643,11 @@ else ifneq (,$(filter $(distrel),focal))
 else
   bd_gcc = g++-10 <!cross>,
 endif
-bd_syslibs = zlib1g-dev:native, zlib1g-dev, libattr1-dev,
+ifneq (,$(filter $(distrel),precise))
+  bd_syslibs = zlib1g-dev, libattr1-dev,
+else
+  bd_syslibs = zlib1g-dev:native, zlib1g-dev, libattr1-dev,
+endif
 ifneq (,$(filter $(distrel),squeeze lucid))
   bd_syslibs += libpng12-dev, libjpeg62-dev,
 else ifneq (,$(filter $(distrel),wheezy precise quantal raring saucy))
