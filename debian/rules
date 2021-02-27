@@ -630,7 +630,7 @@ else ifneq (,$(filter $(distrel),stretch))
   bd_gcc = g++-6,
 else ifneq (,$(filter $(distrel),artful))
   bd_gcc = g++-7,
-else ifneq (,$(filter $(distrel),precise xenial bionic))
+else ifneq (,$(filter $(distrel),precise trusty xenial bionic))
   # FIXME: ftbfs on armhf with the default GCC
   bd_gcc = g++-8,
 else ifneq (,$(filter $(distrel),buster bionic cosmic disco))
