@@ -28,8 +28,13 @@ DEB_BUILD_ARCH		?= $(call vafilt,$(DPKG_VARS),DEB_BUILD_ARCH)
 DEB_HOST_ARCH_CPU	?= $(call vafilt,$(DPKG_VARS),DEB_HOST_ARCH_CPU)
 DEB_HOST_MULTIARCH	?= $(call vafilt,$(DPKG_VARS),DEB_HOST_MULTIARCH)
 
-OBJCOPY := $(DEB_HOST_GNU_TYPE)-objcopy
-STRIP := $(DEB_HOST_GNU_TYPE)-strip
+ifneq (,$(filter $(distrel),precise))
+  OBJCOPY := objcopy
+  STRIP := strip
+else
+  OBJCOPY := $(DEB_HOST_GNU_TYPE)-objcopy
+  STRIP := $(DEB_HOST_GNU_TYPE)-strip
+endif
 
 PATH := $(CURDIR)/bin:$(PATH)
 export PATH
@@ -268,7 +273,7 @@ export EXTRA_CXXFLAGS_IT := $(shell $(dpkg_buildflags_it) --get CXXFLAGS)
 export EXTRA_LDFLAGS_IT  := $(shell $(dpkg_buildflags_it) --get LDFLAGS)
 
 # This section should be in sync with "bd_gcc" definition
-ifneq (,$(filter $(distrel),saucy trusty))
+ifneq (,$(filter $(distrel),saucy))
   export CC = gcc-4.8
   export CXX = g++-4.8
   bd_gcc = g++-4.8,

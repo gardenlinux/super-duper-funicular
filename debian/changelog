@@ -1,6 +1,7 @@
 openjdk-11 (11.0.11+4-2) UNRELEASED; urgency=medium
 
   * Simplify compiler selection for backports.
+  * Don't use the triplet-prefixed binutils tools for backports.
 
  -- Matthias Klose <doko@ubuntu.com>  Sun, 28 Feb 2021 13:59:10 +0100
 
