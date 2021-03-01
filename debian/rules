@@ -28,14 +28,6 @@ DEB_BUILD_ARCH		?= $(call vafilt,$(DPKG_VARS),DEB_BUILD_ARCH)
 DEB_HOST_ARCH_CPU	?= $(call vafilt,$(DPKG_VARS),DEB_HOST_ARCH_CPU)
 DEB_HOST_MULTIARCH	?= $(call vafilt,$(DPKG_VARS),DEB_HOST_MULTIARCH)
 
-ifneq (,$(filter $(distrel),precise))
-  OBJCOPY := objcopy
-  STRIP := strip
-else
-  OBJCOPY := $(DEB_HOST_GNU_TYPE)-objcopy
-  STRIP := $(DEB_HOST_GNU_TYPE)-strip
-endif
-
 PATH := $(CURDIR)/bin:$(PATH)
 export PATH
 
@@ -51,6 +43,14 @@ derivative := $(shell if dpkg-vendor --derives-from Ubuntu; then echo Ubuntu; \
                else echo Unknown; fi)
 ifeq ($(distrel),n/a)
   distrel := sid
+endif
+
+ifneq (,$(filter $(distrel),precise))
+  OBJCOPY := objcopy
+  STRIP := strip
+else
+  OBJCOPY := $(DEB_HOST_GNU_TYPE)-objcopy
+  STRIP := $(DEB_HOST_GNU_TYPE)-strip
 endif
 
 multiarch_dir = /$(DEB_HOST_MULTIARCH)
