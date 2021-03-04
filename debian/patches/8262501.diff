@@ -1,0 +1,11 @@
+--- a/make/autoconf/flags-ldflags.m4
++++ b/make/autoconf/flags-ldflags.m4
+@@ -113,7 +113,7 @@
+       # But once our supported minimum build and runtime platform
+       # has glibc 2.17, this can be removed as the functions are
+       # in libc.
+-      OS_LDFLAGS_JVM_ONLY="-lrt"
++      OS_LDFLAGS_JVM_ONLY="-Wl,--no-as-needed -lrt"
+     fi
+   fi
+ 
