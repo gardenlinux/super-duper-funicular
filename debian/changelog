@@ -1,9 +1,11 @@
 openjdk-16 (16+36-2) UNRELEASED; urgency=medium
 
+  * OpenJDK 16 release, mark it as a release build.
   * Don't use the triplet-prefixed binutils tools for backports.
   * Simplify compiler selection for backports.
+  * Apply untested patch suggested to fix #983878.
 
- -- Matthias Klose <doko@ubuntu.com>  Sat, 27 Feb 2021 16:06:34 +0100
+ -- Matthias Klose <doko@ubuntu.com>  Tue, 16 Mar 2021 18:49:47 +0100
 
 openjdk-16 (16+36-1) unstable; urgency=medium
 
