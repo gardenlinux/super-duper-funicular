@@ -1,7 +1,7 @@
 # DP: Untested patch suggested to fix #983878
 
---- src/java.base/unix/native/libnio/fs/UnixNativeDispatcher.c
-+++ src/java.base/unix/native/libnio/fs/UnixNativeDispatcher.c
+--- a/src/java.base/unix/native/libnio/fs/UnixNativeDispatcher.c
++++ b/src/java.base/unix/native/libnio/fs/UnixNativeDispatcher.c
 @@ -152,7 +152,7 @@
  /**
   * fstatat missing from glibc on Linux.
