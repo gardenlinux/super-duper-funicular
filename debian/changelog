@@ -1,9 +1,15 @@
+openjdk-16 (16+36-4) UNRELEASED; urgency=medium
+
+  * Only apply the untested mips patch on mipsel, not mips64el. See #983878.
+
+ -- Matthias Klose <doko@ubuntu.com>  Wed, 17 Mar 2021 11:25:41 +0100
+
 openjdk-16 (16+36-3) unstable; urgency=medium
 
   * OpenJDK 16 release, mark it as a release build.
   * Don't use the triplet-prefixed binutils tools for backports.
   * Simplify compiler selection for backports.
-  * Apply untested patch suggested to fix #983878.
+  * Apply untested patch suggested to fix mips issue #983878.
 
  -- Matthias Klose <doko@ubuntu.com>  Tue, 16 Mar 2021 20:05:37 +0100
 
