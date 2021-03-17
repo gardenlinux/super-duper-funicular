@@ -38,3 +38,4 @@ riscv64.diff
 reproducible-build-jmod.diff
 harfbuzz-cflags.diff
 8262501.diff
+mips.diff

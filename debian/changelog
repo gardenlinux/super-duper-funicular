@@ -4,8 +4,9 @@ openjdk-17 (17~12-1) UNRELEASED; urgency=medium
   * Don't use the triplet-prefixed binutils tools for backports.
   * Simplify compiler selection for backports.
   * Fix build with older glibc versions. See JDK-8262501.
+  * Apply untested patch suggested to fix mips issue. See #983878.
 
- -- Matthias Klose <doko@ubuntu.com>  Thu, 04 Mar 2021 11:58:38 +0000
+ -- Matthias Klose <doko@ubuntu.com>  Wed, 17 Mar 2021 12:12:55 +0100
 
 openjdk-17 (17~11-1) unstable; urgency=medium
 
