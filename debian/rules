@@ -211,6 +211,8 @@ else
   BUILDJDK_HOME = $(BOOTJDK_HOME)
 endif
 
+export DEB_BUILD_MAINT_OPTIONS = optimize=-lto
+
 # for Hotspot: hotspot/make/linux/makefiles/vm.make
 # Don't overwrite Hotspot opt level :
 # -O3 is already default option for hotspot
