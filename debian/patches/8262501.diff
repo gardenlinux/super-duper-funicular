@@ -1,11 +1,33 @@
 --- a/make/autoconf/flags-ldflags.m4
 +++ b/make/autoconf/flags-ldflags.m4
-@@ -113,7 +113,7 @@
-       # But once our supported minimum build and runtime platform
-       # has glibc 2.17, this can be removed as the functions are
-       # in libc.
--      OS_LDFLAGS_JVM_ONLY="-lrt"
-+      OS_LDFLAGS_JVM_ONLY="-Wl,--no-as-needed -lrt"
+@@ -108,13 +108,6 @@ AC_DEFUN([FLAGS_SETUP_LDFLAGS_HELPER],
+       OS_LDFLAGS_JVM_ONLY="-Wl,-rpath,@loader_path/. -Wl,-rpath,@loader_path/.."
+       OS_LDFLAGS="-mmacosx-version-min=$MACOSX_VERSION_MIN"
      fi
+-    if test "x$OPENJDK_TARGET_OS" = xlinux; then
+-      # Hotspot needs to link librt to get the clock_* functions.
+-      # But once our supported minimum build and runtime platform
+-      # has glibc 2.17, this can be removed as the functions are
+-      # in libc.
+-      OS_LDFLAGS_JVM_ONLY="-lrt"
+-    fi
    fi
  
+   # Setup debug level-dependent LDFLAGS
+--- a/make/autoconf/libraries.m4
++++ b/make/autoconf/libraries.m4
+@@ -124,6 +124,14 @@ AC_DEFUN_ONCE([LIB_SETUP_LIBRARIES],
+     BASIC_JVM_LIBS="$BASIC_JVM_LIBS -lpthread"
+   fi
+ 
++  if test "x$OPENJDK_TARGET_OS" = xlinux; then
++    # Hotspot needs to link librt to get the clock_* functions.
++    # But once our supported minimum build and runtime platform
++    # has glibc 2.17, this can be removed as the functions are
++    # in libc.
++    BASIC_JVM_LIBS="$BASIC_JVM_LIBS -lrt"
++  fi
++
+   # Atomic library
+   # 32-bit platforms needs fallback library for 8-byte atomic ops on Zero
+   if HOTSPOT_CHECK_JVM_VARIANT(zero); then
