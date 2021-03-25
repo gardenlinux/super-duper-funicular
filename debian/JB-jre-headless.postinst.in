@@ -52,6 +52,11 @@ configure)
 	done
     fi
 
+    if dpkg --compare-versions "$2" lt-nl "11.0.11+7-2~" ; then
+        # jfr moved from jre to jdk, remove dangling alternative on upgrades
+	test -x $basedir/bin/jfr || update-alternatives --remove jfr $basedir/bin/jfr
+    fi
+
     if [ "$update_alternatives" = y ]; then
     if [ -n "$multiarch" ] && [ "$DPKG_MAINTSCRIPT_ARCH" != $(dpkg --print-architecture) ]; then
 	priority=$(expr $priority - 1)
@@ -96,7 +101,7 @@ configure)
     # activate class data sharing
     case @jvmarch@ in i386|i586|sparc)
 	rm -f $basedir/lib/client/classes.jsa
-	log=$(tempfile)
+	log=$(mktemp)
 	if ! $basedir/bin/java -client -Xshare:dump -XX:PermSize=128m > $log; then
 	    cat >&2 $log
 	    rm -f $log
@@ -108,7 +113,7 @@ configure)
     esac
     case @jvmarch@ in amd64|i386|i586|sparc)
 	rm -f $basedir/lib/server/classes.jsa
-	log=$(tempfile)
+	log=$(mktemp)
 	if ! $basedir/bin/java -server -Xshare:dump > $log; then
 	    cat >&2 $log
 	    rm -f $log
