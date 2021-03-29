@@ -5,6 +5,8 @@ openjdk-11 (11.0.11+7-2) UNRELEASED; urgency=medium
   * Remove dangling jfr alternative on upgrades if no jdk is installed (Andreas
     Beckmann). Closes: #985060.
   * Use mktemp instead of tempfile in maintainer scripts (Andreas Beckmann).
+  * Backport fix for JDK-8262085, hovering Metal HTML Tooltips in different
+    windows cause IllegalArgExc on Linux. Closes: #967049.
 
  -- Matthias Klose <doko@ubuntu.com>  Tue, 23 Mar 2021 13:58:11 +0100
 
