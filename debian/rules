@@ -211,14 +211,13 @@ else
   BUILDJDK_HOME = $(BOOTJDK_HOME)
 endif
 
-export DEB_BUILD_MAINT_OPTIONS = optimize=-lto
-
 # for Hotspot: hotspot/make/linux/makefiles/vm.make
 # Don't overwrite Hotspot opt level :
 # -O3 is already default option for hotspot
 
 # FIXME: ftbfs with -Werror=format-security
 dpkg_buildflags_hs = \
+	DEB_BUILD_MAINT_OPTIONS="optimize=-lto" \
 	DEB_CFLAGS_MAINT_STRIP="-O2 -Werror=format-security" \
 	DEB_CXXFLAGS_MAINT_STRIP="-O2 -Werror=format-security" \
 	DEB_CFLAGS_MAINT_APPEND="-fno-stack-protector -Wno-deprecated-declarations" \
@@ -234,6 +233,7 @@ export EXTRA_CXXFLAGS_HS := $(shell $(dpkg_buildflags_hs) --get CXXFLAGS) -Wno-d
 export EXTRA_LDFLAGS_HS  := $(shell $(dpkg_buildflags_hs) --get LDFLAGS)
 
 dpkg_buildflags_zero = \
+	DEB_BUILD_MAINT_OPTIONS="optimize=-lto" \
 	DEB_CFLAGS_MAINT_STRIP="-O2 -Werror=format-security -fstack-protector -fstack-protector-strong" \
 	DEB_CXXFLAGS_MAINT_STRIP="-O2 -Werror=format-security -fstack-protector -fstack-protector-strong" \
 	DEB_CFLAGS_MAINT_APPEND="-fno-stack-protector -Wno-deprecated-declarations" \
@@ -256,7 +256,9 @@ endif
 # Don't overwrite JDK opt level :
 # 1) with forced -03, it cause wrong Math.* computations, see #679292 and #678228
 # 2) JDK already use it's own OPTIMIZATION_LEVEL variable for each module
-dpkg_buildflags_jdk = DEB_CFLAGS_MAINT_STRIP="-O2" DEB_CXXFLAGS_MAINT_STRIP="-O2"
+dpkg_buildflags_jdk = \
+	DEB_BUILD_MAINT_OPTIONS="optimize=-lto" \
+	DEB_CFLAGS_MAINT_STRIP="-O2" DEB_CXXFLAGS_MAINT_STRIP="-O2"
 dpkg_buildflags_jdk += dpkg-buildflags
 export EXTRA_CPPFLAGS_JDK := $(shell $(dpkg_buildflags_jdk) --get CPPFLAGS)
 export EXTRA_CFLAGS_JDK   := $(shell $(dpkg_buildflags_jdk) --get CFLAGS) $(shell $(dpkg_buildflags_jdk) --get CPPFLAGS)
@@ -264,6 +266,8 @@ export EXTRA_CXXFLAGS_JDK := $(shell $(dpkg_buildflags_jdk) --get CXXFLAGS)
 export EXTRA_LDFLAGS_JDK  := $(shell $(dpkg_buildflags_jdk) --get LDFLAGS)
 
 #for IcedTea
+dpkg_buildflags_it = \
+	DEB_BUILD_MAINT_OPTIONS="optimize=-lto"
 ifeq (,$(findstring noopt,$(DEB_BUILD_OPTIONS)))
 dpkg_buildflags_it += DEB_CFLAGS_MAINT_STRIP="-O2" DEB_CXXFLAGS_MAINT_STRIP="-O2"
 dpkg_buildflags_it += DEB_CFLAGS_MAINT_APPEND="-O3" DEB_CXXFLAGS_MAINT_APPEND="-O3"
@@ -1836,7 +1840,7 @@ endif
 
 is_release		= yes
 hg_project		= jdk11u
-hg_tag			= jdk-11.0.11+7
+hg_tag			= jdk-11.0.11+8
 package_version		= $(subst jdk-,,$(hg_tag))
 ifneq ($(is_release),yes)
   package_version	:= $(subst +,~,$(package_version))
