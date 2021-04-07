@@ -612,8 +612,8 @@ ifneq (,$(filter $(distrel),precise))
 else ifneq (,$(filter $(distrel),squeeze wheezy jessie trusty xenial))
     bd_bootstrap = openjdk-16-jdk-headless:native | openjdk-17-jdk-headless:native,
 else
-    bd_bootstrap = openjdk-16-jdk-headless:native | openjdk-16-jdk-headless:native,
     bd_bootstrap = openjdk-16-jdk-headless:native | openjdk-17-jdk-headless:native,
+    bd_bootstrap = openjdk-17-jdk-headless:native | openjdk-16-jdk-headless:native,
 endif
 
 ifeq (,$(filter $(distrel),squeeze wheezy jessie precise trusty xenial))
