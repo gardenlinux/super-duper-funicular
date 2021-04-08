@@ -1,8 +1,10 @@
-openjdk-17 (17~15-2) UNRELEASED; urgency=medium
+openjdk-17 (17~17-1) unstable; urgency=medium
 
+  * OpenJDK 17 snapshot, build 17.
+  * Refresh patches.
   * Prefer to build using openjdk-17 instead of -16. Closes: #986526.
 
- -- Matthias Klose <doko@ubuntu.com>  Wed, 07 Apr 2021 11:19:18 +0200
+ -- Matthias Klose <doko@ubuntu.com>  Thu, 08 Apr 2021 09:37:40 +0200
 
 openjdk-17 (17~15-1) unstable; urgency=medium
 
