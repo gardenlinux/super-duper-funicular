@@ -1060,7 +1060,7 @@ Last Update: 2019-04-29
  
  // Base class for objects stored in Metaspace.
  // Calling delete will result in fatal error.
-@@ -351,7 +351,7 @@ class MetaspaceObj {
+@@ -354,7 +354,7 @@ class MetaspaceObj {
    // that should be read-only by default. See symbol.hpp for an example. This function
    // is used by the templates in metaspaceClosure.hpp
    static bool is_read_only_by_default() { return false; }
@@ -1069,7 +1069,7 @@ Last Update: 2019-04-29
  
  // Base class for classes that constitute name spaces.
  
-@@ -436,7 +436,7 @@ protected:
+@@ -439,7 +439,7 @@ protected:
  
    void  operator delete(void* p);
    void  operator delete [](void* p);
@@ -1080,7 +1080,7 @@ Last Update: 2019-04-29
  // or object to determine whether it should reside in the C heap on in
 --- a/src/hotspot/share/oops/constMethod.hpp
 +++ b/src/hotspot/share/oops/constMethod.hpp
-@@ -553,6 +553,6 @@ private:
+@@ -525,6 +525,6 @@ private:
  
    // Verify
    void verify_on(outputStream* st);
@@ -1090,7 +1090,7 @@ Last Update: 2019-04-29
  #endif // SHARE_OOPS_CONSTMETHOD_HPP
 --- a/src/hotspot/share/oops/oop.hpp
 +++ b/src/hotspot/share/oops/oop.hpp
-@@ -315,6 +315,6 @@ class oopDesc {
+@@ -316,6 +316,6 @@ class oopDesc {
    // Avoid include gc_globals.hpp in oop.inline.hpp
    DEBUG_ONLY(bool get_UseParallelGC();)
    DEBUG_ONLY(bool get_UseG1GC();)
