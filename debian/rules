@@ -502,11 +502,11 @@ COMMON_CONFIGURE_ARGS += \
 	--disable-warnings-as-errors \
 	--disable-javac-server \
 
-ifeq (,$(filter $(distrel),jessie stretch precise trusty xenial))
-  COMMON_CONFIGURE_ARGS += \
-	--with-harfbuzz=system
-  with_system_hb = yes
-endif
+#ifeq (,$(filter $(distrel),jessie stretch precise trusty xenial))
+#  COMMON_CONFIGURE_ARGS += \
+#	--with-harfbuzz=system
+#  with_system_hb = yes
+#endif
 
 ifneq (,$(filter $(distrel),precise trusty xenial))
   # building with a GCC from a PPA ...
@@ -598,7 +598,7 @@ else ifneq (,$(filter $(distrel),squeeze wheezy jessie trusty xenial))
     bd_bootstrap = openjdk-14-jdk-headless:native | openjdk-15-jdk-headless:native,
 else
     bd_bootstrap = openjdk-15-jdk-headless:native | openjdk-14-jdk-headless:native,
-    bd_bootstrap = openjdk-14-jdk-headless:native | openjdk-15-jdk-headless:native,
+    #bd_bootstrap = openjdk-14-jdk-headless:native | openjdk-15-jdk-headless:native,
 endif
 
 ifeq (,$(filter $(distrel),squeeze wheezy jessie precise trusty xenial))
@@ -1853,7 +1853,7 @@ endif
 is_release		= yes
 #is_release		=
 hg_project		= jdk15u
-hg_tag			= jdk-15.0.2+7
+hg_tag			= jdk-15.0.3+3
 #hg_project		= jdk
 #hg_tag			= jdk-15+36
 package_version		= $(subst jdk-,,$(hg_tag))

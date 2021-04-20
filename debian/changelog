@@ -1,10 +1,23 @@
-openjdk-15 (15.0.2+7-2) UNRELEASED; urgency=medium
+openjdk-15 (15.0.3+3-1) unstable; urgency=medium
 
+  * OpenJDK 15.0.3 release, build 3.
+  * Security fixes:
+    - JDK-8244473: Contextualize registration for JNDI.
+    - JDK-8244543: Enhanced handling of abstract classes.
+    - JDK-8259633: compiler/graalunit/CoreTest.java fails with NPE after
+      JDK-8244543.
+    - JDK-8250568: Less ambiguous processing.
+    - JDK-8253799: Make lists of normal filenames.
+    - JDK-8261183: Follow on to Make lists of normal filenames.
+    - JDK-8249906: Enhance opening JARs.
+    - JDK-8258247: Couple of issues in fix for JDK-8249906.
+    - JDK-8259428: AlgorithmId.getEncodedParams() should return copy.
+    - JDK-8257001: Improve HTTP client support.
   * reproducible-build-jmod.diff: Fall back to the unpatched behavior
     for backports.
   * Don't use the triplet-prefixed binutils tools for backports.
 
- -- Matthias Klose <doko@ubuntu.com>  Fri, 26 Feb 2021 18:36:06 +0100
+ -- Matthias Klose <doko@ubuntu.com>  Tue, 20 Apr 2021 20:26:47 +0200
 
 openjdk-15 (15.0.2+7-1) unstable; urgency=medium
 
