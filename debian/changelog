@@ -1,3 +1,21 @@
+openjdk-11 (11.0.11+9-1) unstable; urgency=high
+
+  * OpenJDK 11.0.11+9 build (release).
+  * Security fixes:
+    - JDK-8244473: Contextualize registration for JNDI.
+    - JDK-8244543: Enhanced handling of abstract classes.
+    - JDK-8259633: compiler/graalunit/CoreTest.java fails with NPE
+      after JDK-8244543.
+    - JDK-8250568: Less ambiguous processing (CVE-2021-2161).
+    - JDK-8253799: Make lists of normal filenames.
+    - JDK-8261183: Follow on to Make lists of normal filenames.
+    - JDK-8249906: Enhance opening JARs (CVE-2021-2163).
+    - JDK-8258247: Couple of issues in fix for JDK-8249906.
+    - JDK-8259428: AlgorithmId.getEncodedParams() should return copy.
+    - JDK-8257001: Improve HTTP client support.
+
+ -- Matthias Klose <doko@ubuntu.com>  Tue, 20 Apr 2021 20:21:22 +0200
+
 openjdk-11 (11.0.11+8-1) unstable; urgency=medium
 
   * OpenJDK 11.0.11+8 build (early access).
