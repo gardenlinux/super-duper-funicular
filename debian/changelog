@@ -1,4 +1,10 @@
-openjdk-16 (16+36-4) UNRELEASED; urgency=medium
+openjdk-16 (16.0.1+9-1) unstable; urgency=medium
+
+  * OpenJDK 16.0.1 release, build 9.
+
+ -- Matthias Klose <doko@ubuntu.com>  Wed, 21 Apr 2021 05:24:14 +0200
+
+openjdk-16 (16+36-4) unstable; urgency=medium
 
   * Only apply the untested mips patch on mipsel, not mips64el. See #983878.
 

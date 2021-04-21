@@ -1860,8 +1860,8 @@ endif
 	dh_builddeb -a $(nodemo) $(nojrez) #$(bd_options)
 
 is_release		= yes
-git_project		= jdk16
-git_tag			= jdk-16+36
+git_project		= jdk16u
+git_tag			= jdk-16.0.1+9
 package_version		= $(subst jdk-,,$(git_tag))
 ifneq ($(is_release),yes)
   package_version	:= $(subst +,~,$(package_version))
