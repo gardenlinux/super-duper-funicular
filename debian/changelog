@@ -1,3 +1,11 @@
+openjdk-17 (17~19-1) unstable; urgency=high
+
+  * OpenJDK 17 snapshot, build 19.
+    - Fix JDK-8250568: Less ambiguous processing (CVE-2021-2161).
+    - Fix JDK-8249906: Enhance opening JARs (CVE-2021-2163).
+
+ -- Matthias Klose <doko@ubuntu.com>  Thu, 22 Apr 2021 09:51:43 +0200
+
 openjdk-17 (17~17-1) unstable; urgency=medium
 
   * OpenJDK 17 snapshot, build 17.

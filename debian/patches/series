@@ -36,6 +36,5 @@ reproducible-copyright-headers.diff
 reproducible-build-user.diff
 riscv64.diff
 reproducible-build-jmod.diff
-8262501.diff
 mips.diff
 harfbuzz-libs.diff
