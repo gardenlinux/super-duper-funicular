@@ -9066,7 +9066,7 @@ src/jdk.crypto.cryptoki/share/native/libj2pkcs11/p11_util.c:
  #define jByteToCKByte(x) ((CK_BYTE) x)
 --- a/src/jdk.crypto.cryptoki/share/native/libj2pkcs11/p11_convert.c
 +++ b/src/jdk.crypto.cryptoki/share/native/libj2pkcs11/p11_convert.c
-@@ -1471,7 +1471,9 @@ CK_VOID_PTR jMechParamToCKMechParamPtrSl
+@@ -1543,7 +1543,9 @@ CK_VOID_PTR jMechParamToCKMechParamPtrSl
              ckpParamPtr = jX942Dh2DeriveParamToCKX942Dh2DeriveParamPtr(env, jParam, ckpLength);
              break;
          // defined by pkcs11.h but we don't support
@@ -9078,7 +9078,7 @@ src/jdk.crypto.cryptoki/share/native/libj2pkcs11/p11_util.c:
          case CKM_RC5_ECB: // CK_RC5_PARAMS
 --- a/src/jdk.crypto.cryptoki/share/native/libj2pkcs11/p11_util.c
 +++ b/src/jdk.crypto.cryptoki/share/native/libj2pkcs11/p11_util.c
-@@ -381,7 +381,9 @@ void freeCKMechanismPtr(CK_MECHANISM_PTR
+@@ -407,7 +407,9 @@ void freeCKMechanismPtr(CK_MECHANISM_PTR
                   case CKM_TLS_MAC:
                   case CKM_AES_CTR:
                   case CKM_RSA_PKCS_PSS:
