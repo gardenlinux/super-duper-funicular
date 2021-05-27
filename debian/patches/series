@@ -24,7 +24,6 @@ generated-headers.patch
 m68k-support.diff
 reproducible-properties-timestamp.diff
 # reproducible-javadoc-timestamp.diff
-jdk8211105-aarch64-disable_cos_sin_and_log_intrinsics.patch
 make-debug-print.diff
 Don-t-optimize-fdlibm-fork-for-Zero-on-linux-sparc-Z.patch
 keep-gtk2-as-default.patch
