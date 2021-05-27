@@ -37,4 +37,4 @@ riscv64.diff
 reproducible-build-jmod.diff
 mips.diff
 harfbuzz-libs.diff
-nspr+nss-headers.diff
+#nspr+nss-headers.diff

@@ -1,7 +1,8 @@
-openjdk-17 (17~24-1) UNRELEASED; urgency=medium
+openjdk-17 (17~24-1) unstable; urgency=medium
 
   * OpenJDK 17 snapshot, build 24.
   * Drop the work around for JDK 8211105.
+  * Remove jaotc (the experimental JIT compiler), removed upstream.
   * Add an (unapplied) patch to replace OASIS header files with ones
     imported from NSPR and NSS. See #985765.  Not reviewed, not applying.
 
