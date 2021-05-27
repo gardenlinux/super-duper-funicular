@@ -82,7 +82,7 @@ Reviewed-by: aph, erikj, ehelin, ihse
    elif test "x$OPENJDK_$1_CPU" = xs390x; then
 --- a/src/hotspot/os/linux/os_linux.cpp
 +++ b/src/hotspot/os/linux/os_linux.cpp
-@@ -1826,6 +1826,9 @@ void * os::dll_load(const char *filename
+@@ -1829,6 +1829,9 @@ void * os::dll_load(const char *filename
  #ifndef EM_AARCH64
    #define EM_AARCH64    183               /* ARM AARCH64 */
  #endif
@@ -92,7 +92,7 @@ Reviewed-by: aph, erikj, ehelin, ihse
  
    static const arch_t arch_array[]={
      {EM_386,         EM_386,     ELFCLASS32, ELFDATA2LSB, (char*)"IA 32"},
-@@ -1851,6 +1854,7 @@ void * os::dll_load(const char *filename
+@@ -1854,6 +1857,7 @@ void * os::dll_load(const char *filename
      {EM_PARISC,      EM_PARISC,  ELFCLASS32, ELFDATA2MSB, (char*)"PARISC"},
      {EM_68K,         EM_68K,     ELFCLASS32, ELFDATA2MSB, (char*)"M68k"},
      {EM_AARCH64,     EM_AARCH64, ELFCLASS64, ELFDATA2LSB, (char*)"AARCH64"},
@@ -100,7 +100,7 @@ Reviewed-by: aph, erikj, ehelin, ihse
    };
  
  #if  (defined IA32)
-@@ -1867,6 +1871,8 @@ void * os::dll_load(const char *filename
+@@ -1870,6 +1874,8 @@ void * os::dll_load(const char *filename
    static  Elf32_Half running_arch_code=EM_PPC64;
  #elif  (defined __powerpc__)
    static  Elf32_Half running_arch_code=EM_PPC;
@@ -109,7 +109,7 @@ Reviewed-by: aph, erikj, ehelin, ihse
  #elif  (defined AARCH64)
    static  Elf32_Half running_arch_code=EM_AARCH64;
  #elif  (defined ARM)
-@@ -1887,7 +1893,7 @@ void * os::dll_load(const char *filename
+@@ -1890,7 +1896,7 @@ void * os::dll_load(const char *filename
    static  Elf32_Half running_arch_code=EM_SH;
  #else
      #error Method os::dll_load requires that one of following is defined:\
@@ -118,7 +118,7 @@ Reviewed-by: aph, erikj, ehelin, ihse
  #endif
  
    // Identify compatability class for VM's architecture and library's architecture
-@@ -2531,6 +2537,8 @@ void os::get_summary_cpu_info(char* cpui
+@@ -2600,6 +2606,8 @@ void os::get_summary_cpu_info(char* cpui
    strncpy(cpuinfo, "IA64", length);
  #elif defined(PPC)
    strncpy(cpuinfo, "PPC64", length);

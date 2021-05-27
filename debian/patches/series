@@ -29,7 +29,7 @@ dnd-files.diff
 hotspot-libpath.diff
 generated-headers.patch
 parallel-build-fix.diff
-m68k-support.diff
+#m68k-support.diff
 reproducible-properties-timestamp.diff
 reproducible-javadoc-timestamp.diff
 Don-t-optimize-fdlibm-fork-for-Zero-on-linux-sparc-Z.patch

@@ -1,6 +1,6 @@
 --- a/src/hotspot/os/linux/os_linux.cpp
 +++ b/src/hotspot/os/linux/os_linux.cpp
-@@ -1854,7 +1854,7 @@ void * os::dll_load(const char *filename
+@@ -1857,7 +1857,7 @@ void * os::dll_load(const char *filename
  
  #if  (defined IA32)
    static  Elf32_Half running_arch_code=EM_386;
