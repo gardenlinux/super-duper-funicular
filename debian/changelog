@@ -5,6 +5,7 @@ openjdk-17 (17~26-1) UNRELEASED; urgency=medium
   * Build using GCC 11 in recent distributions.
   * Update VCS attributes.
   * Disable runnning the tests, requires not yet packaged jtreg6.
+  * Remove rimd, removed upstream.
 
  -- Matthias Klose <doko@ubuntu.com>  Thu, 17 Jun 2021 13:40:03 +0200
 

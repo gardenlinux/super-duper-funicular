@@ -581,7 +581,7 @@ endif
 all_tools	=  jar jarsigner java javac javadoc javap jcmd \
 	jconsole jdb jdeprscan jdeps jfr jimage jinfo jlink jmap \
 	jmod jpackage jps jrunscript jshell jstack jstat jstatd keytool \
-	rmid rmiregistry serialver
+	rmiregistry serialver
 
 jdk_hl_tools	= jar jarsigner javac javadoc javap jcmd jdb \
 	jdeprscan jdeps jfr jimage jinfo jlink jmap jmod jps \
