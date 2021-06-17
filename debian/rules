@@ -164,7 +164,7 @@ endif
 ifneq (,$(filter $(distrel), precise trusty xenial bionic))
   with_check = disabled for $(distrel)
 endif
-#with_check = disabled, more recent jtreg needed
+with_check = disabled, more recent jtreg needed
 
 with_docs = $(if $(findstring nodoc, $(DEB_BUILD_OPTIONS)),,yes)
 ifneq (,$(filter $(distrel), precise trusty))
@@ -1864,8 +1864,8 @@ endif
 
 #is_release		= yes
 is_release		=
-git_project		= jdk
-git_tag			= jdk-17+24
+git_project		= jdk17
+git_tag			= jdk-17+26
 package_version		= $(subst jdk-,,$(git_tag))
 ifneq ($(is_release),yes)
   package_version	:= $(subst +,~,$(package_version))
