@@ -1,13 +1,13 @@
-openjdk-17 (17~26-1) UNRELEASED; urgency=medium
+openjdk-17 (17~27-1) unstable; urgency=medium
 
-  * OpenJDK 17 snapshot, build 26.
+  * OpenJDK 17 snapshot, build 27.
   * Only build using lto with GCC 11.
   * Build using GCC 11 in recent distributions.
   * Update VCS attributes.
   * Disable runnning the tests, requires not yet packaged jtreg6.
   * Remove rimd, removed upstream.
 
- -- Matthias Klose <doko@ubuntu.com>  Thu, 17 Jun 2021 13:40:03 +0200
+ -- Matthias Klose <doko@ubuntu.com>  Fri, 18 Jun 2021 15:06:18 +0200
 
 openjdk-17 (17~24-1) unstable; urgency=medium
 
