@@ -1,4 +1,4 @@
-Source: openjdk-17
+Source: openjdk-18
 Section: java
 Priority: optional
 Maintainer: OpenJDK Team <openjdk-17@packages.debian.org>
@@ -7,15 +7,15 @@ Build-Depends: debhelper (>= 11),
   m4, lsb-release, zip, unzip,
   sharutils, gawk, cpio, pkg-config, procps, wdiff, fastjar (>= 2:0.96-0ubuntu2),
   time, strip-nondeterminism, debugedit (>= 4.16),
-  jtreg (>= 5.1-b1-0~) <!nocheck>, testng <!nocheck>, xvfb <!nocheck>, xauth <!nocheck>, xfonts-base <!nocheck>, libgl1-mesa-dri [!x32] <!nocheck>, xfwm4 <!nocheck>, x11-xkb-utils <!nocheck>, dbus-x11 <!nocheck>,
+  file,
   autoconf, automake, autotools-dev, ant, ant-optional,
-  g++-11 <!cross>,
+  g++-10 <!cross>,
   openjdk-17-jdk-headless:native | openjdk-16-jdk-headless:native,
   libxtst-dev, libxi-dev, libxt-dev, libxaw7-dev, libxrender-dev, libcups2-dev, libasound2-dev, liblcms2-dev, libfreetype6-dev (>= 2.2.1), libxinerama-dev, libkrb5-dev, xsltproc, libpcsclite-dev, libxrandr-dev, libelf-dev, libfontconfig1-dev, libgtk2.0-0 | libgtk-3-0, libharfbuzz-dev,
   libffi-dev,
   zlib1g-dev:native, zlib1g-dev, libattr1-dev, libpng-dev, libjpeg-dev, libgif-dev, 
   libnss3-dev (>= 2:3.17.1),
-  openjdk-17-jdk-headless <cross>,
+  openjdk-18-jdk-headless <cross>,
 Build-Depends-Indep: graphviz, pandoc,
 Rules-Requires-Root: no
 Standards-Version: 4.5.1
@@ -23,13 +23,13 @@ Homepage: https://openjdk.java.net/
 Vcs-Browser: https://salsa.debian.org/openjdk-team/openjdk
 Vcs-Git: https://salsa.debian.org/openjdk-team/openjdk.git
 
-Package: openjdk-17-jdk-headless
+Package: openjdk-18-jdk-headless
 Architecture: alpha amd64 armel armhf arm64 i386 ia64 mips mipsel mips64 mips64el powerpc ppc64 ppc64el m68k riscv64 sh4 sparc sparc64 s390x x32
 Multi-Arch: same
 Pre-Depends: ${dpkg:Depends}
-Depends: openjdk-17-jre-headless (= ${binary:Version}),
+Depends: openjdk-18-jre-headless (= ${binary:Version}),
   ${shlibs:Depends}, ${misc:Depends}
-Suggests: openjdk-17-demo, openjdk-17-source
+Suggests: openjdk-18-demo, openjdk-18-source
 Provides: java-sdk-headless, java2-sdk-headless,
   java5-sdk-headless, java6-sdk-headless,
   java7-sdk-headless, java8-sdk-headless,
@@ -44,7 +44,7 @@ Description: OpenJDK Development Kit (JDK) (headless)
  OpenJDK is a development environment for building applications,
  applets, and components using the Java programming language.
 
-Package: openjdk-17-jre-headless
+Package: openjdk-18-jre-headless
 Architecture: alpha amd64 armel armhf arm64 i386 ia64 mips mipsel mips64 mips64el powerpc ppc64 ppc64el m68k riscv64 sh4 sparc sparc64 s390x x32
 Multi-Arch: same
 Pre-Depends: ${dpkg:Depends}
@@ -71,15 +71,15 @@ Description: OpenJDK Java runtime, using ${vm:Name} (headless)
  Minimal Java runtime - needed for executing non GUI Java programs,
  using ${vm:Name}.
 
-Package: openjdk-17-jdk
+Package: openjdk-18-jdk
 Architecture: alpha amd64 armel armhf arm64 i386 ia64 mips mipsel mips64 mips64el powerpc ppc64 ppc64el m68k riscv64 sh4 sparc sparc64 s390x x32
 Multi-Arch: same
 Pre-Depends: ${dpkg:Depends}
-Depends: openjdk-17-jre (= ${binary:Version}),
-  openjdk-17-jdk-headless (= ${binary:Version}),
+Depends: openjdk-18-jre (= ${binary:Version}),
+  openjdk-18-jdk-headless (= ${binary:Version}),
   ${shlibs:Depends}, ${misc:Depends}
 Recommends: libxt-dev
-Suggests: openjdk-17-demo, openjdk-17-source, visualvm
+Suggests: openjdk-18-demo, openjdk-18-source, visualvm
 Provides: java-sdk, java2-sdk, java5-sdk, java6-sdk,
   java7-sdk, java8-sdk, java9-sdk, java10-sdk, java11-sdk,
   java12-sdk, java13-sdk, java14-sdk, java15-sdk, java16-sdk, java17-sdk,
@@ -88,11 +88,11 @@ Description: OpenJDK Development Kit (JDK)
  OpenJDK is a development environment for building applications,
  applets, and components using the Java programming language.
 
-Package: openjdk-17-jre
+Package: openjdk-18-jre
 Architecture: alpha amd64 armel armhf arm64 i386 ia64 mips mipsel mips64 mips64el powerpc ppc64 ppc64el m68k riscv64 sh4 sparc sparc64 s390x x32
 Multi-Arch: same
 Pre-Depends: ${dpkg:Depends}
-Depends: openjdk-17-jre-headless (= ${binary:Version}),
+Depends: openjdk-18-jre-headless (= ${binary:Version}),
   ${xandsound:Depends}, ${dlopenjre:Depends},
   ${shlibs:Depends}, ${misc:Depends}
 Recommends: ${dlopenjre:Recommends}, ${bridge:Recommends}, fonts-dejavu-extra
@@ -109,21 +109,21 @@ Description: OpenJDK Java runtime, using ${vm:Name}
  Full Java runtime environment - needed for executing Java GUI and Webstart
  programs, using ${vm:Name}.
 
-Package: openjdk-17-demo
+Package: openjdk-18-demo
 Architecture: alpha amd64 armel armhf arm64 i386 ia64 mips mipsel mips64 mips64el powerpc ppc64 ppc64el m68k riscv64 sh4 sparc sparc64 s390x x32
 Priority: optional
 Pre-Depends: ${dpkg:Depends}
-Depends: openjdk-17-jre (= ${binary:Version}),
+Depends: openjdk-18-jre (= ${binary:Version}),
   ${shlibs:Depends}, ${misc:Depends}
 Description: Java runtime based on OpenJDK (demos and examples)
  OpenJDK Java runtime
 
-Package: openjdk-17-source
+Package: openjdk-18-source
 Architecture: all
 Multi-Arch: foreign
 Priority: optional
 Pre-Depends: ${dpkg:Depends}
-Depends: openjdk-17-jdk (>= ${source:Version}),
+Depends: openjdk-18-jdk (>= ${source:Version}),
   ${misc:Depends}
 Description: OpenJDK Development Kit (JDK) source files
  OpenJDK is a development environment for building applications,
@@ -132,7 +132,7 @@ Description: OpenJDK Development Kit (JDK) source files
  This package contains the Java programming language source files
  (src.zip) for all classes that make up the Java core API.
 
-Package: openjdk-17-doc
+Package: openjdk-18-doc
 Section: doc
 Pre-Depends: ${dpkg:Depends}
 Architecture: all
@@ -142,23 +142,23 @@ Depends: ${misc:Depends},
   libjs-jquery,
   libjs-jquery-ui,
   libjs-jquery-ui-theme-base,
-Suggests: openjdk-17-jdk
+Suggests: openjdk-18-jdk
 Description: OpenJDK Development Kit (JDK) documentation
  OpenJDK is a development environment for building applications,
  applets, and components using the Java programming language.
  .
  This package contains the API documentation.
 
-Package: openjdk-17-dbg
+Package: openjdk-18-dbg
 Architecture: alpha amd64 armel armhf arm64 i386 ia64 mips mipsel mips64 mips64el powerpc ppc64 ppc64el m68k riscv64 sh4 sparc sparc64 s390x x32
 Multi-Arch: same
 Priority: optional
 Section: debug
 Pre-Depends: ${dpkg:Depends}
-Depends: openjdk-17-jre-headless (= ${binary:Version}),
+Depends: openjdk-18-jre-headless (= ${binary:Version}),
    ${misc:Depends}
-Recommends: openjdk-17-jre (= ${binary:Version})
-Suggests: openjdk-17-jdk (= ${binary:Version})
+Recommends: openjdk-18-jre (= ${binary:Version})
+Suggests: openjdk-18-jdk (= ${binary:Version})
 Conflicts: ${dbg:Conflicts}
 Description: Java runtime based on OpenJDK (debugging symbols)
  OpenJDK is a development environment for building applications,
@@ -166,12 +166,12 @@ Description: Java runtime based on OpenJDK (debugging symbols)
  .
  This package contains the debugging symbols.
 
-Package: openjdk-17-jre-zero
+Package: openjdk-18-jre-zero
 Architecture: amd64 i386 arm64 armhf ppc64 ppc64el s390x
 Multi-Arch: same
 Priority: optional
 Pre-Depends: ${dpkg:Depends}
-Depends: openjdk-17-jre-headless (= ${binary:Version}), ${shlibs:Depends}, ${misc:Depends}
+Depends: openjdk-18-jre-headless (= ${binary:Version}), ${shlibs:Depends}, ${misc:Depends}
 Provides: ${zerovm:Provides}
 Description: Alternative JVM for OpenJDK, using Zero
  The package provides an alternative runtime using the Zero VM. Built on

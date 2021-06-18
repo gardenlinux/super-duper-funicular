@@ -93,14 +93,14 @@ TOP		= usr/lib/jvm
 origin		= openjdk
 basename	= openjdk-$(shortver)
 ifneq (,$(filter $(DEB_HOST_ARCH), $(hotspot_archs)))
-  priority	= $(if $(filter yes, $(is_default)),1711,1709)
+  priority	= $(if $(filter yes, $(is_default)),1811,1809)
   vm_name	= Hotspot JIT
 else
-  priority	= $(if $(filter yes, $(is_default)),1704,1703)
+  priority	= $(if $(filter yes, $(is_default)),1804,1803)
   vm_name	= Hotspot Zero
 endif
-jvmver		= 1.17.0
-shortver	= 17
+jvmver		= 1.18.0
+shortver	= 18
 v_upstream	:= $(shell echo $(PKGVERSION) | sed 's/-[^-][^-]*$$//')
 v_pkgrel	:= $(shell echo $(PKGVERSION) | sed 's/^.*-//')
 # FIXME. currently v_upstream like 11~4
@@ -164,7 +164,7 @@ endif
 ifneq (,$(filter $(distrel), precise trusty xenial bionic))
   with_check = disabled for $(distrel)
 endif
-#with_check = disabled, more recent jtreg needed
+with_check = disabled, more recent jtreg needed
 
 with_docs = $(if $(findstring nodoc, $(DEB_BUILD_OPTIONS)),,yes)
 ifneq (,$(filter $(distrel), precise trusty))
@@ -205,8 +205,8 @@ endif
 export DEBIAN_JDK_BASE_DIR := /$(basedir)
 
 BOOTJDK_HOME := $(strip $(subst /bin/javac,, $(firstword $(wildcard \
-			/usr/lib/jvm/java-16-openjdk-$(DEB_BUILD_ARCH)/bin/javac \
 			/usr/lib/jvm/java-17-openjdk-$(DEB_BUILD_ARCH)/bin/javac \
+			/usr/lib/jvm/java-18-openjdk-$(DEB_BUILD_ARCH)/bin/javac \
 		))))
 
 ifeq ($(DEB_BUILD_ARCH),$(DEB_HOST_ARCH))
@@ -581,7 +581,7 @@ endif
 all_tools	=  jar jarsigner java javac javadoc javap jcmd \
 	jconsole jdb jdeprscan jdeps jfr jimage jinfo jlink jmap \
 	jmod jpackage jps jrunscript jshell jstack jstat jstatd keytool \
-	rmid rmiregistry serialver
+	rmiregistry serialver
 
 jdk_hl_tools	= jar jarsigner javac javadoc javap jcmd jdb \
 	jdeprscan jdeps jfr jimage jinfo jlink jmap jmod jps \
@@ -1865,7 +1865,7 @@ endif
 #is_release		= yes
 is_release		=
 git_project		= jdk
-git_tag			= jdk-17+24
+git_tag			= jdk-18+2
 package_version		= $(subst jdk-,,$(git_tag))
 ifneq ($(is_release),yes)
   package_version	:= $(subst +,~,$(package_version))
