@@ -1,8 +1,10 @@
-openjdk-17 (17~27-2) UNRELEASED; urgency=medium
+openjdk-17 (17~29-1) unstable; urgency=medium
 
+  * OpenJDK 17 snapshot, build 29.
   * Update watch file.
+  * Prepare to build with jtreg6, where available.
 
- -- Matthias Klose <doko@ubuntu.com>  Fri, 18 Jun 2021 16:33:21 +0200
+ -- Matthias Klose <doko@ubuntu.com>  Thu, 01 Jul 2021 16:42:23 +0200
 
 openjdk-17 (17~27-1) unstable; urgency=medium
 

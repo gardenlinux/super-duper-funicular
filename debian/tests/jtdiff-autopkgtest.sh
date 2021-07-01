@@ -22,7 +22,7 @@ fi
 
 vmname=${VMNAME:-${default_vm}}
 
-jt_report_tb="/usr/share/doc/openjdk-15-jre-headless//test-${host_arch}/jtreport-${vmname}.tar.gz"
+jt_report_tb="/usr/share/doc/openjdk-17-jre-headless//test-${host_arch}/jtreport-${vmname}.tar.gz"
 
 if [ ! -f "${jt_report_tb}" ]; then
   echo "Unable to compare jtreg results: no build jtreport found for ${vmname}/${host_arch}."
