@@ -46,3 +46,4 @@ reproducible-build-jmod.diff
 harfbuzz-cflags.diff
 8222825.diff
 8262085.diff
+8272472-workaround.diff
