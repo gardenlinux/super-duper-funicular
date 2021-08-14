@@ -1871,7 +1871,7 @@ endif
 #is_release		= yes
 is_release		=
 git_project		= jdk17
-git_tag			= jdk-17+31
+git_tag			= jdk-17+35
 package_version		= $(subst jdk-,,$(git_tag))
 package_version		= $(shell echo $(PKGVERSION) | sed 's/-[^-][^-]*$$//')
 ifneq ($(is_release),yes)

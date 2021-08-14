@@ -1,0 +1,15 @@
+--- a/test/hotspot/jtreg/runtime/StackGuardPages/exeinvoke.c
++++ b/test/hotspot/jtreg/runtime/StackGuardPages/exeinvoke.c
+@@ -69,10 +69,10 @@ static void handler(int sig, siginfo_t *
+ }
+ 
+ void set_signal_handler() {
+-  static char altstack[SIGSTKSZ];
++  static char altstack[32 * 1024];
+ 
+   stack_t ss = {
+-    .ss_size = SIGSTKSZ,
++    .ss_size = 32 * 1024,
+     .ss_flags = 0,
+     .ss_sp = altstack
+   };
