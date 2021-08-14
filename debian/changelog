@@ -1,3 +1,9 @@
+openjdk-11 (11.0.12+7-3) UNRELEASED; urgency=medium
+
+  * Work around ftbfs in StackGuardPages test with glibc 2.34.
+
+ -- Matthias Klose <doko@ubuntu.com>  Sat, 14 Aug 2021 14:25:38 +0200
+
 openjdk-11 (11.0.12+7-2) unstable; urgency=high
 
   * OpenJDK 11.0.12+7 build (release).
