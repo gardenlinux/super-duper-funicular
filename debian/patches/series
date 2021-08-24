@@ -40,3 +40,4 @@ riscv64.diff
 reproducible-build-jmod.diff
 harfbuzz-cflags.diff
 mips.diff
+8272472.diff
