@@ -1,3 +1,21 @@
+openjdk-16 (16.0.2+7-1) unstable; urgency=medium
+
+  * OpenJDK 16.0.1 release, build 9.
+
+ -- Matthias Klose <doko@ubuntu.com>  Mon, 23 Aug 2021 17:21:57 +0200
+
+openjdk-16 (16.0.1+9-1~12.04) precise; urgency=medium
+
+  * PPA upload.
+
+ -- Matthias Klose <doko@ubuntu.com>  Wed, 21 Apr 2021 13:29:32 +0200
+
+openjdk-16 (16.0.1+9-1~20.04) focal-proposed; urgency=medium
+
+  * SRU: LP: #1919366. Backport the OpenJDK 16.0.1 release to 20.04 LTS.
+
+ -- Matthias Klose <doko@ubuntu.com>  Wed, 21 Apr 2021 06:19:41 +0200
+
 openjdk-16 (16.0.1+9-1) unstable; urgency=medium
 
   * OpenJDK 16.0.1 release, build 9.
