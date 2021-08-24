@@ -1,8 +1,8 @@
 openjdk-17 (17~35ea-2) UNRELEASED; urgency=medium
 
-  * Work around ftbfs in StackGuardPages test with glibc 2.34.
+  * Fix JDK-8272472, ftbfs with glibc 2.24.
 
- -- Matthias Klose <doko@ubuntu.com>  Sat, 14 Aug 2021 12:24:59 +0200
+ -- Matthias Klose <doko@ubuntu.com>  Tue, 24 Aug 2021 16:30:51 +0200
 
 openjdk-17 (17~35ea-1) unstable; urgency=medium
 

@@ -38,4 +38,4 @@ reproducible-build-jmod.diff
 mips.diff
 harfbuzz-libs.diff
 #nspr+nss-headers.diff
-8272472-workaround.diff
+8272472.diff
