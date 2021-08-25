@@ -1,6 +1,6 @@
 openjdk-16 (16.0.2+7-2) unstable; urgency=medium
 
-  * Fix JDK-8272472, ftbfs with glibc 2.24.
+  * Fix JDK-8272472, ftbfs with glibc 2.34.
 
  -- Matthias Klose <doko@ubuntu.com>  Tue, 24 Aug 2021 16:17:10 +0200
 
