@@ -81,7 +81,7 @@ else
   is_default = yes
 endif
 
-#is_upstream_release = yes
+is_upstream_release = yes
 
 srcdir		= .
 builddir	= build
@@ -105,20 +105,20 @@ v_debian	:= $(shell echo $(PKGVERSION) | sed 's/ea//')
 v_upstream	:= $(shell echo $(v_debian) | sed 's/-[^-][^-]*$$//')
 v_pkgrel	:= $(shell echo $(v_debian) | sed 's/^.*-//')
 # FIXME. currently v_upstream like 11~4
-#v_upbase	:= $(word 1, $(subst +, , $(v_upstream)))
-#v_upbuild	:= $(word 2, $(subst +, , $(v_upstream)))
-v_upbase	:= $(word 1, $(subst ~, , $(v_upstream)))
-v_upbuild	:= $(word 2, $(subst ~, , $(v_upstream)))
+v_upbase	:= $(word 1, $(subst +, , $(v_upstream)))
+v_upbuild	:= $(word 2, $(subst +, , $(v_upstream)))
+#v_upbase	:= $(word 1, $(subst ~, , $(v_upstream)))
+#v_upbuild	:= $(word 2, $(subst ~, , $(v_upstream)))
 # that should be the package version ...
 
 #$(warning XXXXX $(v_upstream) / $(v_pkgrel) / $(v_upbase) / $(v_upbuild))
 
-#ifneq ($(v_debian),$(v_upbase)+$(v_upbuild)-$(v_pkgrel))
-#  $(error wrong version: $(v_upbase)+$(v_upbuild)-$(v_pkgrel) should be: $(v_debian))
-#endif
-ifneq ($(v_debian),$(v_upbase)~$(v_upbuild)-$(v_pkgrel))
-  $(error wrong version: $(v_upbase)~$(v_upbuild)-$(v_pkgrel) should be: $(v_debian))
+ifneq ($(v_debian),$(v_upbase)+$(v_upbuild)-$(v_pkgrel))
+  $(error wrong version: $(v_upbase)+$(v_upbuild)-$(v_pkgrel) should be: $(v_debian))
 endif
+#ifneq ($(v_debian),$(v_upbase)~$(v_upbuild)-$(v_pkgrel))
+#  $(error wrong version: $(v_upbase)~$(v_upbuild)-$(v_pkgrel) should be: $(v_debian))
+#endif
 
 ifneq (,$(DEB_HOST_MULTIARCH))
   jdirname	= java-$(shortver)-$(origin)-$(DEB_HOST_ARCH)
@@ -172,7 +172,7 @@ with_docs = $(if $(findstring nodoc, $(DEB_BUILD_OPTIONS)),,yes)
 ifneq (,$(filter $(distrel), precise trusty))
   with_docs =
 endif
-#with_check = disabled for this upload
+with_check = disabled for this upload
 
 with_wqy_zenhai = $(if $(filter $(distrel),lenny),,yes)
 
@@ -1868,8 +1868,8 @@ endif
 	NO_PKG_MANGLE=1 \
 	dh_builddeb -a $(nodemo) $(nojrez) #$(bd_options)
 
-#is_release		= yes
-is_release		=
+is_release		= yes
+#is_release		=
 git_project		= jdk17
 git_tag			= jdk-17+35
 package_version		= $(subst jdk-,,$(git_tag))
