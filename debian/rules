@@ -981,7 +981,7 @@ ifneq (,$(filter $(distrel),precise))
 	  ln -sf /usr/bin/$${i}2.69 bin/$${i}; \
 	done
 endif
-	which autoconf
+	command -v autoconf
 	/bin/uname -a
 	lsb_release -a
 
@@ -1086,8 +1086,8 @@ stamps/zero-build: stamps/zero-configure
 	: # FIXME: build using the just built jdk, and build the vm only
 	$(EXTRA_BUILD_ENV) $(MAKE) --no-print-directory -C $(zbuilddir) $(zbuild_target)
 	rm -rf $(builddir)/$(sdkimg)/lib/zero
-	cp -a $(zbuilddir)/$(zsdkimg)/lib/server \
-		$(builddir)/$(sdkimg)/lib/zero
+	cp -a $(zbuilddir)/$(zsdkimg)/lib/zero \
+		$(builddir)/$(sdkimg)/lib/.
 	touch $@
 
 stamps/build-docs: stamps/build
@@ -1768,7 +1768,7 @@ endif
 	-dh_icons -i $(nodocs) || dh_iconcache -i $(nodocs)
 #	dh_installdebconf -i $(nodocs)
 	dh_link -i $(nodocs)
-	set -e; if which dh_strip_nondeterminism >/dev/null; then \
+	set -e; if command -v dh_strip_nondeterminism >/dev/null; then \
 	  dh_strip_nondeterminism -i $(nodocs); \
 	fi
 	dh_compress -i $(nodocs) -Xexamples -Xdemo -Xpackage-list -Xelement-list
@@ -1817,7 +1817,7 @@ endif
 		|| dh_iconcache -a $(nodemo) $(nojrez)
 #	dh_installdebconf -a $(nodemo) $(nojrez)
 	dh_link -a $(nodemo) $(nojrez)
-	set -e; if which dh_strip_nondeterminism >/dev/null; then \
+	set -e; if command -v dh_strip_nondeterminism >/dev/null; then \
 	  dh_strip_nondeterminism -a $(nodemo) $(nojrez); \
 	fi
 	dh_strip -v -a $(nodemo) $(nojrez) \
@@ -1866,7 +1866,7 @@ endif
 #is_release		= yes
 is_release		=
 git_project		= jdk
-git_tag			= jdk-18+12
+git_tag			= jdk-18+15
 package_version		= $(shell echo $(PKGVERSION) | sed 's/-[^-][^-]*$$//')
 ifneq ($(is_release),yes)
   package_version	:= $(subst +,~,$(package_version))
