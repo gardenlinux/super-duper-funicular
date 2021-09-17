@@ -1350,7 +1350,8 @@ endif
 ifneq (,$(filter $(DEB_HOST_ARCH), $(hotspot_archs)))
 	printf -- '-zero KNOWN\n' >> $(d)/$(etcdir)/jvm.cfg
 else
-	printf -- '-zero ALIASED_TO -server\n' >> $(d)/$(etcdir)/jvm.cfg
+	printf -- '-zero KNOWN\n' >> $(d)/$(etcdir)/jvm.cfg
+	printf -- '-server ALIASED_TO -zero\n' >> $(d)/$(etcdir)/jvm.cfg
 endif
 ifneq (,$(filter $(DEB_HOST_ARCH), amd64 i386))
 	printf -- '-dcevm KNOWN\n' >> $(d)/$(etcdir)/jvm.cfg
@@ -1375,7 +1376,7 @@ endif
 	: # $(p_jrehl).install / $(p_jre).install
 	( \
 	  echo 'etc'; \
-	  echo '$(basedir)/lib/server'; \
+	  echo '$(basedir)/lib/$(if $(filter $(DEB_HOST_ARCH),$(hotspot_archs),server,zero)'; \
 	  echo '$(basedir)/lib/jvm.cfg-default'; \
 	  echo '$(basedir)/lib/libjli.so'; \
 	  echo '$(basedir)/lib/ct.sym'; \

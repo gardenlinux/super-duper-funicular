@@ -1,3 +1,9 @@
+openjdk-18 (18~15ea-2) unstable; urgency=medium
+
+  * Fix installation of the zero VM, now installed as zero, not as server.
+
+ -- Matthias Klose <doko@ubuntu.com>  Fri, 17 Sep 2021 08:09:21 +0200
+
 openjdk-18 (18~15ea-1) unstable; urgency=medium
 
   * OpenJDK 18 snapshot, build 15.
