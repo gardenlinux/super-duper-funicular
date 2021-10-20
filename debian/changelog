@@ -1,8 +1,35 @@
-openjdk-11 (11.0.12+7-3) UNRELEASED; urgency=medium
+openjdk-11 (11.0.13+8-1) unstable; urgency=medium
 
-  * Work around ftbfs in StackGuardPages test with glibc 2.34.
+  * OpenJDK 11.0.13+8 build (release).
+  * Security fixes
+    - JDK-8163326, CVE-2021-35550: Update the default enabled cipher suites preference
+    - JDK-8254967, CVE-2021-35565: com.sun.net.HttpsServer spins on TLS session close
+    - JDK-8263314: Enhance XML Dsig modes
+    - JDK-8265167, CVE-2021-35556: Richer Text Editors
+    - JDK-8265574: Improve handling of sheets
+    - JDK-8265580, CVE-2021-35559: Enhanced style for RTF kit
+    - JDK-8265776: Improve Stream handling for SSL
+    - JDK-8266097, CVE-2021-35561: Better hashing support
+    - JDK-8266103: Better specified spec values
+    - JDK-8266109: More Resilient Classloading
+    - JDK-8266115: More Manifest Jar Loading
+    - JDK-8266137, CVE-2021-35564: Improve Keystore integrity
+    - JDK-8266689, CVE-2021-35567: More Constrained Delegation
+    - JDK-8267086: ArrayIndexOutOfBoundsException in java.security.KeyFactory.generatePublic
+    - JDK-8267712: Better LDAP reference processing
+    - JDK-8267729, CVE-2021-35578: Improve TLS client handshaking
+    - JDK-8267735, CVE-2021-35586: Better BMP support
+    - JDK-8268193: Improve requests of certificates
+    - JDK-8268199: Correct certificate requests
+    - JDK-8268205: Enhance DTLS client handshake
+    - JDK-8268506: More Manifest Digests
+    - JDK-8269618, CVE-2021-35603: Better session identification
+    - JDK-8269624: Enhance method selection support
+    - JDK-8270398: Enhance canonicalization
+    - JDK-8270404: Better canonicalization
+  * Remove patches applied upstream.
 
- -- Matthias Klose <doko@ubuntu.com>  Sat, 14 Aug 2021 14:25:38 +0200
+ -- Matthias Klose <doko@ubuntu.com>  Wed, 20 Oct 2021 11:01:48 +0200
 
 openjdk-11 (11.0.12+7-2) unstable; urgency=high
 

@@ -1842,22 +1842,24 @@ endif
 is_release		= yes
 hg_project		= jdk11u
 hg_tag			= jdk-11.0.12+7
-package_version		= $(subst jdk-,,$(hg_tag))
+git_project		= jdk11u
+git_tag			= jdk-11.0.13+8
+package_version		= $(subst jdk-,,$(git_tag))
 package_version		= $(shell echo $(PKGVERSION) | sed 's/-[^-][^-]*$$//')
 ifneq ($(is_release),yes)
   package_version	:= $(subst +,~,$(package_version))
 endif
-hg_url			= http://hg.openjdk.java.net/jdk-updates/$(hg_project)
+git_url			= https://github.com/openjdk/$(git_project)
 origdir = ../$(basename)-$(package_version).orig
 topdir = $(basename)-$(package_version)
 get-orig:
 	mkdir $(origdir)
-	wget -O $(origdir)/jdk.tar.bz2 $(hg_url)/archive/$(hg_tag).tar.bz2
+	wget -O $(origdir)/jdk.tar.gz $(git_url)/archive/$(git_tag).tar.gz
 
 	set -ex; \
 	repo=jdk; \
-	d=$$(tar tf $(origdir)/$$repo.tar.bz2 | head -1 | sed 's,/.*,,'); \
-	tar xf $(origdir)/$$repo.tar.bz2; \
+	d=$$(tar tf $(origdir)/$$repo.tar.gz | head -1 | sed 's,/.*,,'); \
+	tar xf $(origdir)/$$repo.tar.gz; \
 	chmod 755 $$d/configure; \
 	case $$repo in jdk) \
 	  rm -v -rf $$d/src/java.base/share/native/libzip/zlib; \
@@ -1869,6 +1871,8 @@ get-orig:
 	  rm -v -f $$d/src/java.desktop/share/native/liblcms/cms*.c; \
 	  rm -v -f $$d/src/java.desktop/share/native/liblcms/lcms2*.h; \
 	  rm -v -rf $$d/src/java.smartcardio/unix/native/libj2pcsc/MUSCLE; \
+	  rm -v -rf $$d/.github; \
+	  rm -v -f $$d/.gitattributes; \
 	esac; \
 	mv $$d $(topdir); \
 	tar cfJ ../$(basename)_$(package_version).orig.tar.xz $(topdir); \
