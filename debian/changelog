@@ -1,8 +1,15 @@
-openjdk-18 (18~15ea-2) unstable; urgency=medium
+openjdk-18 (18~20ea-1) unstable; urgency=medium
+
+  * OpenJDK 18 snapshot, build 20.
+  * Bump standards version.
+
+ -- Matthias Klose <doko@ubuntu.com>  Thu, 21 Oct 2021 08:36:16 +0200
+
+openjdk-18 (18~15ea-4) unstable; urgency=medium
 
   * Fix installation of the zero VM, now installed as zero, not as server.
 
- -- Matthias Klose <doko@ubuntu.com>  Fri, 17 Sep 2021 08:09:21 +0200
+ -- Matthias Klose <doko@ubuntu.com>  Fri, 17 Sep 2021 18:43:49 +0200
 
 openjdk-18 (18~15ea-1) unstable; urgency=medium
 

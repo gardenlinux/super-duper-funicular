@@ -1090,11 +1090,12 @@ Last Update: 2019-04-29
  #endif // SHARE_OOPS_CONSTMETHOD_HPP
 --- a/src/hotspot/share/oops/oop.hpp
 +++ b/src/hotspot/share/oops/oop.hpp
-@@ -309,6 +309,6 @@ class oopDesc {
+@@ -315,7 +315,7 @@ class oopDesc {
    // Avoid include gc_globals.hpp in oop.inline.hpp
    DEBUG_ONLY(bool get_UseParallelGC();)
    DEBUG_ONLY(bool get_UseG1GC();)
 -};
 +} __attribute__ ((aligned (4)));
  
- #endif // SHARE_OOPS_OOP_HPP
+ // An oopDesc is not initialized via a constructor.  Space is allocated in
+ // the Java heap, and static functions provided here on HeapWord* are used

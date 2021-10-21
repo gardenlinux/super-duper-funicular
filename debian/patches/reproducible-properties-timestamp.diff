@@ -3,16 +3,16 @@ Author: Emmanuel Bourg <ebourg@apache.org>
 Forwarded: no
 --- a/src/java.base/share/classes/java/util/Properties.java
 +++ b/src/java.base/share/classes/java/util/Properties.java
-@@ -914,7 +914,7 @@ public class Properties extends Hashtabl
-         if (comments != null) {
-             writeComments(bw, comments);
+@@ -955,7 +955,7 @@ public class Properties extends Hashtabl
+         if (sysPropVal != null && !sysPropVal.isEmpty()) {
+             writeComments(bw, sysPropVal);
+         } else {
+-            bw.write("#" + new Date());
++	    bw.write("#" + getFormattedTimestamp());
+             bw.newLine();
          }
--        bw.write("#" + new Date().toString());
-+        bw.write("#" + getFormattedTimestamp());
-         bw.newLine();
-         synchronized (this) {
-             for (Map.Entry<Object, Object> e : entrySet()) {
-@@ -1566,4 +1566,22 @@ public class Properties extends Hashtabl
+     }
+@@ -1594,4 +1594,22 @@ public class Properties extends Hashtabl
          }
          this.map = map;
      }
@@ -23,7 +23,7 @@ Forwarded: no
 +     * environment variable is specified. In this case the format used is
 +     * locale and timezone insensitive to ensure the output is reproducible.
 +     */
-+    private String getFormattedTimestamp() {
++    private static String getFormattedTimestamp() {
 +        if (System.getenv("SOURCE_DATE_EPOCH") == null) {
 +            return new Date().toString();
 +        } else {

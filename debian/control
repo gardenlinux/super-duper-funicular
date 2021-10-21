@@ -10,7 +10,7 @@ Build-Depends: debhelper (>= 11),
   file,
   autoconf, automake, autotools-dev, ant, ant-optional,
   g++-11 <!cross>,
-  openjdk-17-jdk-headless:native | openjdk-16-jdk-headless:native,
+  openjdk-18-jdk-headless:native | openjdk-17-jdk-headless:native,
   libxtst-dev, libxi-dev, libxt-dev, libxaw7-dev, libxrender-dev, libcups2-dev, libasound2-dev, liblcms2-dev, libfreetype6-dev (>= 2.2.1), libxinerama-dev, libkrb5-dev, xsltproc, libpcsclite-dev, libxrandr-dev, libelf-dev, libfontconfig1-dev, libgtk2.0-0 | libgtk-3-0, libharfbuzz-dev,
   libffi-dev,
   zlib1g-dev:native, zlib1g-dev, libattr1-dev, libpng-dev, libjpeg-dev, libgif-dev, 
@@ -18,7 +18,7 @@ Build-Depends: debhelper (>= 11),
   openjdk-18-jdk-headless <cross>,
 Build-Depends-Indep: graphviz, pandoc,
 Rules-Requires-Root: no
-Standards-Version: 4.5.1
+Standards-Version: 4.6.0
 Homepage: https://openjdk.java.net/
 Vcs-Browser: https://salsa.debian.org/openjdk-team/openjdk
 Vcs-Git: https://salsa.debian.org/openjdk-team/openjdk.git
