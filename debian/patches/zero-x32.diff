@@ -1,6 +1,6 @@
 --- a/src/hotspot/os/linux/os_linux.cpp
 +++ b/src/hotspot/os/linux/os_linux.cpp
-@@ -1857,7 +1857,7 @@ void * os::dll_load(const char *filename
+@@ -1872,7 +1872,7 @@ void * os::dll_load(const char *filename
  
  #if  (defined IA32)
    static  Elf32_Half running_arch_code=EM_386;
@@ -22,7 +22,7 @@
        ;;
      i?86)
        VAR_CPU=x86
-@@ -455,6 +459,8 @@ AC_DEFUN([PLATFORM_SETUP_LEGACY_VARS_HEL
+@@ -504,6 +508,8 @@ AC_DEFUN([PLATFORM_SETUP_LEGACY_VARS_HEL
      HOTSPOT_$1_CPU_DEFINE=IA32
    elif test "x$OPENJDK_$1_CPU" = xx86_64; then
      HOTSPOT_$1_CPU_DEFINE=AMD64

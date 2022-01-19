@@ -323,10 +323,14 @@ else ifneq (,$(filter $(distrel),focal))
   export CC = $(DEB_HOST_GNU_TYPE)-gcc-9
   export CXX = $(DEB_HOST_GNU_TYPE)-g++-9
   bd_gcc = g++-9 <!cross>,
-else
+else ifneq (,$(filter $(distrel),bullseye groovy hirsute))
   export CC = $(DEB_HOST_GNU_TYPE)-gcc-10
   export CXX = $(DEB_HOST_GNU_TYPE)-g++-10
   bd_gcc = g++-10 <!cross>,
+else
+  export CC = $(DEB_HOST_GNU_TYPE)-gcc-11
+  export CXX = $(DEB_HOST_GNU_TYPE)-g++-11
+  bd_gcc = g++-11 <!cross>,
 endif
 
 # until we are able to b-d on gcc-for-host ...
@@ -1323,6 +1327,7 @@ endif
 	  $(if $(findstring ca-cert,$(pkg_certs)),,lib/security/cacerts) \
 	  lib/security/default.policy \
 	  lib/security/blacklisted.certs \
+	  lib/security/blocked.certs \
 	  lib/security/public_suffix_list.dat; \
 	do \
 	  dest=$$(echo $$i | sed 's,^[^/]*/,,'); \
@@ -1843,7 +1848,7 @@ is_release		= yes
 hg_project		= jdk11u
 hg_tag			= jdk-11.0.12+7
 git_project		= jdk11u
-git_tag			= jdk-11.0.13+8
+git_tag			= jdk-11.0.14+9
 package_version		= $(subst jdk-,,$(git_tag))
 package_version		= $(shell echo $(PKGVERSION) | sed 's/-[^-][^-]*$$//')
 ifneq ($(is_release),yes)
