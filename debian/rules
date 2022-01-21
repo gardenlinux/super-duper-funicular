@@ -581,12 +581,12 @@ endif
 
 all_tools	=  jar jarsigner java javac javadoc javap jcmd \
 	jconsole jdb jdeprscan jdeps jfr jimage jinfo jlink jmap \
-	jmod jpackage jps jrunscript jshell jstack jstat jstatd keytool \
-	rmiregistry serialver
+	jmod jpackage jps jrunscript jshell jstack jstat jstatd jwebserver \
+	keytool rmiregistry serialver
 
 jdk_hl_tools	= jar jarsigner javac javadoc javap jcmd jdb \
 	jdeprscan jdeps jfr jimage jinfo jlink jmap jmod jps \
-	jrunscript jshell jstack jstat jstatd serialver
+	jrunscript jshell jstack jstat jstatd jwebserver serialver
 ifeq (,$(filter $(DEB_HOST_ARCH), alpha armel ia64 m68k mips mipsel mips64el powerpc riscv64 s390x sh4 sparc64 x32))
   all_tools	+= jhsdb
   jdk_hl_tools	+= jhsdb
@@ -1867,7 +1867,7 @@ endif
 #is_release		= yes
 is_release		=
 git_project		= jdk
-git_tag			= jdk-18+20
+git_tag			= jdk-18+32
 package_version		= $(shell echo $(PKGVERSION) | sed 's/-[^-][^-]*$$//')
 ifneq ($(is_release),yes)
   package_version	:= $(subst +,~,$(package_version))

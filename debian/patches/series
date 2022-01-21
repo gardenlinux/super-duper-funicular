@@ -12,7 +12,6 @@ s390x-opt.diff
 jdk-getAccessibleValue.diff
 jtreg-location.diff
 jdk-i18n-pt_BR.diff
-8199220.diff
 machine-flag.diff
 zero-x32.diff
 hotspot-disable-exec-shield-workaround.diff
@@ -31,8 +30,8 @@ jaw-classpath.diff
 jaw-optional.diff
 reproducible-character-data.diff
 reproducible-module-info.diff
-reproducible-copyright-headers.diff
-reproducible-build-user.diff
+#reproducible-copyright-headers.diff
+#reproducible-build-user.diff
 riscv64.diff
 reproducible-build-jmod.diff
 mips.diff
