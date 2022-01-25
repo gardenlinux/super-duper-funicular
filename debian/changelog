@@ -1,6 +1,39 @@
 openjdk-11 (11.0.14+9-1) unstable; urgency=high
 
   * OpenJDK 11.0.14+9 build (release).
+  * Security fixes
+    - JDK-8217375: jarsigner breaks old signature with long lines in manifest.
+    - JDK-8251329: (zipfs) Files.walkFileTree walks infinitely if zip has dir
+      named "." inside.
+    - JDK-8264934, CVE-2022-21248: Enhance cross VM serialization.
+    - JDK-8268488: More valuable DerValues.
+    - JDK-8268494: Better inlining of inlined interfaces.
+    - JDK-8268512: More content for ContentInfo.
+    - JDK-8268795: Enhance digests of Jar files.
+    - JDK-8268801: Improve PKCS attribute handling.
+    - JDK-8268813, CVE-2022-21283: Better String matching.
+    - JDK-8269151: Better construction of EncryptedPrivateKeyInfo.
+    - JDK-8269944: Better HTTP transport redux.
+    - JDK-8270386, CVE-2022-21291: Better verification of scan methods.
+    - JDK-8270392, CVE-2022-21293: Improve String constructions.
+    - JDK-8270416, CVE-2022-21294: Enhance construction of Identity maps.
+    - JDK-8270492, CVE-2022-21282: Better resolution of URIs.
+    - JDK-8270498, CVE-2022-21296: Improve SAX Parser configuration management.
+    - JDK-8270646, CVE-2022-21299: Improved scanning of XML entities.
+    - JDK-8270952, CVE-2022-21277: Improve TIFF file handling.
+    - JDK-8271962: Better TrueType font loading.
+    - JDK-8271968: Better canonical naming.
+    - JDK-8271987: Manifest improved manifest entries.
+    - JDK-8272014, CVE-2022-21305: Better array indexing.
+    - JDK-8272026, CVE-2022-21340: Verify Jar Verification.
+    - JDK-8272236, CVE-2022-21341: Improve serial forms for transport.
+    - JDK-8272272: Enhance jcmd communication.
+    - JDK-8272462: Enhance image handling.
+    - JDK-8273290: Enhance sound handling.
+    - JDK-8273756, CVE-2022-21360: Enhance BMP image support.
+    - JDK-8273838, CVE-2022-21365: Enhanced BMP processing.
+    - JDK-8274096, CVE-2022-21366: Improve decoding of image files.
+    - JDK-8279541: Improve HarfBuzz.
 
  -- Matthias Klose <doko@debian.org>  Wed, 19 Jan 2022 11:05:38 +0100
 
