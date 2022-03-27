@@ -1845,10 +1845,8 @@ endif
 	dh_builddeb -a $(nodemo) $(nojrez) #$(bd_options)
 
 is_release		= yes
-hg_project		= jdk11u
-hg_tag			= jdk-11.0.12+7
 git_project		= jdk11u
-git_tag			= jdk-11.0.14+9
+git_tag			= jdk-11.0.14.1+1
 package_version		= $(subst jdk-,,$(git_tag))
 package_version		= $(shell echo $(PKGVERSION) | sed 's/-[^-][^-]*$$//')
 ifneq ($(is_release),yes)

@@ -1,3 +1,10 @@
+openjdk-11 (11.0.14.1+1-1) unstable; urgency=medium
+
+  * OpenJDK 11.0.14.1+1 build (release).
+    - Fix JDK-8218546. LP: #1966338.
+
+ -- Matthias Klose <doko@ubuntu.com>  Sun, 27 Mar 2022 11:16:07 +0200
+
 openjdk-11 (11.0.14+9-1) unstable; urgency=high
 
   * OpenJDK 11.0.14+9 build (release).
