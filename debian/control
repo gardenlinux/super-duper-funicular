@@ -1,7 +1,7 @@
 Source: openjdk-18
 Section: java
 Priority: optional
-Maintainer: OpenJDK Team <openjdk-17@packages.debian.org>
+Maintainer: OpenJDK Team <openjdk-18@packages.debian.org>
 Uploaders: Matthias Klose <doko@ubuntu.com>
 Build-Depends: debhelper (>= 11),
   m4, lsb-release, zip, unzip,
