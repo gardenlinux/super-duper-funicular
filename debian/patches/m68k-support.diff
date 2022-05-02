@@ -1042,7 +1042,7 @@ Last Update: 2019-04-29
  $(eval $(call SetupExecute, gen_x11wrappers, \
 --- a/src/hotspot/share/memory/allocation.hpp
 +++ b/src/hotspot/share/memory/allocation.hpp
-@@ -238,7 +238,7 @@ template <MEMFLAGS F> class CHeapObj ALL
+@@ -239,7 +239,7 @@ template <MEMFLAGS F> class CHeapObj ALL
  
    void  operator delete(void* p)     { FreeHeap(p); }
    void  operator delete [] (void* p) { FreeHeap(p); }
@@ -1051,7 +1051,7 @@ Last Update: 2019-04-29
  
  // Base class for objects allocated on the stack only.
  // Calling new or delete will result in fatal error.
-@@ -249,7 +249,7 @@ class StackObj ALLOCATION_SUPER_CLASS_SP
+@@ -250,7 +250,7 @@ class StackObj ALLOCATION_SUPER_CLASS_SP
    void* operator new [](size_t size) throw();
    void  operator delete(void* p);
    void  operator delete [](void* p);
@@ -1060,7 +1060,7 @@ Last Update: 2019-04-29
  
  // Base class for objects stored in Metaspace.
  // Calling delete will result in fatal error.
-@@ -356,7 +356,7 @@ class MetaspaceObj {
+@@ -372,7 +372,7 @@ class MetaspaceObj {
    // that should be read-only by default. See symbol.hpp for an example. This function
    // is used by the templates in metaspaceClosure.hpp
    static bool is_read_only_by_default() { return false; }
@@ -1069,7 +1069,7 @@ Last Update: 2019-04-29
  
  // Base class for classes that constitute name spaces.
  
-@@ -441,7 +441,7 @@ protected:
+@@ -457,7 +457,7 @@ protected:
  
    void  operator delete(void* p);
    void  operator delete [](void* p);
@@ -1090,7 +1090,7 @@ Last Update: 2019-04-29
  #endif // SHARE_OOPS_CONSTMETHOD_HPP
 --- a/src/hotspot/share/oops/oop.hpp
 +++ b/src/hotspot/share/oops/oop.hpp
-@@ -316,6 +316,6 @@ class oopDesc {
+@@ -315,6 +315,6 @@ class oopDesc {
    // Avoid include gc_globals.hpp in oop.inline.hpp
    DEBUG_ONLY(bool get_UseParallelGC();)
    DEBUG_ONLY(bool get_UseG1GC();)

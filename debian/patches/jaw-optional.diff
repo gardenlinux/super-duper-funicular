@@ -6,7 +6,7 @@ Make failing to load the Java ATK wrapper non-fatal
 
 --- a/src/java.desktop/share/classes/java/awt/Toolkit.java
 +++ b/src/java.desktop/share/classes/java/awt/Toolkit.java
-@@ -600,7 +600,11 @@ public abstract class Toolkit {
+@@ -602,7 +602,11 @@ public abstract class Toolkit {
                  toolkit = new HeadlessToolkit(toolkit);
              }
              if (!GraphicsEnvironment.isHeadless()) {
