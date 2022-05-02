@@ -9,7 +9,7 @@ Reviewed-by: aph, erikj, ehelin, ihse
 
 --- a/make/autoconf/build-aux/config.guess
 +++ b/make/autoconf/build-aux/config.guess
-@@ -27,6 +27,13 @@
+@@ -28,6 +28,13 @@
  # autoconf system (which might easily get lost in a future update), we wrap it
  # and fix the broken property, if needed.
  
