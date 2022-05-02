@@ -1,3 +1,9 @@
+openjdk-18 (18~36ea-1) unstable; urgency=medium
+
+  * OpenJDK 18 snapshot, build 36 (first release candidate).
+
+ -- Matthias Klose <doko@ubuntu.com>  Thu, 17 Feb 2022 09:22:24 +0100
+
 openjdk-18 (18~32ea-1) unstable; urgency=medium
 
   * OpenJDK 18 snapshot, build 32.

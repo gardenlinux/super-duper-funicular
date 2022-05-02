@@ -1867,7 +1867,7 @@ endif
 #is_release		= yes
 is_release		=
 git_project		= jdk
-git_tag			= jdk-18+32
+git_tag			= jdk-18+36
 package_version		= $(shell echo $(PKGVERSION) | sed 's/-[^-][^-]*$$//')
 ifneq ($(is_release),yes)
   package_version	:= $(subst +,~,$(package_version))
@@ -1890,8 +1890,6 @@ get-orig:
 	    -type f -print -delete; \
 	  rm -v -rf $$d/src/java.desktop/share/native/libsplashscreen/giflib; \
 	  rm -v -rf $$d/src/java.desktop/share/native/libsplashscreen/libpng; \
-	  rm -v -f $$d/src/java.desktop/share/native/liblcms/cms*.c; \
-	  rm -v -f $$d/src/java.desktop/share/native/liblcms/lcms2*.h; \
 	  rm -v -rf $$d/src/java.smartcardio/unix/native/libj2pcsc/MUSCLE; \
 	esac; \
 	mv $$d $(topdir); \
@@ -1901,6 +1899,10 @@ get-orig:
 	rm -rf $(topdir)/.github; \
 	tar cfJ ../$(basename)_$(package_version).orig.tar.xz $(topdir); \
 	rm -rf $(topdir)
+
+# keep these in the tarball, older lcms are not supported
+#	  rm -v -f $$d/src/java.desktop/share/native/liblcms/cms*.c; \
+#	  rm -v -f $$d/src/java.desktop/share/native/liblcms/lcms2*.h; \
 
 	rm -rf $(origdir)
 
