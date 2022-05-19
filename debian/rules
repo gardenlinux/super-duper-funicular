@@ -263,10 +263,14 @@ else ifneq (,$(filter $(distrel),bullseye groovy hirsute))
   export CC = $(DEB_HOST_GNU_TYPE)-gcc-10
   export CXX = $(DEB_HOST_GNU_TYPE)-g++-10
   bd_gcc = g++-10 <!cross>,
-else
+else ifneq (,$(filter $(distrel),jammy))
   export CC = $(DEB_HOST_GNU_TYPE)-gcc-11
   export CXX = $(DEB_HOST_GNU_TYPE)-g++-11
   bd_gcc = g++-11 <!cross>,
+else
+  export CC = $(DEB_HOST_GNU_TYPE)-gcc-12
+  export CXX = $(DEB_HOST_GNU_TYPE)-g++-12
+  bd_gcc = g++-12 <!cross>,
 endif
 
 # GCC 11 only
@@ -610,8 +614,8 @@ ifneq (,$(filter $(distrel),precise))
 else ifneq (,$(filter $(distrel),squeeze wheezy jessie trusty xenial))
     bd_bootstrap = openjdk-18-jdk-headless:native | openjdk-19-jdk-headless:native,
 else
-    bd_bootstrap = openjdk-18-jdk-headless:native | openjdk-19-jdk-headless:native,
     bd_bootstrap = openjdk-19-jdk-headless:native | openjdk-18-jdk-headless:native,
+    bd_bootstrap = openjdk-18-jdk-headless:native | openjdk-19-jdk-headless:native,
 endif
 
 ifeq (,$(filter $(distrel),squeeze wheezy jessie precise trusty xenial))
@@ -1863,7 +1867,7 @@ endif
 #is_release		= yes
 is_release		=
 git_project		= jdk
-git_tag			= jdk-19+20
+git_tag			= jdk-19+23
 package_version		= $(shell echo $(PKGVERSION) | sed 's/-[^-][^-]*$$//')
 ifneq ($(is_release),yes)
   package_version	:= $(subst +,~,$(package_version))
