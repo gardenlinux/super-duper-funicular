@@ -1,3 +1,10 @@
+openjdk-19 (19~20ea-1) unstable; urgency=medium
+
+  * OpenJDK 19 snapshot, build 20.
+  * Refresh patches.
+
+ -- Matthias Klose <doko@ubuntu.com>  Tue, 03 May 2022 18:32:32 +0200
+
 openjdk-18 (18~36ea-1) unstable; urgency=medium
 
   * OpenJDK 18 snapshot, build 36 (first release candidate).

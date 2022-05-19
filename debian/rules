@@ -93,14 +93,14 @@ TOP		= usr/lib/jvm
 origin		= openjdk
 basename	= openjdk-$(shortver)
 ifneq (,$(filter $(DEB_HOST_ARCH), $(hotspot_archs)))
-  priority	= $(if $(filter yes, $(is_default)),1811,1809)
+  priority	= $(if $(filter yes, $(is_default)),1911,1909)
   vm_name	= Hotspot JIT
 else
-  priority	= $(if $(filter yes, $(is_default)),1804,1803)
+  priority	= $(if $(filter yes, $(is_default)),1904,1903)
   vm_name	= Hotspot Zero
 endif
-jvmver		= 1.18.0
-shortver	= 18
+jvmver		= 1.19.0
+shortver	= 19
 v_debian	:= $(shell echo $(PKGVERSION) | sed 's/ea//')
 v_upstream	:= $(shell echo $(v_debian) | sed 's/-[^-][^-]*$$//')
 v_pkgrel	:= $(shell echo $(v_debian) | sed 's/^.*-//')
@@ -206,8 +206,8 @@ endif
 export DEBIAN_JDK_BASE_DIR := /$(basedir)
 
 BOOTJDK_HOME := $(strip $(subst /bin/javac,, $(firstword $(wildcard \
-			/usr/lib/jvm/java-17-openjdk-$(DEB_BUILD_ARCH)/bin/javac \
 			/usr/lib/jvm/java-18-openjdk-$(DEB_BUILD_ARCH)/bin/javac \
+			/usr/lib/jvm/java-19-openjdk-$(DEB_BUILD_ARCH)/bin/javac \
 		))))
 
 ifeq ($(DEB_BUILD_ARCH),$(DEB_HOST_ARCH))
@@ -606,12 +606,12 @@ else
 endif
 
 ifneq (,$(filter $(distrel),precise))
-    bd_bootstrap = openjdk-17-jdk-headless | openjdk-18-jdk-headless,
+    bd_bootstrap = openjdk-18-jdk-headless | openjdk-19-jdk-headless,
 else ifneq (,$(filter $(distrel),squeeze wheezy jessie trusty xenial))
-    bd_bootstrap = openjdk-17-jdk-headless:native | openjdk-18-jdk-headless:native,
+    bd_bootstrap = openjdk-18-jdk-headless:native | openjdk-19-jdk-headless:native,
 else
-    bd_bootstrap = openjdk-17-jdk-headless:native | openjdk-18-jdk-headless:native,
-    bd_bootstrap = openjdk-18-jdk-headless:native | openjdk-17-jdk-headless:native,
+    bd_bootstrap = openjdk-18-jdk-headless:native | openjdk-19-jdk-headless:native,
+    bd_bootstrap = openjdk-19-jdk-headless:native | openjdk-18-jdk-headless:native,
 endif
 
 ifeq (,$(filter $(distrel),squeeze wheezy jessie precise trusty xenial))
@@ -1752,14 +1752,10 @@ ifeq ($(with_docs),yes)
 	  cp -a $$i $(d_doc)/usr/share/doc/$(p_jrehl)/; \
 	  ln -sf ../$(p_jrehl)/$$b $(d_doc)/usr/share/doc/$(p_doc)/$$b; \
 	done
-	rm -v $(d_doc)/usr/share/doc/$(p_jrehl)/api/script-dir/{jquery-3.5.1.min.js,jquery-ui.min.css,jquery-ui.min.js}
+	rm -v $(d_doc)/usr/share/doc/$(p_jrehl)/api/script-dir/jquery-3.6.0.min.js
 	dh_link -p$(p_doc) \
-	  /usr/share/javascript/jquery-ui/jquery-ui.min.js \
-	    /usr/share/doc/$(p_jrehl)/api/script-dir/jquery-3.5.1.min.js \
-	  /usr/share/javascript/jquery-ui/themes/base/jquery-ui.min.css \
-	    /usr/share/doc/$(p_jrehl)/api/script-dir/jquery-ui.min.css \
-	  /usr/share/javascript/jquery-ui/jquery-ui.min.js \
-	    /usr/share/doc/$(p_jrehl)/api/script-dir/jquery-ui.min.js
+	  /usr/share/javascript/jquery/jquery.min.js \
+	    /usr/share/doc/$(p_jrehl)/api/script-dir/jquery-3.6.0.min.js
 
 endif
 # FIXME: desktop and menu files not ready for multiarch. #658321
@@ -1867,7 +1863,7 @@ endif
 #is_release		= yes
 is_release		=
 git_project		= jdk
-git_tag			= jdk-18+36
+git_tag			= jdk-19+20
 package_version		= $(shell echo $(PKGVERSION) | sed 's/-[^-][^-]*$$//')
 ifneq ($(is_release),yes)
   package_version	:= $(subst +,~,$(package_version))

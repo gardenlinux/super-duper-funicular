@@ -79,21 +79,7 @@
  
 --- a/src/java.desktop/share/classes/javax/swing/JTable.java
 +++ b/src/java.desktop/share/classes/javax/swing/JTable.java
-@@ -8396,7 +8396,12 @@ public class JTable extends JComponent i
-              * @return the <code>AccessibleAction</code>, or <code>null</code>
-              */
-             public AccessibleAction getAccessibleAction() {
--                return getCurrentAccessibleContext().getAccessibleAction();
-+                AccessibleContext ac = getCurrentAccessibleContext();
-+                if (ac != null) {
-+		    return ac.getAccessibleAction();
-+                } else {
-+                    return null;
-+                }
-             }
- 
-             /**
-@@ -8418,7 +8423,12 @@ public class JTable extends JComponent i
+@@ -8437,7 +8437,12 @@ public class JTable extends JComponent i
               *    <code>null</code>
               */
              public AccessibleSelection getAccessibleSelection() {
@@ -107,7 +93,7 @@
              }
  
              /**
-@@ -8428,7 +8438,12 @@ public class JTable extends JComponent i
+@@ -8447,7 +8452,12 @@ public class JTable extends JComponent i
               * @return the <code>AccessibleText</code>, or <code>null</code>
               */
              public AccessibleText getAccessibleText() {
@@ -121,7 +107,7 @@
              }
  
              /**
-@@ -8438,7 +8453,12 @@ public class JTable extends JComponent i
+@@ -8457,7 +8467,12 @@ public class JTable extends JComponent i
               * @return the <code>AccessibleValue</code>, or <code>null</code>
               */
              public AccessibleValue getAccessibleValue() {
@@ -135,7 +121,7 @@
              }
  
  
-@@ -9198,7 +9218,12 @@ public class JTable extends JComponent i
+@@ -9217,7 +9232,12 @@ public class JTable extends JComponent i
               * @return the <code>AccessibleAction</code>, or <code>null</code>
               */
              public AccessibleAction getAccessibleAction() {
@@ -149,7 +135,7 @@
              }
  
              /**
-@@ -9220,7 +9245,12 @@ public class JTable extends JComponent i
+@@ -9239,7 +9259,12 @@ public class JTable extends JComponent i
               *    <code>null</code>
               */
              public AccessibleSelection getAccessibleSelection() {
@@ -163,7 +149,7 @@
              }
  
              /**
-@@ -9230,7 +9260,12 @@ public class JTable extends JComponent i
+@@ -9249,7 +9274,12 @@ public class JTable extends JComponent i
               * @return the <code>AccessibleText</code>, or <code>null</code>
               */
              public AccessibleText getAccessibleText() {
@@ -177,7 +163,7 @@
              }
  
              /**
-@@ -9240,7 +9275,12 @@ public class JTable extends JComponent i
+@@ -9259,7 +9289,12 @@ public class JTable extends JComponent i
               * @return the <code>AccessibleValue</code>, or <code>null</code>
               */
              public AccessibleValue getAccessibleValue() {
@@ -193,7 +179,7 @@
  
 --- a/src/jdk.accessibility/windows/classes/com/sun/java/accessibility/internal/AccessBridge.java
 +++ b/src/jdk.accessibility/windows/classes/com/sun/java/accessibility/internal/AccessBridge.java
-@@ -6562,7 +6562,7 @@ public final class AccessBridge {
+@@ -6636,7 +6636,7 @@ public final class AccessBridge {
          public AccessibleSelection getAccessibleSelection() {
              AccessibleContext ac = getCurrentAccessibleContext();
              if (ac != null && isLeaf) {
@@ -202,7 +188,7 @@
              } else {
                  return this;
              }
-@@ -6577,7 +6577,7 @@ public final class AccessBridge {
+@@ -6651,7 +6651,7 @@ public final class AccessBridge {
          public AccessibleText getAccessibleText() {
              AccessibleContext ac = getCurrentAccessibleContext();
              if (ac != null) {
@@ -211,7 +197,7 @@
              } else {
                  return null;
              }
-@@ -6592,7 +6592,7 @@ public final class AccessBridge {
+@@ -6666,7 +6666,7 @@ public final class AccessBridge {
          public AccessibleValue getAccessibleValue() {
              AccessibleContext ac = getCurrentAccessibleContext();
              if (ac != null) {
