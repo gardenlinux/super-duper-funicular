@@ -1,3 +1,9 @@
+openjdk-19 (19~31ea-1) unstable; urgency=medium
+
+  * OpenJDK 19 snapshot, build 31.
+
+ -- Matthias Klose <doko@ubuntu.com>  Sun, 17 Jul 2022 11:04:08 +0200
+
 openjdk-19 (19~23ea-1) unstable; urgency=medium
 
   * OpenJDK 19 snapshot, build 23.
