@@ -165,7 +165,6 @@ endif
 ifneq (,$(filter $(distrel), precise trusty xenial bionic))
   with_check = disabled for $(distrel)
 endif
-with_check = disabled, more recent jtreg needed
 
 with_docs = $(if $(findstring nodoc, $(DEB_BUILD_OPTIONS)),,yes)
 ifneq (,$(filter $(distrel), precise trusty))
@@ -1867,7 +1866,7 @@ endif
 is_release		= yes
 #is_release		=
 git_project		= jdk18u
-git_tag			= jdk-18.0.1+10
+git_tag			= jdk-18.0.2+9
 package_version		= $(shell echo $(PKGVERSION) | sed 's/-[^-][^-]*$$//')
 ifneq ($(is_release),yes)
   package_version	:= $(subst +,~,$(package_version))

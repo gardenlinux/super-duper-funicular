@@ -15,7 +15,7 @@ fi
 host_arch="${DEB_HOST_ARCH:-$(dpkg --print-architecture)}"
 
 if [ -z "${JDK_TO_TEST+x}" ]; then
-  JDK_TO_TEST=$(echo /usr/lib/jvm/java-15-openjdk-amd64 | sed "s/-[^-]*$/-$host_arch/")
+  JDK_TO_TEST=$(echo /usr/lib/jvm/java-18-openjdk-amd64 | sed "s/-[^-]*$/-$host_arch/")
 fi
 
 jtreg_version="$(dpkg-query -W jtreg | cut -f2)"
@@ -36,7 +36,7 @@ if [ ! -x "${JDK_TO_TEST}/bin/java" ]; then
 fi
 
 # restrict the tests to a few archs (set from debian/rules)
-if ! echo "${host_arch}" | grep -qE "^($(echo amd64 i386 arm64 armhf ppc64 ppc64el sparc64 s390x kfreebsd-amd64 kfreebsd-i386 alpha ia64 powerpc powerpcspe ppc64 sh4 x32 armel mipsel mips64el riscv64 | tr ' ' '|'))$"; then
+if ! echo "${host_arch}" | grep -qE "^($(echo amd64 i386 arm64 armhf ppc64 ppc64el s390x alpha ia64 powerpc ppc64 sh4 x32 armel mipsel mips64el riscv64 | tr ' ' '|'))$"; then
   echo "Error: ${host_arch} is not on the jtreg_archs list, ignoring it."
   exit 77
 fi
@@ -83,7 +83,7 @@ jtwork_dir="${AUTOPKGTEST_TMP}/${testsuite}/JTwork"
 output_dir="${AUTOPKGTEST_ARTIFACTS}/${testsuite}/"
 
 # retry tests with "fail" or "error" status at most 3 times
-for i in 0 1 2 3; do
+for i in 0 1; do
   # save each try under its own folder to preserve history
   report_path="${i}/JTreport"
   report_dir="${output_dir}/${report_path}"
