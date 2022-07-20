@@ -165,7 +165,7 @@ endif
 ifneq (,$(filter $(distrel), precise trusty xenial bionic))
   with_check = disabled for $(distrel)
 endif
-with_check = disabled, more recent jtreg needed
+#with_check = disabled, more recent jtreg needed
 
 with_docs = $(if $(findstring nodoc, $(DEB_BUILD_OPTIONS)),,yes)
 ifneq (,$(filter $(distrel), precise trusty))
@@ -701,7 +701,7 @@ min_jtreg_version := $(shell find test/ -name TEST.ROOT -exec grep -hr "^require
 
 ifeq ($(with_check),yes)
   bd_check = \
-    jtreg (>= $(min_jtreg_version))$(nocheck_profile), testng$(nocheck_profile), \
+    jtreg6 (>= $(min_jtreg_version))$(nocheck_profile), testng$(nocheck_profile), \
     xvfb$(nocheck_profile), xauth$(nocheck_profile), \
     xfonts-base$(nocheck_profile), libgl1-mesa-dri [!x32]$(nocheck_profile), \
     xfwm4$(nocheck_profile), x11-xkb-utils$(nocheck_profile), \
