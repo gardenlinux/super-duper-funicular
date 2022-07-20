@@ -79,7 +79,7 @@
  
 --- a/src/java.desktop/share/classes/javax/swing/JTable.java
 +++ b/src/java.desktop/share/classes/javax/swing/JTable.java
-@@ -8344,7 +8344,12 @@ public class JTable extends JComponent i
+@@ -9165,7 +9165,12 @@ public class JTable extends JComponent i
               * @return the <code>AccessibleAction</code>, or <code>null</code>
               */
              public AccessibleAction getAccessibleAction() {
@@ -93,7 +93,7 @@
              }
  
              /**
-@@ -8366,7 +8371,12 @@ public class JTable extends JComponent i
+@@ -9187,7 +9192,12 @@ public class JTable extends JComponent i
               *    <code>null</code>
               */
              public AccessibleSelection getAccessibleSelection() {
@@ -107,7 +107,7 @@
              }
  
              /**
-@@ -8376,7 +8386,12 @@ public class JTable extends JComponent i
+@@ -9197,7 +9207,12 @@ public class JTable extends JComponent i
               * @return the <code>AccessibleText</code>, or <code>null</code>
               */
              public AccessibleText getAccessibleText() {
@@ -121,63 +121,7 @@
              }
  
              /**
-@@ -8386,7 +8401,12 @@ public class JTable extends JComponent i
-              * @return the <code>AccessibleValue</code>, or <code>null</code>
-              */
-             public AccessibleValue getAccessibleValue() {
--                return getCurrentAccessibleContext().getAccessibleValue();
-+                AccessibleContext ac = getCurrentAccessibleContext();
-+                if (ac != null) {
-+		    return ac.getAccessibleValue();
-+                } else {
-+                    return null;
-+                }
-             }
- 
- 
-@@ -9146,7 +9166,12 @@ public class JTable extends JComponent i
-              * @return the <code>AccessibleAction</code>, or <code>null</code>
-              */
-             public AccessibleAction getAccessibleAction() {
--                return getCurrentAccessibleContext().getAccessibleAction();
-+                AccessibleContext ac = getCurrentAccessibleContext();
-+                if (ac != null) {
-+		    return ac.getAccessibleAction();
-+                } else {
-+                    return null;
-+                }
-             }
- 
-             /**
-@@ -9168,7 +9193,12 @@ public class JTable extends JComponent i
-              *    <code>null</code>
-              */
-             public AccessibleSelection getAccessibleSelection() {
--                return getCurrentAccessibleContext().getAccessibleSelection();
-+                AccessibleContext ac = getCurrentAccessibleContext();
-+                if (ac != null) {
-+		    return ac.getAccessibleSelection();
-+                } else {
-+                    return null;
-+                }
-             }
- 
-             /**
-@@ -9178,7 +9208,12 @@ public class JTable extends JComponent i
-              * @return the <code>AccessibleText</code>, or <code>null</code>
-              */
-             public AccessibleText getAccessibleText() {
--                return getCurrentAccessibleContext().getAccessibleText();
-+                AccessibleContext ac = getCurrentAccessibleContext();
-+                if (ac != null) {
-+		    return ac.getAccessibleText();
-+                } else {
-+                    return null;
-+                }
-             }
- 
-             /**
-@@ -9188,7 +9223,12 @@ public class JTable extends JComponent i
+@@ -9207,7 +9222,12 @@ public class JTable extends JComponent i
               * @return the <code>AccessibleValue</code>, or <code>null</code>
               */
              public AccessibleValue getAccessibleValue() {

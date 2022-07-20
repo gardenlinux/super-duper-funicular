@@ -1,6 +1,6 @@
 --- a/make/autoconf/toolchain.m4
 +++ b/make/autoconf/toolchain.m4
-@@ -1115,7 +1115,7 @@ AC_DEFUN_ONCE([TOOLCHAIN_SETUP_JTREG],
+@@ -1137,7 +1137,7 @@ AC_DEFUN_ONCE([TOOLCHAIN_SETUP_JTREG],
        AC_MSG_ERROR([jtreg home directory from --with-jtreg=$with_jtreg does not exist])
      fi
  
@@ -9,7 +9,7 @@
        AC_MSG_ERROR([jtreg home directory from --with-jtreg=$with_jtreg is not a valid jtreg home])
      fi
  
-@@ -1134,7 +1134,7 @@ AC_DEFUN_ONCE([TOOLCHAIN_SETUP_JTREG],
+@@ -1156,7 +1156,7 @@ AC_DEFUN_ONCE([TOOLCHAIN_SETUP_JTREG],
          AC_MSG_WARN([Ignoring JT_HOME pointing to invalid directory: $JT_HOME])
          JT_HOME=
        else
@@ -18,7 +18,7 @@
            AC_MSG_WARN([Ignoring JT_HOME which is not a valid jtreg home: $JT_HOME])
            JT_HOME=
          elif test ! -x "$JT_HOME/bin/jtreg"; then
-@@ -1154,7 +1154,7 @@ AC_DEFUN_ONCE([TOOLCHAIN_SETUP_JTREG],
+@@ -1176,7 +1176,7 @@ AC_DEFUN_ONCE([TOOLCHAIN_SETUP_JTREG],
        if test "x$JTREGEXE" != x; then
          # That's good, now try to derive JT_HOME
          JT_HOME=`(cd $($DIRNAME $JTREGEXE)/.. && pwd)`
@@ -29,7 +29,7 @@
            JTREGEXE=
 --- a/make/RunTests.gmk
 +++ b/make/RunTests.gmk
-@@ -743,7 +743,7 @@ define SetupRunJtregTestBody
+@@ -752,7 +752,7 @@ define SetupRunJtregTestBody
  
    $1_COMMAND_LINE := \
        $$(JAVA) $$($1_JTREG_LAUNCHER_OPTIONS) \

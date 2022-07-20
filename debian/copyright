@@ -2,7 +2,7 @@ This package was debianized by Matthias Klose <doko@ubuntu.com> on
 Wed, 08 Aug 2007 15:55:39 +0200.
 
 It was downloaded from
-	https://hg.openjdk.java.net/jdk-updates/jdk11u/
+	https://github.com/openjdk/jdk11u-dev
 
 ------------------------------------------------------------------------------
 Upstream Authors:
@@ -19,14 +19,14 @@ Copyright:
 
 OpenJDK:
     Copyright © 1996-2007 Sun Microsystems, Inc.
-    Copyright © 1996-2021 Oracle and/or its affiliates.
+    Copyright © 1996-2022 Oracle and/or its affiliates.
     For third party copyrights see below (copies from the third party readme).
     Portions Copyright © 1993-2014 IBM Corp.
     Portions Copyright © 1997 Eastman Kodak Company.
     Portions Copyright © 1999-2005 The Apache Software Foundation.
 
 Packaging:
-    Copyright © 2007-2021 Canonical Ltd.
+    Copyright © 2007-2022 Canonical Ltd.
 
 ------------------------------------------------------------------------------
 License:

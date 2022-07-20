@@ -1,6 +1,6 @@
 --- a/make/autoconf/flags-cflags.m4
 +++ b/make/autoconf/flags-cflags.m4
-@@ -747,6 +747,9 @@ AC_DEFUN([FLAGS_SETUP_CFLAGS_CPU_DEP],
+@@ -756,6 +756,9 @@ AC_DEFUN([FLAGS_SETUP_CFLAGS_CPU_DEP],
        fi
      elif test "x$FLAGS_CPU" = xs390x; then
        $1_CFLAGS_CPU="-mbackchain -march=z10"

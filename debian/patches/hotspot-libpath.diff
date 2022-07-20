@@ -1,6 +1,6 @@
 --- a/src/hotspot/os/linux/os_linux.cpp
 +++ b/src/hotspot/os/linux/os_linux.cpp
-@@ -416,18 +416,22 @@ void os::init_system_properties_values()
+@@ -427,18 +427,22 @@ void os::init_system_properties_values()
    //        1: ...
    //        ...
    //        7: The default directories, normally /lib and /usr/lib.

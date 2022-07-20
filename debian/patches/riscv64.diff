@@ -25,9 +25,9 @@ Reviewed-by: aph, erikj, ehelin, ihse
  
 --- a/make/autoconf/build-aux/config.sub
 +++ b/make/autoconf/build-aux/config.sub
-@@ -29,8 +29,8 @@
- 
- DIR=`dirname $0`
+@@ -34,8 +34,8 @@ if echo $* | grep linux-musl >/dev/null
+     exit
+ fi
  
 -# First, filter out everything that doesn't begin with "aarch64-"
 -if ! echo $* | grep '^aarch64-' >/dev/null ; then
@@ -36,7 +36,7 @@ Reviewed-by: aph, erikj, ehelin, ihse
      . $DIR/autoconf-config.sub "$@"
      # autoconf-config.sub exits, so we never reach here, but just in
      # case we do:
-@@ -45,6 +45,10 @@ while test $# -gt 0 ; do
+@@ -50,6 +50,10 @@ while test $# -gt 0 ; do
              config=`echo $1 | sed 's/^aarch64-/arm-/'`
              sub_args="$sub_args $config"
              shift; ;;
@@ -47,7 +47,7 @@ Reviewed-by: aph, erikj, ehelin, ihse
          - )    # Use stdin as input.
              sub_args="$sub_args $1"
              shift; break ;;
-@@ -57,7 +61,7 @@ done
+@@ -62,7 +66,7 @@ done
  result=`. $DIR/autoconf-config.sub $sub_args "$@"`
  exitcode=$?
  
