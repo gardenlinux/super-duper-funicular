@@ -1,3 +1,11 @@
+openjdk-17 (17.0.4+8-1) unstable; urgency=high
+
+  * OpenJDK 17.0.4+8 (release).
+  * Disable the reproducible-copyright-headers patch.
+  * Only try to re-run failed tests once instead of three times.
+
+ -- Matthias Klose <doko@ubuntu.com>  Wed, 20 Jul 2022 18:04:41 +0200
+
 openjdk-17 (17.0.3+7-1) unstable; urgency=high
 
   * OpenJDK 17.0.3+7 (release).

@@ -31,7 +31,7 @@ jaw-classpath.diff
 jaw-optional.diff
 reproducible-character-data.diff
 reproducible-module-info.diff
-reproducible-copyright-headers.diff
+#reproducible-copyright-headers.diff
 riscv64.diff
 reproducible-build-jmod.diff
 mips.diff

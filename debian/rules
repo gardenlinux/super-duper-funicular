@@ -172,7 +172,7 @@ with_docs = $(if $(findstring nodoc, $(DEB_BUILD_OPTIONS)),,yes)
 ifneq (,$(filter $(distrel), precise trusty))
   with_docs =
 endif
-with_check = disabled for this upload
+#with_check = disabled for this upload
 
 with_wqy_zenhai = $(if $(filter $(distrel),lenny),,yes)
 
@@ -1871,7 +1871,7 @@ endif
 is_release		= yes
 #is_release		=
 git_project		= jdk17u
-git_tag			= jdk-17.0.3+7
+git_tag			= jdk-17.0.4+8
 package_version		= $(subst jdk-,,$(git_tag))
 package_version		= $(shell echo $(PKGVERSION) | sed 's/-[^-][^-]*$$//')
 ifneq ($(is_release),yes)

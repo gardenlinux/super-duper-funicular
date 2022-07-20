@@ -70,7 +70,7 @@
  
 --- a/make/autoconf/spec.gmk.in
 +++ b/make/autoconf/spec.gmk.in
-@@ -769,6 +769,7 @@ TAR_SUPPORTS_TRANSFORM:=@TAR_SUPPORTS_TR
+@@ -773,6 +773,7 @@ TAR_SUPPORTS_TRANSFORM:=@TAR_SUPPORTS_TR
  # Build setup
  USE_EXTERNAL_LIBJPEG:=@USE_EXTERNAL_LIBJPEG@
  USE_EXTERNAL_LIBGIF:=@USE_EXTERNAL_LIBGIF@
