@@ -157,13 +157,15 @@ ifneq (,$(filter parallel=%,$(subst $(COMMA), ,$(DEB_BUILD_OPTIONS))))
   NJOBS = $(subst parallel=,,$(filter parallel=%,$(subst $(COMMA), ,$(DEB_BUILD_OPTIONS))))
 endif
 
+jtreg_pkg = jtreg6
+
 with_check = $(if $(findstring nocheck, $(DEB_BUILD_OPTIONS)),,yes)
 ifneq (,$(filter $(DEB_HOST_ARCH), alpha armel mipsel mips64el riscv64))
   with_check = disabled running check on $(DEB_HOST_ARCH)
 endif
 # no jtreg backport yet
 ifneq (,$(filter $(distrel), precise trusty xenial bionic))
-  with_check = disabled for $(distrel)
+  with_check = disabled for $(distrel), no $(jtreg_pkg)
 endif
 
 with_docs = $(if $(findstring nodoc, $(DEB_BUILD_OPTIONS)),,yes)
@@ -696,7 +698,7 @@ min_jtreg_version := $(shell find test/ -name TEST.ROOT -exec grep -hr "^require
 
 ifeq ($(with_check),yes)
   bd_check = \
-    jtreg (>= $(min_jtreg_version))$(nocheck_profile), testng$(nocheck_profile), \
+    $(jtreg_pkg) (>= $(min_jtreg_version))$(nocheck_profile), testng$(nocheck_profile), \
     xvfb$(nocheck_profile), xauth$(nocheck_profile), \
     xfonts-base$(nocheck_profile), libgl1-mesa-dri [!x32]$(nocheck_profile), \
     xfwm4$(nocheck_profile), x11-xkb-utils$(nocheck_profile), \
@@ -904,6 +906,7 @@ debian/tests/control: debian/tests/control.in debian/rules
 debian/tests/%.sh: debian/tests/%.in debian/rules
 	sed \
 		-e 's,@JDK_DIR@,/$(basedir),g' \
+		-e 's,@jtreg_pkg@,$(jtreg_pkg),g' \
 		-e 's/@jtreg_archs@/$(jtreg_archs)/g' \
 		-e 's:@doc_dir@:/usr/share/doc/$(p_jrehl)/:g' \
 		$< > $@;
@@ -1040,7 +1043,7 @@ build_stamps +=  stamps/jtreg-check-default
 
 pre-build:
 ifeq ($(with_check),yes)
-	jtreg_version="$$(dpkg-query -f '$${Version}\n' -W jtreg)"; \
+	jtreg_version="$$(dpkg-query -f '$${Version}\n' -W $(jtreg_pkg))"; \
 	if ! dpkg --compare-versions $(min_jtreg_version) le $$jtreg_version; then \
 	  echo "Error: testsuite requires jtreg $(min_jtreg_version) but $$jtreg_version is installed"; \
 	  echo "Please update the jtreg dependency and regenerate debian/control"; \

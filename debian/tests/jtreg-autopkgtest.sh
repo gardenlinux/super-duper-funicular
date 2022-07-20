@@ -18,7 +18,7 @@ if [ -z "${JDK_TO_TEST+x}" ]; then
   JDK_TO_TEST=$(echo /usr/lib/jvm/java-18-openjdk-amd64 | sed "s/-[^-]*$/-$host_arch/")
 fi
 
-jtreg_version="$(dpkg-query -W jtreg | cut -f2)"
+jtreg_version="$(dpkg-query -W jtreg6 | cut -f2)"
 
 # set additional jtreg options
 jt_options="${JTREG_OPTIONS:-}"
