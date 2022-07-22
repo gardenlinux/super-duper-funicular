@@ -327,10 +327,14 @@ else ifneq (,$(filter $(distrel),bullseye groovy hirsute))
   export CC = $(DEB_HOST_GNU_TYPE)-gcc-10
   export CXX = $(DEB_HOST_GNU_TYPE)-g++-10
   bd_gcc = g++-10 <!cross>,
-else
+else ifneq (,$(filter $(distrel),impish jammy))
   export CC = $(DEB_HOST_GNU_TYPE)-gcc-11
   export CXX = $(DEB_HOST_GNU_TYPE)-g++-11
   bd_gcc = g++-11 <!cross>,
+else
+  export CC = $(DEB_HOST_GNU_TYPE)-gcc-12
+  export CXX = $(DEB_HOST_GNU_TYPE)-g++-12
+  bd_gcc = g++-12 <!cross>,
 endif
 
 # until we are able to b-d on gcc-for-host ...
@@ -1878,7 +1882,7 @@ get-orig:
 	  rm -v -f $$d/.gitattributes; \
 	esac; \
 	mv $$d $(topdir); \
-	tar cfJ ../$(basename)_$(package_version).orig.tar.xz $(topdir); \
+	XZ_OPT=-9v tar cfJ ../$(basename)_$(package_version).orig.tar.xz $(topdir); \
 	rm -rf $(topdir)
 
 	rm -rf $(origdir)
