@@ -1,3 +1,9 @@
+openjdk-18 (18.0.2+9-3) UNRELEASED; urgency=medium
+
+  * Build using GCC 12 in recent development distros.
+
+ -- Matthias Klose <doko@ubuntu.com>  Fri, 22 Jul 2022 16:30:39 +0200
+
 openjdk-18 (18.0.2+9-2) unstable; urgency=medium
 
   * Don't hard-code the name of the jtreg package.

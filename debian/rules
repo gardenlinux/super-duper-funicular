@@ -264,10 +264,14 @@ else ifneq (,$(filter $(distrel),bullseye groovy hirsute))
   export CC = $(DEB_HOST_GNU_TYPE)-gcc-10
   export CXX = $(DEB_HOST_GNU_TYPE)-g++-10
   bd_gcc = g++-10 <!cross>,
-else
+else ifneq (,$(filter $(distrel),jammy))
   export CC = $(DEB_HOST_GNU_TYPE)-gcc-11
   export CXX = $(DEB_HOST_GNU_TYPE)-g++-11
   bd_gcc = g++-11 <!cross>,
+else
+  export CC = $(DEB_HOST_GNU_TYPE)-gcc-12
+  export CXX = $(DEB_HOST_GNU_TYPE)-g++-12
+  bd_gcc = g++-12 <!cross>,
 endif
 
 # GCC 11 only
@@ -1899,7 +1903,7 @@ get-orig:
 	rm -f $(topdir)/.hgtags; \
 	rm -f $(topdir)/.gitattributes; \
 	rm -rf $(topdir)/.github; \
-	tar cfJ ../$(basename)_$(package_version).orig.tar.xz $(topdir); \
+	XZ_OPT=-9v tar cfJ ../$(basename)_$(package_version).orig.tar.xz $(topdir); \
 	rm -rf $(topdir)
 
 # keep these in the tarball, older lcms are not supported
