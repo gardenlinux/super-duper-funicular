@@ -1,3 +1,10 @@
+openjdk-19 (19+36-1) unstable; urgency=medium
+
+  * OpenJDK 19 release.
+  * Bump standards version.
+
+ -- Matthias Klose <doko@ubuntu.com>  Fri, 23 Sep 2022 14:55:13 +0200
+
 openjdk-19 (19~32ea-1) unstable; urgency=medium
 
   * OpenJDK 19 snapshot, build 32.
