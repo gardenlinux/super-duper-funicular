@@ -171,7 +171,7 @@ Description: Java runtime based on OpenJDK (debugging symbols)
  This package contains the debugging symbols.
 
 Package: openjdk-19-jre-zero
-Architecture: amd64 i386 arm64 armhf ppc64 ppc64el s390x
+Architecture: amd64 i386 arm64 armhf ppc64 ppc64el riscv64 s390x
 Multi-Arch: same
 Priority: optional
 Pre-Depends: ${dpkg:Depends}
