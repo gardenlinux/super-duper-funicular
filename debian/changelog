@@ -1,3 +1,9 @@
+openjdk-19 (19+36-3) UNRELEASED; urgency=medium
+
+  * Update VCS attributes.
+
+ -- Matthias Klose <doko@ubuntu.com>  Thu, 29 Sep 2022 18:01:07 +0200
+
 openjdk-19 (19+36-2) unstable; urgency=medium
 
   * Enable hotspot on riscv64. Closes: #1020545.
