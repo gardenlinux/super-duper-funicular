@@ -1042,7 +1042,7 @@ Last Update: 2019-04-29
  $(eval $(call SetupExecute, gen_x11wrappers, \
 --- a/src/hotspot/share/memory/allocation.hpp
 +++ b/src/hotspot/share/memory/allocation.hpp
-@@ -232,7 +232,7 @@ template <MEMFLAGS F> class CHeapObj ALL
+@@ -214,7 +214,7 @@ template <MEMFLAGS F> class CHeapObj {
  
    void  operator delete(void* p)     { FreeHeap(p); }
    void  operator delete [] (void* p) { FreeHeap(p); }
@@ -1051,7 +1051,7 @@ Last Update: 2019-04-29
  
  // Base class for objects allocated on the stack only.
  // Calling new or delete will result in fatal error.
-@@ -243,7 +243,7 @@ class StackObj ALLOCATION_SUPER_CLASS_SP
+@@ -225,7 +225,7 @@ class StackObj {
    void* operator new [](size_t size) throw();
    void  operator delete(void* p);
    void  operator delete [](void* p);
@@ -1060,7 +1060,7 @@ Last Update: 2019-04-29
  
  // Base class for objects stored in Metaspace.
  // Calling delete will result in fatal error.
-@@ -365,7 +365,7 @@ class MetaspaceObj {
+@@ -352,7 +352,7 @@ class MetaspaceObj {
    // that should be read-only by default. See symbol.hpp for an example. This function
    // is used by the templates in metaspaceClosure.hpp
    static bool is_read_only_by_default() { return false; }
@@ -1069,10 +1069,10 @@ Last Update: 2019-04-29
  
  // Base class for classes that constitute name spaces.
  
-@@ -438,7 +438,7 @@ protected:
-   void* operator new [](size_t size, const std::nothrow_t& nothrow_constant) throw() = delete;
-   void  operator delete(void* p);
-   void  operator delete [](void* p) = delete;
+@@ -431,7 +431,7 @@ protected:
+   void print() const;
+   virtual void print_on(outputStream* st) const;
+ #endif // PRODUCT
 -};
 +} __attribute__ ((aligned (4)));
  
@@ -1090,7 +1090,7 @@ Last Update: 2019-04-29
  #endif // SHARE_OOPS_CONSTMETHOD_HPP
 --- a/src/hotspot/share/oops/oop.hpp
 +++ b/src/hotspot/share/oops/oop.hpp
-@@ -315,7 +315,7 @@ class oopDesc {
+@@ -318,7 +318,7 @@ class oopDesc {
    static void* load_oop_raw(oop obj, int offset);
  
    DEBUG_ONLY(bool size_might_change();)
