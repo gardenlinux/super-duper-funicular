@@ -1,3 +1,9 @@
+openjdk-20 (20~17ea-2) unstable; urgency=medium
+
+  * Also include the classlist file for zero builds.
+
+ -- Matthias Klose <doko@ubuntu.com>  Mon, 03 Oct 2022 11:18:06 +0200
+
 openjdk-20 (20~17ea-1) unstable; urgency=medium
 
   * OpenJDK 20 snapshot, build 17.

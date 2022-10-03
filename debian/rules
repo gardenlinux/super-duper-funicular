@@ -1392,9 +1392,7 @@ endif
 	  echo '$(basedir)/lib/jrt-fs.jar'; \
 	  echo '$(basedir)/release'; \
 	  echo '$(basedir)/lib/tzdb.dat'; \
-	  if [ "$(default_vm)" = hotspot ]; then \
-	    echo '$(basedir)/lib/classlist'; \
-	  fi; \
+	  echo '$(basedir)/lib/classlist'; \
 	  echo '$(basedir)/lib/modules'; \
 	) > debian/$(p_jrehl).install
 ifneq (,$(filter $(DEB_HOST_ARCH),i386))
