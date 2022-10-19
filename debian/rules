@@ -151,14 +151,16 @@ ifneq (,$(filter parallel=%,$(subst $(COMMA), ,$(DEB_BUILD_OPTIONS))))
   NJOBS = $(subst parallel=,,$(filter parallel=%,$(subst $(COMMA), ,$(DEB_BUILD_OPTIONS))))
 endif
 
+jtreg_pkg = jtreg6
+
 with_check = $(if $(findstring nocheck, $(DEB_BUILD_OPTIONS)),,yes)
 # see Debian #920161
 ifneq (,$(filter $(DEB_HOST_ARCH), alpha))
   with_check = disabled running check on $(DEB_HOST_ARCH)
 endif
 # no jtreg backport yet
-ifneq (,$(filter $(distrel), precise trusty xenial))
-  with_check = disabled for $(distrel)
+ifneq (,$(filter $(distrel), buster bullseye precise trusty xenial bionic focal groovy hirsute impish))
+  with_check = disabled for $(distrel), no $(jtreg_pkg)
 endif
 
 with_docs = $(if $(findstring nodoc, $(DEB_BUILD_OPTIONS)),,yes)
@@ -686,7 +688,7 @@ min_jtreg_version := $(shell find test/ -name TEST.ROOT -exec grep -hr "^require
 
 ifeq ($(with_check),yes)
   bd_check = \
-    jtreg (>= $(min_jtreg_version))$(nocheck_profile), testng$(nocheck_profile), \
+    $(jtreg_pkg) (>= $(min_jtreg_version))$(nocheck_profile), testng$(nocheck_profile), \
     xvfb$(nocheck_profile), xauth$(nocheck_profile), \
     xfonts-base$(nocheck_profile), libgl1-mesa-dri [!x32]$(nocheck_profile), \
     xfwm4$(nocheck_profile), x11-xkb-utils$(nocheck_profile), \
@@ -1035,10 +1037,10 @@ build_stamps +=  stamps/jtreg-check-default
 
 pre-build:
 ifeq ($(with_check),yes)
-	jtreg_version="$$(dpkg-query -f '$${Version}\n' -W jtreg)"; \
+	jtreg_version="$$(dpkg-query -f '$${Version}\n' -W $(jtreg_pkg))"; \
 	if ! dpkg --compare-versions $(min_jtreg_version) le $$jtreg_version; then \
-	  echo "Error: testsuite requires jtreg $(min_jtreg_version) but $$jtreg_version is installed"; \
-	  echo "Please update the jtreg dependency and regenerate debian/control"; \
+	  echo "Error: testsuite requires $(jtreg_pkg) $(min_jtreg_version) but $$jtreg_version is installed"; \
+	  echo "Please update the $(jtreg_pkg) dependency and regenerate debian/control"; \
 	  false; \
 	fi
 endif
