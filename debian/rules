@@ -1049,8 +1049,8 @@ pre-build:
 ifeq ($(with_check),yes)
 	jtreg_version="$$(dpkg-query -f '$${Version}\n' -W $(jtreg_pkg))"; \
 	if ! dpkg --compare-versions $(min_jtreg_version) le $$jtreg_version; then \
-	  echo "Error: testsuite requires jtreg $(min_jtreg_version) but $$jtreg_version is installed"; \
-	  echo "Please update the jtreg dependency and regenerate debian/control"; \
+	  echo "Error: testsuite requires $(jtreg_pkg) $(min_jtreg_version) but $$jtreg_version is installed"; \
+	  echo "Please update the $(jtreg_pkg) dependency and regenerate debian/control"; \
 	  false; \
 	fi
 endif
@@ -1760,10 +1760,10 @@ ifeq ($(with_docs),yes)
 	  cp -a $$i $(d_doc)/usr/share/doc/$(p_jrehl)/; \
 	  ln -sf ../$(p_jrehl)/$$b $(d_doc)/usr/share/doc/$(p_doc)/$$b; \
 	done
-	rm -v $(d_doc)/usr/share/doc/$(p_jrehl)/api/script-dir/{jquery-3.5.1.min.js,jquery-ui.min.css,jquery-ui.min.js}
+	rm -v $(d_doc)/usr/share/doc/$(p_jrehl)/api/script-dir/{jquery-3.6.0.min.js,jquery-ui.min.css,jquery-ui.min.js}
 	dh_link -p$(p_doc) \
 	  /usr/share/javascript/jquery-ui/jquery-ui.min.js \
-	    /usr/share/doc/$(p_jrehl)/api/script-dir/jquery-3.5.1.min.js \
+	    /usr/share/doc/$(p_jrehl)/api/script-dir/jquery-3.6.0.min.js \
 	  /usr/share/javascript/jquery-ui/themes/base/jquery-ui.min.css \
 	    /usr/share/doc/$(p_jrehl)/api/script-dir/jquery-ui.min.css \
 	  /usr/share/javascript/jquery-ui/jquery-ui.min.js \
