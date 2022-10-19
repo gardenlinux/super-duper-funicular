@@ -1,4 +1,4 @@
-openjdk-11 (11.0.17+8-1) unstable; urgency=medium
+openjdk-11 (11.0.17+8-1) unstable; urgency=high
 
   * OpenJDK 11.0.17+8 build (release).
   * Build using GCC 12 in recent development distros.
