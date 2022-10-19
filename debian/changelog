@@ -2,6 +2,8 @@ openjdk-11 (11.0.17+8-1) unstable; urgency=medium
 
   * OpenJDK 11.0.17+8 build (release).
   * Build using GCC 12 in recent development distros.
+  * Don't install the security/blacklisted.certs symlink anymore.
+    Closes: #1021866.
 
  -- Matthias Klose <doko@ubuntu.com>  Wed, 19 Oct 2022 06:48:12 +0200
 

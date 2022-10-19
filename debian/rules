@@ -1330,7 +1330,6 @@ endif
 	  $$([ -f $(d)/$(basedir)/conf/security/nss.cfg ] && echo conf/security/nss.cfg) \
 	  $(if $(findstring ca-cert,$(pkg_certs)),,lib/security/cacerts) \
 	  lib/security/default.policy \
-	  lib/security/blacklisted.certs \
 	  lib/security/blocked.certs \
 	  lib/security/public_suffix_list.dat; \
 	do \
