@@ -1,6 +1,19 @@
 openjdk-19 (19.0.1+10-1) unstable; urgency=medium
 
   * OpenJDK 19.0.1 release.
+  * Security fixes
+    - JDK-8289366: Improve HTTP/2 client usage.
+    - JDK-8288508: Enhance ECDSA usage.
+    - JDK-8286918: Better HttpServer service.
+    - JDK-8287446: Enhance icon presentations.
+    - JDK-8286910: Improve JNDI lookups.
+    - JDK-8286511: Improve macro allocation.
+    - JDK-8286526: Improve NTLM support.
+    - JDK-8286533: Key X509 usages.
+    - JDK-8286077: Wider MultiByte conversions.
+    - JDK-8286519: Better memory handling.
+    - JDK-8285662: Better permission resolution.
+    - JDK-8282252: Improve BigInteger/Decimal validation.
   * Update VCS attributes.
 
  -- Matthias Klose <doko@ubuntu.com>  Wed, 19 Oct 2022 07:16:19 +0200
