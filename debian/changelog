@@ -7,6 +7,19 @@ openjdk-11 (11.0.17+8-2) unstable; urgency=medium
 openjdk-11 (11.0.17+8-1) unstable; urgency=high
 
   * OpenJDK 11.0.17+8 build (release).
+  * Security fixes
+    - JDK-8289366: Improve HTTP/2 client usage.
+    - JDK-8288508: Enhance ECDSA usage.
+    - JDK-8286918: Better HttpServer service.
+    - JDK-8287446: Enhance icon presentations.
+    - JDK-8286910: Improve JNDI lookups.
+    - JDK-8286511: Improve macro allocation.
+    - JDK-8286526: Improve NTLM support.
+    - JDK-8286533: Key X509 usages.
+    - JDK-8286077: Wider MultiByte conversions.
+    - JDK-8286519: Better memory handling.
+    - JDK-8285662: Better permission resolution.
+    - JDK-8282252: Improve BigInteger/Decimal validation.
   * Build using GCC 12 in recent development distros.
   * Don't install the security/blacklisted.certs symlink anymore.
     Closes: #1021866.
