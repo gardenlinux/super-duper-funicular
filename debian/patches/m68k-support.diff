@@ -1042,16 +1042,7 @@ Last Update: 2019-04-29
  $(eval $(call SetupExecute, gen_x11wrappers, \
 --- a/src/hotspot/share/memory/allocation.hpp
 +++ b/src/hotspot/share/memory/allocation.hpp
-@@ -214,7 +214,7 @@ template <MEMFLAGS F> class CHeapObj {
- 
-   void  operator delete(void* p)     { FreeHeap(p); }
-   void  operator delete [] (void* p) { FreeHeap(p); }
--};
-+} __attribute__ ((aligned (4)));
- 
- // Base class for objects allocated on the stack only.
- // Calling new or delete will result in fatal error.
-@@ -225,7 +225,7 @@ class StackObj {
+@@ -284,7 +284,7 @@ class StackObj {
    void* operator new [](size_t size) throw();
    void  operator delete(void* p);
    void  operator delete [](void* p);
@@ -1060,7 +1051,7 @@ Last Update: 2019-04-29
  
  // Base class for objects stored in Metaspace.
  // Calling delete will result in fatal error.
-@@ -352,7 +352,7 @@ class MetaspaceObj {
+@@ -411,7 +411,7 @@ class MetaspaceObj {
    // that should be read-only by default. See symbol.hpp for an example. This function
    // is used by the templates in metaspaceClosure.hpp
    static bool is_read_only_by_default() { return false; }
@@ -1069,7 +1060,7 @@ Last Update: 2019-04-29
  
  // Base class for classes that constitute name spaces.
  
-@@ -431,7 +431,7 @@ protected:
+@@ -490,7 +490,7 @@ protected:
    void print() const;
    virtual void print_on(outputStream* st) const;
  #endif // PRODUCT

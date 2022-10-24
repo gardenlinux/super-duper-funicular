@@ -1,3 +1,15 @@
+openjdk-20 (20~20ea-2) UNRELEASED; urgency=medium
+
+  * Handle jtreg package name for backports.
+
+ -- Matthias Klose <doko@ubuntu.com>  Mon, 24 Oct 2022 18:28:16 +0200
+
+openjdk-20 (20~20ea-1) unstable; urgency=medium
+
+  * OpenJDK 20 snapshot, build 20.
+
+ -- Matthias Klose <doko@ubuntu.com>  Fri, 21 Oct 2022 10:28:19 +0200
+
 openjdk-20 (20~17ea-2) unstable; urgency=medium
 
   * Also include the classlist file for zero builds.
