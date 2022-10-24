@@ -151,7 +151,13 @@ ifneq (,$(filter parallel=%,$(subst $(COMMA), ,$(DEB_BUILD_OPTIONS))))
   NJOBS = $(subst parallel=,,$(filter parallel=%,$(subst $(COMMA), ,$(DEB_BUILD_OPTIONS))))
 endif
 
-jtreg_pkg = jtreg6
+ifneq (,$(filter $(distrel), sid bookworm bullseye focal jammy kinetic))
+  jtreg_pkg = jtreg6
+else ifneq (,$(filter $(distrel), sid bookworm bullseye))
+  jtreg_pkg = jtreg
+else
+  jtreg_pkg =
+endif
 
 with_check = $(if $(findstring nocheck, $(DEB_BUILD_OPTIONS)),,yes)
 # see Debian #920161
@@ -892,12 +898,14 @@ debian/control: debian/control.in debian/tests/control debian/rules
 
 debian/tests/control: debian/tests/control.in debian/rules
 	sed \
+		-e 's/@jtreg_pkg@/$(jtreg_pkg)/g' \
 		-e 's/@min_jtreg_version@/$(min_jtreg_version)/g' \
 		$< > $@;
 
 debian/tests/%.sh: debian/tests/%.in debian/rules
 	sed \
 		-e 's,@JDK_DIR@,/$(basedir),g' \
+		-e 's/@jtreg_pkg@/$(jtreg_pkg)/g' \
 		-e 's/@jtreg_archs@/$(jtreg_archs)/g' \
 		-e 's:@doc_dir@:/usr/share/doc/$(p_jrehl)/:g' \
 		$< > $@;

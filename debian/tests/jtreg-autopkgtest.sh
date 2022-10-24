@@ -18,7 +18,7 @@ if [ -z "${JDK_TO_TEST+x}" ]; then
   JDK_TO_TEST=$(echo /usr/lib/jvm/java-11-openjdk-amd64 | sed "s/-[^-]*$/-$host_arch/")
 fi
 
-jtreg_version="$(dpkg-query -W jtreg | cut -f2)"
+jtreg_version="$(dpkg-query -W jtreg6 | cut -f2)"
 
 # set additional jtreg options
 jt_options="${JTREG_OPTIONS:-}"
@@ -36,7 +36,7 @@ if [ ! -x "${JDK_TO_TEST}/bin/java" ]; then
 fi
 
 # restrict the tests to a few archs (set from debian/rules)
-if ! echo "${host_arch}" | grep -qE "^($(echo amd64 i386 arm64 armhf ppc64 ppc64el sparc64 s390x kfreebsd-amd64 kfreebsd-i386 alpha ia64 powerpc powerpcspe ppc64 sh4 x32 armel mipsel mips64el | tr ' ' '|'))$"; then
+if ! echo "${host_arch}" | grep -qE "^($(echo amd64 i386 arm64 armhf ppc64 ppc64el sparc64 s390x alpha ia64 powerpc powerpcspe ppc64 sh4 x32 armel mipsel mips64el | tr ' ' '|'))$"; then
   echo "Error: ${host_arch} is not on the jtreg_archs list, ignoring it."
   exit 77
 fi
