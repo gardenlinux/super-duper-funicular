@@ -1,3 +1,9 @@
+openjdk-17 (17.0.5+8-3) UNRELEASED; urgency=medium
+
+  * Handle jtreg package name for backports.
+
+ -- Matthias Klose <doko@ubuntu.com>  Mon, 24 Oct 2022 18:20:21 +0200
+
 openjdk-17 (17.0.5+8-2) unstable; urgency=medium
 
   * Fix the binary-indep only build.
