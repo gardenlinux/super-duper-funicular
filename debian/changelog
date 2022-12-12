@@ -1,8 +1,9 @@
-openjdk-20 (20~20ea-2) UNRELEASED; urgency=medium
+openjdk-20 (20~26ea-1) unstable; urgency=medium
 
+  * OpenJDK 20 snapshot, build 26 (rampdown phase one).
   * Handle jtreg package name for backports.
 
- -- Matthias Klose <doko@ubuntu.com>  Mon, 24 Oct 2022 18:28:16 +0200
+ -- Matthias Klose <doko@ubuntu.com>  Mon, 12 Dec 2022 12:34:21 +0100
 
 openjdk-20 (20~20ea-1) unstable; urgency=medium
 
