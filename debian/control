@@ -1,7 +1,7 @@
-Source: openjdk-20
+Source: openjdk-21
 Section: java
 Priority: optional
-Maintainer: OpenJDK Team <openjdk-20@packages.debian.org>
+Maintainer: OpenJDK Team <openjdk-21@packages.debian.org>
 Uploaders: Matthias Klose <doko@ubuntu.com>
 Build-Depends: debhelper (>= 11),
   m4, lsb-release, zip, unzip,
@@ -10,12 +10,12 @@ Build-Depends: debhelper (>= 11),
   file,
   autoconf, automake, autotools-dev, ant, ant-optional,
   g++-12 <!cross>,
-  openjdk-19-jdk-headless:native | openjdk-20-jdk-headless:native,
+  openjdk-20-jdk-headless:native | openjdk-21-jdk-headless:native,
   libxtst-dev, libxi-dev, libxt-dev, libxaw7-dev, libxrender-dev, libcups2-dev, libasound2-dev, liblcms2-dev, libfreetype6-dev (>= 2.2.1), libxinerama-dev, libkrb5-dev, xsltproc, libpcsclite-dev, libxrandr-dev, libelf-dev, libfontconfig1-dev, libgtk2.0-0 | libgtk-3-0, libharfbuzz-dev,
   libffi-dev,
   zlib1g-dev:native, zlib1g-dev, libattr1-dev, libpng-dev, libjpeg-dev, libgif-dev, 
   libnss3-dev (>= 2:3.17.1),
-  openjdk-20-jdk-headless <cross>,
+  openjdk-21-jdk-headless <cross>,
 Build-Depends-Indep: graphviz, pandoc,
 Rules-Requires-Root: no
 Standards-Version: 4.6.1
@@ -23,13 +23,13 @@ Homepage: https://openjdk.java.net/
 Vcs-Browser: https://salsa.debian.org/openjdk-team/openjdk
 Vcs-Git: https://salsa.debian.org/openjdk-team/openjdk.git
 
-Package: openjdk-20-jdk-headless
+Package: openjdk-21-jdk-headless
 Architecture: alpha amd64 armel armhf arm64 i386 ia64 mips mipsel mips64 mips64el powerpc ppc64 ppc64el m68k riscv64 sh4 sparc sparc64 s390x x32
 Multi-Arch: same
 Pre-Depends: ${dpkg:Depends}
-Depends: openjdk-20-jre-headless (= ${binary:Version}),
+Depends: openjdk-21-jre-headless (= ${binary:Version}),
   ${shlibs:Depends}, ${misc:Depends}
-Suggests: openjdk-20-demo, openjdk-20-source
+Suggests: openjdk-21-demo, openjdk-21-source
 Provides: java-sdk-headless, java2-sdk-headless,
   java5-sdk-headless, java6-sdk-headless,
   java7-sdk-headless, java8-sdk-headless,
@@ -38,6 +38,7 @@ Provides: java-sdk-headless, java2-sdk-headless,
   java13-sdk-headless, java14-sdk-headless, java15-sdk-headless,
   java16-sdk-headless, java17-sdk-headless,
   java18-sdk-headless, java19-sdk-headless,
+  java20-sdk-headless, java21-sdk-headless,
   java-compiler
 Breaks: openjdk-17-jre-headless (<< 17~10)
 Replaces: openjdk-17-jre-headless (<< 17~10)
@@ -45,7 +46,7 @@ Description: OpenJDK Development Kit (JDK) (headless)
  OpenJDK is a development environment for building applications,
  applets, and components using the Java programming language.
 
-Package: openjdk-20-jre-headless
+Package: openjdk-21-jre-headless
 Architecture: alpha amd64 armel armhf arm64 i386 ia64 mips mipsel mips64 mips64el powerpc ppc64 ppc64el m68k riscv64 sh4 sparc sparc64 s390x x32
 Multi-Arch: same
 Pre-Depends: ${dpkg:Depends}
@@ -65,6 +66,7 @@ Provides: java-runtime-headless, java2-runtime-headless,
   java13-runtime-headless, java14-runtime-headless, java15-runtime-headless,
   java16-runtime-headless, java17-runtime-headless,
   java17-runtime-headless, java19-runtime-headless,
+  java20-runtime-headless, java21-runtime-headless,
   ${defaultvm:Provides}, ${jvm:Provides}
 Breaks: ${jrehl:Breaks}
 Conflicts: oracle-java11-installer, openjdk-11-jdk-headless (<< 11~18-2)
@@ -73,29 +75,29 @@ Description: OpenJDK Java runtime, using ${vm:Name} (headless)
  Minimal Java runtime - needed for executing non GUI Java programs,
  using ${vm:Name}.
 
-Package: openjdk-20-jdk
+Package: openjdk-21-jdk
 Architecture: alpha amd64 armel armhf arm64 i386 ia64 mips mipsel mips64 mips64el powerpc ppc64 ppc64el m68k riscv64 sh4 sparc sparc64 s390x x32
 Multi-Arch: same
 Pre-Depends: ${dpkg:Depends}
-Depends: openjdk-20-jre (= ${binary:Version}),
-  openjdk-20-jdk-headless (= ${binary:Version}),
+Depends: openjdk-21-jre (= ${binary:Version}),
+  openjdk-21-jdk-headless (= ${binary:Version}),
   ${shlibs:Depends}, ${misc:Depends}
 Recommends: libxt-dev
-Suggests: openjdk-20-demo, openjdk-20-source, visualvm
+Suggests: openjdk-21-demo, openjdk-21-source, visualvm
 Provides: java-sdk, java2-sdk, java5-sdk, java6-sdk,
   java7-sdk, java8-sdk, java9-sdk, java10-sdk, java11-sdk,
   java12-sdk, java13-sdk, java14-sdk, java15-sdk, java16-sdk, java17-sdk,
-  java16-sdk, java19-sdk,
+  java18-sdk, java19-sdk, java20-sdk, java21-sdk,
   java-compiler
 Description: OpenJDK Development Kit (JDK)
  OpenJDK is a development environment for building applications,
  applets, and components using the Java programming language.
 
-Package: openjdk-20-jre
+Package: openjdk-21-jre
 Architecture: alpha amd64 armel armhf arm64 i386 ia64 mips mipsel mips64 mips64el powerpc ppc64 ppc64el m68k riscv64 sh4 sparc sparc64 s390x x32
 Multi-Arch: same
 Pre-Depends: ${dpkg:Depends}
-Depends: openjdk-20-jre-headless (= ${binary:Version}),
+Depends: openjdk-21-jre-headless (= ${binary:Version}),
   ${xandsound:Depends}, ${dlopenjre:Depends},
   ${shlibs:Depends}, ${misc:Depends}
 Recommends: ${dlopenjre:Recommends}, ${bridge:Recommends}, fonts-dejavu-extra
@@ -107,27 +109,28 @@ Provides: java-runtime, java2-runtime,
   java13-runtime, java14-runtime, java15-runtime,
   java16-runtime, java17-runtime,
   java18-runtime, java19-runtime,
+  java20-runtime, java21-runtime,
 Breaks: openjdk-17-jre-headless (<< 17~10)
 Replaces: openjdk-17-jre-headless (<< 17~10)
 Description: OpenJDK Java runtime, using ${vm:Name}
  Full Java runtime environment - needed for executing Java GUI and Webstart
  programs, using ${vm:Name}.
 
-Package: openjdk-20-demo
+Package: openjdk-21-demo
 Architecture: alpha amd64 armel armhf arm64 i386 ia64 mips mipsel mips64 mips64el powerpc ppc64 ppc64el m68k riscv64 sh4 sparc sparc64 s390x x32
 Priority: optional
 Pre-Depends: ${dpkg:Depends}
-Depends: openjdk-20-jre (= ${binary:Version}),
+Depends: openjdk-21-jre (= ${binary:Version}),
   ${shlibs:Depends}, ${misc:Depends}
 Description: Java runtime based on OpenJDK (demos and examples)
  OpenJDK Java runtime
 
-Package: openjdk-20-source
+Package: openjdk-21-source
 Architecture: all
 Multi-Arch: foreign
 Priority: optional
 Pre-Depends: ${dpkg:Depends}
-Depends: openjdk-20-jdk (>= ${source:Version}),
+Depends: openjdk-21-jdk (>= ${source:Version}),
   ${misc:Depends}
 Description: OpenJDK Development Kit (JDK) source files
  OpenJDK is a development environment for building applications,
@@ -136,7 +139,7 @@ Description: OpenJDK Development Kit (JDK) source files
  This package contains the Java programming language source files
  (src.zip) for all classes that make up the Java core API.
 
-Package: openjdk-20-doc
+Package: openjdk-21-doc
 Section: doc
 Pre-Depends: ${dpkg:Depends}
 Architecture: all
@@ -146,23 +149,23 @@ Depends: ${misc:Depends},
   libjs-jquery,
   libjs-jquery-ui,
   libjs-jquery-ui-theme-base,
-Suggests: openjdk-20-jdk
+Suggests: openjdk-21-jdk
 Description: OpenJDK Development Kit (JDK) documentation
  OpenJDK is a development environment for building applications,
  applets, and components using the Java programming language.
  .
  This package contains the API documentation.
 
-Package: openjdk-20-dbg
+Package: openjdk-21-dbg
 Architecture: alpha amd64 armel armhf arm64 i386 ia64 mips mipsel mips64 mips64el powerpc ppc64 ppc64el m68k riscv64 sh4 sparc sparc64 s390x x32
 Multi-Arch: same
 Priority: optional
 Section: debug
 Pre-Depends: ${dpkg:Depends}
-Depends: openjdk-20-jre-headless (= ${binary:Version}),
+Depends: openjdk-21-jre-headless (= ${binary:Version}),
    ${misc:Depends}
-Recommends: openjdk-20-jre (= ${binary:Version})
-Suggests: openjdk-20-jdk (= ${binary:Version})
+Recommends: openjdk-21-jre (= ${binary:Version})
+Suggests: openjdk-21-jdk (= ${binary:Version})
 Conflicts: ${dbg:Conflicts}
 Description: Java runtime based on OpenJDK (debugging symbols)
  OpenJDK is a development environment for building applications,
@@ -170,12 +173,12 @@ Description: Java runtime based on OpenJDK (debugging symbols)
  .
  This package contains the debugging symbols.
 
-Package: openjdk-20-jre-zero
+Package: openjdk-21-jre-zero
 Architecture: amd64 i386 arm64 armhf ppc64 ppc64el riscv64 s390x
 Multi-Arch: same
 Priority: optional
 Pre-Depends: ${dpkg:Depends}
-Depends: openjdk-20-jre-headless (= ${binary:Version}), ${shlibs:Depends}, ${misc:Depends}
+Depends: openjdk-21-jre-headless (= ${binary:Version}), ${shlibs:Depends}, ${misc:Depends}
 Provides: ${zerovm:Provides}
 Description: Alternative JVM for OpenJDK, using Zero
  The package provides an alternative runtime using the Zero VM. Built on
