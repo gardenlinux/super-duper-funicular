@@ -1,3 +1,9 @@
+openjdk-21 (21~3ea-1) unstable; urgency=medium
+
+  * OpenJDK 21 snapshot, build 3.
+
+ -- Matthias Klose <doko@ubuntu.com>  Thu, 22 Dec 2022 21:06:42 +0100
+
 openjdk-21 (21~1ea-1) unstable; urgency=medium
 
   * OpenJDK 21 snapshot, build 1.
