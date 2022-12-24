@@ -1,3 +1,9 @@
+openjdk-21 (21~3ea-2) unstable; urgency=medium
+
+  * Fix autopkg test dependencies.
+
+ -- Matthias Klose <doko@debian.org>  Sat, 24 Dec 2022 15:35:45 +0100
+
 openjdk-21 (21~3ea-1) unstable; urgency=medium
 
   * OpenJDK 21 snapshot, build 3.
