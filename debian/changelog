@@ -1,8 +1,9 @@
 openjdk-20 (20~26ea-2) UNRELEASED; urgency=medium
 
   * Update VCS attributes in the control file.
+  * Fix autopkg test dependencies.
 
- -- Matthias Klose <doko@xe1>  Mon, 12 Dec 2022 14:17:13 +0100
+ -- Matthias Klose <doko@ubuntu.com>  Sat, 24 Dec 2022 15:38:12 +0100
 
 openjdk-20 (20~26ea-1) unstable; urgency=medium
 
