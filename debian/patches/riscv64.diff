@@ -25,7 +25,7 @@ Reviewed-by: aph, erikj, ehelin, ihse
  
 --- a/make/autoconf/build-aux/config.sub
 +++ b/make/autoconf/build-aux/config.sub
-@@ -46,8 +46,8 @@ if echo $* | grep pc-msys >/dev/null ; t
+@@ -46,8 +46,8 @@
      exit
  fi
  
@@ -36,7 +36,7 @@ Reviewed-by: aph, erikj, ehelin, ihse
      . $DIR/autoconf-config.sub "$@"
      # autoconf-config.sub exits, so we never reach here, but just in
      # case we do:
-@@ -62,6 +62,10 @@ while test $# -gt 0 ; do
+@@ -62,6 +62,10 @@
              config=`echo $1 | sed 's/^aarch64-/arm-/'`
              sub_args="$sub_args $config"
              shift; ;;
@@ -47,7 +47,7 @@ Reviewed-by: aph, erikj, ehelin, ihse
          - )    # Use stdin as input.
              sub_args="$sub_args $1"
              shift; break ;;
-@@ -74,7 +78,7 @@ done
+@@ -74,7 +78,7 @@
  result=`. $DIR/autoconf-config.sub $sub_args "$@"`
  exitcode=$?
  
@@ -58,7 +58,7 @@ Reviewed-by: aph, erikj, ehelin, ihse
  exit $exitcode
 --- a/src/hotspot/os/linux/os_linux.cpp
 +++ b/src/hotspot/os/linux/os_linux.cpp
-@@ -2563,6 +2563,8 @@ void os::get_summary_cpu_info(char* cpui
+@@ -2558,6 +2558,8 @@
    strncpy(cpuinfo, "IA64", length);
  #elif defined(PPC)
    strncpy(cpuinfo, "PPC64", length);

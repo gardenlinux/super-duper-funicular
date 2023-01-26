@@ -3,7 +3,6 @@ hotspot-mips-align.diff
 icc_loading_with_symlink.diff
 icedtea-override-redirect-compiz.diff
 libpcsclite-dlopen.diff
-#jexec.diff
 default-jvm-cfg.diff
 workaround_expand_exec_shield_cs_limit.diff
 adlc-parser.diff
@@ -17,8 +16,6 @@ machine-flag.diff
 zero-x32.diff
 hotspot-disable-exec-shield-workaround.diff
 atk-wrapper-security.diff
-# java-access-bridge-security.diff
-# jdk-pulseaudio.diff
 dnd-files.diff
 generated-headers.patch
 m68k-support.diff

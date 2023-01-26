@@ -1,6 +1,6 @@
 --- a/make/autoconf/lib-bundled.m4
 +++ b/make/autoconf/lib-bundled.m4
-@@ -41,6 +41,7 @@ AC_DEFUN_ONCE([LIB_SETUP_BUNDLED_LIBS],
+@@ -41,6 +41,7 @@
    LIB_SETUP_ZLIB
    LIB_SETUP_LCMS
    LIB_SETUP_HARFBUZZ
@@ -8,7 +8,7 @@
  ])
  
  ################################################################################
-@@ -304,3 +305,41 @@ AC_DEFUN_ONCE([LIB_SETUP_HARFBUZZ],
+@@ -307,3 +308,41 @@
    AC_SUBST(HARFBUZZ_CFLAGS)
    AC_SUBST(HARFBUZZ_LIBS)
  ])
@@ -52,7 +52,7 @@
 +])
 --- a/make/modules/java.smartcardio/Lib.gmk
 +++ b/make/modules/java.smartcardio/Lib.gmk
-@@ -30,12 +30,12 @@ include LibCommon.gmk
+@@ -30,12 +30,12 @@
  $(eval $(call SetupJdkLibrary, BUILD_LIBJ2PCSC, \
      NAME := j2pcsc, \
      CFLAGS := $(CFLAGS_JDKLIB), \
@@ -70,7 +70,7 @@
  
 --- a/make/autoconf/spec.gmk.in
 +++ b/make/autoconf/spec.gmk.in
-@@ -773,6 +773,7 @@ TAR_SUPPORTS_TRANSFORM:=@TAR_SUPPORTS_TR
+@@ -774,6 +774,7 @@
  # Build setup
  USE_EXTERNAL_LIBJPEG:=@USE_EXTERNAL_LIBJPEG@
  USE_EXTERNAL_LIBGIF:=@USE_EXTERNAL_LIBGIF@
@@ -88,7 +88,7 @@
  void *hModule;
  FPTR_SCardEstablishContext scardEstablishContext;
  FPTR_SCardConnect scardConnect;
-@@ -47,6 +48,7 @@ FPTR_SCardListReaders scardListReaders;
+@@ -47,6 +48,7 @@
  FPTR_SCardBeginTransaction scardBeginTransaction;
  FPTR_SCardEndTransaction scardEndTransaction;
  FPTR_SCardControl scardControl;
@@ -96,7 +96,7 @@
  
  /*
   * Throws a Java Exception by name
-@@ -75,7 +77,9 @@ void throwIOException(JNIEnv *env, const
+@@ -75,7 +77,9 @@
      throwByName(env, "java/io/IOException", msg);
  }
  
@@ -106,7 +106,7 @@
      void *fAddress = dlsym(hModule, functionName);
      if (fAddress == NULL) {
          char errorMessage[256];
-@@ -85,9 +89,11 @@ void *findFunction(JNIEnv *env, void *hM
+@@ -85,9 +89,11 @@
      }
      return fAddress;
  }
@@ -118,7 +118,7 @@
      const char *libName = (*env)->GetStringUTFChars(env, jLibName, NULL);
      if (libName == NULL) {
          throwNullPointerException(env, "PCSC library name is null");
-@@ -141,4 +147,5 @@ JNIEXPORT void JNICALL Java_sun_security
+@@ -141,4 +147,5 @@
  #else
      scardControl          = (FPTR_SCardControl)         findFunction(env, hModule, "SCardControl132");
  #endif // __APPLE__
@@ -135,7 +135,7 @@
  typedef LONG (*FPTR_SCardEstablishContext)(DWORD dwScope,
                  LPCVOID pvReserved1,
                  LPCVOID pvReserved2,
-@@ -111,3 +113,41 @@ extern FPTR_SCardListReaders scardListRe
+@@ -111,3 +113,41 @@
  extern FPTR_SCardBeginTransaction scardBeginTransaction;
  extern FPTR_SCardEndTransaction scardEndTransaction;
  extern FPTR_SCardControl scardControl;

@@ -157,7 +157,7 @@ ifneq (,$(filter parallel=%,$(subst $(COMMA), ,$(DEB_BUILD_OPTIONS))))
   NJOBS = $(subst parallel=,,$(filter parallel=%,$(subst $(COMMA), ,$(DEB_BUILD_OPTIONS))))
 endif
 
-ifneq (,$(filter $(distrel), sid bookworm bullseye focal jammy kinetic))
+ifneq (,$(filter $(distrel), sid bookworm bullseye focal jammy kinetic lunar ))
   jtreg_pkg = jtreg6
 else ifneq (,$(filter $(distrel), sid bookworm bullseye))
   jtreg_pkg = jtreg
@@ -1882,7 +1882,7 @@ endif
 is_release		= yes
 #is_release		=
 git_project		= jdk17u
-git_tag			= jdk-17.0.5+8
+git_tag			= jdk-17.0.6+10
 package_version		= $(subst jdk-,,$(git_tag))
 package_version		= $(shell echo $(PKGVERSION) | sed 's/-[^-][^-]*$$//')
 ifneq ($(is_release),yes)
