@@ -1,8 +1,20 @@
-openjdk-11 (11.0.17+8-3) UNRELEASED; urgency=medium
+openjdk-11 (11.0.18+10-1) unstable; urgency=high
 
+  * OpenJDK 11.0.18+10 build (release).
+    - CVE-2023-21835, CVE-2023-21843
+    - Release notes:
+      https://www.oracle.com/java/technologies/javase/11-0-18-relnotes.html
+
+  [ Matthias Klose ]
   * Handle jtreg package name for backports.
 
- -- Matthias Klose <doko@ubuntu.com>  Mon, 24 Oct 2022 18:14:04 +0200
+  [ Vladimir Petko ]
+  * debian/patches/*: Refreshed patches for the new release and dropped unused
+    patches.
+  * debian/watch: use jdk11u repository as upstream.
+  * debian/rules: add lunar to jtreg version selection.
+
+ -- Matthias Klose <doko@ubuntu.com>  Thu, 26 Jan 2023 10:46:52 +0100
 
 openjdk-11 (11.0.17+8-2) unstable; urgency=medium
 

@@ -151,7 +151,7 @@ ifneq (,$(filter parallel=%,$(subst $(COMMA), ,$(DEB_BUILD_OPTIONS))))
   NJOBS = $(subst parallel=,,$(filter parallel=%,$(subst $(COMMA), ,$(DEB_BUILD_OPTIONS))))
 endif
 
-ifneq (,$(filter $(distrel), sid bookworm bullseye focal jammy kinetic))
+ifneq (,$(filter $(distrel), sid bookworm bullseye focal jammy kinetic lunar))
   jtreg_pkg = jtreg6
 else ifneq (,$(filter $(distrel), sid bookworm bullseye))
   jtreg_pkg = jtreg
@@ -1340,6 +1340,7 @@ endif
 	  $$([ -f $(d)/$(basedir)/conf/security/nss.cfg ] && echo conf/security/nss.cfg) \
 	  $(if $(findstring ca-cert,$(pkg_certs)),,lib/security/cacerts) \
 	  lib/security/default.policy \
+	  lib/security/blacklisted.certs \
 	  lib/security/blocked.certs \
 	  lib/security/public_suffix_list.dat; \
 	do \
@@ -1859,7 +1860,7 @@ endif
 
 is_release		= yes
 git_project		= jdk11u
-git_tag			= jdk-11.0.17+8
+git_tag			= jdk-11.0.18+10
 package_version		= $(subst jdk-,,$(git_tag))
 package_version		= $(shell echo $(PKGVERSION) | sed 's/-[^-][^-]*$$//')
 ifneq ($(is_release),yes)

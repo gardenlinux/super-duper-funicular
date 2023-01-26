@@ -12,7 +12,7 @@ Forwarded: not-needed
 
 --- a/make/CreateJmods.gmk
 +++ b/make/CreateJmods.gmk
-@@ -213,6 +213,15 @@ endif
+@@ -218,6 +218,15 @@
  
  # Create jmods in a temp dir and then move them into place to keep the
  # module path in $(IMAGES_OUTPUTDIR)/jmods valid at all times.
@@ -28,7 +28,7 @@ Forwarded: not-needed
  $(JMODS_DIR)/$(MODULE).jmod: $(DEPS)
  	$(call LogWarn, Creating $(patsubst $(OUTPUTDIR)/%, %, $@))
  	$(call MakeDir, $(JMODS_DIR) $(JMODS_TEMPDIR))
-@@ -224,7 +233,11 @@ $(JMODS_DIR)/$(MODULE).jmod: $(DEPS)
+@@ -229,7 +238,11 @@
  	        --module-path $(JMODS_DIR) \
  	        $(JMOD_FLAGS) $(JMODS_TEMPDIR)/$(notdir $@) \
  	)

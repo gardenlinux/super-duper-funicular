@@ -1,6 +1,6 @@
 --- a/src/hotspot/os/linux/os_linux.cpp
 +++ b/src/hotspot/os/linux/os_linux.cpp
-@@ -427,18 +427,22 @@ void os::init_system_properties_values()
+@@ -430,18 +430,22 @@
    //        1: ...
    //        ...
    //        7: The default directories, normally /lib and /usr/lib.
@@ -28,7 +28,7 @@
  #define SYS_EXT_DIR     "/usr/java/packages"
 --- a/make/hotspot/lib/CompileJvm.gmk
 +++ b/make/hotspot/lib/CompileJvm.gmk
-@@ -131,6 +131,11 @@ ifeq ($(OPENJDK_TARGET_OS)-$(OPENJDK_TAR
+@@ -131,6 +131,11 @@
    endif
  endif
  

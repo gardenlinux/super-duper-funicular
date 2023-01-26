@@ -1,4 +1,3 @@
-# jdk11u-dev-updates.diff
 system-pcsclite.diff
 hotspot-mips-align.diff
 icc_loading_with_symlink.diff
@@ -18,13 +17,8 @@ disable-doclint-by-default.diff
 8199220.diff
 machine-flag.diff
 zero-x32.diff
-# mips-sigset.diff
-# s390x-zEC12.diff
 hotspot-disable-exec-shield-workaround.diff
 atk-wrapper-security.diff
-# java-access-bridge-security.diff
-# jdk-pulseaudio.diff
-# alpha-float-const.diff
 dnd-files.diff
 hotspot-libpath.diff
 generated-headers.patch
@@ -42,3 +36,4 @@ reproducible-module-info.diff
 reproducible-copyright-headers.diff
 reproducible-build-user.diff
 reproducible-build-jmod.diff
+hotspot-test-fix-npe-on-missing-file.patch
