@@ -1,3 +1,10 @@
+openjdk-21 (21~7ea-1) unstable; urgency=medium
+
+  * OpenJDK 21 snapshot, build 7.
+  * Don't build zero on ppc64el for now, see JDK-8298655.
+
+ -- Matthias Klose <doko@ubuntu.com>  Thu, 26 Jan 2023 10:32:21 +0100
+
 openjdk-21 (21~3ea-2) unstable; urgency=medium
 
   * Fix autopkg test dependencies.

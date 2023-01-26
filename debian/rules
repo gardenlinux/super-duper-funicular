@@ -199,6 +199,9 @@ altzero_archs = $(hotspot_archs)
 ifneq (,$(filter $(distrel),trusty))
   altzero_archs := $(filter-out arm64, $(altzero_archs))
 endif
+# see https://bugs.openjdk.org/browse/JDK-8298655
+altzero_archs := $(filter-out ppc64el, $(altzero_archs))
+
 # FIXME: https://launchpad.net/ubuntu/+source/openjdk-lts/11.0.5+6-1ubuntu1
 # ftbfs on armhf, also in OpenJDK 15, now fixed in 16?
 #altzero_archs := $(filter-out armhf, $(altzero_archs))
@@ -1871,7 +1874,7 @@ endif
 #is_release		= yes
 is_release		=
 git_project		= jdk
-git_tag			= jdk-21+3
+git_tag			= jdk-21+7
 package_version		= $(shell echo $(PKGVERSION) | sed 's/-[^-][^-]*$$//')
 ifneq ($(is_release),yes)
   package_version	:= $(subst +,~,$(package_version))
