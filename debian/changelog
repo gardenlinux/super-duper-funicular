@@ -33,6 +33,9 @@ openjdk-17 (17.0.7+7-1) UNRELEASED; urgency=medium
   * d/t/jtreg-autopkgtest.sh (LP: #2016206).
   * d/rules: pack external debug symbols with build-id, do not strip JVM shared
     libraries (LP: #2012326, LP: #2016739).
+  * drop d/p/{jaw-classpath.diff, jaw-optional.diff}: the atk wrapper is
+    disabled and these patches cause class data sharing tests to fail.
+    LP: #2016194.
 
  -- Matthias Klose <doko@debian.org>  Tue, 06 Jun 2023 13:36:52 +0200
 
