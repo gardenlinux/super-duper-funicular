@@ -18,6 +18,10 @@ if [ -z "${JDK_TO_TEST+x}" ]; then
   JDK_TO_TEST=$(echo /usr/lib/jvm/java-17-openjdk-amd64 | sed "s/-[^-]*$/-$host_arch/")
 fi
 
+if [ -z "${BOOTJDK_HOME+x}" ]; then
+  BOOTJDK_HOME=${JDK_TO_TEST}
+fi
+
 jtreg_version="$(dpkg-query -W jtreg6 | cut -f2)"
 
 # set additional jtreg options
@@ -32,6 +36,11 @@ fi
 # check java binary
 if [ ! -x "${JDK_TO_TEST}/bin/java" ]; then
   echo "Error: '${JDK_TO_TEST}/bin/java' is not an executable." >&2
+  exit 1
+fi
+
+if [ ! -x "${BOOTJDK_HOME}/bin/java" ]; then
+  echo "Error: '${BOOTJDK_HOME}/bin/java' is not an executable." >&2
   exit 1
 fi
 
@@ -87,7 +96,9 @@ for i in 0 1; do
   # save each try under its own folder to preserve history
   report_path="${i}/JTreport"
   report_dir="${output_dir}/${report_path}"
+# see make/RunTests.gmk for a set of good options
   jtreg ${jt_options} \
+    -J-Djtreg.home=/usr/share/jtreg \
     -verbose:summary \
     -automatic \
     -retain:none \
@@ -97,6 +108,8 @@ for i in 0 1; do
     -workDir:"${jtwork_dir}" \
     -reportDir:"${report_dir}" \
     -jdk:${JDK_TO_TEST} \
+    -vmoption:-Dtest.boot.jdk=${BOOTJDK_HOME} \
+    -vmoption:-XX:MaxRAMPercentage=25 \
     ${on_retry:-} $@ \
       && exit_code=0 || exit_code=$?
 

@@ -24,6 +24,13 @@ openjdk-17 (17.0.7+7-1) UNRELEASED; urgency=medium
     - ldap-timeout-test-use-ip.patch, test-use-ip-address.patch: Ubuntu-specific
     - patches to workaround missing DNS resolver on the build machines.
     - exclude_broken_tests.patch: quarantine failing tests.
+  * d/t/{jdk,hotspot,jaxp,lantools}: run tier1 and tier2 jtreg tests only,
+  * add test options from OpenJDK Makefile, patch problem list to exclude
+    architecture-specific failing tests.
+  * d/t/*: fix test environment: add missing -nativepath (LP: #2001563).
+  * d/t/jdk: provide dbus session for the window manager (LP: #2001576).
+  * d/t/jtreg-autopkgtest.in: pass JTREG home to locate junit.jar, regenerate
+  * d/t/jtreg-autopkgtest.sh (LP: #2016206).
 
  -- Matthias Klose <doko@debian.org>  Tue, 06 Jun 2023 13:36:52 +0200
 

@@ -18,6 +18,10 @@ if [ -z "${JDK_TO_TEST+x}" ]; then
   JDK_TO_TEST=$(echo @JDK_DIR@ | sed "s/-[^-]*$/-$host_arch/")
 fi
 
+if [ -z "${BOOTJDK_HOME+x}" ]; then
+  BOOTJDK_HOME=${JDK_TO_TEST}
+fi
+
 jtreg_version="$(dpkg-query -W @jtreg_pkg@ | cut -f2)"
 
 # set additional jtreg options
@@ -88,6 +92,7 @@ for i in 0 1; do
   report_path="${i}/JTreport"
   report_dir="${output_dir}/${report_path}"
   jtreg ${jt_options} \
+    -vmoption:-Djtreg.home=/usr/share/jtreg \
     -verbose:summary \
     -automatic \
     -retain:none \
@@ -97,6 +102,8 @@ for i in 0 1; do
     -workDir:"${jtwork_dir}" \
     -reportDir:"${report_dir}" \
     -jdk:${JDK_TO_TEST} \
+    -vmoption:-Dtest.boot.jdk=${BOOTJDK_HOME} \
+    -vmoption:-XX:MaxRAMPercentage=25 \
     ${on_retry:-} $@ \
       && exit_code=0 || exit_code=$?
 

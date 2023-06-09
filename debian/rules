@@ -1181,7 +1181,7 @@ TESTS_TO_RUN = $(addprefix check-,$(TEST_SUITES))
 check-hotspot: stamps/build
 	@echo '===== START $@ ====='
 	mkdir -p jtreg-test-output/hotspot
-	JTREG_OPTIONS=$(JTREG_OPTIONS) VMNAME=$(VMNAME) JDK_TO_TEST=$(builddir)/$(sdkimg) \
+	BOOTJDK_HOME=$(BOOTJDK_HOME) JTREG_OPTIONS=$(JTREG_OPTIONS) VMNAME=$(VMNAME) JDK_TO_TEST=$(builddir)/$(sdkimg) \
 	AUTOPKGTEST_TMP=/tmp/ AUTOPKGTEST_ARTIFACTS=jtreg-test-output/ \
 	  $(TIME) debian/tests/hotspot | tee jtreg-test-output/$@.log
 	@echo '===== END $@ ====='
@@ -1189,7 +1189,7 @@ check-hotspot: stamps/build
 check-langtools: stamps/build
 	@echo '===== START $@ ====='
 	mkdir -p jtreg-test-output/langtools
-	JTREG_OPTIONS=$(JTREG_OPTIONS) VMNAME=$(VMNAME) JDK_TO_TEST=$(builddir)/$(sdkimg) \
+	BOOTJDK_HOME=$(BOOTJDK_HOME) JTREG_OPTIONS=$(JTREG_OPTIONS) VMNAME=$(VMNAME) JDK_TO_TEST=$(builddir)/$(sdkimg) \
 	AUTOPKGTEST_TMP=/tmp/ AUTOPKGTEST_ARTIFACTS=jtreg-test-output/ \
 	  $(TIME) debian/tests/langtools | tee jtreg-test-output/$@.log
 	@echo '===== END $@ ====='
@@ -1197,7 +1197,7 @@ check-langtools: stamps/build
 check-jaxp: stamps/build
 	@echo '===== START $@ ====='
 	mkdir -p jtreg-test-output/jaxp
-	JTREG_OPTIONS=$(JTREG_OPTIONS) VMNAME=$(VMNAME) JDK_TO_TEST=$(builddir)/$(sdkimg) \
+	BOOTJDK_HOME=$(BOOTJDK_HOME) JTREG_OPTIONS=$(JTREG_OPTIONS) VMNAME=$(VMNAME) JDK_TO_TEST=$(builddir)/$(sdkimg) \
 	AUTOPKGTEST_TMP=/tmp/ AUTOPKGTEST_ARTIFACTS=jtreg-test-output/ \
 	  $(TIME) debian/tests/jaxp | tee jtreg-test-output/$@.log
 	@echo '===== END $@ ====='
@@ -1205,7 +1205,7 @@ check-jaxp: stamps/build
 check-jdk: stamps/build
 	@echo '===== START $@ ====='
 	mkdir -p jtreg-test-output/jdk
-	JTREG_OPTIONS=$(JTREG_OPTIONS) VMNAME=$(VMNAME) JDK_TO_TEST=$(builddir)/$(sdkimg) \
+	BOOTJDK_HOME=$(BOOTJDK_HOME) JTREG_OPTIONS=$(JTREG_OPTIONS) VMNAME=$(VMNAME) JDK_TO_TEST=$(builddir)/$(sdkimg) \
 	AUTOPKGTEST_TMP=/tmp/ AUTOPKGTEST_ARTIFACTS=jtreg-test-output/ \
 	  $(TIME) debian/tests/jdk | tee jtreg-test-output/$@.log
 	@echo '===== END $@ ====='
