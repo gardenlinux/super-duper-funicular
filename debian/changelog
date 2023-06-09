@@ -2,6 +2,10 @@ openjdk-17 (17.0.7+7-1) UNRELEASED; urgency=medium
 
   * OpenJDK 17.0.7 release, build 7.
 
+  [ Vladimir Petko ]
+  * debian/copyright: Convert to machine readable format.
+  * Update watch file.
+
  -- Matthias Klose <doko@debian.org>  Tue, 06 Jun 2023 13:36:52 +0200
 
 openjdk-17 (17.0.6+10-1) unstable; urgency=high
