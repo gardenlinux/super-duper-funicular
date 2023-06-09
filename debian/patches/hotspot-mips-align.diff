@@ -1,6 +1,6 @@
 --- a/src/hotspot/cpu/zero/zeroInterpreter_zero.cpp
 +++ b/src/hotspot/cpu/zero/zeroInterpreter_zero.cpp
-@@ -418,7 +418,7 @@ int ZeroInterpreter::native_entry(Method
+@@ -426,7 +426,7 @@
    ThreadStateTransition::transition_from_java(thread, _thread_in_native);
  
    // Make the call

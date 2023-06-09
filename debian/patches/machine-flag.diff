@@ -1,6 +1,6 @@
 --- a/make/autoconf/flags.m4
 +++ b/make/autoconf/flags.m4
-@@ -263,6 +263,7 @@ AC_DEFUN_ONCE([FLAGS_PRE_TOOLCHAIN],
+@@ -263,6 +263,7 @@
          test "x$OPENJDK_TARGET_CPU_ARCH" = xppc; then
        MACHINE_FLAG="-m${OPENJDK_TARGET_CPU_BITS}"
      fi
@@ -8,7 +8,7 @@
    fi
  
    if test "x$OPENJDK_TARGET_OS" = xmacosx; then
-@@ -344,11 +345,8 @@ AC_DEFUN([FLAGS_SETUP_TOOLCHAIN_CONTROL]
+@@ -344,11 +345,8 @@
    AC_SUBST(COMPILER_COMMAND_FILE_FLAG)
    AC_SUBST(COMPILER_BINDCMD_FILE_FLAG)
  

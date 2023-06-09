@@ -1,6 +1,6 @@
 --- a/src/java.base/share/conf/security/java.security
 +++ b/src/java.base/share/conf/security/java.security
-@@ -307,6 +307,7 @@ keystore.type.compat=true
+@@ -310,6 +310,7 @@
  #
  package.access=sun.misc.,\
                 sun.reflect.,\

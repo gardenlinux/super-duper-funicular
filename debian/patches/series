@@ -4,7 +4,6 @@ icc_loading_with_symlink.diff
 icedtea-override-redirect-compiz.diff
 libpcsclite-dlopen.diff
 default-jvm-cfg.diff
-workaround_expand_exec_shield_cs_limit.diff
 adlc-parser.diff
 multiple-pkcs11-library-init.diff
 s390x-opt.diff
@@ -17,7 +16,6 @@ zero-x32.diff
 hotspot-disable-exec-shield-workaround.diff
 atk-wrapper-security.diff
 dnd-files.diff
-generated-headers.patch
 m68k-support.diff
 reproducible-properties-timestamp.diff
 # reproducible-javadoc-timestamp.diff

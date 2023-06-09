@@ -12,7 +12,7 @@ Reviewed-by: aph, erikj, ehelin, ihse
 @@ -28,6 +28,13 @@
  # autoconf system (which might easily get lost in a future update), we wrap it
  # and fix the broken property, if needed.
- 
+
 +machine=`(uname -m) 2>/dev/null` || UNAME_MACHINE=unknown
 +if test $machine = riscv64; then
 +  # This is all we need to know for riscv64
@@ -21,14 +21,14 @@ Reviewed-by: aph, erikj, ehelin, ihse
 +fi
 +
  DIR=`dirname $0`
- OUT=`. $DIR/autoconf-config.guess`
- 
+ OUT=`. $DIR/autoconf-config.guess 2> /dev/null`
+
 --- a/make/autoconf/build-aux/config.sub
 +++ b/make/autoconf/build-aux/config.sub
 @@ -46,8 +46,8 @@
      exit
  fi
- 
+
 -# Filter out everything that doesn't begin with "aarch64-"
 -if ! echo $* | grep '^aarch64-' >/dev/null ; then
 +# First, filter out everything that doesn't begin with "aarch64-" or "riscv64-"
@@ -50,15 +50,15 @@ Reviewed-by: aph, erikj, ehelin, ihse
 @@ -74,7 +78,7 @@
  result=`. $DIR/autoconf-config.sub $sub_args "$@"`
  exitcode=$?
- 
+
 -result=`echo $result | sed "s/^arm-/aarch64-/"`
 +result=`echo $result | sed "s/^arm-/aarch64-/" | sed "s/^x86-/riscv64-/"`
- 
+
  echo $result
  exit $exitcode
 --- a/src/hotspot/os/linux/os_linux.cpp
 +++ b/src/hotspot/os/linux/os_linux.cpp
-@@ -2558,6 +2558,8 @@
+@@ -2559,6 +2559,8 @@
    strncpy(cpuinfo, "IA64", length);
  #elif defined(PPC)
    strncpy(cpuinfo, "PPC64", length);

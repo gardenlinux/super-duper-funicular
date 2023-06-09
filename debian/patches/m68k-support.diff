@@ -1042,7 +1042,7 @@ Last Update: 2019-04-29
  $(eval $(call SetupExecute, gen_x11wrappers, \
 --- a/src/hotspot/share/memory/allocation.hpp
 +++ b/src/hotspot/share/memory/allocation.hpp
-@@ -239,7 +239,7 @@ template <MEMFLAGS F> class CHeapObj ALL
+@@ -239,7 +239,7 @@
  
    void  operator delete(void* p)     { FreeHeap(p); }
    void  operator delete [] (void* p) { FreeHeap(p); }
@@ -1051,7 +1051,7 @@ Last Update: 2019-04-29
  
  // Base class for objects allocated on the stack only.
  // Calling new or delete will result in fatal error.
-@@ -250,7 +250,7 @@ class StackObj ALLOCATION_SUPER_CLASS_SP
+@@ -250,7 +250,7 @@
    void* operator new [](size_t size) throw();
    void  operator delete(void* p);
    void  operator delete [](void* p);
@@ -1060,7 +1060,7 @@ Last Update: 2019-04-29
  
  // Base class for objects stored in Metaspace.
  // Calling delete will result in fatal error.
-@@ -372,7 +372,7 @@ class MetaspaceObj {
+@@ -372,7 +372,7 @@
    // that should be read-only by default. See symbol.hpp for an example. This function
    // is used by the templates in metaspaceClosure.hpp
    static bool is_read_only_by_default() { return false; }
@@ -1069,7 +1069,7 @@ Last Update: 2019-04-29
  
  // Base class for classes that constitute name spaces.
  
-@@ -457,7 +457,7 @@ protected:
+@@ -457,7 +457,7 @@
  
    void  operator delete(void* p);
    void  operator delete [](void* p);
@@ -1080,7 +1080,7 @@ Last Update: 2019-04-29
  // or object to determine whether it should reside in the C heap on in
 --- a/src/hotspot/share/oops/constMethod.hpp
 +++ b/src/hotspot/share/oops/constMethod.hpp
-@@ -525,6 +525,6 @@ private:
+@@ -525,6 +525,6 @@
  
    // Verify
    void verify_on(outputStream* st);
@@ -1090,7 +1090,7 @@ Last Update: 2019-04-29
  #endif // SHARE_OOPS_CONSTMETHOD_HPP
 --- a/src/hotspot/share/oops/oop.hpp
 +++ b/src/hotspot/share/oops/oop.hpp
-@@ -315,6 +315,6 @@ class oopDesc {
+@@ -315,6 +315,6 @@
    // Avoid include gc_globals.hpp in oop.inline.hpp
    DEBUG_ONLY(bool get_UseParallelGC();)
    DEBUG_ONLY(bool get_UseG1GC();)
