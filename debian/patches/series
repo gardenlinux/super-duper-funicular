@@ -31,3 +31,12 @@ riscv64.diff
 reproducible-build-jmod.diff
 mips.diff
 #nspr+nss-headers.diff
+build_gtest.patch
+disable-thumb-assertion.patch
+update-assertion-for-armhf.patch
+misalign-pointer-for-armhf.patch
+log-generated-classes-test.patch
+update-permission-test.patch
+ldap-timeout-test-use-ip.patch
+test-use-ip-address.patch
+exclude-broken-tests.patch

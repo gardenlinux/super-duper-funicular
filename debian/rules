@@ -156,13 +156,7 @@ ifneq (,$(filter parallel=%,$(subst $(COMMA), ,$(DEB_BUILD_OPTIONS))))
   NJOBS = $(subst parallel=,,$(filter parallel=%,$(subst $(COMMA), ,$(DEB_BUILD_OPTIONS))))
 endif
 
-ifneq (,$(filter $(distrel), sid bookworm bullseye focal jammy kinetic lunar ))
-  jtreg_pkg = jtreg6
-else ifneq (,$(filter $(distrel), sid bookworm bullseye))
-  jtreg_pkg = jtreg
-else
-  jtreg_pkg =
-endif
+jtreg_pkg = jtreg6
 
 with_check = $(if $(findstring nocheck, $(DEB_BUILD_OPTIONS)),,yes)
 ifneq (,$(filter $(DEB_HOST_ARCH), alpha armel mipsel mips64el riscv64))
@@ -524,6 +518,14 @@ COMMON_CONFIGURE_ARGS += \
 	--disable-warnings-as-errors \
 	--disable-javac-server \
 
+ifeq ($(with_check),yes)
+# temporary: disable gtest until compile errors are fixed in jammy
+  ifeq (,$(filter $(distrel),bullseye jammy))
+    COMMON_CONFIGURE_ARGS += \
+        --with-gtest=system
+  endif
+endif
+
 ifeq (,$(filter $(distrel),jessie stretch precise trusty xenial))
   COMMON_CONFIGURE_ARGS += \
 	--with-harfbuzz=system
@@ -711,7 +713,11 @@ ifeq ($(with_check),yes)
     xvfb$(nocheck_profile), xauth$(nocheck_profile), \
     xfonts-base$(nocheck_profile), libgl1-mesa-dri [!x32]$(nocheck_profile), \
     xfwm4$(nocheck_profile), x11-xkb-utils$(nocheck_profile), \
-    dbus-x11$(nocheck_profile),
+    dbus-x11$(nocheck_profile), googletest$(nocheck_profile), \
+    google-mock$(nocheck_profile), xvfb $(nocheck_profile),
+ifeq (,$(filter $(distrel),jessie stretch buster))
+    bd_check += libasmtools-java$(nocheck_profile),
+endif
 else
   bd_check = file,
 endif
@@ -1259,7 +1265,7 @@ install: packaging-files
 
 	chmod -R u+w $(d)
 
-	: # use javaws from icedtea-netx 
+	: # use javaws from icedtea-netx
 	find $(d) -name 'javaws*' | xargs -r rm -f
 
 	: # install default jvm config file
@@ -1766,10 +1772,10 @@ ifeq ($(with_docs),yes)
 	  cp -a $$i $(d_doc)/usr/share/doc/$(p_jrehl)/; \
 	  ln -sf ../$(p_jrehl)/$$b $(d_doc)/usr/share/doc/$(p_doc)/$$b; \
 	done
-	rm -v $(d_doc)/usr/share/doc/$(p_jrehl)/api/script-dir/{jquery-3.6.0.min.js,jquery-ui.min.css,jquery-ui.min.js}
+	rm -v $(d_doc)/usr/share/doc/$(p_jrehl)/api/script-dir/{jquery-3.6.1.min.js,jquery-ui.min.css,jquery-ui.min.js}
 	dh_link -p$(p_doc) \
 	  /usr/share/javascript/jquery-ui/jquery-ui.min.js \
-	    /usr/share/doc/$(p_jrehl)/api/script-dir/jquery-3.6.0.min.js \
+	    /usr/share/doc/$(p_jrehl)/api/script-dir/jquery-3.6.1.min.js \
 	  /usr/share/javascript/jquery-ui/themes/base/jquery-ui.min.css \
 	    /usr/share/doc/$(p_jrehl)/api/script-dir/jquery-ui.min.css \
 	  /usr/share/javascript/jquery-ui/jquery-ui.min.js \

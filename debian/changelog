@@ -9,6 +9,21 @@ openjdk-17 (17.0.7+7-1) UNRELEASED; urgency=medium
   * Update tag and version handling in the rules file.
   * debian/JB-jre-headless.postinst.in: trigger ca-certificates-java after
     the JRE is set up.
+  * d/control: add jtreg6 dependencies, regenerate control.
+  * d/rules: only compile google tests when with_check is enabled, disable them
+    for bullseye and jammy.
+  * d/rules: always use jtreg6.
+  * d/p/exclude-broken-tests.patch: add OpenJDK 17 failures.
+  * d/p/*: add patches for jtreg tests:
+    - disable-thumb-assertion.patch: fix JDK-8305481.
+    - update-assertion-for-armhf.patch: fix JDK-8305480.
+    - misalign-pointer-for-armhf.patch: packaging-specific patch to fix test
+    - failure introduced by d/p/m68k-support.diff.
+    - log-generated-classes-test.patch: workaround JDK-8166162.
+    - update-permission-test.patch: add security permissions for testng 7.
+    - ldap-timeout-test-use-ip.patch, test-use-ip-address.patch: Ubuntu-specific
+    - patches to workaround missing DNS resolver on the build machines.
+    - exclude_broken_tests.patch: quarantine failing tests.
 
  -- Matthias Klose <doko@debian.org>  Tue, 06 Jun 2023 13:36:52 +0200
 
