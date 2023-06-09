@@ -7,6 +7,8 @@ openjdk-17 (17.0.7+7-1) UNRELEASED; urgency=medium
   * debian/copyright: Convert to machine readable format.
   * Update watch file.
   * Update tag and version handling in the rules file.
+  * debian/JB-jre-headless.postinst.in: trigger ca-certificates-java after
+    the JRE is set up.
 
  -- Matthias Klose <doko@debian.org>  Tue, 06 Jun 2023 13:36:52 +0200
 
