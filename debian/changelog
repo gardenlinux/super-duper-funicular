@@ -1,6 +1,10 @@
 openjdk-17 (17.0.7+7-1) UNRELEASED; urgency=medium
 
   * OpenJDK 17.0.7 release, build 7.
+    - CVE-2023-21930, CVE-2023-21937, CVE-2023-21938, CVE-2023-21939,
+      CVE-2023-21954, CVE-2023-21967, CVE-2023-21968.
+    - Release notes:
+      https://mail.openjdk.org/pipermail/jdk-updates-dev/2023-April/021899.html
 
   [ Vladimir Petko ]
   * Refresh patches.
