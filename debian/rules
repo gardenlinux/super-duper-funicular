@@ -101,7 +101,7 @@ else
 endif
 jvmver		= 1.21.0
 shortver	= 21
-v_debian	:= $(shell echo $(PKGVERSION) | sed 's/ea//')
+v_debian	:= $(shell echo $(PKGVERSION) | sed 's/ea//' | sed 's/\~us[[:digit:]]\+//')
 v_upstream	:= $(shell echo $(v_debian) | sed 's/-[^-][^-]*$$//')
 v_pkgrel	:= $(shell echo $(v_debian) | sed 's/^.*-//')
 # FIXME. currently v_upstream like 11~4
@@ -514,7 +514,7 @@ COMMON_CONFIGURE_ARGS += \
 
 COMMON_CONFIGURE_ARGS += \
 	--with-debug-level=release \
-	--with-native-debug-symbols=internal \
+	--with-native-debug-symbols=none \
 	--enable-unlimited-crypto \
 	--with-zlib=system \
 	--with-giflib=system \

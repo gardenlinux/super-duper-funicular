@@ -1,3 +1,27 @@
+Format: https://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
+Files-Excluded:
+  .github/*
+  .gitattributes
+  src/java.desktop/share/native/liblcms/cms*.c
+  src/java.desktop/share/native/liblcms/lcms2*.h
+  src/java.base/share/native/libzip/zlib/*
+  src/java.desktop/share/native/libsplashscreen/giflib/*
+  src/java.desktop/share/native/libsplashscreen/libpng/*
+  src/java.smartcardio/unix/native/libj2pcsc/MUSCLE/*
+  src/java.desktop/share/native/libjavajpeg/jc*
+  src/java.desktop/share/native/libjavajpeg/jd*
+  src/java.desktop/share/native/libjavajpeg/je*
+  src/java.desktop/share/native/libjavajpeg/jf*
+  src/java.desktop/share/native/libjavajpeg/ji*.c
+  src/java.desktop/share/native/libjavajpeg/jm*
+  src/java.desktop/share/native/libjavajpeg/jpegi*
+  src/java.desktop/share/native/libjavajpeg/jpeglib.h
+  src/java.desktop/share/native/libjavajpeg/jq*
+  src/java.desktop/share/native/libjavajpeg/jv*
+  src/java.desktop/share/native/libjavajpeg/ju*
+  src/java.desktop/share/native/libjavajpeg/README
+Comment: Exclude bundled library sources, Github Actions and git attributes.
+
 This package was debianized by Matthias Klose <doko@ubuntu.com> on
 Wed, 08 Aug 2007 15:55:39 +0200.
 
@@ -19,7 +43,7 @@ Copyright:
 
 OpenJDK:
     Copyright © 1996-2007 Sun Microsystems, Inc.
-    Copyright © 1996-2021 Oracle and/or its affiliates.
+    Copyright © 1996-2023 Oracle and/or its affiliates.
     For third party copyrights see below (copies from the third party readme).
     Portions Copyright © 1993-2014 IBM Corp.
     Portions Copyright © 1997 Eastman Kodak Company.
@@ -36,7 +60,7 @@ Java Access Bridge:
     Portions Copyright © 2002-2007 Darren Kenny <darren.kenny@sun.com>
 
 Packaging:
-    Copyright © 2007-2021 Canonical Ltd.
+    Copyright © 2007-2023 Canonical Ltd.
 
 ------------------------------------------------------------------------------
 License:

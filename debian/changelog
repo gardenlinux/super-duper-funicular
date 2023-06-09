@@ -1,4 +1,13 @@
-openjdk-21 (21~7ea-1) unstable; urgency=medium
+openjdk-21 (21~14ea-1) UNRELEASED; urgency=medium
+
+  [ Vladimir Petko ]
+  * OpenJDK 21 snapshot, Build 14.
+  * d/copyright, d/watch: implement uscan repackaging (LP: #2011749).
+  * d/rules: use --with-debug-symbols=none (LP: #2003820).
+  * debian/JB-jre-headless.postinst.in: trigger ca-certificates-java after jre
+    is set up.
+
+ -- Matthias Klose <doko@ubuntu.com>  Fri, 09 Jun 2023 17:15:22 +0200
 
   * OpenJDK 21 snapshot, build 7.
   * Don't build zero on ppc64el for now, see JDK-8298655.
