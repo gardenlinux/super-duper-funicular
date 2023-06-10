@@ -1,6 +1,6 @@
 --- a/make/autoconf/platform.m4
 +++ b/make/autoconf/platform.m4
-@@ -41,6 +41,10 @@ AC_DEFUN([PLATFORM_EXTRACT_VARS_FROM_CPU
+@@ -41,6 +41,10 @@
        VAR_CPU_ARCH=x86
        VAR_CPU_BITS=64
        VAR_CPU_ENDIAN=little

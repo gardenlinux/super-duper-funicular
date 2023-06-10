@@ -6,7 +6,7 @@ libpcsclite-dlopen.diff
 #jexec.diff
 default-jvm-cfg.diff
 adlc-parser.diff
-#multiple-pkcs11-library-init.diff
+multiple-pkcs11-library-init.diff
 s390x-opt.diff
 jdk-getAccessibleValue.diff
 #jtreg-location.diff FIXME
@@ -17,9 +17,7 @@ atk-wrapper-security.diff
 # java-access-bridge-security.diff
 # jdk-pulseaudio.diff
 dnd-files.diff
-generated-headers.patch
 m68k-support.diff
-reproducible-properties-timestamp.diff
 # reproducible-javadoc-timestamp.diff
 make-debug-print.diff
 Don-t-optimize-fdlibm-fork-for-Zero-on-linux-sparc-Z.patch
@@ -34,3 +32,10 @@ reproducible-module-info.diff
 reproducible-build-jmod.diff
 mips.diff
 #nspr+nss-headers.diff
+build_gtest.patch
+misalign-pointer-for-armhf.patch
+log-generated-classes-test.patch
+update-permission-test.patch
+ldap-timeout-test-use-ip.patch
+test-use-ip-address.patch
+exclude-broken-tests.patch

@@ -7,9 +7,9 @@ Depends: openjdk-21-jdk-headless
 Restrictions: superficial
 
 #Tests: hotspot, jaxp, langtools
-#Depends: @, default-jre-headless, @jtreg_pkg@:native (>= @min_jtreg_version@), testng:native, build-essential
+#Depends: @, @jtreg_pkg@:native (>= @min_jtreg_version@), libtestng7-java:native, build-essential
 #Restrictions: allow-stderr, skippable, flaky
 
 #Tests: jdk
-#Depends: @, default-jre-headless, @jtreg_pkg@:native (>= @min_jtreg_version@), testng:native, build-essential, xfwm4:native, xvfb, dbus-x11
+#Depends: @, @jtreg_pkg@:native (>= @min_jtreg_version@), libtestng7-java:native, build-essential, xfwm4:native, xvfb, dbus-x11
 #Restrictions: allow-stderr, skippable, flaky

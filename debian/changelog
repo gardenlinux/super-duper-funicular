@@ -1,3 +1,42 @@
+openjdk-21 (21~26ea-1) unstable; urgency=medium
+
+  * OpenJDK 21 snapshot, Build 26.
+
+  [ Vladimir Petko ]
+  * d/p/*: refresh patches.
+  * Copy OpenJDK 20 packaging changes:
+    - d/rules: pack external debug symbols with build-id, do not pack duplicate
+      symbols, do not strip JVM shared libraries (LP: #2012326, LP: #2016739).
+    - d/{control, compat}: update debhelper-compat version, add jtreg7
+      dependencies, regenerate control.
+    - d/t/{jdk,hotspot,jaxp,lantools}: run tier1 and tier2 jtreg tests only,
+      add test options from OpenJDK makefile.
+    - d/t/*: fix test environment: add missing -nativepath (LP: #2001563).
+    - d/t/jdk: provide dbus session for the window manager (LP: #2001576).
+    - d/p/build_gtest.patch: build OpenJDK with the system googletest
+      (LP: #2012316).
+  * d/p/*: add patches for jtreg tests:
+    - misalign-pointer-for-armhf.patch: packaging-specific patch to fix test
+      failure introduced by d/p/m68k-support.diff.
+    - log-generated-classes-test.patch: workaround JDK-8166162.
+    - update-permission-test.patch: add security permissions for testng 7.
+    - ldap-timeout-test-use-ip.patch, test-use-ip-address.patch:
+      Ubuntu-specific patches to workaround missing DNS resolver on the build
+      machines.
+    - exclude_broken_tests.patch: quarantine failing tests.
+  * Enable ppc64el JRE zero build as JDK-8299476 is fixed.
+  * Known issues:
+    - amd64: test/jdk/sun/security/pkcs11/KeyStore/CertChainRemoval.java:
+      https://mail.openjdk.org/pipermail/jdk-dev/2023-May/007836.html
+    - s390x: test/hotspot/jtreg/runtime/NMT/VirtualAllocCommitMerge.java:
+      https://mail.openjdk.org/pipermail/hotspot-dev/2023-June/075316.html
+
+  [ Matthias Klose ]
+  * Fix jaxp.properties installation.
+  * Bump standards version.
+
+ -- Matthias Klose <doko@ubuntu.com>  Sat, 10 Jun 2023 17:54:09 +0200
+
 openjdk-21 (21~14ea-1) UNRELEASED; urgency=medium
 
   [ Vladimir Petko ]
@@ -8,6 +47,8 @@ openjdk-21 (21~14ea-1) UNRELEASED; urgency=medium
     is set up.
 
  -- Matthias Klose <doko@ubuntu.com>  Fri, 09 Jun 2023 17:15:22 +0200
+
+openjdk-21 (21~7ea-1) unstable; urgency=medium
 
   * OpenJDK 21 snapshot, build 7.
   * Don't build zero on ppc64el for now, see JDK-8298655.

@@ -1,0 +1,18 @@
+Description: Add support for building with the system google test
+ A major portion of hotspot tests require google test.
+ In order to get tier1 tests passing the package should build
+ with the system google test.
+Author: Vladimir Petko <vladimir.petko@canonical.com>
+Bug-Ubuntu: https://bugs.launchpad.net/ubuntu/+source/openjdk-20/+bug/2012316
+Last-Update: 2023-04-13
+--- a/make/autoconf/lib-tests.m4
++++ b/make/autoconf/lib-tests.m4
+@@ -44,6 +44,8 @@
+     AC_MSG_CHECKING([for gtest])
+     if test "x${with_gtest}" = xno; then
+       AC_MSG_RESULT([no, disabled])
++    elif test "x${with_gtest}" = xsystem; then
++      GTEST_FRAMEWORK_SRC=/usr/src/googletest
+     elif test "x${with_gtest}" = xyes; then
+       AC_MSG_RESULT([no, error])
+       AC_MSG_ERROR([--with-gtest must have a value])

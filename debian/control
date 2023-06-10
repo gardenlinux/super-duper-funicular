@@ -18,7 +18,7 @@ Build-Depends: debhelper (>= 11),
   openjdk-21-jdk-headless <cross>,
 Build-Depends-Indep: graphviz, pandoc,
 Rules-Requires-Root: no
-Standards-Version: 4.6.1
+Standards-Version: 4.6.2
 Homepage: https://openjdk.java.net/
 Vcs-Browser: https://salsa.debian.org/openjdk-team/openjdk
 Vcs-Git: https://salsa.debian.org/openjdk-team/openjdk.git
@@ -174,7 +174,7 @@ Description: Java runtime based on OpenJDK (debugging symbols)
  This package contains the debugging symbols.
 
 Package: openjdk-21-jre-zero
-Architecture: amd64 i386 arm64 armhf ppc64 riscv64 s390x
+Architecture: amd64 i386 arm64 armhf ppc64 ppc64el riscv64 s390x
 Multi-Arch: same
 Priority: optional
 Pre-Depends: ${dpkg:Depends}
