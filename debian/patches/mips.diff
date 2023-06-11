@@ -2,7 +2,7 @@
 
 --- a/src/java.base/unix/native/libnio/fs/UnixNativeDispatcher.c
 +++ b/src/java.base/unix/native/libnio/fs/UnixNativeDispatcher.c
-@@ -156,7 +156,7 @@ static fdopendir_func* my_fdopendir_func
+@@ -156,7 +156,7 @@
  /**
   * fstatat missing from glibc on Linux.
   */

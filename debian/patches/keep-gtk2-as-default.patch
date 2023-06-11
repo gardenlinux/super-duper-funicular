@@ -27,7 +27,7 @@ Reviewed-by: psadhukhan, kaddepalli
 
 --- a/src/java.desktop/unix/native/libawt_xawt/awt/gtk_interface.c
 +++ b/src/java.desktop/unix/native/libawt_xawt/awt/gtk_interface.c
-@@ -50,18 +50,18 @@ typedef struct {
+@@ -50,18 +50,18 @@
  
  static GtkLib gtk_libs[] = {
      {

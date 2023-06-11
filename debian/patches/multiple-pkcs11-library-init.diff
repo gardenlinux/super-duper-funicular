@@ -7,7 +7,7 @@ Allow multiple PKCS11 library initialisation to be a non-critical error.
 
 --- a/src/jdk.crypto.cryptoki/share/classes/sun/security/pkcs11/Config.java
 +++ b/src/jdk.crypto.cryptoki/share/classes/sun/security/pkcs11/Config.java
-@@ -52,6 +52,7 @@ final class Config {
+@@ -52,6 +52,7 @@
      static final int ERR_HALT       = 1;
      static final int ERR_IGNORE_ALL = 2;
      static final int ERR_IGNORE_LIB = 3;
@@ -15,18 +15,17 @@ Allow multiple PKCS11 library initialisation to be a non-critical error.
  
      // same as allowSingleThreadedModules but controlled via a system property
      // and applied to all providers. if set to false, no SunPKCS11 instances
-@@ -1046,6 +1047,8 @@ final class Config {
-             handleStartupErrors = ERR_IGNORE_LIB;
-         } else if (val.equals("halt")) {
-             handleStartupErrors = ERR_HALT;
-+        } else if (val.equals("ignoreMultipleInitialisation")) {
-+            handleStartupErrors = ERR_IGNORE_MULTI_INIT;
-         } else {
-             throw excToken("Invalid value for handleStartupErrors:");
-         }
+@@ -1038,6 +1039,7 @@
+             case "ignoreAll" -> ERR_IGNORE_ALL;
+             case "ignoreMissingLibrary" -> ERR_IGNORE_LIB;
+             case "halt" -> ERR_HALT;
++            case "ignoreMultipleInitialisation" -> ERR_IGNORE_MULTI_INIT;
+             default -> throw excToken("Invalid value for handleStartupErrors:");
+         };
+         if (DEBUG) {
 --- a/src/jdk.crypto.cryptoki/share/classes/sun/security/pkcs11/SunPKCS11.java
 +++ b/src/jdk.crypto.cryptoki/share/classes/sun/security/pkcs11/SunPKCS11.java
-@@ -185,26 +185,37 @@ public final class SunPKCS11 extends Aut
+@@ -184,26 +184,37 @@
                  String nssLibraryDirectory = config.getNssLibraryDirectory();
                  String nssSecmodDirectory = config.getNssSecmodDirectory();
                  boolean nssOptimizeSpace = config.getNssOptimizeSpace();
@@ -36,7 +35,7 @@ Allow multiple PKCS11 library initialisation to be a non-critical error.
                      if (nssSecmodDirectory != null) {
                          String s = secmod.getConfigDir();
                          if ((s != null) &&
-                                 (s.equals(nssSecmodDirectory) == false)) {
+                                 (!s.equals(nssSecmodDirectory))) {
 -                            throw new ProviderException("Secmod directory "
 -                                + nssSecmodDirectory
 -                                + " invalid, NSS already initialized with "
@@ -54,19 +53,21 @@ Allow multiple PKCS11 library initialisation to be a non-critical error.
                      if (nssLibraryDirectory != null) {
                          String s = secmod.getLibDir();
                          if ((s != null) &&
-                                 (s.equals(nssLibraryDirectory) == false)) {
+                                 (!s.equals(nssLibraryDirectory))) {
 -                            throw new ProviderException("NSS library directory "
-+                            String msg = "NSS library directory "
-                                 + nssLibraryDirectory
-                                 + " invalid, NSS already initialized with "
+-                                + nssLibraryDirectory
+-                                + " invalid, NSS already initialized with "
 -                                + s);
-+                                + s;
-+                            if (errorHandling == Config.ERR_IGNORE_MULTI_INIT ||
-+                                errorHandling == Config.ERR_IGNORE_ALL) {
-+                                throw new UnsupportedOperationException(msg);
-+                            } else {
-+                                throw new ProviderException(msg);
-+                            }
++                            String msg = "NSS library directory "
++                                 + nssLibraryDirectory
++                                 + " invalid, NSS already initialized with "
++                                 + s;
++                             if (errorHandling == Config.ERR_IGNORE_MULTI_INIT ||
++                                 errorHandling == Config.ERR_IGNORE_ALL) {
++                                 throw new UnsupportedOperationException(msg);
++                             } else {
++                                 throw new ProviderException(msg);
++                             }
                          }
                      }
                  } else {

@@ -21,11 +21,11 @@ Reviewed-by: aph, erikj, ehelin, ihse
 +fi
 +
  DIR=`dirname $0`
- OUT=`. $DIR/autoconf-config.guess`
+ OUT=`. $DIR/autoconf-config.guess 2> /dev/null`
  
 --- a/make/autoconf/build-aux/config.sub
 +++ b/make/autoconf/build-aux/config.sub
-@@ -53,8 +53,8 @@ if echo $* | grep '^riscv\(32\|64\)-linu
+@@ -53,8 +53,8 @@
      exit
  fi
  
@@ -36,7 +36,7 @@ Reviewed-by: aph, erikj, ehelin, ihse
      . $DIR/autoconf-config.sub "$@"
      # autoconf-config.sub exits, so we never reach here, but just in
      # case we do:
-@@ -69,6 +69,10 @@ while test $# -gt 0 ; do
+@@ -69,6 +69,10 @@
              config=`echo $1 | sed 's/^aarch64-/arm-/'`
              sub_args="$sub_args $config"
              shift; ;;
@@ -47,7 +47,7 @@ Reviewed-by: aph, erikj, ehelin, ihse
          - )    # Use stdin as input.
              sub_args="$sub_args $1"
              shift; break ;;
-@@ -81,7 +85,7 @@ done
+@@ -81,7 +85,7 @@
  result=`. $DIR/autoconf-config.sub $sub_args "$@"`
  exitcode=$?
  

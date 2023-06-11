@@ -1,9 +1,50 @@
-openjdk-20 (20~26ea-2) UNRELEASED; urgency=medium
+openjdk-20 (20.0.1+9-1) unstable; urgency=medium
 
+  * OpenJDK 20.0.1 release, build 9.
+    - CVE-2023-21930, CVE-2023-21937, CVE-2023-21938, CVE-2023-21939,
+      CVE-2023-21954, CVE-2023-21967, CVE-2023-21968.
+    - Release notes:
+      https://adoptium.net/en-GB/temurin/release-notes/?version=jdk-20.0.1+9
+
+  [ Matthias Klose ]
   * Update VCS attributes in the control file.
   * Fix autopkg test dependencies.
+  * Disable checks again, newer test tools are needed.
 
- -- Matthias Klose <doko@ubuntu.com>  Sat, 24 Dec 2022 15:38:12 +0100
+  [ Vladimir Petko ]
+  * debian/watch, debian/copyright: implement uscan-based repack.
+  * debian/patches/*: refresh patches.
+  * debian/patches/reproducible-properties-timestamp.diff: drop patch in favor
+    of JDK-8231640.
+  * debian/rules: update jquery version to 3.6.1.
+  * debian/sources/lintian-overrides: set package name to openjdk-20.
+  * d/p: drop obsolete patches (LP: #2011653).
+    - generated-headers.patch: include is already added by openjdk makefile.
+  * d/rules: use --with-debug-symbols=none (LP: #2003820).
+  * d/{control, compat}: update debhelper-compat version, add jtreg7
+    dependencies, regenerate control.
+  * d/t/{jdk,hotspot,jaxp,langtools}: run tier1 and tier2 jtreg tests only,
+    add test options from OpenJDK makefile.
+  * d/t/*: fix test environment: add missing -nativepath (LP: #2001563).
+  * d/t/jdk: provide dbus session for the window manager (LP: #2001576).
+  * d/p/build_gtest.patch: build OpenJDK with the system googletest
+    (LP: #2012316).
+  * d/p/*: add patches for jtreg tests:
+    - disable-thumb-assertion.patch: fix JDK-8305481.
+    - update-assertion-for-armhf.patch: fix JDK-8305480.
+    - misalign-pointer-for-armhf.patch: packaging-specific patch to fix test
+      failure introduced by d/p/m68k-support.diff.
+    - log-generated-classes-test.patch: workaround JDK-8166162.
+    - update-permission-test.patch: add security permissions for testng 7.
+    - ldap-timeout-test-use-ip.patch, test-use-ip-address.patch: Ubuntu-specific
+      patches to workaround missing DNS resolver on the build machines.
+    - exclude_broken_tests.patch: quarantine failing tests.
+  * d/rules: package external debug symbols (LP: #2015835).
+  * d/watch: update version format for the security release.
+  * d/rules: pack external debug symbols with build-id, do not pack duplicate
+    symbols, do not strip JVM shared libraries (LP: #2012326, LP: #2016739).
+
+ -- Matthias Klose <doko@ubuntu.com>  Sun, 11 Jun 2023 13:04:03 +0200
 
 openjdk-20 (20~26ea-1) unstable; urgency=medium
 

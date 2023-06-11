@@ -1042,7 +1042,7 @@ Last Update: 2019-04-29
  $(eval $(call SetupExecute, gen_x11wrappers, \
 --- a/src/hotspot/share/memory/allocation.hpp
 +++ b/src/hotspot/share/memory/allocation.hpp
-@@ -284,7 +284,7 @@ class StackObj {
+@@ -287,7 +287,7 @@
    void* operator new [](size_t size) throw();
    void  operator delete(void* p);
    void  operator delete [](void* p);
@@ -1051,7 +1051,7 @@ Last Update: 2019-04-29
  
  // Base class for objects stored in Metaspace.
  // Calling delete will result in fatal error.
-@@ -411,7 +411,7 @@ class MetaspaceObj {
+@@ -414,7 +414,7 @@
    // that should be read-only by default. See symbol.hpp for an example. This function
    // is used by the templates in metaspaceClosure.hpp
    static bool is_read_only_by_default() { return false; }
@@ -1060,7 +1060,7 @@ Last Update: 2019-04-29
  
  // Base class for classes that constitute name spaces.
  
-@@ -490,7 +490,7 @@ protected:
+@@ -525,7 +525,7 @@
    void print() const;
    virtual void print_on(outputStream* st) const;
  #endif // PRODUCT
@@ -1071,7 +1071,7 @@ Last Update: 2019-04-29
  // or object to determine whether it should reside in the C heap on in
 --- a/src/hotspot/share/oops/constMethod.hpp
 +++ b/src/hotspot/share/oops/constMethod.hpp
-@@ -530,6 +530,6 @@ private:
+@@ -530,6 +530,6 @@
  
    // Verify
    void verify_on(outputStream* st);
@@ -1081,7 +1081,7 @@ Last Update: 2019-04-29
  #endif // SHARE_OOPS_CONSTMETHOD_HPP
 --- a/src/hotspot/share/oops/oop.hpp
 +++ b/src/hotspot/share/oops/oop.hpp
-@@ -318,7 +318,7 @@ class oopDesc {
+@@ -319,7 +319,7 @@
    static void* load_oop_raw(oop obj, int offset);
  
    DEBUG_ONLY(bool size_might_change();)
