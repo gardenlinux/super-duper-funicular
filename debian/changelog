@@ -1,3 +1,11 @@
+openjdk-21 (21~26ea-2) UNRELEASED; urgency=medium
+
+  [ Vladimir Petko ]
+  * d/rules: only compile google tests when with_check is enabled, 
+    disable them for bullseye and jammy.
+
+ -- Matthias Klose <doko@ubuntu.com>  Mon, 12 Jun 2023 06:29:28 +0200
+
 openjdk-21 (21~26ea-1) unstable; urgency=medium
 
   * OpenJDK 21 snapshot, Build 26.
