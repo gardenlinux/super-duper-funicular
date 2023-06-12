@@ -21,7 +21,6 @@ atk-wrapper-security.diff
 dnd-files.diff
 generated-headers.patch
 m68k-support.diff
-reproducible-properties-timestamp.diff
 # reproducible-javadoc-timestamp.diff
 make-debug-print.diff
 Don-t-optimize-fdlibm-fork-for-Zero-on-linux-sparc-Z.patch

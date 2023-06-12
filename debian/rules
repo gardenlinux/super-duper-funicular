@@ -157,13 +157,7 @@ ifneq (,$(filter parallel=%,$(subst $(COMMA), ,$(DEB_BUILD_OPTIONS))))
   NJOBS = $(subst parallel=,,$(filter parallel=%,$(subst $(COMMA), ,$(DEB_BUILD_OPTIONS))))
 endif
 
-ifneq (,$(filter $(distrel), sid bookworm bullseye focal jammy kinetic))
-  jtreg_pkg = jtreg6
-else ifneq (,$(filter $(distrel), sid bookworm bullseye))
-  jtreg_pkg = jtreg
-else
-  jtreg_pkg =
-endif
+jtreg_pkg = jtreg6
 
 with_check = $(if $(findstring nocheck, $(DEB_BUILD_OPTIONS)),,yes)
 ifneq (,$(filter $(DEB_HOST_ARCH), alpha armel mipsel mips64el riscv64))
@@ -271,6 +265,10 @@ else ifneq (,$(filter $(distrel),bullseye groovy hirsute))
   export CC = $(DEB_HOST_GNU_TYPE)-gcc-10
   export CXX = $(DEB_HOST_GNU_TYPE)-g++-10
   bd_gcc = g++-10 <!cross>,
+else ifneq (,$(filter $(distrel),jammy))
+  export CC = $(DEB_HOST_GNU_TYPE)-gcc-11
+  export CXX = $(DEB_HOST_GNU_TYPE)-g++-11
+  bd_gcc = g++-11 <!cross>,
 else
   export CC = $(DEB_HOST_GNU_TYPE)-gcc-12
   export CXX = $(DEB_HOST_GNU_TYPE)-g++-12
@@ -907,7 +905,6 @@ debian/control: debian/control.in debian/tests/control debian/rules
 
 debian/tests/control: debian/tests/control.in debian/rules
 	sed \
-		-e 's,@jtreg_pkg@,$(jtreg_pkg),g' \
 		-e 's/@min_jtreg_version@/$(min_jtreg_version)/g' \
 		$< > $@;
 
@@ -1257,7 +1254,7 @@ install: packaging-files
 
 	chmod -R u+w $(d)
 
-	: # use javaws from icedtea-netx 
+	: # use javaws from icedtea-netx
 	find $(d) -name 'javaws*' | xargs -r rm -f
 
 	: # install default jvm config file
@@ -1873,7 +1870,7 @@ endif
 is_release		= yes
 #is_release		=
 git_project		= jdk19u
-git_tag			= jdk-19.0.1+10
+git_tag			= jdk-19.0.2+7
 package_version		= $(shell echo $(PKGVERSION) | sed 's/-[^-][^-]*$$//')
 ifneq ($(is_release),yes)
   package_version	:= $(subst +,~,$(package_version))
