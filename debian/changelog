@@ -1,4 +1,4 @@
-openjdk-20 (20.0.1+9-3) UNRELEASED; urgency=medium
+openjdk-20 (20.0.1+9-3) unstable; urgency=medium
 
   [ Vladimir Petko ]
   * d/rules: only compile google tests when with_check is enabled,
