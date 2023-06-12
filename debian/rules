@@ -532,7 +532,14 @@ COMMON_CONFIGURE_ARGS += \
 	--with-pcsclite=system \
 	--disable-warnings-as-errors \
 	--disable-javac-server \
-	--with-gtest=system \
+
+ifeq ($(with_check),yes)
+# temporary: disable gtest until compile errors are fixed in jammy
+  ifeq (,$(filter $(distrel),bullseye jammy))
+    COMMON_CONFIGURE_ARGS += \
+        --with-gtest=system
+  endif
+endif
 
 ifeq (,$(filter $(distrel),jessie stretch precise trusty xenial))
   COMMON_CONFIGURE_ARGS += \
