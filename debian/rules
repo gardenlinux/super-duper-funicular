@@ -176,7 +176,7 @@ ifneq (,$(filter $(DEB_HOST_ARCH), alpha armel mipsel mips64el riscv64))
   with_check = disabled running check on $(DEB_HOST_ARCH)
 endif
 # no jtreg backport yet
-ifneq (,$(filter $(distrel), precise trusty xenial bionic focal jammy sid bookworm bullseye))
+ifneq (,$(filter $(distrel), precise trusty xenial bionic focal jammy sid trixie bookworm bullseye))
   with_check = disabled for $(distrel), no $(jtreg_pkg)
 endif
 #with_check = disabled, more recent jtreg needed

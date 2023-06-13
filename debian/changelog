@@ -1,3 +1,10 @@
+openjdk-21 (21~26ea-3) UNRELEASED; urgency=medium
+
+  [ Vladimir Petko ]
+  * Also disable tests on trixie. No jtreg7 yet.
+
+ -- Matthias Klose <doko@ubuntu.com>  Tue, 13 Jun 2023 06:33:06 +0200
+
 openjdk-21 (21~26ea-2) unstable; urgency=medium
 
   [ Vladimir Petko ]
