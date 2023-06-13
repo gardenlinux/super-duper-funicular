@@ -1,3 +1,10 @@
+openjdk-20 (20.0.1+9-4) UNRELEASED; urgency=medium
+
+  [ Vladimir Petko ]
+  * disable jtreg tests for trixie as jtreg7 package is not available
+
+ -- Matthias Klose <doko@ubuntu.com>  Tue, 13 Jun 2023 06:36:28 +0200
+
 openjdk-20 (20.0.1+9-3) unstable; urgency=medium
 
   [ Vladimir Petko ]
