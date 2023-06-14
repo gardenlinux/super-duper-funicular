@@ -1,0 +1,53 @@
+commit cca1cc7cf5d89de3dcf5fa4ba42f521ba3ceee89
+Author: Vladimir Petko <vladimir.petko@canonical.com>
+Date:   Wed Jun 14 21:05:06 2023 +1200
+
+    add mipsel architecture
+
+diff --git a/src/java.base/share/classes/jdk/internal/util/Architecture.java b/src/java.base/share/classes/jdk/internal/util/Architecture.java
+index fb3719fb30a..7b6bc008633 100644
+--- a/src/java.base/share/classes/jdk/internal/util/Architecture.java
++++ b/src/java.base/share/classes/jdk/internal/util/Architecture.java
+@@ -41,6 +41,8 @@ public enum Architecture {
+     RISCV64,
+     S390,
+     PPC64,
++    MIPSEL,
++    MIPS64EL
+     ;
+ 
+     private static Architecture CURRENT_ARCH = initArch(PlatformProps.CURRENT_ARCH_STRING);
+@@ -102,6 +104,22 @@ public enum Architecture {
+         return PlatformProps.TARGET_ARCH_IS_AARCH64;
+     }
+ 
++    /**
++     * {@return {@code true} if the current architecture is MIPSEL}
++     */
++    @ForceInline
++    public static boolean isMIPSEL() {
++        return PlatformProps.TARGET_ARCH_IS_MIPSEL;
++    }
++
++    /**
++     * {@return {@code true} if the current architecture is MIPS64EL}
++     */
++    @ForceInline
++    public static boolean isMIPS64EL() {
++        return PlatformProps.TARGET_ARCH_IS_MIPSEL64;
++    }
++
+     /**
+      * {@return the current architecture}
+      */
+diff --git a/src/java.base/share/classes/jdk/internal/util/PlatformProps.java.template b/src/java.base/share/classes/jdk/internal/util/PlatformProps.java.template
+index a01d90a0738..b656d212317 100644
+--- a/src/java.base/share/classes/jdk/internal/util/PlatformProps.java.template
++++ b/src/java.base/share/classes/jdk/internal/util/PlatformProps.java.template
+@@ -57,4 +57,6 @@ class PlatformProps {
+     static final boolean TARGET_ARCH_IS_RISCV64 = "@@OPENJDK_TARGET_CPU@@" == "riscv64";
+     static final boolean TARGET_ARCH_IS_S390    = "@@OPENJDK_TARGET_CPU@@" == "s390";
+     static final boolean TARGET_ARCH_IS_PPC64   = "@@OPENJDK_TARGET_CPU@@" == "ppc64";
++    static final boolean TARGET_ARCH_IS_MIPSEL  = "@@OPENJDK_TARGET_CPU@@" == "mipsel";
++    static final boolean TARGET_ARCH_IS_MIPS64EL= "@@OPENJDK_TARGET_CPU@@" == "mips64el";
+ }
