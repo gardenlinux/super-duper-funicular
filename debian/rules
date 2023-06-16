@@ -176,7 +176,7 @@ ifneq (,$(filter $(DEB_HOST_ARCH), alpha armel mipsel mips64el riscv64))
   with_check = disabled running check on $(DEB_HOST_ARCH)
 endif
 # no jtreg backport yet
-ifneq (,$(filter $(distrel), precise trusty xenial bionic focal jammy sid trixie bookworm bullseye))
+ifneq (,$(filter $(distrel), precise trusty xenial bionic focal jammy bookworm bullseye))
   with_check = disabled for $(distrel), no $(jtreg_pkg)
 endif
 #with_check = disabled, more recent jtreg needed
@@ -1889,7 +1889,7 @@ endif
 #is_release		= yes
 is_release		=
 git_project		= jdk
-git_tag			= jdk-21+26
+git_tag			= jdk-21+27
 package_version		= $(shell echo $(PKGVERSION) | sed 's/-[^-][^-]*$$//')
 ifneq ($(is_release),yes)
   package_version	:= $(subst +,~,$(package_version))

@@ -1,4 +1,6 @@
-openjdk-21 (21~26ea-3) UNRELEASED; urgency=medium
+openjdk-21 (21~27ea-1) UNRELEASED; urgency=medium
+
+  * OpenJDK 21 snapshot, Build 27.
 
   [ Vladimir Petko ]
   * Also disable tests on trixie. No jtreg7 yet.
@@ -7,7 +9,10 @@ openjdk-21 (21~26ea-3) UNRELEASED; urgency=medium
   * debian/watch: Add ea repack suffix.
   * Fix build on mipsel and mips64el.
 
- -- Matthias Klose <doko@ubuntu.com>  Tue, 13 Jun 2023 06:33:06 +0200
+  [ Matthias Klose ]
+  * Enable tests for trixie and unstable.
+
+ -- Matthias Klose <doko@ubuntu.com>  Fri, 16 Jun 2023 05:52:30 +0200
 
 openjdk-21 (21~26ea-2) unstable; urgency=medium
 
