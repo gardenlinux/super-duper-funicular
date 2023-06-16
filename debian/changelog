@@ -1,3 +1,9 @@
+openjdk-21 (21~27ea-3) unstable; urgency=medium
+
+  * Regenerate autopkg test scripts.
+
+ -- Matthias Klose <doko@ubuntu.com>  Fri, 16 Jun 2023 14:51:08 +0200
+
 openjdk-21 (21~27ea-2) unstable; urgency=medium
 
   * OpenJDK 21 snapshot, Build 27.

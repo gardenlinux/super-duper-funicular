@@ -15,7 +15,7 @@ fi
 host_arch="${DEB_HOST_ARCH:-$(dpkg --print-architecture)}"
 
 if [ -z "${JDK_TO_TEST+x}" ]; then
-  JDK_TO_TEST=$(echo /usr/lib/jvm/java-20-openjdk-amd64 | sed "s/-[^-]*$/-$host_arch/")
+  JDK_TO_TEST=$(echo /usr/lib/jvm/java-21-openjdk-amd64 | sed "s/-[^-]*$/-$host_arch/")
 fi
 
 if [ -z "${BOOTJDK_HOME+x}" ]; then
@@ -32,7 +32,7 @@ fi
 if dpkg --compare-versions ${jtreg_version} ge 4.2; then
   jt_options+=" -conc:auto"
 fi
-
+  
 # check java binary
 if [ ! -x "${JDK_TO_TEST}/bin/java" ]; then
   echo "Error: '${JDK_TO_TEST}/bin/java' is not an executable." >&2
