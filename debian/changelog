@@ -8,6 +8,7 @@ openjdk-21 (21~27ea-1) UNRELEASED; urgency=medium
   * debian/copyright: Align excludes statement with openjdk-17.
   * debian/watch: Add ea repack suffix.
   * Fix build on mipsel and mips64el.
+  * Move ct.sym from the jre into the jdk package.
 
   [ Matthias Klose ]
   * Enable tests for trixie and unstable.

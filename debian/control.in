@@ -40,8 +40,8 @@ Provides: java-sdk-headless, java2-sdk-headless,
   java18-sdk-headless, java19-sdk-headless,
   java20-sdk-headless, java21-sdk-headless,
   java-compiler
-Breaks: openjdk-17-jre-headless (<< 17~10)
-Replaces: openjdk-17-jre-headless (<< 17~10)
+Breaks: openjdk-17-jre-headless (<< 17~10), openjdk-21-jre-headless (<< 21~27),
+Replaces: openjdk-17-jre-headless (<< 17~10), openjdk-21-jre-headless (<< 21~27),
 Description: OpenJDK Development Kit (JDK) (headless)
  OpenJDK is a development environment for building applications,
  applets, and components using the Java programming language.

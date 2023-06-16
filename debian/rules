@@ -1403,7 +1403,6 @@ endif
 	  echo '$(basedir)/lib/$(if $(filter $(DEB_HOST_ARCH),$(hotspot_archs)),server,zero)'; \
 	  echo '$(basedir)/lib/jvm.cfg-default'; \
 	  echo '$(basedir)/lib/libjli.so'; \
-	  echo '$(basedir)/lib/ct.sym'; \
 	  echo '$(basedir)/lib/jexec'; \
 	  echo '$(basedir)/lib/jspawnhelper'; \
 	  echo '$(basedir)/lib/jrt-fs.jar'; \
@@ -1481,6 +1480,7 @@ endif
 	  done; \
 	  echo '$(basedir)/include/*/jni_md.h'; \
 	  echo '$(basedir)/jmods'; \
+	  echo '$(basedir)/lib/ct.sym'; \
 	) > debian/$(p_jdkhl).install
 
 	: # $(p_jdk).install
