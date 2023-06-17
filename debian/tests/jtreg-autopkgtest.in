@@ -35,12 +35,12 @@ fi
   
 # check java binary
 if [ ! -x "${JDK_TO_TEST}/bin/java" ]; then
-  echo "Error: '${JDK_TO_TEST}/bin/java' is not an executable." >&2
+  echo "Error: JDK_TO_TEST: '${JDK_TO_TEST}/bin/java' is not an executable." >&2
   exit 1
 fi
 
 if [ ! -x "${BOOTJDK_HOME}/bin/java" ]; then
-  echo "Error: '${BOOTJDK_HOME}/bin/java' is not an executable." >&2
+  echo "Error: BOOTJDK_HOME: '${BOOTJDK_HOME}/bin/java' is not an executable." >&2
   exit 1
 fi
 
