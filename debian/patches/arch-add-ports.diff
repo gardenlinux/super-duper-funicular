@@ -1,0 +1,124 @@
+--- a/src/java.base/share/classes/jdk/internal/util/Architecture.java
++++ b/src/java.base/share/classes/jdk/internal/util/Architecture.java
+@@ -36,13 +36,17 @@ public enum Architecture {
+     OTHER,      // An unknown architecture not specifically named
+     X64,        // Represents AMD64 and X86_64
+     X86,
++    ALPHA,
+     AARCH64,
+     ARM,
+     RISCV64,
+     S390,
++    PPC,
+     PPC64,
+     MIPSEL,
+-    MIPS64EL
++    MIPS64EL,
++    SH,
++    X32
+     ;
+ 
+     private static Architecture CURRENT_ARCH = initArch(PlatformProps.CURRENT_ARCH_STRING);
+@@ -80,6 +84,15 @@ public enum Architecture {
+     }
+ 
+     /**
++     * {@return {@code true} if the current architecture is PPC}
++     * Use {@link #isLittleEndian()} to determine big or little endian.
++     */
++    @ForceInline
++    public static boolean isPPC() {
++        return PlatformProps.TARGET_ARCH_IS_PPC;
++    }
++
++    /**
+      * {@return {@code true} if the current architecture is PPC64}
+      * Use {@link #isLittleEndian()} to determine big or little endian.
+      */
+@@ -89,6 +102,33 @@ public enum Architecture {
+     }
+ 
+     /**
++     * {@return {@code true} if the current architecture is ALPHA}
++     * Use {@link #isLittleEndian()} to determine big or little endian.
++     */
++    @ForceInline
++    public static boolean isALPHA() {
++        return PlatformProps.TARGET_ARCH_IS_ALPHA;
++    }
++
++    /**
++     * {@return {@code true} if the current architecture is X32}
++     * Use {@link #isLittleEndian()} to determine big or little endian.
++     */
++    @ForceInline
++    public static boolean isX32() {
++        return PlatformProps.TARGET_ARCH_IS_X32;
++    }
++
++    /**
++     * {@return {@code true} if the current architecture is SH}
++     * Use {@link #isLittleEndian()} to determine big or little endian.
++     */
++    @ForceInline
++    public static boolean isSH() {
++        return PlatformProps.TARGET_ARCH_IS_SH;
++    }
++
++    /**
+      * {@return {@code true} if the current architecture is ARM}
+      */
+     @ForceInline
+--- a/src/java.base/share/classes/jdk/internal/util/PlatformProps.java.template
++++ b/src/java.base/share/classes/jdk/internal/util/PlatformProps.java.template
+@@ -59,4 +59,8 @@ class PlatformProps {
+     static final boolean TARGET_ARCH_IS_PPC64   = "@@OPENJDK_TARGET_CPU@@" == "ppc64";
+     static final boolean TARGET_ARCH_IS_MIPSEL  = "@@OPENJDK_TARGET_CPU@@" == "mipsel";
+     static final boolean TARGET_ARCH_IS_MIPS64EL= "@@OPENJDK_TARGET_CPU@@" == "mips64el";
++    static final boolean TARGET_ARCH_IS_X32     = "@@OPENJDK_TARGET_CPU@@" == "x32";
++    static final boolean TARGET_ARCH_IS_SH      = "@@OPENJDK_TARGET_CPU@@" == "sh";
++    static final boolean TARGET_ARCH_IS_PPC     = "@@OPENJDK_TARGET_CPU@@" == "ppc";
++    static final boolean TARGET_ARCH_IS_ALPHA   = "@@OPENJDK_TARGET_CPU@@" == "alpha";
+ }
+--- a/test/jdk/jdk/internal/util/ArchTest.java
++++ b/test/jdk/jdk/internal/util/ArchTest.java
+@@ -27,13 +27,17 @@ import jdk.internal.util.Architecture;
+ import jdk.internal.misc.Unsafe;
+ 
+ import static jdk.internal.util.Architecture.OTHER;
++import static jdk.internal.util.Architecture.ALPHA;
+ import static jdk.internal.util.Architecture.AARCH64;
+ import static jdk.internal.util.Architecture.ARM;
++import static jdk.internal.util.Architecture.PPC;
+ import static jdk.internal.util.Architecture.PPC64;
+ import static jdk.internal.util.Architecture.RISCV64;
+ import static jdk.internal.util.Architecture.S390;
++import static jdk.internal.util.Architecture.SH;
+ import static jdk.internal.util.Architecture.X64;
+ import static jdk.internal.util.Architecture.X86;
++import static jdk.internal.util.Architecture.X32;
+ import static jdk.internal.util.Architecture.MIPSEL;
+ import static jdk.internal.util.Architecture.MIPS64EL;
+ 
+@@ -76,6 +80,10 @@ public class ArchTest {
+             case "ppc64", "ppc64le" -> PPC64;
+             case "mipsel" -> MIPSEL;
+             case "mip64sel" -> MIPS64EL;
++            case "alpha" -> ALPHA;
++            case "ppc" -> PPC;
++            case "sh" -> SH;
++            case "x32" -> X32;
+             default -> OTHER;
+         };
+         assertEquals(Architecture.current(), arch, "mismatch in Architecture.current vs " + osArch);
+@@ -96,6 +104,10 @@ public class ArchTest {
+                 Arguments.of(MIPSEL, Architecture.isMIPSEL()),
+                 Arguments.of(MIPS64EL, Architecture.isMIPS64EL()),
+                 Arguments.of(PPC64, Architecture.isPPC64())
++                Arguments.of(PPC, Architecture.isPPC())
++                Arguments.of(ALPHA, Architecture.isALPHA())
++                Arguments.of(SH, Architecture.isSH())
++                Arguments.of(X32, Architecture.isX32())
+         );
+     }
+ 

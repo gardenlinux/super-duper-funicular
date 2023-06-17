@@ -1,3 +1,9 @@
+openjdk-21 (21~27ea-5) UNRELEASED; urgency=medium
+
+  * Add support for alpha, ppc, sh, x32.
+
+ -- Matthias Klose <doko@ubuntu.com>  Sat, 17 Jun 2023 11:24:25 +0200
+
 openjdk-21 (21~27ea-4) unstable; urgency=medium
 
   * debian/rules: Correctly set BOOT_JDK_HOME.
