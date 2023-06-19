@@ -1,3 +1,9 @@
+openjdk-19 (19.0.2+7-3) UNRELEASED; urgency=medium
+
+  * Disable running tests on x32, hangs on the buildds.
+
+ -- Matthias Klose <doko@ubuntu.com>  Mon, 19 Jun 2023 18:28:56 +0200
+
 openjdk-19 (19.0.2+7-2) unstable; urgency=medium
 
   * d/p/m68k-support.diff: update target directory for x11 wrapper type sizes.
