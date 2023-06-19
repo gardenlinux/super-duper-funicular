@@ -3,7 +3,7 @@ Author: John Paul Adrian Glaubitz <glaubitz@physik.fu-berlin.de>
 Last Update: 2019-04-29
 
 --- /dev/null
-+++ b/make/data/x11wrappergen/sizes-32-linux-m68k.txt
++++ b/src/java.desktop/unix/data/x11wrappergen/sizes-32-linux-m68k.txt
 @@ -0,0 +1,1017 @@
 +long	4
 +int	4

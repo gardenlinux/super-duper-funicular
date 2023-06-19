@@ -1,3 +1,9 @@
+openjdk-19 (19.0.2+7-2) unstable; urgency=medium
+
+  * d/p/m68k-support.diff: update target directory for x11 wrapper type sizes.
+
+ -- Matthias Klose <doko@ubuntu.com>  Mon, 19 Jun 2023 08:40:00 +0200
+
 openjdk-19 (19.0.2+7-1) unstable; urgency=high
 
   * OpenJDK 19.0.2 release, build 7.
