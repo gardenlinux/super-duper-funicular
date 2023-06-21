@@ -1,11 +1,15 @@
-openjdk-20 (20.0.1+9-4) UNRELEASED; urgency=medium
+openjdk-20 (20.0.1+9-4) unstable; urgency=medium
 
   [ Vladimir Petko ]
   * disable jtreg tests for trixie as jtreg7 package is not available
   * debian/copyright: Convert to a machine-readable format.
   * debian/copyright: Align excludes statement with openjdk-17.
 
- -- Matthias Klose <doko@ubuntu.com>  Tue, 13 Jun 2023 06:36:28 +0200
+  [ Matthias Klose ]
+  * debian/rules: Correctly set BOOT_JDK_HOME.
+  * d/p/m68k-support.diff: update target directory for x11 wrapper type sizes.
+
+ -- Matthias Klose <doko@ubuntu.com>  Wed, 21 Jun 2023 11:46:15 +0200
 
 openjdk-20 (20.0.1+9-3) unstable; urgency=medium
 
