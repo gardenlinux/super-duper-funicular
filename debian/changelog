@@ -1,3 +1,10 @@
+openjdk-22 (22~3ea-1) unstable; urgency=medium
+
+  * OpenJDK 22 snapshot, Build 3.
+  * Remove breaks/replaces from OpenJDK 21 packages.
+
+ -- Matthias Klose <doko@ubuntu.com>  Mon, 26 Jun 2023 09:40:39 +0200
+
 openjdk-21 (21~28ea-1) unstable; urgency=medium
 
   * OpenJDK 21 snapshot, Build 28.

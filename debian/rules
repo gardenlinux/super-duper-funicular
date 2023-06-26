@@ -93,14 +93,14 @@ TOP		= usr/lib/jvm
 origin		= openjdk
 basename	= openjdk-$(shortver)
 ifneq (,$(filter $(DEB_HOST_ARCH), $(hotspot_archs)))
-  priority	= $(if $(filter yes, $(is_default)),2111,2109)
+  priority	= $(if $(filter yes, $(is_default)),2211,2209)
   vm_name	= Hotspot JIT
 else
   priority	= $(if $(filter yes, $(is_default)),2104,2103)
   vm_name	= Hotspot Zero
 endif
-jvmver		= 1.21.0
-shortver	= 21
+jvmver		= 1.22.0
+shortver	= 22
 v_debian	:= $(shell echo $(PKGVERSION) | sed 's/ea//' | sed 's/\~us[[:digit:]]\+//')
 v_upstream	:= $(shell echo $(v_debian) | sed 's/-[^-][^-]*$$//')
 v_pkgrel	:= $(shell echo $(v_debian) | sed 's/^.*-//')
@@ -199,7 +199,7 @@ endif
 
 default_vm = $(if $(filter $(DEB_HOST_ARCH), $(hotspot_archs)),hotspot,zero)
 
-any_archs = alpha amd64 armel armhf arm64 i386 ia64 mips mipsel mips64 mips64el powerpc ppc64 ppc64el m68k riscv64 sh4 sparc sparc64 s390x x32
+any_archs = alpha amd64 armel armhf arm64 hppa i386 ia64 mips mipsel mips64 mips64el powerpc ppc64 ppc64el m68k riscv64 sh4 sparc sparc64 s390x x32
 
 altzero_archs = $(hotspot_archs)
 ifneq (,$(filter $(distrel),trusty))
@@ -217,8 +217,8 @@ endif
 export DEBIAN_JDK_BASE_DIR := /$(basedir)
 
 BOOTJDK_HOME := $(strip $(subst /bin/javac,, $(firstword $(wildcard \
+			/usr/lib/jvm/java-22-openjdk-$(DEB_BUILD_ARCH)/bin/javac \
 			/usr/lib/jvm/java-21-openjdk-$(DEB_BUILD_ARCH)/bin/javac \
-			/usr/lib/jvm/java-20-openjdk-$(DEB_BUILD_ARCH)/bin/javac \
 		))))
 
 ifeq ($(DEB_BUILD_ARCH),$(DEB_HOST_ARCH))
@@ -625,12 +625,12 @@ else
 endif
 
 ifneq (,$(filter $(distrel),precise))
-    bd_bootstrap = openjdk-20-jdk-headless | openjdk-21-jdk-headless,
+    bd_bootstrap = openjdk-21-jdk-headless | openjdk-22-jdk-headless,
 else ifneq (,$(filter $(distrel),squeeze wheezy jessie trusty xenial))
-    bd_bootstrap = openjdk-20-jdk-headless:native | openjdk-21-jdk-headless:native,
+    bd_bootstrap = openjdk-21-jdk-headless:native | openjdk-22-jdk-headless:native,
 else
-    bd_bootstrap = openjdk-21-jdk-headless:native | openjdk-20-jdk-headless:native,
-    bd_bootstrap = openjdk-20-jdk-headless:native | openjdk-21-jdk-headless:native,
+    bd_bootstrap = openjdk-22-jdk-headless:native | openjdk-21-jdk-headless:native,
+    bd_bootstrap = openjdk-21-jdk-headless:native | openjdk-22-jdk-headless:native,
 endif
 
 ifeq (,$(filter $(distrel),squeeze wheezy jessie precise trusty xenial))
@@ -796,25 +796,6 @@ else
   cjk_fonts += fonts-indic,
 endif
 
-jrehl_breaks = clojure1.8 (<= 1.8.0-7ubuntu1~),
-ifneq (,$(filter $(distrel),buster sid bionic cosmic disco eoan))
-  jrehl_breaks += \
-	jetty9 (<< 9.4.15-1~), netbeans (<< 10.0-3~), visualvm (<< 1.4.2-2~), \
-	eclipse-platform (<< 3.8.1-11), eclipse-rcp (<< 3.8.1-11), \
-	libequinox-osgi-java (<< 3.9.1),
-endif
-ifneq (,$(filter $(distrel),bionic cosmic disco eoan))
-  jrehl_breaks += \
-	tomcat8 (<< 8.5.39-1ubuntu1~),
-endif
-ifneq (,$(filter $(distrel),buster sid))
-  jrehl_breaks += \
-	libreoffice-core (<< 1:6.1.5-2~),
-else ifneq (,$(filter $(distrel),disco))
-  jrehl_breaks += \
-	libreoffice-core (<< 1:6.2.2-0ubuntu2),
-endif
-
 p_jre	= $(basename)-jre
 p_jrehl	= $(basename)-jre-headless
 p_jrez	= $(basename)-jre-zero
@@ -874,8 +855,6 @@ endif
 
 pkg_jcommon = java-common (>= 0.28)
 control_vars += '-Vjcommon:Depends=$(pkg_jcommon)'
-
-control_vars += '-Vjrehl:Breaks=$(jrehl_breaks)'
 
 ifneq ($(with_debugedit),yes)
   control_vars += '-Vdbg:Conflicts=openjdk-11-dbg, openjdk-12-dbg, openjdk-13-dbg, openjdk-14-dbg, openjdk-15-dbg, openjdk-16-dbg'
@@ -1889,7 +1868,7 @@ endif
 #is_release		= yes
 is_release		=
 git_project		= jdk
-git_tag			= jdk-21+28
+git_tag			= jdk-22+3
 package_version		= $(shell echo $(PKGVERSION) | sed 's/-[^-][^-]*$$//')
 ifneq ($(is_release),yes)
   package_version	:= $(subst +,~,$(package_version))

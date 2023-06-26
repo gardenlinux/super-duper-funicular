@@ -5,7 +5,6 @@ icedtea-override-redirect-compiz.diff
 libpcsclite-dlopen.diff
 #jexec.diff
 default-jvm-cfg.diff
-adlc-parser.diff
 multiple-pkcs11-library-init.diff
 s390x-opt.diff
 jdk-getAccessibleValue.diff
