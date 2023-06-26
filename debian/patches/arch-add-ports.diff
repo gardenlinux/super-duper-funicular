@@ -1,7 +1,7 @@
 --- a/src/java.base/share/classes/jdk/internal/util/Architecture.java
 +++ b/src/java.base/share/classes/jdk/internal/util/Architecture.java
-@@ -41,6 +41,11 @@ public enum Architecture {
-     RISCV64,
+@@ -42,6 +42,11 @@ public enum Architecture {
+     LOONGARCH64,
      S390,
      PPC64,
 +    ALPHA,
@@ -12,7 +12,7 @@
      MIPSEL,
      MIPS64EL
      ;
-@@ -80,6 +85,15 @@ public enum Architecture {
+@@ -89,6 +94,15 @@ public enum Architecture {
      }
  
      /**
@@ -28,7 +28,7 @@
       * {@return {@code true} if the current architecture is PPC64}
       * Use {@link #isLittleEndian()} to determine big or little endian.
       */
-@@ -89,6 +103,42 @@ public enum Architecture {
+@@ -98,6 +112,42 @@ public enum Architecture {
      }
  
      /**
@@ -73,7 +73,7 @@
      @ForceInline
 --- a/src/java.base/share/classes/jdk/internal/util/PlatformProps.java.template
 +++ b/src/java.base/share/classes/jdk/internal/util/PlatformProps.java.template
-@@ -59,4 +59,9 @@ class PlatformProps {
+@@ -60,4 +60,9 @@ class PlatformProps {
      static final boolean TARGET_ARCH_IS_PPC64   = "@@OPENJDK_TARGET_CPU@@" == "ppc64";
      static final boolean TARGET_ARCH_IS_MIPSEL  = "@@OPENJDK_TARGET_CPU@@" == "mipsel";
      static final boolean TARGET_ARCH_IS_MIPS64EL= "@@OPENJDK_TARGET_CPU@@" == "mips64el";
@@ -85,29 +85,22 @@
  }
 --- a/test/jdk/jdk/internal/util/ArchTest.java
 +++ b/test/jdk/jdk/internal/util/ArchTest.java
-@@ -27,13 +27,18 @@ import jdk.internal.util.Architecture;
- import jdk.internal.misc.Unsafe;
- 
- import static jdk.internal.util.Architecture.OTHER;
-+import static jdk.internal.util.Architecture.ALPHA;
- import static jdk.internal.util.Architecture.AARCH64;
- import static jdk.internal.util.Architecture.ARM;
-+import static jdk.internal.util.Architecture.PPC;
- import static jdk.internal.util.Architecture.PPC64;
- import static jdk.internal.util.Architecture.RISCV64;
+@@ -35,6 +35,11 @@ import static jdk.internal.util.Architec
  import static jdk.internal.util.Architecture.S390;
-+import static jdk.internal.util.Architecture.SH;
  import static jdk.internal.util.Architecture.X64;
  import static jdk.internal.util.Architecture.X86;
++import static jdk.internal.util.Architecture.ALPHA;
++import static jdk.internal.util.Architecture.PPC;
++import static jdk.internal.util.Architecture.SH;
 +import static jdk.internal.util.Architecture.X32;
 +import static jdk.internal.util.Architecture.M68K;
  import static jdk.internal.util.Architecture.MIPSEL;
  import static jdk.internal.util.Architecture.MIPS64EL;
  
-@@ -76,6 +81,11 @@ public class ArchTest {
+@@ -78,6 +83,11 @@ public class ArchTest {
              case "ppc64", "ppc64le" -> PPC64;
              case "mipsel" -> MIPSEL;
-             case "mip64sel" -> MIPS64EL;
+             case "mips64el" -> MIPS64EL;
 +            case "alpha" -> ALPHA;
 +            case "m68k" -> M68K;
 +            case "ppc" -> PPC;
@@ -116,7 +109,7 @@
              default -> OTHER;
          };
          assertEquals(Architecture.current(), arch, "mismatch in Architecture.current vs " + osArch);
-@@ -95,6 +105,11 @@ public class ArchTest {
+@@ -98,6 +108,11 @@ public class ArchTest {
                  Arguments.of(S390, Architecture.isS390()),
                  Arguments.of(MIPSEL, Architecture.isMIPSEL()),
                  Arguments.of(MIPS64EL, Architecture.isMIPS64EL()),

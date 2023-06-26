@@ -1,9 +1,9 @@
-openjdk-21 (21~28ea-1) UNRELEASED; urgency=medium
+openjdk-21 (21~28ea-1) unstable; urgency=medium
 
   * OpenJDK 21 snapshot, Build 28.
   * Add support for alpha, m68k, ppc, sh, x32.
 
- -- Matthias Klose <doko@ubuntu.com>  Sun, 25 Jun 2023 08:07:12 +0200
+ -- Matthias Klose <doko@ubuntu.com>  Mon, 26 Jun 2023 07:48:49 +0200
 
 openjdk-21 (21~27ea-4) unstable; urgency=medium
 
