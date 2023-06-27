@@ -1,9 +1,13 @@
-openjdk-17 (17.0.7+7-2) UNRELEASED; urgency=medium
+openjdk-17 (17.0.7+7-2) unstable; urgency=medium
 
   [ Vladimir Petko ]
   * d/rules: backport testng selection logic.
 
- -- Matthias Klose <doko@ubuntu.com>  Mon, 12 Jun 2023 06:16:08 +0200
+  [ Matthias Klose ]
+  * Apply the backport patch for 8276799 (RISC-V Hotspot).
+  * Build both JREs (hotspot and zero) on riscv64.
+
+ -- Matthias Klose <doko@ubuntu.com>  Mon, 26 Jun 2023 15:58:27 +0200
 
 openjdk-17 (17.0.7+7-1) unstable; urgency=high
 

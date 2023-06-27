@@ -25,7 +25,6 @@ keep-gtk2-as-default.patch
 reproducible-character-data.diff
 reproducible-module-info.diff
 #reproducible-copyright-headers.diff
-riscv64.diff
 reproducible-build-jmod.diff
 mips.diff
 #nspr+nss-headers.diff
@@ -38,3 +37,4 @@ update-permission-test.patch
 ldap-timeout-test-use-ip.patch
 test-use-ip-address.patch
 exclude-broken-tests.patch
+8276799.diff
