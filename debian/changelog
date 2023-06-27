@@ -1,3 +1,10 @@
+openjdk-17 (17.0.8~6-1) experimental; urgency=medium
+
+  * OpenJDK 17.0.8 early access, build 6.
+  * Bump debhelper version to 11.
+
+ -- Matthias Klose <doko@ubuntu.com>  Tue, 27 Jun 2023 12:05:37 +0200
+
 openjdk-17 (17.0.7+7-2) unstable; urgency=medium
 
   [ Vladimir Petko ]
