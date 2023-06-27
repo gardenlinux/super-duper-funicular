@@ -1,3 +1,10 @@
+openjdk-22 (22~3ea-1ubuntu1) UNRELEASED; urgency=medium
+
+  * Provide versioned java-runtime, java-runtime-headless, java-sdk
+    and java-sdk-headless virtual packages (Emmanuel Bourg).
+
+ -- Matthias Klose <doko@xe1>  Tue, 27 Jun 2023 14:31:47 +0200
+
 openjdk-22 (22~3ea-1) unstable; urgency=medium
 
   * OpenJDK 22 snapshot, Build 3.

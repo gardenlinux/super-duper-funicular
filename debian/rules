@@ -172,7 +172,7 @@ else
 endif
 
 with_check = $(if $(findstring nocheck, $(DEB_BUILD_OPTIONS)),,yes)
-ifneq (,$(filter $(DEB_HOST_ARCH), alpha armel mipsel mips64el riscv64))
+ifneq (,$(filter $(DEB_HOST_ARCH), alpha armel mipsel mips64el riscv64 x32))
   with_check = disabled running check on $(DEB_HOST_ARCH)
 endif
 # no jtreg backport yet
@@ -819,6 +819,7 @@ d_dbg	= debian/$(p_dbg)
 
 control_vars = \
 	'-Vvm:Name=$(vm_name)' \
+	'-Vvm:Version=shortver' \
 	'-Vdlopenhl:Depends=$(dlopen_hl_depends)' \
 	'-Vdlopenhl:Recommends=$(dlopen_hl_recommends)' \
 	'-Vdlopenjre:Depends=$(dlopen_jre_depends)' \
