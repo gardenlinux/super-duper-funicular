@@ -1,3 +1,10 @@
+openjdk-17 (17.0.8~6-2) UNRELEASED; urgency=medium
+
+  * Provide versioned java-runtime, java-runtime-headless, java-sdk
+    and java-sdk-headless virtual packages (Emmanuel Bourg). Closes: #1023869.
+
+ -- Matthias Klose <doko@ubuntu.com>  Tue, 27 Jun 2023 14:36:45 +0200
+
 openjdk-17 (17.0.8~6-1) experimental; urgency=medium
 
   * OpenJDK 17.0.8 early access, build 6.
