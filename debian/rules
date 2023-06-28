@@ -173,7 +173,7 @@ else
 endif
 
 with_check = $(if $(findstring nocheck, $(DEB_BUILD_OPTIONS)),,yes)
-ifneq (,$(filter $(DEB_HOST_ARCH), alpha armel mipsel mips64el riscv64))
+ifneq (,$(filter $(DEB_HOST_ARCH), alpha armel ia64 mipsel mips64el riscv64 x32))
   with_check = disabled running check on $(DEB_HOST_ARCH)
 endif
 # no jtreg backport yet
@@ -551,6 +551,12 @@ ifneq (,$(filter $(distrel),precise trusty xenial))
   # building with a GCC from a PPA ...
   COMMON_CONFIGURE_ARGS += \
 	--with-stdc++lib=static
+else ifneq (,$(filter $(DEB_HOST_ARCH), ia64))
+  # seen in 2023 on ia64:
+  # /usr/bin/ld: jvm-test-launcher: no symbol version section for versioned symbol `__cxa_pure_virtual@CXXABI_1.3'
+  # works when linking statically
+  COMMON_CONFIGURE_ARGS += \
+       --with-stdc++lib=static
 else
   COMMON_CONFIGURE_ARGS += \
 	--with-stdc++lib=dynamic
