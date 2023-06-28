@@ -605,7 +605,7 @@ all_tools	=  jar jarsigner java javac javadoc javap jcmd \
 jdk_hl_tools	= jar jarsigner javac javadoc javap jcmd jdb \
 	jdeprscan jdeps jfr jimage jinfo jlink jmap jmod jps \
 	jrunscript jshell jstack jstat jstatd serialver
-ifeq (,$(filter $(DEB_HOST_ARCH), alpha armel ia64 m68k mips mipsel mips64el powerpc riscv64 s390x sh4 sparc64 x32))
+ifeq (,$(filter $(DEB_HOST_ARCH), alpha armel ia64 m68k mips mipsel mips64el powerpc s390x sh4 sparc64 x32))
   all_tools	+= jhsdb
   jdk_hl_tools	+= jhsdb
 endif
