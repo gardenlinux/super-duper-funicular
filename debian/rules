@@ -817,7 +817,7 @@ d_dbg	= debian/$(p_dbg)
 
 control_vars = \
 	'-Vvm:Name=$(vm_name)' \
-	'-Vvm:Version=shortver' \
+	'-Vvm:Version=$(shortver)' \
 	'-Vdlopenhl:Depends=$(dlopen_hl_depends)' \
 	'-Vdlopenhl:Recommends=$(dlopen_hl_recommends)' \
 	'-Vdlopenjre:Depends=$(dlopen_jre_depends)' \
