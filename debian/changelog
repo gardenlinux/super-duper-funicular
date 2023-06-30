@@ -1,3 +1,10 @@
+openjdk-21 (21~28ea-3) UNRELEASED; urgency=medium
+
+  [ Vladimir Petko ]
+  * Fix bootstrapping with an OpenJDK 20 zero VM.
+
+ -- Matthias Klose <doko@ubuntu.com>  Fri, 30 Jun 2023 09:16:35 +0200
+
 openjdk-21 (21~28ea-2) unstable; urgency=medium
 
   * Update VCS attributes.
