@@ -158,11 +158,7 @@ ifneq (,$(filter parallel=%,$(subst $(COMMA), ,$(DEB_BUILD_OPTIONS))))
 endif
 
 jtreg_pkg = jtreg6
-ifeq ($(derivative),Ubuntu)
-  testng_pkg= libtestng7-java
-else
-  testng_pkg= testng
-endif
+testng_pkg= libtestng7-java
 
 with_check = $(if $(findstring nocheck, $(DEB_BUILD_OPTIONS)),,yes)
 ifneq (,$(filter $(DEB_HOST_ARCH), alpha armel ia64 mipsel mips64el riscv64 x32))
