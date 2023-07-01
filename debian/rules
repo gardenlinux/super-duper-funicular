@@ -78,6 +78,7 @@ else
 endif
 
 is_upstream_release = yes
+is_upstream_release =
 
 srcdir		= .
 builddir	= build
@@ -101,18 +102,18 @@ v_debian	:= $(shell echo $(PKGVERSION) | sed 's/ea//' | sed 's/\~us[[:digit:]]\+
 v_upstream	:= $(shell echo $(v_debian) | sed 's/-[^-][^-]*$$//')
 v_pkgrel	:= $(shell echo $(v_debian) | sed 's/^.*-//')
 # FIXME. currently v_upstream like 11~4
-v_upbase	:= $(word 1, $(subst +, , $(v_upstream)))
-v_upbuild	:= $(word 2, $(subst +, , $(v_upstream)))
-#v_upbase	:= $(word 1, $(subst ~, , $(v_upstream)))
-#v_upbuild	:= $(word 2, $(subst ~, , $(v_upstream)))
+#v_upbase	:= $(word 1, $(subst +, , $(v_upstream)))
+#v_upbuild	:= $(word 2, $(subst +, , $(v_upstream)))
+v_upbase	:= $(word 1, $(subst ~, , $(v_upstream)))
+v_upbuild	:= $(word 2, $(subst ~, , $(v_upstream)))
 # that should be the package version ...
 
-ifneq ($(v_debian),$(v_upbase)+$(v_upbuild)-$(v_pkgrel))
-  $(error wrong version: $(v_upbase)+$(v_upbuild)-$(v_pkgrel) should be: $(v_debian))
-endif
-#ifneq ($(v_debian),$(v_upbase)~$(v_upbuild)-$(v_pkgrel))
-#  $(error wrong version: $(v_upbase)~$(v_upbuild)-$(v_pkgrel) should be: $(v_debian))
+#ifneq ($(v_debian),$(v_upbase)+$(v_upbuild)-$(v_pkgrel))
+#  $(error wrong version: $(v_upbase)+$(v_upbuild)-$(v_pkgrel) should be: $(v_debian))
 #endif
+ifneq ($(v_debian),$(v_upbase)~$(v_upbuild)-$(v_pkgrel))
+  $(error wrong version: $(v_upbase)~$(v_upbuild)-$(v_pkgrel) should be: $(v_debian))
+endif
 
 ifneq (,$(DEB_HOST_MULTIARCH))
   jdirname	= java-$(shortver)-$(origin)-$(DEB_HOST_ARCH)
@@ -152,11 +153,7 @@ ifneq (,$(filter parallel=%,$(subst $(COMMA), ,$(DEB_BUILD_OPTIONS))))
 endif
 
 jtreg_pkg = jtreg6
-ifeq ($(derivative),Ubuntu)
-  testng_pkg= libtestng7-java
-else
-  testng_pkg= testng
-endif
+testng_pkg= libtestng7-java
 
 with_check = $(if $(findstring nocheck, $(DEB_BUILD_OPTIONS)),,yes)
 # see Debian #920161
@@ -516,6 +513,12 @@ endif
 
 ifneq (,$(filter $(distrel),precise trusty xenial))
   # building with a GCC from a PPA ...
+  COMMON_CONFIGURE_ARGS += \
+	--with-stdc++lib=static
+else ifneq (,$(filter $(DEB_HOST_ARCH), ia64))
+  # seen in 2023 on ia64:
+  # /usr/bin/ld: jvm-test-launcher: no symbol version section for versioned symbol `__cxa_pure_virtual@CXXABI_1.3'
+  # works when linking statically
   COMMON_CONFIGURE_ARGS += \
 	--with-stdc++lib=static
 else
@@ -1014,12 +1017,12 @@ stamps/zero-configure: stamps/build stamps/unpack
 
 stamps/unpack:
 	: # apply some architecture specific patches ...
-ifeq ($(DEB_HOST_ARCH),alpha)
-	patch -p1 < debian/patches/alpha-float-const.diff
-endif
-ifeq ($(DEB_HOST_ARCH),powerpcspe)
-	patch -p1 < debian/patches/powerpcspe-float-const.diff
-endif
+#ifeq ($(DEB_HOST_ARCH),alpha)
+#	patch -p1 < debian/patches/alpha-float-const.diff
+#endif
+#ifeq ($(DEB_HOST_ARCH),powerpcspe)
+#	patch -p1 < debian/patches/powerpcspe-float-const.diff
+#endif
 
 	$(MAKE) -f debian/rules packaging-files
 
@@ -1875,8 +1878,9 @@ endif
 	dh_builddeb -a $(nodemo) $(nojrez) #$(bd_options)
 
 is_release		= yes
+is_release		=
 git_project		= jdk11u
-git_tag			= jdk-11.0.19+7
+git_tag			= jdk-11.0.20+7
 package_version		= $(subst jdk-,,$(git_tag))
 package_version		= $(shell echo $(PKGVERSION) | sed 's/-[^-][^-]*$$//')
 ifneq ($(is_release),yes)
@@ -1901,8 +1905,6 @@ get-orig:
 	    -type f -print -delete; \
 	  rm -v -rf $$d/src/java.desktop/share/native/libsplashscreen/giflib; \
 	  rm -v -rf $$d/src/java.desktop/share/native/libsplashscreen/libpng; \
-	  rm -v -f $$d/src/java.desktop/share/native/liblcms/cms*.c; \
-	  rm -v -f $$d/src/java.desktop/share/native/liblcms/lcms2*.h; \
 	  rm -v -rf $$d/src/java.smartcardio/unix/native/libj2pcsc/MUSCLE; \
 	  rm -v -rf $$d/.github; \
 	  rm -v -f $$d/.gitattributes; \
