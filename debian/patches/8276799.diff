@@ -57286,10 +57286,10 @@ index 00000000000..af62f7d77eb
 +  return icache_line_size;
 +}
 diff --git a/src/hotspot/os/linux/os_linux.cpp b/src/hotspot/os/linux/os_linux.cpp
-index 9ba7c41bc31..21495a6d14d 100644
+index d5629c061a5..31c5dfcf243 100644
 --- a/src/hotspot/os/linux/os_linux.cpp
 +++ b/src/hotspot/os/linux/os_linux.cpp
-@@ -2559,6 +2559,8 @@ void os::get_summary_cpu_info(char* cpuinfo, size_t length) {
+@@ -2593,6 +2593,8 @@ void os::get_summary_cpu_info(char* cpuinfo, size_t length) {
    strncpy(cpuinfo, "IA64", length);
  #elif defined(PPC)
    strncpy(cpuinfo, "PPC64", length);
@@ -58665,7 +58665,7 @@ index 00000000000..8d138940312
 +  }
 +}
 diff --git a/src/hotspot/share/c1/c1_LIR.cpp b/src/hotspot/share/c1/c1_LIR.cpp
-index 62cff4c7505..8b1a6f3e885 100644
+index 62cff4c7505..55323c1edc3 100644
 --- a/src/hotspot/share/c1/c1_LIR.cpp
 +++ b/src/hotspot/share/c1/c1_LIR.cpp
 @@ -1,5 +1,5 @@
@@ -58854,15 +58854,7 @@ index 62cff4c7505..8b1a6f3e885 100644
  
  void LIR_List::append(LIR_InsertionBuffer* buffer) {
    assert(this == buffer->lir_list(), "wrong lir list");
-@@ -1667,6 +1749,7 @@ const char * LIR_Op::name() const {
-      case lir_cmp_l2i:               s = "cmp_l2i";       break;
-      case lir_ucmp_fd2i:             s = "ucomp_fd2i";    break;
-      case lir_cmp_fd2i:              s = "comp_fd2i";     break;
-+     // cmove is a LIR_Op4 on RISCV
-      case lir_cmove:                 s = "cmove";         break;
-      case lir_add:                   s = "add";           break;
-      case lir_sub:                   s = "sub";           break;
-@@ -1825,6 +1908,10 @@ void LIR_Op1::print_patch_code(outputStream* out, LIR_PatchCode code) {
+@@ -1825,6 +1907,10 @@ void LIR_Op1::print_patch_code(outputStream* out, LIR_PatchCode code) {
  // LIR_OpBranch
  void LIR_OpBranch::print_instr(outputStream* out) const {
    print_condition(out, cond());             out->print(" ");
@@ -58873,7 +58865,7 @@ index 62cff4c7505..8b1a6f3e885 100644
    if (block() != NULL) {
      out->print("[B%d] ", block()->block_id());
    } else if (stub() != NULL) {
-@@ -1911,7 +1998,11 @@ void LIR_OpRoundFP::print_instr(outputStream* out) const {
+@@ -1911,7 +1997,11 @@ void LIR_OpRoundFP::print_instr(outputStream* out) const {
  
  // LIR_Op2
  void LIR_Op2::print_instr(outputStream* out) const {
@@ -58885,7 +58877,7 @@ index 62cff4c7505..8b1a6f3e885 100644
      print_condition(out, condition());         out->print(" ");
    }
    in_opr1()->print(out);    out->print(" ");
-@@ -1962,6 +2053,17 @@ void LIR_Op3::print_instr(outputStream* out) const {
+@@ -1962,6 +2052,17 @@ void LIR_Op3::print_instr(outputStream* out) const {
    result_opr()->print(out);
  }
  
@@ -58904,7 +58896,7 @@ index 62cff4c7505..8b1a6f3e885 100644
  void LIR_OpLock::print_instr(outputStream* out) const {
    hdr_opr()->print(out);   out->print(" ");
 diff --git a/src/hotspot/share/c1/c1_LIR.hpp b/src/hotspot/share/c1/c1_LIR.hpp
-index 2342e6117eb..de12ed5c3e4 100644
+index 2342e6117eb..bf7899675f9 100644
 --- a/src/hotspot/share/c1/c1_LIR.hpp
 +++ b/src/hotspot/share/c1/c1_LIR.hpp
 @@ -1,5 +1,5 @@
@@ -59095,7 +59087,7 @@ index 2342e6117eb..de12ed5c3e4 100644
    }
  
    void set_fpu_stack_size(int size)              { _fpu_stack_size = size; }
-@@ -1701,6 +1692,63 @@ class LIR_Op2: public LIR_Op {
+@@ -1701,6 +1692,62 @@ class LIR_Op2: public LIR_Op {
    virtual void print_instr(outputStream* out) const PRODUCT_RETURN;
  };
  
@@ -59153,13 +59145,12 @@ index 2342e6117eb..de12ed5c3e4 100644
 +  virtual void emit_code(LIR_Assembler* masm);
 +  virtual LIR_OpBranch* as_OpBranch() { return this; }
 +  virtual void print_instr(outputStream* out) const PRODUCT_RETURN;
-+
 +};
 +
  class LIR_OpAllocArray : public LIR_Op {
   friend class LIR_OpVisitState;
  
-@@ -1764,6 +1812,65 @@ class LIR_Op3: public LIR_Op {
+@@ -1764,6 +1811,65 @@ class LIR_Op3: public LIR_Op {
    virtual void print_instr(outputStream* out) const PRODUCT_RETURN;
  };
  
@@ -59225,7 +59216,7 @@ index 2342e6117eb..de12ed5c3e4 100644
  
  //--------------------------------
  class LabelObj: public CompilationResourceObj {
-@@ -1986,6 +2093,10 @@ class LIR_List: public CompilationResourceObj {
+@@ -1986,6 +2092,10 @@ class LIR_List: public CompilationResourceObj {
    const char *  _file;
    int           _line;
  #endif
@@ -59236,7 +59227,7 @@ index 2342e6117eb..de12ed5c3e4 100644
  
   public:
    void append(LIR_Op* op) {
-@@ -1998,6 +2109,12 @@ class LIR_List: public CompilationResourceObj {
+@@ -1998,6 +2108,12 @@ class LIR_List: public CompilationResourceObj {
      }
  #endif // PRODUCT
  
@@ -59249,7 +59240,7 @@ index 2342e6117eb..de12ed5c3e4 100644
      _operations.append(op);
  
  #ifdef ASSERT
-@@ -2014,6 +2131,10 @@ class LIR_List: public CompilationResourceObj {
+@@ -2014,6 +2130,10 @@ class LIR_List: public CompilationResourceObj {
    void set_file_and_line(const char * file, int line);
  #endif
  
@@ -59260,7 +59251,7 @@ index 2342e6117eb..de12ed5c3e4 100644
    //---------- accessors ---------------
    LIR_OpList* instructions_list()                { return &_operations; }
    int         length() const                     { return _operations.length(); }
-@@ -2133,9 +2254,16 @@ class LIR_List: public CompilationResourceObj {
+@@ -2133,9 +2253,16 @@ class LIR_List: public CompilationResourceObj {
    void cmp_mem_int(LIR_Condition condition, LIR_Opr base, int disp, int c, CodeEmitInfo* info);
    void cmp_reg_mem(LIR_Condition condition, LIR_Opr reg, LIR_Address* addr, CodeEmitInfo* info);
  
