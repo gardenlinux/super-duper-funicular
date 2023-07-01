@@ -1,11 +1,11 @@
-openjdk-17 (17.0.8~6-3) UNRELEASED; urgency=medium
+openjdk-17 (17.0.8~6-3) unstable; urgency=medium
 
   [ Vladimir Petko ]
   * Use libtestng7-java as jtreg6 dependency as TestNG 7.x is required
     at runtime.
   * Regenerate the control file.
 
- -- Matthias Klose <doko@ubuntu.com>  Fri, 30 Jun 2023 09:03:49 +0200
+ -- Matthias Klose <doko@ubuntu.com>  Sat, 01 Jul 2023 09:19:52 +0200
 
 openjdk-17 (17.0.8~6-2) unstable; urgency=medium
 
