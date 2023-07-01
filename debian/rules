@@ -161,9 +161,13 @@ jtreg_pkg = jtreg6
 testng_pkg= libtestng7-java
 
 with_check = $(if $(findstring nocheck, $(DEB_BUILD_OPTIONS)),,yes)
-ifneq (,$(filter $(DEB_HOST_ARCH), alpha armel ia64 mipsel mips64el riscv64 x32))
+ifneq (,$(filter $(DEB_HOST_ARCH), alpha armel ia64 mipsel mips64el x32))
   with_check = disabled running check on $(DEB_HOST_ARCH)
 endif
+ifeq ($(distribution)-$(distrel),Ubuntu-riscv64)
+  with_check = yes
+endif
+
 # no jtreg backport yet
 ifneq (,$(filter $(distrel), buster bullseye precise trusty xenial bionic focal groovy hirsute impish))
   with_check = disabled for $(distrel), no $(jtreg_pkg)

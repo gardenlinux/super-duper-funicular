@@ -1,6 +1,7 @@
 openjdk-17 (17.0.8~6-4) UNRELEASED; urgency=medium
 
   * Update the riscv64 hotspot patch to v7.
+  * Run the hotspot tests on riscv64.
 
  -- Matthias Klose <doko@ubuntu.com>  Sat, 01 Jul 2023 16:55:12 +0200
 
