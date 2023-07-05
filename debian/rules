@@ -172,7 +172,7 @@ else
 endif
 
 with_check = $(if $(findstring nocheck, $(DEB_BUILD_OPTIONS)),,yes)
-ifneq (,$(filter $(DEB_HOST_ARCH), alpha armel mipsel mips64el riscv64 x32))
+ifneq (,$(filter $(DEB_HOST_ARCH), alpha arc armel hppa ia64 mipsel mips64el riscv64 x32))
   with_check = disabled running check on $(DEB_HOST_ARCH)
 endif
 # no jtreg backport yet
@@ -189,7 +189,7 @@ endif
 
 with_wqy_zenhai = $(if $(filter $(distrel),lenny),,yes)
 
-arch_map	:= alpha=alpha arm=arm armel=arm armhf=arm arm64=aarch64 amd64=amd64 hppa=parisc i386=i586 m68k=m68k mips=mips mipsel=mipsel mips64=mips64 mips64el=mips64el powerpc=ppc ppc64=ppc64 ppc64el=ppc64le riscv64=riscv64 sparc=sparc sparc64=sparcv9 sh4=sh s390x=s390x ia64=ia64 x32=x32
+arch_map	:= alpha=alpha arc=arc arm=arm armel=arm armhf=arm arm64=aarch64 amd64=amd64 hppa=parisc i386=i586 m68k=m68k mips=mips mipsel=mipsel mips64=mips64 mips64el=mips64el powerpc=ppc ppc64=ppc64 ppc64el=ppc64le riscv64=riscv64 sparc=sparc sparc64=sparcv9 sh4=sh s390x=s390x ia64=ia64 x32=x32
 
 jvmarch		:= $(strip $(patsubst $(DEB_HOST_ARCH_CPU)=%, %, \
 			$(filter $(DEB_HOST_ARCH_CPU)=%, $(arch_map))))
@@ -299,7 +299,7 @@ dpkg_buildflags_hs = \
 # jdk/make/CompileDemos.gmk (SetupJVMTIDemo) doesn't like commas in flags
 dpkg_buildflags_hs += \
 	DEB_LDFLAGS_MAINT_STRIP="-Wl,-z,relro -Wl,-Bsymbolic-functions" \
-	DEB_LDFLAGS_MAINT_APPEND="-Xlinker -z -Xlinker relro -Xlinker -Bsymbolic-functions"
+	DEB_LDFLAGS_MAINT_APPEND="-Xlinker -z -Xlinker relro -Xlinker -Bsymbolic-functions -Xlinker --no-as-needed"
 dpkg_buildflags_hs += dpkg-buildflags
 export EXTRA_CPPFLAGS_HS := $(shell $(dpkg_buildflags_hs) --get CPPFLAGS)
 export EXTRA_CFLAGS_HS   := $(shell $(dpkg_buildflags_hs) --get CFLAGS; $(dpkg_buildflags_hs) --get CPPFLAGS)
@@ -315,7 +315,7 @@ dpkg_buildflags_zero = \
 # jdk/make/CompileDemos.gmk (SetupJVMTIDemo) doesn't like commas in flags
 dpkg_buildflags_zero += \
 	DEB_LDFLAGS_MAINT_STRIP="-Wl,-z,relro -Wl,-Bsymbolic-functions" \
-	DEB_LDFLAGS_MAINT_APPEND="-Xlinker -z -Xlinker relro -Xlinker -Bsymbolic-functions"
+	DEB_LDFLAGS_MAINT_APPEND="-Xlinker -z -Xlinker relro -Xlinker -Bsymbolic-functions -Xlinker --no-as-needed"
 dpkg_buildflags_zero += dpkg-buildflags
 export EXTRA_CPPFLAGS_ZERO := $(shell $(dpkg_buildflags_zero) --get CPPFLAGS)
 export EXTRA_CFLAGS_ZERO   := $(shell $(dpkg_buildflags_zero) --get CFLAGS; $(dpkg_buildflags_zero) --get CPPFLAGS)
@@ -543,6 +543,12 @@ ifneq (,$(filter $(distrel),precise trusty xenial))
   # building with a GCC from a PPA ...
   COMMON_CONFIGURE_ARGS += \
 	--with-stdc++lib=static
+else ifneq (,$(filter $(DEB_HOST_ARCH), ia64))
+  # seen in 2023 on ia64:
+  # /usr/bin/ld: jvm-test-launcher: no symbol version section for versioned symbol `__cxa_pure_virtual@CXXABI_1.3'
+  # works when linking statically
+  COMMON_CONFIGURE_ARGS += \
+       --with-stdc++lib=static
 else
   COMMON_CONFIGURE_ARGS += \
 	--with-stdc++lib=dynamic
@@ -819,7 +825,7 @@ d_dbg	= debian/$(p_dbg)
 
 control_vars = \
 	'-Vvm:Name=$(vm_name)' \
-	'-Vvm:Version=shortver' \
+	'-Vvm:Version=$(shortver)' \
 	'-Vdlopenhl:Depends=$(dlopen_hl_depends)' \
 	'-Vdlopenhl:Recommends=$(dlopen_hl_recommends)' \
 	'-Vdlopenjre:Depends=$(dlopen_jre_depends)' \
