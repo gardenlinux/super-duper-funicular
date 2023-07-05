@@ -299,7 +299,7 @@ dpkg_buildflags_hs = \
 # jdk/make/CompileDemos.gmk (SetupJVMTIDemo) doesn't like commas in flags
 dpkg_buildflags_hs += \
 	DEB_LDFLAGS_MAINT_STRIP="-Wl,-z,relro -Wl,-Bsymbolic-functions" \
-	DEB_LDFLAGS_MAINT_APPEND="-Xlinker -z -Xlinker relro -Xlinker -Bsymbolic-functions"
+	DEB_LDFLAGS_MAINT_APPEND="-Xlinker -z -Xlinker relro -Xlinker -Bsymbolic-functions -Xlinker --no-as-needed"
 dpkg_buildflags_hs += dpkg-buildflags
 export EXTRA_CPPFLAGS_HS := $(shell $(dpkg_buildflags_hs) --get CPPFLAGS)
 export EXTRA_CFLAGS_HS   := $(shell $(dpkg_buildflags_hs) --get CFLAGS; $(dpkg_buildflags_hs) --get CPPFLAGS)
@@ -315,7 +315,7 @@ dpkg_buildflags_zero = \
 # jdk/make/CompileDemos.gmk (SetupJVMTIDemo) doesn't like commas in flags
 dpkg_buildflags_zero += \
 	DEB_LDFLAGS_MAINT_STRIP="-Wl,-z,relro -Wl,-Bsymbolic-functions" \
-	DEB_LDFLAGS_MAINT_APPEND="-Xlinker -z -Xlinker relro -Xlinker -Bsymbolic-functions"
+	DEB_LDFLAGS_MAINT_APPEND="-Xlinker -z -Xlinker relro -Xlinker -Bsymbolic-functions -Xlinker --no-as-needed"
 dpkg_buildflags_zero += dpkg-buildflags
 export EXTRA_CPPFLAGS_ZERO := $(shell $(dpkg_buildflags_zero) --get CPPFLAGS)
 export EXTRA_CFLAGS_ZERO   := $(shell $(dpkg_buildflags_zero) --get CFLAGS; $(dpkg_buildflags_zero) --get CPPFLAGS)
