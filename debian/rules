@@ -326,19 +326,6 @@ ifeq ($(DEB_HOST_ARCH),alpha)
   export EXTRA_LDFLAGS_ZERO += -Wl,--no-relax
 endif
 
-# for JDK: jdk/make/common/Defs.gmk
-# Don't overwrite JDK opt level :
-# 1) with forced -03, it cause wrong Math.* computations, see #679292 and #678228
-# 2) JDK already use it's own OPTIMIZATION_LEVEL variable for each module
-dpkg_buildflags_jdk = \
-	DEB_BUILD_MAINT_OPTIONS="$(DEB_BUILD_MAINT_OPTIONS)" \
-	DEB_CFLAGS_MAINT_STRIP="-O2" DEB_CXXFLAGS_MAINT_STRIP="-O2"
-dpkg_buildflags_jdk += dpkg-buildflags
-export EXTRA_CPPFLAGS_JDK := $(shell $(dpkg_buildflags_jdk) --get CPPFLAGS)
-export EXTRA_CFLAGS_JDK   := $(shell $(dpkg_buildflags_jdk) --get CFLAGS) $(shell $(dpkg_buildflags_jdk) --get CPPFLAGS)
-export EXTRA_CXXFLAGS_JDK := $(shell $(dpkg_buildflags_jdk) --get CXXFLAGS)
-export EXTRA_LDFLAGS_JDK  := $(shell $(dpkg_buildflags_jdk) --get LDFLAGS)
-
 ifneq (,$(filter $(distrel),squeeze lucid))
   with_bridge = bridge
   with_jni_bridge = yes
