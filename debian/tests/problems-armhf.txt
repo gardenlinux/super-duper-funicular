@@ -20,3 +20,7 @@ compiler/codecache/MHIntrinsicAllocFailureTest.java
 jdk/sun/security/rsa/SignedObjectChain.java 000000 generic-all
 sun/security/ec/ed/EdDSATest.java 000000 generic-all
 java/security/SignedObject/Chain.java 000000 generic-all
+
+# JDK-8311092 - native stack not implemented for armhf, disable test
+runtime/jni/nativeStack/TestNativeStack.java 8311092 generic-all
+
