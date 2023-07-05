@@ -3,6 +3,7 @@ openjdk-17 (17.0.8~6-4) UNRELEASED; urgency=medium
   [ Matthias Klose ]
   * Update the riscv64 hotspot patch to v7.
   * Run the hotspot tests on riscv64.
+  * Link with --no-as-needed. Closes: #1031521.
 
   [ Vladimir Petko ]
   * Disable runtime/jni/nativeStack/TestNativeStack.java for armhf pending
