@@ -6,4 +6,4 @@ compression=xz,\
 oversionmangle=s/\+/\~/,\
 dversionmangle=s/~\d*\~us\d*$/\+\d*/, \
    https://github.com/openjdk/jdk/tags \
-   (?:.*?/)?jdk-(21\+\d[\d]*)\.tar\.gz
+   (?:.*?/)?jdk-(22\+\d[\d]*)\.tar\.gz
