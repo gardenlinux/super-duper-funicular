@@ -1,6 +1,11 @@
 openjdk-19 (19.0.2+7-3) UNRELEASED; urgency=medium
 
+  [ Matthias Klose ]
   * Disable running tests on x32, hangs on the buildds.
+
+  [ Vladimir Petkov ]
+  * d/rules: Use libtestng7-java as jtreg6 dependency.
+  * d/rules: Regenerate the control file.
 
  -- Matthias Klose <doko@ubuntu.com>  Mon, 19 Jun 2023 18:28:56 +0200
 

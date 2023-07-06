@@ -703,7 +703,7 @@ min_jtreg_version := $(shell find test/ -name TEST.ROOT -exec grep -hr "^require
 
 ifeq ($(with_check),yes)
   bd_check = \
-    $(jtreg_pkg) (>= $(min_jtreg_version))$(nocheck_profile), testng$(nocheck_profile), \
+    $(jtreg_pkg) (>= $(min_jtreg_version))$(nocheck_profile), libtestng7-java$(nocheck_profile), \
     xvfb$(nocheck_profile), xauth$(nocheck_profile), \
     xfonts-base$(nocheck_profile), libgl1-mesa-dri [!x32]$(nocheck_profile), \
     xfwm4$(nocheck_profile), x11-xkb-utils$(nocheck_profile), \
