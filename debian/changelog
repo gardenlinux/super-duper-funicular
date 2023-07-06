@@ -1,6 +1,12 @@
 openjdk-20 (20.0.1+9-6) UNRELEASED; urgency=medium
 
+  [ Matthias Klose ]
   * Link with --no-as-needed. Closes: #1031521.
+
+  [ Vladimir Petko ]
+  * d/rules: Always use jtreg7.
+  * d/rules: Enable jtreg tests for unstable.
+  * Regenerate the control file.
 
  -- Matthias Klose <doko@ubuntu.com>  Wed, 05 Jul 2023 08:29:50 +0200
 
