@@ -1,4 +1,4 @@
-openjdk-20 (20.0.1+9-6) UNRELEASED; urgency=medium
+openjdk-20 (20.0.1+9-6) unstable; urgency=medium
 
   [ Matthias Klose ]
   * Link with --no-as-needed. Closes: #1031521.
@@ -8,7 +8,7 @@ openjdk-20 (20.0.1+9-6) UNRELEASED; urgency=medium
   * d/rules: Enable jtreg tests for unstable.
   * Regenerate the control file.
 
- -- Matthias Klose <doko@ubuntu.com>  Wed, 05 Jul 2023 08:29:50 +0200
+ -- Matthias Klose <doko@ubuntu.com>  Thu, 06 Jul 2023 11:46:14 +0200
 
 openjdk-20 (20.0.1+9-5) unstable; urgency=medium
 
