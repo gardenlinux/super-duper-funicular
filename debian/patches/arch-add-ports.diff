@@ -1,21 +1,23 @@
 --- a/src/java.base/share/classes/jdk/internal/util/Architecture.java
 +++ b/src/java.base/share/classes/jdk/internal/util/Architecture.java
-@@ -42,6 +42,14 @@ public enum Architecture {
-     LOONGARCH64,
-     S390,
-     PPC64,
-+    ALPHA,
-+    ARC,
-+    HPPA,
-+    IA64,
-+    M68K,
-+    SH,
-+    X32,
-+    PPC,
-     MIPSEL,
-     MIPS64EL
+@@ -50,7 +50,15 @@
+     PPC64(64, ByteOrder.BIG_ENDIAN),
+     PPC64LE(64, ByteOrder.LITTLE_ENDIAN),
+     MIPSEL(32, ByteOrder.LITTLE_ENDIAN),
+-    MIPS64EL(64, ByteOrder.LITTLE_ENDIAN)
++    MIPS64EL(64, ByteOrder.LITTLE_ENDIAN),
++    ALPHA(64, ByteOrder.LITTLE_ENDIAN),
++    ARC(32, ByteOrder.LITTLE_ENDIAN),
++    HPPA(32, ByteOrder.BIG_ENDIAN),
++    IA64(64, ByteOrder.LITTLE_ENDIAN),
++    M68K(32, ByteOrder.BIG_ENDIAN),
++    SH(32, ByteOrder.LITTLE_ENDIAN),
++    X32(32, ByteOrder.LITTLE_ENDIAN),
++    PPC(32, ByteOrder.BIG_ENDIAN)
      ;
-@@ -89,6 +97,15 @@ public enum Architecture {
+ 
+     private final int addrSize;
+@@ -153,6 +161,15 @@
      }
  
      /**
@@ -28,10 +30,10 @@
 +    }
 +
 +    /**
-      * {@return {@code true} if the current architecture is PPC64}
-      * Use {@link #isLittleEndian()} to determine big or little endian.
+      * {@return {@code true} if the current architecture is PPC64, big-endian}
       */
-@@ -98,6 +115,69 @@ public enum Architecture {
+     @ForceInline
+@@ -169,6 +186,69 @@
      }
  
      /**
@@ -103,8 +105,8 @@
      @ForceInline
 --- a/src/java.base/share/classes/jdk/internal/util/PlatformProps.java.template
 +++ b/src/java.base/share/classes/jdk/internal/util/PlatformProps.java.template
-@@ -60,4 +60,12 @@ class PlatformProps {
-     static final boolean TARGET_ARCH_IS_PPC64   = "@@OPENJDK_TARGET_CPU@@" == "ppc64";
+@@ -61,4 +61,12 @@
+     static final boolean TARGET_ARCH_IS_PPC64LE = "@@OPENJDK_TARGET_CPU@@" == "ppc64le";
      static final boolean TARGET_ARCH_IS_MIPSEL  = "@@OPENJDK_TARGET_CPU@@" == "mipsel";
      static final boolean TARGET_ARCH_IS_MIPS64EL= "@@OPENJDK_TARGET_CPU@@" == "mips64el";
 +    static final boolean TARGET_ARCH_IS_X32     = "@@OPENJDK_TARGET_CPU@@" == "x32";
@@ -118,7 +120,7 @@
  }
 --- a/test/jdk/jdk/internal/util/ArchTest.java
 +++ b/test/jdk/jdk/internal/util/ArchTest.java
-@@ -35,6 +35,14 @@ import static jdk.internal.util.Architec
+@@ -37,6 +37,14 @@
  import static jdk.internal.util.Architecture.S390;
  import static jdk.internal.util.Architecture.X64;
  import static jdk.internal.util.Architecture.X86;
@@ -133,33 +135,36 @@
  import static jdk.internal.util.Architecture.MIPSEL;
  import static jdk.internal.util.Architecture.MIPS64EL;
  
-@@ -78,6 +86,14 @@ public class ArchTest {
-             case "ppc64", "ppc64le" -> PPC64;
-             case "mipsel" -> MIPSEL;
-             case "mips64el" -> MIPS64EL;
-+            case "alpha" -> ALPHA;
-+            case "arc" -> ARC;
-+            case "hppa" -> HPPA;
-+            case "ia64" -> IA64;
-+            case "m68k" -> M68K;
-+            case "ppc" -> PPC;
-+            case "sh" -> SH;
-+            case "x32" -> X32;
-             default -> OTHER;
-         };
-         assertEquals(Architecture.current(), arch, "mismatch in Architecture.current vs " + osArch);
-@@ -98,6 +114,14 @@ public class ArchTest {
-                 Arguments.of(S390, Architecture.isS390()),
-                 Arguments.of(MIPSEL, Architecture.isMIPSEL()),
-                 Arguments.of(MIPS64EL, Architecture.isMIPS64EL()),
-+                Arguments.of(PPC, Architecture.isPPC()),
-+                Arguments.of(M68K, Architecture.isM68K()),
-+                Arguments.of(ALPHA, Architecture.isALPHA()),
-+                Arguments.of(ARC, Architecture.isARC()),
-+                Arguments.of(HPPA, Architecture.isHPPA()),
-+                Arguments.of(IA64, Architecture.isIA64()),
-+                Arguments.of(SH, Architecture.isSH()),
-+                Arguments.of(X32, Architecture.isX32()),
-                 Arguments.of(PPC64, Architecture.isPPC64())
+@@ -74,24 +82,31 @@
+         // In alphabetical order
+         return Stream.of(
+                 Arguments.of("aarch64", AARCH64, 64, ByteOrder.LITTLE_ENDIAN, Architecture.isAARCH64()),
++                Arguments.of("alpha", ALPHA, 64, ByteOrder.LITTLE_ENDIAN, Architecture.isALPHA()),
+                 Arguments.of("amd64", X64, 64, ByteOrder.LITTLE_ENDIAN, Architecture.isX64()),
++                Arguments.of("arc", ARC, 32, ByteOrder.LITTLE_ENDIAN, Architecture.isARC()),
+                 Arguments.of("arm", ARM, 32, ByteOrder.LITTLE_ENDIAN, Architecture.isARM()),
++                Arguments.of("hppa", HPPA, 32, ByteOrder.BIG_ENDIAN, Architecture.isHPPA()),
++                Arguments.of("ia64", IA64, 64, ByteOrder.LITTLE_ENDIAN, Architecture.isIA64()),
+                 Arguments.of("i386", X86, 32, ByteOrder.LITTLE_ENDIAN, Architecture.isX86()),
+                 Arguments.of("loongarch64", LOONGARCH64, 64, ByteOrder.LITTLE_ENDIAN, Architecture.isLOONGARCH64()),
++                Arguments.of("m68k", M68K, 32, ByteOrder.BIG_ENDIAN, Architecture.isM68K()),
+                 Arguments.of("mips64el", MIPS64EL, 64, ByteOrder.LITTLE_ENDIAN, Architecture.isMIPS64EL()),
+                 Arguments.of("mipsel", MIPSEL, 32, ByteOrder.LITTLE_ENDIAN, Architecture.isMIPSEL()),
++                Arguments.of("ppc", PPC, 32, ByteOrder.BIG_ENDIAN, Architecture.isPPC()),
+                 Arguments.of("ppc64", PPC64, 64, ByteOrder.BIG_ENDIAN, Architecture.isPPC64()),
+                 Arguments.of("ppc64le", PPC64LE, 64, ByteOrder.LITTLE_ENDIAN, Architecture.isPPC64LE()),
+                 Arguments.of("riscv64", RISCV64, 64, ByteOrder.LITTLE_ENDIAN, Architecture.isRISCV64()),
++                Arguments.of("sh", SH, 32, ByteOrder.LITTLE_ENDIAN, Architecture.isSH()),
+                 Arguments.of("s390", S390, 64, ByteOrder.BIG_ENDIAN, Architecture.isS390()),
+                 Arguments.of("s390x", S390, 64, ByteOrder.BIG_ENDIAN, Architecture.isS390()),
++                Arguments.of("x32", X32, 32, ByteOrder.LITTLE_ENDIAN, Architecture.isX32()),
+                 Arguments.of("x64", X64, 64, ByteOrder.LITTLE_ENDIAN, Architecture.isX64()),
+                 Arguments.of("x86", X86, 32, ByteOrder.LITTLE_ENDIAN, Architecture.isX86()),
+                 Arguments.of("x86_64", X64, 64, ByteOrder.LITTLE_ENDIAN, Architecture.isX64())
          );
      }
+ 
+-
+     /**
+      * Test consistency of System property "os.arch" with Architecture.current().
+      */
