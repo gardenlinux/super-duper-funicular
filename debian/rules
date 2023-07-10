@@ -666,12 +666,11 @@ ifeq ($(with_system_hb),yes)
   bd_openjdk += libharfbuzz-dev,
 endif
 
-pkg_ffidev = libffi-dev
-
-bd_zero = \
-	$(pkg_ffidev) [$(foreach a,$(hotspot_archs),!$(a))],
-bd_zero = \
-	$(pkg_ffidev),
+ifeq (,$(filter $(distrel),precise))
+  bd_zero = libffi-dev, libffi-dev:native,
+else
+  bd_zero = libffi-dev,
+endif
 
 bd_ant = ant, ant-optional,
 
