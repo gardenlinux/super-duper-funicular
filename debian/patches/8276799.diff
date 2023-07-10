@@ -1,5 +1,3 @@
-diff --git a/make/autoconf/build-aux/config.sub b/make/autoconf/build-aux/config.sub
-index 8f5a5cf5244..f347a4623bd 100644
 --- a/make/autoconf/build-aux/config.sub
 +++ b/make/autoconf/build-aux/config.sub
 @@ -1,6 +1,6 @@
@@ -10,7 +8,7 @@ index 8f5a5cf5244..f347a4623bd 100644
  # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
  #
  # This code is free software; you can redistribute it and/or modify it
-@@ -46,6 +46,13 @@ if echo $* | grep pc-msys >/dev/null ; then
+@@ -46,6 +46,13 @@ if echo $* | grep pc-msys >/dev/null ; t
      exit
  fi
  
@@ -24,16 +22,14 @@ index 8f5a5cf5244..f347a4623bd 100644
  # Filter out everything that doesn't begin with "aarch64-"
  if ! echo $* | grep '^aarch64-' >/dev/null ; then
      . $DIR/autoconf-config.sub "$@"
-@@ -78,4 +85,3 @@ result=`echo $result | sed "s/^arm-/aarch64-/"`
+@@ -78,4 +85,3 @@ result=`echo $result | sed "s/^arm-/aarc
  
  echo $result
  exit $exitcode
 -
-diff --git a/make/autoconf/jvm-features.m4 b/make/autoconf/jvm-features.m4
-index 7cb66a95aaa..aa99b037b2b 100644
 --- a/make/autoconf/jvm-features.m4
 +++ b/make/autoconf/jvm-features.m4
-@@ -311,7 +311,8 @@ AC_DEFUN_ONCE([JVM_FEATURES_CHECK_SHENANDOAHGC],
+@@ -311,7 +311,8 @@ AC_DEFUN_ONCE([JVM_FEATURES_CHECK_SHENAN
      AC_MSG_CHECKING([if platform is supported by Shenandoah])
      if test "x$OPENJDK_TARGET_CPU_ARCH" = "xx86" || \
          test "x$OPENJDK_TARGET_CPU" = "xaarch64" || \
@@ -53,8 +49,6 @@ index 7cb66a95aaa..aa99b037b2b 100644
        if test "x$OPENJDK_TARGET_OS" = "xlinux"; then
          AC_MSG_RESULT([yes])
        else
-diff --git a/make/autoconf/libraries.m4 b/make/autoconf/libraries.m4
-index 393d2819f1d..366682cf044 100644
 --- a/make/autoconf/libraries.m4
 +++ b/make/autoconf/libraries.m4
 @@ -1,5 +1,5 @@
@@ -77,8 +71,6 @@ index 393d2819f1d..366682cf044 100644
    # perfstat lib
    if test "x$OPENJDK_TARGET_OS" = xaix; then
      BASIC_JVM_LIBS="$BASIC_JVM_LIBS -lperfstat"
-diff --git a/make/autoconf/platform.m4 b/make/autoconf/platform.m4
-index 19842bf3467..5752d3bd1a6 100644
 --- a/make/autoconf/platform.m4
 +++ b/make/autoconf/platform.m4
 @@ -1,5 +1,5 @@
@@ -88,7 +80,7 @@ index 19842bf3467..5752d3bd1a6 100644
  # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
  #
  # This code is free software; you can redistribute it and/or modify it
-@@ -561,6 +561,8 @@ AC_DEFUN([PLATFORM_SETUP_LEGACY_VARS_HELPER],
+@@ -565,6 +565,8 @@ AC_DEFUN([PLATFORM_SETUP_LEGACY_VARS_HEL
      HOTSPOT_$1_CPU_DEFINE=PPC64
    elif test "x$OPENJDK_$1_CPU" = xppc64le; then
      HOTSPOT_$1_CPU_DEFINE=PPC64
@@ -97,7 +89,7 @@ index 19842bf3467..5752d3bd1a6 100644
  
    # The cpu defines below are for zero, we don't support them directly.
    elif test "x$OPENJDK_$1_CPU" = xsparc; then
-@@ -571,8 +573,6 @@ AC_DEFUN([PLATFORM_SETUP_LEGACY_VARS_HELPER],
+@@ -575,8 +577,6 @@ AC_DEFUN([PLATFORM_SETUP_LEGACY_VARS_HEL
      HOTSPOT_$1_CPU_DEFINE=S390
    elif test "x$OPENJDK_$1_CPU" = xs390x; then
      HOTSPOT_$1_CPU_DEFINE=S390
@@ -106,8 +98,6 @@ index 19842bf3467..5752d3bd1a6 100644
    elif test "x$OPENJDK_$1_CPU" != x; then
      HOTSPOT_$1_CPU_DEFINE=$(echo $OPENJDK_$1_CPU | tr a-z A-Z)
    fi
-diff --git a/make/hotspot/gensrc/GensrcAdlc.gmk b/make/hotspot/gensrc/GensrcAdlc.gmk
-index 362184b7c82..a3969fc6988 100644
 --- a/make/hotspot/gensrc/GensrcAdlc.gmk
 +++ b/make/hotspot/gensrc/GensrcAdlc.gmk
 @@ -1,5 +1,5 @@
@@ -117,7 +107,7 @@ index 362184b7c82..a3969fc6988 100644
  # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
  #
  # This code is free software; you can redistribute it and/or modify it
-@@ -149,6 +149,13 @@ ifeq ($(call check-jvm-feature, compiler2), true)
+@@ -149,6 +149,13 @@ ifeq ($(call check-jvm-feature, compiler
      )))
    endif
  
@@ -131,9 +121,6 @@ index 362184b7c82..a3969fc6988 100644
    ifeq ($(call check-jvm-feature, shenandoahgc), true)
      AD_SRC_FILES += $(call uniq, $(wildcard $(foreach d, $(AD_SRC_ROOTS), \
          $d/cpu/$(HOTSPOT_TARGET_CPU_ARCH)/gc/shenandoah/shenandoah_$(HOTSPOT_TARGET_CPU).ad \
-diff --git a/src/hotspot/cpu/riscv/abstractInterpreter_riscv.cpp b/src/hotspot/cpu/riscv/abstractInterpreter_riscv.cpp
-new file mode 100644
-index 00000000000..31c63abe71d
 --- /dev/null
 +++ b/src/hotspot/cpu/riscv/abstractInterpreter_riscv.cpp
 @@ -0,0 +1,177 @@
@@ -314,9 +301,6 @@ index 00000000000..31c63abe71d
 +  *interpreter_frame->interpreter_frame_mirror_addr() =
 +    method->method_holder()->java_mirror();
 +}
-diff --git a/src/hotspot/cpu/riscv/assembler_riscv.cpp b/src/hotspot/cpu/riscv/assembler_riscv.cpp
-new file mode 100644
-index 00000000000..2fb75c802cf
 --- /dev/null
 +++ b/src/hotspot/cpu/riscv/assembler_riscv.cpp
 @@ -0,0 +1,78 @@
@@ -398,9 +382,6 @@ index 00000000000..2fb75c802cf
 +      ShouldNotReachHere();
 +  }
 +}
-diff --git a/src/hotspot/cpu/riscv/assembler_riscv.hpp b/src/hotspot/cpu/riscv/assembler_riscv.hpp
-new file mode 100644
-index 00000000000..6eb4228caa3
 --- /dev/null
 +++ b/src/hotspot/cpu/riscv/assembler_riscv.hpp
 @@ -0,0 +1,2764 @@
@@ -3168,9 +3149,6 @@ index 00000000000..6eb4228caa3
 +class BiasedLockingCounters;
 +
 +#endif // CPU_RISCV_ASSEMBLER_RISCV_HPP
-diff --git a/src/hotspot/cpu/riscv/assembler_riscv.inline.hpp b/src/hotspot/cpu/riscv/assembler_riscv.inline.hpp
-new file mode 100644
-index 00000000000..c51650881fc
 --- /dev/null
 +++ b/src/hotspot/cpu/riscv/assembler_riscv.inline.hpp
 @@ -0,0 +1,49 @@
@@ -3223,9 +3201,6 @@ index 00000000000..c51650881fc
 +inline bool Assembler::is_uimm10(uint64_t x) { return is_uimm(x, 10); }
 +
 +#endif // CPU_RISCV_ASSEMBLER_RISCV_INLINE_HPP
-diff --git a/src/hotspot/cpu/riscv/bytes_riscv.hpp b/src/hotspot/cpu/riscv/bytes_riscv.hpp
-new file mode 100644
-index 00000000000..34143c265bf
 --- /dev/null
 +++ b/src/hotspot/cpu/riscv/bytes_riscv.hpp
 @@ -0,0 +1,169 @@
@@ -3398,9 +3373,6 @@ index 00000000000..34143c265bf
 +#include OS_CPU_HEADER(bytes)
 +
 +#endif // CPU_RISCV_BYTES_RISCV_HPP
-diff --git a/src/hotspot/cpu/riscv/c1_CodeStubs_riscv.cpp b/src/hotspot/cpu/riscv/c1_CodeStubs_riscv.cpp
-new file mode 100644
-index 00000000000..788e605c43f
 --- /dev/null
 +++ b/src/hotspot/cpu/riscv/c1_CodeStubs_riscv.cpp
 @@ -0,0 +1,357 @@
@@ -3761,9 +3733,6 @@ index 00000000000..788e605c43f
 +}
 +
 +#undef __
-diff --git a/src/hotspot/cpu/riscv/c1_Defs_riscv.hpp b/src/hotspot/cpu/riscv/c1_Defs_riscv.hpp
-new file mode 100644
-index 00000000000..4417ad63091
 --- /dev/null
 +++ b/src/hotspot/cpu/riscv/c1_Defs_riscv.hpp
 @@ -0,0 +1,84 @@
@@ -3851,9 +3820,6 @@ index 00000000000..4417ad63091
 +};
 +
 +#endif // CPU_RISCV_C1_DEFS_RISCV_HPP
-diff --git a/src/hotspot/cpu/riscv/c1_FpuStackSim_riscv.cpp b/src/hotspot/cpu/riscv/c1_FpuStackSim_riscv.cpp
-new file mode 100644
-index 00000000000..e3a2606c532
 --- /dev/null
 +++ b/src/hotspot/cpu/riscv/c1_FpuStackSim_riscv.cpp
 @@ -0,0 +1,30 @@
@@ -3887,9 +3853,6 @@ index 00000000000..e3a2606c532
 +//--------------------------------------------------------
 +
 +// No FPU stack on RISCV
-diff --git a/src/hotspot/cpu/riscv/c1_FpuStackSim_riscv.hpp b/src/hotspot/cpu/riscv/c1_FpuStackSim_riscv.hpp
-new file mode 100644
-index 00000000000..7bc3d311501
 --- /dev/null
 +++ b/src/hotspot/cpu/riscv/c1_FpuStackSim_riscv.hpp
 @@ -0,0 +1,32 @@
@@ -3925,9 +3888,6 @@ index 00000000000..7bc3d311501
 +class FpuStackSim;
 +
 +#endif // CPU_RISCV_C1_FPUSTACKSIM_RISCV_HPP
-diff --git a/src/hotspot/cpu/riscv/c1_FrameMap_riscv.cpp b/src/hotspot/cpu/riscv/c1_FrameMap_riscv.cpp
-new file mode 100644
-index 00000000000..1f8b2b55100
 --- /dev/null
 +++ b/src/hotspot/cpu/riscv/c1_FrameMap_riscv.cpp
 @@ -0,0 +1,388 @@
@@ -4319,9 +4279,6 @@ index 00000000000..1f8b2b55100
 +bool FrameMap::validate_frame() {
 +  return true;
 +}
-diff --git a/src/hotspot/cpu/riscv/c1_FrameMap_riscv.hpp b/src/hotspot/cpu/riscv/c1_FrameMap_riscv.hpp
-new file mode 100644
-index 00000000000..01281f5c9e1
 --- /dev/null
 +++ b/src/hotspot/cpu/riscv/c1_FrameMap_riscv.hpp
 @@ -0,0 +1,148 @@
@@ -4473,9 +4430,6 @@ index 00000000000..01281f5c9e1
 +  static int last_cpu_reg()             { return pd_last_cpu_reg; }
 +
 +#endif // CPU_RISCV_C1_FRAMEMAP_RISCV_HPP
-diff --git a/src/hotspot/cpu/riscv/c1_LIRAssembler_arith_riscv.cpp b/src/hotspot/cpu/riscv/c1_LIRAssembler_arith_riscv.cpp
-new file mode 100644
-index 00000000000..c2ce4881408
 --- /dev/null
 +++ b/src/hotspot/cpu/riscv/c1_LIRAssembler_arith_riscv.cpp
 @@ -0,0 +1,281 @@
@@ -4760,9 +4714,6 @@ index 00000000000..c2ce4881408
 +}
 +
 +#undef __
-diff --git a/src/hotspot/cpu/riscv/c1_LIRAssembler_arith_riscv.hpp b/src/hotspot/cpu/riscv/c1_LIRAssembler_arith_riscv.hpp
-new file mode 100644
-index 00000000000..ab0a9963fc1
 --- /dev/null
 +++ b/src/hotspot/cpu/riscv/c1_LIRAssembler_arith_riscv.hpp
 @@ -0,0 +1,37 @@
@@ -4803,9 +4754,6 @@ index 00000000000..ab0a9963fc1
 +  void arithmetic_idiv(LIR_Op3* op, bool is_irem);
 +
 +#endif // CPU_RISCV_C1_LIRASSEMBLER_ARITH_RISCV_HPP
-diff --git a/src/hotspot/cpu/riscv/c1_LIRAssembler_arraycopy_riscv.cpp b/src/hotspot/cpu/riscv/c1_LIRAssembler_arraycopy_riscv.cpp
-new file mode 100644
-index 00000000000..81ee91e4481
 --- /dev/null
 +++ b/src/hotspot/cpu/riscv/c1_LIRAssembler_arraycopy_riscv.cpp
 @@ -0,0 +1,387 @@
@@ -5196,9 +5144,6 @@ index 00000000000..81ee91e4481
 +}
 +
 +#undef __
-diff --git a/src/hotspot/cpu/riscv/c1_LIRAssembler_arraycopy_riscv.hpp b/src/hotspot/cpu/riscv/c1_LIRAssembler_arraycopy_riscv.hpp
-new file mode 100644
-index 00000000000..06a0f248ca6
 --- /dev/null
 +++ b/src/hotspot/cpu/riscv/c1_LIRAssembler_arraycopy_riscv.hpp
 @@ -0,0 +1,52 @@
@@ -5254,12 +5199,9 @@ index 00000000000..06a0f248ca6
 +                           Register dst, Register dst_pos);
 +
 +#endif // CPU_RISCV_C1_LIRASSEMBLER_ARRAYCOPY_RISCV_HPP
-diff --git a/src/hotspot/cpu/riscv/c1_LIRAssembler_riscv.cpp b/src/hotspot/cpu/riscv/c1_LIRAssembler_riscv.cpp
-new file mode 100644
-index 00000000000..e9bd609a7bd
 --- /dev/null
 +++ b/src/hotspot/cpu/riscv/c1_LIRAssembler_riscv.cpp
-@@ -0,0 +1,2254 @@
+@@ -0,0 +1,2263 @@
 +/*
 + * Copyright (c) 2000, 2020, Oracle and/or its affiliates. All rights reserved.
 + * Copyright (c) 2014, 2020, Red Hat Inc. All rights reserved.
@@ -6101,11 +6043,7 @@ index 00000000000..e9bd609a7bd
 +      __ ld(dest->as_register(), as_Address(from_addr));
 +      break;
 +    case T_ADDRESS:
-+      if (UseCompressedClassPointers && addr->disp() == oopDesc::klass_offset_in_bytes()) {
-+        __ lwu(dest->as_register(), as_Address(from_addr));
-+      } else {
-+        __ ld(dest->as_register(), as_Address(from_addr));
-+      }
++      __ ld(dest->as_register(), as_Address(from_addr));
 +      break;
 +    case T_INT:
 +      __ lw(dest->as_register(), as_Address(from_addr));
@@ -6137,10 +6075,6 @@ index 00000000000..e9bd609a7bd
 +    if (!UseZGC) {
 +      // Load barrier has not yet been applied, so ZGC can't verify the oop here
 +      __ verify_oop(dest->as_register());
-+    }
-+  } else if (type == T_ADDRESS && addr->disp() == oopDesc::klass_offset_in_bytes()) {
-+    if (UseCompressedClassPointers) {
-+      __ decode_klass_not_null(dest->as_register());
 +    }
 +  }
 +}
@@ -6798,6 +6732,23 @@ index 00000000000..e9bd609a7bd
 +    Unimplemented();
 +  }
 +  __ bind(*op->stub()->continuation());
++}
++
++void LIR_Assembler::emit_load_klass(LIR_OpLoadKlass* op) {
++  Register obj = op->obj()->as_pointer_register();
++  Register result = op->result_opr()->as_pointer_register();
++
++  CodeEmitInfo* info = op->info();
++  if (info != NULL) {
++    add_debug_info_for_null_check_here(info);
++  }
++
++  if (UseCompressedClassPointers) {
++    __ lwu(result, Address(obj, oopDesc::klass_offset_in_bytes()));
++    __ decode_klass_not_null(result);
++  } else {
++    __ ld(result, Address(obj, oopDesc::klass_offset_in_bytes()));
++  }
 +}
 +
 +void LIR_Assembler::emit_profile_call(LIR_OpProfileCall* op) {
@@ -7514,9 +7465,6 @@ index 00000000000..e9bd609a7bd
 +}
 +
 +#undef __
-diff --git a/src/hotspot/cpu/riscv/c1_LIRAssembler_riscv.hpp b/src/hotspot/cpu/riscv/c1_LIRAssembler_riscv.hpp
-new file mode 100644
-index 00000000000..8e85a5f3729
 --- /dev/null
 +++ b/src/hotspot/cpu/riscv/c1_LIRAssembler_riscv.hpp
 @@ -0,0 +1,130 @@
@@ -7650,9 +7598,6 @@ index 00000000000..8e85a5f3729
 +  void store_parameter(jint c, int offset_from_rsp_in_words);
 +
 +#endif // CPU_RISCV_C1_LIRASSEMBLER_RISCV_HPP
-diff --git a/src/hotspot/cpu/riscv/c1_LIRGenerator_riscv.cpp b/src/hotspot/cpu/riscv/c1_LIRGenerator_riscv.cpp
-new file mode 100644
-index 00000000000..55a309f24ba
 --- /dev/null
 +++ b/src/hotspot/cpu/riscv/c1_LIRGenerator_riscv.cpp
 @@ -0,0 +1,1086 @@
@@ -8742,9 +8687,6 @@ index 00000000000..55a309f24ba
 +                                       CodeEmitInfo* info) {
 +  __ volatile_load_mem_reg(address, result, info);
 +}
-diff --git a/src/hotspot/cpu/riscv/c1_LIR_riscv.cpp b/src/hotspot/cpu/riscv/c1_LIR_riscv.cpp
-new file mode 100644
-index 00000000000..0317ed9003e
 --- /dev/null
 +++ b/src/hotspot/cpu/riscv/c1_LIR_riscv.cpp
 @@ -0,0 +1,55 @@
@@ -8803,9 +8745,6 @@ index 00000000000..0317ed9003e
 +         base()->type() == T_METADATA, "wrong type for addresses");
 +}
 +#endif // PRODUCT
-diff --git a/src/hotspot/cpu/riscv/c1_LinearScan_riscv.cpp b/src/hotspot/cpu/riscv/c1_LinearScan_riscv.cpp
-new file mode 100644
-index 00000000000..78a61128bdd
 --- /dev/null
 +++ b/src/hotspot/cpu/riscv/c1_LinearScan_riscv.cpp
 @@ -0,0 +1,33 @@
@@ -8842,9 +8781,6 @@ index 00000000000..78a61128bdd
 +void LinearScan::allocate_fpu_stack() {
 +  // No FPU stack on RISCV
 +}
-diff --git a/src/hotspot/cpu/riscv/c1_LinearScan_riscv.hpp b/src/hotspot/cpu/riscv/c1_LinearScan_riscv.hpp
-new file mode 100644
-index 00000000000..d7ca7b0fd05
 --- /dev/null
 +++ b/src/hotspot/cpu/riscv/c1_LinearScan_riscv.hpp
 @@ -0,0 +1,83 @@
@@ -8931,9 +8867,6 @@ index 00000000000..d7ca7b0fd05
 +}
 +
 +#endif // CPU_RISCV_C1_LINEARSCAN_RISCV_HPP
-diff --git a/src/hotspot/cpu/riscv/c1_MacroAssembler_riscv.cpp b/src/hotspot/cpu/riscv/c1_MacroAssembler_riscv.cpp
-new file mode 100644
-index 00000000000..6a4742ae3dd
 --- /dev/null
 +++ b/src/hotspot/cpu/riscv/c1_MacroAssembler_riscv.cpp
 @@ -0,0 +1,451 @@
@@ -9388,9 +9321,6 @@ index 00000000000..6a4742ae3dd
 +         "invalid c1 float conditional branch index");
 +  (this->*c1_float_cond_branch[cmpFlag])(op1, op2, label, is_far, is_unordered);
 +}
-diff --git a/src/hotspot/cpu/riscv/c1_MacroAssembler_riscv.hpp b/src/hotspot/cpu/riscv/c1_MacroAssembler_riscv.hpp
-new file mode 100644
-index 00000000000..6f89b8629b0
 --- /dev/null
 +++ b/src/hotspot/cpu/riscv/c1_MacroAssembler_riscv.hpp
 @@ -0,0 +1,121 @@
@@ -9515,9 +9445,6 @@ index 00000000000..6f89b8629b0
 +                           bool is_far, bool is_unordered = false);
 +
 +#endif // CPU_RISCV_C1_MACROASSEMBLER_RISCV_HPP
-diff --git a/src/hotspot/cpu/riscv/c1_Runtime1_riscv.cpp b/src/hotspot/cpu/riscv/c1_Runtime1_riscv.cpp
-new file mode 100644
-index 00000000000..2d01a92623f
 --- /dev/null
 +++ b/src/hotspot/cpu/riscv/c1_Runtime1_riscv.cpp
 @@ -0,0 +1,1179 @@
@@ -10700,9 +10627,6 @@ index 00000000000..2d01a92623f
 +#undef __
 +
 +const char *Runtime1::pd_name_for_address(address entry) { Unimplemented(); return 0; }
-diff --git a/src/hotspot/cpu/riscv/c1_globals_riscv.hpp b/src/hotspot/cpu/riscv/c1_globals_riscv.hpp
-new file mode 100644
-index 00000000000..317107ae911
 --- /dev/null
 +++ b/src/hotspot/cpu/riscv/c1_globals_riscv.hpp
 @@ -0,0 +1,65 @@
@@ -10771,9 +10695,6 @@ index 00000000000..317107ae911
 +define_pd_global(bool, TwoOperandLIRForm,            false);
 +
 +#endif // CPU_RISCV_C1_GLOBALS_RISCV_HPP
-diff --git a/src/hotspot/cpu/riscv/c2_MacroAssembler_riscv.cpp b/src/hotspot/cpu/riscv/c2_MacroAssembler_riscv.cpp
-new file mode 100644
-index 00000000000..15220c4133e
 --- /dev/null
 +++ b/src/hotspot/cpu/riscv/c2_MacroAssembler_riscv.cpp
 @@ -0,0 +1,1644 @@
@@ -12421,9 +12342,6 @@ index 00000000000..15220c4133e
 +  bind(L_done);
 +  vfmv_f_s(dst, tmp1);
 +}
-diff --git a/src/hotspot/cpu/riscv/c2_MacroAssembler_riscv.hpp b/src/hotspot/cpu/riscv/c2_MacroAssembler_riscv.hpp
-new file mode 100644
-index 00000000000..e904249283a
 --- /dev/null
 +++ b/src/hotspot/cpu/riscv/c2_MacroAssembler_riscv.hpp
 @@ -0,0 +1,193 @@
@@ -12620,9 +12538,6 @@ index 00000000000..e904249283a
 +                         bool is_double, bool is_min);
 +
 +#endif // CPU_RISCV_C2_MACROASSEMBLER_RISCV_HPP
-diff --git a/src/hotspot/cpu/riscv/c2_globals_riscv.hpp b/src/hotspot/cpu/riscv/c2_globals_riscv.hpp
-new file mode 100644
-index 00000000000..c63d2c0ffb9
 --- /dev/null
 +++ b/src/hotspot/cpu/riscv/c2_globals_riscv.hpp
 @@ -0,0 +1,85 @@
@@ -12711,9 +12626,6 @@ index 00000000000..c63d2c0ffb9
 +define_pd_global(bool, TrapBasedRangeChecks,         false); // Not needed.
 +
 +#endif // CPU_RISCV_C2_GLOBALS_RISCV_HPP
-diff --git a/src/hotspot/cpu/riscv/c2_init_riscv.cpp b/src/hotspot/cpu/riscv/c2_init_riscv.cpp
-new file mode 100644
-index 00000000000..cdbd69807be
 --- /dev/null
 +++ b/src/hotspot/cpu/riscv/c2_init_riscv.cpp
 @@ -0,0 +1,38 @@
@@ -12755,9 +12667,6 @@ index 00000000000..cdbd69807be
 +  guarantee(CodeEntryAlignment >= InteriorEntryAlignment, "" );
 +  reg_mask_init();
 +}
-diff --git a/src/hotspot/cpu/riscv/c2_safepointPollStubTable_riscv.cpp b/src/hotspot/cpu/riscv/c2_safepointPollStubTable_riscv.cpp
-new file mode 100644
-index 00000000000..d22a6a75843
 --- /dev/null
 +++ b/src/hotspot/cpu/riscv/c2_safepointPollStubTable_riscv.cpp
 @@ -0,0 +1,48 @@
@@ -12809,9 +12718,6 @@ index 00000000000..d22a6a75843
 +  __ far_jump(callback_addr);
 +}
 +#undef __
-diff --git a/src/hotspot/cpu/riscv/codeBuffer_riscv.hpp b/src/hotspot/cpu/riscv/codeBuffer_riscv.hpp
-new file mode 100644
-index 00000000000..14a68b45026
 --- /dev/null
 +++ b/src/hotspot/cpu/riscv/codeBuffer_riscv.hpp
 @@ -0,0 +1,36 @@
@@ -12851,9 +12757,6 @@ index 00000000000..14a68b45026
 +  void flush_bundle(bool start_new_bundle) {}
 +
 +#endif // CPU_RISCV_CODEBUFFER_RISCV_HPP
-diff --git a/src/hotspot/cpu/riscv/compiledIC_riscv.cpp b/src/hotspot/cpu/riscv/compiledIC_riscv.cpp
-new file mode 100644
-index 00000000000..d202db92a4c
 --- /dev/null
 +++ b/src/hotspot/cpu/riscv/compiledIC_riscv.cpp
 @@ -0,0 +1,149 @@
@@ -13006,9 +12909,6 @@ index 00000000000..d202db92a4c
 +}
 +
 +#endif // !PRODUCT
-diff --git a/src/hotspot/cpu/riscv/copy_riscv.hpp b/src/hotspot/cpu/riscv/copy_riscv.hpp
-new file mode 100644
-index 00000000000..098a9620a83
 --- /dev/null
 +++ b/src/hotspot/cpu/riscv/copy_riscv.hpp
 @@ -0,0 +1,143 @@
@@ -13155,9 +13055,6 @@ index 00000000000..098a9620a83
 +}
 +
 +#endif // CPU_RISCV_COPY_RISCV_HPP
-diff --git a/src/hotspot/cpu/riscv/disassembler_riscv.hpp b/src/hotspot/cpu/riscv/disassembler_riscv.hpp
-new file mode 100644
-index 00000000000..2c7ecc39d40
 --- /dev/null
 +++ b/src/hotspot/cpu/riscv/disassembler_riscv.hpp
 @@ -0,0 +1,50 @@
@@ -13211,9 +13108,6 @@ index 00000000000..2c7ecc39d40
 +static void annotate(address pc, outputStream* st) {}
 +
 +#endif // CPU_RISCV_DISASSEMBLER_RISCV_HPP
-diff --git a/src/hotspot/cpu/riscv/foreign_globals_riscv.cpp b/src/hotspot/cpu/riscv/foreign_globals_riscv.cpp
-new file mode 100644
-index 00000000000..5c700be9c91
 --- /dev/null
 +++ b/src/hotspot/cpu/riscv/foreign_globals_riscv.cpp
 @@ -0,0 +1,44 @@
@@ -13261,9 +13155,6 @@ index 00000000000..5c700be9c91
 +  ShouldNotCallThis();
 +  return {};
 +}
-diff --git a/src/hotspot/cpu/riscv/foreign_globals_riscv.hpp b/src/hotspot/cpu/riscv/foreign_globals_riscv.hpp
-new file mode 100644
-index 00000000000..3ac89752c27
 --- /dev/null
 +++ b/src/hotspot/cpu/riscv/foreign_globals_riscv.hpp
 @@ -0,0 +1,32 @@
@@ -13299,9 +13190,6 @@ index 00000000000..3ac89752c27
 +class BufferLayout {};
 +
 +#endif // CPU_RISCV_FOREIGN_GLOBALS_RISCV_HPP
-diff --git a/src/hotspot/cpu/riscv/frame_riscv.cpp b/src/hotspot/cpu/riscv/frame_riscv.cpp
-new file mode 100644
-index 00000000000..8123317a609
 --- /dev/null
 +++ b/src/hotspot/cpu/riscv/frame_riscv.cpp
 @@ -0,0 +1,688 @@
@@ -13993,9 +13881,6 @@ index 00000000000..8123317a609
 +  _last_Java_pc = (address)_last_Java_sp[-1];
 +  vmassert(walkable(), "something went wrong");
 +}
-diff --git a/src/hotspot/cpu/riscv/frame_riscv.hpp b/src/hotspot/cpu/riscv/frame_riscv.hpp
-new file mode 100644
-index 00000000000..d71ee908aa5
 --- /dev/null
 +++ b/src/hotspot/cpu/riscv/frame_riscv.hpp
 @@ -0,0 +1,204 @@
@@ -14203,9 +14088,6 @@ index 00000000000..d71ee908aa5
 +  frame sender_raw(RegisterMap* map) const;
 +
 +#endif // CPU_RISCV_FRAME_RISCV_HPP
-diff --git a/src/hotspot/cpu/riscv/frame_riscv.inline.hpp b/src/hotspot/cpu/riscv/frame_riscv.inline.hpp
-new file mode 100644
-index 00000000000..0536340e369
 --- /dev/null
 +++ b/src/hotspot/cpu/riscv/frame_riscv.inline.hpp
 @@ -0,0 +1,246 @@
@@ -14455,9 +14337,6 @@ index 00000000000..0536340e369
 +}
 +
 +#endif // CPU_RISCV_FRAME_RISCV_INLINE_HPP
-diff --git a/src/hotspot/cpu/riscv/gc/g1/g1BarrierSetAssembler_riscv.cpp b/src/hotspot/cpu/riscv/gc/g1/g1BarrierSetAssembler_riscv.cpp
-new file mode 100644
-index 00000000000..2a2ccd0ee6d
 --- /dev/null
 +++ b/src/hotspot/cpu/riscv/gc/g1/g1BarrierSetAssembler_riscv.cpp
 @@ -0,0 +1,478 @@
@@ -14939,9 +14818,6 @@ index 00000000000..2a2ccd0ee6d
 +#undef __
 +
 +#endif // COMPILER1
-diff --git a/src/hotspot/cpu/riscv/gc/g1/g1BarrierSetAssembler_riscv.hpp b/src/hotspot/cpu/riscv/gc/g1/g1BarrierSetAssembler_riscv.hpp
-new file mode 100644
-index 00000000000..37bc183f39c
 --- /dev/null
 +++ b/src/hotspot/cpu/riscv/gc/g1/g1BarrierSetAssembler_riscv.hpp
 @@ -0,0 +1,78 @@
@@ -15023,9 +14899,6 @@ index 00000000000..37bc183f39c
 +};
 +
 +#endif // CPU_RISCV_GC_G1_G1BARRIERSETASSEMBLER_RISCV_HPP
-diff --git a/src/hotspot/cpu/riscv/gc/g1/g1Globals_riscv.hpp b/src/hotspot/cpu/riscv/gc/g1/g1Globals_riscv.hpp
-new file mode 100644
-index 00000000000..8735fd014ff
 --- /dev/null
 +++ b/src/hotspot/cpu/riscv/gc/g1/g1Globals_riscv.hpp
 @@ -0,0 +1,31 @@
@@ -15060,9 +14933,6 @@ index 00000000000..8735fd014ff
 +const size_t G1MergeHeapRootsPrefetchCacheSize = 16;
 +
 +#endif // CPU_RISCV_GC_G1_G1GLOBALS_RISCV_HPP
-diff --git a/src/hotspot/cpu/riscv/gc/shared/barrierSetAssembler_riscv.cpp b/src/hotspot/cpu/riscv/gc/shared/barrierSetAssembler_riscv.cpp
-new file mode 100644
-index 00000000000..22a8e2d7dba
 --- /dev/null
 +++ b/src/hotspot/cpu/riscv/gc/shared/barrierSetAssembler_riscv.cpp
 @@ -0,0 +1,298 @@
@@ -15364,9 +15234,6 @@ index 00000000000..22a8e2d7dba
 +  __ far_jump(RuntimeAddress(SharedRuntime::get_handle_wrong_method_stub()));
 +  __ bind(method_live);
 +}
-diff --git a/src/hotspot/cpu/riscv/gc/shared/barrierSetAssembler_riscv.hpp b/src/hotspot/cpu/riscv/gc/shared/barrierSetAssembler_riscv.hpp
-new file mode 100644
-index 00000000000..b85f7f5582b
 --- /dev/null
 +++ b/src/hotspot/cpu/riscv/gc/shared/barrierSetAssembler_riscv.hpp
 @@ -0,0 +1,79 @@
@@ -15449,9 +15316,6 @@ index 00000000000..b85f7f5582b
 +};
 +
 +#endif // CPU_RISCV_GC_SHARED_BARRIERSETASSEMBLER_RISCV_HPP
-diff --git a/src/hotspot/cpu/riscv/gc/shared/barrierSetNMethod_riscv.cpp b/src/hotspot/cpu/riscv/gc/shared/barrierSetNMethod_riscv.cpp
-new file mode 100644
-index 00000000000..39ffbea03e8
 --- /dev/null
 +++ b/src/hotspot/cpu/riscv/gc/shared/barrierSetNMethod_riscv.cpp
 @@ -0,0 +1,171 @@
@@ -15626,9 +15490,6 @@ index 00000000000..39ffbea03e8
 +  NativeNMethodBarrier* barrier = native_nmethod_barrier(nm);
 +  return barrier->get_value() != disarmed_value();
 +}
-diff --git a/src/hotspot/cpu/riscv/gc/shared/cardTableBarrierSetAssembler_riscv.cpp b/src/hotspot/cpu/riscv/gc/shared/cardTableBarrierSetAssembler_riscv.cpp
-new file mode 100644
-index 00000000000..640e1ccf47c
 --- /dev/null
 +++ b/src/hotspot/cpu/riscv/gc/shared/cardTableBarrierSetAssembler_riscv.cpp
 @@ -0,0 +1,107 @@
@@ -15739,9 +15600,6 @@ index 00000000000..640e1ccf47c
 +    }
 +  }
 +}
-diff --git a/src/hotspot/cpu/riscv/gc/shared/cardTableBarrierSetAssembler_riscv.hpp b/src/hotspot/cpu/riscv/gc/shared/cardTableBarrierSetAssembler_riscv.hpp
-new file mode 100644
-index 00000000000..686fe8fa478
 --- /dev/null
 +++ b/src/hotspot/cpu/riscv/gc/shared/cardTableBarrierSetAssembler_riscv.hpp
 @@ -0,0 +1,42 @@
@@ -15787,9 +15645,6 @@ index 00000000000..686fe8fa478
 +};
 +
 +#endif // #ifndef CPU_RISCV_GC_SHARED_CARDTABLEBARRIERSETASSEMBLER_RISCV_HPP
-diff --git a/src/hotspot/cpu/riscv/gc/shared/modRefBarrierSetAssembler_riscv.cpp b/src/hotspot/cpu/riscv/gc/shared/modRefBarrierSetAssembler_riscv.cpp
-new file mode 100644
-index 00000000000..4b7982eb213
 --- /dev/null
 +++ b/src/hotspot/cpu/riscv/gc/shared/modRefBarrierSetAssembler_riscv.cpp
 @@ -0,0 +1,54 @@
@@ -15847,9 +15702,6 @@ index 00000000000..4b7982eb213
 +    BarrierSetAssembler::store_at(masm, decorators, type, dst, val, tmp1, tmp2);
 +  }
 +}
-diff --git a/src/hotspot/cpu/riscv/gc/shared/modRefBarrierSetAssembler_riscv.hpp b/src/hotspot/cpu/riscv/gc/shared/modRefBarrierSetAssembler_riscv.hpp
-new file mode 100644
-index 00000000000..00419c3163c
 --- /dev/null
 +++ b/src/hotspot/cpu/riscv/gc/shared/modRefBarrierSetAssembler_riscv.hpp
 @@ -0,0 +1,55 @@
@@ -15908,9 +15760,6 @@ index 00000000000..00419c3163c
 +};
 +
 +#endif // CPU_RISCV_GC_SHARED_MODREFBARRIERSETASSEMBLER_RISCV_HPP
-diff --git a/src/hotspot/cpu/riscv/gc/shenandoah/c1/shenandoahBarrierSetC1_riscv.cpp b/src/hotspot/cpu/riscv/gc/shenandoah/c1/shenandoahBarrierSetC1_riscv.cpp
-new file mode 100644
-index 00000000000..cd568cc723f
 --- /dev/null
 +++ b/src/hotspot/cpu/riscv/gc/shenandoah/c1/shenandoahBarrierSetC1_riscv.cpp
 @@ -0,0 +1,117 @@
@@ -16031,9 +15880,6 @@ index 00000000000..cd568cc723f
 +
 +  return result;
 +}
-diff --git a/src/hotspot/cpu/riscv/gc/shenandoah/shenandoahBarrierSetAssembler_riscv.cpp b/src/hotspot/cpu/riscv/gc/shenandoah/shenandoahBarrierSetAssembler_riscv.cpp
-new file mode 100644
-index 00000000000..76caa33b61f
 --- /dev/null
 +++ b/src/hotspot/cpu/riscv/gc/shenandoah/shenandoahBarrierSetAssembler_riscv.cpp
 @@ -0,0 +1,714 @@
@@ -16751,9 +16597,6 @@ index 00000000000..76caa33b61f
 +#undef __
 +
 +#endif // COMPILER1
-diff --git a/src/hotspot/cpu/riscv/gc/shenandoah/shenandoahBarrierSetAssembler_riscv.hpp b/src/hotspot/cpu/riscv/gc/shenandoah/shenandoahBarrierSetAssembler_riscv.hpp
-new file mode 100644
-index 00000000000..a705f497667
 --- /dev/null
 +++ b/src/hotspot/cpu/riscv/gc/shenandoah/shenandoahBarrierSetAssembler_riscv.hpp
 @@ -0,0 +1,88 @@
@@ -16845,9 +16688,6 @@ index 00000000000..a705f497667
 +};
 +
 +#endif // CPU_RISCV_GC_SHENANDOAH_SHENANDOAHBARRIERSETASSEMBLER_RISCV_HPP
-diff --git a/src/hotspot/cpu/riscv/gc/shenandoah/shenandoah_riscv64.ad b/src/hotspot/cpu/riscv/gc/shenandoah/shenandoah_riscv64.ad
-new file mode 100644
-index 00000000000..6c855f23c2a
 --- /dev/null
 +++ b/src/hotspot/cpu/riscv/gc/shenandoah/shenandoah_riscv64.ad
 @@ -0,0 +1,285 @@
@@ -17136,9 +16976,6 @@ index 00000000000..6c855f23c2a
 +
 +  ins_pipe(pipe_slow);
 +%}
-diff --git a/src/hotspot/cpu/riscv/gc/z/zBarrierSetAssembler_riscv.cpp b/src/hotspot/cpu/riscv/gc/z/zBarrierSetAssembler_riscv.cpp
-new file mode 100644
-index 00000000000..f166bf27f42
 --- /dev/null
 +++ b/src/hotspot/cpu/riscv/gc/z/zBarrierSetAssembler_riscv.cpp
 @@ -0,0 +1,445 @@
@@ -17587,9 +17424,6 @@ index 00000000000..f166bf27f42
 +
 +#undef __
 +#endif // COMPILER1
-diff --git a/src/hotspot/cpu/riscv/gc/z/zBarrierSetAssembler_riscv.hpp b/src/hotspot/cpu/riscv/gc/z/zBarrierSetAssembler_riscv.hpp
-new file mode 100644
-index 00000000000..9169b98acb6
 --- /dev/null
 +++ b/src/hotspot/cpu/riscv/gc/z/zBarrierSetAssembler_riscv.hpp
 @@ -0,0 +1,102 @@
@@ -17695,9 +17529,6 @@ index 00000000000..9169b98acb6
 +};
 +
 +#endif // CPU_RISCV_GC_Z_ZBARRIERSETASSEMBLER_RISCV_HPP
-diff --git a/src/hotspot/cpu/riscv/gc/z/zGlobals_riscv.cpp b/src/hotspot/cpu/riscv/gc/z/zGlobals_riscv.cpp
-new file mode 100644
-index 00000000000..d14997790af
 --- /dev/null
 +++ b/src/hotspot/cpu/riscv/gc/z/zGlobals_riscv.cpp
 @@ -0,0 +1,212 @@
@@ -17913,9 +17744,6 @@ index 00000000000..d14997790af
 +size_t ZPlatformAddressMetadataShift() {
 +  return ZPlatformAddressOffsetBits();
 +}
-diff --git a/src/hotspot/cpu/riscv/gc/z/zGlobals_riscv.hpp b/src/hotspot/cpu/riscv/gc/z/zGlobals_riscv.hpp
-new file mode 100644
-index 00000000000..f20ecd9b073
 --- /dev/null
 +++ b/src/hotspot/cpu/riscv/gc/z/zGlobals_riscv.hpp
 @@ -0,0 +1,36 @@
@@ -17955,9 +17783,6 @@ index 00000000000..f20ecd9b073
 +size_t ZPlatformAddressMetadataShift();
 +
 +#endif // CPU_RISCV_GC_Z_ZGLOBALS_RISCV_HPP
-diff --git a/src/hotspot/cpu/riscv/gc/z/z_riscv64.ad b/src/hotspot/cpu/riscv/gc/z/z_riscv64.ad
-new file mode 100644
-index 00000000000..6b6f87814a5
 --- /dev/null
 +++ b/src/hotspot/cpu/riscv/gc/z/z_riscv64.ad
 @@ -0,0 +1,233 @@
@@ -18194,9 +18019,6 @@ index 00000000000..6b6f87814a5
 +  %}
 +  ins_pipe(pipe_serial);
 +%}
-diff --git a/src/hotspot/cpu/riscv/globalDefinitions_riscv.hpp b/src/hotspot/cpu/riscv/globalDefinitions_riscv.hpp
-new file mode 100644
-index 00000000000..2936837d951
 --- /dev/null
 +++ b/src/hotspot/cpu/riscv/globalDefinitions_riscv.hpp
 @@ -0,0 +1,52 @@
@@ -18252,9 +18074,6 @@ index 00000000000..2936837d951
 +#define USE_POINTERS_TO_REGISTER_IMPL_ARRAY
 +
 +#endif // CPU_RISCV_GLOBALDEFINITIONS_RISCV_HPP
-diff --git a/src/hotspot/cpu/riscv/globals_riscv.hpp b/src/hotspot/cpu/riscv/globals_riscv.hpp
-new file mode 100644
-index 00000000000..fa322407f85
 --- /dev/null
 +++ b/src/hotspot/cpu/riscv/globals_riscv.hpp
 @@ -0,0 +1,101 @@
@@ -18359,9 +18178,6 @@ index 00000000000..fa322407f85
 +          "Use RVV instructions for left/right shift of BigInteger")
 +
 +#endif // CPU_RISCV_GLOBALS_RISCV_HPP
-diff --git a/src/hotspot/cpu/riscv/icBuffer_riscv.cpp b/src/hotspot/cpu/riscv/icBuffer_riscv.cpp
-new file mode 100644
-index 00000000000..cc93103dc55
 --- /dev/null
 +++ b/src/hotspot/cpu/riscv/icBuffer_riscv.cpp
 @@ -0,0 +1,79 @@
@@ -18444,9 +18260,6 @@ index 00000000000..cc93103dc55
 +  void* o = (void*)*p;
 +  return o;
 +}
-diff --git a/src/hotspot/cpu/riscv/icache_riscv.cpp b/src/hotspot/cpu/riscv/icache_riscv.cpp
-new file mode 100644
-index 00000000000..e6c2586e5bd
 --- /dev/null
 +++ b/src/hotspot/cpu/riscv/icache_riscv.cpp
 @@ -0,0 +1,59 @@
@@ -18509,9 +18322,6 @@ index 00000000000..e6c2586e5bd
 +}
 +
 +#undef __
-diff --git a/src/hotspot/cpu/riscv/icache_riscv.hpp b/src/hotspot/cpu/riscv/icache_riscv.hpp
-new file mode 100644
-index 00000000000..5bf40ca8204
 --- /dev/null
 +++ b/src/hotspot/cpu/riscv/icache_riscv.hpp
 @@ -0,0 +1,42 @@
@@ -18557,9 +18367,6 @@ index 00000000000..5bf40ca8204
 +};
 +
 +#endif // CPU_RISCV_ICACHE_RISCV_HPP
-diff --git a/src/hotspot/cpu/riscv/interp_masm_riscv.cpp b/src/hotspot/cpu/riscv/interp_masm_riscv.cpp
-new file mode 100644
-index 00000000000..92c128fe93a
 --- /dev/null
 +++ b/src/hotspot/cpu/riscv/interp_masm_riscv.cpp
 @@ -0,0 +1,1950 @@
@@ -20513,9 +20320,6 @@ index 00000000000..92c128fe93a
 +  bind(L);
 +}
 +#endif
-diff --git a/src/hotspot/cpu/riscv/interp_masm_riscv.hpp b/src/hotspot/cpu/riscv/interp_masm_riscv.hpp
-new file mode 100644
-index 00000000000..c820291e5fe
 --- /dev/null
 +++ b/src/hotspot/cpu/riscv/interp_masm_riscv.hpp
 @@ -0,0 +1,285 @@
@@ -20804,9 +20608,6 @@ index 00000000000..c820291e5fe
 +};
 +
 +#endif // CPU_RISCV_INTERP_MASM_RISCV_HPP
-diff --git a/src/hotspot/cpu/riscv/interpreterRT_riscv.cpp b/src/hotspot/cpu/riscv/interpreterRT_riscv.cpp
-new file mode 100644
-index 00000000000..d93530d8564
 --- /dev/null
 +++ b/src/hotspot/cpu/riscv/interpreterRT_riscv.cpp
 @@ -0,0 +1,295 @@
@@ -21105,9 +20906,6 @@ index 00000000000..d93530d8564
 +  // return result handler
 +  return Interpreter::result_handler(m->result_type());
 +JRT_END
-diff --git a/src/hotspot/cpu/riscv/interpreterRT_riscv.hpp b/src/hotspot/cpu/riscv/interpreterRT_riscv.hpp
-new file mode 100644
-index 00000000000..05df63ba2ae
 --- /dev/null
 +++ b/src/hotspot/cpu/riscv/interpreterRT_riscv.hpp
 @@ -0,0 +1,68 @@
@@ -21179,9 +20977,6 @@ index 00000000000..05df63ba2ae
 +};
 +
 +#endif // CPU_RISCV_INTERPRETERRT_RISCV_HPP
-diff --git a/src/hotspot/cpu/riscv/javaFrameAnchor_riscv.hpp b/src/hotspot/cpu/riscv/javaFrameAnchor_riscv.hpp
-new file mode 100644
-index 00000000000..a0cec4820f2
 --- /dev/null
 +++ b/src/hotspot/cpu/riscv/javaFrameAnchor_riscv.hpp
 @@ -0,0 +1,86 @@
@@ -21271,9 +21066,6 @@ index 00000000000..a0cec4820f2
 +  intptr_t* last_Java_fp(void)                   { return _last_Java_fp; }
 +
 +#endif // CPU_RISCV_JAVAFRAMEANCHOR_RISCV_HPP
-diff --git a/src/hotspot/cpu/riscv/jniFastGetField_riscv.cpp b/src/hotspot/cpu/riscv/jniFastGetField_riscv.cpp
-new file mode 100644
-index 00000000000..8a7a1d8378a
 --- /dev/null
 +++ b/src/hotspot/cpu/riscv/jniFastGetField_riscv.cpp
 @@ -0,0 +1,221 @@
@@ -21498,9 +21290,6 @@ index 00000000000..8a7a1d8378a
 +address JNI_FastGetField::generate_fast_get_double_field() {
 +  return generate_fast_get_int_field0(T_DOUBLE);
 +}
-diff --git a/src/hotspot/cpu/riscv/jniTypes_riscv.hpp b/src/hotspot/cpu/riscv/jniTypes_riscv.hpp
-new file mode 100644
-index 00000000000..83ffcc55d83
 --- /dev/null
 +++ b/src/hotspot/cpu/riscv/jniTypes_riscv.hpp
 @@ -0,0 +1,106 @@
@@ -21610,9 +21399,6 @@ index 00000000000..83ffcc55d83
 +};
 +
 +#endif // CPU_RISCV_JNITYPES_RISCV_HPP
-diff --git a/src/hotspot/cpu/riscv/macroAssembler_riscv.cpp b/src/hotspot/cpu/riscv/macroAssembler_riscv.cpp
-new file mode 100644
-index 00000000000..0e7f3ea69cd
 --- /dev/null
 +++ b/src/hotspot/cpu/riscv/macroAssembler_riscv.cpp
 @@ -0,0 +1,4392 @@
@@ -26008,9 +25794,6 @@ index 00000000000..0e7f3ea69cd
 +  }
 +  andi(Rd, Rs, 1UL << bit_pos, tmp);
 +}
-diff --git a/src/hotspot/cpu/riscv/macroAssembler_riscv.hpp b/src/hotspot/cpu/riscv/macroAssembler_riscv.hpp
-new file mode 100644
-index 00000000000..d92031192ab
 --- /dev/null
 +++ b/src/hotspot/cpu/riscv/macroAssembler_riscv.hpp
 @@ -0,0 +1,1310 @@
@@ -27324,9 +27107,6 @@ index 00000000000..d92031192ab
 +};
 +
 +#endif // CPU_RISCV_MACROASSEMBLER_RISCV_HPP
-diff --git a/src/hotspot/cpu/riscv/macroAssembler_riscv.inline.hpp b/src/hotspot/cpu/riscv/macroAssembler_riscv.inline.hpp
-new file mode 100644
-index 00000000000..ef968ccd96d
 --- /dev/null
 +++ b/src/hotspot/cpu/riscv/macroAssembler_riscv.inline.hpp
 @@ -0,0 +1,31 @@
@@ -27361,9 +27141,6 @@ index 00000000000..ef968ccd96d
 +// Still empty.
 +
 +#endif // CPU_RISCV_MACROASSEMBLER_RISCV_INLINE_HPP
-diff --git a/src/hotspot/cpu/riscv/matcher_riscv.hpp b/src/hotspot/cpu/riscv/matcher_riscv.hpp
-new file mode 100644
-index 00000000000..23a75d20502
 --- /dev/null
 +++ b/src/hotspot/cpu/riscv/matcher_riscv.hpp
 @@ -0,0 +1,169 @@
@@ -27536,9 +27313,6 @@ index 00000000000..23a75d20502
 +  }
 +
 +#endif // CPU_RISCV_MATCHER_RISCV_HPP
-diff --git a/src/hotspot/cpu/riscv/methodHandles_riscv.cpp b/src/hotspot/cpu/riscv/methodHandles_riscv.cpp
-new file mode 100644
-index 00000000000..bd3530e2df4
 --- /dev/null
 +++ b/src/hotspot/cpu/riscv/methodHandles_riscv.cpp
 @@ -0,0 +1,455 @@
@@ -27997,9 +27771,6 @@ index 00000000000..bd3530e2df4
 +
 +void MethodHandles::trace_method_handle(MacroAssembler* _masm, const char* adaptername) {  }
 +#endif //PRODUCT
-diff --git a/src/hotspot/cpu/riscv/methodHandles_riscv.hpp b/src/hotspot/cpu/riscv/methodHandles_riscv.hpp
-new file mode 100644
-index 00000000000..f73aba29d67
 --- /dev/null
 +++ b/src/hotspot/cpu/riscv/methodHandles_riscv.hpp
 @@ -0,0 +1,57 @@
@@ -28060,9 +27831,6 @@ index 00000000000..f73aba29d67
 +                                  Register recv, Register method_temp,
 +                                  Register temp2,
 +                                  bool for_compiler_entry);
-diff --git a/src/hotspot/cpu/riscv/nativeInst_riscv.cpp b/src/hotspot/cpu/riscv/nativeInst_riscv.cpp
-new file mode 100644
-index 00000000000..675ed5be189
 --- /dev/null
 +++ b/src/hotspot/cpu/riscv/nativeInst_riscv.cpp
 @@ -0,0 +1,441 @@
@@ -28507,9 +28275,6 @@ index 00000000000..675ed5be189
 +  address membar = addr_at(0);
 +  *(unsigned int*) membar = insn;
 +}
-diff --git a/src/hotspot/cpu/riscv/nativeInst_riscv.hpp b/src/hotspot/cpu/riscv/nativeInst_riscv.hpp
-new file mode 100644
-index 00000000000..288ccc08d81
 --- /dev/null
 +++ b/src/hotspot/cpu/riscv/nativeInst_riscv.hpp
 @@ -0,0 +1,554 @@
@@ -29067,9 +28832,6 @@ index 00000000000..288ccc08d81
 +}
 +
 +#endif // CPU_RISCV_NATIVEINST_RISCV_HPP
-diff --git a/src/hotspot/cpu/riscv/registerMap_riscv.cpp b/src/hotspot/cpu/riscv/registerMap_riscv.cpp
-new file mode 100644
-index 00000000000..26c1edc36ff
 --- /dev/null
 +++ b/src/hotspot/cpu/riscv/registerMap_riscv.cpp
 @@ -0,0 +1,45 @@
@@ -29118,9 +28880,6 @@ index 00000000000..26c1edc36ff
 +    return location(base_reg->next(slot_idx));
 +  }
 +}
-diff --git a/src/hotspot/cpu/riscv/registerMap_riscv.hpp b/src/hotspot/cpu/riscv/registerMap_riscv.hpp
-new file mode 100644
-index 00000000000..f34349811a9
 --- /dev/null
 +++ b/src/hotspot/cpu/riscv/registerMap_riscv.hpp
 @@ -0,0 +1,43 @@
@@ -29167,9 +28926,6 @@ index 00000000000..f34349811a9
 +  void pd_initialize_from(const RegisterMap* map) {}
 +
 +#endif // CPU_RISCV_REGISTERMAP_RISCV_HPP
-diff --git a/src/hotspot/cpu/riscv/register_definitions_riscv.cpp b/src/hotspot/cpu/riscv/register_definitions_riscv.cpp
-new file mode 100644
-index 00000000000..624d4b3e201
 --- /dev/null
 +++ b/src/hotspot/cpu/riscv/register_definitions_riscv.cpp
 @@ -0,0 +1,193 @@
@@ -29366,9 +29122,6 @@ index 00000000000..624d4b3e201
 +REGISTER_DEFINITION(Register, t0);
 +REGISTER_DEFINITION(Register, t1);
 +REGISTER_DEFINITION(Register, t2);
-diff --git a/src/hotspot/cpu/riscv/register_riscv.cpp b/src/hotspot/cpu/riscv/register_riscv.cpp
-new file mode 100644
-index 00000000000..7e31ebe05db
 --- /dev/null
 +++ b/src/hotspot/cpu/riscv/register_riscv.cpp
 @@ -0,0 +1,69 @@
@@ -29441,9 +29194,6 @@ index 00000000000..7e31ebe05db
 +  };
 +  return is_valid() ? names[encoding()] : "noreg";
 +}
-diff --git a/src/hotspot/cpu/riscv/register_riscv.hpp b/src/hotspot/cpu/riscv/register_riscv.hpp
-new file mode 100644
-index 00000000000..8fa9e4237ff
 --- /dev/null
 +++ b/src/hotspot/cpu/riscv/register_riscv.hpp
 @@ -0,0 +1,385 @@
@@ -29832,9 +29582,6 @@ index 00000000000..8fa9e4237ff
 +typedef AbstractRegSet<VectorRegister> VectorRegSet;
 +
 +#endif // CPU_RISCV_REGISTER_RISCV_HPP
-diff --git a/src/hotspot/cpu/riscv/relocInfo_riscv.cpp b/src/hotspot/cpu/riscv/relocInfo_riscv.cpp
-new file mode 100644
-index 00000000000..228a64eae2c
 --- /dev/null
 +++ b/src/hotspot/cpu/riscv/relocInfo_riscv.cpp
 @@ -0,0 +1,113 @@
@@ -29951,9 +29698,6 @@ index 00000000000..228a64eae2c
 +
 +void metadata_Relocation::pd_fix_value(address x) {
 +}
-diff --git a/src/hotspot/cpu/riscv/relocInfo_riscv.hpp b/src/hotspot/cpu/riscv/relocInfo_riscv.hpp
-new file mode 100644
-index 00000000000..840ed935d88
 --- /dev/null
 +++ b/src/hotspot/cpu/riscv/relocInfo_riscv.hpp
 @@ -0,0 +1,44 @@
@@ -30001,9 +29745,6 @@ index 00000000000..840ed935d88
 +  static bool mustIterateImmediateOopsInCode() { return false; }
 +
 +#endif // CPU_RISCV_RELOCINFO_RISCV_HPP
-diff --git a/src/hotspot/cpu/riscv/riscv.ad b/src/hotspot/cpu/riscv/riscv.ad
-new file mode 100644
-index 00000000000..3d59f61c83c
 --- /dev/null
 +++ b/src/hotspot/cpu/riscv/riscv.ad
 @@ -0,0 +1,10645 @@
@@ -40652,9 +40393,6 @@ index 00000000000..3d59f61c83c
 +// Local Variables:
 +// mode: c++
 +// End:
-diff --git a/src/hotspot/cpu/riscv/riscv_b.ad b/src/hotspot/cpu/riscv/riscv_b.ad
-new file mode 100644
-index 00000000000..f88ccfc7b56
 --- /dev/null
 +++ b/src/hotspot/cpu/riscv/riscv_b.ad
 @@ -0,0 +1,575 @@
@@ -41234,9 +40972,6 @@ index 00000000000..f88ccfc7b56
 +  ins_pipe(ialu_reg_reg);
 +%}
 \ No newline at end of file
-diff --git a/src/hotspot/cpu/riscv/riscv_v.ad b/src/hotspot/cpu/riscv/riscv_v.ad
-new file mode 100644
-index 00000000000..4359ea7c34b
 --- /dev/null
 +++ b/src/hotspot/cpu/riscv/riscv_v.ad
 @@ -0,0 +1,2038 @@
@@ -43278,9 +43013,6 @@ index 00000000000..4359ea7c34b
 +
 +  ins_pipe(pipe_class_memory);
 +%}
-diff --git a/src/hotspot/cpu/riscv/sharedRuntime_riscv.cpp b/src/hotspot/cpu/riscv/sharedRuntime_riscv.cpp
-new file mode 100644
-index 00000000000..807572775d0
 --- /dev/null
 +++ b/src/hotspot/cpu/riscv/sharedRuntime_riscv.cpp
 @@ -0,0 +1,2966 @@
@@ -46250,9 +45982,6 @@ index 00000000000..807572775d0
 +  _exception_blob =  ExceptionBlob::create(&buffer, oop_maps, SimpleRuntimeFrame::framesize >> 1);
 +}
 +#endif // COMPILER2
-diff --git a/src/hotspot/cpu/riscv/stubGenerator_riscv.cpp b/src/hotspot/cpu/riscv/stubGenerator_riscv.cpp
-new file mode 100644
-index 00000000000..adebc1f3964
 --- /dev/null
 +++ b/src/hotspot/cpu/riscv/stubGenerator_riscv.cpp
 @@ -0,0 +1,3959 @@
@@ -50215,9 +49944,6 @@ index 00000000000..adebc1f3964
 +
 +  StubGenerator g(code, all);
 +}
-diff --git a/src/hotspot/cpu/riscv/stubRoutines_riscv.cpp b/src/hotspot/cpu/riscv/stubRoutines_riscv.cpp
-new file mode 100644
-index 00000000000..395a2d338e4
 --- /dev/null
 +++ b/src/hotspot/cpu/riscv/stubRoutines_riscv.cpp
 @@ -0,0 +1,58 @@
@@ -50279,9 +50005,6 @@ index 00000000000..395a2d338e4
 +address StubRoutines::riscv::_method_entry_barrier = NULL;
 +
 +bool StubRoutines::riscv::_completed = false;
-diff --git a/src/hotspot/cpu/riscv/stubRoutines_riscv.hpp b/src/hotspot/cpu/riscv/stubRoutines_riscv.hpp
-new file mode 100644
-index 00000000000..51f07819c33
 --- /dev/null
 +++ b/src/hotspot/cpu/riscv/stubRoutines_riscv.hpp
 @@ -0,0 +1,161 @@
@@ -50446,9 +50169,6 @@ index 00000000000..51f07819c33
 +};
 +
 +#endif // CPU_RISCV_STUBROUTINES_RISCV_HPP
-diff --git a/src/hotspot/cpu/riscv/templateInterpreterGenerator_riscv.cpp b/src/hotspot/cpu/riscv/templateInterpreterGenerator_riscv.cpp
-new file mode 100644
-index 00000000000..95fc27f9e71
 --- /dev/null
 +++ b/src/hotspot/cpu/riscv/templateInterpreterGenerator_riscv.cpp
 @@ -0,0 +1,1760 @@
@@ -52212,9 +51932,6 @@ index 00000000000..95fc27f9e71
 +}
 +
 +#endif // !PRODUCT
-diff --git a/src/hotspot/cpu/riscv/templateTable_riscv.cpp b/src/hotspot/cpu/riscv/templateTable_riscv.cpp
-new file mode 100644
-index 00000000000..19b31c969e3
 --- /dev/null
 +++ b/src/hotspot/cpu/riscv/templateTable_riscv.cpp
 @@ -0,0 +1,3949 @@
@@ -56167,9 +55884,6 @@ index 00000000000..19b31c969e3
 +  __ load_unsigned_byte(x11, at_bcp(3));
 +  __ shadd(esp, x11, esp, t0, 3);
 +}
-diff --git a/src/hotspot/cpu/riscv/templateTable_riscv.hpp b/src/hotspot/cpu/riscv/templateTable_riscv.hpp
-new file mode 100644
-index 00000000000..fcc86108d28
 --- /dev/null
 +++ b/src/hotspot/cpu/riscv/templateTable_riscv.hpp
 @@ -0,0 +1,42 @@
@@ -56215,9 +55929,6 @@ index 00000000000..fcc86108d28
 +static void index_check(Register array, Register index);
 +
 +#endif // CPU_RISCV_TEMPLATETABLE_RISCV_HPP
-diff --git a/src/hotspot/cpu/riscv/universalNativeInvoker_riscv.cpp b/src/hotspot/cpu/riscv/universalNativeInvoker_riscv.cpp
-new file mode 100644
-index 00000000000..4f50adb05c3
 --- /dev/null
 +++ b/src/hotspot/cpu/riscv/universalNativeInvoker_riscv.cpp
 @@ -0,0 +1,33 @@
@@ -56254,9 +55965,6 @@ index 00000000000..4f50adb05c3
 +  Unimplemented();
 +  return nullptr;
 +}
-diff --git a/src/hotspot/cpu/riscv/universalUpcallHandle_riscv.cpp b/src/hotspot/cpu/riscv/universalUpcallHandle_riscv.cpp
-new file mode 100644
-index 00000000000..ce70da72f2e
 --- /dev/null
 +++ b/src/hotspot/cpu/riscv/universalUpcallHandle_riscv.cpp
 @@ -0,0 +1,42 @@
@@ -56302,9 +56010,6 @@ index 00000000000..ce70da72f2e
 +bool ProgrammableUpcallHandler::supports_optimized_upcalls() {
 +  return false;
 +}
-diff --git a/src/hotspot/cpu/riscv/vmStructs_riscv.hpp b/src/hotspot/cpu/riscv/vmStructs_riscv.hpp
-new file mode 100644
-index 00000000000..6c89133de02
 --- /dev/null
 +++ b/src/hotspot/cpu/riscv/vmStructs_riscv.hpp
 @@ -0,0 +1,42 @@
@@ -56350,9 +56055,6 @@ index 00000000000..6c89133de02
 +#define VM_LONG_CONSTANTS_CPU(declare_constant, declare_preprocessor_constant, declare_c1_constant, declare_c2_constant, declare_c2_preprocessor_constant)
 +
 +#endif // CPU_RISCV_VMSTRUCTS_RISCV_HPP
-diff --git a/src/hotspot/cpu/riscv/vm_version_ext_riscv.cpp b/src/hotspot/cpu/riscv/vm_version_ext_riscv.cpp
-new file mode 100644
-index 00000000000..f6f2bbe2289
 --- /dev/null
 +++ b/src/hotspot/cpu/riscv/vm_version_ext_riscv.cpp
 @@ -0,0 +1,87 @@
@@ -56443,9 +56145,6 @@ index 00000000000..f6f2bbe2289
 +  strncpy(tmp, _cpu_desc, CPU_DETAILED_DESC_BUF_SIZE);
 +  return tmp;
 +}
-diff --git a/src/hotspot/cpu/riscv/vm_version_ext_riscv.hpp b/src/hotspot/cpu/riscv/vm_version_ext_riscv.hpp
-new file mode 100644
-index 00000000000..ad9785b7c67
 --- /dev/null
 +++ b/src/hotspot/cpu/riscv/vm_version_ext_riscv.hpp
 @@ -0,0 +1,55 @@
@@ -56504,9 +56203,6 @@ index 00000000000..ad9785b7c67
 +};
 +
 +#endif // CPU_RISCV_VM_VERSION_EXT_RISCV_HPP
-diff --git a/src/hotspot/cpu/riscv/vm_version_riscv.cpp b/src/hotspot/cpu/riscv/vm_version_riscv.cpp
-new file mode 100644
-index 00000000000..63eb94d018b
 --- /dev/null
 +++ b/src/hotspot/cpu/riscv/vm_version_riscv.cpp
 @@ -0,0 +1,225 @@
@@ -56735,9 +56431,6 @@ index 00000000000..63eb94d018b
 +  }
 +}
 +#endif // COMPILER2
-diff --git a/src/hotspot/cpu/riscv/vm_version_riscv.hpp b/src/hotspot/cpu/riscv/vm_version_riscv.hpp
-new file mode 100644
-index 00000000000..39c127e9285
 --- /dev/null
 +++ b/src/hotspot/cpu/riscv/vm_version_riscv.hpp
 @@ -0,0 +1,82 @@
@@ -56823,9 +56516,6 @@ index 00000000000..39c127e9285
 +};
 +
 +#endif // CPU_RISCV_VM_VERSION_RISCV_HPP
-diff --git a/src/hotspot/cpu/riscv/vmreg_riscv.cpp b/src/hotspot/cpu/riscv/vmreg_riscv.cpp
-new file mode 100644
-index 00000000000..36a1869c573
 --- /dev/null
 +++ b/src/hotspot/cpu/riscv/vmreg_riscv.cpp
 @@ -0,0 +1,64 @@
@@ -56893,9 +56583,6 @@ index 00000000000..36a1869c573
 +  Unimplemented();
 +  return VMRegImpl::Bad();
 +}
-diff --git a/src/hotspot/cpu/riscv/vmreg_riscv.hpp b/src/hotspot/cpu/riscv/vmreg_riscv.hpp
-new file mode 100644
-index 00000000000..9e611b1f671
 --- /dev/null
 +++ b/src/hotspot/cpu/riscv/vmreg_riscv.hpp
 @@ -0,0 +1,68 @@
@@ -56967,9 +56654,6 @@ index 00000000000..9e611b1f671
 +}
 +
 +#endif // CPU_RISCV_VMREG_RISCV_HPP
-diff --git a/src/hotspot/cpu/riscv/vmreg_riscv.inline.hpp b/src/hotspot/cpu/riscv/vmreg_riscv.inline.hpp
-new file mode 100644
-index 00000000000..09e07f58964
 --- /dev/null
 +++ b/src/hotspot/cpu/riscv/vmreg_riscv.inline.hpp
 @@ -0,0 +1,46 @@
@@ -57019,9 +56703,6 @@ index 00000000000..09e07f58964
 +}
 +
 +#endif // CPU_RISCV_VM_VMREG_RISCV_INLINE_HPP
-diff --git a/src/hotspot/cpu/riscv/vtableStubs_riscv.cpp b/src/hotspot/cpu/riscv/vtableStubs_riscv.cpp
-new file mode 100644
-index 00000000000..af62f7d77eb
 --- /dev/null
 +++ b/src/hotspot/cpu/riscv/vtableStubs_riscv.cpp
 @@ -0,0 +1,260 @@
@@ -57285,11 +56966,9 @@ index 00000000000..af62f7d77eb
 +  const unsigned int icache_line_size = wordSize;
 +  return icache_line_size;
 +}
-diff --git a/src/hotspot/os/linux/os_linux.cpp b/src/hotspot/os/linux/os_linux.cpp
-index d5629c061a5..31c5dfcf243 100644
 --- a/src/hotspot/os/linux/os_linux.cpp
 +++ b/src/hotspot/os/linux/os_linux.cpp
-@@ -2593,6 +2593,8 @@ void os::get_summary_cpu_info(char* cpuinfo, size_t length) {
+@@ -2559,6 +2559,8 @@ void os::get_summary_cpu_info(char* cpui
    strncpy(cpuinfo, "IA64", length);
  #elif defined(PPC)
    strncpy(cpuinfo, "PPC64", length);
@@ -57298,9 +56977,6 @@ index d5629c061a5..31c5dfcf243 100644
  #elif defined(S390)
    strncpy(cpuinfo, "S390", length);
  #elif defined(SPARC)
-diff --git a/src/hotspot/os_cpu/linux_riscv/assembler_linux_riscv.cpp b/src/hotspot/os_cpu/linux_riscv/assembler_linux_riscv.cpp
-new file mode 100644
-index 00000000000..f2610af6cdd
 --- /dev/null
 +++ b/src/hotspot/os_cpu/linux_riscv/assembler_linux_riscv.cpp
 @@ -0,0 +1,26 @@
@@ -57330,9 +57006,6 @@ index 00000000000..f2610af6cdd
 + */
 +
 +// nothing required here
-diff --git a/src/hotspot/os_cpu/linux_riscv/atomic_linux_riscv.hpp b/src/hotspot/os_cpu/linux_riscv/atomic_linux_riscv.hpp
-new file mode 100644
-index 00000000000..11cd9e1d72d
 --- /dev/null
 +++ b/src/hotspot/os_cpu/linux_riscv/atomic_linux_riscv.hpp
 @@ -0,0 +1,151 @@
@@ -57487,9 +57160,6 @@ index 00000000000..11cd9e1d72d
 +};
 +
 +#endif // OS_CPU_LINUX_RISCV_ATOMIC_LINUX_RISCV_HPP
-diff --git a/src/hotspot/os_cpu/linux_riscv/bytes_linux_riscv.hpp b/src/hotspot/os_cpu/linux_riscv/bytes_linux_riscv.hpp
-new file mode 100644
-index 00000000000..28868c76406
 --- /dev/null
 +++ b/src/hotspot/os_cpu/linux_riscv/bytes_linux_riscv.hpp
 @@ -0,0 +1,45 @@
@@ -57538,9 +57208,6 @@ index 00000000000..28868c76406
 +}
 +
 +#endif // OS_CPU_LINUX_RISCV_BYTES_LINUX_RISCV_HPP
-diff --git a/src/hotspot/os_cpu/linux_riscv/copy_linux_riscv.hpp b/src/hotspot/os_cpu/linux_riscv/copy_linux_riscv.hpp
-new file mode 100644
-index 00000000000..147cfdf3c10
 --- /dev/null
 +++ b/src/hotspot/os_cpu/linux_riscv/copy_linux_riscv.hpp
 @@ -0,0 +1,31 @@
@@ -57575,9 +57242,6 @@ index 00000000000..147cfdf3c10
 +// Empty for build system
 +
 +#endif // OS_CPU_LINUX_RISCV_VM_COPY_LINUX_RISCV_HPP
-diff --git a/src/hotspot/os_cpu/linux_riscv/gc/z/zSyscall_linux_riscv.hpp b/src/hotspot/os_cpu/linux_riscv/gc/z/zSyscall_linux_riscv.hpp
-new file mode 100644
-index 00000000000..1aa58f27871
 --- /dev/null
 +++ b/src/hotspot/os_cpu/linux_riscv/gc/z/zSyscall_linux_riscv.hpp
 @@ -0,0 +1,42 @@
@@ -57623,9 +57287,6 @@ index 00000000000..1aa58f27871
 +#endif
 +
 +#endif // OS_CPU_LINUX_RISCV_GC_Z_ZSYSCALL_LINUX_RISCV_HPP
-diff --git a/src/hotspot/os_cpu/linux_riscv/globals_linux_riscv.hpp b/src/hotspot/os_cpu/linux_riscv/globals_linux_riscv.hpp
-new file mode 100644
-index 00000000000..297414bfcd5
 --- /dev/null
 +++ b/src/hotspot/os_cpu/linux_riscv/globals_linux_riscv.hpp
 @@ -0,0 +1,43 @@
@@ -57672,9 +57333,6 @@ index 00000000000..297414bfcd5
 +define_pd_global(uintx, HeapBaseMinAddress,       2 * G);
 +
 +#endif // OS_CPU_LINUX_RISCV_VM_GLOBALS_LINUX_RISCV_HPP
-diff --git a/src/hotspot/os_cpu/linux_riscv/orderAccess_linux_riscv.hpp b/src/hotspot/os_cpu/linux_riscv/orderAccess_linux_riscv.hpp
-new file mode 100644
-index 00000000000..2b500376f9b
 --- /dev/null
 +++ b/src/hotspot/os_cpu/linux_riscv/orderAccess_linux_riscv.hpp
 @@ -0,0 +1,59 @@
@@ -57737,9 +57395,6 @@ index 00000000000..2b500376f9b
 +}
 +
 +#endif // OS_CPU_LINUX_RISCV_ORDERACCESS_LINUX_RISCV_HPP
-diff --git a/src/hotspot/os_cpu/linux_riscv/os_linux_riscv.cpp b/src/hotspot/os_cpu/linux_riscv/os_linux_riscv.cpp
-new file mode 100644
-index 00000000000..d672b57182f
 --- /dev/null
 +++ b/src/hotspot/os_cpu/linux_riscv/os_linux_riscv.cpp
 @@ -0,0 +1,475 @@
@@ -58218,9 +57873,6 @@ index 00000000000..d672b57182f
 +    memmove(to, from, count * 8);
 +  }
 +};
-diff --git a/src/hotspot/os_cpu/linux_riscv/os_linux_riscv.hpp b/src/hotspot/os_cpu/linux_riscv/os_linux_riscv.hpp
-new file mode 100644
-index 00000000000..f3e3a73bc5e
 --- /dev/null
 +++ b/src/hotspot/os_cpu/linux_riscv/os_linux_riscv.hpp
 @@ -0,0 +1,40 @@
@@ -58264,9 +57916,6 @@ index 00000000000..f3e3a73bc5e
 +  }
 +
 +#endif // OS_CPU_LINUX_RISCV_VM_OS_LINUX_RISCV_HPP
-diff --git a/src/hotspot/os_cpu/linux_riscv/prefetch_linux_riscv.inline.hpp b/src/hotspot/os_cpu/linux_riscv/prefetch_linux_riscv.inline.hpp
-new file mode 100644
-index 00000000000..2bd48e09c34
 --- /dev/null
 +++ b/src/hotspot/os_cpu/linux_riscv/prefetch_linux_riscv.inline.hpp
 @@ -0,0 +1,38 @@
@@ -58308,9 +57957,6 @@ index 00000000000..2bd48e09c34
 +}
 +
 +#endif // OS_CPU_LINUX_RISCV_VM_PREFETCH_LINUX_RISCV_INLINE_HPP
-diff --git a/src/hotspot/os_cpu/linux_riscv/thread_linux_riscv.cpp b/src/hotspot/os_cpu/linux_riscv/thread_linux_riscv.cpp
-new file mode 100644
-index 00000000000..3100572e9fd
 --- /dev/null
 +++ b/src/hotspot/os_cpu/linux_riscv/thread_linux_riscv.cpp
 @@ -0,0 +1,92 @@
@@ -58406,9 +58052,6 @@ index 00000000000..3100572e9fd
 +}
 +
 +void JavaThread::cache_global_variables() { }
-diff --git a/src/hotspot/os_cpu/linux_riscv/thread_linux_riscv.hpp b/src/hotspot/os_cpu/linux_riscv/thread_linux_riscv.hpp
-new file mode 100644
-index 00000000000..61e2cf85b63
 --- /dev/null
 +++ b/src/hotspot/os_cpu/linux_riscv/thread_linux_riscv.hpp
 @@ -0,0 +1,48 @@
@@ -58460,9 +58103,6 @@ index 00000000000..61e2cf85b63
 +  bool pd_get_top_frame(frame* fr_addr, void* ucontext, bool isInJava);
 +
 +#endif // OS_CPU_LINUX_RISCV_THREAD_LINUX_RISCV_HPP
-diff --git a/src/hotspot/os_cpu/linux_riscv/vmStructs_linux_riscv.hpp b/src/hotspot/os_cpu/linux_riscv/vmStructs_linux_riscv.hpp
-new file mode 100644
-index 00000000000..6cf7683a586
 --- /dev/null
 +++ b/src/hotspot/os_cpu/linux_riscv/vmStructs_linux_riscv.hpp
 @@ -0,0 +1,55 @@
@@ -58521,9 +58161,6 @@ index 00000000000..6cf7683a586
 +#define VM_LONG_CONSTANTS_OS_CPU(declare_constant, declare_preprocessor_constant, declare_c1_constant, declare_c2_constant, declare_c2_preprocessor_constant)
 +
 +#endif // OS_CPU_LINUX_RISCV_VM_VMSTRUCTS_LINUX_RISCV_HPP
-diff --git a/src/hotspot/os_cpu/linux_riscv/vm_version_linux_riscv.cpp b/src/hotspot/os_cpu/linux_riscv/vm_version_linux_riscv.cpp
-new file mode 100644
-index 00000000000..8d138940312
 --- /dev/null
 +++ b/src/hotspot/os_cpu/linux_riscv/vm_version_linux_riscv.cpp
 @@ -0,0 +1,137 @@
@@ -58664,8 +58301,6 @@ index 00000000000..8d138940312
 +    fclose(f);
 +  }
 +}
-diff --git a/src/hotspot/share/c1/c1_LIR.cpp b/src/hotspot/share/c1/c1_LIR.cpp
-index 62cff4c7505..55323c1edc3 100644
 --- a/src/hotspot/share/c1/c1_LIR.cpp
 +++ b/src/hotspot/share/c1/c1_LIR.cpp
 @@ -1,5 +1,5 @@
@@ -58698,7 +58333,7 @@ index 62cff4c7505..55323c1edc3 100644
    , _label(block->label())
    , _block(block)
    , _ublock(NULL)
-@@ -247,8 +254,12 @@ LIR_OpBranch::LIR_OpBranch(LIR_Condition cond, BlockBegin* block)
+@@ -247,8 +254,12 @@ LIR_OpBranch::LIR_OpBranch(LIR_Condition
  }
  
  LIR_OpBranch::LIR_OpBranch(LIR_Condition cond, CodeStub* stub) :
@@ -58711,7 +58346,7 @@ index 62cff4c7505..55323c1edc3 100644
    , _label(stub->entry())
    , _block(NULL)
    , _ublock(NULL)
-@@ -256,8 +267,12 @@ LIR_OpBranch::LIR_OpBranch(LIR_Condition cond, CodeStub* stub) :
+@@ -256,8 +267,12 @@ LIR_OpBranch::LIR_OpBranch(LIR_Condition
  }
  
  LIR_OpBranch::LIR_OpBranch(LIR_Condition cond, BlockBegin* block, BlockBegin* ublock)
@@ -58724,7 +58359,7 @@ index 62cff4c7505..55323c1edc3 100644
    , _label(block->label())
    , _block(block)
    , _ublock(ublock)
-@@ -279,13 +294,13 @@ void LIR_OpBranch::change_ublock(BlockBegin* b) {
+@@ -279,13 +294,13 @@ void LIR_OpBranch::change_ublock(BlockBe
  }
  
  void LIR_OpBranch::negate_cond() {
@@ -58745,7 +58380,7 @@ index 62cff4c7505..55323c1edc3 100644
      default: ShouldNotReachHere();
    }
  }
-@@ -513,6 +528,15 @@ void LIR_OpVisitState::visit(LIR_Op* op) {
+@@ -513,6 +528,15 @@ void LIR_OpVisitState::visit(LIR_Op* op)
        assert(op->as_OpBranch() != NULL, "must be");
        LIR_OpBranch* opBranch = (LIR_OpBranch*)op;
  
@@ -58761,7 +58396,7 @@ index 62cff4c7505..55323c1edc3 100644
        if (opBranch->_info != NULL)     do_info(opBranch->_info);
        assert(opBranch->_result->is_illegal(), "not used");
        if (opBranch->_stub != NULL)     opBranch->stub()->visit(this);
-@@ -601,6 +625,21 @@ void LIR_OpVisitState::visit(LIR_Op* op) {
+@@ -601,6 +625,21 @@ void LIR_OpVisitState::visit(LIR_Op* op)
      // to the result operand, otherwise the backend fails
      case lir_cmove:
      {
@@ -58783,7 +58418,7 @@ index 62cff4c7505..55323c1edc3 100644
        assert(op->as_Op2() != NULL, "must be");
        LIR_Op2* op2 = (LIR_Op2*)op;
  
-@@ -612,6 +651,7 @@ void LIR_OpVisitState::visit(LIR_Op* op) {
+@@ -612,6 +651,7 @@ void LIR_OpVisitState::visit(LIR_Op* op)
        do_input(op2->_opr2);
        do_temp(op2->_opr2);
        do_output(op2->_result);
@@ -58791,7 +58426,7 @@ index 62cff4c7505..55323c1edc3 100644
  
        break;
      }
-@@ -1042,6 +1082,12 @@ void LIR_Op3::emit_code(LIR_Assembler* masm) {
+@@ -1042,6 +1082,12 @@ void LIR_Op3::emit_code(LIR_Assembler* m
    masm->emit_op3(this);
  }
  
@@ -58804,7 +58439,7 @@ index 62cff4c7505..55323c1edc3 100644
  void LIR_OpLock::emit_code(LIR_Assembler* masm) {
    masm->emit_lock(this);
    if (stub()) {
-@@ -1078,6 +1124,10 @@ LIR_List::LIR_List(Compilation* compilation, BlockBegin* block)
+@@ -1078,6 +1124,10 @@ LIR_List::LIR_List(Compilation* compilat
    , _file(NULL)
    , _line(0)
  #endif
@@ -58815,7 +58450,7 @@ index 62cff4c7505..55323c1edc3 100644
  { }
  
  
-@@ -1095,6 +1145,38 @@ void LIR_List::set_file_and_line(const char * file, int line) {
+@@ -1095,6 +1145,38 @@ void LIR_List::set_file_and_line(const c
  }
  #endif
  
@@ -58854,7 +58489,7 @@ index 62cff4c7505..55323c1edc3 100644
  
  void LIR_List::append(LIR_InsertionBuffer* buffer) {
    assert(this == buffer->lir_list(), "wrong lir list");
-@@ -1825,6 +1907,10 @@ void LIR_Op1::print_patch_code(outputStream* out, LIR_PatchCode code) {
+@@ -1825,6 +1907,10 @@ void LIR_Op1::print_patch_code(outputStr
  // LIR_OpBranch
  void LIR_OpBranch::print_instr(outputStream* out) const {
    print_condition(out, cond());             out->print(" ");
@@ -58865,7 +58500,7 @@ index 62cff4c7505..55323c1edc3 100644
    if (block() != NULL) {
      out->print("[B%d] ", block()->block_id());
    } else if (stub() != NULL) {
-@@ -1911,7 +1997,11 @@ void LIR_OpRoundFP::print_instr(outputStream* out) const {
+@@ -1911,7 +1997,11 @@ void LIR_OpRoundFP::print_instr(outputSt
  
  // LIR_Op2
  void LIR_Op2::print_instr(outputStream* out) const {
@@ -58877,7 +58512,7 @@ index 62cff4c7505..55323c1edc3 100644
      print_condition(out, condition());         out->print(" ");
    }
    in_opr1()->print(out);    out->print(" ");
-@@ -1962,6 +2052,17 @@ void LIR_Op3::print_instr(outputStream* out) const {
+@@ -1962,6 +2052,17 @@ void LIR_Op3::print_instr(outputStream*
    result_opr()->print(out);
  }
  
@@ -58895,8 +58530,6 @@ index 62cff4c7505..55323c1edc3 100644
  
  void LIR_OpLock::print_instr(outputStream* out) const {
    hdr_opr()->print(out);   out->print(" ");
-diff --git a/src/hotspot/share/c1/c1_LIR.hpp b/src/hotspot/share/c1/c1_LIR.hpp
-index 2342e6117eb..bf7899675f9 100644
 --- a/src/hotspot/share/c1/c1_LIR.hpp
 +++ b/src/hotspot/share/c1/c1_LIR.hpp
 @@ -1,5 +1,5 @@
@@ -58969,7 +58602,7 @@ index 2342e6117eb..bf7899675f9 100644
  };
  
  
-@@ -1128,6 +1149,9 @@ class LIR_Op: public CompilationResourceObj {
+@@ -1128,6 +1149,9 @@ class LIR_Op: public CompilationResource
    virtual LIR_Op1* as_Op1() { return NULL; }
    virtual LIR_Op2* as_Op2() { return NULL; }
    virtual LIR_Op3* as_Op3() { return NULL; }
@@ -59216,7 +58849,7 @@ index 2342e6117eb..bf7899675f9 100644
  
  //--------------------------------
  class LabelObj: public CompilationResourceObj {
-@@ -1986,6 +2092,10 @@ class LIR_List: public CompilationResourceObj {
+@@ -1986,6 +2092,10 @@ class LIR_List: public CompilationResour
    const char *  _file;
    int           _line;
  #endif
@@ -59227,7 +58860,7 @@ index 2342e6117eb..bf7899675f9 100644
  
   public:
    void append(LIR_Op* op) {
-@@ -1998,6 +2108,12 @@ class LIR_List: public CompilationResourceObj {
+@@ -1998,6 +2108,12 @@ class LIR_List: public CompilationResour
      }
  #endif // PRODUCT
  
@@ -59240,7 +58873,7 @@ index 2342e6117eb..bf7899675f9 100644
      _operations.append(op);
  
  #ifdef ASSERT
-@@ -2014,6 +2130,10 @@ class LIR_List: public CompilationResourceObj {
+@@ -2014,6 +2130,10 @@ class LIR_List: public CompilationResour
    void set_file_and_line(const char * file, int line);
  #endif
  
@@ -59251,7 +58884,7 @@ index 2342e6117eb..bf7899675f9 100644
    //---------- accessors ---------------
    LIR_OpList* instructions_list()                { return &_operations; }
    int         length() const                     { return _operations.length(); }
-@@ -2133,9 +2253,16 @@ class LIR_List: public CompilationResourceObj {
+@@ -2133,9 +2253,16 @@ class LIR_List: public CompilationResour
    void cmp_mem_int(LIR_Condition condition, LIR_Opr base, int disp, int c, CodeEmitInfo* info);
    void cmp_reg_mem(LIR_Condition condition, LIR_Opr reg, LIR_Address* addr, CodeEmitInfo* info);
  
@@ -59268,11 +58901,9 @@ index 2342e6117eb..bf7899675f9 100644
  
    void cas_long(LIR_Opr addr, LIR_Opr cmp_value, LIR_Opr new_value,
                  LIR_Opr t1, LIR_Opr t2, LIR_Opr result = LIR_OprFact::illegalOpr);
-diff --git a/src/hotspot/share/c1/c1_LIRAssembler.cpp b/src/hotspot/share/c1/c1_LIRAssembler.cpp
-index 37ce476253d..989a6f8ad25 100644
 --- a/src/hotspot/share/c1/c1_LIRAssembler.cpp
 +++ b/src/hotspot/share/c1/c1_LIRAssembler.cpp
-@@ -691,9 +691,11 @@ void LIR_Assembler::emit_op2(LIR_Op2* op) {
+@@ -691,9 +691,11 @@ void LIR_Assembler::emit_op2(LIR_Op2* op
        comp_fl2i(op->code(), op->in_opr1(), op->in_opr2(), op->result_opr(), op);
        break;
  
@@ -59284,7 +58915,7 @@ index 37ce476253d..989a6f8ad25 100644
  
      case lir_shl:
      case lir_shr:
-@@ -756,6 +758,19 @@ void LIR_Assembler::emit_op2(LIR_Op2* op) {
+@@ -756,6 +758,19 @@ void LIR_Assembler::emit_op2(LIR_Op2* op
    }
  }
  
@@ -59304,11 +58935,9 @@ index 37ce476253d..989a6f8ad25 100644
  
  void LIR_Assembler::build_frame() {
    _masm->build_frame(initial_frame_size_in_bytes(), bang_size_in_bytes());
-diff --git a/src/hotspot/share/c1/c1_LIRAssembler.hpp b/src/hotspot/share/c1/c1_LIRAssembler.hpp
-index 02c79160d04..358e5f54918 100644
 --- a/src/hotspot/share/c1/c1_LIRAssembler.hpp
 +++ b/src/hotspot/share/c1/c1_LIRAssembler.hpp
-@@ -186,6 +186,9 @@ class LIR_Assembler: public CompilationResourceObj {
+@@ -186,6 +186,9 @@ class LIR_Assembler: public CompilationR
    void emit_op1(LIR_Op1* op);
    void emit_op2(LIR_Op2* op);
    void emit_op3(LIR_Op3* op);
@@ -59318,7 +58947,7 @@ index 02c79160d04..358e5f54918 100644
    void emit_opBranch(LIR_OpBranch* op);
    void emit_opLabel(LIR_OpLabel* op);
    void emit_arraycopy(LIR_OpArrayCopy* op);
-@@ -218,8 +221,12 @@ class LIR_Assembler: public CompilationResourceObj {
+@@ -218,8 +221,12 @@ class LIR_Assembler: public CompilationR
    void volatile_move_op(LIR_Opr src, LIR_Opr result, BasicType type, CodeEmitInfo* info);
    void comp_mem_op(LIR_Opr src, LIR_Opr result, BasicType type, CodeEmitInfo* info);  // info set for null exceptions
    void comp_fl2i(LIR_Code code, LIR_Opr left, LIR_Opr right, LIR_Opr result, LIR_Op2* op);
@@ -59332,8 +58961,6 @@ index 02c79160d04..358e5f54918 100644
    void call(        LIR_OpJavaCall* op, relocInfo::relocType rtype);
    void ic_call(     LIR_OpJavaCall* op);
    void vtable_call( LIR_OpJavaCall* op);
-diff --git a/src/hotspot/share/c1/c1_LinearScan.cpp b/src/hotspot/share/c1/c1_LinearScan.cpp
-index 84846e8e43d..71648f62e14 100644
 --- a/src/hotspot/share/c1/c1_LinearScan.cpp
 +++ b/src/hotspot/share/c1/c1_LinearScan.cpp
 @@ -1,5 +1,5 @@
@@ -59343,7 +58970,7 @@ index 84846e8e43d..71648f62e14 100644
   * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
   *
   * This code is free software; you can redistribute it and/or modify it
-@@ -1240,8 +1240,13 @@ void LinearScan::add_register_hints(LIR_Op* op) {
+@@ -1240,8 +1240,13 @@ void LinearScan::add_register_hints(LIR_
        break;
      }
      case lir_cmove: {
@@ -59375,7 +59002,7 @@ index 84846e8e43d..71648f62e14 100644
  
    NOT_PRODUCT(print_lir(1, "Before Code Generation", false));
    NOT_PRODUCT(LinearScanStatistic::compute(this, _stat_final));
-@@ -6368,14 +6377,23 @@ void ControlFlowOptimizer::delete_unnecessary_jumps(BlockList* code) {
+@@ -6368,14 +6377,23 @@ void ControlFlowOptimizer::delete_unnece
                // There might be a cmove inserted for profiling which depends on the same
                // compare. If we change the condition of the respective compare, we have
                // to take care of this cmove as well.
@@ -59399,8 +59026,6 @@ index 84846e8e43d..71648f62e14 100644
                    assert(prev_branch->cond() == prev_cmove->condition(), "should be the same");
                  }
                  if (prev_op->code() == lir_cmp) {
-diff --git a/src/hotspot/share/gc/shenandoah/shenandoahArguments.cpp b/src/hotspot/share/gc/shenandoah/shenandoahArguments.cpp
-index c7e0c9b0cd9..7d31ff02e1a 100644
 --- a/src/hotspot/share/gc/shenandoah/shenandoahArguments.cpp
 +++ b/src/hotspot/share/gc/shenandoah/shenandoahArguments.cpp
 @@ -1,5 +1,5 @@
@@ -59419,8 +59044,6 @@ index c7e0c9b0cd9..7d31ff02e1a 100644
    vm_exit_during_initialization("Shenandoah GC is not supported on this platform.");
  #endif
  
-diff --git a/src/hotspot/share/gc/z/c1/zBarrierSetC1.cpp b/src/hotspot/share/gc/z/c1/zBarrierSetC1.cpp
-index 4f2e36a8304..0e99bf107c1 100644
 --- a/src/hotspot/share/gc/z/c1/zBarrierSetC1.cpp
 +++ b/src/hotspot/share/gc/z/c1/zBarrierSetC1.cpp
 @@ -1,5 +1,5 @@
@@ -59430,7 +59053,7 @@ index 4f2e36a8304..0e99bf107c1 100644
   * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
   *
   * This code is free software; you can redistribute it and/or modify it
-@@ -94,7 +94,11 @@ class LIR_OpZLoadBarrierTest : public LIR_Op {
+@@ -94,7 +94,11 @@ private:
  
  public:
    LIR_OpZLoadBarrierTest(LIR_Opr opr) :
@@ -59442,11 +59065,9 @@ index 4f2e36a8304..0e99bf107c1 100644
        _opr(opr) {}
  
    virtual void visit(LIR_OpVisitState* state) {
-diff --git a/src/hotspot/share/jfr/utilities/jfrBigEndian.hpp b/src/hotspot/share/jfr/utilities/jfrBigEndian.hpp
-index db2e7ebaad2..597ddb3800f 100644
 --- a/src/hotspot/share/jfr/utilities/jfrBigEndian.hpp
 +++ b/src/hotspot/share/jfr/utilities/jfrBigEndian.hpp
-@@ -102,7 +102,7 @@ inline T JfrBigEndian::read_unaligned(const address location) {
+@@ -102,7 +102,7 @@ inline T JfrBigEndian::read_unaligned(co
  inline bool JfrBigEndian::platform_supports_unaligned_reads(void) {
  #if defined(IA32) || defined(AMD64) || defined(PPC) || defined(S390)
    return true;
@@ -59455,8 +59076,6 @@ index db2e7ebaad2..597ddb3800f 100644
    return false;
  #else
    #warning "Unconfigured platform"
-diff --git a/src/hotspot/share/opto/regmask.hpp b/src/hotspot/share/opto/regmask.hpp
-index 1694367554d..233dd0da2d7 100644
 --- a/src/hotspot/share/opto/regmask.hpp
 +++ b/src/hotspot/share/opto/regmask.hpp
 @@ -1,5 +1,5 @@
@@ -59475,11 +59094,9 @@ index 1694367554d..233dd0da2d7 100644
           SlotsPerVecS = 1,
           SlotsPerVecD = 2,
           SlotsPerVecX = 4,
-diff --git a/src/hotspot/share/runtime/abstract_vm_version.cpp b/src/hotspot/share/runtime/abstract_vm_version.cpp
-index bbe1043f0fb..79c84f248fb 100644
 --- a/src/hotspot/share/runtime/abstract_vm_version.cpp
 +++ b/src/hotspot/share/runtime/abstract_vm_version.cpp
-@@ -183,7 +183,8 @@ const char* Abstract_VM_Version::jre_release_version() {
+@@ -183,7 +183,8 @@ const char* Abstract_VM_Version::jre_rel
                   AMD64_ONLY("amd64")             \
                   IA32_ONLY("x86")                \
                   IA64_ONLY("ia64")               \
@@ -59489,8 +59106,6 @@ index bbe1043f0fb..79c84f248fb 100644
  #endif // !ZERO
  #endif // !CPU
  
-diff --git a/src/hotspot/share/runtime/thread.inline.hpp b/src/hotspot/share/runtime/thread.inline.hpp
-index 63101e77855..d86fce3c8ac 100644
 --- a/src/hotspot/share/runtime/thread.inline.hpp
 +++ b/src/hotspot/share/runtime/thread.inline.hpp
 @@ -1,5 +1,5 @@
@@ -59500,7 +59115,7 @@ index 63101e77855..d86fce3c8ac 100644
   * Copyright (c) 2021, Azul Systems, Inc. All rights reserved.
   * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
   *
-@@ -132,7 +132,7 @@ inline void JavaThread::set_pending_async_exception(oop e) {
+@@ -132,7 +132,7 @@ inline void JavaThread::set_pending_asyn
  }
  
  inline JavaThreadState JavaThread::thread_state() const    {
@@ -59509,7 +59124,7 @@ index 63101e77855..d86fce3c8ac 100644
    // Use membars when accessing volatile _thread_state. See
    // Threads::create_vm() for size checks.
    return (JavaThreadState) Atomic::load_acquire((volatile jint*)&_thread_state);
-@@ -144,7 +144,7 @@ inline JavaThreadState JavaThread::thread_state() const    {
+@@ -144,7 +144,7 @@ inline JavaThreadState JavaThread::threa
  inline void JavaThread::set_thread_state(JavaThreadState s) {
    assert(current_or_null() == NULL || current_or_null() == this,
           "state change should only be called by the current thread");
@@ -59518,8 +59133,6 @@ index 63101e77855..d86fce3c8ac 100644
    // Use membars when accessing volatile _thread_state. See
    // Threads::create_vm() for size checks.
    Atomic::release_store((volatile jint*)&_thread_state, (jint)s);
-diff --git a/src/hotspot/share/utilities/macros.hpp b/src/hotspot/share/utilities/macros.hpp
-index 501ba0dbabc..33ecfe089f8 100644
 --- a/src/hotspot/share/utilities/macros.hpp
 +++ b/src/hotspot/share/utilities/macros.hpp
 @@ -553,6 +553,32 @@
@@ -59555,8 +59168,6 @@ index 501ba0dbabc..33ecfe089f8 100644
  #ifdef VM_LITTLE_ENDIAN
  #define LITTLE_ENDIAN_ONLY(code) code
  #define BIG_ENDIAN_ONLY(code)
-diff --git a/src/jdk.hotspot.agent/linux/native/libsaproc/LinuxDebuggerLocal.cpp b/src/jdk.hotspot.agent/linux/native/libsaproc/LinuxDebuggerLocal.cpp
-index b7a2c6dde8f..9accba375a2 100644
 --- a/src/jdk.hotspot.agent/linux/native/libsaproc/LinuxDebuggerLocal.cpp
 +++ b/src/jdk.hotspot.agent/linux/native/libsaproc/LinuxDebuggerLocal.cpp
 @@ -1,5 +1,5 @@
@@ -59577,7 +59188,7 @@ index b7a2c6dde8f..9accba375a2 100644
  class AutoJavaString {
    JNIEnv* m_env;
    jstring m_str;
-@@ -408,7 +412,7 @@ JNIEXPORT jbyteArray JNICALL Java_sun_jvm_hotspot_debugger_linux_LinuxDebuggerLo
+@@ -408,7 +412,7 @@ JNIEXPORT jbyteArray JNICALL Java_sun_jv
    return (err == PS_OK)? array : 0;
  }
  
@@ -59586,7 +59197,7 @@ index b7a2c6dde8f..9accba375a2 100644
  extern "C"
  JNIEXPORT jlongArray JNICALL Java_sun_jvm_hotspot_debugger_linux_LinuxDebuggerLocal_getThreadIntegerRegisterSet0
    (JNIEnv *env, jobject this_obj, jint lwp_id) {
-@@ -440,6 +444,9 @@ JNIEXPORT jlongArray JNICALL Java_sun_jvm_hotspot_debugger_linux_LinuxDebuggerLo
+@@ -440,6 +444,9 @@ JNIEXPORT jlongArray JNICALL Java_sun_jv
  #ifdef aarch64
  #define NPRGREG sun_jvm_hotspot_debugger_aarch64_AARCH64ThreadContext_NPRGREG
  #endif
@@ -59596,7 +59207,7 @@ index b7a2c6dde8f..9accba375a2 100644
  #if defined(ppc64) || defined(ppc64le)
  #define NPRGREG sun_jvm_hotspot_debugger_ppc64_PPC64ThreadContext_NPRGREG
  #endif
-@@ -516,6 +523,44 @@ JNIEXPORT jlongArray JNICALL Java_sun_jvm_hotspot_debugger_linux_LinuxDebuggerLo
+@@ -516,6 +523,44 @@ JNIEXPORT jlongArray JNICALL Java_sun_jv
    }
  #endif /* aarch64 */
  
@@ -59641,8 +59252,6 @@ index b7a2c6dde8f..9accba375a2 100644
  #if defined(ppc64) || defined(ppc64le)
  #define REG_INDEX(reg) sun_jvm_hotspot_debugger_ppc64_PPC64ThreadContext_##reg
  
-diff --git a/src/jdk.hotspot.agent/linux/native/libsaproc/libproc.h b/src/jdk.hotspot.agent/linux/native/libsaproc/libproc.h
-index b0fcfb1e4d5..a69496e77a4 100644
 --- a/src/jdk.hotspot.agent/linux/native/libsaproc/libproc.h
 +++ b/src/jdk.hotspot.agent/linux/native/libsaproc/libproc.h
 @@ -1,5 +1,5 @@
@@ -59661,11 +59270,9 @@ index b0fcfb1e4d5..a69496e77a4 100644
  #endif
  
  // This C bool type must be int for compatibility with Linux calls and
-diff --git a/src/jdk.hotspot.agent/share/classes/sun/jvm/hotspot/HotSpotAgent.java b/src/jdk.hotspot.agent/share/classes/sun/jvm/hotspot/HotSpotAgent.java
-index aa021510567..e0e9b4b6727 100644
 --- a/src/jdk.hotspot.agent/share/classes/sun/jvm/hotspot/HotSpotAgent.java
 +++ b/src/jdk.hotspot.agent/share/classes/sun/jvm/hotspot/HotSpotAgent.java
-@@ -36,6 +36,7 @@
+@@ -36,6 +36,7 @@ import sun.jvm.hotspot.debugger.MachineD
  import sun.jvm.hotspot.debugger.MachineDescriptionAMD64;
  import sun.jvm.hotspot.debugger.MachineDescriptionPPC64;
  import sun.jvm.hotspot.debugger.MachineDescriptionAArch64;
@@ -59673,7 +59280,7 @@ index aa021510567..e0e9b4b6727 100644
  import sun.jvm.hotspot.debugger.MachineDescriptionIntelX86;
  import sun.jvm.hotspot.debugger.NoSuchSymbolException;
  import sun.jvm.hotspot.debugger.bsd.BsdDebuggerLocal;
-@@ -569,6 +570,8 @@ private void setupDebuggerLinux() {
+@@ -569,6 +570,8 @@ public class HotSpotAgent {
              machDesc = new MachineDescriptionPPC64();
          } else if (cpu.equals("aarch64")) {
              machDesc = new MachineDescriptionAArch64();
@@ -59682,9 +59289,6 @@ index aa021510567..e0e9b4b6727 100644
          } else {
            try {
              machDesc = (MachineDescription)
-diff --git a/src/jdk.hotspot.agent/share/classes/sun/jvm/hotspot/debugger/MachineDescriptionRISCV64.java b/src/jdk.hotspot.agent/share/classes/sun/jvm/hotspot/debugger/MachineDescriptionRISCV64.java
-new file mode 100644
-index 00000000000..a972516dee3
 --- /dev/null
 +++ b/src/jdk.hotspot.agent/share/classes/sun/jvm/hotspot/debugger/MachineDescriptionRISCV64.java
 @@ -0,0 +1,40 @@
@@ -59728,8 +59332,6 @@ index 00000000000..a972516dee3
 +    return false;
 +  }
 +}
-diff --git a/src/jdk.hotspot.agent/share/classes/sun/jvm/hotspot/debugger/linux/LinuxCDebugger.java b/src/jdk.hotspot.agent/share/classes/sun/jvm/hotspot/debugger/linux/LinuxCDebugger.java
-index 491e3d5dc2c..469bb6e0665 100644
 --- a/src/jdk.hotspot.agent/share/classes/sun/jvm/hotspot/debugger/linux/LinuxCDebugger.java
 +++ b/src/jdk.hotspot.agent/share/classes/sun/jvm/hotspot/debugger/linux/LinuxCDebugger.java
 @@ -1,5 +1,5 @@
@@ -59739,7 +59341,7 @@ index 491e3d5dc2c..469bb6e0665 100644
   * Copyright (c) 2015, Red Hat Inc.
   * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
   *
-@@ -33,11 +33,13 @@
+@@ -33,11 +33,13 @@ import sun.jvm.hotspot.debugger.cdbg.*;
  import sun.jvm.hotspot.debugger.x86.*;
  import sun.jvm.hotspot.debugger.amd64.*;
  import sun.jvm.hotspot.debugger.aarch64.*;
@@ -59753,7 +59355,7 @@ index 491e3d5dc2c..469bb6e0665 100644
  import sun.jvm.hotspot.utilities.*;
  
  class LinuxCDebugger implements CDebugger {
-@@ -105,7 +107,14 @@ public CFrame topFrameForThread(ThreadProxy thread) throws DebuggerException {
+@@ -105,7 +107,14 @@ class LinuxCDebugger implements CDebugge
         Address pc  = context.getRegisterAsAddress(AARCH64ThreadContext.PC);
         if (pc == null) return null;
         return new LinuxAARCH64CFrame(dbg, fp, pc);
@@ -59769,9 +59371,6 @@ index 491e3d5dc2c..469bb6e0665 100644
         // Runtime exception thrown by LinuxThreadContextFactory if unknown cpu
         ThreadContext context = (ThreadContext) thread.getContext();
         return context.getTopFrame(dbg);
-diff --git a/src/jdk.hotspot.agent/share/classes/sun/jvm/hotspot/debugger/linux/riscv64/LinuxRISCV64CFrame.java b/src/jdk.hotspot.agent/share/classes/sun/jvm/hotspot/debugger/linux/riscv64/LinuxRISCV64CFrame.java
-new file mode 100644
-index 00000000000..f06da24bd0e
 --- /dev/null
 +++ b/src/jdk.hotspot.agent/share/classes/sun/jvm/hotspot/debugger/linux/riscv64/LinuxRISCV64CFrame.java
 @@ -0,0 +1,90 @@
@@ -59865,9 +59464,6 @@ index 00000000000..f06da24bd0e
 +   private Address fp;
 +   private LinuxDebugger dbg;
 +}
-diff --git a/src/jdk.hotspot.agent/share/classes/sun/jvm/hotspot/debugger/linux/riscv64/LinuxRISCV64ThreadContext.java b/src/jdk.hotspot.agent/share/classes/sun/jvm/hotspot/debugger/linux/riscv64/LinuxRISCV64ThreadContext.java
-new file mode 100644
-index 00000000000..fdb841ccf3d
 --- /dev/null
 +++ b/src/jdk.hotspot.agent/share/classes/sun/jvm/hotspot/debugger/linux/riscv64/LinuxRISCV64ThreadContext.java
 @@ -0,0 +1,48 @@
@@ -59919,9 +59515,6 @@ index 00000000000..fdb841ccf3d
 +    return debugger.newAddress(getRegister(index));
 +  }
 +}
-diff --git a/src/jdk.hotspot.agent/share/classes/sun/jvm/hotspot/debugger/proc/riscv64/ProcRISCV64Thread.java b/src/jdk.hotspot.agent/share/classes/sun/jvm/hotspot/debugger/proc/riscv64/ProcRISCV64Thread.java
-new file mode 100644
-index 00000000000..96d5dee47ce
 --- /dev/null
 +++ b/src/jdk.hotspot.agent/share/classes/sun/jvm/hotspot/debugger/proc/riscv64/ProcRISCV64Thread.java
 @@ -0,0 +1,88 @@
@@ -60013,9 +59606,6 @@ index 00000000000..96d5dee47ce
 +        return id;
 +    }
 +}
-diff --git a/src/jdk.hotspot.agent/share/classes/sun/jvm/hotspot/debugger/proc/riscv64/ProcRISCV64ThreadContext.java b/src/jdk.hotspot.agent/share/classes/sun/jvm/hotspot/debugger/proc/riscv64/ProcRISCV64ThreadContext.java
-new file mode 100644
-index 00000000000..f2aa845e665
 --- /dev/null
 +++ b/src/jdk.hotspot.agent/share/classes/sun/jvm/hotspot/debugger/proc/riscv64/ProcRISCV64ThreadContext.java
 @@ -0,0 +1,48 @@
@@ -60067,9 +59657,6 @@ index 00000000000..f2aa845e665
 +        return debugger.newAddress(getRegister(index));
 +    }
 +}
-diff --git a/src/jdk.hotspot.agent/share/classes/sun/jvm/hotspot/debugger/proc/riscv64/ProcRISCV64ThreadFactory.java b/src/jdk.hotspot.agent/share/classes/sun/jvm/hotspot/debugger/proc/riscv64/ProcRISCV64ThreadFactory.java
-new file mode 100644
-index 00000000000..19f64b8ce2d
 --- /dev/null
 +++ b/src/jdk.hotspot.agent/share/classes/sun/jvm/hotspot/debugger/proc/riscv64/ProcRISCV64ThreadFactory.java
 @@ -0,0 +1,46 @@
@@ -60119,9 +59706,6 @@ index 00000000000..19f64b8ce2d
 +        return new ProcRISCV64Thread(debugger, id);
 +    }
 +}
-diff --git a/src/jdk.hotspot.agent/share/classes/sun/jvm/hotspot/debugger/remote/riscv64/RemoteRISCV64Thread.java b/src/jdk.hotspot.agent/share/classes/sun/jvm/hotspot/debugger/remote/riscv64/RemoteRISCV64Thread.java
-new file mode 100644
-index 00000000000..aecbda59023
 --- /dev/null
 +++ b/src/jdk.hotspot.agent/share/classes/sun/jvm/hotspot/debugger/remote/riscv64/RemoteRISCV64Thread.java
 @@ -0,0 +1,55 @@
@@ -60180,9 +59764,6 @@ index 00000000000..aecbda59023
 +    return context;
 +  }
 +}
-diff --git a/src/jdk.hotspot.agent/share/classes/sun/jvm/hotspot/debugger/remote/riscv64/RemoteRISCV64ThreadContext.java b/src/jdk.hotspot.agent/share/classes/sun/jvm/hotspot/debugger/remote/riscv64/RemoteRISCV64ThreadContext.java
-new file mode 100644
-index 00000000000..1d3da6be5af
 --- /dev/null
 +++ b/src/jdk.hotspot.agent/share/classes/sun/jvm/hotspot/debugger/remote/riscv64/RemoteRISCV64ThreadContext.java
 @@ -0,0 +1,48 @@
@@ -60234,9 +59815,6 @@ index 00000000000..1d3da6be5af
 +    return debugger.newAddress(getRegister(index));
 +  }
 +}
-diff --git a/src/jdk.hotspot.agent/share/classes/sun/jvm/hotspot/debugger/remote/riscv64/RemoteRISCV64ThreadFactory.java b/src/jdk.hotspot.agent/share/classes/sun/jvm/hotspot/debugger/remote/riscv64/RemoteRISCV64ThreadFactory.java
-new file mode 100644
-index 00000000000..725b94e25a3
 --- /dev/null
 +++ b/src/jdk.hotspot.agent/share/classes/sun/jvm/hotspot/debugger/remote/riscv64/RemoteRISCV64ThreadFactory.java
 @@ -0,0 +1,46 @@
@@ -60286,9 +59864,6 @@ index 00000000000..725b94e25a3
 +    return new RemoteRISCV64Thread(debugger, id);
 +  }
 +}
-diff --git a/src/jdk.hotspot.agent/share/classes/sun/jvm/hotspot/debugger/riscv/RISCV64ThreadContext.java b/src/jdk.hotspot.agent/share/classes/sun/jvm/hotspot/debugger/riscv/RISCV64ThreadContext.java
-new file mode 100644
-index 00000000000..fb60a70427a
 --- /dev/null
 +++ b/src/jdk.hotspot.agent/share/classes/sun/jvm/hotspot/debugger/riscv/RISCV64ThreadContext.java
 @@ -0,0 +1,172 @@
@@ -60464,8 +60039,6 @@ index 00000000000..fb60a70427a
 +     * tie the implementation to, for example, the debugging system */
 +    public abstract Address getRegisterAsAddress(int index);
 +}
-diff --git a/src/jdk.hotspot.agent/share/classes/sun/jvm/hotspot/runtime/Threads.java b/src/jdk.hotspot.agent/share/classes/sun/jvm/hotspot/runtime/Threads.java
-index 4a2fa691d3f..d16ac8aae51 100644
 --- a/src/jdk.hotspot.agent/share/classes/sun/jvm/hotspot/runtime/Threads.java
 +++ b/src/jdk.hotspot.agent/share/classes/sun/jvm/hotspot/runtime/Threads.java
 @@ -1,5 +1,5 @@
@@ -60475,7 +60048,7 @@ index 4a2fa691d3f..d16ac8aae51 100644
   * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
   *
   * This code is free software; you can redistribute it and/or modify it
-@@ -34,6 +34,7 @@
+@@ -34,6 +34,7 @@ import sun.jvm.hotspot.runtime.win32_aar
  import sun.jvm.hotspot.runtime.linux_x86.LinuxX86JavaThreadPDAccess;
  import sun.jvm.hotspot.runtime.linux_amd64.LinuxAMD64JavaThreadPDAccess;
  import sun.jvm.hotspot.runtime.linux_aarch64.LinuxAARCH64JavaThreadPDAccess;
@@ -60483,7 +60056,7 @@ index 4a2fa691d3f..d16ac8aae51 100644
  import sun.jvm.hotspot.runtime.linux_ppc64.LinuxPPC64JavaThreadPDAccess;
  import sun.jvm.hotspot.runtime.bsd_x86.BsdX86JavaThreadPDAccess;
  import sun.jvm.hotspot.runtime.bsd_amd64.BsdAMD64JavaThreadPDAccess;
-@@ -113,6 +114,8 @@ private static synchronized void initialize(TypeDataBase db) {
+@@ -113,6 +114,8 @@ public class Threads {
                  access = new LinuxPPC64JavaThreadPDAccess();
              } else if (cpu.equals("aarch64")) {
                  access = new LinuxAARCH64JavaThreadPDAccess();
@@ -60492,9 +60065,6 @@ index 4a2fa691d3f..d16ac8aae51 100644
              } else {
                try {
                  access = (JavaThreadPDAccess)
-diff --git a/src/jdk.hotspot.agent/share/classes/sun/jvm/hotspot/runtime/linux_riscv64/LinuxRISCV64JavaThreadPDAccess.java b/src/jdk.hotspot.agent/share/classes/sun/jvm/hotspot/runtime/linux_riscv64/LinuxRISCV64JavaThreadPDAccess.java
-new file mode 100644
-index 00000000000..f2e224f28ee
 --- /dev/null
 +++ b/src/jdk.hotspot.agent/share/classes/sun/jvm/hotspot/runtime/linux_riscv64/LinuxRISCV64JavaThreadPDAccess.java
 @@ -0,0 +1,134 @@
@@ -60632,9 +60202,6 @@ index 00000000000..f2e224f28ee
 +    return debugger.getThreadForIdentifierAddress(threadIdAddr);
 +  }
 +}
-diff --git a/src/jdk.hotspot.agent/share/classes/sun/jvm/hotspot/runtime/riscv64/RISCV64CurrentFrameGuess.java b/src/jdk.hotspot.agent/share/classes/sun/jvm/hotspot/runtime/riscv64/RISCV64CurrentFrameGuess.java
-new file mode 100644
-index 00000000000..34701c6922f
 --- /dev/null
 +++ b/src/jdk.hotspot.agent/share/classes/sun/jvm/hotspot/runtime/riscv64/RISCV64CurrentFrameGuess.java
 @@ -0,0 +1,223 @@
@@ -60861,9 +60428,6 @@ index 00000000000..34701c6922f
 +    pcFound = pc;
 +  }
 +}
-diff --git a/src/jdk.hotspot.agent/share/classes/sun/jvm/hotspot/runtime/riscv64/RISCV64Frame.java b/src/jdk.hotspot.agent/share/classes/sun/jvm/hotspot/runtime/riscv64/RISCV64Frame.java
-new file mode 100644
-index 00000000000..df280005d72
 --- /dev/null
 +++ b/src/jdk.hotspot.agent/share/classes/sun/jvm/hotspot/runtime/riscv64/RISCV64Frame.java
 @@ -0,0 +1,556 @@
@@ -61423,9 +60987,6 @@ index 00000000000..df280005d72
 +    }
 +  }
 +}
-diff --git a/src/jdk.hotspot.agent/share/classes/sun/jvm/hotspot/runtime/riscv64/RISCV64JavaCallWrapper.java b/src/jdk.hotspot.agent/share/classes/sun/jvm/hotspot/runtime/riscv64/RISCV64JavaCallWrapper.java
-new file mode 100644
-index 00000000000..d0ad2b559a6
 --- /dev/null
 +++ b/src/jdk.hotspot.agent/share/classes/sun/jvm/hotspot/runtime/riscv64/RISCV64JavaCallWrapper.java
 @@ -0,0 +1,61 @@
@@ -61490,9 +61051,6 @@ index 00000000000..d0ad2b559a6
 +    return lastJavaFPField.getValue(addr.addOffsetTo(anchorField.getOffset()));
 +  }
 +}
-diff --git a/src/jdk.hotspot.agent/share/classes/sun/jvm/hotspot/runtime/riscv64/RISCV64RegisterMap.java b/src/jdk.hotspot.agent/share/classes/sun/jvm/hotspot/runtime/riscv64/RISCV64RegisterMap.java
-new file mode 100644
-index 00000000000..4aeb1c6f557
 --- /dev/null
 +++ b/src/jdk.hotspot.agent/share/classes/sun/jvm/hotspot/runtime/riscv64/RISCV64RegisterMap.java
 @@ -0,0 +1,53 @@
@@ -61549,8 +61107,6 @@ index 00000000000..4aeb1c6f557
 +  protected void initializeFromPD(RegisterMap map) {}
 +  protected Address getLocationPD(VMReg reg) { return null; }
 +}
-diff --git a/src/jdk.hotspot.agent/share/classes/sun/jvm/hotspot/utilities/PlatformInfo.java b/src/jdk.hotspot.agent/share/classes/sun/jvm/hotspot/utilities/PlatformInfo.java
-index 3e66e24700b..f4cd4873207 100644
 --- a/src/jdk.hotspot.agent/share/classes/sun/jvm/hotspot/utilities/PlatformInfo.java
 +++ b/src/jdk.hotspot.agent/share/classes/sun/jvm/hotspot/utilities/PlatformInfo.java
 @@ -1,5 +1,5 @@
@@ -61560,7 +61116,7 @@ index 3e66e24700b..f4cd4873207 100644
   * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
   *
   * This code is free software; you can redistribute it and/or modify it
-@@ -50,7 +50,7 @@ public static String getOS() throws UnsupportedPlatformException {
+@@ -50,7 +50,7 @@ public class PlatformInfo {
  
    public static boolean knownCPU(String cpu) {
      final String[] KNOWN =
@@ -61569,8 +61125,6 @@ index 3e66e24700b..f4cd4873207 100644
  
      for(String s : KNOWN) {
        if(s.equals(cpu))
-diff --git a/test/hotspot/jtreg/compiler/c2/TestBit.java b/test/hotspot/jtreg/compiler/c2/TestBit.java
-index f8af537a62f..02596b7ee55 100644
 --- a/test/hotspot/jtreg/compiler/c2/TestBit.java
 +++ b/test/hotspot/jtreg/compiler/c2/TestBit.java
 @@ -1,5 +1,5 @@
@@ -61580,7 +61134,7 @@ index f8af537a62f..02596b7ee55 100644
   * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
   *
   * This code is free software; you can redistribute it and/or modify it
-@@ -33,7 +33,7 @@
+@@ -33,7 +33,7 @@ import jdk.test.lib.process.ProcessTools
   * @library /test/lib /
   *
   * @requires vm.flagless
@@ -61589,7 +61143,7 @@ index f8af537a62f..02596b7ee55 100644
   * @requires vm.debug == true & vm.compiler2.enabled
   *
   * @run driver compiler.c2.TestBit
-@@ -55,7 +55,8 @@ static void runTest(String testName) throws Exception {
+@@ -55,7 +55,8 @@ public class TestBit {
          String expectedTestBitInstruction =
              "ppc64le".equals(System.getProperty("os.arch")) ? "ANDI" :
              "aarch64".equals(System.getProperty("os.arch")) ? "tb"   :
@@ -61599,9 +61153,6 @@ index f8af537a62f..02596b7ee55 100644
  
          if (expectedTestBitInstruction != null) {
              output.shouldContain(expectedTestBitInstruction);
-diff --git a/test/hotspot/jtreg/compiler/floatingpoint/TestLibmIntrinsics.java b/test/hotspot/jtreg/compiler/floatingpoint/TestLibmIntrinsics.java
-new file mode 100644
-index 00000000000..5c711efddea
 --- /dev/null
 +++ b/test/hotspot/jtreg/compiler/floatingpoint/TestLibmIntrinsics.java
 @@ -0,0 +1,80 @@
@@ -61685,8 +61236,6 @@ index 00000000000..5c711efddea
 +        }
 +    }
 +}
-diff --git a/test/hotspot/jtreg/compiler/intrinsics/sha/cli/TestUseSHA1IntrinsicsOptionOnUnsupportedCPU.java b/test/hotspot/jtreg/compiler/intrinsics/sha/cli/TestUseSHA1IntrinsicsOptionOnUnsupportedCPU.java
-index f7a831ffa81..740fd142da0 100644
 --- a/test/hotspot/jtreg/compiler/intrinsics/sha/cli/TestUseSHA1IntrinsicsOptionOnUnsupportedCPU.java
 +++ b/test/hotspot/jtreg/compiler/intrinsics/sha/cli/TestUseSHA1IntrinsicsOptionOnUnsupportedCPU.java
 @@ -1,5 +1,5 @@
@@ -61696,7 +61245,7 @@ index f7a831ffa81..740fd142da0 100644
   * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
   *
   * This code is free software; you can redistribute it and/or modify it
-@@ -39,6 +39,7 @@
+@@ -39,6 +39,7 @@ package compiler.intrinsics.sha.cli;
  
  import compiler.intrinsics.sha.cli.testcases.GenericTestCaseForOtherCPU;
  import compiler.intrinsics.sha.cli.testcases.GenericTestCaseForUnsupportedAArch64CPU;
@@ -61704,7 +61253,7 @@ index f7a831ffa81..740fd142da0 100644
  import compiler.intrinsics.sha.cli.testcases.GenericTestCaseForUnsupportedX86CPU;
  import compiler.intrinsics.sha.cli.testcases.UseSHAIntrinsicsSpecificTestCaseForUnsupportedCPU;
  
-@@ -49,6 +50,8 @@ public static void main(String args[]) throws Throwable {
+@@ -49,6 +50,8 @@ public class TestUseSHA1IntrinsicsOption
                          DigestOptionsBase.USE_SHA1_INTRINSICS_OPTION),
                  new GenericTestCaseForUnsupportedAArch64CPU(
                          DigestOptionsBase.USE_SHA1_INTRINSICS_OPTION),
@@ -61713,8 +61262,6 @@ index f7a831ffa81..740fd142da0 100644
                  new UseSHAIntrinsicsSpecificTestCaseForUnsupportedCPU(
                          DigestOptionsBase.USE_SHA1_INTRINSICS_OPTION),
                  new GenericTestCaseForOtherCPU(
-diff --git a/test/hotspot/jtreg/compiler/intrinsics/sha/cli/TestUseSHA256IntrinsicsOptionOnUnsupportedCPU.java b/test/hotspot/jtreg/compiler/intrinsics/sha/cli/TestUseSHA256IntrinsicsOptionOnUnsupportedCPU.java
-index 5d0ac99033f..4111df5f01b 100644
 --- a/test/hotspot/jtreg/compiler/intrinsics/sha/cli/TestUseSHA256IntrinsicsOptionOnUnsupportedCPU.java
 +++ b/test/hotspot/jtreg/compiler/intrinsics/sha/cli/TestUseSHA256IntrinsicsOptionOnUnsupportedCPU.java
 @@ -1,5 +1,5 @@
@@ -61724,7 +61271,7 @@ index 5d0ac99033f..4111df5f01b 100644
   * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
   *
   * This code is free software; you can redistribute it and/or modify it
-@@ -39,6 +39,7 @@
+@@ -39,6 +39,7 @@ package compiler.intrinsics.sha.cli;
  
  import compiler.intrinsics.sha.cli.testcases.GenericTestCaseForOtherCPU;
  import compiler.intrinsics.sha.cli.testcases.GenericTestCaseForUnsupportedAArch64CPU;
@@ -61732,7 +61279,7 @@ index 5d0ac99033f..4111df5f01b 100644
  import compiler.intrinsics.sha.cli.testcases.GenericTestCaseForUnsupportedX86CPU;
  import compiler.intrinsics.sha.cli.testcases.UseSHAIntrinsicsSpecificTestCaseForUnsupportedCPU;
  
-@@ -49,6 +50,8 @@ public static void main(String args[]) throws Throwable {
+@@ -49,6 +50,8 @@ public class TestUseSHA256IntrinsicsOpti
                          DigestOptionsBase.USE_SHA256_INTRINSICS_OPTION),
                  new GenericTestCaseForUnsupportedAArch64CPU(
                          DigestOptionsBase.USE_SHA256_INTRINSICS_OPTION),
@@ -61741,8 +61288,6 @@ index 5d0ac99033f..4111df5f01b 100644
                  new UseSHAIntrinsicsSpecificTestCaseForUnsupportedCPU(
                          DigestOptionsBase.USE_SHA256_INTRINSICS_OPTION),
                  new GenericTestCaseForOtherCPU(
-diff --git a/test/hotspot/jtreg/compiler/intrinsics/sha/cli/TestUseSHA512IntrinsicsOptionOnUnsupportedCPU.java b/test/hotspot/jtreg/compiler/intrinsics/sha/cli/TestUseSHA512IntrinsicsOptionOnUnsupportedCPU.java
-index 363fade62e3..cc5704f32c7 100644
 --- a/test/hotspot/jtreg/compiler/intrinsics/sha/cli/TestUseSHA512IntrinsicsOptionOnUnsupportedCPU.java
 +++ b/test/hotspot/jtreg/compiler/intrinsics/sha/cli/TestUseSHA512IntrinsicsOptionOnUnsupportedCPU.java
 @@ -1,5 +1,5 @@
@@ -61752,7 +61297,7 @@ index 363fade62e3..cc5704f32c7 100644
   * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
   *
   * This code is free software; you can redistribute it and/or modify it
-@@ -39,6 +39,7 @@
+@@ -39,6 +39,7 @@ package compiler.intrinsics.sha.cli;
  
  import compiler.intrinsics.sha.cli.testcases.GenericTestCaseForOtherCPU;
  import compiler.intrinsics.sha.cli.testcases.GenericTestCaseForUnsupportedAArch64CPU;
@@ -61760,7 +61305,7 @@ index 363fade62e3..cc5704f32c7 100644
  import compiler.intrinsics.sha.cli.testcases.GenericTestCaseForUnsupportedX86CPU;
  import compiler.intrinsics.sha.cli.testcases.UseSHAIntrinsicsSpecificTestCaseForUnsupportedCPU;
  
-@@ -49,6 +50,8 @@ public static void main(String args[]) throws Throwable {
+@@ -49,6 +50,8 @@ public class TestUseSHA512IntrinsicsOpti
                          DigestOptionsBase.USE_SHA512_INTRINSICS_OPTION),
                  new GenericTestCaseForUnsupportedAArch64CPU(
                          DigestOptionsBase.USE_SHA512_INTRINSICS_OPTION),
@@ -61769,8 +61314,6 @@ index 363fade62e3..cc5704f32c7 100644
                  new UseSHAIntrinsicsSpecificTestCaseForUnsupportedCPU(
                          DigestOptionsBase.USE_SHA512_INTRINSICS_OPTION),
                  new GenericTestCaseForOtherCPU(
-diff --git a/test/hotspot/jtreg/compiler/intrinsics/sha/cli/TestUseSHAOptionOnUnsupportedCPU.java b/test/hotspot/jtreg/compiler/intrinsics/sha/cli/TestUseSHAOptionOnUnsupportedCPU.java
-index 700b1625927..20e45a0dd35 100644
 --- a/test/hotspot/jtreg/compiler/intrinsics/sha/cli/TestUseSHAOptionOnUnsupportedCPU.java
 +++ b/test/hotspot/jtreg/compiler/intrinsics/sha/cli/TestUseSHAOptionOnUnsupportedCPU.java
 @@ -1,5 +1,5 @@
@@ -61780,7 +61323,7 @@ index 700b1625927..20e45a0dd35 100644
   * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
   *
   * This code is free software; you can redistribute it and/or modify it
-@@ -39,6 +39,7 @@
+@@ -39,6 +39,7 @@ package compiler.intrinsics.sha.cli;
  
  import compiler.intrinsics.sha.cli.testcases.GenericTestCaseForOtherCPU;
  import compiler.intrinsics.sha.cli.testcases.GenericTestCaseForUnsupportedAArch64CPU;
@@ -61788,7 +61331,7 @@ index 700b1625927..20e45a0dd35 100644
  import compiler.intrinsics.sha.cli.testcases.GenericTestCaseForUnsupportedX86CPU;
  import compiler.intrinsics.sha.cli.testcases.UseSHASpecificTestCaseForUnsupportedCPU;
  
-@@ -49,6 +50,8 @@ public static void main(String args[]) throws Throwable {
+@@ -49,6 +50,8 @@ public class TestUseSHAOptionOnUnsupport
                          DigestOptionsBase.USE_SHA_OPTION),
                  new GenericTestCaseForUnsupportedAArch64CPU(
                          DigestOptionsBase.USE_SHA_OPTION),
@@ -61797,8 +61340,6 @@ index 700b1625927..20e45a0dd35 100644
                  new UseSHASpecificTestCaseForUnsupportedCPU(
                          DigestOptionsBase.USE_SHA_OPTION),
                  new GenericTestCaseForOtherCPU(
-diff --git a/test/hotspot/jtreg/compiler/intrinsics/sha/cli/testcases/GenericTestCaseForOtherCPU.java b/test/hotspot/jtreg/compiler/intrinsics/sha/cli/testcases/GenericTestCaseForOtherCPU.java
-index 2b8d143dd68..468cd83d7a2 100644
 --- a/test/hotspot/jtreg/compiler/intrinsics/sha/cli/testcases/GenericTestCaseForOtherCPU.java
 +++ b/test/hotspot/jtreg/compiler/intrinsics/sha/cli/testcases/GenericTestCaseForOtherCPU.java
 @@ -1,5 +1,5 @@
@@ -61808,7 +61349,7 @@ index 2b8d143dd68..468cd83d7a2 100644
   * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
   *
   * This code is free software; you can redistribute it and/or modify it
-@@ -32,7 +32,7 @@
+@@ -32,7 +32,7 @@ import jdk.test.lib.cli.predicate.OrPred
  
  /**
   * Generic test case for SHA-related options targeted to any CPU except
@@ -61817,7 +61358,7 @@ index 2b8d143dd68..468cd83d7a2 100644
   */
  public class GenericTestCaseForOtherCPU extends
          DigestOptionsBase.TestCase {
-@@ -44,13 +44,14 @@ public GenericTestCaseForOtherCPU(String optionName) {
+@@ -44,13 +44,14 @@ public class GenericTestCaseForOtherCPU
      }
  
      public GenericTestCaseForOtherCPU(String optionName, boolean checkUseSHA) {
@@ -61834,7 +61375,7 @@ index 2b8d143dd68..468cd83d7a2 100644
  
          this.checkUseSHA = checkUseSHA;
      }
-@@ -59,7 +60,7 @@ public GenericTestCaseForOtherCPU(String optionName, boolean checkUseSHA) {
+@@ -59,7 +60,7 @@ public class GenericTestCaseForOtherCPU
      protected void verifyWarnings() throws Throwable {
          String shouldPassMessage = String.format("JVM should start with "
                  + "option '%s' without any warnings", optionName);
@@ -61843,9 +61384,6 @@ index 2b8d143dd68..468cd83d7a2 100644
          // options will not cause any warnings.
          CommandLineOptionTest.verifySameJVMStartup(null,
                  new String[] { ".*" + optionName + ".*" }, shouldPassMessage,
-diff --git a/test/hotspot/jtreg/compiler/intrinsics/sha/cli/testcases/GenericTestCaseForUnsupportedRISCV64CPU.java b/test/hotspot/jtreg/compiler/intrinsics/sha/cli/testcases/GenericTestCaseForUnsupportedRISCV64CPU.java
-new file mode 100644
-index 00000000000..2ecfec07a4c
 --- /dev/null
 +++ b/test/hotspot/jtreg/compiler/intrinsics/sha/cli/testcases/GenericTestCaseForUnsupportedRISCV64CPU.java
 @@ -0,0 +1,115 @@
@@ -61964,8 +61502,6 @@ index 00000000000..2ecfec07a4c
 +        }
 +    }
 +}
-diff --git a/test/hotspot/jtreg/compiler/loopopts/superword/ProdRed_Double.java b/test/hotspot/jtreg/compiler/loopopts/superword/ProdRed_Double.java
-index 2e3e2717a65..7be8af6d035 100644
 --- a/test/hotspot/jtreg/compiler/loopopts/superword/ProdRed_Double.java
 +++ b/test/hotspot/jtreg/compiler/loopopts/superword/ProdRed_Double.java
 @@ -1,5 +1,5 @@
@@ -61984,8 +61520,6 @@ index 2e3e2717a65..7be8af6d035 100644
   *
   * @run main/othervm -XX:+IgnoreUnrecognizedVMOptions -XX:LoopUnrollLimit=250
   *      -XX:CompileThresholdScaling=0.1
-diff --git a/test/hotspot/jtreg/compiler/loopopts/superword/ProdRed_Float.java b/test/hotspot/jtreg/compiler/loopopts/superword/ProdRed_Float.java
-index 0e06a9e4327..797927b42bf 100644
 --- a/test/hotspot/jtreg/compiler/loopopts/superword/ProdRed_Float.java
 +++ b/test/hotspot/jtreg/compiler/loopopts/superword/ProdRed_Float.java
 @@ -1,5 +1,5 @@
@@ -62004,8 +61538,6 @@ index 0e06a9e4327..797927b42bf 100644
   *
   * @run main/othervm -XX:+IgnoreUnrecognizedVMOptions -XX:LoopUnrollLimit=250
   *      -XX:CompileThresholdScaling=0.1
-diff --git a/test/hotspot/jtreg/compiler/loopopts/superword/ProdRed_Int.java b/test/hotspot/jtreg/compiler/loopopts/superword/ProdRed_Int.java
-index c3cdbf37464..be8f7d586c2 100644
 --- a/test/hotspot/jtreg/compiler/loopopts/superword/ProdRed_Int.java
 +++ b/test/hotspot/jtreg/compiler/loopopts/superword/ProdRed_Int.java
 @@ -1,5 +1,5 @@
@@ -62024,8 +61556,6 @@ index c3cdbf37464..be8f7d586c2 100644
   *
   * @run main/othervm -XX:+IgnoreUnrecognizedVMOptions -XX:LoopUnrollLimit=250
   *      -XX:CompileThresholdScaling=0.1
-diff --git a/test/hotspot/jtreg/compiler/loopopts/superword/ReductionPerf.java b/test/hotspot/jtreg/compiler/loopopts/superword/ReductionPerf.java
-index d33bd411f16..d96d5e29c00 100644
 --- a/test/hotspot/jtreg/compiler/loopopts/superword/ReductionPerf.java
 +++ b/test/hotspot/jtreg/compiler/loopopts/superword/ReductionPerf.java
 @@ -1,5 +1,5 @@
@@ -62044,8 +61574,6 @@ index d33bd411f16..d96d5e29c00 100644
   *
   * @run main/othervm -XX:+IgnoreUnrecognizedVMOptions
   *      -XX:LoopUnrollLimit=250 -XX:CompileThresholdScaling=0.1
-diff --git a/test/hotspot/jtreg/compiler/loopopts/superword/SumRedAbsNeg_Double.java b/test/hotspot/jtreg/compiler/loopopts/superword/SumRedAbsNeg_Double.java
-index 992fa4b5161..b09c873d05d 100644
 --- a/test/hotspot/jtreg/compiler/loopopts/superword/SumRedAbsNeg_Double.java
 +++ b/test/hotspot/jtreg/compiler/loopopts/superword/SumRedAbsNeg_Double.java
 @@ -1,5 +1,5 @@
@@ -62064,8 +61592,6 @@ index 992fa4b5161..b09c873d05d 100644
   *
   * @run main/othervm -XX:+IgnoreUnrecognizedVMOptions -XX:LoopUnrollLimit=250
   *      -XX:CompileThresholdScaling=0.1
-diff --git a/test/hotspot/jtreg/compiler/loopopts/superword/SumRedAbsNeg_Float.java b/test/hotspot/jtreg/compiler/loopopts/superword/SumRedAbsNeg_Float.java
-index 3e79b3528b7..fe40ed6f98d 100644
 --- a/test/hotspot/jtreg/compiler/loopopts/superword/SumRedAbsNeg_Float.java
 +++ b/test/hotspot/jtreg/compiler/loopopts/superword/SumRedAbsNeg_Float.java
 @@ -1,5 +1,5 @@
@@ -62084,8 +61610,6 @@ index 3e79b3528b7..fe40ed6f98d 100644
   *
   * @run main/othervm -XX:+IgnoreUnrecognizedVMOptions -XX:LoopUnrollLimit=250
   *      -XX:CompileThresholdScaling=0.1
-diff --git a/test/hotspot/jtreg/compiler/loopopts/superword/SumRedSqrt_Double.java b/test/hotspot/jtreg/compiler/loopopts/superword/SumRedSqrt_Double.java
-index 6603dd224ef..51631910493 100644
 --- a/test/hotspot/jtreg/compiler/loopopts/superword/SumRedSqrt_Double.java
 +++ b/test/hotspot/jtreg/compiler/loopopts/superword/SumRedSqrt_Double.java
 @@ -1,5 +1,5 @@
@@ -62104,8 +61628,6 @@ index 6603dd224ef..51631910493 100644
   *
   * @run main/othervm -XX:+IgnoreUnrecognizedVMOptions -XX:LoopUnrollLimit=250
   *      -XX:CompileThresholdScaling=0.1
-diff --git a/test/hotspot/jtreg/compiler/loopopts/superword/SumRed_Double.java b/test/hotspot/jtreg/compiler/loopopts/superword/SumRed_Double.java
-index d9a0c988004..d999ae423cf 100644
 --- a/test/hotspot/jtreg/compiler/loopopts/superword/SumRed_Double.java
 +++ b/test/hotspot/jtreg/compiler/loopopts/superword/SumRed_Double.java
 @@ -1,5 +1,5 @@
@@ -62124,8 +61646,6 @@ index d9a0c988004..d999ae423cf 100644
   *
   * @run main/othervm -XX:+IgnoreUnrecognizedVMOptions -XX:LoopUnrollLimit=250
   *      -XX:CompileThresholdScaling=0.1
-diff --git a/test/hotspot/jtreg/compiler/loopopts/superword/SumRed_Float.java b/test/hotspot/jtreg/compiler/loopopts/superword/SumRed_Float.java
-index 722db95aed3..65912a5c7fa 100644
 --- a/test/hotspot/jtreg/compiler/loopopts/superword/SumRed_Float.java
 +++ b/test/hotspot/jtreg/compiler/loopopts/superword/SumRed_Float.java
 @@ -1,5 +1,5 @@
@@ -62144,8 +61664,6 @@ index 722db95aed3..65912a5c7fa 100644
   *
   * @run main/othervm -XX:+IgnoreUnrecognizedVMOptions -XX:LoopUnrollLimit=250
   *      -XX:CompileThresholdScaling=0.1
-diff --git a/test/hotspot/jtreg/compiler/loopopts/superword/SumRed_Int.java b/test/hotspot/jtreg/compiler/loopopts/superword/SumRed_Int.java
-index f58f21feb23..fffdc2f7565 100644
 --- a/test/hotspot/jtreg/compiler/loopopts/superword/SumRed_Int.java
 +++ b/test/hotspot/jtreg/compiler/loopopts/superword/SumRed_Int.java
 @@ -1,5 +1,5 @@
@@ -62164,11 +61682,9 @@ index f58f21feb23..fffdc2f7565 100644
   *
   * @run main/othervm -XX:+IgnoreUnrecognizedVMOptions -XX:LoopUnrollLimit=250
   *      -XX:CompileThresholdScaling=0.1
-diff --git a/test/hotspot/jtreg/compiler/runtime/TestConstantsInError.java b/test/hotspot/jtreg/compiler/runtime/TestConstantsInError.java
-index 2f9189cd9bc..85fd3fa938d 100644
 --- a/test/hotspot/jtreg/compiler/runtime/TestConstantsInError.java
 +++ b/test/hotspot/jtreg/compiler/runtime/TestConstantsInError.java
-@@ -130,7 +130,7 @@ public void process(OutputAnalyzer results, boolean isC1) {
+@@ -130,7 +130,7 @@ public abstract class TestConstantsInErr
              results.shouldMatch("Test_C1/.*::test \\(3 bytes\\)$")
                     .shouldMatch("Test_C2/.*::test \\(3 bytes\\)$");
  
@@ -62177,7 +61693,7 @@ index 2f9189cd9bc..85fd3fa938d 100644
                  results.shouldMatch("Test_C1/.*::test \\(3 bytes\\)   made not entrant")
                         .shouldMatch("Test_C2/.*::test \\(3 bytes\\)   made not entrant");
              } else {
-@@ -168,7 +168,7 @@ public void process(OutputAnalyzer results, boolean isC1) {
+@@ -168,7 +168,7 @@ public abstract class TestConstantsInErr
                     .shouldMatch("Test_MH3/.*::test \\(3 bytes\\)$")
                     .shouldMatch("Test_MH4/.*::test \\(3 bytes\\)$");
  
@@ -62186,7 +61702,7 @@ index 2f9189cd9bc..85fd3fa938d 100644
                  results.shouldMatch("Test_MH1/.*::test \\(3 bytes\\)   made not entrant")
                         .shouldMatch("Test_MH2/.*::test \\(3 bytes\\)   made not entrant")
                         .shouldMatch("Test_MH3/.*::test \\(3 bytes\\)   made not entrant")
-@@ -191,7 +191,7 @@ public void process(OutputAnalyzer results, boolean isC1) {
+@@ -191,7 +191,7 @@ public abstract class TestConstantsInErr
              results.shouldMatch("Test_MT1/.*::test \\(3 bytes\\)$")
                     .shouldMatch("Test_MT2/.*::test \\(3 bytes\\)$");
  
@@ -62195,8 +61711,6 @@ index 2f9189cd9bc..85fd3fa938d 100644
                  results.shouldMatch("Test_MT1/.*::test \\(3 bytes\\)   made not entrant")
                         .shouldMatch("Test_MT2/.*::test \\(3 bytes\\)   made not entrant");
              } else {
-diff --git a/test/hotspot/jtreg/compiler/runtime/criticalnatives/argumentcorruption/CheckLongArgs.java b/test/hotspot/jtreg/compiler/runtime/criticalnatives/argumentcorruption/CheckLongArgs.java
-index d38d76443f0..10d87d51f0f 100644
 --- a/test/hotspot/jtreg/compiler/runtime/criticalnatives/argumentcorruption/CheckLongArgs.java
 +++ b/test/hotspot/jtreg/compiler/runtime/criticalnatives/argumentcorruption/CheckLongArgs.java
 @@ -24,7 +24,7 @@
@@ -62208,8 +61722,6 @@ index d38d76443f0..10d87d51f0f 100644
   * @run main/othervm/native -Xcomp -XX:+CriticalJNINatives compiler.runtime.criticalnatives.argumentcorruption.CheckLongArgs
   */
  package compiler.runtime.criticalnatives.argumentcorruption;
-diff --git a/test/hotspot/jtreg/compiler/runtime/criticalnatives/lookup/LookUp.java b/test/hotspot/jtreg/compiler/runtime/criticalnatives/lookup/LookUp.java
-index 37c42c9c336..23c1e6e6acb 100644
 --- a/test/hotspot/jtreg/compiler/runtime/criticalnatives/lookup/LookUp.java
 +++ b/test/hotspot/jtreg/compiler/runtime/criticalnatives/lookup/LookUp.java
 @@ -24,7 +24,7 @@
@@ -62221,8 +61733,6 @@ index 37c42c9c336..23c1e6e6acb 100644
   * @run main/othervm/native -Xcomp -XX:+CriticalJNINatives compiler.runtime.criticalnatives.lookup.LookUp
   */
  package compiler.runtime.criticalnatives.lookup;
-diff --git a/test/hotspot/jtreg/compiler/testlibrary/sha/predicate/IntrinsicPredicates.java b/test/hotspot/jtreg/compiler/testlibrary/sha/predicate/IntrinsicPredicates.java
-index d71cb4f8de5..689c7c8cc2f 100644
 --- a/test/hotspot/jtreg/compiler/testlibrary/sha/predicate/IntrinsicPredicates.java
 +++ b/test/hotspot/jtreg/compiler/testlibrary/sha/predicate/IntrinsicPredicates.java
 @@ -1,5 +1,5 @@
@@ -62272,8 +61782,6 @@ index d71cb4f8de5..689c7c8cc2f 100644
  
      public static final BooleanSupplier SHA3_INSTRUCTION_AVAILABLE
              // sha3 is only implemented on aarch64 for now
-diff --git a/test/hotspot/jtreg/runtime/NMT/CheckForProperDetailStackTrace.java b/test/hotspot/jtreg/runtime/NMT/CheckForProperDetailStackTrace.java
-index dfc84241beb..b96e3a80aba 100644
 --- a/test/hotspot/jtreg/runtime/NMT/CheckForProperDetailStackTrace.java
 +++ b/test/hotspot/jtreg/runtime/NMT/CheckForProperDetailStackTrace.java
 @@ -1,5 +1,5 @@
@@ -62283,7 +61791,7 @@ index dfc84241beb..b96e3a80aba 100644
   * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
   *
   * This code is free software; you can redistribute it and/or modify it
-@@ -133,7 +133,7 @@ public static void main(String args[]) throws Exception {
+@@ -133,7 +133,7 @@ public class CheckForProperDetailStackTr
              // It's ok for ARM not to have symbols, because it does not support NMT detail
              // when targeting thumb2. It's also ok for Windows not to have symbols, because
              // they are only available if the symbols file is included with the build.
@@ -62292,8 +61800,6 @@ index dfc84241beb..b96e3a80aba 100644
                  return; // we are done
              }
              output.reportDiagnosticSummary();
-diff --git a/test/hotspot/jtreg/runtime/ReservedStack/ReservedStackTest.java b/test/hotspot/jtreg/runtime/ReservedStack/ReservedStackTest.java
-index c11472a0918..36f74d01b54 100644
 --- a/test/hotspot/jtreg/runtime/ReservedStack/ReservedStackTest.java
 +++ b/test/hotspot/jtreg/runtime/ReservedStack/ReservedStackTest.java
 @@ -1,5 +1,5 @@
@@ -62303,7 +61809,7 @@ index c11472a0918..36f74d01b54 100644
   * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
   *
   * This code is free software; you can redistribute it and/or modify it
-@@ -240,7 +240,7 @@ private static boolean isAlwaysSupportedPlatform() {
+@@ -240,7 +240,7 @@ public class ReservedStackTest {
          return Platform.isAix() ||
              (Platform.isLinux() &&
               (Platform.isPPC() || Platform.isS390x() || Platform.isX64() ||
@@ -62312,8 +61818,6 @@ index c11472a0918..36f74d01b54 100644
              Platform.isOSX();
      }
  
-diff --git a/test/hotspot/jtreg/serviceability/AsyncGetCallTrace/MyPackage/ASGCTBaseTest.java b/test/hotspot/jtreg/serviceability/AsyncGetCallTrace/MyPackage/ASGCTBaseTest.java
-index 5653b735273..5c41565db8d 100644
 --- a/test/hotspot/jtreg/serviceability/AsyncGetCallTrace/MyPackage/ASGCTBaseTest.java
 +++ b/test/hotspot/jtreg/serviceability/AsyncGetCallTrace/MyPackage/ASGCTBaseTest.java
 @@ -1,5 +1,5 @@
@@ -62323,7 +61827,7 @@ index 5653b735273..5c41565db8d 100644
   * Copyright (c) 2019, Google and/or its affiliates. All rights reserved.
   * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
   *
-@@ -29,7 +29,7 @@
+@@ -29,7 +29,7 @@ package MyPackage;
   * @summary Verifies that AsyncGetCallTrace is call-able and provides sane information.
   * @compile ASGCTBaseTest.java
   * @requires os.family == "linux"
@@ -62332,8 +61836,6 @@ index 5653b735273..5c41565db8d 100644
   * @requires vm.jvmti
   * @run main/othervm/native -agentlib:AsyncGetCallTraceTest MyPackage.ASGCTBaseTest
   */
-diff --git a/test/hotspot/jtreg/vmTestbase/nsk/share/jdi/ArgumentHandler.java b/test/hotspot/jtreg/vmTestbase/nsk/share/jdi/ArgumentHandler.java
-index ac0491cbb0c..16863189500 100644
 --- a/test/hotspot/jtreg/vmTestbase/nsk/share/jdi/ArgumentHandler.java
 +++ b/test/hotspot/jtreg/vmTestbase/nsk/share/jdi/ArgumentHandler.java
 @@ -1,5 +1,5 @@
@@ -62377,8 +61879,6 @@ index ac0491cbb0c..16863189500 100644
          {"macosx-amd64",    "dt_shmem"},
          {"mac-x64",         "dt_shmem"},
          {"macosx-aarch64",  "dt_shmem"},
-diff --git a/test/jdk/jdk/jfr/event/os/TestCPUInformation.java b/test/jdk/jdk/jfr/event/os/TestCPUInformation.java
-index a4b5169ca4a..c5166580010 100644
 --- a/test/jdk/jdk/jfr/event/os/TestCPUInformation.java
 +++ b/test/jdk/jdk/jfr/event/os/TestCPUInformation.java
 @@ -1,5 +1,5 @@
@@ -62388,7 +61888,7 @@ index a4b5169ca4a..c5166580010 100644
   * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
   *
   * This code is free software; you can redistribute it and/or modify it
-@@ -52,8 +52,8 @@ public static void main(String[] args) throws Throwable {
+@@ -52,8 +52,8 @@ public class TestCPUInformation {
              Events.assertField(event, "hwThreads").atLeast(1);
              Events.assertField(event, "cores").atLeast(1);
              Events.assertField(event, "sockets").atLeast(1);
@@ -62399,11 +61899,9 @@ index a4b5169ca4a..c5166580010 100644
          }
      }
  }
-diff --git a/test/lib-test/jdk/test/lib/TestMutuallyExclusivePlatformPredicates.java b/test/lib-test/jdk/test/lib/TestMutuallyExclusivePlatformPredicates.java
-index 31f33c59a97..c71a6034748 100644
 --- a/test/lib-test/jdk/test/lib/TestMutuallyExclusivePlatformPredicates.java
 +++ b/test/lib-test/jdk/test/lib/TestMutuallyExclusivePlatformPredicates.java
-@@ -45,7 +45,7 @@
+@@ -45,7 +45,7 @@ import java.util.Set;
   */
  public class TestMutuallyExclusivePlatformPredicates {
      private static enum MethodGroup {
@@ -62412,11 +61910,9 @@ index 31f33c59a97..c71a6034748 100644
          BITNESS("is32bit", "is64bit"),
          OS("isAix", "isLinux", "isOSX", "isWindows"),
          VM_TYPE("isClient", "isServer", "isMinimal", "isZero", "isEmbedded"),
-diff --git a/test/lib/jdk/test/lib/Platform.java b/test/lib/jdk/test/lib/Platform.java
-index 886f54be165..a4f2c03d10f 100644
 --- a/test/lib/jdk/test/lib/Platform.java
 +++ b/test/lib/jdk/test/lib/Platform.java
-@@ -210,6 +210,10 @@ public static boolean isARM() {
+@@ -210,6 +210,10 @@ public class Platform {
          return isArch("arm.*");
      }
  

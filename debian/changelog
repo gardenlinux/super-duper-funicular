@@ -1,15 +1,16 @@
 openjdk-17 (17.0.8~6-4) UNRELEASED; urgency=medium
 
   [ Matthias Klose ]
-  * Update the riscv64 hotspot patch to v7.
+  * Update the riscv64 hotspot patch to v9.
   * Run the hotspot tests on riscv64.
   * Link with --no-as-needed. Closes: #1031521.
+  * d/rules: Remove EXTRA_.*FLAGS_JDK macros.
 
   [ Vladimir Petko ]
   * Disable runtime/jni/nativeStack/TestNativeStack.java for armhf pending
     upstream fix.
 
- -- Matthias Klose <doko@ubuntu.com>  Sat, 01 Jul 2023 16:55:12 +0200
+ -- Matthias Klose <doko@ubuntu.com>  Mon, 10 Jul 2023 10:20:53 +0200
 
 openjdk-17 (17.0.8~6-3) unstable; urgency=medium
 
