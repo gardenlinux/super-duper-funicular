@@ -1,4 +1,6 @@
-openjdk-22 (22~3ea-2) UNRELEASED; urgency=medium
+openjdk-22 (22~5ea-1) UNRELEASED; urgency=medium
+
+  * OpenJDK 22 snapshot, Build 5.
 
   [ Matthias Klose ]
   * Provide versioned java-runtime, java-runtime-headless, java-sdk
@@ -6,12 +8,13 @@ openjdk-22 (22~3ea-2) UNRELEASED; urgency=medium
   * Link with --no-as-needed. Closes: #1031521.
   * d/rules: Remove EXTRA_.*FLAGS_JDK macros.
   * Add support for arc (untested), hppa (untested) and ia64.
+  * Configure --with-stdc++lib=static on ia64.
 
   [ Vladimir Petko ]
   * Update debian/watch for Java 22.
   * d/p/arch-add-ports.diff: update patch.
 
- -- Matthias Klose <doko@ubuntu.com>  Tue, 27 Jun 2023 14:31:47 +0200
+ -- Matthias Klose <doko@ubuntu.com>  Mon, 10 Jul 2023 08:58:21 +0200
 
 openjdk-22 (22~3ea-1) unstable; urgency=medium
 
