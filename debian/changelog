@@ -9,6 +9,7 @@ openjdk-22 (22~5ea-1) UNRELEASED; urgency=medium
   * d/rules: Remove EXTRA_.*FLAGS_JDK macros.
   * Add support for arc (untested), hppa (untested) and ia64.
   * Configure --with-stdc++lib=static on ia64.
+  * Fix FTCBFS: Add libffi-dev:native to B-D (Helmut Grohne).
 
   [ Vladimir Petko ]
   * Update debian/watch for Java 22.
