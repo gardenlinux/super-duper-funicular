@@ -1,4 +1,4 @@
-openjdk-17 (17.0.8~6-5) UNRELEASED; urgency=medium
+openjdk-17 (17.0.8~6-5) unstable; urgency=medium
 
   * Revert back to the riscv64 hotspot patch to v7.
 
