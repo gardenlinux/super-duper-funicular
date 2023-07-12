@@ -1,4 +1,10 @@
-openjdk-17 (17.0.8~6-4) UNRELEASED; urgency=medium
+openjdk-17 (17.0.8~6-5) UNRELEASED; urgency=medium
+
+  * Revert back to the riscv64 hotspot patch to v7.
+
+ -- Matthias Klose <doko@ubuntu.com>  Wed, 12 Jul 2023 14:33:08 +0200
+
+openjdk-17 (17.0.8~6-4) unstable; urgency=medium
 
   [ Matthias Klose ]
   * Update the riscv64 hotspot patch to v9.
