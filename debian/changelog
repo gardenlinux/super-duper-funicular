@@ -1,3 +1,9 @@
+openjdk-17 (17.0.8~6-6) UNRELEASED; urgency=medium
+
+  * Don't run the tests on powerpc, hangs on the buildd.
+
+ -- Matthias Klose <doko@ubuntu.com>  Fri, 14 Jul 2023 12:44:38 +0200
+
 openjdk-17 (17.0.8~6-5) unstable; urgency=medium
 
   * Revert back to the riscv64 hotspot patch to v7.
