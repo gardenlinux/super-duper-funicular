@@ -1,8 +1,15 @@
-openjdk-11 (11.0.20~7-2) UNRELEASED; urgency=medium
+openjdk-11 (11.0.20+8-1) unstable; urgency=high
+
+  * OpenJDK 11.0.20 release, build 8.
+    - CVE-2023-22041, CVE-2023-25193, CVE-2023-22045,
+      CVE-2023-22049, CVE-2023-22036, CVE-2023-22006.
+    - Release notes:
+      https://www.oracle.com/java/technologies/javase/11-0-20-relnotes.html#R11_0_20
 
   * Link with --no-as-needed. Closes: #1031521.
+  * Refresh patches.
 
- -- Matthias Klose <doko@ubuntu.com>  Wed, 05 Jul 2023 08:19:24 +0200
+ -- Matthias Klose <doko@ubuntu.com>  Wed, 19 Jul 2023 08:40:22 +0200
 
 openjdk-11 (11.0.20~7-1) unstable; urgency=medium
 

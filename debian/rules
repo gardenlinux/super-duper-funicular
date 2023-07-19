@@ -78,7 +78,6 @@ else
 endif
 
 is_upstream_release = yes
-is_upstream_release =
 
 srcdir		= .
 builddir	= build
@@ -101,18 +100,19 @@ shortver	= 11
 v_debian	:= $(shell echo $(PKGVERSION) | sed 's/ea//' | sed 's/\~us[[:digit:]]\+//')
 v_upstream	:= $(shell echo $(v_debian) | sed 's/-[^-][^-]*$$//')
 v_pkgrel	:= $(shell echo $(v_debian) | sed 's/^.*-//')
-# FIXME. currently v_upstream like 11~4
-#v_upbase	:= $(word 1, $(subst +, , $(v_upstream)))
-#v_upbuild	:= $(word 2, $(subst +, , $(v_upstream)))
-v_upbase	:= $(word 1, $(subst ~, , $(v_upstream)))
-v_upbuild	:= $(word 2, $(subst ~, , $(v_upstream)))
-# that should be the package version ...
 
-#ifneq ($(v_debian),$(v_upbase)+$(v_upbuild)-$(v_pkgrel))
-#  $(error wrong version: $(v_upbase)+$(v_upbuild)-$(v_pkgrel) should be: $(v_debian))
-#endif
-ifneq ($(v_debian),$(v_upbase)~$(v_upbuild)-$(v_pkgrel))
-  $(error wrong version: $(v_upbase)~$(v_upbuild)-$(v_pkgrel) should be: $(v_debian))
+ifeq (yes,$(is_upstream_release))
+  v_upbase      := $(word 1, $(subst +, , $(v_upstream)))
+  v_upbuild     := $(word 2, $(subst +, , $(v_upstream)))
+  ifneq ($(v_debian),$(v_upbase)+$(v_upbuild)-$(v_pkgrel))
+    $(error wrong version: $(v_upbase)+$(v_upbuild)-$(v_pkgrel) should be: $(v_debian))
+  endif
+else
+  v_upbase      := $(word 1, $(subst ~, , $(v_upstream)))
+  v_upbuild     := $(word 2, $(subst ~, , $(v_upstream)))
+  ifneq ($(v_debian),$(v_upbase)~$(v_upbuild)-$(v_pkgrel))
+    $(error wrong version: $(v_upbase)~$(v_upbuild)-$(v_pkgrel) should be: $(v_debian))
+  endif
 endif
 
 ifneq (,$(DEB_HOST_MULTIARCH))
@@ -1878,9 +1878,8 @@ endif
 	dh_builddeb -a $(nodemo) $(nojrez) #$(bd_options)
 
 is_release		= yes
-is_release		=
 git_project		= jdk11u
-git_tag			= jdk-11.0.20+7
+git_tag			= jdk-11.0.20+8
 package_version		= $(subst jdk-,,$(git_tag))
 package_version		= $(shell echo $(PKGVERSION) | sed 's/-[^-][^-]*$$//')
 ifneq ($(is_release),yes)
