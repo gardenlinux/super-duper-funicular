@@ -24,3 +24,7 @@ java/security/SignedObject/Chain.java 000000 generic-all
 # JDK-8311092 - native stack not implemented for armhf, disable test
 runtime/jni/nativeStack/TestNativeStack.java 8311092 generic-all
 
+# timeout in SSL connection
+java/net/httpclient/ManyRequestsLegacy.java 000000 generic-all
+# deadlock
+java/util/Random/RandomTestBsi1999.java 000000 generic-all

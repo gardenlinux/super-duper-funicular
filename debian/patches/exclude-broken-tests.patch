@@ -44,11 +44,14 @@ Last-Update: 2023-03-24
  # javadoc
 --- a/test/jdk/ProblemList.txt
 +++ b/test/jdk/ProblemList.txt
-@@ -109,6 +109,49 @@
+@@ -109,6 +109,52 @@
  #
  #############################################################################
  
-+
++# NSS3 failure when processing SHA3 hashes (needs investigation)
++sun/security/pkcs11/Signature/KeyAndParamCheckForPSS.java 0000000 generic-all
++sun/security/pkcs11/MessageDigest/TestCloning.java 0000000 generic-all
++sun/security/pkcs11/Signature/SignatureTestPSS.java 0000000 generic-all
 +
 +# to investigate
 +# unable to read LD_LIBRARY_PATH env variable
@@ -94,7 +97,7 @@ Last-Update: 2023-03-24
  ############################################################################
  
  # jdk_awt
-@@ -537,7 +580,6 @@
+@@ -537,7 +583,6 @@
  java/lang/ProcessHandle/InfoTest.java                           8211847 aix-ppc64
  java/lang/invoke/LFCaching/LFMultiThreadCachingTest.java        8151492 generic-all
  java/lang/invoke/LFCaching/LFGarbageCollectedTest.java          8078602 generic-all
