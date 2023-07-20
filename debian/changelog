@@ -1,4 +1,6 @@
-openjdk-21 (21~30ea-2) UNRELEASED; urgency=medium
+openjdk-21 (21~32ea-1) unstable; urgency=medium
+
+  * OpenJDK 21 snapshot, Build 32.
 
   [ Vladimir Petko ]
   * d/t/jtreg-autopkgtest.{sh,in}: JDK-8232153 - set NSS_DEFAULT_DB_TYPE
