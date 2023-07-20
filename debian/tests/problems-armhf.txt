@@ -20,3 +20,8 @@ compiler/codecache/MHIntrinsicAllocFailureTest.java
 sun/security/rsa/SignedObjectChain.java 000000 generic-all
 sun/security/ec/ed/EdDSATest.java 000000 generic-all
 java/security/SignedObject/Chain.java 000000 generic-all
+
+# timeout in SSL connection
+java/net/httpclient/ManyRequestsLegacy.java 000000 generic-all
+# deadlock
+java/util/Random/RandomTestBsi1999.java 000000 generic-all
