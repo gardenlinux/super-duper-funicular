@@ -1,3 +1,15 @@
+openjdk-21 (21~30ea-2) UNRELEASED; urgency=medium
+
+  [ Vladimir Petko ]
+  * d/t/jtreg-autopkgtest.{sh,in}: JDK-8232153 - set NSS_DEFAULT_DB_TYPE
+    to let sun/security/pkcs11/Secmod/AddTrustedCert.java pass.
+  * d/p/exclude-broken-tests.patch: quarantine pkcs11 tests failing with NSS 3.91.
+  * d/t/problems-armhf.txt: quarantine armhf failing tests:
+    - java/net/httpclient/ManyRequestsLegacy.java: SSL request timeout.
+    - java/util/Random/RandomTestBsi1999.java: deadlock in CI.
+
+ -- Matthias Klose <doko@ubuntu.com>  Thu, 20 Jul 2023 10:52:07 +0200
+
 openjdk-21 (21~30ea-1) unstable; urgency=medium
 
   * OpenJDK 21 snapshot, Build 30.
