@@ -1,4 +1,6 @@
-openjdk-22 (22~5ea-2) UNRELEASED; urgency=medium
+openjdk-22 (22~7ea-1) unstable; urgency=medium
+
+  * OpenJDK 22 snapshot, Build 7.
 
   [ Vladimir Petko ]
   * d/t/jtreg-autopkgtest.{sh,in}: JDK-8232153 - set NSS_DEFAULT_DB_TYPE
@@ -8,7 +10,7 @@ openjdk-22 (22~5ea-2) UNRELEASED; urgency=medium
     - java/net/httpclient/ManyRequestsLegacy.java: SSL request timeout.
     - java/util/Random/RandomTestBsi1999.java: deadlock in CI.
 
- -- Matthias Klose <doko@debian.org>  Thu, 20 Jul 2023 11:03:23 +0200
+ -- Matthias Klose <doko@ubuntu.com>  Thu, 20 Jul 2023 11:03:23 +0200
 
 openjdk-22 (22~5ea-1) unstable; urgency=medium
 
