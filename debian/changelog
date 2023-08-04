@@ -1,4 +1,6 @@
-openjdk-17 (17.0.8+7-2) UNRELEASED; urgency=medium
+openjdk-17 (17.0.9~1ea-1) UNRELEASED; urgency=medium
+
+  * OpenJDK 17.0.9 early access, build 1.
 
   [ Vladimir Petko ]
   * d/t/jtreg-autopkgtest.{sh,in}: JDK-8232153 - set NSS_DEFAULT_DB_TYPE
@@ -8,7 +10,7 @@ openjdk-17 (17.0.8+7-2) UNRELEASED; urgency=medium
     - java/net/httpclient/ManyRequestsLegacy.java: SSL request timeout.
     - java/util/Random/RandomTestBsi1999.java: deadlock in CI.
 
- -- Matthias Klose <doko@ubuntu.com>  Thu, 20 Jul 2023 10:45:32 +0200
+ -- Matthias Klose <doko@ubuntu.com>  Fri, 04 Aug 2023 03:28:50 +0200
 
 openjdk-17 (17.0.8+7-1) unstable; urgency=high
 
