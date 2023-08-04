@@ -105,25 +105,18 @@ v_debian	:= $(shell echo $(PKGVERSION) | sed 's/ea//' | sed 's/\~us[[:digit:]]\+
 v_upstream	:= $(shell echo $(v_debian) | sed 's/-[^-][^-]*$$//')
 v_pkgrel	:= $(shell echo $(v_debian) | sed 's/^.*-//')
 
-# uncomment for final release
-#v_upbase	:= $(word 1, $(subst +, , $(v_upstream)))
-#v_upbuild	:= $(word 2, $(subst +, , $(v_upstream)))
-
-# uncomment for pre-release
-v_upbase	:= $(word 1, $(subst ~, , $(v_upstream)))
-v_upbuild	:= $(word 2, $(subst ~, , $(v_upstream)))
-# that should be the package version ...
-
-#$(warning XXXXX $(v_upstream) / $(v_pkgrel) / $(v_upbase) / $(v_upbuild))
-
-#uncomment for final release
-#ifneq ($(v_debian),$(v_upbase)+$(v_upbuild)-$(v_pkgrel))
-#  $(error wrong version: $(v_upbase)+$(v_upbuild)-$(v_pkgrel) should be: $(v_debian))
-#endif
-
-# uncomment for pre-releases
-ifneq ($(v_debian),$(v_upbase)~$(v_upbuild)-$(v_pkgrel))
-  $(error wrong version: $(v_upbase)~$(v_upbuild)-$(v_pkgrel) should be: $(v_debian))
+ifeq (yes,$(is_upstream_release))
+  v_upbase      := $(word 1, $(subst +, , $(v_upstream)))
+  v_upbuild     := $(word 2, $(subst +, , $(v_upstream)))
+  ifneq ($(v_debian),$(v_upbase)+$(v_upbuild)-$(v_pkgrel))
+    $(error wrong version: $(v_upbase)+$(v_upbuild)-$(v_pkgrel) should be: $(v_debian))
+  endif
+else
+  v_upbase      := $(word 1, $(subst ~, , $(v_upstream)))
+  v_upbuild     := $(word 2, $(subst ~, , $(v_upstream)))
+  ifneq ($(v_debian),$(v_upbase)~$(v_upbuild)-$(v_pkgrel))
+    $(error wrong version: $(v_upbase)~$(v_upbuild)-$(v_pkgrel) should be: $(v_debian))
+  endif
 endif
 
 ifneq (,$(DEB_HOST_MULTIARCH))
@@ -1865,7 +1858,7 @@ endif
 #is_release		= yes
 is_release		=
 git_project		= jdk
-git_tag			= jdk-22+7
+git_tag			= jdk-22+9
 package_version		= $(shell echo $(PKGVERSION) | sed 's/-[^-][^-]*$$//')
 ifneq ($(is_release),yes)
   package_version	:= $(subst +,~,$(package_version))
