@@ -1,3 +1,9 @@
+openjdk-21 (21~34ea-1) unstable; urgency=medium
+
+  * OpenJDK 21 snapshot, Build 34.
+
+ -- Matthias Klose <doko@debian.org>  Fri, 04 Aug 2023 16:02:44 +0200
+
 openjdk-21 (21~32ea-1) unstable; urgency=medium
 
   * OpenJDK 21 snapshot, Build 32.
