@@ -31,7 +31,7 @@ Last-Update: 2023-03-24
 +
  # :hotspot_compiler
  
- compiler/aot/verification/vmflags/TrackedFlagTest.java 8215224 generic-all
+ compiler/aot/DeoptimizationTest.java 8310619 macosx-x64
 --- a/test/langtools/ProblemList.txt
 +++ b/test/langtools/ProblemList.txt
 @@ -23,6 +23,32 @@

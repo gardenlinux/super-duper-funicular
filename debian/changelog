@@ -1,7 +1,10 @@
-openjdk-11 (11.0.20+8-2) UNRELEASED; urgency=medium
+openjdk-11 (11.0.21~2ea-1) UNRELEASED; urgency=medium
+
+  * OpenJDK 11.0.21 release, build 2 (early access).
 
   [ Vladimir Petko ]
   * d/copyright: remove liblcms from excluded files.
+  * Refresh patch for 11.0.21+2 ea.
 
  -- Matthias Klose <doko@ubuntu.com>  Wed, 23 Aug 2023 14:40:55 +0200
 
