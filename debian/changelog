@@ -12,7 +12,7 @@ openjdk-21 (21~34ea-1) unstable; urgency=medium
     point to the location of the ATK jar. These patches have been dropped on
     openjdk-11 and openjdk-17 previously.
 
- -- Matthias Klose <doko@debian.org>  Fri, 04 Aug 2023 03:01:18 +0200
+ -- Matthias Klose <doko@debian.org>  Fri, 04 Aug 2023 16:02:44 +0200
 
 openjdk-21 (21~32ea-1) unstable; urgency=medium
 
