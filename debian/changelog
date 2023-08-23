@@ -1,6 +1,13 @@
 openjdk-22 (22~9ea-2) UNRELEASED; urgency=medium
 
+  * OpenJDK 22 snapshot, Build 10.
+
+  [ Matthias Klose ]
   * 8313795: Fix for broken ppc and s390x builds.
+
+  [ Vladimir Petko ]
+  * Refresh exclude_broken_tests.patch
+  * Drop 8313795.diff, applied upstream.
 
  -- Matthias Klose <doko@ubuntu.com>  Thu, 10 Aug 2023 11:55:54 +0200
 

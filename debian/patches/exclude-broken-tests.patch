@@ -27,9 +27,9 @@ Last-Update: 2023-03-24
  
 --- a/test/langtools/ProblemList.txt
 +++ b/test/langtools/ProblemList.txt
-@@ -23,6 +23,11 @@
+@@ -40,6 +40,11 @@
  #
- ###########################################################################
+ #############################################################################
  
 +# Wrong test environment in autopkgtest
 +# java.lang.IllegalStateException: Launching JShell execution engine threw: ERROR: transport error 202: getaddrinfo: failed to parse address
@@ -93,7 +93,7 @@ Last-Update: 2023-03-24
  ############################################################################
  
  # jdk_awt
-@@ -476,7 +521,6 @@ java/beans/XMLEncoder/Test6570354.java 8
+@@ -476,7 +521,6 @@
  java/lang/ProcessHandle/InfoTest.java                           8211847 aix-ppc64
  java/lang/invoke/LFCaching/LFMultiThreadCachingTest.java        8151492 generic-all
  java/lang/invoke/LFCaching/LFGarbageCollectedTest.java          8078602 generic-all
