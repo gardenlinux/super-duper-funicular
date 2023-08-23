@@ -169,7 +169,7 @@ ifeq ($(distribution)-$(distrel),Ubuntu-riscv64)
 endif
 
 # no jtreg backport yet
-ifneq (,$(filter $(distrel), buster bullseye precise trusty xenial bionic focal groovy hirsute impish))
+ifneq (,$(filter $(distrel), buster bullseye precise trusty xenial groovy hirsute impish))
   with_check = disabled for $(distrel), no $(jtreg_pkg)
 endif
 

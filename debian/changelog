@@ -9,7 +9,10 @@ openjdk-17 (17.0.9~2ea-1) UNRELEASED; urgency=medium
   * d/t/problems-armhf.txt: quarantine armhf failing tests:
     - java/net/httpclient/ManyRequestsLegacy.java: SSL request timeout.
     - java/util/Random/RandomTestBsi1999.java: deadlock in CI.
-  * d/copyright: remove liblcms from excluded files.
+  * d/copyright: Remove liblcms from excluded files.
+  * d/rules: Enable jtreg tests for bionic and focal.
+  * d/p/build_gtest.patch: Update patch to work with earlier versions
+    of google-test.
 
  -- Matthias Klose <doko@ubuntu.com>  Wed, 23 Aug 2023 14:39:34 +0200
 
