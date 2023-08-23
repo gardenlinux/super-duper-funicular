@@ -5,14 +5,10 @@ Forwarded: not-needed
 Last-Update: 2023-03-24
 --- a/test/hotspot/jtreg/ProblemList.txt
 +++ b/test/hotspot/jtreg/ProblemList.txt
-@@ -38,6 +38,19 @@
+@@ -38,6 +38,15 @@
  #
  #############################################################################
  
-+# tests broken by Debian-specific patches
-+
-+runtime/BootClassAppendProp/GetBootClassPathAppendProp.java 0000000 generic-all
-+
 +# tests that need to be investigated
 +
 +gc/shenandoah/mxbeans/TestChurnNotifications.java#aggressive 0000000 generic-all
