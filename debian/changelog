@@ -20,7 +20,7 @@ openjdk-22 (22~12ea-1) unstable; urgency=medium
     point to the location of the ATK jar. These patches have been dropped on
     openjdk-11 and openjdk-17 previously.
 
- -- Matthias Klose <doko@ubuntu.com>  Thu, 24 Aug 2023 11:28:55 +0200
+ -- Matthias Klose <doko@ubuntu.com>  Thu, 24 Aug 2023 12:41:26 +0200
 
 openjdk-22 (22~9ea-1) unstable; urgency=medium
 
