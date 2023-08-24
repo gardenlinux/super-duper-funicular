@@ -1,4 +1,4 @@
-openjdk-11 (11.0.21~4ea-1) UNRELEASED; urgency=medium
+openjdk-11 (11.0.21~4ea-1) unstable; urgency=medium
 
   * OpenJDK 11.0.21 release, build 4 (early access).
 
@@ -11,7 +11,7 @@ openjdk-11 (11.0.21~4ea-1) UNRELEASED; urgency=medium
   [ Matthias Klose ]
   * Explicitly configure --without-jtreg with the nocheck profile
 
- -- Matthias Klose <doko@ubuntu.com>  Thu, 24 Aug 2023 08:24:47 +0200
+ -- Matthias Klose <doko@ubuntu.com>  Thu, 24 Aug 2023 12:53:49 +0200
 
 openjdk-11 (11.0.20+8-1) unstable; urgency=high
 
