@@ -110,6 +110,7 @@ for i in 0 1 2; do
     -jdk:${JDK_TO_TEST} \
     -vmoption:-Dtest.boot.jdk=${BOOTJDK_HOME} \
     -vmoption:-XX:MaxRAMPercentage=25 \
+    -e:NSS_DEFAULT_DB_TYPE=sql \
     ${on_retry:-} $@ \
       && exit_code=0 || exit_code=$?
 
