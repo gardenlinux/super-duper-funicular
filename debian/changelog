@@ -1,6 +1,6 @@
-openjdk-21 (21~34ea-1) unstable; urgency=medium
+openjdk-21 (21~35ea-1) unstable; urgency=medium
 
-  * OpenJDK 21 snapshot, Build 34.
+  * OpenJDK 21 snapshot, Build 35 (first release candidate).
 
   [ Pushkar Kulkarni ]
   * d/p/series - The jaw-classpath and jaw-optional patches help work around
@@ -15,7 +15,7 @@ openjdk-21 (21~34ea-1) unstable; urgency=medium
   [ Matthias Klose ]
   * Explicitly configure --without-jtreg with the nocheck profile
 
- -- Matthias Klose <doko@debian.org>  Fri, 04 Aug 2023 16:02:44 +0200
+ -- Matthias Klose <doko@ubuntu.com>  Thu, 24 Aug 2023 08:43:29 +0200
 
 openjdk-21 (21~32ea-1) unstable; urgency=medium
 
