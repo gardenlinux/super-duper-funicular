@@ -89,11 +89,11 @@ Last-Update: 2023-03-24
  ############################################################################
  
  # jdk_awt
-@@ -476,7 +521,6 @@
+@@ -476,7 +521,6 @@ java/beans/XMLEncoder/Test6570354.java 8
  java/lang/ProcessHandle/InfoTest.java                           8211847 aix-ppc64
  java/lang/invoke/LFCaching/LFMultiThreadCachingTest.java        8151492 generic-all
  java/lang/invoke/LFCaching/LFGarbageCollectedTest.java          8078602 generic-all
 -java/lang/invoke/lambda/LambdaFileEncodingSerialization.java    8249079 linux-x64
  java/lang/invoke/RicochetTest.java                              8251969 generic-all
- java/lang/invoke/MethodHandleProxies/BasicTest.java              8312482 linux-all
- java/lang/invoke/MethodHandleProxies/WrapperHiddenClassTest.java 8312482 linux-all
+ 
+ ############################################################################

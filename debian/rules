@@ -423,7 +423,7 @@ endif
 ifeq ($(with_check),yes)
   COMMON_CONFIGURE_ARGS += --with-jtreg=/usr/share/jtreg
 else
-  COMMON_CONFIGURE_ARGS += --disable-jtreg-failure-handler
+  COMMON_CONFIGURE_ARGS += --without-jtreg --disable-jtreg-failure-handler
 endif
 
 COMMON_CONFIGURE_ARGS += --disable-warnings-as-errors
@@ -1858,7 +1858,7 @@ endif
 #is_release		= yes
 is_release		=
 git_project		= jdk
-git_tag			= jdk-22+9
+git_tag			= jdk-22+12
 package_version		= $(shell echo $(PKGVERSION) | sed 's/-[^-][^-]*$$//')
 ifneq ($(is_release),yes)
   package_version	:= $(subst +,~,$(package_version))

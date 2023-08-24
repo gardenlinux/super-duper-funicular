@@ -1,9 +1,10 @@
-openjdk-22 (22~9ea-2) UNRELEASED; urgency=medium
+openjdk-22 (22~12ea-1) unstable; urgency=medium
 
-  * OpenJDK 22 snapshot, Build 10.
+  * OpenJDK 22 snapshot, Build 12.
 
   [ Matthias Klose ]
   * 8313795: Fix for broken ppc and s390x builds.
+  * Explicitly configure --without-jtreg with the nocheck profile
 
   [ Vladimir Petko ]
   * Refresh exclude_broken_tests.patch
@@ -19,7 +20,7 @@ openjdk-22 (22~9ea-2) UNRELEASED; urgency=medium
     point to the location of the ATK jar. These patches have been dropped on
     openjdk-11 and openjdk-17 previously.
 
- -- Matthias Klose <doko@ubuntu.com>  Thu, 10 Aug 2023 11:55:54 +0200
+ -- Matthias Klose <doko@ubuntu.com>  Thu, 24 Aug 2023 11:28:55 +0200
 
 openjdk-22 (22~9ea-1) unstable; urgency=medium
 
