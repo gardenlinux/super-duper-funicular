@@ -1,3 +1,9 @@
+openjdk-21 (21~35ea-2) UNRELEASED; urgency=medium
+
+  * Build-depend on the unversioned libfreetype-dev.
+
+ -- Matthias Klose <doko@ubuntu.com>  Mon, 28 Aug 2023 09:38:27 +0200
+
 openjdk-21 (21~35ea-1) unstable; urgency=medium
 
   * OpenJDK 21 snapshot, Build 35 (first release candidate).
