@@ -657,9 +657,14 @@ bd_syslibs += \
 	libgif-dev,
 bd_openjdk = \
 	libxtst-dev, libxi-dev, libxt-dev, libxaw7-dev, libxrender-dev, libcups2-dev, \
-	libasound2-dev, liblcms2-dev, libfreetype6-dev (>= 2.2.1), \
+	libasound2-dev, liblcms2-dev, \
 	libxinerama-dev, libkrb5-dev, xsltproc, libpcsclite-dev, libxrandr-dev, \
 	libelf-dev, libfontconfig1-dev, libgtk2.0-0 | libgtk-3-0,
+ifneq (,$(filter $(distrel),jessie stretch buster precise trusty xenial bionic))
+  bd_openjdk += libfreetype6-dev,
+else
+  bd_openjdk += libfreetype-dev,
+endif
 ifeq ($(with_system_hb),yes)
   bd_openjdk += libharfbuzz-dev,
 endif
