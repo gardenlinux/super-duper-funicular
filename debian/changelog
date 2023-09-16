@@ -1,4 +1,6 @@
-openjdk-17 (17.0.9~4ea-2) UNRELEASED; urgency=medium
+openjdk-17 (17.0.9~6ea-1) UNRELEASED; urgency=medium
+
+  * OpenJDK 17.0.9 early access, build 6.
 
   [ Matthias Klose ]
   * Build-depend on the unversioned libfreetype-dev.
@@ -6,7 +8,7 @@ openjdk-17 (17.0.9~4ea-2) UNRELEASED; urgency=medium
   [ Vladimir Petko ]
   * Fix jquery-min.js symlink. Closes: #998763.
 
- -- Matthias Klose <doko@ubuntu.com>  Mon, 04 Sep 2023 10:15:28 +0200
+ -- Matthias Klose <doko@ubuntu.com>  Sat, 16 Sep 2023 12:15:52 +0200
 
 openjdk-17 (17.0.9~4ea-1) unstable; urgency=medium
 
