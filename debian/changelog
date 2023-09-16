@@ -1,4 +1,4 @@
-openjdk-17 (17.0.9~6ea-1) UNRELEASED; urgency=medium
+openjdk-17 (17.0.9~6ea-1) unstable; urgency=medium
 
   * OpenJDK 17.0.9 early access, build 6.
 
@@ -6,11 +6,12 @@ openjdk-17 (17.0.9~6ea-1) UNRELEASED; urgency=medium
   * Build-depend on the unversioned libfreetype-dev.
   * Backport the openjdk-17 zero support for loong64 (Xuefeng Pan).
     Closes: #1051906.
+  * Build using GCC 13 on development versions.
 
   [ Vladimir Petko ]
   * Fix jquery-min.js symlink. Closes: #998763.
 
- -- Matthias Klose <doko@ubuntu.com>  Sat, 16 Sep 2023 12:15:52 +0200
+ -- Matthias Klose <doko@ubuntu.com>  Sat, 16 Sep 2023 13:35:34 +0200
 
 openjdk-17 (17.0.9~4ea-1) unstable; urgency=medium
 

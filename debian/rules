@@ -273,14 +273,18 @@ else ifneq (,$(filter $(distrel),jammy))
   export CC = $(DEB_HOST_GNU_TYPE)-gcc-11
   export CXX = $(DEB_HOST_GNU_TYPE)-g++-11
   bd_gcc = g++-11 <!cross>,
-else
+else ifneq (,$(filter $(distrel),bookworm lunar))
   export CC = $(DEB_HOST_GNU_TYPE)-gcc-12
   export CXX = $(DEB_HOST_GNU_TYPE)-g++-12
   bd_gcc = g++-12 <!cross>,
+else
+  export CC = $(DEB_HOST_GNU_TYPE)-gcc-13
+  export CXX = $(DEB_HOST_GNU_TYPE)-g++-13
+  bd_gcc = g++-13 <!cross>,
 endif
 
 # GCC 11 and up
-ifeq (,$(findstring 11 12, $(bd_gcc)))
+ifeq (,$(findstring 11 12 13 14, $(bd_gcc)))
   DEB_BUILD_MAINT_OPTIONS = optimize=-lto
 endif
 
