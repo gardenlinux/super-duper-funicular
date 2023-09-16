@@ -4,6 +4,8 @@ openjdk-17 (17.0.9~6ea-1) UNRELEASED; urgency=medium
 
   [ Matthias Klose ]
   * Build-depend on the unversioned libfreetype-dev.
+  * Backport the openjdk-17 zero support for loong64 (Xuefeng Pan).
+    Closes: #1051906.
 
   [ Vladimir Petko ]
   * Fix jquery-min.js symlink. Closes: #998763.
