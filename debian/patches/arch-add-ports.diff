@@ -14,23 +14,7 @@
      OTHER(is64bit() ? 64 : 32, ByteOrder.nativeOrder()),
      PPC(32, ByteOrder.BIG_ENDIAN),
      PPC64(64, ByteOrder.BIG_ENDIAN),
-@@ -165,6 +172,15 @@ public enum Architecture {
-     }
- 
-     /**
-+     * {@return {@code true} if the current architecture is PPC}
-+     * Use {@link #isLittleEndian()} to determine big or little endian.
-+     */
-+    @ForceInline
-+    public static boolean isPPC() {
-+        return PlatformProps.TARGET_ARCH_IS_PPC;
-+    }
-+
-+    /**
-      * {@return {@code true} if the current architecture is PPC64, big-endian}
-      */
-     @ForceInline
-@@ -181,6 +197,69 @@ public enum Architecture {
+@@ -181,6 +188,69 @@ public enum Architecture {
      }
  
      /**

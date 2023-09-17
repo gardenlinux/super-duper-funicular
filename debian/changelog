@@ -1,4 +1,4 @@
-openjdk-22 (22~15ea-1) UNRELEASED; urgency=medium
+openjdk-22 (22~15ea-1) unstable; urgency=medium
 
   * OpenJDK 22 snapshot, Build 15.
   * Disable running the tests on powerpc. Closes: #1051918.
