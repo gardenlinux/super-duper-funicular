@@ -165,7 +165,7 @@ else
 endif
 
 with_check = $(if $(findstring nocheck, $(DEB_BUILD_OPTIONS)),,yes)
-ifneq (,$(filter $(DEB_HOST_ARCH), alpha arc armel hppa ia64 mipsel mips64el riscv64 x32))
+ifneq (,$(filter $(DEB_HOST_ARCH), alpha arc armel hppa ia64 mipsel mips64el powerpc riscv64 x32))
   with_check = disabled running check on $(DEB_HOST_ARCH)
 endif
 # no jtreg backport yet

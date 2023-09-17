@@ -1,3 +1,9 @@
+openjdk-22 (22~13ea-2) UNRELEASED; urgency=medium
+
+  * Disable running the tests on powerpc. Closes: #1051918.
+
+ -- Matthias Klose <doko@ubuntu.com>  Sun, 17 Sep 2023 09:14:31 +0200
+
 openjdk-22 (22~13ea-1) unstable; urgency=medium
 
   * OpenJDK 22 snapshot, Build 13.
