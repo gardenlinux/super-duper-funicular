@@ -1,11 +1,9 @@
 --- a/src/java.base/share/classes/jdk/internal/util/Architecture.java
 +++ b/src/java.base/share/classes/jdk/internal/util/Architecture.java
-@@ -50,7 +50,15 @@
-     PPC64(64, ByteOrder.BIG_ENDIAN),
-     PPC64LE(64, ByteOrder.LITTLE_ENDIAN),
+@@ -46,6 +46,13 @@ public enum Architecture {
+     LOONGARCH64(64, ByteOrder.LITTLE_ENDIAN),
      MIPSEL(32, ByteOrder.LITTLE_ENDIAN),
--    MIPS64EL(64, ByteOrder.LITTLE_ENDIAN)
-+    MIPS64EL(64, ByteOrder.LITTLE_ENDIAN),
+     MIPS64EL(64, ByteOrder.LITTLE_ENDIAN),
 +    ALPHA(64, ByteOrder.LITTLE_ENDIAN),
 +    ARC(32, ByteOrder.LITTLE_ENDIAN),
 +    HPPA(32, ByteOrder.BIG_ENDIAN),
@@ -13,11 +11,10 @@
 +    M68K(32, ByteOrder.BIG_ENDIAN),
 +    SH(32, ByteOrder.LITTLE_ENDIAN),
 +    X32(32, ByteOrder.LITTLE_ENDIAN),
-+    PPC(32, ByteOrder.BIG_ENDIAN)
-     ;
- 
-     private final int addrSize;
-@@ -153,6 +161,15 @@
+     OTHER(is64bit() ? 64 : 32, ByteOrder.nativeOrder()),
+     PPC(32, ByteOrder.BIG_ENDIAN),
+     PPC64(64, ByteOrder.BIG_ENDIAN),
+@@ -165,6 +172,15 @@ public enum Architecture {
      }
  
      /**
@@ -33,7 +30,7 @@
       * {@return {@code true} if the current architecture is PPC64, big-endian}
       */
      @ForceInline
-@@ -169,6 +186,69 @@
+@@ -181,6 +197,69 @@ public enum Architecture {
      }
  
      /**
@@ -105,66 +102,46 @@
      @ForceInline
 --- a/src/java.base/share/classes/jdk/internal/util/PlatformProps.java.template
 +++ b/src/java.base/share/classes/jdk/internal/util/PlatformProps.java.template
-@@ -61,4 +61,12 @@
-     static final boolean TARGET_ARCH_IS_PPC64LE = "@@OPENJDK_TARGET_CPU@@" == "ppc64le";
-     static final boolean TARGET_ARCH_IS_MIPSEL  = "@@OPENJDK_TARGET_CPU@@" == "mipsel";
-     static final boolean TARGET_ARCH_IS_MIPS64EL= "@@OPENJDK_TARGET_CPU@@" == "mips64el";
-+    static final boolean TARGET_ARCH_IS_X32     = "@@OPENJDK_TARGET_CPU@@" == "x32";
-+    static final boolean TARGET_ARCH_IS_SH      = "@@OPENJDK_TARGET_CPU@@" == "sh";
-+    static final boolean TARGET_ARCH_IS_M68K    = "@@OPENJDK_TARGET_CPU@@" == "m68k";
-+    static final boolean TARGET_ARCH_IS_PPC     = "@@OPENJDK_TARGET_CPU@@" == "ppc";
+@@ -65,5 +65,12 @@ class PlatformProps {
+     static final boolean TARGET_ARCH_IS_SPARCV9 = "@@OPENJDK_TARGET_CPU@@" == "sparcv9";
+     static final boolean TARGET_ARCH_IS_X86     = "@@OPENJDK_TARGET_CPU@@" == "x86";
+     static final boolean TARGET_ARCH_IS_X64     = "@@OPENJDK_TARGET_CPU@@" == "x64";
 +    static final boolean TARGET_ARCH_IS_ALPHA   = "@@OPENJDK_TARGET_CPU@@" == "alpha";
 +    static final boolean TARGET_ARCH_IS_ARC     = "@@OPENJDK_TARGET_CPU@@" == "arc";
 +    static final boolean TARGET_ARCH_IS_HPPA    = "@@OPENJDK_TARGET_CPU@@" == "hppa";
 +    static final boolean TARGET_ARCH_IS_IA64    = "@@OPENJDK_TARGET_CPU@@" == "ia64";
++    static final boolean TARGET_ARCH_IS_M68K    = "@@OPENJDK_TARGET_CPU@@" == "m68k";
++    static final boolean TARGET_ARCH_IS_SH      = "@@OPENJDK_TARGET_CPU@@" == "sh";
++    static final boolean TARGET_ARCH_IS_X32     = "@@OPENJDK_TARGET_CPU@@" == "x32";
+ 
  }
 --- a/test/jdk/jdk/internal/util/ArchTest.java
 +++ b/test/jdk/jdk/internal/util/ArchTest.java
-@@ -37,6 +37,14 @@
- import static jdk.internal.util.Architecture.S390;
+@@ -41,6 +41,13 @@ import static jdk.internal.util.Architec
+ import static jdk.internal.util.Architecture.SPARCV9;
  import static jdk.internal.util.Architecture.X64;
  import static jdk.internal.util.Architecture.X86;
 +import static jdk.internal.util.Architecture.ALPHA;
 +import static jdk.internal.util.Architecture.ARC;
 +import static jdk.internal.util.Architecture.HPPA;
 +import static jdk.internal.util.Architecture.IA64;
-+import static jdk.internal.util.Architecture.PPC;
 +import static jdk.internal.util.Architecture.SH;
 +import static jdk.internal.util.Architecture.X32;
 +import static jdk.internal.util.Architecture.M68K;
- import static jdk.internal.util.Architecture.MIPSEL;
- import static jdk.internal.util.Architecture.MIPS64EL;
  
-@@ -74,24 +82,31 @@
-         // In alphabetical order
-         return Stream.of(
-                 Arguments.of("aarch64", AARCH64, 64, ByteOrder.LITTLE_ENDIAN, Architecture.isAARCH64()),
-+                Arguments.of("alpha", ALPHA, 64, ByteOrder.LITTLE_ENDIAN, Architecture.isALPHA()),
-                 Arguments.of("amd64", X64, 64, ByteOrder.LITTLE_ENDIAN, Architecture.isX64()),
-+                Arguments.of("arc", ARC, 32, ByteOrder.LITTLE_ENDIAN, Architecture.isARC()),
-                 Arguments.of("arm", ARM, 32, ByteOrder.LITTLE_ENDIAN, Architecture.isARM()),
-+                Arguments.of("hppa", HPPA, 32, ByteOrder.BIG_ENDIAN, Architecture.isHPPA()),
-+                Arguments.of("ia64", IA64, 64, ByteOrder.LITTLE_ENDIAN, Architecture.isIA64()),
-                 Arguments.of("i386", X86, 32, ByteOrder.LITTLE_ENDIAN, Architecture.isX86()),
-                 Arguments.of("loongarch64", LOONGARCH64, 64, ByteOrder.LITTLE_ENDIAN, Architecture.isLOONGARCH64()),
-+                Arguments.of("m68k", M68K, 32, ByteOrder.BIG_ENDIAN, Architecture.isM68K()),
-                 Arguments.of("mips64el", MIPS64EL, 64, ByteOrder.LITTLE_ENDIAN, Architecture.isMIPS64EL()),
-                 Arguments.of("mipsel", MIPSEL, 32, ByteOrder.LITTLE_ENDIAN, Architecture.isMIPSEL()),
-+                Arguments.of("ppc", PPC, 32, ByteOrder.BIG_ENDIAN, Architecture.isPPC()),
-                 Arguments.of("ppc64", PPC64, 64, ByteOrder.BIG_ENDIAN, Architecture.isPPC64()),
-                 Arguments.of("ppc64le", PPC64LE, 64, ByteOrder.LITTLE_ENDIAN, Architecture.isPPC64LE()),
-                 Arguments.of("riscv64", RISCV64, 64, ByteOrder.LITTLE_ENDIAN, Architecture.isRISCV64()),
-+                Arguments.of("sh", SH, 32, ByteOrder.LITTLE_ENDIAN, Architecture.isSH()),
-                 Arguments.of("s390", S390, 64, ByteOrder.BIG_ENDIAN, Architecture.isS390()),
-                 Arguments.of("s390x", S390, 64, ByteOrder.BIG_ENDIAN, Architecture.isS390()),
-+                Arguments.of("x32", X32, 32, ByteOrder.LITTLE_ENDIAN, Architecture.isX32()),
+ import org.junit.jupiter.api.Test;
+ import org.junit.jupiter.params.ParameterizedTest;
+@@ -92,6 +99,13 @@ public class ArchTest {
                  Arguments.of("x64", X64, 64, ByteOrder.LITTLE_ENDIAN, Architecture.isX64()),
                  Arguments.of("x86", X86, 32, ByteOrder.LITTLE_ENDIAN, Architecture.isX86()),
                  Arguments.of("x86_64", X64, 64, ByteOrder.LITTLE_ENDIAN, Architecture.isX64())
++                Arguments.of("alpha", ALPHA, 64, ByteOrder.LITTLE_ENDIAN, Architecture.isALPHA()),
++                Arguments.of("arc", ARC, 32, ByteOrder.LITTLE_ENDIAN, Architecture.isARC()),
++                Arguments.of("hppa", HPPA, 32, ByteOrder.BIG_ENDIAN, Architecture.isHPPA()),
++                Arguments.of("ia64", IA64, 64, ByteOrder.LITTLE_ENDIAN, Architecture.isIA64()),
++                Arguments.of("m68k", M68K, 32, ByteOrder.BIG_ENDIAN, Architecture.isM68K()),
++                Arguments.of("sh", SH, 32, ByteOrder.LITTLE_ENDIAN, Architecture.isSH()),
++                Arguments.of("x32", X32, 32, ByteOrder.LITTLE_ENDIAN, Architecture.isX32()),
          );
      }
  
--
-     /**
-      * Test consistency of System property "os.arch" with Architecture.current().
-      */
