@@ -1,3 +1,9 @@
+openjdk-22 (22~15ea-2) unstable; urgency=medium
+
+  * Apply proposed fix for JDK-8315940, fixing the armhf build.
+
+ -- Matthias Klose <doko@ubuntu.com>  Sun, 17 Sep 2023 14:54:37 +0200
+
 openjdk-22 (22~15ea-1) unstable; urgency=medium
 
   * OpenJDK 22 snapshot, Build 15.
