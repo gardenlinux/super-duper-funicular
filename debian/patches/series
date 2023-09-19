@@ -28,6 +28,7 @@ reproducible-module-info.diff
 reproducible-build-jmod.diff
 mips.diff
 #nspr+nss-headers.diff
+8314491-jexec.patch
 build_gtest.patch
 update-assertion-for-armhf.patch
 misalign-pointer-for-armhf.patch
