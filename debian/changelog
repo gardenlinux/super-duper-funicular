@@ -1,13 +1,16 @@
-openjdk-21 (21~35ea-2) UNRELEASED; urgency=medium
+openjdk-21 (21+35-1) unstable; urgency=medium
+
+  * OpenJDK 21 release build, (no changes).
 
   [ Matthias Klose ]
   * Build-depend on the unversioned libfreetype-dev.
   * Build zero on loong64.
+  * Change upstream VCS to https://github.com/openjdk/jdk21u.
 
   [ Pushkar Kulkarni ]
   * Enable JdiListeningLocalhostExecutionControlTest.java again.
 
- -- Matthias Klose <doko@ubuntu.com>  Sun, 17 Sep 2023 11:17:14 +0200
+ -- Matthias Klose <doko@ubuntu.com>  Thu, 21 Sep 2023 06:39:23 +0200
 
 openjdk-21 (21~35ea-1) unstable; urgency=medium
 
