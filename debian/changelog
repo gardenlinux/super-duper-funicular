@@ -10,6 +10,9 @@ openjdk-21 (21+35-1) unstable; urgency=medium
   [ Pushkar Kulkarni ]
   * Enable JdiListeningLocalhostExecutionControlTest.java again.
 
+  [ Vladimir Petko ]
+  * Run tests on Ubuntu 22.04 LTS and 20.04 LTS.
+
  -- Matthias Klose <doko@ubuntu.com>  Thu, 21 Sep 2023 06:39:23 +0200
 
 openjdk-21 (21~35ea-1) unstable; urgency=medium
