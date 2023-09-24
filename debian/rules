@@ -169,7 +169,7 @@ ifneq (,$(filter $(DEB_HOST_ARCH), alpha arc hppa armel ia64 loong64 mipsel mips
   with_check = disabled running check on $(DEB_HOST_ARCH)
 endif
 # no jtreg backport yet
-ifneq (,$(filter $(distrel), precise trusty xenial bionic bookworm bullseye))
+ifneq (,$(filter $(distrel), precise trusty xenial bionic focal jammy bookworm bullseye))
   with_check = disabled for $(distrel), no $(jtreg_pkg)
 endif
 #with_check = disabled, more recent jtreg needed
@@ -616,11 +616,10 @@ endif
 
 ifneq (,$(filter $(distrel),precise))
     bd_bootstrap = openjdk-20-jdk-headless | openjdk-21-jdk-headless,
-else ifneq (,$(filter $(distrel),squeeze wheezy jessie trusty xenial))
+else ifneq (,$(filter $(distrel),stretch buster bullseye bookworm trusty xenial bionic focal jammy))
     bd_bootstrap = openjdk-20-jdk-headless:native | openjdk-21-jdk-headless:native,
 else
     bd_bootstrap = openjdk-21-jdk-headless:native | openjdk-20-jdk-headless:native,
-    bd_bootstrap = openjdk-20-jdk-headless:native | openjdk-21-jdk-headless:native,
 endif
 
 ifeq (,$(filter $(distrel),squeeze wheezy jessie precise trusty xenial))
