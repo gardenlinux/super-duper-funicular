@@ -6,6 +6,9 @@ openjdk-21 (21+35-2) UNRELEASED; urgency=medium
   [ Pushkar Kulkarni ]
   * debian/copyright: Update copyrights and notices.
 
+  [ Vladimir Petko ]
+  * d/p/build_test.patch: Use openjdk-17 patch for backports compatibility.
+
  -- Matthias Klose <doko@ubuntu.com>  Sun, 24 Sep 2023 11:06:44 +0200
 
 openjdk-21 (21+35-1) unstable; urgency=medium
