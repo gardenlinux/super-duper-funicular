@@ -1,4 +1,6 @@
-openjdk-22 (22~15ea-3) UNRELEASED; urgency=medium
+openjdk-22 (22~16ea-1) unstable; urgency=medium
+
+  * OpenJDK 22 snapshot, Build 16.
 
   [ Pushkar Kulkarni ]
   * debian/copyright: Update copyrights and notices.
