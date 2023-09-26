@@ -6,6 +6,9 @@ openjdk-22 (22~15ea-3) UNRELEASED; urgency=medium
   [ Vladimir Petko ]
   * d/p/build_test.patch: Use openjdk-17 patch for backports compatibility.
 
+  [ Matthias Klose ]
+  * Apply proposed fix for JDK-8313438, fixing the s390x build.
+
  -- Matthias Klose <doko@ubuntu.com>  Tue, 26 Sep 2023 11:59:51 +0200
 
 openjdk-22 (22~15ea-2) unstable; urgency=medium

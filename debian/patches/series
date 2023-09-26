@@ -38,3 +38,4 @@ test-use-ip-address.patch
 exclude-broken-tests.patch
 arch-add-ports.diff
 8315940.diff
+8313438.diff
