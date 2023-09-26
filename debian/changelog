@@ -1,6 +1,10 @@
 openjdk-21 (21+35-2) UNRELEASED; urgency=medium
 
+  [ Matthias Klose ]
   * Build-depend on OpenJDK 21 in releases where it already exists.
+
+  [ Pushkar Kulkarni ]
+  * debian/copyright: Update copyrights and notices.
 
  -- Matthias Klose <doko@ubuntu.com>  Sun, 24 Sep 2023 11:06:44 +0200
 
