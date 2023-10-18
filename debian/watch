@@ -4,3 +4,10 @@ repack,\
 compression=xz \
  https://github.com/openjdk/jdk17u/tags \
    (?:.*?/)?jdk-(\d[\d.]*\+\d[\d]*)\.tar\.gz
+
+opts=\
+component=googletest,\
+repack,\
+compression=xz \
+ https://github.com/google/googletest/tags \
+   (?:.*?/)?v(1.14.0)\.tar\.gz

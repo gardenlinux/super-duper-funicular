@@ -32,7 +32,7 @@ fi
 if dpkg --compare-versions ${jtreg_version} ge 4.2; then
   jt_options+=" -conc:auto"
 fi
-  
+
 # check java binary
 if [ ! -x "${JDK_TO_TEST}/bin/java" ]; then
   echo "Error: '${JDK_TO_TEST}/bin/java' is not an executable." >&2
@@ -109,6 +109,8 @@ for i in 0 1; do
     -reportDir:"${report_dir}" \
     -jdk:${JDK_TO_TEST} \
     -vmoption:-Dtest.boot.jdk=${BOOTJDK_HOME} \
+    -vmoption:-Duser.home=${AUTOPKGTEST_TMP} \
+    -vmoption:-Djava.io.tmpdir=${AUTOPKGTEST_TMP} \
     -vmoption:-XX:MaxRAMPercentage=25 \
     -e:NSS_DEFAULT_DB_TYPE=sql \
     ${on_retry:-} $@ \

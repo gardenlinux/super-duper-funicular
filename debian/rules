@@ -82,7 +82,7 @@ else
 endif
 
 is_upstream_release = yes
-is_upstream_release =
+#is_upstream_release =
 
 srcdir		= .
 builddir	= build
@@ -516,11 +516,8 @@ COMMON_CONFIGURE_ARGS += \
 	--disable-javac-server \
 
 ifeq ($(with_check),yes)
-# temporary: disable gtest until compile errors are fixed in jammy
-  ifeq (,$(filter $(distrel),bullseye jammy))
     COMMON_CONFIGURE_ARGS += \
-        --with-gtest=system
-  endif
+        --with-gtest=$(CURDIR)/googletest
 endif
 
 ifeq (,$(filter $(distrel),jessie stretch precise trusty xenial))
@@ -720,8 +717,7 @@ ifeq ($(with_check),yes)
     xvfb$(nocheck_profile), xauth$(nocheck_profile), \
     xfonts-base$(nocheck_profile), libgl1-mesa-dri [!x32]$(nocheck_profile), \
     xfwm4$(nocheck_profile), x11-xkb-utils$(nocheck_profile), \
-    dbus-x11$(nocheck_profile), googletest$(nocheck_profile), \
-    google-mock$(nocheck_profile), xvfb $(nocheck_profile),
+    dbus-x11$(nocheck_profile), xvfb $(nocheck_profile),
 ifeq (,$(filter $(distrel),jessie stretch buster))
     bd_check += libasmtools-java$(nocheck_profile),
 endif
@@ -1906,9 +1902,9 @@ endif
 	dh_builddeb -a $(nodemo) $(nojrez) #$(bd_options)
 
 is_release		= yes
-is_release		=
+#is_release		=
 git_project		= jdk17u
-git_tag			= jdk-17.0.9+6
+git_tag			= jdk-17.0.9+9
 package_version		= $(subst jdk-,,$(git_tag))
 package_version		= $(shell echo $(PKGVERSION) | sed 's/-[^-][^-]*$$//')
 ifneq ($(is_release),yes)
@@ -1917,7 +1913,23 @@ endif
 git_url			= https://github.com/openjdk/$(git_project)
 origdir = ../$(basename)-$(package_version).orig
 topdir = $(basename)-$(package_version)
-get-orig:
+gtest_repo = https://github.com/google/googletest/archive/refs/tags/
+gtest_tag = 1.14.0
+gtestdir = ../$(basename)-$(package_version)-googletest.orig
+
+get-gtest:
+	rm -rf $(gtestdir) || true
+	mkdir $(gtestdir)
+	wget -O $(gtestdir)/googletest.tar.gz $(gtest_repo)/v$(gtest_tag).tar.gz
+	set -ex; \
+	repo=googletest; \
+	d=$$(tar tf $(gtestdir)/$$repo.tar.gz | head -1 | sed 's,/.*,,'); \
+	tar xf $(gtestdir)/$$repo.tar.gz; \
+	XZ_OPT=-9v tar cfJ ../$(basename)_$(package_version).orig-$$repo.tar.xz googletest-${gtest_tag}; \
+	rm -rf $(gtestdir)
+	rm -rf googletest-${gtest_tag}
+
+get-orig: get-gtest
 	mkdir $(origdir)
 	wget -O $(origdir)/jdk.tar.gz $(git_url)/archive/$(git_tag).tar.gz
 

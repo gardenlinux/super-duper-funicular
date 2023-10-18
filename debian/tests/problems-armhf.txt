@@ -28,3 +28,14 @@ runtime/jni/nativeStack/TestNativeStack.java 8311092 generic-all
 java/net/httpclient/ManyRequestsLegacy.java 000000 generic-all
 # deadlock
 java/util/Random/RandomTestBsi1999.java 000000 generic-all
+
+# runner issue, disk space size exceeds 32 bit integer
+java/io/File/GetXSpace.java 000000 generic-all
+
+# https://bugs.openjdk.org/browse/JDK-8303168
+serviceability/AsyncGetCallTrace/MyPackage/ASGCTBaseTest.java 000000 generic-all
+
+# native stack not implemented, pending backport
+runtime/jni/nativeStack/TestNativeStack.java 000000 generic-all
+
+
