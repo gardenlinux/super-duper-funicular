@@ -38,3 +38,4 @@ log-generated-classes-test.patch
 update-permission-test.patch
 ldap-timeout-test-use-ip.patch
 test-use-ip-address.patch
+nss-limited-ecc-tests.patch

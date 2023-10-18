@@ -14,6 +14,9 @@ openjdk-11 (11.0.21+9-1) unstable; urgency=high
   [ Matthias Klose ]
   * Build using GCC 13 on development versions.
 
+  [ Pushkar Kulkarni ]
+  * Handle limited ECC capabilities of NSS on older releases.
+
  -- Matthias Klose <doko@ubuntu.com>  Wed, 18 Oct 2023 09:28:04 +0200
 
 openjdk-11 (11.0.21~4ea-1) unstable; urgency=medium
