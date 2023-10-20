@@ -7,3 +7,10 @@ oversionmangle=s/\+/\~/,\
 dversionmangle=s/~\d*\~us\d*$/\+\d*/, \
    https://github.com/openjdk/jdk/tags \
    (?:.*?/)?jdk-(22\+\d[\d]*)\.tar\.gz
+
+opts=\
+component=googletest,\
+repack,\
+compression=xz \
+ https://github.com/google/googletest/tags \
+   (?:.*?/)?v(1.14.0)\.tar\.gz

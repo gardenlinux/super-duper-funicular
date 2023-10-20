@@ -169,7 +169,7 @@ ifneq (,$(filter $(DEB_HOST_ARCH), alpha arc armel hppa ia64 loong64 mipsel mips
   with_check = disabled running check on $(DEB_HOST_ARCH)
 endif
 # no jtreg backport yet
-ifneq (,$(filter $(distrel), precise trusty xenial bionic focal jammy bookworm bullseye))
+ifneq (,$(filter $(distrel), precise trusty xenial bionic bookworm bullseye))
   with_check = disabled for $(distrel), no $(jtreg_pkg)
 endif
 #with_check = disabled, more recent jtreg needed
@@ -510,11 +510,8 @@ COMMON_CONFIGURE_ARGS += \
 	--disable-javac-server \
 
 ifeq ($(with_check),yes)
-# temporary: disable gtest until compile errors are fixed in jammy
-  ifeq (,$(filter $(distrel),bullseye jammy))
     COMMON_CONFIGURE_ARGS += \
-        --with-gtest=system
-  endif
+        --with-gtest=$(CURDIR)/googletest
 endif
 
 ifeq (,$(filter $(distrel),jessie stretch precise trusty xenial))
@@ -715,7 +712,6 @@ ifeq ($(with_check),yes)
     xfonts-base$(nocheck_profile), libgl1-mesa-dri [!x32]$(nocheck_profile), \
     xfwm4$(nocheck_profile), x11-xkb-utils$(nocheck_profile), \
     dbus-x11$(nocheck_profile), libasmtools-java$(nocheck_profile), \
-    googletest$(nocheck_profile), google-mock$(nocheck_profile), \
     xvfb $(nocheck_profile),
 else
   bd_check = file,
@@ -1863,7 +1859,7 @@ endif
 #is_release		= yes
 is_release		=
 git_project		= jdk
-git_tag			= jdk-22+16
+git_tag			= jdk-22+20
 package_version		= $(shell echo $(PKGVERSION) | sed 's/-[^-][^-]*$$//')
 ifneq ($(is_release),yes)
   package_version	:= $(subst +,~,$(package_version))
@@ -1871,7 +1867,24 @@ endif
 git_url			= https://github.com/openjdk/$(git_project)
 origdir = ../$(basename)-$(package_version).orig
 topdir = $(basename)-$(package_version)
-get-orig:
+gtest_repo = https://github.com/google/googletest/archive/refs/tags/
+gtest_tag = 1.14.0
+gtestdir = ../$(basename)-$(package_version)-googletest.orig
+
+get-gtest:
+	rm -rf $(gtestdir) || true
+	mkdir $(gtestdir)
+	wget -O $(gtestdir)/googletest.tar.gz $(gtest_repo)/v$(gtest_tag).tar.gz
+	set -ex; \
+	repo=googletest; \
+	d=$$(tar tf $(gtestdir)/$$repo.tar.gz | head -1 | sed 's,/.*,,'); \
+	tar xf $(gtestdir)/$$repo.tar.gz; \
+	XZ_OPT=-9v tar cfJ ../$(basename)_$(package_version).orig-$$repo.tar.xz googletest-${gtest_tag}; \
+	rm -rf $(gtestdir)
+	rm -rf googletest-${gtest_tag}
+
+get-orig: get-gtest
+	rm -rf $(origdir) || true
 	mkdir $(origdir)
 	wget -O $(origdir)/jdk.tar.gz $(git_url)/archive/$(git_tag).tar.gz
 

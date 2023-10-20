@@ -1,3 +1,17 @@
+openjdk-22 (22~20ea-1) unstable; urgency=medium
+
+  * OpenJDK 22 snapshot, Build 20.
+
+  [ Vladimir Petko ]
+  * d/p/build_test.patch: Use openjdk-17 patch for backports compatibility.
+  * d/copyright: include google test license.
+  * d/rules, d/watch: bundle google test library.
+  * d/patches: remove build_gtest.patch.
+  * d/tests: refresh problem lists.
+  * d/p/exclude_broken_tests.patch: drop patch.
+
+ -- Matthias Klose <doko@ubuntu.com>  Fri, 20 Oct 2023 10:16:58 +0200
+
 openjdk-22 (22~16ea-1) unstable; urgency=medium
 
   * OpenJDK 22 snapshot, Build 16.
