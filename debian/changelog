@@ -1,4 +1,9 @@
-openjdk-21 (21+35-2) UNRELEASED; urgency=medium
+openjdk-21 (21.0.1+12-1) unstable; urgency=high
+
+  * OpenJDK 21.0.1 release, build 12.
+    - CVE-2023-22081, CVE-2023-22025.
+    - Release notes:
+      https://www.oracle.com/java/technologies/javase/21-0-1-relnotes.html
 
   [ Matthias Klose ]
   * Build-depend on OpenJDK 21 in releases where it already exists.
@@ -8,8 +13,14 @@ openjdk-21 (21+35-2) UNRELEASED; urgency=medium
 
   [ Vladimir Petko ]
   * d/p/build_test.patch: Use openjdk-17 patch for backports compatibility.
+  * d/watch: use release version format.
+  * d/copyright: include google test license.
+  * d/rules, d/watch: bundle google test library.
+  * d/patches: remove build_gtest.patch.
+  * d/tests: refresh problem lists.
+  * d/p/exclude_broken_tests.patch: drop patch.
 
- -- Matthias Klose <doko@ubuntu.com>  Sun, 24 Sep 2023 11:06:44 +0200
+ -- Matthias Klose <doko@ubuntu.com>  Fri, 20 Oct 2023 09:45:32 +0200
 
 openjdk-21 (21+35-1) unstable; urgency=medium
 

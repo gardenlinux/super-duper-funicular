@@ -236,8 +236,8 @@ sub generate_copyright {
     }
 
     print_file_stanza("*", $copyrights, $licenses);
-    print `cat debian-stanzas`
-    
+    print(`cat bundled-stanzas`);
+    print(`cat debian-stanzas`);
 }
 
 $version = $ARGV[0];
