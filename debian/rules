@@ -1527,15 +1527,45 @@ ifneq (,$(wildcard $(builddir)/$(sdkimg)/lib/*.diz))
 	) > debian/$(p_dbg).install
 endif
 
-# *.debuginfo should be located in /usr/lib/debug/ move files
+# the logic here -> move external debuginfo files into usr/lib/debug
+# check binaries and if the debuginfo is found, check if the binary has build id
+# debug information with build ids is moved under usr/lib/debug/.build-id
+# since we rewrite the build id with_debugedit=yes, patch the build id inside
+# the debug symbols file
+# otherwise (no buildid) just lib debuginfo file where it is
 	mkdir -p $(d)/usr/lib/debug
 	(cd $(d) && find . -path './$(basedir)/*' -name '*.debuginfo' | cpio -pdm usr/lib/debug/)
 	find $(d)/$(basedir)/ -name '*.debuginfo' -exec rm {} \;
-	( \
-	  echo 'usr/lib/debug/$(basedir)/bin/*.debuginfo'; \
-	  echo 'usr/lib/debug/$(basedir)/lib/*.debuginfo'; \
-	  echo 'usr/lib/debug/$(basedir)/lib/*/*.debuginfo'; \
-	) > debian/$(p_dbg).install
+	echo > debian/$(p_dbg).install
+	for binary in `(cd $(d) && find . -path './$(basedir)/*' -print)`; do \
+	  dir=`dirname $$binary`; \
+	  base=`basename $$binary .so`; \
+	  debuginfo=usr/lib/debug/$$dir/$$base.debuginfo; \
+	  [ -f $(d)/$$debuginfo ] || continue; \
+	  $(OBJCOPY) --compress-debug-sections $(d)/$$debuginfo; \
+	  b_id=$$(LC_ALL=C readelf -n $(d)/$$binary | sed -n 's/ *Build ID: *\([0-9a-f][0-9a-f]*\)/\1/p'); \
+	  if [ -z "$$b_id" ]; then \
+	    echo $$debuginfo >> debian/$(p_dbg).install; \
+	  else \
+	    debugdir=usr/lib/debug/.build-id/$${b_id:0:2}; \
+	    f=$${b_id:2}.debug; \
+	    mkdir -p $(d)/$$debugdir; \
+	    mv $(d)/$$debuginfo $(d)/$$debugdir/$$f; \
+	    chmod 644 $(d)/$$debugdir/$$f; \
+	    echo $$debugdir/$$f >> debian/$(p_dbg).install; \
+	    notes=$$(mktemp); \
+	    $(OBJCOPY) --dump-section=.note.gnu.build-id=$$notes $(d)/$$binary; \
+	    $(OBJCOPY) --update-section=.note.gnu.build-id=$$notes $(d)/$$debugdir/$$f; \
+	    rm $$notes; \
+	  fi; \
+	  if [[ "$(DEB_BUILD_OPTIONS)" != *nostrip* ]]; then  \
+	    $(OBJCOPY) --remove-section=.comment --remove-section=.note $(d)/$$binary; \
+	    if [[ "$$binary" != *.so ]]; then \
+	      $(STRIP) --strip-unneeded $(d)/$$binary; \
+	    fi; \
+	  fi; \
+	done;
+	find $(d)/usr/lib/debug/ -type d -empty -delete
 
 #	: # FIXME: the targets are not installed ...
 #	rm -rfv $(d)/$(basedir)/lib/jfr
@@ -1833,33 +1863,12 @@ endif
 	set -e; if command -v dh_strip_nondeterminism >/dev/null; then \
 	  dh_strip_nondeterminism -a $(nodemo) $(nojrez); \
 	fi
-	dh_strip -v -a $(nodemo) $(nojrez) \
-		-Xlibjvm.so -X.debuginfo --dbg-package=$(p_dbg)
+#	The strip operation is performed manually, because the build packages
+#	external debug symbols (so that native libraries are included in the modules)
+#	This step would override the actual debug symbols with the empty sections
+#	dh_strip -v -a $(nodemo) $(nojrez) \
+#		-Xlibjvm.so -X.debuginfo --dbg-package=$(p_dbg)
 
-ifeq (,$(findstring nostrip, $(DEB_BUILD_OPTIONS)))
-	set -ex; \
-	for i in {$(d_jrehl),$(d_jre),$(d_jrez)}/$(basedir)/lib/*/libjvm.so; do \
-	  [ -f $$i ] || continue; \
-	  b_id=$$(LC_ALL=C readelf -n $$i | sed -n 's/ *Build ID: *\([0-9a-f][0-9a-f]*\)/\1/p'); \
-	  if [ -z "$$b_id" ]; then \
-	    id=$$(echo $$i | sed -r 's,debian/[^/]+,$(d_dbg)/usr/lib/debug,'); \
-	    echo strip $$i; \
-	    mkdir -p $$(dirname $$id); \
-	    $(OBJCOPY) --only-keep-debug $$i $$id; \
-	    chmod 644 $$id; \
-	    $(STRIP) --remove-section=.comment --remove-section=.note \
-	      --strip-debug $$i; \
-	    $(OBJCOPY) --add-gnu-debuglink $$id $$i; \
-	  else \
-	    d=usr/lib/debug/.build-id/$${b_id:0:2}; \
-	    f=$${b_id:2}.debug; \
-	    mkdir -p $(d_dbg)/$$d; \
-	    $(OBJCOPY) --only-keep-debug --compress-debug-sections $$i $(d_dbg)/$$d/$$f; \
-	    chmod 644 $(d_dbg)/$$d/$$f; \
-	    $(STRIP) --remove-section=.comment --remove-section=.note $$i; \
-	  fi; \
-	done
-endif
 	dh_compress -a $(nodemo) $(nojrez) -Xexamples -Xdemo -Xpackage-list
 	dh_fixperms -a $(nodemo) $(nojrez)
 	dh_makeshlibs -p$(p_jrehl) -p$(p_jre)
