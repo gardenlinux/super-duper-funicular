@@ -1,4 +1,4 @@
-openjdk-21 (21.0.1+12-2) UNRELEASED; urgency=medium
+openjdk-21 (21.0.1+12-2) unstable; urgency=medium
 
   [ Vladimir Petko ]
   * d/rules: pack external debug symbols with build-id, do not strip
@@ -7,7 +7,7 @@ openjdk-21 (21.0.1+12-2) UNRELEASED; urgency=medium
   [ Pushkar Kulkarni ]
   * debian/copyright: Update copyrights and notices, using a generator script.
 
- -- Matthias Klose <doko@ubuntu.com>  Tue, 31 Oct 2023 08:24:04 +0100
+ -- Matthias Klose <doko@ubuntu.com>  Thu, 02 Nov 2023 11:20:35 +0100
 
 openjdk-21 (21.0.1+12-1) unstable; urgency=high
 
