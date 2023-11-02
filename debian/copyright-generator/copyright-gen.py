@@ -20,6 +20,7 @@
 
 import os
 import sys
+import textwrap
 
 version = "";
 packaged_by = "Matthias Klose <doko\@ubuntu.com>";
@@ -148,13 +149,16 @@ def get_content(path):
   return lines[0], "".join(lines[1:])
   
 
-def fill_with_dots(text):
+def fill_with_dots_and_indent(text):
+  indentation = " " * 2
+  # Setting a large arbitrary width because we don't want to wrap lines
+  wrapper = textwrap.TextWrapper(initial_indent=indentation, width=2000, subsequent_indent=indentation, drop_whitespace=False)
   lines = text.split("\n")
   out = []
   for line in lines:
     if line.strip() == "":
       line = "."
-    out.append(line)
+    out.append(wrapper.fill(line))
   return "\n".join(out)
 
 def gen_comment(component):
@@ -211,7 +215,7 @@ def generate_copyright():
   os.system(f"/bin/sh strip-common-licenses.sh {rootdir} {version}")
   generate_header_stanza();
 
-  licenses = f""" GPL with Classpath exception
+  licenses = f"""GPL with Classpath exception
 
 --- begin of LICENSE ---
 
@@ -223,7 +227,7 @@ The following licenses for third party code are taken from 'legal' \ndirectories
 ------------------------------------------------------------------------------
 {gather_modules_licenses(srcdir)}"""
 
-  print_file_stanza("*", " \n".join(openjdk_copyrights), fill_with_dots(licenses), "")
+  print_file_stanza("*", "  " + "\n  ".join(openjdk_copyrights), fill_with_dots_and_indent(licenses), "")
   if (version != "11"):
     print(open("bundled-stanzas").read())
   print(open("debian-stanzas").read())
