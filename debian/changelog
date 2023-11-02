@@ -1,4 +1,6 @@
-openjdk-22 (22~20ea-2) UNRELEASED; urgency=medium
+openjdk-22 (22~22ea-1) unstable; urgency=medium
+
+  * OpenJDK 22 snapshot, Build 22.
 
   [ Vladimir Petko ]
   * d/rules: pack external debug symbols with build-id, do not strip
@@ -6,6 +8,9 @@ openjdk-22 (22~20ea-2) UNRELEASED; urgency=medium
 
   [ Pushkar Kulkarni ]
   * debian/copyright: Update copyrights and notices, using a generator script.
+
+  [ Matthias Klose ]
+  * Drop the libpcsclite-dlopen patch.
 
  -- Matthias Klose <doko@ubuntu.com>  Tue, 31 Oct 2023 08:26:30 +0100
 
