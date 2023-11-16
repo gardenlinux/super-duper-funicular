@@ -1,3 +1,10 @@
+openjdk-22 (22~22ea-2) UNRELEASED; urgency=medium
+
+  [ Pushkar Kulkarni ]
+  * debian/copyright: Fix whitespace issues.
+
+ -- Matthias Klose <doko@ubuntu.com>  Thu, 16 Nov 2023 13:10:35 +0100
+
 openjdk-22 (22~22ea-1) unstable; urgency=medium
 
   * OpenJDK 22 snapshot, Build 22.
