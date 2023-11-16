@@ -3,7 +3,7 @@ openjdk-11 (11.0.21+9-2) UNRELEASED; urgency=medium
   [ Pushkar Kulkarni ]
   * debian/copyright: Update copyrights and notices, using a generator script.
 
- -- Matthias Klose <doko@ubuntu.com>  Tue, 31 Oct 2023 08:42:33 +0100
+ -- Matthias Klose <doko@ubuntu.com>  Thu, 16 Nov 2023 13:13:18 +0100
 
 openjdk-11 (11.0.21+9-1) unstable; urgency=high
 

@@ -96,9 +96,9 @@ upstream_authors = [
 exclude_licenses = ["zlib.md", "pcsclite.md", "giflib.md", "libpng.md", "jpeg.md"]
 
 def print_field(name, single_line, value):
-  print(name + ": ", end="")
+  print(name + ":", end="")
   if (single_line):
-    print(value)
+    print(" " + value)
   else:
     print("\n" + value)
 
@@ -106,7 +106,7 @@ def print_header_stanza(format, files_excluded, source, comment):
   print_field("Format", True, format)
   print_field("Files-Excluded", False, files_excluded)
   print_field("Source", True, source)
-  print_field("Comment", True, comment)
+  print_field("Comment", False, comment)
   print() # an empty line
 
 def print_file_stanza(files, copyrights, license, comments):
@@ -122,8 +122,7 @@ def generate_excluded_files_str():
 
 def generate_comment_str():
   upstream_authors_str = "\n      ".join(upstream_authors)
-  return f"""
-  Upstream Authors:
+  return f"""  Upstream Authors:
     OpenJDK:
       {upstream_authors_str}
     Packaged by:
