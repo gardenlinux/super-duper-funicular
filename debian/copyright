@@ -1,5 +1,5 @@
 Format: https://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
-Files-Excluded: 
+Files-Excluded:
   .github/*
   .gitattributes
   src/java.base/share/native/libzip/zlib/*
@@ -19,7 +19,7 @@ Files-Excluded:
   src/java.desktop/share/native/libjavajpeg/ju*
   src/java.desktop/share/native/libjavajpeg/README
 Source: https://github.com/openjdk/jdk
-Comment: 
+Comment:
   Upstream Authors:
     OpenJDK:
       Oracle and/or its affiliates
@@ -39,7 +39,7 @@ Comment:
       Matthias Klose <doko\@ubuntu.com>
 
 Files: *
-Copyrights: 
+Copyrights:
   Copyright (c) 1996-2023 Oracle and/or its affiliates.
   Copyright (c) 1996-2003 Sun Microsystems, Inc.
   Copyright (c) 2009-2012 Red Hat, Inc.
