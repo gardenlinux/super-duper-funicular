@@ -111,7 +111,7 @@ def print_header_stanza(format, files_excluded, source, comment):
 
 def print_file_stanza(files, copyrights, license, comments):
   print_field("Files", True, files)
-  print_field("Copyrights", False, copyrights)
+  print_field("Copyright", False, copyrights)
   print_field("License", True, license) 
   if (comments is not None and len(comments) != 0):
     print_field("Comments", True, comments)
