@@ -1,9 +1,11 @@
-openjdk-22 (22~24ea-2) UNRELEASED; urgency=medium
+openjdk-22 (22~25ea-1) unstable; urgency=medium
+
+  * OpenJDK 22 snapshot, Build 25.
 
   [ Vladimir Petko ]
   * d/copyright: Fix lintian warning.
 
- -- Matthias Klose <doko@ubuntu.com>  Wed, 22 Nov 2023 12:49:37 +0100
+ -- Matthias Klose <doko@ubuntu.com>  Fri, 24 Nov 2023 10:15:39 +0100
 
 openjdk-22 (22~24ea-1) unstable; urgency=medium
 
