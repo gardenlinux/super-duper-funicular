@@ -9,3 +9,6 @@
 
 # example jar file with sources
 @basename@-demo binary: jar-contains-source
+
+# allow repeated path segments, e.g. nbproject
+openjdk-22-demo binary: repeated-path-segment

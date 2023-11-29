@@ -1,0 +1,2 @@
+# Override due to upstream copyright
+@basename@-doc: spelling-error-in-copyright "GNU Public License" "GNU General Public License"

@@ -1,11 +1,15 @@
-# empty directory by intent
-@basename@-jre-headless binary: package-contains-empty-directory usr/share/binfmts/
-
 # Strip libjvm.so with --strip-debug instead of --strip-unneeded. LP: #574997.
 @basename@-jre-headless binary: unstripped-binary-or-object
 
-# Ignore the mouse cursors
-@basename@-jre-headless binary: image-file-in-usr-lib
+# openjdk is installed under /usr/lib
+@basename@-jre-headless binary: executable-in-usr-lib
 
 # Just an empty directory
-@basename@-jre-headless binary: debug-package-should-be-named-dbg
+@basename@-jre-headless binary: debug-suffix-not-dbg
+
+# Upstream implementation
+@basename@-jre-headless binary: exit-in-shared-library
+@basename@-jre-headless binary: spelling-error-in-binary
+
+# Override due to upstream copyright
+@basename@-jre-headless: spelling-error-in-copyright "GNU Public License" "GNU General Public License"
