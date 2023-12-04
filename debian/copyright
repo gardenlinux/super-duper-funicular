@@ -18,7 +18,7 @@ Files-Excluded:
   src/java.desktop/share/native/libjavajpeg/jv*
   src/java.desktop/share/native/libjavajpeg/ju*
   src/java.desktop/share/native/libjavajpeg/README
-Source: https://github.com/openjdk/jdk
+Source: https://github.com/openjdk/jdk11u
 Comment:
   Upstream Authors:
     OpenJDK:
