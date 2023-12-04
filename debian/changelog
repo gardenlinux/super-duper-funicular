@@ -8,6 +8,7 @@ openjdk-21 (21.0.1+12-3) UNRELEASED; urgency=medium
 
   [ Matthias Klose ]
   * Add sparc64 defines (patch by Adrian Glaubitz).
+  * d/copyright: Fix source location. 
 
  -- Matthias Klose <doko@ubuntu.com>  Thu, 16 Nov 2023 13:11:47 +0100
 
