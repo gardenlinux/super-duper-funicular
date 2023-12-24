@@ -5,6 +5,9 @@ openjdk-22 (22~29ea-1) UNRELEASED; urgency=medium
   [ Vladimir Petko ]
   * Update lintian overrides.
 
+  [ Matthias Klose ]
+  * Update VCS attributes.
+
  -- Matthias Klose <doko@ubuntu.com>  Sun, 24 Dec 2023 09:28:49 +0100
 
 openjdk-22 (22~25ea-1) unstable; urgency=medium
