@@ -14,6 +14,9 @@ openjdk-22 (22~25ea-1) unstable; urgency=medium
   [ Vladimir Petko ]
   * d/copyright: Fix lintian warning.
 
+  [ Matthias Klose ]
+  * Update VCS attributes.
+
  -- Matthias Klose <doko@ubuntu.com>  Fri, 24 Nov 2023 10:15:39 +0100
 
 openjdk-22 (22~24ea-1) unstable; urgency=medium
