@@ -20,8 +20,8 @@ Build-Depends-Indep: graphviz, pandoc,
 Rules-Requires-Root: no
 Standards-Version: 4.6.2
 Homepage: https://openjdk.java.net/
-Vcs-Browser: https://salsa.debian.org/openjdk-team/openjdk/tree/openjdk-22
-Vcs-Git: https://salsa.debian.org/openjdk-team/openjdk.git -b openjdk-22
+Vcs-Browser: https://salsa.debian.org/openjdk-team/openjdk
+Vcs-Git: https://salsa.debian.org/openjdk-team/openjdk.git
 
 Package: @basename@-jdk-headless
 Architecture: @any_archs@
@@ -39,7 +39,7 @@ Provides: java-sdk-headless (= ${vm:Version}), java2-sdk-headless,
   java16-sdk-headless, java17-sdk-headless,
   java18-sdk-headless, java19-sdk-headless,
   java20-sdk-headless, java21-sdk-headless,
-  java22-sdk-headless,
+  java22-sdk-headless, java23-sdk-headless,
   java-compiler
 Description: OpenJDK Development Kit (JDK) (headless)
  OpenJDK is a development environment for building applications,
@@ -66,7 +66,7 @@ Provides: java-runtime-headless (= ${vm:Version}), java2-runtime-headless,
   java16-runtime-headless, java17-runtime-headless,
   java17-runtime-headless, java19-runtime-headless,
   java20-runtime-headless, java21-runtime-headless,
-  java22-runtime-headless,
+  java22-runtime-headless, java23-runtime-headless,
   ${defaultvm:Provides}, ${jvm:Provides}
 Description: OpenJDK Java runtime, using ${vm:Name} (headless)
  Minimal Java runtime - needed for executing non GUI Java programs,
@@ -85,6 +85,7 @@ Provides: java-sdk (= ${vm:Version}), java2-sdk, java5-sdk, java6-sdk,
   java7-sdk, java8-sdk, java9-sdk, java10-sdk, java11-sdk,
   java12-sdk, java13-sdk, java14-sdk, java15-sdk, java16-sdk, java17-sdk,
   java18-sdk, java19-sdk, java20-sdk, java21-sdk, java22-sdk,
+  java23-sdk,
   java-compiler
 Description: OpenJDK Development Kit (JDK)
  OpenJDK is a development environment for building applications,
@@ -107,7 +108,7 @@ Provides: java-runtime (= ${vm:Version}), java2-runtime,
   java16-runtime, java17-runtime,
   java18-runtime, java19-runtime,
   java20-runtime, java21-runtime,
-  java22-runtime,
+  java22-runtime, java23-runtime,
 Description: OpenJDK Java runtime, using ${vm:Name}
  Full Java runtime environment - needed for executing Java GUI and Webstart
  programs, using ${vm:Name}.
