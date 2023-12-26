@@ -7,7 +7,7 @@ Bug-Ubuntu: https://bugs.launchpad.net/ubuntu/+source/openjdk-20/+bug/2012316
 Last-Update: 2023-07-20
 --- a/make/autoconf/lib-tests.m4
 +++ b/make/autoconf/lib-tests.m4
-@@ -36,6 +36,8 @@
+@@ -43,6 +43,8 @@ AC_DEFUN_ONCE([LIB_TESTS_SETUP_GTEST],
      AC_MSG_CHECKING([for gtest])
      if test "x${with_gtest}" = xno; then
        AC_MSG_RESULT([no, disabled])
@@ -18,7 +18,7 @@ Last-Update: 2023-07-20
        AC_MSG_ERROR([--with-gtest must have a value])
 --- a/test/hotspot/gtest/gtestMain.cpp
 +++ b/test/hotspot/gtest/gtestMain.cpp
-@@ -230,7 +230,9 @@
+@@ -230,7 +230,9 @@ static void runUnitTestsInner(int argc,
    bool is_vmassert_test = false;
    bool is_othervm_test = false;
    // death tests facility is used for both regular death tests, other vm and vmassert tests

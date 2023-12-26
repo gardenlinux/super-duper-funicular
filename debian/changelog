@@ -1,4 +1,6 @@
-openjdk-17 (17.0.9+9-3) UNRELEASED; urgency=medium
+openjdk-17 (17.0.10~6ea-1) unstable; urgency=medium
+
+  * OpenJDK 17.0.10 early access, build 6.
 
   [ Pushkar Kulkarni ]
   * debian/copyright: Fix whitespace issues.
@@ -8,8 +10,11 @@ openjdk-17 (17.0.9+9-3) UNRELEASED; urgency=medium
 
   [ Matthias Klose ]
   * d/copyright: Fix source location.
+  * Build-depend on jtreg7 instead of jtreg6.
+  * d/p/googletest-version.diff: Ignore the version check, keep 1.14.
+  * Refresh patches.
 
- -- Matthias Klose <doko@ubuntu.com>  Thu, 16 Nov 2023 13:12:16 +0100
+ -- Matthias Klose <doko@ubuntu.com>  Tue, 26 Dec 2023 13:18:48 +0100
 
 openjdk-17 (17.0.9+9-2) unstable; urgency=medium
 
