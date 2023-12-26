@@ -1,4 +1,6 @@
-openjdk-11 (11.0.21+9-2) UNRELEASED; urgency=medium
+openjdk-11 (11.0.22~6ea-1) unstable; urgency=medium
+
+  * OpenJDK 11.0.22+6 build (early access).
 
   [ Pushkar Kulkarni ]
   * debian/copyright: Update copyrights and notices, using a generator script.
@@ -9,7 +11,7 @@ openjdk-11 (11.0.21+9-2) UNRELEASED; urgency=medium
   [ Matthias Klose ]
   * d/copyright: Fix source location.
 
- -- Matthias Klose <doko@ubuntu.com>  Thu, 16 Nov 2023 13:13:18 +0100
+ -- Matthias Klose <doko@ubuntu.com>  Tue, 26 Dec 2023 13:23:50 +0100
 
 openjdk-11 (11.0.21+9-1) unstable; urgency=high
 
