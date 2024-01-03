@@ -1,3 +1,10 @@
+openjdk-17 (17.0.10~6ea-2) UNRELEASED; urgency=medium
+
+  [ Vladimir Petko ]
+  * d/t/jtreg-autopkgtest.sh: Regenerate test script.
+
+ -- Matthias Klose <doko@ubuntu.com>  Wed, 03 Jan 2024 11:49:14 +0100
+
 openjdk-17 (17.0.10~6ea-1) unstable; urgency=medium
 
   * OpenJDK 17.0.10 early access, build 6.
