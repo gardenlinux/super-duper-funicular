@@ -1,7 +1,11 @@
 openjdk-22 (22~29ea-2) UNRELEASED; urgency=medium
 
+  [ Matthias Klose ]
   * Don't build hotspot on armhf for now,
     see https://bugs.openjdk.org/browse/JDK-8321125
+
+  [ Vladimir Petko ]
+  * Generate d/watch to cope with early access and release builds.
 
  -- Matthias Klose <doko@ubuntu.com>  Wed, 03 Jan 2024 09:53:00 +0100
 
