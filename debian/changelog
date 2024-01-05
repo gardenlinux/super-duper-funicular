@@ -2,6 +2,7 @@ openjdk-17 (17.0.10~6ea-2) UNRELEASED; urgency=medium
 
   [ Vladimir Petko ]
   * d/t/jtreg-autopkgtest.sh: Regenerate test script.
+  * Generate d/watch to cope with early access and release builds.
 
  -- Matthias Klose <doko@ubuntu.com>  Wed, 03 Jan 2024 11:49:14 +0100
 
