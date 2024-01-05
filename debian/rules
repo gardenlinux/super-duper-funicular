@@ -869,7 +869,7 @@ ifneq ($(with_debugedit),yes)
   control_vars += '-Vdbg:Conflicts=openjdk-12-dbg, openjdk-13-dbg, openjdk-14-dbg, openjdk-15-dbg, openjdk-16-dbg, openjdk-17-dbg'
 endif
 
-debian/control: debian/control.in debian/tests/control debian/rules
+debian/control: debian/control.in debian/tests/control debian/rules debian/watch
 	@cp -p debian/control debian/control.old
 	sed \
 	      -e 's/@basename@/$(basename)/g' \
@@ -1894,6 +1894,17 @@ endif
 git_url			= https://github.com/openjdk/$(git_project)
 origdir = ../$(basename)-$(package_version).orig
 topdir = $(basename)-$(package_version)
+
+debian/watch: debian/watch.in debian/rules
+	sed \
+		-e 's|@git_url@|$(git_url)/tags|g' \
+		-e 's|@shortver@|$(shortver)|g' \
+		debian/watch.in > debian/watch
+# disable version mangling for the release version
+ifeq ($(is_release),yes)
+	sed -ie 's|repack.*\\|repack,\\|g' debian/watch
+endif
+
 get-orig:
 	mkdir $(origdir)
 	wget -O $(origdir)/jdk.tar.gz $(git_url)/archive/$(git_tag).tar.gz
