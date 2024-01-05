@@ -871,7 +871,7 @@ ifneq ($(with_debugedit),yes)
   control_vars += '-Vdbg:Conflicts=openjdk-11-dbg, openjdk-12-dbg, openjdk-13-dbg, openjdk-14-dbg, openjdk-15-dbg, openjdk-16-dbg'
 endif
 
-debian/control: debian/control.in debian/tests/control debian/rules
+debian/control: debian/control.in debian/tests/control debian/rules debian/watch
 	@cp -p debian/control debian/control.old
 	sed \
 	      -e 's/@basename@/$(basename)/g' \
@@ -1896,14 +1896,26 @@ endif
 git_url			= https://github.com/openjdk/$(git_project)
 origdir = ../$(basename)-$(package_version).orig
 topdir = $(basename)-$(package_version)
-gtest_repo = https://github.com/google/googletest/archive/refs/tags/
+gtest_repo = https://github.com/google/googletest
 gtest_tag = 1.14.0
 gtestdir = ../$(basename)-$(package_version)-googletest.orig
+
+debian/watch: debian/watch.in debian/rules
+	sed \
+		-e 's|@git_url@|$(git_url)/tags|g' \
+		-e 's|@gtest_repo@|$(gtest_repo)/tags|g' \
+		-e 's|@gtest_tag@|$(gtest_tag)|g' \
+		-e 's|@shortver@|$(shortver)|g' \
+		debian/watch.in > debian/watch
+# disable version mangling for the release version
+ifeq ($(is_release),yes)
+	sed -ie 's|repack.*\\|repack,\\|g' debian/watch
+endif
 
 get-gtest:
 	rm -rf $(gtestdir) || true
 	mkdir $(gtestdir)
-	wget -O $(gtestdir)/googletest.tar.gz $(gtest_repo)/v$(gtest_tag).tar.gz
+	wget -O $(gtestdir)/googletest.tar.gz $(gtest_repo)/archive/refs/tags/v$(gtest_tag).tar.gz
 	set -ex; \
 	repo=googletest; \
 	d=$$(tar tf $(gtestdir)/$$repo.tar.gz | head -1 | sed 's,/.*,,'); \

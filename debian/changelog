@@ -5,10 +5,11 @@ openjdk-21 (21.0.1+12-3) unstable; urgency=medium
 
   [ Vladimir Petko ]
   * d/copyright: Fix lintian warning.
+  * Generate d/watch to cope with early access and release builds.
 
   [ Matthias Klose ]
   * Add sparc64 defines (patch by Adrian Glaubitz). Closes: #1057390.
-  * d/copyright: Fix source location. 
+  * d/copyright: Fix source location.
 
  -- Matthias Klose <doko@ubuntu.com>  Sun, 24 Dec 2023 10:01:31 +0100
 
