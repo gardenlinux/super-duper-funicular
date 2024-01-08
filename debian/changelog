@@ -1,3 +1,9 @@
+openjdk-22 (22~30ea-2) unstable; urgency=medium
+
+  * Don't try to install jhsdb on armhf with a zero-only build.
+
+ -- Matthias Klose <doko@ubuntu.com>  Mon, 08 Jan 2024 05:04:22 +0100
+
 openjdk-22 (22~30ea-1) unstable; urgency=medium
 
   * OpenJDK 22 snapshot, Build 30.
