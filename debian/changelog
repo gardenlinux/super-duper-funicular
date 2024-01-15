@@ -1,4 +1,6 @@
-openjdk-23 (23~4ea-2) UNRELEASED; urgency=medium
+openjdk-23 (23~5ea-1) UNRELEASED; urgency=medium
+
+  * OpenJDK 23 snapshot, Build 5.
 
   [ Matthias Klose ]
   * Don't try to install jhsdb on armhf with a zero-only build.
