@@ -885,6 +885,7 @@ debian/control: debian/control.in debian/tests/control debian/rules debian/watch
 	    $(if $(altzero_archs), debian/control.zero-jre) \
 	    $(if $(DEB_HOST_MULTIARCH),,| grep -v '^Multi-Arch') \
 		> debian/control
+	sed -i 's/[[:blank:]]*$$//' debian/control
 	@if cmp -s debian/control debian/control.old; then \
 	  rm -f debian/control.old; \
 	else \

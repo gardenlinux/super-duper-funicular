@@ -7,6 +7,7 @@ openjdk-23 (23~5ea-1) UNRELEASED; urgency=medium
 
   [ Vladimir Petko ]
   * d/rules: Do not delete d/watch on clean.
+  * d/rules: Trim trailing whitespaces from debian/control.
 
   [ Pushkar Kulkarni ]
   * Minor improvements to the copyright-generator.
