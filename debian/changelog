@@ -8,7 +8,11 @@ openjdk-23 (23~5ea-1) UNRELEASED; urgency=medium
   [ Vladimir Petko ]
   * d/rules: Do not delete d/watch on clean.
 
- -- Matthias Klose <doko@ubuntu.com>  Mon, 08 Jan 2024 10:52:48 +0100
+  [ Pushkar Kulkarni ]
+  * Minor improvements to the copyright-generator.
+  * Regenerate d/copyright.
+
+ -- Matthias Klose <doko@ubuntu.com>  Mon, 15 Jan 2024 11:05:21 +0100
 
 openjdk-23 (23~4ea-1) unstable; urgency=medium
 
