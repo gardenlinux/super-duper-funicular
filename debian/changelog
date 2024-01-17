@@ -25,6 +25,9 @@ openjdk-17 (17.0.10+7-1) UNRELEASED; urgency=high
   [ Matthias Klose ]
   * Build again zero on amd64 (accidental change in 6ea-1).
 
+  [ Pushkar Kulkarni ]
+  * Minor improvements to the copyright-generator.
+
  -- Matthias Klose <doko@ubuntu.com>  Wed, 17 Jan 2024 11:44:39 +0100
 
 openjdk-17 (17.0.10~6ea-1) unstable; urgency=medium
