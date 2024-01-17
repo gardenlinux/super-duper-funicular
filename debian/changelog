@@ -11,7 +11,7 @@ openjdk-22 (22~31ea-1) unstable; urgency=medium
     required to run the autopkg tests.
   * Run the basic subset of hotspot and jdk tests as autopkg tests.
 
- -- Matthias Klose <doko@ubuntu.com>  Wed, 17 Jan 2024 14:35:17 +0100
+ -- Matthias Klose <doko@ubuntu.com>  Wed, 17 Jan 2024 15:14:53 +0100
 
 openjdk-22 (22~30ea-1) unstable; urgency=medium
 
