@@ -1,4 +1,6 @@
-openjdk-21 (21.0.1+12-3) unstable; urgency=medium
+openjdk-21 (21.0.2+13-1) unstable; urgency=medium
+
+  * OpenJDK 21.0.2 release, build 13.
 
   [ Pushkar Kulkarni ]
   * debian/copyright: Fix whitespace issues.
@@ -10,8 +12,9 @@ openjdk-21 (21.0.1+12-3) unstable; urgency=medium
   [ Matthias Klose ]
   * Add sparc64 defines (patch by Adrian Glaubitz). Closes: #1057390.
   * d/copyright: Fix source location.
+  * Update the arch-add-ports patch, taken from 22.
 
- -- Matthias Klose <doko@ubuntu.com>  Sun, 24 Dec 2023 10:01:31 +0100
+ -- Matthias Klose <doko@ubuntu.com>  Wed, 17 Jan 2024 11:20:07 +0100
 
 openjdk-21 (21.0.1+12-2) unstable; urgency=medium
 

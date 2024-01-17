@@ -1,38 +1,20 @@
 --- a/src/java.base/share/classes/jdk/internal/util/Architecture.java
 +++ b/src/java.base/share/classes/jdk/internal/util/Architecture.java
-@@ -44,6 +44,15 @@ public enum Architecture {
-     LOONGARCH64,
-     S390,
-     PPC64,
-+    ALPHA,
-+    ARC,
-+    HPPA,
-+    IA64,
-+    M68K,
-+    SH,
-+    SPARCV9,
-+    X32,
-+    PPC,
-     MIPSEL,
-     MIPS64EL
-     ;
-@@ -91,6 +100,15 @@ public enum Architecture {
-     }
- 
-     /**
-+     * {@return {@code true} if the current architecture is PPC}
-+     * Use {@link #isLittleEndian()} to determine big or little endian.
-+     */
-+    @ForceInline
-+    public static boolean isPPC() {
-+        return PlatformProps.TARGET_ARCH_IS_PPC;
-+    }
-+
-+    /**
-      * {@return {@code true} if the current architecture is PPC64}
-      * Use {@link #isLittleEndian()} to determine big or little endian.
-      */
-@@ -100,6 +118,78 @@ public enum Architecture {
+@@ -46,6 +46,13 @@ public enum Architecture {
+     LOONGARCH64(64, ByteOrder.LITTLE_ENDIAN),
+     MIPSEL(32, ByteOrder.LITTLE_ENDIAN),
+     MIPS64EL(64, ByteOrder.LITTLE_ENDIAN),
++    ALPHA(64, ByteOrder.LITTLE_ENDIAN),
++    ARC(32, ByteOrder.LITTLE_ENDIAN),
++    HPPA(32, ByteOrder.BIG_ENDIAN),
++    IA64(64, ByteOrder.LITTLE_ENDIAN),
++    M68K(32, ByteOrder.BIG_ENDIAN),
++    SH(32, ByteOrder.LITTLE_ENDIAN),
++    X32(32, ByteOrder.LITTLE_ENDIAN),
+     OTHER(is64bit() ? 64 : 32, ByteOrder.nativeOrder()),
+     PPC(32, ByteOrder.BIG_ENDIAN),
+     PPC64(64, ByteOrder.BIG_ENDIAN),
+@@ -181,6 +188,69 @@ public enum Architecture {
      }
  
      /**
@@ -90,15 +72,6 @@
 +    }
 +
 +    /**
-+     * {@return {@code true} if the current architecture is SPARCV9}
-+     * Use {@link #isLittleEndian()} to determine big or little endian.
-+     */
-+    @ForceInline
-+    public static boolean isSPARCV9() {
-+        return PlatformProps.TARGET_ARCH_IS_SPARCV9;
-+    }
-+
-+    /**
 +     * {@return {@code true} if the current architecture is M68K}
 +     * Use {@link #isLittleEndian()} to determine big or little endian.
 +     */
@@ -113,67 +86,46 @@
      @ForceInline
 --- a/src/java.base/share/classes/jdk/internal/util/PlatformProps.java.template
 +++ b/src/java.base/share/classes/jdk/internal/util/PlatformProps.java.template
-@@ -62,4 +62,13 @@ class PlatformProps {
-     static final boolean TARGET_ARCH_IS_PPC64   = "@@OPENJDK_TARGET_CPU@@" == "ppc64";
-     static final boolean TARGET_ARCH_IS_MIPSEL  = "@@OPENJDK_TARGET_CPU@@" == "mipsel";
-     static final boolean TARGET_ARCH_IS_MIPS64EL= "@@OPENJDK_TARGET_CPU@@" == "mips64el";
-+    static final boolean TARGET_ARCH_IS_X32     = "@@OPENJDK_TARGET_CPU@@" == "x32";
-+    static final boolean TARGET_ARCH_IS_SH      = "@@OPENJDK_TARGET_CPU@@" == "sh";
-+    static final boolean TARGET_ARCH_IS_SPARCV9 = "@@OPENJDK_TARGET_CPU@@" == "sparcv9";
-+    static final boolean TARGET_ARCH_IS_M68K    = "@@OPENJDK_TARGET_CPU@@" == "m68k";
-+    static final boolean TARGET_ARCH_IS_PPC     = "@@OPENJDK_TARGET_CPU@@" == "ppc";
+@@ -65,5 +65,12 @@ class PlatformProps {
+     static final boolean TARGET_ARCH_IS_SPARCV9 = "@@OPENJDK_TARGET_CPU@@" == "sparcv9";
+     static final boolean TARGET_ARCH_IS_X86     = "@@OPENJDK_TARGET_CPU@@" == "x86";
+     static final boolean TARGET_ARCH_IS_X64     = "@@OPENJDK_TARGET_CPU@@" == "x64";
 +    static final boolean TARGET_ARCH_IS_ALPHA   = "@@OPENJDK_TARGET_CPU@@" == "alpha";
 +    static final boolean TARGET_ARCH_IS_ARC     = "@@OPENJDK_TARGET_CPU@@" == "arc";
 +    static final boolean TARGET_ARCH_IS_HPPA    = "@@OPENJDK_TARGET_CPU@@" == "hppa";
 +    static final boolean TARGET_ARCH_IS_IA64    = "@@OPENJDK_TARGET_CPU@@" == "ia64";
++    static final boolean TARGET_ARCH_IS_M68K    = "@@OPENJDK_TARGET_CPU@@" == "m68k";
++    static final boolean TARGET_ARCH_IS_SH      = "@@OPENJDK_TARGET_CPU@@" == "sh";
++    static final boolean TARGET_ARCH_IS_X32     = "@@OPENJDK_TARGET_CPU@@" == "x32";
+ 
  }
 --- a/test/jdk/jdk/internal/util/ArchTest.java
 +++ b/test/jdk/jdk/internal/util/ArchTest.java
-@@ -35,6 +35,15 @@ import static jdk.internal.util.Architec
- import static jdk.internal.util.Architecture.S390;
+@@ -41,6 +41,13 @@ import static jdk.internal.util.Architec
+ import static jdk.internal.util.Architecture.SPARCV9;
  import static jdk.internal.util.Architecture.X64;
  import static jdk.internal.util.Architecture.X86;
 +import static jdk.internal.util.Architecture.ALPHA;
 +import static jdk.internal.util.Architecture.ARC;
 +import static jdk.internal.util.Architecture.HPPA;
 +import static jdk.internal.util.Architecture.IA64;
-+import static jdk.internal.util.Architecture.PPC;
 +import static jdk.internal.util.Architecture.SH;
-+import static jdk.internal.util.Architecture.SPARCV9;
 +import static jdk.internal.util.Architecture.X32;
 +import static jdk.internal.util.Architecture.M68K;
- import static jdk.internal.util.Architecture.MIPSEL;
- import static jdk.internal.util.Architecture.MIPS64EL;
  
-@@ -78,6 +87,15 @@ public class ArchTest {
-             case "ppc64", "ppc64le" -> PPC64;
-             case "mipsel" -> MIPSEL;
-             case "mips64el" -> MIPS64EL;
-+            case "alpha" -> ALPHA;
-+            case "arc" -> ARC;
-+            case "hppa" -> HPPA;
-+            case "ia64" -> IA64;
-+            case "m68k" -> M68K;
-+            case "ppc" -> PPC;
-+            case "sh" -> SH;
-+            case "sparcv9" -> SPARCV9;
-+            case "x32" -> X32;
-             default -> OTHER;
-         };
-         assertEquals(Architecture.current(), arch, "mismatch in Architecture.current vs " + osArch);
-@@ -98,6 +116,15 @@ public class ArchTest {
-                 Arguments.of(S390, Architecture.isS390()),
-                 Arguments.of(MIPSEL, Architecture.isMIPSEL()),
-                 Arguments.of(MIPS64EL, Architecture.isMIPS64EL()),
-+                Arguments.of(PPC, Architecture.isPPC()),
-+                Arguments.of(M68K, Architecture.isM68K()),
-+                Arguments.of(ALPHA, Architecture.isALPHA()),
-+                Arguments.of(ARC, Architecture.isARC()),
-+                Arguments.of(HPPA, Architecture.isHPPA()),
-+                Arguments.of(IA64, Architecture.isIA64()),
-+                Arguments.of(SH, Architecture.isSH()),
-+                Arguments.of(SPARCV9, Architecture.isSPARCV9()),
-+                Arguments.of(X32, Architecture.isX32()),
-                 Arguments.of(PPC64, Architecture.isPPC64())
+ import org.junit.jupiter.api.Test;
+ import org.junit.jupiter.params.ParameterizedTest;
+@@ -92,6 +99,13 @@ public class ArchTest {
+                 Arguments.of("x64", X64, 64, ByteOrder.LITTLE_ENDIAN, Architecture.isX64()),
+                 Arguments.of("x86", X86, 32, ByteOrder.LITTLE_ENDIAN, Architecture.isX86()),
+                 Arguments.of("x86_64", X64, 64, ByteOrder.LITTLE_ENDIAN, Architecture.isX64())
++                Arguments.of("alpha", ALPHA, 64, ByteOrder.LITTLE_ENDIAN, Architecture.isALPHA()),
++                Arguments.of("arc", ARC, 32, ByteOrder.LITTLE_ENDIAN, Architecture.isARC()),
++                Arguments.of("hppa", HPPA, 32, ByteOrder.BIG_ENDIAN, Architecture.isHPPA()),
++                Arguments.of("ia64", IA64, 64, ByteOrder.LITTLE_ENDIAN, Architecture.isIA64()),
++                Arguments.of("m68k", M68K, 32, ByteOrder.BIG_ENDIAN, Architecture.isM68K()),
++                Arguments.of("sh", SH, 32, ByteOrder.LITTLE_ENDIAN, Architecture.isSH()),
++                Arguments.of("x32", X32, 32, ByteOrder.LITTLE_ENDIAN, Architecture.isX32()),
          );
      }
+ 
