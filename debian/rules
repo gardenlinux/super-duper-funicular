@@ -1230,7 +1230,7 @@ debian-clean:
 	dh_prep
 	for f in debian/*.in; do \
 	  f2=$$(echo $$f | sed 's/JB/$(basename)/;s/\.in$$//'); \
-	  case "$$f2" in debian/control) continue; esac; \
+	  case "$$f2" in debian/control|debian/watch) continue; esac; \
 	  rm -f $$f2; \
 	done
 	rm -f debian/*.install debian/*.links debian/*.debhelper.log
@@ -1902,7 +1902,7 @@ debian/watch: debian/watch.in debian/rules
 		debian/watch.in > debian/watch
 # disable version mangling for the release version
 ifeq ($(is_release),yes)
-	sed -ie 's|repack.*\\|repack,\\|g' debian/watch
+	sed -i 's|repack.*\\|repack,\\|g' debian/watch
 endif
 
 get-orig:
