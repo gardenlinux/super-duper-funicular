@@ -4,6 +4,7 @@ openjdk-21 (21.0.2+13-1) unstable; urgency=medium
 
   [ Pushkar Kulkarni ]
   * debian/copyright: Fix whitespace issues.
+  * Minor improvements to the copyright-generator.
 
   [ Vladimir Petko ]
   * d/copyright: Fix lintian warning.
