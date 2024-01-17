@@ -423,68 +423,44 @@ License:   GPL with Classpath exception
   directories of modules under src/
   ------------------------------------------------------------------------------
   .
-  %% This notice is provided with respect to Dynalink v.5,
+  %% This notice is provided with respect to Cryptix AES v3.2.0,
   which may be included with JRE 11, JDK 11 and OpenJDK 11
   .
   --- begin of LICENSE ---
   .
-  Dynalink License
+  Cryptix General License
   .
   .
-  Copyright (c) 2009-2013, Attila Szegedi
+  Cryptix General License
+  .
+  Copyright (c) 1995-2005 The Cryptix Foundation Limited.
+  All rights reserved.
   .
   Redistribution and use in source and binary forms, with or without
   modification, are permitted provided that the following conditions are
   met:
-  * Redistributions of source code must retain the above copyright
-    notice, this list of conditions and the following disclaimer.
-  * Redistributions in binary form must reproduce the above copyright
-    notice, this list of conditions and the following disclaimer in the
-    documentation and/or other materials provided with the distribution.
-  * Neither the name of the copyright holder nor the names of
-    contributors may be used to endorse or promote products derived from
-    this software without specific prior written permission.
   .
-  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS
-  IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED
-  TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A
-  PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL COPYRIGHT HOLDER
-  BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR
+    1. Redistributions of source code must retain the copyright notice,
+       this list of conditions and the following disclaimer.
+  .
+    2. Redistributions in binary form must reproduce the above copyright
+       notice, this list of conditions and the following disclaimer in
+       the documentation and/or other materials provided with the
+       distribution.
+  .
+  THIS SOFTWARE IS PROVIDED BY THE CRYPTIX FOUNDATION LIMITED AND
+  CONTRIBUTORS ``AS IS'' AND ANY EXPRESS OR IMPLIED WARRANTIES,
+  INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF
+  MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
+  IN NO EVENT SHALL THE CRYPTIX FOUNDATION LIMITED OR CONTRIBUTORS BE
+  LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR
   CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF
   SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR
   BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
-  WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR
-  OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF
-  ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+  WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE
+  OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN
+  IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
   .
-  .
-  .
-  --- end of LICENSE ---
-  .
-  ------------------------------------------------------------------------------
-  %% This notice is provided with respect to Apache Santuario v2.3.0,
-  which may be included with JRE 11, JDK 11 and OpenJDK 11
-  .
-  --- begin of LICENSE ---
-  .
-  Apache Santuario Notice
-  .
-  .
-    Apache Santuario - XML Security for Java
-    Copyright 1999-2021 The Apache Software Foundation
-  .
-    This product includes software developed at
-    The Apache Software Foundation (http://www.apache.org/).
-  .
-    It was originally based on software copyright (c) 2001, Institute for
-    Data Communications Systems, <http://www.nue.et-inf.uni-siegen.de/>.
-  .
-    The development of this software was partly funded by the European
-    Commission in the <WebSig> project in the ISIS Programme.
-  .
-  .
-  .
-  Apache 2.0 License: Refer to the copy under /usr/share/common-licenses
   .
   .
   --- end of LICENSE ---
@@ -533,12 +509,127 @@ License:   GPL with Classpath exception
   --- end of LICENSE ---
   .
   ------------------------------------------------------------------------------
+  %% This notice is provided with respect to c-libutl 20160225,
+  which may be included with JRE 11, JDK 11 and OpenJDK 11
+  .
+  --- begin of LICENSE ---
+  .
+  c-libutl License
+  .
+  .
+  This software is distributed under the terms of the BSD license.
+  .
+  ==  BSD LICENSE  ===============================================================
+  .
+   (C) 2009 by Remo Dentato (rdentato@gmail.com)
+  .
+  .
+  Redistribution and use in source and binary forms, with or without modification,
+  are permitted provided that the following conditions are met:
+  .
+      * Redistributions of source code must retain the above copyright notice,
+        this list of conditions and the following disclaimer.
+      * Redistributions in binary form must reproduce the above copyright notice,
+        this list of conditions and the following disclaimer in the documentation
+        and/or other materials provided with the distribution.
+  .
+  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
+  ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
+  WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
+  DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR
+  ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES
+  (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;
+  LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND
+  ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
+  (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
+  SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+  .
+  http://opensource.org/licenses/bsd-license.php
+  .
+  .
+  .
+  --- end of LICENSE ---
+  .
+  ------------------------------------------------------------------------------
   %% This notice is provided with respect to Unicode Common Local Data Repository (CLDR) v33,
   which may be included with JRE 11, JDK 11 and OpenJDK 11
   .
   --- begin of LICENSE ---
   .
   CLDR License
+  .
+  .
+  .
+  UNICODE, INC. LICENSE AGREEMENT - DATA FILES AND SOFTWARE
+  Unicode Data Files include all data files under the directories
+  http://www.unicode.org/Public/, http://www.unicode.org/reports/,
+  http://www.unicode.org/cldr/data/,
+  http://source.icu-project.org/repos/icu/, and
+  http://www.unicode.org/utility/trac/browser/.
+  .
+  Unicode Data Files do not include PDF online code charts under the
+  directory http://www.unicode.org/Public/.
+  .
+  Software includes any source code published in the Unicode Standard
+  or under the directories
+  http://www.unicode.org/Public/, http://www.unicode.org/reports/,
+  http://www.unicode.org/cldr/data/,
+  http://source.icu-project.org/repos/icu/, and
+  http://www.unicode.org/utility/trac/browser/.
+  .
+  NOTICE TO USER: Carefully read the following legal agreement.
+  BY DOWNLOADING, INSTALLING, COPYING OR OTHERWISE USING UNICODE INC.'S
+  DATA FILES ("DATA FILES"), AND/OR SOFTWARE ("SOFTWARE"),
+  YOU UNEQUIVOCALLY ACCEPT, AND AGREE TO BE BOUND BY, ALL OF THE
+  TERMS AND CONDITIONS OF THIS AGREEMENT.
+  IF YOU DO NOT AGREE, DO NOT DOWNLOAD, INSTALL, COPY, DISTRIBUTE OR USE
+  THE DATA FILES OR SOFTWARE.
+  .
+  COPYRIGHT AND PERMISSION NOTICE
+  .
+  Copyright © 1991-2018 Unicode, Inc. All rights reserved.
+  Distributed under the Terms of Use in http://www.unicode.org/copyright.html.
+  .
+  Permission is hereby granted, free of charge, to any person obtaining
+  a copy of the Unicode data files and any associated documentation
+  (the "Data Files") or Unicode software and any associated documentation
+  (the "Software") to deal in the Data Files or Software
+  without restriction, including without limitation the rights to use,
+  copy, modify, merge, publish, distribute, and/or sell copies of
+  the Data Files or Software, and to permit persons to whom the Data Files
+  or Software are furnished to do so, provided that either
+  (a) this copyright and permission notice appear with all copies
+  of the Data Files or Software, or
+  (b) this copyright and permission notice appear in associated
+  Documentation.
+  .
+  THE DATA FILES AND SOFTWARE ARE PROVIDED "AS IS", WITHOUT WARRANTY OF
+  ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE
+  WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+  NONINFRINGEMENT OF THIRD PARTY RIGHTS.
+  IN NO EVENT SHALL THE COPYRIGHT HOLDER OR HOLDERS INCLUDED IN THIS
+  NOTICE BE LIABLE FOR ANY CLAIM, OR ANY SPECIAL INDIRECT OR CONSEQUENTIAL
+  DAMAGES, OR ANY DAMAGES WHATSOEVER RESULTING FROM LOSS OF USE,
+  DATA OR PROFITS, WHETHER IN AN ACTION OF CONTRACT, NEGLIGENCE OR OTHER
+  TORTIOUS ACTION, ARISING OUT OF OR IN CONNECTION WITH THE USE OR
+  PERFORMANCE OF THE DATA FILES OR SOFTWARE.
+  .
+  Except as contained in this notice, the name of a copyright holder
+  shall not be used in advertising or otherwise to promote the sale,
+  use or other dealings in these Data Files or Software without prior
+  written authorization of the copyright holder.
+  .
+  .
+  .
+  --- end of LICENSE ---
+  .
+  ------------------------------------------------------------------------------
+  %% This notice is provided with respect to International Components for Unicode (ICU4J) v60.2,
+  which may be included with JRE 11, JDK 11 and OpenJDK 11
+  .
+  --- begin of LICENSE ---
+  .
+  ICU4J License
   .
   .
   .
@@ -1085,158 +1176,1098 @@ License:   GPL with Classpath exception
   --- end of LICENSE ---
   .
   ------------------------------------------------------------------------------
-  %% This notice is provided with respect to International Components for Unicode (ICU4J) v60.2,
+  %% This notice is provided with respect to Eastman Kodak Company: Portions of color management and imaging software,
   which may be included with JRE 11, JDK 11 and OpenJDK 11
   .
   --- begin of LICENSE ---
   .
-  ICU4J License
+  Eastman Kodak Notice
+  .
+  Portions Copyright Eastman Kodak Company 1991-2003
   .
   .
   .
-  UNICODE, INC. LICENSE AGREEMENT - DATA FILES AND SOFTWARE
-  Unicode Data Files include all data files under the directories
-  http://www.unicode.org/Public/, http://www.unicode.org/reports/,
-  http://www.unicode.org/cldr/data/,
-  http://source.icu-project.org/repos/icu/, and
-  http://www.unicode.org/utility/trac/browser/.
+  --- end of LICENSE ---
   .
-  Unicode Data Files do not include PDF online code charts under the
-  directory http://www.unicode.org/Public/.
+  ------------------------------------------------------------------------------
+  %% This notice is provided with respect to The FreeType Project: Freetype v2.13.0,
+  which may be included with JRE 11, JDK 11 and OpenJDK 11
   .
-  Software includes any source code published in the Unicode Standard
-  or under the directories
-  http://www.unicode.org/Public/, http://www.unicode.org/reports/,
-  http://www.unicode.org/cldr/data/,
-  http://source.icu-project.org/repos/icu/, and
-  http://www.unicode.org/utility/trac/browser/.
+  --- begin of LICENSE ---
   .
-  NOTICE TO USER: Carefully read the following legal agreement.
-  BY DOWNLOADING, INSTALLING, COPYING OR OTHERWISE USING UNICODE INC.'S
-  DATA FILES ("DATA FILES"), AND/OR SOFTWARE ("SOFTWARE"),
-  YOU UNEQUIVOCALLY ACCEPT, AND AGREE TO BE BOUND BY, ALL OF THE
-  TERMS AND CONDITIONS OF THIS AGREEMENT.
-  IF YOU DO NOT AGREE, DO NOT DOWNLOAD, INSTALL, COPY, DISTRIBUTE OR USE
-  THE DATA FILES OR SOFTWARE.
   .
-  COPYRIGHT AND PERMISSION NOTICE
+  FreeType Notice
   .
-  Copyright © 1991-2018 Unicode, Inc. All rights reserved.
-  Distributed under the Terms of Use in http://www.unicode.org/copyright.html.
+  .
+  FreeType comes with two licenses from which you can choose the one
+  which fits your needs best.
+  .
+      The FreeType License (FTL) is the most commonly used one. It is
+      a BSD-style license with a credit clause and thus compatible with
+      the GNU Public License (GPL) version 3, but not with the
+      GPL version 2.
+  .
+      The GNU General Public License (GPL), version 2. Use it for all
+      projects which use the GPLv2 also, or which need a license
+      compatible to the GPLv2.
+  .
+  .
+  .
+  FreeType License
+  .
+  .
+  Copyright (C) 1996-2023 by David Turner, Robert Wilhelm, and Werner Lemberg.
+  Copyright (C) 2007-2023 by Dereg Clegg and Michael Toftdal.
+  Copyright (C) 1996-2023 by Just van Rossum, David Turner, Robert Wilhelm, and Werner Lemberg.
+  Copyright (C) 2022-2023 by David Turner, Robert Wilhelm, Werner Lemberg, George Williams, and
+  Copyright (C) 2004-2023 by Masatake YAMATO and Redhat K.K.
+  Copyright (C) 2007-2023 by Derek Clegg and Michael Toftdal.
+  Copyright (C) 2003-2023 by Masatake YAMATO, Red Hat K.K.,
+  Copyright (C) 1996-2023 by David Turner, Robert Wilhelm, Werner Lemberg, and Dominik Röttsches.
+  Copyright (C) 2007-2023 by David Turner.
+  Copyright (C) 2022-2023 by David Turner, Robert Wilhelm, Werner Lemberg, and Moazin Khatti.
+  Copyright (C) 2007-2023 by Rahul Bhalerao <rahul.bhalerao@redhat.com>, <b.rahul.pm@gmail.com>.
+  Copyright (C) 2008-2023 by David Turner, Robert Wilhelm, Werner Lemberg, and suzuki toshiya.
+  Copyright (C) 2013-2023 by Google, Inc.
+  Copyright (C) 2019-2023 by Nikhil Ramakrishnan, David Turner, Robert Wilhelm, and Werner Lemberg.
+  Copyright (C) 2009-2023 by Oran Agra and Mickey Gabel.
+  Copyright (C) 2018-2023 by David Turner, Robert Wilhelm, Dominik Röttsches, and Werner Lemberg.
+  Copyright (C) 2004-2023 by David Turner, Robert Wilhelm, Werner Lemberg, and George Williams.
+  .
+  .
+                      The FreeType Project LICENSE
+                      ----------------------------
+  .
+                              2006-Jan-27
+  .
+                      Copyright 1996-2002, 2006 by
+            David Turner, Robert Wilhelm, and Werner Lemberg
+  .
+  .
+  .
+  Introduction
+  ============
+  .
+    The FreeType  Project is distributed in  several archive packages;
+    some of them may contain, in addition to the FreeType font engine,
+    various tools and  contributions which rely on, or  relate to, the
+    FreeType Project.
+  .
+    This  license applies  to all  files found  in such  packages, and
+    which do not  fall under their own explicit  license.  The license
+    affects  thus  the  FreeType   font  engine,  the  test  programs,
+    documentation and makefiles, at the very least.
+  .
+    This  license   was  inspired  by  the  BSD,   Artistic,  and  IJG
+    (Independent JPEG  Group) licenses, which  all encourage inclusion
+    and  use of  free  software in  commercial  and freeware  products
+    alike.  As a consequence, its main points are that:
+  .
+      o We don't promise that this software works. However, we will be
+        interested in any kind of bug reports. (`as is' distribution)
+  .
+      o You can  use this software for whatever you  want, in parts or
+        full form, without having to pay us. (`royalty-free' usage)
+  .
+      o You may not pretend that  you wrote this software.  If you use
+        it, or  only parts of it,  in a program,  you must acknowledge
+        somewhere  in  your  documentation  that  you  have  used  the
+        FreeType code. (`credits')
+  .
+    We  specifically  permit  and  encourage  the  inclusion  of  this
+    software, with  or without modifications,  in commercial products.
+    We  disclaim  all warranties  covering  The  FreeType Project  and
+    assume no liability related to The FreeType Project.
+  .
+  .
+    Finally,  many  people  asked  us  for  a  preferred  form  for  a
+    credit/disclaimer to use in compliance with this license.  We thus
+    encourage you to use the following text:
+  .
+     """
+      Portions of this software are copyright © <year> The FreeType
+      Project (www.freetype.org).  All rights reserved.
+     """
+  .
+    Please replace <year> with the value from the FreeType version you
+    actually use.
+  .
+  .
+  Legal Terms
+  ===========
+  .
+  0. Definitions
+  --------------
+  .
+    Throughout this license,  the terms `package', `FreeType Project',
+    and  `FreeType  archive' refer  to  the  set  of files  originally
+    distributed  by the  authors  (David Turner,  Robert Wilhelm,  and
+    Werner Lemberg) as the `FreeType Project', be they named as alpha,
+    beta or final release.
+  .
+    `You' refers to  the licensee, or person using  the project, where
+    `using' is a generic term including compiling the project's source
+    code as  well as linking it  to form a  `program' or `executable'.
+    This  program is  referred to  as  `a program  using the  FreeType
+    engine'.
+  .
+    This  license applies  to all  files distributed  in  the original
+    FreeType  Project,   including  all  source   code,  binaries  and
+    documentation,  unless  otherwise  stated   in  the  file  in  its
+    original, unmodified form as  distributed in the original archive.
+    If you are  unsure whether or not a particular  file is covered by
+    this license, you must contact us to verify this.
+  .
+    The FreeType  Project is copyright (C) 1996-2000  by David Turner,
+    Robert Wilhelm, and Werner Lemberg.  All rights reserved except as
+    specified below.
+  .
+  1. No Warranty
+  --------------
+  .
+    THE FREETYPE PROJECT  IS PROVIDED `AS IS' WITHOUT  WARRANTY OF ANY
+    KIND, EITHER  EXPRESS OR IMPLIED,  INCLUDING, BUT NOT  LIMITED TO,
+    WARRANTIES  OF  MERCHANTABILITY   AND  FITNESS  FOR  A  PARTICULAR
+    PURPOSE.  IN NO EVENT WILL ANY OF THE AUTHORS OR COPYRIGHT HOLDERS
+    BE LIABLE  FOR ANY DAMAGES CAUSED  BY THE USE OR  THE INABILITY TO
+    USE, OF THE FREETYPE PROJECT.
+  .
+  2. Redistribution
+  -----------------
+  .
+    This  license  grants  a  worldwide, royalty-free,  perpetual  and
+    irrevocable right  and license to use,  execute, perform, compile,
+    display,  copy,   create  derivative  works   of,  distribute  and
+    sublicense the  FreeType Project (in  both source and  object code
+    forms)  and  derivative works  thereof  for  any  purpose; and  to
+    authorize others  to exercise  some or all  of the  rights granted
+    herein, subject to the following conditions:
+  .
+      o Redistribution of  source code  must retain this  license file
+        (`FTL.TXT') unaltered; any  additions, deletions or changes to
+        the original  files must be clearly  indicated in accompanying
+        documentation.   The  copyright   notices  of  the  unaltered,
+        original  files must  be  preserved in  all  copies of  source
+        files.
+  .
+      o Redistribution in binary form must provide a  disclaimer  that
+        states  that  the software is based in part of the work of the
+        FreeType Team,  in  the  distribution  documentation.  We also
+        encourage you to put an URL to the FreeType web page  in  your
+        documentation, though this isn't mandatory.
+  .
+    These conditions  apply to any  software derived from or  based on
+    the FreeType Project,  not just the unmodified files.   If you use
+    our work, you  must acknowledge us.  However, no  fee need be paid
+    to us.
+  .
+  3. Advertising
+  --------------
+  .
+    Neither the  FreeType authors and  contributors nor you  shall use
+    the name of the  other for commercial, advertising, or promotional
+    purposes without specific prior written permission.
+  .
+    We suggest,  but do not require, that  you use one or  more of the
+    following phrases to refer  to this software in your documentation
+    or advertising  materials: `FreeType Project',  `FreeType Engine',
+    `FreeType library', or `FreeType Distribution'.
+  .
+    As  you have  not signed  this license,  you are  not  required to
+    accept  it.   However,  as  the FreeType  Project  is  copyrighted
+    material, only  this license, or  another one contracted  with the
+    authors, grants you  the right to use, distribute,  and modify it.
+    Therefore,  by  using,  distributing,  or modifying  the  FreeType
+    Project, you indicate that you understand and accept all the terms
+    of this license.
+  .
+  4. Contacts
+  -----------
+  .
+    There are two mailing lists related to FreeType:
+  .
+      o freetype@nongnu.org
+  .
+        Discusses general use and applications of FreeType, as well as
+        future and  wanted additions to the  library and distribution.
+        If  you are looking  for support,  start in  this list  if you
+        haven't found anything to help you in the documentation.
+  .
+      o freetype-devel@nongnu.org
+  .
+        Discusses bugs,  as well  as engine internals,  design issues,
+        specific licenses, porting, etc.
+  .
+    Our home page can be found at
+  .
+      https://www.freetype.org
+  .
+  .
+  .
+  GPL v2: Refer to the copy under /usr/share/common-licenses
+  .
+  Additional Freetype Attributions
+  .
+  .
+  ---------------------------------
+  The below license applies to the following files:
+  libfreetype/src/psaux/psarrst.c
+  libfreetype/src/psaux/psarrst.h
+  libfreetype/src/psaux/psblues.c
+  libfreetype/src/psaux/psblues.h
+  libfreetype/src/psaux/pserror.c
+  libfreetype/src/psaux/pserror.h
+  libfreetype/src/psaux/psfixed.h
+  libfreetype/src/psaux/psfont.c
+  libfreetype/src/psaux/psfont.h
+  libfreetype/src/psaux/psft.c
+  libfreetype/src/psaux/psft.h
+  libfreetype/src/psaux/psglue.h
+  libfreetype/src/psaux/pshints.c
+  libfreetype/src/psaux/pshints.h
+  libfreetype/src/psaux/psintrp.c
+  libfreetype/src/psaux/psintrp.h
+  libfreetype/src/psaux/psread.c
+  libfreetype/src/psaux/psread.h
+  libfreetype/src/psaux/psstack.c
+  libfreetype/src/psaux/psstack.h
+  libfreetype/src/psaux/pstypes.h
+  .
+  Copyright 2006-2014 Adobe Systems Incorporated.
+  .
+  This software, and all works of authorship, whether in source or
+  object code form as indicated by the copyright notice(s) included
+  herein (collectively, the "Work") is made available, and may only be
+  used, modified, and distributed under the FreeType Project License,
+  LICENSE.TXT.  Additionally, subject to the terms and conditions of the
+  FreeType Project License, each contributor to the Work hereby grants
+  to any individual or legal entity exercising permissions granted by
+  the FreeType Project License and this section (hereafter, "You" or
+  "Your") a perpetual, worldwide, non-exclusive, no-charge,
+  royalty-free, irrevocable (except as stated in this section) patent
+  license to make, have made, use, offer to sell, sell, import, and
+  otherwise transfer the Work, where such license applies only to those
+  patent claims licensable by such contributor that are necessarily
+  infringed by their contribution(s) alone or by combination of their
+  contribution(s) with the Work to which such contribution(s) was
+  submitted.  If You institute patent litigation against any entity
+  (including a cross-claim or counterclaim in a lawsuit) alleging that
+  the Work or a contribution incorporated within the Work constitutes
+  direct or contributory patent infringement, then any patent licenses
+  granted to You under this License for that Work shall terminate as of
+  the date such litigation is filed.
+  .
+  By using, modifying, or distributing the Work you indicate that you
+  have read and understood the terms and conditions of the
+  FreeType Project License as well as those provided in this section,
+  and you accept them fully.
+  .
+  .
+  .
+  .
+  MIT License
+  .
+  .
+  ---------------------------------
+  The below license applies to the following files:
+  libfreetype/include/freetype/internal/fthash.h
+  libfreetype/src/base/fthash.c
+  .
+  Copyright 2000 Computing Research Labs, New Mexico State University
+  Copyright 2001-2015
+  .
+    Francesco Zappa Nardelli
+  .
+  Permission is hereby granted, free of charge, to any person obtaining a
+  copy of this software and associated documentation files (the "Software"),
+  to deal in the Software without restriction, including without limitation
+  the rights to use, copy, modify, merge, publish, distribute, sublicense,
+  and/or sell copies of the Software, and to permit persons to whom the
+  Software is furnished to do so, subject to the following conditions:
+  .
+  The above copyright notice and this permission notice shall be included in
+  all copies or substantial portions of the Software.
+  .
+  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.  IN NO EVENT SHALL
+  THE COMPUTING RESEARCH LAB OR NEW MEXICO STATE UNIVERSITY BE LIABLE FOR ANY
+  CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT
+  OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR
+  THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+  .
+  .
+  .
+  .
+  --- end of LICENSE ---
+  .
+  ------------------------------------------------------------------------------
+  %% This notice is provided with respect to Harfbuzz v7.2.0,
+  which may be included with JRE 11, JDK 11 and OpenJDK 11
+  .
+  --- begin of LICENSE ---
+  .
+  Harfbuzz License
+  .
+  https://github.com/harfbuzz/harfbuzz/blob/7.2.0/COPYING
+  .
+  .
+  .
+  HarfBuzz is licensed under the so-called "Old MIT" license.  Details follow.
+  For parts of HarfBuzz that are licensed under different licenses see individual
+  files names COPYING in subdirectories where applicable.
+  .
+  Copyright © 2010-2023  Google, Inc.
+  Copyright © 2018-2020  Ebrahim Byagowi
+  Copyright © 2004-2013  Red Hat, Inc.
+  Copyright © 2019  Facebook, Inc.
+  Copyright © 2007  Chris Wilson
+  Copyright © 2018-2019 Adobe Inc.
+  Copyright © 2006-2023 Behdad Esfahbod
+  Copyright © 1998-2004  David Turner and Werner Lemberg
+  Copyright © 2009  Keith Stribley
+  Copyright © 2018  Khaled Hosny
+  Copyright © 2016  Elie Roux <elie.roux@telecom-bretagne.eu>
+  Copyright © 2016  Igalia S.L.
+  Copyright © 2015  Mozilla Foundation.
+  Copyright © 1999  David Turner
+  Copyright © 2005  Werner Lemberg
+  Copyright © 2013-2015  Alexei Podtelezhnikov
+  Copyright © 2022 Matthias Clasen
+  Copyright © 2011  Codethink Limited
+  .
+  For full copyright notices consult the individual files in the package.
+  .
+  .
+  Permission is hereby granted, without written agreement and without
+  license or royalty fees, to use, copy, modify, and distribute this
+  software and its documentation for any purpose, provided that the
+  above copyright notice and the following two paragraphs appear in
+  all copies of this software.
+  .
+  IN NO EVENT SHALL THE COPYRIGHT HOLDER BE LIABLE TO ANY PARTY FOR
+  DIRECT, INDIRECT, SPECIAL, INCIDENTAL, OR CONSEQUENTIAL DAMAGES
+  ARISING OUT OF THE USE OF THIS SOFTWARE AND ITS DOCUMENTATION, EVEN
+  IF THE COPYRIGHT HOLDER HAS BEEN ADVISED OF THE POSSIBILITY OF SUCH
+  DAMAGE.
+  .
+  THE COPYRIGHT HOLDER SPECIFICALLY DISCLAIMS ANY WARRANTIES, INCLUDING,
+  BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND
+  FITNESS FOR A PARTICULAR PURPOSE.  THE SOFTWARE PROVIDED HEREUNDER IS
+  ON AN "AS IS" BASIS, AND THE COPYRIGHT HOLDER HAS NO OBLIGATION TO
+  PROVIDE MAINTENANCE, SUPPORT, UPDATES, ENHANCEMENTS, OR MODIFICATIONS.
+  .
+  All source code, except for one section, is licensed as above. The one
+  exception is licensed with a slightly different MIT variant:
+  The contents of this directory are licensed under the following terms:
+  .
+  ---------------------------------
+  The below license applies to the following files:
+  libharfbuzz/hb-ucd.cc
+  .
+  Copyright (C) 2012 Grigori Goronzy <greg@kinoho.net>
+  .
+  Permission to use, copy, modify, and/or distribute this software for any
+  purpose with or without fee is hereby granted, provided that the above
+  copyright notice and this permission notice appear in all copies.
+  .
+  THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL WARRANTIES
+  WITH REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF
+  MERCHANTABILITY AND FITNESS. IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR
+  ANY SPECIAL, DIRECT, INDIRECT, OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES
+  WHATSOEVER RESULTING FROM LOSS OF USE, DATA OR PROFITS, WHETHER IN AN
+  ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF
+  OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
+  .
+  .
+  .
+  AUTHORS File Information
+  .
+  .
+  Behdad Esfahbod
+  David Corbett
+  David Turner
+  Ebrahim Byagowi
+  Garret Rieger
+  Jonathan Kew
+  Khaled Hosny
+  Lars Knoll
+  Martin Hosken
+  Owen Taylor
+  Roderick Sheeter
+  Roozbeh Pournader
+  Simon Hausmann
+  Werner Lemberg
+  .
+  .
+  .
+  --- end of LICENSE ---
+  .
+  ------------------------------------------------------------------------------
+  %% This notice is provided with respect to Little Color Management System (LCMS) v2.15,
+  which may be included with JRE 11, JDK 11 and OpenJDK 11
+  .
+  --- begin of LICENSE ---
+  .
+  LCMS License
+  .
+  README.1ST file information
+  .
+  LittleCMS core is released under MIT License
+  .
+  ---------------------------------
+  .
+  Little CMS
+  Copyright (c) 1998-2023 Marti Maria Saguer
   .
   Permission is hereby granted, free of charge, to any person obtaining
-  a copy of the Unicode data files and any associated documentation
-  (the "Data Files") or Unicode software and any associated documentation
-  (the "Software") to deal in the Data Files or Software
-  without restriction, including without limitation the rights to use,
-  copy, modify, merge, publish, distribute, and/or sell copies of
-  the Data Files or Software, and to permit persons to whom the Data Files
-  or Software are furnished to do so, provided that either
-  (a) this copyright and permission notice appear with all copies
-  of the Data Files or Software, or
-  (b) this copyright and permission notice appear in associated
-  Documentation.
+  a copy of this software and associated documentation files (the
+  "Software"), to deal in the Software without restriction, including
+  without limitation the rights to use, copy, modify, merge, publish,
+  distribute, sublicense, and/or sell copies of the Software, and to
+  permit persons to whom the Software is furnished to do so, subject
+  to the following conditions:
   .
-  THE DATA FILES AND SOFTWARE ARE PROVIDED "AS IS", WITHOUT WARRANTY OF
-  ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE
-  WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
-  NONINFRINGEMENT OF THIRD PARTY RIGHTS.
-  IN NO EVENT SHALL THE COPYRIGHT HOLDER OR HOLDERS INCLUDED IN THIS
-  NOTICE BE LIABLE FOR ANY CLAIM, OR ANY SPECIAL INDIRECT OR CONSEQUENTIAL
-  DAMAGES, OR ANY DAMAGES WHATSOEVER RESULTING FROM LOSS OF USE,
-  DATA OR PROFITS, WHETHER IN AN ACTION OF CONTRACT, NEGLIGENCE OR OTHER
-  TORTIOUS ACTION, ARISING OUT OF OR IN CONNECTION WITH THE USE OR
-  PERFORMANCE OF THE DATA FILES OR SOFTWARE.
+  The above copyright notice and this permission notice shall be
+  included in all copies or substantial portions of the Software.
   .
-  Except as contained in this notice, the name of a copyright holder
-  shall not be used in advertising or otherwise to promote the sale,
-  use or other dealings in these Data Files or Software without prior
-  written authorization of the copyright holder.
+  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+  EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+  MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
+  IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY
+  CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT,
+  TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
+  SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+  .
+  ---------------------------------
+  The below license applies to the following files:
+  liblcms/cmssm.c
+  .
+  Copyright 2001, softSurfer (www.softsurfer.com)
+  .
+  This code may be freely used and modified for any purpose
+  providing that this copyright notice is included with it.
+  SoftSurfer makes no warranty for this code, and cannot be held
+  liable for any real or imagined damage resulting from its use.
+  Users of this code must verify correctness for their application.
+  .
+  .
+  .
+  AUTHORS File Information
+  .
+  .
+  .
+  Main Author
+  ------------
+  Marti Maria
+  .
+  .
+  Contributors
+  ------------
+  Bob Friesenhahn
+  Kai-Uwe Behrmann
+  Stuart Nixon
+  Jordi Vilar
+  Richard Hughes
+  Auke Nauta
+  Chris Evans (Google)
+  Lorenzo Ridolfi
+  Robin Watts (Artifex)
+  Shawn Pedersen
+  Andrew Brygin
+  Samuli Suominen
+  Florian Hˆch
+  Aurelien Jarno
+  Claudiu Cebuc
+  Michael Vhrel (Artifex)
+  Michal Cihar
+  Daniel Kaneider
+  Mateusz Jurczyk (Google)
+  Paul Miller
+  SÈbastien LÈon
+  Christian Schmitz
+  XhmikosR
+  Stanislav Brabec (SuSe)
+  Leonhard Gruenschloss (Google)
+  Patrick Noffke
+  Christopher James Halse Rogers
+  John Hein
+  Thomas Weber (Debian)
+  Mark Allen
+  Noel Carboni
+  Sergei Trofimovic
+  Philipp Knechtges
+  Amyspark
+  Lovell Fuller
+  Eli Schwartz
+  .
+  Special Thanks
+  --------------
+  Artifex software
+  AlienSkin software
+  libVIPS
+  Jan Morovic
+  Jos Vernon (WebSupergoo)
+  Harald Schneider (Maxon)
+  Christian Albrecht
+  Dimitrios Anastassakis
+  Lemke Software
+  Tim Zaman
   .
   .
   .
   --- end of LICENSE ---
   .
   ------------------------------------------------------------------------------
-  %% This notice is provided with respect to Cryptix AES v3.2.0,
+  %% This notice is provided with respect to Mesa 3-D Graphics Library v21.0.3,
   which may be included with JRE 11, JDK 11 and OpenJDK 11
   .
   --- begin of LICENSE ---
   .
-  Cryptix General License
+  Mesa License
   .
   .
-  Cryptix General License
+  Copyright (C) 1999-2007  Brian Paul   All Rights Reserved.
   .
-  Copyright (c) 1995-2005 The Cryptix Foundation Limited.
-  All rights reserved.
+  Permission is hereby granted, free of charge, to any person obtaining a
+  copy of this software and associated documentation files (the "Software"),
+  to deal in the Software without restriction, including without limitation
+  the rights to use, copy, modify, merge, publish, distribute, sublicense,
+  and/or sell copies of the Software, and to permit persons to whom the
+  Software is furnished to do so, subject to the following conditions:
+  .
+  The above copyright notice and this permission notice shall be included
+  in all copies or substantial portions of the Software.
+  .
+  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS
+  OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.  IN NO EVENT SHALL
+  THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+  SOFTWARE.
+  .
+  Attention, Contributors
+  .
+  When contributing to the Mesa project you must agree to the licensing terms
+  of the component to which you're contributing.
+  The following section lists the primary components of the Mesa distribution
+  and their respective licenses.
+  Mesa Component Licenses
+  .
+  .
+  .
+  Component         Location               License
+  ------------------------------------------------------------------
+  Main Mesa code    src/mesa/              MIT
+  Device drivers    src/mesa/drivers/*     MIT, generally
+  .
+  Gallium code      src/gallium/           MIT
+  .
+  Ext headers       GL/glext.h             Khronos
+                    GL/glxext.h            Khronos
+                    GL/wglext.h            Khronos
+                    KHR/khrplatform.h      Khronos
+  .
+  *****************************************************************************
+  .
+  ----
+  include/GL/gl.h :
+  .
+  .
+   Mesa 3-D graphics library
+  .
+   Copyright (C) 1999-2006  Brian Paul   All Rights Reserved.
+   Copyright (C) 2009  VMware, Inc.  All Rights Reserved.
+  .
+   Permission is hereby granted, free of charge, to any person obtaining a
+   copy of this software and associated documentation files (the "Software"),
+   to deal in the Software without restriction, including without limitation
+   the rights to use, copy, modify, merge, publish, distribute, sublicense,
+   and/or sell copies of the Software, and to permit persons to whom the
+   Software is furnished to do so, subject to the following conditions:
+  .
+   The above copyright notice and this permission notice shall be included
+   in all copies or substantial portions of the Software.
+  .
+   THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS
+   OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+   FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.  IN NO EVENT SHALL
+   THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR
+   OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE,
+   ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
+   OTHER DEALINGS IN THE SOFTWARE.
+  .
+   *****************************************************************************
+  .
+  ----
+  include/GL/glext.h
+  include/GL/glxext.h
+  include/GL/wglxext.h :
+  .
+  .
+   Copyright (c) 2013 - 2018 The Khronos Group Inc.
+  .
+   Permission is hereby granted, free of charge, to any person obtaining a
+   copy of this software and/or associated documentation files (the
+   "Materials"), to deal in the Materials without restriction, including
+   without limitation the rights to use, copy, modify, merge, publish,
+   distribute, sublicense, and/or sell copies of the Materials, and to
+   permit persons to whom the Materials are furnished to do so, subject to
+   the following conditions:
+  .
+   The above copyright notice and this permission notice shall be included
+   in all copies or substantial portions of the Materials.
+  .
+   THE MATERIALS ARE PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+   EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+   MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
+   IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY
+   CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT,
+   TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
+   MATERIALS OR THE USE OR OTHER DEALINGS IN THE MATERIALS.
+  .
+   *****************************************************************************
+  .
+  ----
+  include/KHR/khrplatform.h :
+  .
+   Copyright (c) 2008 - 2018 The Khronos Group Inc.
+  .
+   Permission is hereby granted, free of charge, to any person obtaining a
+   copy of this software and/or associated documentation files (the
+   "Materials"), to deal in the Materials without restriction, including
+   without limitation the rights to use, copy, modify, merge, publish,
+   distribute, sublicense, and/or sell copies of the Materials, and to
+   permit persons to whom the Materials are furnished to do so, subject to
+   the following conditions:
+  .
+   The above copyright notice and this permission notice shall be included
+   in all copies or substantial portions of the Materials.
+  .
+   THE MATERIALS ARE PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+   EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+   MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
+   IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY
+   CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT,
+   TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
+   MATERIALS OR THE USE OR OTHER DEALINGS IN THE MATERIALS.
+  .
+   *****************************************************************************
+  .
+  .
+  .
+  --- end of LICENSE ---
+  .
+  ------------------------------------------------------------------------------
+  %% This notice is provided with respect to xwd v1.0.7,
+  which may be included with JRE 11, JDK 11 and OpenJDK 11
+  .
+  --- begin of LICENSE ---
+  .
+  xwd utility
+  .
+  .
+  This is the copyright for the files in src/java.desktop/unix/native/libawt_xawt:
+  list.h, multiVis.h, wsutils.h, list.c, multiVis.c
+  .
+  Copyright 1994 Hewlett-Packard Co.
+  Copyright 1996, 1998  The Open Group
+  .
+  Permission to use, copy, modify, distribute, and sell this software and its
+  documentation for any purpose is hereby granted without fee, provided that
+  the above copyright notice appear in all copies and that both that
+  copyright notice and this permission notice appear in supporting
+  documentation.
+  .
+  The above copyright notice and this permission notice shall be included
+  in all copies or substantial portions of the Software.
+  .
+  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS
+  OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+  MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
+  IN NO EVENT SHALL THE OPEN GROUP BE LIABLE FOR ANY CLAIM, DAMAGES OR
+  OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE,
+  ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
+  OTHER DEALINGS IN THE SOFTWARE.
+  .
+  Except as contained in this notice, the name of The Open Group shall
+  not be used in advertising or otherwise to promote the sale, use or
+  other dealings in this Software without prior written authorization
+  from The Open Group.
+  .
+  .
+  .
+  --- end of LICENSE ---
+  .
+  ------------------------------------------------------------------------------
+  %% This notice is provided with respect to Apache Commons Byte Code Engineering Library (BCEL) Version 6.7.0,
+  which may be included with JRE 11, JDK 11 and OpenJDK 11
+  .
+  --- begin of LICENSE ---
+  .
+  Apache Commons BCEL Notice
+  .
+  .
+      Apache Commons BCEL
+      Copyright 2004-2022 The Apache Software Foundation
+  .
+      This product includes software developed at
+      The Apache Software Foundation (https://www.apache.org/).
+  .
+  .
+  .
+  Apache 2.0 License: Refer to the copy under /usr/share/common-licenses
+  .
+  .
+  --- end of LICENSE ---
+  .
+  ------------------------------------------------------------------------------
+  %% This notice is provided with respect to DOM Level 3 Core Specification v1.0,
+  which may be included with JRE 11, JDK 11 and OpenJDK 11
+  .
+  --- begin of LICENSE ---
+  .
+  W3C Software Notice
+  .
+  Copyright © 2004 World Wide Web Consortium, (Massachusetts Institute of Technology,
+  European Research Consortium for Informatics and Mathematics, Keio University).
+  All Rights Reserved.
+  .
+  The DOM bindings are published under the W3C Software Copyright Notice and License.
+  The software license requires "Notice of any changes or modifications to the W3C
+  files, including the date changes were made." Consequently, modified versions of
+  the DOM bindings must document that they do not conform to the W3C standard; in the
+  case of the IDL definitions, the pragma prefix can no longer be 'w3c.org'; in the
+  case of the Java language binding, the package names can no longer be in the
+  'org.w3c' package.
+  .
+  .
+  W3C License
+  .
+  .
+  W3C SOFTWARE NOTICE AND LICENSE
+  .
+  http://www.w3.org/Consortium/Legal/2002/copyright-software-20021231
+  .
+  This work (and included software, documentation such as READMEs, or other
+  related items) is being provided by the copyright holders under the following
+  license. By obtaining, using and/or copying this work, you (the licensee)
+  agree that you have read, understood, and will comply with the following terms
+  and conditions.
+  .
+  Permission to copy, modify, and distribute this software and its
+  documentation, with or without modification, for any purpose and without fee
+  or royalty is hereby granted, provided that you include the following on ALL
+  copies of the software and documentation or portions thereof, including
+  modifications:
+  .
+     1.The full text of this NOTICE in a location viewable to users of the
+     redistributed or derivative work.
+  .
+     2.Any pre-existing intellectual property disclaimers, notices, or terms and
+     conditions. If none exist, the W3C Software Short Notice should be included
+     (hypertext is preferred, text is permitted) within the body of any
+     redistributed or derivative code.
+  .
+     3.Notice of any changes or modifications to the files, including the date
+     changes were made. (We recommend you provide URIs to the location from
+     which the code is derived.)
+  .
+  THIS SOFTWARE AND DOCUMENTATION IS PROVIDED "AS IS," AND COPYRIGHT HOLDERS
+  MAKE NO REPRESENTATIONS OR WARRANTIES, EXPRESS OR IMPLIED, INCLUDING BUT NOT
+  LIMITED TO, WARRANTIES OF MERCHANTABILITY OR FITNESS FOR ANY PARTICULAR
+  PURPOSE OR THAT THE USE OF THE SOFTWARE OR DOCUMENTATION WILL NOT INFRINGE ANY
+  THIRD PARTY PATENTS,COPYRIGHTS, TRADEMARKS OR OTHER RIGHTS.
+  .
+  COPYRIGHT HOLDERS WILL NOT BE LIABLE FOR ANY DIRECT, INDIRECT, SPECIAL
+  OR CONSEQUENTIAL DAMAGES ARISING OUT OF ANY USE OF THE SOFTWARE OR
+  DOCUMENTATION.  The name and trademarks of copyright holders may NOT be used
+  in advertising or publicity pertaining to the software without specific,
+  written prior permission. Title to copyright in this software and any
+  associated documentation will at all times remain with copyright holders.
+  .
+  ____________________________________
+  .
+  This formulation of W3C's notice and license became active on December 31
+  2002. This version removes the copyright ownership notice such that this
+  license can be used with materials other than those owned by the W3C, reflects
+  that ERCIM is now a host of the W3C, includes references to this specific
+  dated version of the license, and removes the ambiguous grant of "use".
+  Otherwise, this version is the same as the previous version and is written so
+  as to preserve the Free Software Foundation's assessment of GPL compatibility
+  and OSI's certification under the Open Source Definition. Please see our
+  Copyright FAQ for common questions about using materials from our site,
+  including specific terms and conditions for packages like libwww, Amaya, and
+  Jigsaw. Other questions about this notice can be directed to
+  site-policy@w3.org.
+  .
+  .
+  .
+  --- end of LICENSE ---
+  .
+  ------------------------------------------------------------------------------
+  %% This notice is provided with respect to CUP Parser Generator for Java v 0.11b,
+  which may be included with JRE 11, JDK 11 and OpenJDK 11
+  .
+  --- begin of LICENSE ---
+  .
+  CUP Parser Generator License
+  .
+  .
+  Copyright 1996-2015 by Scott Hudson, Frank Flannery, C. Scott Ananian, Michael Petter
+  .
+  Permission to use, copy, modify, and distribute this software and its
+  documentation for any purpose and without fee is hereby granted, provided
+  that the above copyright notice appear in all copies and that both
+  the copyright notice and this permission notice and warranty disclaimer
+  appear in supporting documentation, and that the names of the authors or
+  their employers not be used in advertising or publicity pertaining to
+  distribution of the software without specific, written prior permission.
+  .
+  The authors and their employers disclaim all warranties with regard to
+  this software, including all implied warranties of merchantability and
+  fitness. In no event shall the authors or their employers be liable for
+  any special, indirect or consequential damages or any damages whatsoever
+  resulting from loss of use, data or profits, whether in an action of
+  contract, negligence or other tortious action, arising out of or in
+  connection with the use or performance of this software.
+  .
+  ---
+  .
+  This is an open source license. It is also GPL-Compatible (see entry for
+  "Standard ML of New Jersey"). The portions of CUP output which are hard-coded
+  into the CUP source code are (naturally) covered by this same license, as is
+  the CUP runtime code linked with the generated parser.
+  .
+  .
+  .
+  --- end of LICENSE ---
+  .
+  ------------------------------------------------------------------------------
+  %% This notice is provided with respect to Apache Xalan v2.7.2,
+  which may be included with JRE 11, JDK 11 and OpenJDK 11
+  .
+  --- begin of LICENSE ---
+  .
+  Apache Xalan Notice
+  .
+  .
+      ======================================================================================
+      ==  NOTICE file corresponding to the section 4d of the Apache License, Version 2.0, ==
+      ==  in this case for the Apache Xalan distribution.                                 ==
+      ======================================================================================
+  .
+     This product includes software developed by
+     The Apache Software Foundation (http://www.apache.org/).
+  .
+     Specifically, we only include the XSLTC portion of the source from the Xalan distribution. 
+     The Xalan project has two processors: an interpretive one (Xalan Interpretive) and a 
+     compiled one (The XSLT Compiler (XSLTC)). We *only* use the XSLTC part of Xalan; We use
+     the source from the packages that are part of the XSLTC sources.
+  .
+     Portions of this software was originally based on the following:
+  .
+       - software copyright (c) 1999-2002, Lotus Development Corporation., http://www.lotus.com.
+       - software copyright (c) 2001-2002, Sun Microsystems., http://www.sun.com.
+       - software copyright (c) 2003, IBM Corporation., http://www.ibm.com.
+       - voluntary contributions made by Ovidiu Predescu (ovidiu@cup.hp.com) on behalf of the
+         Apache Software Foundation and was originally developed at Hewlett Packard Company.
+  .
+  .
+  .
+  Apache 2.0 License: Refer to the copy under /usr/share/common-licenses
+  .
+  .
+  --- end of LICENSE ---
+  .
+  ------------------------------------------------------------------------------
+  %% This notice is provided with respect to Apache Xerces v2.12.2,
+  which may be included with JRE 11, JDK 11 and OpenJDK 11
+  .
+  --- begin of LICENSE ---
+  .
+  Apache Xerces Notice
+  .
+      =========================================================================
+      == NOTICE file corresponding to section 4(d) of the Apache License,    ==
+      == Version 2.0, in this case for the Apache Xerces Java distribution.  ==
+      =========================================================================
+  .
+      Apache Xerces Java
+      Copyright 1999-2022 The Apache Software Foundation
+  .
+      This product includes software developed at
+      The Apache Software Foundation (http://www.apache.org/).
+  .
+      Portions of this software were originally based on the following:
+      - software copyright (c) 1999, IBM Corporation., http://www.ibm.com.
+      - software copyright (c) 1999, Sun Microsystems., http://www.sun.com.
+      - voluntary contributions made by Paul Eng on behalf of the
+      Apache Software Foundation that were originally developed at iClick, Inc.,
+      software copyright (c) 1999.
+  .
+  .
+  Apache 2.0 License: Refer to the copy under /usr/share/common-licenses
+  .
+  .
+  --- end of LICENSE ---
+  .
+  ------------------------------------------------------------------------------
+  %% This notice is provided with respect to Apache Santuario v2.3.0,
+  which may be included with JRE 11, JDK 11 and OpenJDK 11
+  .
+  --- begin of LICENSE ---
+  .
+  Apache Santuario Notice
+  .
+  .
+    Apache Santuario - XML Security for Java
+    Copyright 1999-2021 The Apache Software Foundation
+  .
+    This product includes software developed at
+    The Apache Software Foundation (http://www.apache.org/).
+  .
+    It was originally based on software copyright (c) 2001, Institute for
+    Data Communications Systems, <http://www.nue.et-inf.uni-siegen.de/>.
+  .
+    The development of this software was partly funded by the European
+    Commission in the <WebSig> project in the ISIS Programme.
+  .
+  .
+  .
+  Apache 2.0 License: Refer to the copy under /usr/share/common-licenses
+  .
+  .
+  --- end of LICENSE ---
+  .
+  ------------------------------------------------------------------------------
+  %% This notice is provided with respect to OASIS PKCS #11 Cryptographic Token Interface v3.0,
+  which may be included with JRE 11, JDK 11 and OpenJDK 11
+  .
+  --- begin of LICENSE ---
+  .
+  OASIS PKCS #11 Cryptographic Token Interface License
+  .
+  .
+  Copyright © OASIS Open 2020. All Rights Reserved.
+  .
+      All capitalized terms in the following text have the meanings
+  assigned to them in the OASIS Intellectual Property Rights Policy (the
+  "OASIS IPR Policy"). The full Policy may be found at the OASIS website:
+  [http://www.oasis-open.org/policies-guidelines/ipr]
+  .
+      This document and translations of it may be copied and furnished to
+  others, and derivative works that comment on or otherwise explain it or
+  assist in its implementation may be prepared, copied, published, and
+  distributed, in whole or in part, without restriction of any kind,
+  provided that the above copyright notice and this section are included
+  on all such copies and derivative works. However, this document itself
+  may not be modified in any way, including by removing the copyright
+  notice or references to OASIS, except as needed for the purpose of
+  developing any document or deliverable produced by an OASIS Technical
+  Committee (in which case the rules applicable to copyrights, as set
+  forth in the OASIS IPR Policy, must be followed) or as required to
+  translate it into languages other than English.
+  .
+      The limited permissions granted above are perpetual and will not be
+  revoked by OASIS or its successors or assigns.
+  .
+      This document and the information contained herein is provided on an
+  "AS IS" basis and OASIS DISCLAIMS ALL WARRANTIES, EXPRESS OR IMPLIED,
+  INCLUDING BUT NOT LIMITED TO ANY WARRANTY THAT THE USE OF THE
+  INFORMATION HEREIN WILL NOT INFRINGE ANY OWNERSHIP RIGHTS OR ANY IMPLIED
+  WARRANTIES OF MERCHANTABILITY OR FITNESS FOR A PARTICULAR PURPOSE. OASIS
+  AND ITS MEMBERS WILL NOT BE LIABLE FOR ANY DIRECT, INDIRECT, SPECIAL OR
+  CONSEQUENTIAL DAMAGES ARISING OUT OF ANY USE OF THIS DOCUMENT OR ANY
+  PART THEREOF.
+  .
+      [OASIS requests that any OASIS Party or any other party that
+  believes it has patent claims that would necessarily be infringed by
+  implementations of this OASIS Standards Final Deliverable, to notify
+  OASIS TC Administrator and provide an indication of its willingness to
+  grant patent licenses to such patent claims in a manner consistent with
+  the IPR Mode of the OASIS Technical Committee that produced this
+  deliverable.]
+  .
+      [OASIS invites any party to contact the OASIS TC Administrator if it
+  is aware of a claim of ownership of any patent claims that would
+  necessarily be infringed by implementations of this OASIS Standards
+  Final Deliverable by a patent holder that is not willing to provide a
+  license to such patent claims in a manner consistent with the IPR Mode
+  of the OASIS Technical Committee that produced this OASIS Standards
+  Final Deliverable. OASIS may include such claims on its website, but
+  disclaims any obligation to do so.]
+  .
+      [OASIS takes no position regarding the validity or scope of any
+  intellectual property or other rights that might be claimed to pertain
+  to the implementation or use of the technology described in this OASIS
+  Standards Final Deliverable or the extent to which any license under
+  such rights might or might not be available; neither does it represent
+  that it has made any effort to identify any such rights. Information on
+  OASIS' procedures with respect to rights in any document or deliverable
+  produced by an OASIS Technical Committee can be found on the OASIS
+  website. Copies of claims of rights made available for publication and
+  any assurances of licenses to be made available, or the result of an
+  attempt made to obtain a general license or permission for the use of
+  such proprietary rights by implementers or users of this OASIS Standards
+  Final Deliverable, can be obtained from the OASIS TC Administrator.
+  OASIS makes no representation that any information or list of
+  intellectual property rights will at any time be complete, or that any
+  claims in such list are, in fact, Essential Claims.]
+  .
+  .
+  .
+  --- end of LICENSE ---
+  .
+  ------------------------------------------------------------------------------
+  %% This notice is provided with respect to IAIK (Institute for Applied Information Processing and Communication) PKCS#11 wrapper files v1,
+  which may be included with JRE 11, JDK 11 and OpenJDK 11
+  .
+  --- begin of LICENSE ---
+  .
+  IAIK License
+  .
+  .
+  Copyright (c) 2002 Graz University of Technology. All rights reserved.
   .
   Redistribution and use in source and binary forms, with or without
-  modification, are permitted provided that the following conditions are
-  met:
+  modification, are permitted provided that the following conditions are met:
   .
-    1. Redistributions of source code must retain the copyright notice,
-       this list of conditions and the following disclaimer.
+  1. Redistributions of source code must retain the above copyright notice, this
+     list of conditions and the following disclaimer.
   .
-    2. Redistributions in binary form must reproduce the above copyright
-       notice, this list of conditions and the following disclaimer in
-       the documentation and/or other materials provided with the
-       distribution.
+  2. Redistributions in binary form must reproduce the above copyright notice,
+     this list of conditions and the following disclaimer in the documentation
+     and/or other materials provided with the distribution.
   .
-  THIS SOFTWARE IS PROVIDED BY THE CRYPTIX FOUNDATION LIMITED AND
-  CONTRIBUTORS ``AS IS'' AND ANY EXPRESS OR IMPLIED WARRANTIES,
-  INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF
-  MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
-  IN NO EVENT SHALL THE CRYPTIX FOUNDATION LIMITED OR CONTRIBUTORS BE
-  LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR
-  CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF
-  SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR
-  BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
-  WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE
-  OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN
-  IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+  3. The end-user documentation included with the redistribution, if any, must
+     include the following acknowledgment:
   .
+     "This product includes software developed by IAIK of Graz University of
+      Technology."
   .
+     Alternately, this acknowledgment may appear in the software itself, if and
+     wherever such third-party acknowledgments normally appear.
   .
-  --- end of LICENSE ---
+  4. The names "Graz University of Technology" and "IAIK of Graz University of
+     Technology" must not be used to endorse or promote products derived from this
+     software without prior written permission.
   .
-  ------------------------------------------------------------------------------
-  %% This notice is provided with respect to c-libutl 20160225,
-  which may be included with JRE 11, JDK 11 and OpenJDK 11
+  5. Products derived from this software may not be called "IAIK PKCS Wrapper",
+     nor may "IAIK" appear in their name, without prior written permission of
+     Graz University of Technology.
   .
-  --- begin of LICENSE ---
-  .
-  c-libutl License
-  .
-  .
-  This software is distributed under the terms of the BSD license.
-  .
-  ==  BSD LICENSE  ===============================================================
-  .
-   (C) 2009 by Remo Dentato (rdentato@gmail.com)
-  .
-  .
-  Redistribution and use in source and binary forms, with or without modification,
-  are permitted provided that the following conditions are met:
-  .
-      * Redistributions of source code must retain the above copyright notice,
-        this list of conditions and the following disclaimer.
-      * Redistributions in binary form must reproduce the above copyright notice,
-        this list of conditions and the following disclaimer in the documentation
-        and/or other materials provided with the distribution.
-  .
-  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
-  ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
-  WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
-  DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR
-  ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES
-  (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;
-  LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND
-  ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
-  (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
-  SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
-  .
-  http://opensource.org/licenses/bsd-license.php
+  THIS SOFTWARE IS PROVIDED "AS IS" AND ANY EXPRESSED OR IMPLIED WARRANTIES,
+  INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND
+  FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE
+  LICENSOR BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
+  OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF
+  SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS
+  INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN
+  CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
+  ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
+  POSSIBILITY OF SUCH DAMAGE.
   .
   .
   .
@@ -1828,52 +2859,121 @@ License:   GPL with Classpath exception
   --- end of LICENSE ---
   .
   ------------------------------------------------------------------------------
-  %% This notice is provided with respect to Pako v1.0,
+  %% This notice is provided with respect to Dynalink v.5,
   which may be included with JRE 11, JDK 11 and OpenJDK 11
   .
   --- begin of LICENSE ---
   .
-  Pako License
-  .
-  Copyright (C) 2014-2017 by Vitaly Puzrin and Andrei Tuputcyn
-  .
-  Permission is hereby granted, free of charge, to any person obtaining a copy
-  of this software and associated documentation files (the "Software"), to deal
-  in the Software without restriction, including without limitation the rights
-  to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-  copies of the Software, and to permit persons to whom the Software is
-  furnished to do so, subject to the following conditions:
-  .
-  The above copyright notice and this permission notice shall be included in
-  all copies or substantial portions of the Software.
-  .
-  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-  FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
-  THE SOFTWARE.
-  (C) 1995-2013 Jean-loup Gailly and Mark Adler
-  (C) 2014-2017 Vitaly Puzrin and Andrey Tupitsin
-  .
-  This software is provided 'as-is', without any express or implied
-  warranty. In no event will the authors be held liable for any damages
-  arising from the use of this software.
-  .
-  Permission is granted to anyone to use this software for any purpose,
-  including commercial applications, and to alter it and redistribute it
-  freely, subject to the following restrictions:
-  .
-  1. The origin of this software must not be misrepresented; you must not
-  claim that you wrote the original software. If you use this software
-  in a product, an acknowledgment in the product documentation would be
-  appreciated but is not required.
-  2. Altered source versions must be plainly marked as such, and must not be
-   misrepresented as being the original software.
-  3. This notice may not be removed or altered from any source distribution.
+  Dynalink License
   .
   .
+  Copyright (c) 2009-2013, Attila Szegedi
+  .
+  Redistribution and use in source and binary forms, with or without
+  modification, are permitted provided that the following conditions are
+  met:
+  * Redistributions of source code must retain the above copyright
+    notice, this list of conditions and the following disclaimer.
+  * Redistributions in binary form must reproduce the above copyright
+    notice, this list of conditions and the following disclaimer in the
+    documentation and/or other materials provided with the distribution.
+  * Neither the name of the copyright holder nor the names of
+    contributors may be used to endorse or promote products derived from
+    this software without specific prior written permission.
+  .
+  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS
+  IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED
+  TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A
+  PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL COPYRIGHT HOLDER
+  BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR
+  CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF
+  SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR
+  BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
+  WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR
+  OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF
+  ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+  .
+  .
+  .
+  --- end of LICENSE ---
+  .
+  ------------------------------------------------------------------------------
+  %% This notice is provided with respect to JLine v3.22.0,
+  which may be included with JRE 11, JDK 11 and OpenJDK 11
+  .
+  --- begin of LICENSE ---
+  .
+  JLine License
+  .
+  .
+  Copyright (c) 2002-2018, the original author or authors.
+  All rights reserved.
+  .
+  https://opensource.org/licenses/BSD-3-Clause
+  .
+  Redistribution and use in source and binary forms, with or
+  without modification, are permitted provided that the following
+  conditions are met:
+  .
+  Redistributions of source code must retain the above copyright
+  notice, this list of conditions and the following disclaimer.
+  .
+  Redistributions in binary form must reproduce the above copyright
+  notice, this list of conditions and the following disclaimer
+  in the documentation and/or other materials provided with
+  the distribution.
+  .
+  Neither the name of JLine nor the names of its contributors
+  may be used to endorse or promote products derived from this
+  software without specific prior written permission.
+  .
+  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
+  "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING,
+  BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY
+  AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO
+  EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE
+  FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
+  OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,
+  PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
+  DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED
+  AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT
+  LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING
+  IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED
+  OF THE POSSIBILITY OF SUCH DAMAGE.
+  .
+  .
+  .
+  --- end of LICENSE ---
+  .
+  ------------------------------------------------------------------------------
+  %% This notice is provided with respect to jopt-simple v5.0.4,
+  which may be included with JRE 11, JDK 11 and OpenJDK 11
+  .
+  --- begin of LICENSE ---
+  .
+  MIT License
+  .
+  .
+  Copyright (c) 2004-2015 Paul R. Holser, Jr.
+  .
+  Permission is hereby granted, free of charge, to any person obtaining
+  a copy of this software and associated documentation files (the
+  "Software"), to deal in the Software without restriction, including
+  without limitation the rights to use, copy, modify, merge, publish,
+  distribute, sublicense, and/or sell copies of the Software, and to
+  permit persons to whom the Software is furnished to do so, subject to
+  the following conditions:
+  .
+  The above copyright notice and this permission notice shall be
+  included in all copies or substantial portions of the Software.
+  .
+  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS
+  OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
+  THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR
+  OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE,
+  ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
+  OTHER DEALINGS IN THE SOFTWARE.
   .
   .
   .
@@ -1953,6 +3053,62 @@ License:   GPL with Classpath exception
   the terms above.
   .
   *********************
+  .
+  .
+  .
+  --- end of LICENSE ---
+  .
+  ------------------------------------------------------------------------------
+  %% This notice is provided with respect to jQuery UI v1.13.2,
+  which may be included with JRE 11, JDK 11 and OpenJDK 11
+  .
+  --- begin of LICENSE ---
+  .
+  jQuery UI License
+  .
+  Copyright jQuery Foundation and other contributors, https://jquery.org/
+  .
+  This software consists of voluntary contributions made by many
+  individuals. For exact contribution history, see the revision history
+  available at https://github.com/jquery/jquery-ui
+  .
+  The following license applies to all parts of this software except as
+  documented below:
+  .
+  ====
+  .
+  Permission is hereby granted, free of charge, to any person obtaining
+  a copy of this software and associated documentation files (the
+  "Software"), to deal in the Software without restriction, including
+  without limitation the rights to use, copy, modify, merge, publish,
+  distribute, sublicense, and/or sell copies of the Software, and to
+  permit persons to whom the Software is furnished to do so, subject to
+  the following conditions:
+  .
+  The above copyright notice and this permission notice shall be
+  included in all copies or substantial portions of the Software.
+  .
+  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+  EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+  MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+  NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE
+  LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
+  OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
+  WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+  .
+  ====
+  .
+  Copyright and related rights for sample code are waived via CC0. Sample
+  code is defined as all source code contained within the demos directory.
+  .
+  CC0: http://creativecommons.org/publicdomain/zero/1.0/
+  .
+  ====
+  .
+  All files located in the node_modules and external directories are
+  externally maintained libraries used by this software which have their
+  own licenses; we recommend you read them, as their terms may differ from
+  the terms above.
   .
   .
   .
@@ -2619,503 +3775,52 @@ License:   GPL with Classpath exception
   --- end of LICENSE ---
   .
   ------------------------------------------------------------------------------
-  %% This notice is provided with respect to jQuery UI v1.13.2,
+  %% This notice is provided with respect to Pako v1.0,
   which may be included with JRE 11, JDK 11 and OpenJDK 11
   .
   --- begin of LICENSE ---
   .
-  jQuery UI License
+  Pako License
+  .
+  Copyright (C) 2014-2017 by Vitaly Puzrin and Andrei Tuputcyn
+  .
+  Permission is hereby granted, free of charge, to any person obtaining a copy
+  of this software and associated documentation files (the "Software"), to deal
+  in the Software without restriction, including without limitation the rights
+  to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+  copies of the Software, and to permit persons to whom the Software is
+  furnished to do so, subject to the following conditions:
+  .
+  The above copyright notice and this permission notice shall be included in
+  all copies or substantial portions of the Software.
+  .
+  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+  THE SOFTWARE.
+  (C) 1995-2013 Jean-loup Gailly and Mark Adler
+  (C) 2014-2017 Vitaly Puzrin and Andrey Tupitsin
+  .
+  This software is provided 'as-is', without any express or implied
+  warranty. In no event will the authors be held liable for any damages
+  arising from the use of this software.
+  .
+  Permission is granted to anyone to use this software for any purpose,
+  including commercial applications, and to alter it and redistribute it
+  freely, subject to the following restrictions:
+  .
+  1. The origin of this software must not be misrepresented; you must not
+  claim that you wrote the original software. If you use this software
+  in a product, an acknowledgment in the product documentation would be
+  appreciated but is not required.
+  2. Altered source versions must be plainly marked as such, and must not be
+   misrepresented as being the original software.
+  3. This notice may not be removed or altered from any source distribution.
   .
-  Copyright jQuery Foundation and other contributors, https://jquery.org/
   .
-  This software consists of voluntary contributions made by many
-  individuals. For exact contribution history, see the revision history
-  available at https://github.com/jquery/jquery-ui
-  .
-  The following license applies to all parts of this software except as
-  documented below:
-  .
-  ====
-  .
-  Permission is hereby granted, free of charge, to any person obtaining
-  a copy of this software and associated documentation files (the
-  "Software"), to deal in the Software without restriction, including
-  without limitation the rights to use, copy, modify, merge, publish,
-  distribute, sublicense, and/or sell copies of the Software, and to
-  permit persons to whom the Software is furnished to do so, subject to
-  the following conditions:
-  .
-  The above copyright notice and this permission notice shall be
-  included in all copies or substantial portions of the Software.
-  .
-  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
-  EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
-  MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
-  NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE
-  LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
-  OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
-  WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
-  .
-  ====
-  .
-  Copyright and related rights for sample code are waived via CC0. Sample
-  code is defined as all source code contained within the demos directory.
-  .
-  CC0: http://creativecommons.org/publicdomain/zero/1.0/
-  .
-  ====
-  .
-  All files located in the node_modules and external directories are
-  externally maintained libraries used by this software which have their
-  own licenses; we recommend you read them, as their terms may differ from
-  the terms above.
-  .
-  .
-  .
-  --- end of LICENSE ---
-  .
-  ------------------------------------------------------------------------------
-  %% This notice is provided with respect to IAIK (Institute for Applied Information Processing and Communication) PKCS#11 wrapper files v1,
-  which may be included with JRE 11, JDK 11 and OpenJDK 11
-  .
-  --- begin of LICENSE ---
-  .
-  IAIK License
-  .
-  .
-  Copyright (c) 2002 Graz University of Technology. All rights reserved.
-  .
-  Redistribution and use in source and binary forms, with or without
-  modification, are permitted provided that the following conditions are met:
-  .
-  1. Redistributions of source code must retain the above copyright notice, this
-     list of conditions and the following disclaimer.
-  .
-  2. Redistributions in binary form must reproduce the above copyright notice,
-     this list of conditions and the following disclaimer in the documentation
-     and/or other materials provided with the distribution.
-  .
-  3. The end-user documentation included with the redistribution, if any, must
-     include the following acknowledgment:
-  .
-     "This product includes software developed by IAIK of Graz University of
-      Technology."
-  .
-     Alternately, this acknowledgment may appear in the software itself, if and
-     wherever such third-party acknowledgments normally appear.
-  .
-  4. The names "Graz University of Technology" and "IAIK of Graz University of
-     Technology" must not be used to endorse or promote products derived from this
-     software without prior written permission.
-  .
-  5. Products derived from this software may not be called "IAIK PKCS Wrapper",
-     nor may "IAIK" appear in their name, without prior written permission of
-     Graz University of Technology.
-  .
-  THIS SOFTWARE IS PROVIDED "AS IS" AND ANY EXPRESSED OR IMPLIED WARRANTIES,
-  INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND
-  FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE
-  LICENSOR BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
-  OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF
-  SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS
-  INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN
-  CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
-  ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
-  POSSIBILITY OF SUCH DAMAGE.
-  .
-  .
-  .
-  --- end of LICENSE ---
-  .
-  ------------------------------------------------------------------------------
-  %% This notice is provided with respect to OASIS PKCS #11 Cryptographic Token Interface v3.0,
-  which may be included with JRE 11, JDK 11 and OpenJDK 11
-  .
-  --- begin of LICENSE ---
-  .
-  OASIS PKCS #11 Cryptographic Token Interface License
-  .
-  .
-  Copyright © OASIS Open 2020. All Rights Reserved.
-  .
-      All capitalized terms in the following text have the meanings
-  assigned to them in the OASIS Intellectual Property Rights Policy (the
-  "OASIS IPR Policy"). The full Policy may be found at the OASIS website:
-  [http://www.oasis-open.org/policies-guidelines/ipr]
-  .
-      This document and translations of it may be copied and furnished to
-  others, and derivative works that comment on or otherwise explain it or
-  assist in its implementation may be prepared, copied, published, and
-  distributed, in whole or in part, without restriction of any kind,
-  provided that the above copyright notice and this section are included
-  on all such copies and derivative works. However, this document itself
-  may not be modified in any way, including by removing the copyright
-  notice or references to OASIS, except as needed for the purpose of
-  developing any document or deliverable produced by an OASIS Technical
-  Committee (in which case the rules applicable to copyrights, as set
-  forth in the OASIS IPR Policy, must be followed) or as required to
-  translate it into languages other than English.
-  .
-      The limited permissions granted above are perpetual and will not be
-  revoked by OASIS or its successors or assigns.
-  .
-      This document and the information contained herein is provided on an
-  "AS IS" basis and OASIS DISCLAIMS ALL WARRANTIES, EXPRESS OR IMPLIED,
-  INCLUDING BUT NOT LIMITED TO ANY WARRANTY THAT THE USE OF THE
-  INFORMATION HEREIN WILL NOT INFRINGE ANY OWNERSHIP RIGHTS OR ANY IMPLIED
-  WARRANTIES OF MERCHANTABILITY OR FITNESS FOR A PARTICULAR PURPOSE. OASIS
-  AND ITS MEMBERS WILL NOT BE LIABLE FOR ANY DIRECT, INDIRECT, SPECIAL OR
-  CONSEQUENTIAL DAMAGES ARISING OUT OF ANY USE OF THIS DOCUMENT OR ANY
-  PART THEREOF.
-  .
-      [OASIS requests that any OASIS Party or any other party that
-  believes it has patent claims that would necessarily be infringed by
-  implementations of this OASIS Standards Final Deliverable, to notify
-  OASIS TC Administrator and provide an indication of its willingness to
-  grant patent licenses to such patent claims in a manner consistent with
-  the IPR Mode of the OASIS Technical Committee that produced this
-  deliverable.]
-  .
-      [OASIS invites any party to contact the OASIS TC Administrator if it
-  is aware of a claim of ownership of any patent claims that would
-  necessarily be infringed by implementations of this OASIS Standards
-  Final Deliverable by a patent holder that is not willing to provide a
-  license to such patent claims in a manner consistent with the IPR Mode
-  of the OASIS Technical Committee that produced this OASIS Standards
-  Final Deliverable. OASIS may include such claims on its website, but
-  disclaims any obligation to do so.]
-  .
-      [OASIS takes no position regarding the validity or scope of any
-  intellectual property or other rights that might be claimed to pertain
-  to the implementation or use of the technology described in this OASIS
-  Standards Final Deliverable or the extent to which any license under
-  such rights might or might not be available; neither does it represent
-  that it has made any effort to identify any such rights. Information on
-  OASIS' procedures with respect to rights in any document or deliverable
-  produced by an OASIS Technical Committee can be found on the OASIS
-  website. Copies of claims of rights made available for publication and
-  any assurances of licenses to be made available, or the result of an
-  attempt made to obtain a general license or permission for the use of
-  such proprietary rights by implementers or users of this OASIS Standards
-  Final Deliverable, can be obtained from the OASIS TC Administrator.
-  OASIS makes no representation that any information or list of
-  intellectual property rights will at any time be complete, or that any
-  claims in such list are, in fact, Essential Claims.]
-  .
-  .
-  .
-  --- end of LICENSE ---
-  .
-  ------------------------------------------------------------------------------
-  %% This notice is provided with respect to Apache Xalan v2.7.2,
-  which may be included with JRE 11, JDK 11 and OpenJDK 11
-  .
-  --- begin of LICENSE ---
-  .
-  Apache Xalan Notice
-  .
-  .
-      ======================================================================================
-      ==  NOTICE file corresponding to the section 4d of the Apache License, Version 2.0, ==
-      ==  in this case for the Apache Xalan distribution.                                 ==
-      ======================================================================================
-  .
-     This product includes software developed by
-     The Apache Software Foundation (http://www.apache.org/).
-  .
-     Specifically, we only include the XSLTC portion of the source from the Xalan distribution. 
-     The Xalan project has two processors: an interpretive one (Xalan Interpretive) and a 
-     compiled one (The XSLT Compiler (XSLTC)). We *only* use the XSLTC part of Xalan; We use
-     the source from the packages that are part of the XSLTC sources.
-  .
-     Portions of this software was originally based on the following:
-  .
-       - software copyright (c) 1999-2002, Lotus Development Corporation., http://www.lotus.com.
-       - software copyright (c) 2001-2002, Sun Microsystems., http://www.sun.com.
-       - software copyright (c) 2003, IBM Corporation., http://www.ibm.com.
-       - voluntary contributions made by Ovidiu Predescu (ovidiu@cup.hp.com) on behalf of the
-         Apache Software Foundation and was originally developed at Hewlett Packard Company.
-  .
-  .
-  .
-  Apache 2.0 License: Refer to the copy under /usr/share/common-licenses
-  .
-  .
-  --- end of LICENSE ---
-  .
-  ------------------------------------------------------------------------------
-  %% This notice is provided with respect to CUP Parser Generator for Java v 0.11b,
-  which may be included with JRE 11, JDK 11 and OpenJDK 11
-  .
-  --- begin of LICENSE ---
-  .
-  CUP Parser Generator License
-  .
-  .
-  Copyright 1996-2015 by Scott Hudson, Frank Flannery, C. Scott Ananian, Michael Petter
-  .
-  Permission to use, copy, modify, and distribute this software and its
-  documentation for any purpose and without fee is hereby granted, provided
-  that the above copyright notice appear in all copies and that both
-  the copyright notice and this permission notice and warranty disclaimer
-  appear in supporting documentation, and that the names of the authors or
-  their employers not be used in advertising or publicity pertaining to
-  distribution of the software without specific, written prior permission.
-  .
-  The authors and their employers disclaim all warranties with regard to
-  this software, including all implied warranties of merchantability and
-  fitness. In no event shall the authors or their employers be liable for
-  any special, indirect or consequential damages or any damages whatsoever
-  resulting from loss of use, data or profits, whether in an action of
-  contract, negligence or other tortious action, arising out of or in
-  connection with the use or performance of this software.
-  .
-  ---
-  .
-  This is an open source license. It is also GPL-Compatible (see entry for
-  "Standard ML of New Jersey"). The portions of CUP output which are hard-coded
-  into the CUP source code are (naturally) covered by this same license, as is
-  the CUP runtime code linked with the generated parser.
-  .
-  .
-  .
-  --- end of LICENSE ---
-  .
-  ------------------------------------------------------------------------------
-  %% This notice is provided with respect to Apache Commons Byte Code Engineering Library (BCEL) Version 6.7.0,
-  which may be included with JRE 11, JDK 11 and OpenJDK 11
-  .
-  --- begin of LICENSE ---
-  .
-  Apache Commons BCEL Notice
-  .
-  .
-      Apache Commons BCEL
-      Copyright 2004-2022 The Apache Software Foundation
-  .
-      This product includes software developed at
-      The Apache Software Foundation (https://www.apache.org/).
-  .
-  .
-  .
-  Apache 2.0 License: Refer to the copy under /usr/share/common-licenses
-  .
-  .
-  --- end of LICENSE ---
-  .
-  ------------------------------------------------------------------------------
-  %% This notice is provided with respect to Apache Xerces v2.12.2,
-  which may be included with JRE 11, JDK 11 and OpenJDK 11
-  .
-  --- begin of LICENSE ---
-  .
-  Apache Xerces Notice
-  .
-      =========================================================================
-      == NOTICE file corresponding to section 4(d) of the Apache License,    ==
-      == Version 2.0, in this case for the Apache Xerces Java distribution.  ==
-      =========================================================================
-  .
-      Apache Xerces Java
-      Copyright 1999-2022 The Apache Software Foundation
-  .
-      This product includes software developed at
-      The Apache Software Foundation (http://www.apache.org/).
-  .
-      Portions of this software were originally based on the following:
-      - software copyright (c) 1999, IBM Corporation., http://www.ibm.com.
-      - software copyright (c) 1999, Sun Microsystems., http://www.sun.com.
-      - voluntary contributions made by Paul Eng on behalf of the
-      Apache Software Foundation that were originally developed at iClick, Inc.,
-      software copyright (c) 1999.
-  .
-  .
-  Apache 2.0 License: Refer to the copy under /usr/share/common-licenses
-  .
-  .
-  --- end of LICENSE ---
-  .
-  ------------------------------------------------------------------------------
-  %% This notice is provided with respect to DOM Level 3 Core Specification v1.0,
-  which may be included with JRE 11, JDK 11 and OpenJDK 11
-  .
-  --- begin of LICENSE ---
-  .
-  W3C Software Notice
-  .
-  Copyright © 2004 World Wide Web Consortium, (Massachusetts Institute of Technology,
-  European Research Consortium for Informatics and Mathematics, Keio University).
-  All Rights Reserved.
-  .
-  The DOM bindings are published under the W3C Software Copyright Notice and License.
-  The software license requires "Notice of any changes or modifications to the W3C
-  files, including the date changes were made." Consequently, modified versions of
-  the DOM bindings must document that they do not conform to the W3C standard; in the
-  case of the IDL definitions, the pragma prefix can no longer be 'w3c.org'; in the
-  case of the Java language binding, the package names can no longer be in the
-  'org.w3c' package.
-  .
-  .
-  W3C License
-  .
-  .
-  W3C SOFTWARE NOTICE AND LICENSE
-  .
-  http://www.w3.org/Consortium/Legal/2002/copyright-software-20021231
-  .
-  This work (and included software, documentation such as READMEs, or other
-  related items) is being provided by the copyright holders under the following
-  license. By obtaining, using and/or copying this work, you (the licensee)
-  agree that you have read, understood, and will comply with the following terms
-  and conditions.
-  .
-  Permission to copy, modify, and distribute this software and its
-  documentation, with or without modification, for any purpose and without fee
-  or royalty is hereby granted, provided that you include the following on ALL
-  copies of the software and documentation or portions thereof, including
-  modifications:
-  .
-     1.The full text of this NOTICE in a location viewable to users of the
-     redistributed or derivative work.
-  .
-     2.Any pre-existing intellectual property disclaimers, notices, or terms and
-     conditions. If none exist, the W3C Software Short Notice should be included
-     (hypertext is preferred, text is permitted) within the body of any
-     redistributed or derivative code.
-  .
-     3.Notice of any changes or modifications to the files, including the date
-     changes were made. (We recommend you provide URIs to the location from
-     which the code is derived.)
-  .
-  THIS SOFTWARE AND DOCUMENTATION IS PROVIDED "AS IS," AND COPYRIGHT HOLDERS
-  MAKE NO REPRESENTATIONS OR WARRANTIES, EXPRESS OR IMPLIED, INCLUDING BUT NOT
-  LIMITED TO, WARRANTIES OF MERCHANTABILITY OR FITNESS FOR ANY PARTICULAR
-  PURPOSE OR THAT THE USE OF THE SOFTWARE OR DOCUMENTATION WILL NOT INFRINGE ANY
-  THIRD PARTY PATENTS,COPYRIGHTS, TRADEMARKS OR OTHER RIGHTS.
-  .
-  COPYRIGHT HOLDERS WILL NOT BE LIABLE FOR ANY DIRECT, INDIRECT, SPECIAL
-  OR CONSEQUENTIAL DAMAGES ARISING OUT OF ANY USE OF THE SOFTWARE OR
-  DOCUMENTATION.  The name and trademarks of copyright holders may NOT be used
-  in advertising or publicity pertaining to the software without specific,
-  written prior permission. Title to copyright in this software and any
-  associated documentation will at all times remain with copyright holders.
-  .
-  ____________________________________
-  .
-  This formulation of W3C's notice and license became active on December 31
-  2002. This version removes the copyright ownership notice such that this
-  license can be used with materials other than those owned by the W3C, reflects
-  that ERCIM is now a host of the W3C, includes references to this specific
-  dated version of the license, and removes the ambiguous grant of "use".
-  Otherwise, this version is the same as the previous version and is written so
-  as to preserve the Free Software Foundation's assessment of GPL compatibility
-  and OSI's certification under the Open Source Definition. Please see our
-  Copyright FAQ for common questions about using materials from our site,
-  including specific terms and conditions for packages like libwww, Amaya, and
-  Jigsaw. Other questions about this notice can be directed to
-  site-policy@w3.org.
-  .
-  .
-  .
-  --- end of LICENSE ---
-  .
-  ------------------------------------------------------------------------------
-  %% This notice is provided with respect to JLine v3.22.0,
-  which may be included with JRE 11, JDK 11 and OpenJDK 11
-  .
-  --- begin of LICENSE ---
-  .
-  JLine License
-  .
-  .
-  Copyright (c) 2002-2018, the original author or authors.
-  All rights reserved.
-  .
-  https://opensource.org/licenses/BSD-3-Clause
-  .
-  Redistribution and use in source and binary forms, with or
-  without modification, are permitted provided that the following
-  conditions are met:
-  .
-  Redistributions of source code must retain the above copyright
-  notice, this list of conditions and the following disclaimer.
-  .
-  Redistributions in binary form must reproduce the above copyright
-  notice, this list of conditions and the following disclaimer
-  in the documentation and/or other materials provided with
-  the distribution.
-  .
-  Neither the name of JLine nor the names of its contributors
-  may be used to endorse or promote products derived from this
-  software without specific prior written permission.
-  .
-  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
-  "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING,
-  BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY
-  AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO
-  EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE
-  FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
-  OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,
-  PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
-  DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED
-  AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT
-  LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING
-  IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED
-  OF THE POSSIBILITY OF SUCH DAMAGE.
-  .
-  .
-  4th Party Dependency
-  =============
-  org.fusesource.jansi version 2.4.0
-  org.apache.sshd 2.9.2
-  org.apache.felix.gogo.runtime 1.1.6
-  org.apache.felix.gogo.jline 1.1.8
-  =============
-  Apache 2.0 License: Refer to the copy under /usr/share/common-licenses
-  .
-  .
-  =============
-  juniversalchardet
-  .
-  The library is subject to the Mozilla Public License Version 1.1.
-  .
-  Alternatively, the library may be used under the terms of either the GNU General Public License Version 2 or later, or the GNU Lesser General Public License 2.1 or later.
-  .
-  ================
-  .
-  slf4j
-  .
-  SLF4J source code and binaries are distributed under the MIT license.
-  .
-  .
-  Copyright (c) 2004-2023 QOS.ch
-  All rights reserved.
-  .
-  Permission is hereby granted, free of charge, to any person obtaining
-  a copy of this software and associated documentation files (the
-  "Software"), to deal in the Software without restriction, including
-  without limitation the rights to use, copy, modify, merge, publish,
-  distribute, sublicense, and/or sell copies of the Software, and to
-  permit persons to whom the Software is furnished to do so, subject to
-  the following conditions:
-  .
-  The above copyright notice and this permission notice shall be
-  included in all copies or substantial portions of the Software.
-  .
-  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
-  EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
-  MERCHANTABILITY,   FITNESS   FOR   A  PARTICULAR   PURPOSE   AND
-  NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE
-  LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
-  OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
-  WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
-  .
-  These terms are identical to those of the MIT License, also called the X License
-  or the X11 License, which is a simple, permissive non-copyleft free software license.
-  It is deemed compatible with virtually all types of licenses, commercial or otherwise.
-  In particular, the Free Software Foundation has declared it compatible with GNU GPL.
-  It is also known to be approved by the Apache Software Foundation as compatible with
-  Apache Software License.
   .
   .
   .
@@ -3233,39 +3938,6 @@ License:   GPL with Classpath exception
   --- end of LICENSE ---
   .
   ------------------------------------------------------------------------------
-  %% This notice is provided with respect to JRuby Joni v2.1.16,
-  which may be included with JRE 11, JDK 11 and OpenJDK 11
-  .
-  --- begin of LICENSE ---
-  .
-  MIT License
-  .
-  .
-  Copyright (c) 2017 JRuby Team
-  .
-  Permission is hereby granted, free of charge, to any person obtaining a
-  copy of this software and associated documentation files (the "Software"),
-  to deal in the Software without restriction, including without limitation
-  the rights to use, copy, modify, merge, publish, distribute, sublicense,
-  and/or sell copies of the Software, and to permit persons to whom the
-  Software is furnished to do so, subject to the following conditions:
-  .
-  The above copyright notice and this permission notice shall be included
-  in all copies or substantial portions of the Software.
-  .
-  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS
-  OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-  FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
-  THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR
-  OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE,
-  ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
-  OTHER DEALINGS IN THE SOFTWARE.
-  .
-  .
-  .
-  --- end of LICENSE ---
-  .
-  ------------------------------------------------------------------------------
   %% This notice is provided with respect to Double-conversion v1.1.5,
   which may be included with JRE 11, JDK 11 and OpenJDK 11
   .
@@ -3309,246 +3981,15 @@ License:   GPL with Classpath exception
   --- end of LICENSE ---
   .
   ------------------------------------------------------------------------------
-  %% This notice is provided with respect to Harfbuzz v7.2.0,
+  %% This notice is provided with respect to JRuby Joni v2.1.16,
   which may be included with JRE 11, JDK 11 and OpenJDK 11
   .
   --- begin of LICENSE ---
   .
-  Harfbuzz License
-  .
-  https://github.com/harfbuzz/harfbuzz/blob/7.2.0/COPYING
+  MIT License
   .
   .
-  .
-  HarfBuzz is licensed under the so-called "Old MIT" license.  Details follow.
-  For parts of HarfBuzz that are licensed under different licenses see individual
-  files names COPYING in subdirectories where applicable.
-  .
-  Copyright © 2010-2023  Google, Inc.
-  Copyright © 2018-2020  Ebrahim Byagowi
-  Copyright © 2004-2013  Red Hat, Inc.
-  Copyright © 2019  Facebook, Inc.
-  Copyright © 2007  Chris Wilson
-  Copyright © 2018-2019 Adobe Inc.
-  Copyright © 2006-2023 Behdad Esfahbod
-  Copyright © 1998-2004  David Turner and Werner Lemberg
-  Copyright © 2009  Keith Stribley
-  Copyright © 2018  Khaled Hosny
-  Copyright © 2016  Elie Roux <elie.roux@telecom-bretagne.eu>
-  Copyright © 2016  Igalia S.L.
-  Copyright © 2015  Mozilla Foundation.
-  Copyright © 1999  David Turner
-  Copyright © 2005  Werner Lemberg
-  Copyright © 2013-2015  Alexei Podtelezhnikov
-  Copyright © 2022 Matthias Clasen
-  Copyright © 2011  Codethink Limited
-  .
-  For full copyright notices consult the individual files in the package.
-  .
-  .
-  Permission is hereby granted, without written agreement and without
-  license or royalty fees, to use, copy, modify, and distribute this
-  software and its documentation for any purpose, provided that the
-  above copyright notice and the following two paragraphs appear in
-  all copies of this software.
-  .
-  IN NO EVENT SHALL THE COPYRIGHT HOLDER BE LIABLE TO ANY PARTY FOR
-  DIRECT, INDIRECT, SPECIAL, INCIDENTAL, OR CONSEQUENTIAL DAMAGES
-  ARISING OUT OF THE USE OF THIS SOFTWARE AND ITS DOCUMENTATION, EVEN
-  IF THE COPYRIGHT HOLDER HAS BEEN ADVISED OF THE POSSIBILITY OF SUCH
-  DAMAGE.
-  .
-  THE COPYRIGHT HOLDER SPECIFICALLY DISCLAIMS ANY WARRANTIES, INCLUDING,
-  BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND
-  FITNESS FOR A PARTICULAR PURPOSE.  THE SOFTWARE PROVIDED HEREUNDER IS
-  ON AN "AS IS" BASIS, AND THE COPYRIGHT HOLDER HAS NO OBLIGATION TO
-  PROVIDE MAINTENANCE, SUPPORT, UPDATES, ENHANCEMENTS, OR MODIFICATIONS.
-  .
-  All source code, except for one section, is licensed as above. The one
-  exception is licensed with a slightly different MIT variant:
-  The contents of this directory are licensed under the following terms:
-  .
-  ---------------------------------
-  The below license applies to the following files:
-  libharfbuzz/hb-ucd.cc
-  .
-  Copyright (C) 2012 Grigori Goronzy <greg@kinoho.net>
-  .
-  Permission to use, copy, modify, and/or distribute this software for any
-  purpose with or without fee is hereby granted, provided that the above
-  copyright notice and this permission notice appear in all copies.
-  .
-  THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL WARRANTIES
-  WITH REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF
-  MERCHANTABILITY AND FITNESS. IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR
-  ANY SPECIAL, DIRECT, INDIRECT, OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES
-  WHATSOEVER RESULTING FROM LOSS OF USE, DATA OR PROFITS, WHETHER IN AN
-  ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF
-  OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
-  .
-  .
-  .
-  AUTHORS File Information
-  .
-  .
-  Behdad Esfahbod
-  David Corbett
-  David Turner
-  Ebrahim Byagowi
-  Garret Rieger
-  Jonathan Kew
-  Khaled Hosny
-  Lars Knoll
-  Martin Hosken
-  Owen Taylor
-  Roderick Sheeter
-  Roozbeh Pournader
-  Simon Hausmann
-  Werner Lemberg
-  .
-  .
-  .
-  --- end of LICENSE ---
-  .
-  ------------------------------------------------------------------------------
-  %% This notice is provided with respect to Little Color Management System (LCMS) v2.15,
-  which may be included with JRE 11, JDK 11 and OpenJDK 11
-  .
-  --- begin of LICENSE ---
-  .
-  LCMS License
-  .
-  README.1ST file information
-  .
-  LittleCMS core is released under MIT License
-  .
-  ---------------------------------
-  .
-  Little CMS
-  Copyright (c) 1998-2023 Marti Maria Saguer
-  .
-  Permission is hereby granted, free of charge, to any person obtaining
-  a copy of this software and associated documentation files (the
-  "Software"), to deal in the Software without restriction, including
-  without limitation the rights to use, copy, modify, merge, publish,
-  distribute, sublicense, and/or sell copies of the Software, and to
-  permit persons to whom the Software is furnished to do so, subject
-  to the following conditions:
-  .
-  The above copyright notice and this permission notice shall be
-  included in all copies or substantial portions of the Software.
-  .
-  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
-  EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
-  MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
-  IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY
-  CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT,
-  TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
-  SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
-  .
-  ---------------------------------
-  The below license applies to the following files:
-  liblcms/cmssm.c
-  .
-  Copyright 2001, softSurfer (www.softsurfer.com)
-  .
-  This code may be freely used and modified for any purpose
-  providing that this copyright notice is included with it.
-  SoftSurfer makes no warranty for this code, and cannot be held
-  liable for any real or imagined damage resulting from its use.
-  Users of this code must verify correctness for their application.
-  .
-  .
-  .
-  AUTHORS File Information
-  .
-  .
-  .
-  Main Author
-  ------------
-  Marti Maria
-  .
-  .
-  Contributors
-  ------------
-  Bob Friesenhahn
-  Kai-Uwe Behrmann
-  Stuart Nixon
-  Jordi Vilar
-  Richard Hughes
-  Auke Nauta
-  Chris Evans (Google)
-  Lorenzo Ridolfi
-  Robin Watts (Artifex)
-  Shawn Pedersen
-  Andrew Brygin
-  Samuli Suominen
-  Florian Hˆch
-  Aurelien Jarno
-  Claudiu Cebuc
-  Michael Vhrel (Artifex)
-  Michal Cihar
-  Daniel Kaneider
-  Mateusz Jurczyk (Google)
-  Paul Miller
-  SÈbastien LÈon
-  Christian Schmitz
-  XhmikosR
-  Stanislav Brabec (SuSe)
-  Leonhard Gruenschloss (Google)
-  Patrick Noffke
-  Christopher James Halse Rogers
-  John Hein
-  Thomas Weber (Debian)
-  Mark Allen
-  Noel Carboni
-  Sergei Trofimovic
-  Philipp Knechtges
-  Amyspark
-  Lovell Fuller
-  Eli Schwartz
-  .
-  Special Thanks
-  --------------
-  Artifex software
-  AlienSkin software
-  libVIPS
-  Jan Morovic
-  Jos Vernon (WebSupergoo)
-  Harald Schneider (Maxon)
-  Christian Albrecht
-  Dimitrios Anastassakis
-  Lemke Software
-  Tim Zaman
-  .
-  .
-  .
-  --- end of LICENSE ---
-  .
-  ------------------------------------------------------------------------------
-  %% This notice is provided with respect to Eastman Kodak Company: Portions of color management and imaging software,
-  which may be included with JRE 11, JDK 11 and OpenJDK 11
-  .
-  --- begin of LICENSE ---
-  .
-  Eastman Kodak Notice
-  .
-  Portions Copyright Eastman Kodak Company 1991-2003
-  .
-  .
-  .
-  --- end of LICENSE ---
-  .
-  ------------------------------------------------------------------------------
-  %% This notice is provided with respect to Mesa 3-D Graphics Library v21.0.3,
-  which may be included with JRE 11, JDK 11 and OpenJDK 11
-  .
-  --- begin of LICENSE ---
-  .
-  Mesa License
-  .
-  .
-  Copyright (C) 1999-2007  Brian Paul   All Rights Reserved.
+  Copyright (c) 2017 JRuby Team
   .
   Permission is hereby granted, free of charge, to any person obtaining a
   copy of this software and associated documentation files (the "Software"),
@@ -3559,501 +4000,6 @@ License:   GPL with Classpath exception
   .
   The above copyright notice and this permission notice shall be included
   in all copies or substantial portions of the Software.
-  .
-  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS
-  OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-  FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.  IN NO EVENT SHALL
-  THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-  SOFTWARE.
-  .
-  Attention, Contributors
-  .
-  When contributing to the Mesa project you must agree to the licensing terms
-  of the component to which you're contributing.
-  The following section lists the primary components of the Mesa distribution
-  and their respective licenses.
-  Mesa Component Licenses
-  .
-  .
-  .
-  Component         Location               License
-  ------------------------------------------------------------------
-  Main Mesa code    src/mesa/              MIT
-  Device drivers    src/mesa/drivers/*     MIT, generally
-  .
-  Gallium code      src/gallium/           MIT
-  .
-  Ext headers       GL/glext.h             Khronos
-                    GL/glxext.h            Khronos
-                    GL/wglext.h            Khronos
-                    KHR/khrplatform.h      Khronos
-  .
-  *****************************************************************************
-  .
-  ----
-  include/GL/gl.h :
-  .
-  .
-   Mesa 3-D graphics library
-  .
-   Copyright (C) 1999-2006  Brian Paul   All Rights Reserved.
-   Copyright (C) 2009  VMware, Inc.  All Rights Reserved.
-  .
-   Permission is hereby granted, free of charge, to any person obtaining a
-   copy of this software and associated documentation files (the "Software"),
-   to deal in the Software without restriction, including without limitation
-   the rights to use, copy, modify, merge, publish, distribute, sublicense,
-   and/or sell copies of the Software, and to permit persons to whom the
-   Software is furnished to do so, subject to the following conditions:
-  .
-   The above copyright notice and this permission notice shall be included
-   in all copies or substantial portions of the Software.
-  .
-   THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS
-   OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-   FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.  IN NO EVENT SHALL
-   THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR
-   OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE,
-   ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
-   OTHER DEALINGS IN THE SOFTWARE.
-  .
-   *****************************************************************************
-  .
-  ----
-  include/GL/glext.h
-  include/GL/glxext.h
-  include/GL/wglxext.h :
-  .
-  .
-   Copyright (c) 2013 - 2018 The Khronos Group Inc.
-  .
-   Permission is hereby granted, free of charge, to any person obtaining a
-   copy of this software and/or associated documentation files (the
-   "Materials"), to deal in the Materials without restriction, including
-   without limitation the rights to use, copy, modify, merge, publish,
-   distribute, sublicense, and/or sell copies of the Materials, and to
-   permit persons to whom the Materials are furnished to do so, subject to
-   the following conditions:
-  .
-   The above copyright notice and this permission notice shall be included
-   in all copies or substantial portions of the Materials.
-  .
-   THE MATERIALS ARE PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
-   EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
-   MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
-   IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY
-   CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT,
-   TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
-   MATERIALS OR THE USE OR OTHER DEALINGS IN THE MATERIALS.
-  .
-   *****************************************************************************
-  .
-  ----
-  include/KHR/khrplatform.h :
-  .
-   Copyright (c) 2008 - 2018 The Khronos Group Inc.
-  .
-   Permission is hereby granted, free of charge, to any person obtaining a
-   copy of this software and/or associated documentation files (the
-   "Materials"), to deal in the Materials without restriction, including
-   without limitation the rights to use, copy, modify, merge, publish,
-   distribute, sublicense, and/or sell copies of the Materials, and to
-   permit persons to whom the Materials are furnished to do so, subject to
-   the following conditions:
-  .
-   The above copyright notice and this permission notice shall be included
-   in all copies or substantial portions of the Materials.
-  .
-   THE MATERIALS ARE PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
-   EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
-   MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
-   IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY
-   CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT,
-   TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
-   MATERIALS OR THE USE OR OTHER DEALINGS IN THE MATERIALS.
-  .
-   *****************************************************************************
-  .
-  .
-  .
-  --- end of LICENSE ---
-  .
-  ------------------------------------------------------------------------------
-  %% This notice is provided with respect to The FreeType Project: Freetype v2.13.0,
-  which may be included with JRE 11, JDK 11 and OpenJDK 11
-  .
-  --- begin of LICENSE ---
-  .
-  .
-  FreeType Notice
-  .
-  .
-  FreeType comes with two licenses from which you can choose the one
-  which fits your needs best.
-  .
-      The FreeType License (FTL) is the most commonly used one. It is
-      a BSD-style license with a credit clause and thus compatible with
-      the GNU Public License (GPL) version 3, but not with the
-      GPL version 2.
-  .
-      The GNU General Public License (GPL), version 2. Use it for all
-      projects which use the GPLv2 also, or which need a license
-      compatible to the GPLv2.
-  .
-  .
-  .
-  FreeType License
-  .
-  .
-  Copyright (C) 1996-2023 by David Turner, Robert Wilhelm, and Werner Lemberg.
-  Copyright (C) 2007-2023 by Dereg Clegg and Michael Toftdal.
-  Copyright (C) 1996-2023 by Just van Rossum, David Turner, Robert Wilhelm, and Werner Lemberg.
-  Copyright (C) 2022-2023 by David Turner, Robert Wilhelm, Werner Lemberg, George Williams, and
-  Copyright (C) 2004-2023 by Masatake YAMATO and Redhat K.K.
-  Copyright (C) 2007-2023 by Derek Clegg and Michael Toftdal.
-  Copyright (C) 2003-2023 by Masatake YAMATO, Red Hat K.K.,
-  Copyright (C) 1996-2023 by David Turner, Robert Wilhelm, Werner Lemberg, and Dominik Röttsches.
-  Copyright (C) 2007-2023 by David Turner.
-  Copyright (C) 2022-2023 by David Turner, Robert Wilhelm, Werner Lemberg, and Moazin Khatti.
-  Copyright (C) 2007-2023 by Rahul Bhalerao <rahul.bhalerao@redhat.com>, <b.rahul.pm@gmail.com>.
-  Copyright (C) 2008-2023 by David Turner, Robert Wilhelm, Werner Lemberg, and suzuki toshiya.
-  Copyright (C) 2013-2023 by Google, Inc.
-  Copyright (C) 2019-2023 by Nikhil Ramakrishnan, David Turner, Robert Wilhelm, and Werner Lemberg.
-  Copyright (C) 2009-2023 by Oran Agra and Mickey Gabel.
-  Copyright (C) 2018-2023 by David Turner, Robert Wilhelm, Dominik Röttsches, and Werner Lemberg.
-  Copyright (C) 2004-2023 by David Turner, Robert Wilhelm, Werner Lemberg, and George Williams.
-  .
-  .
-                      The FreeType Project LICENSE
-                      ----------------------------
-  .
-                              2006-Jan-27
-  .
-                      Copyright 1996-2002, 2006 by
-            David Turner, Robert Wilhelm, and Werner Lemberg
-  .
-  .
-  .
-  Introduction
-  ============
-  .
-    The FreeType  Project is distributed in  several archive packages;
-    some of them may contain, in addition to the FreeType font engine,
-    various tools and  contributions which rely on, or  relate to, the
-    FreeType Project.
-  .
-    This  license applies  to all  files found  in such  packages, and
-    which do not  fall under their own explicit  license.  The license
-    affects  thus  the  FreeType   font  engine,  the  test  programs,
-    documentation and makefiles, at the very least.
-  .
-    This  license   was  inspired  by  the  BSD,   Artistic,  and  IJG
-    (Independent JPEG  Group) licenses, which  all encourage inclusion
-    and  use of  free  software in  commercial  and freeware  products
-    alike.  As a consequence, its main points are that:
-  .
-      o We don't promise that this software works. However, we will be
-        interested in any kind of bug reports. (`as is' distribution)
-  .
-      o You can  use this software for whatever you  want, in parts or
-        full form, without having to pay us. (`royalty-free' usage)
-  .
-      o You may not pretend that  you wrote this software.  If you use
-        it, or  only parts of it,  in a program,  you must acknowledge
-        somewhere  in  your  documentation  that  you  have  used  the
-        FreeType code. (`credits')
-  .
-    We  specifically  permit  and  encourage  the  inclusion  of  this
-    software, with  or without modifications,  in commercial products.
-    We  disclaim  all warranties  covering  The  FreeType Project  and
-    assume no liability related to The FreeType Project.
-  .
-  .
-    Finally,  many  people  asked  us  for  a  preferred  form  for  a
-    credit/disclaimer to use in compliance with this license.  We thus
-    encourage you to use the following text:
-  .
-     """
-      Portions of this software are copyright © <year> The FreeType
-      Project (www.freetype.org).  All rights reserved.
-     """
-  .
-    Please replace <year> with the value from the FreeType version you
-    actually use.
-  .
-  .
-  Legal Terms
-  ===========
-  .
-  0. Definitions
-  --------------
-  .
-    Throughout this license,  the terms `package', `FreeType Project',
-    and  `FreeType  archive' refer  to  the  set  of files  originally
-    distributed  by the  authors  (David Turner,  Robert Wilhelm,  and
-    Werner Lemberg) as the `FreeType Project', be they named as alpha,
-    beta or final release.
-  .
-    `You' refers to  the licensee, or person using  the project, where
-    `using' is a generic term including compiling the project's source
-    code as  well as linking it  to form a  `program' or `executable'.
-    This  program is  referred to  as  `a program  using the  FreeType
-    engine'.
-  .
-    This  license applies  to all  files distributed  in  the original
-    FreeType  Project,   including  all  source   code,  binaries  and
-    documentation,  unless  otherwise  stated   in  the  file  in  its
-    original, unmodified form as  distributed in the original archive.
-    If you are  unsure whether or not a particular  file is covered by
-    this license, you must contact us to verify this.
-  .
-    The FreeType  Project is copyright (C) 1996-2000  by David Turner,
-    Robert Wilhelm, and Werner Lemberg.  All rights reserved except as
-    specified below.
-  .
-  1. No Warranty
-  --------------
-  .
-    THE FREETYPE PROJECT  IS PROVIDED `AS IS' WITHOUT  WARRANTY OF ANY
-    KIND, EITHER  EXPRESS OR IMPLIED,  INCLUDING, BUT NOT  LIMITED TO,
-    WARRANTIES  OF  MERCHANTABILITY   AND  FITNESS  FOR  A  PARTICULAR
-    PURPOSE.  IN NO EVENT WILL ANY OF THE AUTHORS OR COPYRIGHT HOLDERS
-    BE LIABLE  FOR ANY DAMAGES CAUSED  BY THE USE OR  THE INABILITY TO
-    USE, OF THE FREETYPE PROJECT.
-  .
-  2. Redistribution
-  -----------------
-  .
-    This  license  grants  a  worldwide, royalty-free,  perpetual  and
-    irrevocable right  and license to use,  execute, perform, compile,
-    display,  copy,   create  derivative  works   of,  distribute  and
-    sublicense the  FreeType Project (in  both source and  object code
-    forms)  and  derivative works  thereof  for  any  purpose; and  to
-    authorize others  to exercise  some or all  of the  rights granted
-    herein, subject to the following conditions:
-  .
-      o Redistribution of  source code  must retain this  license file
-        (`FTL.TXT') unaltered; any  additions, deletions or changes to
-        the original  files must be clearly  indicated in accompanying
-        documentation.   The  copyright   notices  of  the  unaltered,
-        original  files must  be  preserved in  all  copies of  source
-        files.
-  .
-      o Redistribution in binary form must provide a  disclaimer  that
-        states  that  the software is based in part of the work of the
-        FreeType Team,  in  the  distribution  documentation.  We also
-        encourage you to put an URL to the FreeType web page  in  your
-        documentation, though this isn't mandatory.
-  .
-    These conditions  apply to any  software derived from or  based on
-    the FreeType Project,  not just the unmodified files.   If you use
-    our work, you  must acknowledge us.  However, no  fee need be paid
-    to us.
-  .
-  3. Advertising
-  --------------
-  .
-    Neither the  FreeType authors and  contributors nor you  shall use
-    the name of the  other for commercial, advertising, or promotional
-    purposes without specific prior written permission.
-  .
-    We suggest,  but do not require, that  you use one or  more of the
-    following phrases to refer  to this software in your documentation
-    or advertising  materials: `FreeType Project',  `FreeType Engine',
-    `FreeType library', or `FreeType Distribution'.
-  .
-    As  you have  not signed  this license,  you are  not  required to
-    accept  it.   However,  as  the FreeType  Project  is  copyrighted
-    material, only  this license, or  another one contracted  with the
-    authors, grants you  the right to use, distribute,  and modify it.
-    Therefore,  by  using,  distributing,  or modifying  the  FreeType
-    Project, you indicate that you understand and accept all the terms
-    of this license.
-  .
-  4. Contacts
-  -----------
-  .
-    There are two mailing lists related to FreeType:
-  .
-      o freetype@nongnu.org
-  .
-        Discusses general use and applications of FreeType, as well as
-        future and  wanted additions to the  library and distribution.
-        If  you are looking  for support,  start in  this list  if you
-        haven't found anything to help you in the documentation.
-  .
-      o freetype-devel@nongnu.org
-  .
-        Discusses bugs,  as well  as engine internals,  design issues,
-        specific licenses, porting, etc.
-  .
-    Our home page can be found at
-  .
-      https://www.freetype.org
-  .
-  .
-  .
-  GPL v2: Refer to the copy under /usr/share/common-licenses
-  .
-  Additional Freetype Attributions
-  .
-  .
-  ---------------------------------
-  The below license applies to the following files:
-  libfreetype/src/psaux/psarrst.c
-  libfreetype/src/psaux/psarrst.h
-  libfreetype/src/psaux/psblues.c
-  libfreetype/src/psaux/psblues.h
-  libfreetype/src/psaux/pserror.c
-  libfreetype/src/psaux/pserror.h
-  libfreetype/src/psaux/psfixed.h
-  libfreetype/src/psaux/psfont.c
-  libfreetype/src/psaux/psfont.h
-  libfreetype/src/psaux/psft.c
-  libfreetype/src/psaux/psft.h
-  libfreetype/src/psaux/psglue.h
-  libfreetype/src/psaux/pshints.c
-  libfreetype/src/psaux/pshints.h
-  libfreetype/src/psaux/psintrp.c
-  libfreetype/src/psaux/psintrp.h
-  libfreetype/src/psaux/psread.c
-  libfreetype/src/psaux/psread.h
-  libfreetype/src/psaux/psstack.c
-  libfreetype/src/psaux/psstack.h
-  libfreetype/src/psaux/pstypes.h
-  .
-  Copyright 2006-2014 Adobe Systems Incorporated.
-  .
-  This software, and all works of authorship, whether in source or
-  object code form as indicated by the copyright notice(s) included
-  herein (collectively, the "Work") is made available, and may only be
-  used, modified, and distributed under the FreeType Project License,
-  LICENSE.TXT.  Additionally, subject to the terms and conditions of the
-  FreeType Project License, each contributor to the Work hereby grants
-  to any individual or legal entity exercising permissions granted by
-  the FreeType Project License and this section (hereafter, "You" or
-  "Your") a perpetual, worldwide, non-exclusive, no-charge,
-  royalty-free, irrevocable (except as stated in this section) patent
-  license to make, have made, use, offer to sell, sell, import, and
-  otherwise transfer the Work, where such license applies only to those
-  patent claims licensable by such contributor that are necessarily
-  infringed by their contribution(s) alone or by combination of their
-  contribution(s) with the Work to which such contribution(s) was
-  submitted.  If You institute patent litigation against any entity
-  (including a cross-claim or counterclaim in a lawsuit) alleging that
-  the Work or a contribution incorporated within the Work constitutes
-  direct or contributory patent infringement, then any patent licenses
-  granted to You under this License for that Work shall terminate as of
-  the date such litigation is filed.
-  .
-  By using, modifying, or distributing the Work you indicate that you
-  have read and understood the terms and conditions of the
-  FreeType Project License as well as those provided in this section,
-  and you accept them fully.
-  .
-  .
-  .
-  .
-  MIT License
-  .
-  .
-  ---------------------------------
-  The below license applies to the following files:
-  libfreetype/include/freetype/internal/fthash.h
-  libfreetype/src/base/fthash.c
-  .
-  Copyright 2000 Computing Research Labs, New Mexico State University
-  Copyright 2001-2015
-  .
-    Francesco Zappa Nardelli
-  .
-  Permission is hereby granted, free of charge, to any person obtaining a
-  copy of this software and associated documentation files (the "Software"),
-  to deal in the Software without restriction, including without limitation
-  the rights to use, copy, modify, merge, publish, distribute, sublicense,
-  and/or sell copies of the Software, and to permit persons to whom the
-  Software is furnished to do so, subject to the following conditions:
-  .
-  The above copyright notice and this permission notice shall be included in
-  all copies or substantial portions of the Software.
-  .
-  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-  FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.  IN NO EVENT SHALL
-  THE COMPUTING RESEARCH LAB OR NEW MEXICO STATE UNIVERSITY BE LIABLE FOR ANY
-  CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT
-  OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR
-  THE USE OR OTHER DEALINGS IN THE SOFTWARE.
-  .
-  .
-  .
-  .
-  --- end of LICENSE ---
-  .
-  ------------------------------------------------------------------------------
-  %% This notice is provided with respect to xwd v1.0.7,
-  which may be included with JRE 11, JDK 11 and OpenJDK 11
-  .
-  --- begin of LICENSE ---
-  .
-  xwd utility
-  .
-  .
-  This is the copyright for the files in src/java.desktop/unix/native/libawt_xawt:
-  list.h, multiVis.h, wsutils.h, list.c, multiVis.c
-  .
-  Copyright 1994 Hewlett-Packard Co.
-  Copyright 1996, 1998  The Open Group
-  .
-  Permission to use, copy, modify, distribute, and sell this software and its
-  documentation for any purpose is hereby granted without fee, provided that
-  the above copyright notice appear in all copies and that both that
-  copyright notice and this permission notice appear in supporting
-  documentation.
-  .
-  The above copyright notice and this permission notice shall be included
-  in all copies or substantial portions of the Software.
-  .
-  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS
-  OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
-  MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
-  IN NO EVENT SHALL THE OPEN GROUP BE LIABLE FOR ANY CLAIM, DAMAGES OR
-  OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE,
-  ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
-  OTHER DEALINGS IN THE SOFTWARE.
-  .
-  Except as contained in this notice, the name of The Open Group shall
-  not be used in advertising or otherwise to promote the sale, use or
-  other dealings in this Software without prior written authorization
-  from The Open Group.
-  .
-  .
-  .
-  --- end of LICENSE ---
-  .
-  ------------------------------------------------------------------------------
-  %% This notice is provided with respect to jopt-simple v5.0.4,
-  which may be included with JRE 11, JDK 11 and OpenJDK 11
-  .
-  --- begin of LICENSE ---
-  .
-  MIT License
-  .
-  .
-  Copyright (c) 2004-2015 Paul R. Holser, Jr.
-  .
-  Permission is hereby granted, free of charge, to any person obtaining
-  a copy of this software and associated documentation files (the
-  "Software"), to deal in the Software without restriction, including
-  without limitation the rights to use, copy, modify, merge, publish,
-  distribute, sublicense, and/or sell copies of the Software, and to
-  permit persons to whom the Software is furnished to do so, subject to
-  the following conditions:
-  .
-  The above copyright notice and this permission notice shall be
-  included in all copies or substantial portions of the Software.
   .
   THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS
   OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
