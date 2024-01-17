@@ -21,6 +21,7 @@ openjdk-17 (17.0.10+7-1) UNRELEASED; urgency=high
   [ Vladimir Petko ]
   * d/t/jtreg-autopkgtest.sh: Regenerate test script.
   * Generate d/watch to cope with early access and release builds.
+  * d/rules: Trim trailing whitespaces from debian/control.
 
   [ Matthias Klose ]
   * Build again zero on amd64 (accidental change in 6ea-1).
