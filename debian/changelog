@@ -1,4 +1,4 @@
-openjdk-17 (17.0.10+7-1) UNRELEASED; urgency=high
+openjdk-17 (17.0.10+7-1) unstable; urgency=high
 
   * OpenJDK 17.0.10 release, build 7.
     - CVEs:
@@ -29,7 +29,7 @@ openjdk-17 (17.0.10+7-1) UNRELEASED; urgency=high
   [ Pushkar Kulkarni ]
   * Minor improvements to the copyright-generator.
 
- -- Matthias Klose <doko@ubuntu.com>  Wed, 17 Jan 2024 11:44:39 +0100
+ -- Matthias Klose <doko@ubuntu.com>  Wed, 17 Jan 2024 12:09:47 +0100
 
 openjdk-17 (17.0.10~6ea-1) unstable; urgency=medium
 
