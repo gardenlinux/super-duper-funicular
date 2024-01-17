@@ -914,7 +914,7 @@ gen-autopkgtests: debian/tests/jtdiff-autopkgtest.sh debian/tests/jtreg-autopkgt
 
 packaging-files:
 	for f in debian/*.in; do \
-	  case "$$f" in debian/control.in) continue; esac; \
+	  case "$$f" in debian/control.in|debian/watch.in) continue; esac; \
 	  f2=$$(echo $$f | sed 's/JB/$(basename)/;s/\.in$$//'); \
 	  sed -e 's/@JRE@/$(p_jre)/g' \
 	      -e 's/@JDK@/$(p_jdk)/g' \
@@ -1872,12 +1872,10 @@ endif
 	NO_PKG_MANGLE=1 \
 	dh_builddeb -a $(nodemo) $(nojrez) #$(bd_options)
 
-#is_release		= yes
-is_release		=
 git_project		= jdk
 git_tag			= jdk-23+5
 package_version		= $(shell echo $(PKGVERSION) | sed 's/-[^-][^-]*$$//')
-ifneq ($(is_release),yes)
+ifneq ($(is_upstream_release),yes)
   package_version	:= $(subst +,~,$(package_version))
 endif
 git_url			= https://github.com/openjdk/$(git_project)
@@ -1895,8 +1893,8 @@ debian/watch: debian/watch.in debian/rules
 		-e 's|@shortver@|$(shortver)|g' \
 		debian/watch.in > debian/watch
 # disable version mangling for the release version
-ifeq ($(is_release),yes)
-	sed -ie 's|repack.*\\|repack,\\|g' debian/watch
+ifeq ($(is_upstream_release),yes)
+	sed -i 's|repack.*\\|repack,\\|g' debian/watch
 endif
 
 get-gtest:
