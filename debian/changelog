@@ -1,4 +1,6 @@
-openjdk-22 (22~30ea-2) unstable; urgency=medium
+openjdk-22 (22~31ea-1) unstable; urgency=medium
+
+  * OpenJDK 22 snapshot, Build 31.
 
   [ Matthias Klose ]
   * Don't try to install jhsdb on armhf with a zero-only build.
