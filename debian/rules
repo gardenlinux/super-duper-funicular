@@ -899,7 +899,7 @@ debian/control: debian/control.in debian/tests/control debian/rules debian/watch
 	    $(if $(altzero_archs), debian/control.zero-jre) \
 	    $(if $(DEB_HOST_MULTIARCH),,| grep -v '^Multi-Arch') \
 		> debian/control
-	sed -ie 's/[[:blank:]]*$$//' debian/control
+	sed -i 's/[[:blank:]]*$$//' debian/control
 	@if cmp -s debian/control debian/control.old; then \
 	  rm -f debian/control.old; \
 	else \
@@ -1886,12 +1886,10 @@ endif
 	NO_PKG_MANGLE=1 \
 	dh_builddeb -a $(nodemo) $(nojrez) #$(bd_options)
 
-is_release		= yes
-#is_release		=
 git_project		= jdk21u
 git_tag			= jdk-21.0.2+13
 package_version		= $(shell echo $(PKGVERSION) | sed 's/-[^-][^-]*$$//')
-ifneq ($(is_release),yes)
+ifneq ($(is_upstream_release),yes)
   package_version	:= $(subst +,~,$(package_version))
 endif
 git_url			= https://github.com/openjdk/$(git_project)
@@ -1909,7 +1907,7 @@ debian/watch: debian/watch.in debian/rules
 		-e 's|@shortver@|$(shortver)|g' \
 		debian/watch.in > debian/watch
 # disable version mangling for the release version
-ifeq ($(is_release),yes)
+ifeq ($(is_upstream_release),yes)
 	sed -i 's|repack.*\\|repack,\\|g' debian/watch
 endif
 

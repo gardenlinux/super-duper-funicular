@@ -1,6 +1,19 @@
-openjdk-21 (21.0.2+13-1) unstable; urgency=medium
+openjdk-21 (21.0.2+13-1) unstable; urgency=high
 
   * OpenJDK 21.0.2 release, build 13.
+    - CVEs:
+      + CVE-2024-20918
+      + CVE-2024-20919
+      + CVE-2024-20921
+      + CVE-2024-20945
+      + CVE-2024-20952
+    - Security fixes:
+      + JDK-8308204: Enhanced certificate processing.
+      + JDK-8314295: Enhance verification of verifier.
+      + JDK-8314307: Improve loop handling.
+      + JDK-8314468: Improve Compiler loops.
+      + JDK-8316976: Improve signature handling.
+      + JDK-8317547: Enhance TLS connection support.
 
   [ Pushkar Kulkarni ]
   * debian/copyright: Fix whitespace issues.
@@ -14,8 +27,9 @@ openjdk-21 (21.0.2+13-1) unstable; urgency=medium
   * Add sparc64 defines (patch by Adrian Glaubitz). Closes: #1057390.
   * d/copyright: Fix source location.
   * Update the arch-add-ports patch, taken from 22.
+  * Regenerate debian files.
 
- -- Matthias Klose <doko@ubuntu.com>  Wed, 17 Jan 2024 11:20:07 +0100
+ -- Matthias Klose <doko@ubuntu.com>  Wed, 17 Jan 2024 13:14:57 +0100
 
 openjdk-21 (21.0.1+12-2) unstable; urgency=medium
 
