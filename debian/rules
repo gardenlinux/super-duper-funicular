@@ -1924,7 +1924,7 @@ debian/watch: debian/watch.in debian/rules
 		debian/watch.in > debian/watch
 # disable version mangling for the release version
 ifeq ($(is_release),yes)
-	sed -ie 's|repack.*\\|repack,\\|g' debian/watch
+	sed -i 's|repack.*\\|repack,\\|g' debian/watch
 endif
 
 get-gtest:
