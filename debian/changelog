@@ -1,6 +1,20 @@
 openjdk-11 (11.0.22+7-1) unstable; urgency=high
 
   * OpenJDK 11.0.22 release, build 7.
+    - CVEs:
+      + CVE-2024-20918
+      + CVE-2024-20919
+      + CVE-2024-20921
+      + CVE-2024-20945
+      + CVE-2024-20952
+    - Security fixes:
+      + JDK-8308204: Enhanced certificate processing.
+      + JDK-8314295: Enhance verification of verifier.
+      + JDK-8314307: Improve loop handling.
+      + JDK-8314468: Improve Compiler loops.
+      + JDK-8316976: Improve signature handling.
+      + JDK-8317547: Enhance TLS connection support.
+      + JDK-8314284: Enhance Nashorn performance (CVE-2024-20926).
 
   [ Vladimir Petko ]
   * Generate d/watch to cope with early access and release builds.
