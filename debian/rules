@@ -1871,12 +1871,10 @@ endif
 	NO_PKG_MANGLE=1 \
 	dh_builddeb -a $(nodemo) $(nojrez) #$(bd_options)
 
-#is_release		= yes
-is_release		=
 git_project		= jdk22u
 git_tag			= jdk-22+30
 package_version		= $(shell echo $(PKGVERSION) | sed 's/-[^-][^-]*$$//')
-ifneq ($(is_release),yes)
+ifneq ($(is_upstream_release),yes)
   package_version	:= $(subst +,~,$(package_version))
 endif
 git_url			= https://github.com/openjdk/$(git_project)
@@ -1894,8 +1892,8 @@ debian/watch: debian/watch.in debian/rules
 		-e 's|@shortver@|$(shortver)|g' \
 		debian/watch.in > debian/watch
 # disable version mangling for the release version
-ifeq ($(is_release),yes)
-	sed -ie 's|repack.*\\|repack,\\|g' debian/watch
+ifeq ($(is_upstream_release),yes)
+	sed -i 's|repack.*\\|repack,\\|g' debian/watch
 endif
 
 get-gtest:
