@@ -11,12 +11,12 @@ openjdk-17 (17.0.10+7-1) unstable; urgency=high
     - Security fixes:
       + JDK-8276123, JDK-8316613: ZipFile::getEntry will not return a file entry
         when there is a directory entry of the same name within a Zip File.
-      + JDK-8308204: Enhanced certificate processing
-      + JDK-8314295: Enhance verification of verifier
-      + JDK-8314307: Improve loop handling
-      + JDK-8314468: Improve Compiler loops
-      + JDK-8316976: Improve signature handling
-      + JDK-8317547: Enhance TLS connection support
+      + JDK-8308204: Enhanced certificate processing.
+      + JDK-8314295: Enhance verification of verifier.
+      + JDK-8314307: Improve loop handling.
+      + JDK-8314468: Improve Compiler loops.
+      + JDK-8316976: Improve signature handling.
+      + JDK-8317547: Enhance TLS connection support.
 
   [ Vladimir Petko ]
   * d/t/jtreg-autopkgtest.sh: Regenerate test script.
