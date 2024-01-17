@@ -1,0 +1,46 @@
+Running regression tests
+------------------------
+
+Unpack openjdk-N-source package and install the openjdk-N-testsupport
+package.
+
+Change directory to the source package and execute:
+
+  ./debian/tests/jtreg-autopkgtest.sh <testsuite> <jtreg options>
+
+to run regression tests.  See the jtreg manual page for the overview of
+jtreg options.
+
+More information is available in OpenJDK documentation[1] and OpenJDK
+developer guide[2].
+
+
+Running hotspot regression tests
+--------------------------------
+
+Hotspot regression tests require testsuite package binaries to run
+successfully.
+
+Change directory to the source package and execute:
+
+  ./debian/tests/jtreg-autopkgtest.sh hotspot \
+    -dir:test/hotspot/jtreg \
+    -nativepath:$JAVA_HOME/hotspot/jtreg/native \
+    <jtreg options>
+
+
+Running jdk regression tests
+----------------------------
+
+Hotspot regression tests require testsuite package binaries to run successfully.
+
+Change directory to the source package and execute:
+
+  ./debian/tests/jtreg-autopkgtest.sh jdk \
+    -dir test/jdk \
+    -nativepath:$JAVA_HOME/testsuite/jdk/jtreg/native \
+    <jtreg options>
+
+
+[1] https://openjdk.org/groups/build/doc/testing.html
+[2] https://openjdk.org/guide/#jtreg

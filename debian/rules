@@ -128,20 +128,24 @@ ifneq (,$(DEB_HOST_MULTIARCH))
   commonbasedir	= $(TOP)/java-$(shortver)-$(origin)-common
   commonbasedir	= $(basedir)
   etcdir	= etc/java-$(shortver)-$(origin)
+  testsuitedir	=	$(basedir)/testsuite
 else
   jdirname	= java-$(shortver)-$(origin)
   jdiralias	= java-$(jvmver)-$(origin)
   basedir	= $(TOP)/$(jdirname)
   commonbasedir	= $(TOP)/java-$(shortver)-$(origin)
   etcdir	= etc/$(jdirname)
+  testsuitedir	=	$(basedir)/testsuite
 endif
 security	= $(etcdir)/security
 ifeq ($(bootcycle_build),yes)
   sdkimg	= bootcycle-build/images/jdk
   build_target	= bootcycle-images test-image
+  testimg	= images/test
 else
   sdkimg	= images/jdk
   build_target	= images test-image
+  testimg	= images/test
 endif
 ifeq ($(zbootcycle_build),yes)
   zsdkimg	= bootcycle-build/images/jdk
@@ -197,6 +201,7 @@ default_vm = $(if $(filter $(DEB_HOST_ARCH), $(hotspot_archs)),hotspot,zero)
 any_archs = alpha amd64 arc armel armhf arm64 hppa i386 ia64 loong64 mips mipsel mips64 mips64el powerpc ppc64 ppc64el m68k riscv64 sh4 sparc sparc64 s390x x32
 
 altzero_archs = $(hotspot_archs)
+altzero_archs := $(filter-out amd64, $(altzero_archs))
 ifneq (,$(filter $(distrel),trusty))
   altzero_archs := $(filter-out arm64, $(altzero_archs))
 endif
@@ -510,11 +515,7 @@ COMMON_CONFIGURE_ARGS += \
 	--with-pcsclite=system \
 	--disable-warnings-as-errors \
 	--disable-javac-server \
-
-ifeq ($(with_check),yes)
-    COMMON_CONFIGURE_ARGS += \
-        --with-gtest=$(CURDIR)/googletest
-endif
+	--with-gtest=$(CURDIR)/googletest \
 
 ifeq (,$(filter $(distrel),jessie stretch precise trusty xenial))
   COMMON_CONFIGURE_ARGS += \
@@ -711,9 +712,12 @@ endif
 # look at all TEST.ROOT for the required jtreg version, sorted by newest
 min_jtreg_version := $(shell find test/ -name TEST.ROOT -exec grep -hr "^requiredVersion=" {} \; | sed -e 's:^requiredVersion=::' -e 's:$$:~:' | sort -uVr | head -n1 | tr ' ' '-')
 
+jtreg_dep := $(jtreg_pkg) (>= $(min_jtreg_version))
+testng_dep := $(testng_pkg)
+
 ifeq ($(with_check),yes)
   bd_check = \
-    $(jtreg_pkg) (>= $(min_jtreg_version))$(nocheck_profile), $(testng_pkg)$(nocheck_profile), \
+    $(jtreg_dep)$(nocheck_profile), $(testng_dep)$(nocheck_profile), \
     xvfb$(nocheck_profile), xauth$(nocheck_profile), \
     xfonts-base$(nocheck_profile), libgl1-mesa-dri [!x32]$(nocheck_profile), \
     xfwm4$(nocheck_profile), x11-xkb-utils$(nocheck_profile), \
@@ -801,6 +805,7 @@ p_demo	= $(basename)-demo
 p_src	= $(basename)-source
 p_doc	= $(basename)-doc
 p_dbg	= $(basename)-dbg
+p_test = $(basename)-testsupport
 
 d	= debian/tmp
 d_jre	= debian/$(p_jre)
@@ -812,6 +817,7 @@ d_demo	= debian/$(p_demo)
 d_src	= debian/$(p_src)
 d_doc	= debian/$(p_doc)
 d_dbg	= debian/$(p_dbg)
+d_test	= debian/$(p_test)
 
 control_vars = \
 	'-Vvm:Name=$(vm_name)' \
@@ -876,6 +882,8 @@ debian/control: debian/control.in debian/tests/control debian/rules debian/watch
 	      -e 's/@bd_debugedit@/$(bd_debugedit)/g' \
 	      -e 's/@bd_strip_ndt@/$(bd_strip_ndt)/g' \
 	      -e 's/@bd_check@/$(bd_check)/g' \
+	      -e 's/@jtreg_dep@/$(jtreg_dep)/g' \
+	      -e 's/@testng_dep@/$(testng_dep)/g' \
 	      -e 's/@core_fonts@/$(core_fonts)/g' \
 	      -e 's/@cjk_fonts@/$(cjk_fonts)/g' \
 	      -e 's/@any_archs@/$(any_archs)/g' \
@@ -896,8 +904,9 @@ debian/control: debian/control.in debian/tests/control debian/rules debian/watch
 
 debian/tests/control: debian/tests/control.in debian/rules
 	sed \
-		-e 's,@jtreg_pkg@,$(jtreg_pkg),g' \
-		-e 's/@min_jtreg_version@/$(min_jtreg_version)/g' \
+		-e 's/@jtreg_dep@/$(jtreg_dep)/g' \
+		-e 's/@testng_dep@/$(testng_dep)/g' \
+		-e 's/@basename@/$(basename)/g' \
 		$< > $@;
 
 debian/tests/%.sh: debian/tests/%.in debian/rules
@@ -909,11 +918,11 @@ debian/tests/%.sh: debian/tests/%.in debian/rules
 		$< > $@;
 	chmod +x $@
 
-gen-autopkgtests: debian/tests/jtdiff-autopkgtest.sh debian/tests/jtreg-autopkgtest.sh
+gen-autopkgtests: debian/tests/jtdiff-autopkgtest.sh debian/tests/jtreg-autopkgtest.sh debian/tests/jdk-autopkgtest.sh debian/tests/hotspot-autopkgtest.sh
 
 packaging-files:
 	for f in debian/*.in; do \
-	  case "$$f" in debian/control.in) continue; esac; \
+	  case "$$f" in debian/control.in|debian/watch.in) continue; esac; \
 	  f2=$$(echo $$f | sed 's/JB/$(basename)/;s/\.in$$//'); \
 	  sed -e 's/@JRE@/$(p_jre)/g' \
 	      -e 's/@JDK@/$(p_jdk)/g' \
@@ -1215,7 +1224,7 @@ debian-clean:
 	dh_prep
 	for f in debian/*.in; do \
 	  f2=$$(echo $$f | sed 's/JB/$(basename)/;s/\.in$$//'); \
-	  case "$$f2" in debian/control) continue; esac; \
+	  case "$$f2" in debian/control|debian/watch) continue; esac; \
 	  rm -f $$f2; \
 	done
 	rm -f debian/*.install debian/*.links debian/*.debhelper.log
@@ -1243,6 +1252,14 @@ install: packaging-files
 	: # install into temporary location
 	mkdir -p $(d)/$(basedir)
 	cp -a $(builddir)/$(sdkimg)/* $(d)/$(basedir)/
+
+# copy jtreg tests
+	mkdir -p $(d)/$(testsuitedir)
+	cp -a $(builddir)/$(testimg)/* $(d)/$(testsuitedir)
+	rm -rf $(d)/$(testsuitedir)/jdk/demos
+	rm $(d)/$(testsuitedir)/build-info.properties
+	rm $(d)/$(testsuitedir)/Readme.txt
+	find $(d)/$(testsuitedir) -name .gitignore -delete
 
 	chmod -R u+w $(d)
 
@@ -1505,6 +1522,11 @@ endif
 	  echo 'usr/share/doc/$(p_jrehl)/demo'; \
 	) > debian/$(p_demo).install
 
+	: # $(p_test).install
+	( \
+	  echo '$(testsuitedir)'; \
+	) > debian/$(p_test).install
+
 	: # $(p_dbg).install
 ifneq (,$(wildcard $(builddir)/$(sdkimg)/lib/*.diz))
 	( \
@@ -1665,6 +1687,11 @@ endif
 	( \
 	  echo usr/share/doc/$(p_jrehl) usr/share/doc/$(p_dbg); \
 	) > $(d_dbg).links
+
+	: # create docdir symlinks for $(p_test)
+	( \
+	  echo usr/share/doc/$(p_jdk) usr/share/doc/$(p_test); \
+	) > $(d_test).links
 
 	: # OpenJDK Stack Unwinder and Frame Decorator
 ifneq (,$(filter $(DEB_HOST_ARCH),amd64))
@@ -1832,7 +1859,8 @@ binary-arch: build install
 	dh_installdocs -p$(p_jrehl) \
 		debian/JAVA_HOME \
 		debian/README.alternatives \
-		debian/README.Debian
+		debian/README.Debian \
+		debian/README.testsuite
 	$(call install_test_results,$(default_vm))
 
 ifneq (,$(filter zero, $(alternate_vms)))

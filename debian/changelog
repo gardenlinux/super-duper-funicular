@@ -1,8 +1,15 @@
 openjdk-22 (22~30ea-2) unstable; urgency=medium
 
+  [ Matthias Klose ]
   * Don't try to install jhsdb on armhf with a zero-only build.
+  * Don't run the hotspot and jdk autopkg tests with the zero interpreter.
 
- -- Matthias Klose <doko@ubuntu.com>  Mon, 08 Jan 2024 05:04:22 +0100
+  [ Vladimir Petko ]
+  * Build openjdk-22-testsupport packages, containing the binaries
+    required to run the autopkg tests.
+  * Run the basic subset of hotspot and jdk tests as autopkg tests.
+
+ -- Matthias Klose <doko@ubuntu.com>  Wed, 17 Jan 2024 14:35:17 +0100
 
 openjdk-22 (22~30ea-1) unstable; urgency=medium
 

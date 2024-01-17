@@ -168,3 +168,18 @@ Description: Java runtime based on OpenJDK (debugging symbols)
  applets, and components using the Java programming language.
  .
  This package contains the debugging symbols.
+
+Package: @basename@-testsupport
+Architecture: @any_archs@
+Multi-Arch: same
+Depends: @basename@-jdk (= ${binary:Version}),
+  build-essential, xfwm4, xvfb, dbus-x11, libatk-wrapper-java,
+  libatk-wrapper-java-jni, @jtreg_dep@, @testng_dep@,
+  ${shlibs:Depends},
+  ${misc:Depends}
+Description: Java runtime based on OpenJDK (regression test support)
+ OpenJDK is a development environment for building applications,
+ applets, and components using the Java programming language.
+ .
+ This package contains all the binary files needed to run the
+ OpenJDK autopkg tests.

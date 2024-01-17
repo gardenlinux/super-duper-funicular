@@ -1,15 +1,17 @@
 Test-Command: java --version
-Depends: openjdk-21-jre-headless
+Depends: @basename@-jre-headless
 Restrictions: superficial
 
 Test-Command: javac --version
-Depends: openjdk-21-jdk-headless
+Depends: @basename@-jdk-headless
 Restrictions: superficial
 
-#Tests: hotspot, jaxp, langtools
-#Depends: @, @jtreg_pkg@:native (>= @min_jtreg_version@), libtestng7-java:native, build-essential
-#Restrictions: allow-stderr, skippable, flaky
+Tests: hotspot-autopkgtest.sh
+Architecture: amd64
+Depends: @, @jtreg_dep@, @testng_dep@, build-essential, xfwm4, xvfb, dbus-x11, libatk-wrapper-java, libatk-wrapper-java-jni
+Restrictions: allow-stderr, skippable, flaky, rw-build-tree
 
-#Tests: jdk
-#Depends: @, @jtreg_pkg@:native (>= @min_jtreg_version@), libtestng7-java:native, build-essential, xfwm4:native, xvfb, dbus-x11
-#Restrictions: allow-stderr, skippable, flaky
+Tests: jdk-autopkgtest.sh
+Architecture: amd64
+Depends: @, @jtreg_dep@, @testng_dep@, build-essential, xfwm4, xvfb, dbus-x11, libatk-wrapper-java, libatk-wrapper-java-jni
+Restrictions: allow-stderr, skippable, flaky, rw-build-tree
