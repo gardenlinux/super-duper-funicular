@@ -7,11 +7,9 @@ Depends: @basename@-jdk-headless
 Restrictions: superficial
 
 Tests: hotspot-autopkgtest.sh
-Architecture: amd64
 Depends: @, @jtreg_dep@, @testng_dep@, build-essential, xfwm4, xvfb, dbus-x11, libatk-wrapper-java, libatk-wrapper-java-jni
 Restrictions: allow-stderr, skippable, flaky, rw-build-tree
 
 Tests: jdk-autopkgtest.sh
-Architecture: amd64
 Depends: @, @jtreg_dep@, @testng_dep@, build-essential, xfwm4, xvfb, dbus-x11, libatk-wrapper-java, libatk-wrapper-java-jni
 Restrictions: allow-stderr, skippable, flaky, rw-build-tree
