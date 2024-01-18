@@ -1,6 +1,7 @@
 openjdk-22 (22~31ea-2) UNRELEASED; urgency=medium
 
   * Run the hotspot and jdk autopkg tests on all architectures.
+  * Add bash and lsb-release as dependencies for autopkg tests.
 
  -- Matthias Klose <doko@ubuntu.com>  Thu, 18 Jan 2024 11:42:56 +0100
 
