@@ -1,1 +1,1 @@
-@basename@-testsuite: unstripped-binary-or-object
+@basename@-testsupport: unstripped-binary-or-object

@@ -23,9 +23,11 @@ HOTSPOT_JTREG_NATIVE_PATH=${jdk_path}/testsuite/hotspot/jtreg/native
 problem_list=${AUTOPKGTEST_TMP}/problems.txt
 debian/tests/write-problems ${problem_list} ${HOTSPOT_JTREG_PATH}/ProblemList.txt hotspot
 
+ARGS="$*"
+JT_DEFAULT_ARGS="-exclude:${problem_list} -k:!stress :tier1"
+JT_ARGS=${ARGS:-$JT_DEFAULT_ARGS}
+
 debian/tests/jtreg-autopkgtest.sh hotspot \
-	-exclude:${problem_list} \
-	-dir:${HOTSPOT_JTREG_PATH} \
-	-nativepath:${HOTSPOT_JTREG_NATIVE_PATH} \
-	-k:!stress \
-	:tier1
+    -dir:${HOTSPOT_JTREG_PATH} \
+    -nativepath:${HOTSPOT_JTREG_NATIVE_PATH} \
+    $JT_ARGS

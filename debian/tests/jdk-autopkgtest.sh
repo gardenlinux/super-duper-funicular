@@ -44,9 +44,11 @@ problem_list=${AUTOPKGTEST_TMP}/problems.txt
 
 debian/tests/write-problems ${problem_list} ${JDK_JTREG_PATH}/ProblemList.txt jdk
 
+ARGS="$*"
+JT_DEFAULT_ARGS="-exclude:${problem_list} -k:!stress :tier1"
+JT_ARGS=${ARGS:-$JT_DEFAULT_ARGS}
+
 debian/tests/jtreg-autopkgtest.sh jdk \
-  -exclude:${problem_list} \
   -dir:${JDK_JTREG_PATH} \
   -nativepath:${JDK_JTREG_NATIVE_PATH} \
-  -k:!stress \
-  :tier1
+  $JT_ARGS
