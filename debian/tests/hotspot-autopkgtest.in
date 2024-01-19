@@ -12,7 +12,7 @@ if ! $jdk_path/bin/java -version 2>/dev/null; then
     exit 1
 fi
 
-if $jdk_path/bin/java -version 2>/dev/null | grep -F --quiet Zero ; then
+if $jdk_path/bin/java -version 2>&1 | grep -F --quiet Zero ; then
     echo >&2 "skipping tests with the Zero interpreter"
     exit 77
 fi
