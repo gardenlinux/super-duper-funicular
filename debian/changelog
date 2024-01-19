@@ -1,4 +1,6 @@
-openjdk-22 (22~31ea-2) UNRELEASED; urgency=medium
+openjdk-22 (22~32ea-1) unstable; urgency=medium
+
+  * OpenJDK 22 snapshot, Build 32.
 
   [ Matthias Klose ]
   * Run the hotspot and jdk autopkg tests on all architectures.
@@ -11,7 +13,7 @@ openjdk-22 (22~31ea-2) UNRELEASED; urgency=medium
     tier1 tests, otherwise pass user's arguments while setting correct
     test directory and native path.
 
- -- Matthias Klose <doko@ubuntu.com>  Thu, 18 Jan 2024 11:42:56 +0100
+ -- Matthias Klose <doko@ubuntu.com>  Fri, 19 Jan 2024 10:29:50 +0100
 
 openjdk-22 (22~31ea-1) unstable; urgency=medium
 
