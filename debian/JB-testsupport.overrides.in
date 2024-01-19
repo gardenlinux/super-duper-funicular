@@ -1,1 +1,2 @@
+# servicability tests doing symbol lookups
 @basename@-testsupport: unstripped-binary-or-object
