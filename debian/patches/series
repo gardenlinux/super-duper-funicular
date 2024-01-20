@@ -37,3 +37,4 @@ ldap-timeout-test-use-ip.patch
 test-use-ip-address.patch
 arch-add-ports.diff
 compile-preview.diff
+8307977-proposed.diff
