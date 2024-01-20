@@ -1,3 +1,9 @@
+openjdk-21 (21.0.2+13-2) UNRELEASED; urgency=medium
+
+  * d/changelog: Whitespace cleanup.
+
+ -- Matthias Klose <doko@ubuntu.com>  Sat, 20 Jan 2024 14:14:28 +0100
+
 openjdk-21 (21.0.2+13-1) unstable; urgency=high
 
   * OpenJDK 21.0.2 release, build 13.
@@ -2848,7 +2854,7 @@ openjdk-7 (7~u3-2.1.1-1) unstable; urgency=medium
     - debian/patches/gcc-4.7.diff
 
   [ James Page ]
-  * Cherry picked patch from openjdk-6 to fix handling of 
+  * Cherry picked patch from openjdk-6 to fix handling of
     ICC profiles (LP: #888123, #888129) (Closes: #676351).
 
   [ Damien Raude-Morvan ]
@@ -2933,7 +2939,7 @@ openjdk-7 (7~u3-2.1-2) unstable; urgency=low
 
   [ Matthias Klose ]
   * Use NanumMyeongjo as the preferred korean font. LP: #792471.
-  * Fix crash in java.net.NetworkInterface.getNetworkInterfaces() when 
+  * Fix crash in java.net.NetworkInterface.getNetworkInterfaces() when
     ifr_ifindex exceeds 255. LP: #925218. S7078386.
   * Use IPAfont as the preferred japanesse font. Closes: #646054.
   * Build using gcj on alpha and armel. Closes: #655750.
@@ -3829,7 +3835,7 @@ openjdk-6 (6b18-1.8-4) unstable; urgency=low
   * Fix Vcs-Bzr location. Closes: #530883.
   * Search for unversioned llvm-config tool.
   * Don't set XFILESEARCHPATH and NLSPATH on startup. LP: #586641.
-  * Fix chinese font metrics and prefer using 'WenQuanYi Micro Hei' font. 
+  * Fix chinese font metrics and prefer using 'WenQuanYi Micro Hei' font.
     LP: #472845.
   * Strip libjvm.so with --strip-debug instead of --strip-unneeded.
     LP: #574997.
@@ -3907,7 +3913,7 @@ openjdk-6 (6b18-1.8-0ubuntu1) lucid; urgency=low
     While libnss3.so gets loaded from /usr/lib, the dependent libraries
     are loaded from MOZILLA_FIVE_HOME (See #561216 for the wrong firefox
     config). LP: #561124.
-    Closes as well: LP: #551328, #554909, #560829, #549010, #553452. 
+    Closes as well: LP: #551328, #554909, #560829, #549010, #553452.
   * Always build shark with hs14.
 
  -- Matthias Klose <doko@ubuntu.com>  Wed, 14 Apr 2010 01:53:33 +0200
@@ -4812,7 +4818,7 @@ openjdk-6 (6b13~pre1-0ubuntu1) jaunty; urgency=low
   * Update IcedTea build infrastructure (20081111).
     - Fix freeze in midi app, LP: #275672.
     - Fixes in the IcedTeaPlugin: LP: #282570, LP: #282570, LP: #285729,
-      LP: #291377, LP: #37330, LP: #239533. 
+      LP: #291377, LP: #37330, LP: #239533.
     - Fix vertical text metrics with freetype scaler. LP: #289784.
   * Build-depend on ecj-gcj instead of ecj on architectures using
     gij/gcj as the bootstrap system.
@@ -4829,7 +4835,7 @@ openjdk-6 (6b12-1~exp1) experimental; urgency=low
 openjdk-6 (6b12-0ubuntu6) intrepid; urgency=low
 
   * Make the dependency on ca-certificates-java unversioned.
-  * Merge from IcedTea: 
+  * Merge from IcedTea:
     - plugin/icedtea/netscape/javascript/JSObject.java: Make
       long constructor public.
 
@@ -4845,7 +4851,7 @@ openjdk-6 (6b12-0ubuntu5) intrepid; urgency=low
   * Configure with --pkgversion=<package version> to encode the package
     version in the -version output and in vm dumps.
   * cacao: Handle VM options Xverify:all and Xverify:none.
-  
+
  -- Matthias Klose <doko@ubuntu.com>  Fri, 24 Oct 2008 13:39:29 +0200
 
 openjdk-6 (6b12-0) experimental; urgency=low
@@ -5372,7 +5378,7 @@ openjdk-6 (6b06-0ubuntu3) hardy; urgency=low
     tests taken from the Fedora package).
   * Keep a backup of the `generated' directory; some files are regenerated
     differently, increasing the size of the diff.
-  
+
  -- Matthias Klose <doko@ubuntu.com>  Thu, 06 Mar 2008 10:05:39 +0100
 
 openjdk-6 (6b06-0ubuntu2) hardy; urgency=low
@@ -5399,7 +5405,7 @@ openjdk-6 (6b05-0ubuntu1) hardy; urgency=low
 
 icedtea-java7 (7~b24-1.5+20080118-2) UNRELEASED; urgency=low
 
-  * Fix removal of alternatives. 
+  * Fix removal of alternatives.
 
  -- Matthias Klose <doko@ubuntu.com>  Sat, 26 Jan 2008 18:41:40 +0100
 
@@ -5485,7 +5491,7 @@ icedtea-java7 (7~b23-1.5~20071124-1) hardy; urgency=low
 
 icedtea-java7 (7~b22-1.5~20071018-0ubuntu3) hardy; urgency=low
 
-  * Revert the previous change, require 7~b22 versions again. 
+  * Revert the previous change, require 7~b22 versions again.
 
  -- Matthias Klose <doko@ubuntu.com>  Sat, 20 Oct 2007 14:33:26 +0000
 
