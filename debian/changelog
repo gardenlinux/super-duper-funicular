@@ -3,6 +3,7 @@ openjdk-11 (11.0.22+7-2) UNRELEASED; urgency=medium
   * Add zero support for loong64 (Leslie Zhai). Closes: #1060821.
   * d/changelog: Whitespace cleanup.
   * Update build dependency on libfontconfig-dev.
+  * Apply proposed patch for JDK-8307977. Closes: #1034600.
 
  -- Matthias Klose <doko@ubuntu.com>  Wed, 17 Jan 2024 20:18:13 +0100
 
