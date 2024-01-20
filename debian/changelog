@@ -1,6 +1,7 @@
 openjdk-22 (22~32ea-2) UNRELEASED; urgency=medium
 
   * d/changelog: Whitespace cleanup.
+  * Update build dependency on libfontconfig-dev.
 
  -- Matthias Klose <doko@ubuntu.com>  Sat, 20 Jan 2024 14:12:29 +0100
 
