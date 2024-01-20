@@ -34,3 +34,4 @@ update-permission-test.patch
 ldap-timeout-test-use-ip.patch
 test-use-ip-address.patch
 arch-add-ports.diff
+8307977-proposed.diff
