@@ -6,6 +6,7 @@ openjdk-23 (23~5ea-1) UNRELEASED; urgency=medium
   * Don't try to install jhsdb on armhf with a zero-only build.
   * d/changelog: Whitespace cleanup.
   * Update build dependency on libfontconfig-dev.
+  * Apply proposed patch for JDK-8307977. Addresses: #1034600.
 
   [ Vladimir Petko ]
   * d/rules: Do not delete d/watch on clean.
