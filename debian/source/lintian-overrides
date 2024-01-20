@@ -16,18 +16,5 @@ openjdk-22 source: source-contains-prebuilt-java-object
 # upstream code formatting
 openjdk-22 source: very-long-line-length-in-source-file
 
-# historical whitespaces in changelog
-openjdk-22 source: trailing-whitespace [debian/changelog:2862]
-openjdk-22 source: trailing-whitespace [debian/changelog:2947]
-openjdk-22 source: trailing-whitespace [debian/changelog:3843]
-openjdk-22 source: trailing-whitespace [debian/changelog:3921]
-openjdk-22 source: trailing-whitespace [debian/changelog:4826]
-openjdk-22 source: trailing-whitespace [debian/changelog:4843]
-openjdk-22 source: trailing-whitespace [debian/changelog:4859]
-openjdk-22 source: trailing-whitespace [debian/changelog:5386]
-openjdk-22 source: trailing-whitespace [debian/changelog:5413]
-openjdk-22 source: trailing-whitespace [debian/changelog:5499]
-openjdk-22 source: trailing-whitespace [debian/changelog:5622]
-
 # false positive, jtreg tests contain example/ directories
 openjdk-22 source: package-does-not-install-examples
