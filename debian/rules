@@ -655,7 +655,12 @@ bd_openjdk = \
 	libxtst-dev, libxi-dev, libxt-dev, libxaw7-dev, libxrender-dev, libcups2-dev, \
 	libasound2-dev, liblcms2-dev, \
 	libxinerama-dev, libkrb5-dev, xsltproc, libpcsclite-dev, libxrandr-dev, \
-	libelf-dev, libfontconfig1-dev, libgtk2.0-0 | libgtk-3-0,
+	libelf-dev, libgtk2.0-0 | libgtk-3-0,
+ifneq (,$(filter $(distrel),jessie stretch buster precise trusty xenial bionic focal))
+  bd_openjdk += libfontconfig1-dev,
+else
+  bd_openjdk += libfontconfig-dev,
+endif
 ifneq (,$(filter $(distrel),jessie stretch buster precise trusty xenial bionic))
   bd_openjdk += libfreetype6-dev,
 else
