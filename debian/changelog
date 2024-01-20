@@ -5,6 +5,7 @@ openjdk-23 (23~5ea-1) UNRELEASED; urgency=medium
   [ Matthias Klose ]
   * Don't try to install jhsdb on armhf with a zero-only build.
   * d/changelog: Whitespace cleanup.
+  * Update build dependency on libfontconfig-dev.
 
   [ Vladimir Petko ]
   * d/rules: Do not delete d/watch on clean.
