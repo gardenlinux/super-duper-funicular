@@ -38,3 +38,4 @@ ldap-timeout-test-use-ip.patch
 test-use-ip-address.patch
 loong64-autoconf-config.diff
 googletest-version.diff
+8307977-proposed.diff
