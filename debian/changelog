@@ -1,6 +1,6 @@
-openjdk-23 (23~5ea-1) UNRELEASED; urgency=medium
+openjdk-23 (23~6ea-1) unstable; urgency=medium
 
-  * OpenJDK 23 snapshot, Build 5.
+  * OpenJDK 23 snapshot, Build 6.
 
   [ Matthias Klose ]
   * Don't try to install jhsdb on armhf with a zero-only build.
@@ -16,7 +16,7 @@ openjdk-23 (23~5ea-1) UNRELEASED; urgency=medium
   * Minor improvements to the copyright-generator.
   * Regenerate d/copyright.
 
- -- Matthias Klose <doko@ubuntu.com>  Mon, 15 Jan 2024 11:05:21 +0100
+ -- Matthias Klose <doko@ubuntu.com>  Sat, 20 Jan 2024 14:51:31 +0100
 
 openjdk-23 (23~4ea-1) unstable; urgency=medium
 
