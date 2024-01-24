@@ -1,4 +1,4 @@
-openjdk-21 (21.0.2+13-2) UNRELEASED; urgency=medium
+openjdk-21 (21.0.2+13-2) unstable; urgency=medium
 
   [ Matthias Klose ]
   * d/changelog: Whitespace cleanup.
