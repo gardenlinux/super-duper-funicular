@@ -1,3 +1,9 @@
+openjdk-23 (23~13ea-1) UNRELEASED; urgency=medium
+
+  * OpenJDK 23 snapshot, Build 13.
+
+ -- Matthias Klose <doko@ubuntu.com>  Mon, 11 Mar 2024 23:53:00 +0100
+
 openjdk-23 (23~10ea-1) unstable; urgency=medium
 
   * OpenJDK 23 snapshot, Build 10.
