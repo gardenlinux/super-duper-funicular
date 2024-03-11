@@ -1,4 +1,4 @@
-openjdk-17 (17.0.10+7-2) unstable; urgency=medium
+openjdk-17 (17.0.10+7-3) unstable; urgency=medium
 
   * d/changelog: Whitespace cleanup.
   * Update build dependency on libfontconfig-dev.

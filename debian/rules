@@ -966,7 +966,7 @@ gen-autopkgtests: debian/tests/jtdiff-autopkgtest.sh debian/tests/jtreg-autopkgt
 
 packaging-files:
 	for f in debian/*.in; do \
-	  case "$$f" in debian/control.in debian/watch.in) continue; esac; \
+	  case "$$f" in debian/control.in|debian/watch.in) continue; esac; \
 	  f2=$$(echo $$f | sed 's/JB/$(basename)/;s/\.in$$//'); \
 	  sed -e 's/@JRE@/$(p_jre)/g' \
 	      -e 's/@JDK@/$(p_jdk)/g' \
