@@ -7,11 +7,11 @@ Build-Depends: debhelper (>= 11),
   m4, lsb-release, zip, unzip,
   sharutils, gawk, cpio, pkg-config, procps, wdiff, fastjar (>= 2:0.96-0ubuntu2),
   time, strip-nondeterminism, debugedit (>= 4.16),
-  jtreg7 (>= 7.3.1+1~) <!nocheck>, libtestng7-java <!nocheck>, xvfb <!nocheck>, xauth <!nocheck>, xfonts-base <!nocheck>, libgl1-mesa-dri [!x32] <!nocheck>, xfwm4 <!nocheck>, x11-xkb-utils <!nocheck>, dbus-x11 <!nocheck>, libasmtools-java <!nocheck>, xvfb  <!nocheck>,
+  file,
   autoconf, automake, autotools-dev, ant, ant-optional,
   g++-13 <!cross>,
   openjdk-22-jdk-headless:native | openjdk-23-jdk-headless:native,
-  libxtst-dev, libxi-dev, libxt-dev, libxaw7-dev, libxrender-dev, libcups2-dev, libasound2-dev, liblcms2-dev, libxinerama-dev, libkrb5-dev, xsltproc, libpcsclite-dev, libxrandr-dev, libelf-dev, libgtk2.0-0 | libgtk-3-0, libfontconfig-dev, libfreetype-dev, libharfbuzz-dev,
+  libxtst-dev, libxi-dev, libxt-dev, libxaw7-dev, libxrender-dev, libcups2-dev, libasound2-dev, liblcms2-dev, libxinerama-dev, libkrb5-dev, xsltproc, libpcsclite-dev, libxrandr-dev, libelf-dev, libfontconfig-dev, libfreetype-dev, libharfbuzz-dev,
   libffi-dev, libffi-dev:native,
   zlib1g-dev:native, zlib1g-dev, libattr1-dev, libpng-dev, libjpeg-dev, libgif-dev,
   libnss3-dev (>= 2:3.17.1),
@@ -53,7 +53,8 @@ Depends: ${jredefault:Depends}, ${cacert:Depends},
   ${jcommon:Depends}, ${dlopenhl:Depends},
   ${mountpoint:Depends},
   ${shlibs:Depends}, ${misc:Depends}
-Recommends: ${dlopenhl:Recommends}
+Recommends: ${dlopenhl:Recommends},
+  ${fontmanager:Recommends}, ${jsound:Recommends}
 Suggests: libnss-mdns,
   fonts-dejavu-extra,
   fonts-ipafont-gothic, fonts-ipafont-mincho, fonts-wqy-microhei | fonts-wqy-zenhei, fonts-indic,
@@ -96,7 +97,7 @@ Architecture: alpha amd64 arc armel armhf arm64 hppa i386 ia64 loong64 mips mips
 Multi-Arch: same
 Pre-Depends: ${dpkg:Depends}
 Depends: openjdk-23-jre-headless (= ${binary:Version}),
-  ${xandsound:Depends}, ${dlopenjre:Depends},
+  ${dlopenjre:Depends}, ${fontmanager:Depends}, ${jsound:Depends},
   ${shlibs:Depends}, ${misc:Depends}
 Recommends: ${dlopenjre:Recommends}, ${bridge:Recommends}, fonts-dejavu-extra
 Provides: java-runtime (= ${vm:Version}), java2-runtime,
