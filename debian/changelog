@@ -1,3 +1,14 @@
+openjdk-21 (21.0.2+13-3) unstable; urgency=medium
+
+  * libcups2, libfontconfig1: Make it a recommends in jre-headless,
+    a dependency in jre.
+  * Make the dependencies for libfontmanager.so and libjsound.so
+    recommendations in jre-headless, and dependencies in jre.
+  * Drop build dependencies on libgtk2 | libgtk3.
+  * Disable running the tests for the time_t64 bootstrap.
+
+ -- Matthias Klose <doko@ubuntu.com>  Mon, 11 Mar 2024 16:00:47 +0100
+
 openjdk-21 (21.0.2+13-2) unstable; urgency=medium
 
   [ Matthias Klose ]
