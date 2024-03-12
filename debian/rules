@@ -82,6 +82,7 @@ else
 endif
 
 is_upstream_release = yes
+is_upstream_release =
 
 srcdir		= .
 builddir	= build
@@ -756,8 +757,13 @@ endif
 
 dlopen_jre_depends =
 dlopen_jre_recommends =
-dlopen_jre_depends += libglib2.0-0t64 (>= 2.24),
-dlopen_jre_depends += libgtk2.0-0t64 | libgtk-3-0t64,
+ifneq (,$(filter $(distrel),squeeze wheezy jessie stretch buster bullseye bookworm lucid precise trusty xenial bionic focal jammy lunar mantic))
+  dlopen_jre_depends += libglib2.0-0 (>= 2.24),
+  dlopen_jre_depends += libgtk2.0-0 | libgtk-3-0,
+else
+  dlopen_jre_depends += libglib2.0-0t64 | libglib2.0-0,
+  dlopen_jre_depends += libgtk2.0-0t64 | libgtk-3-0t64 | libgtk2.0-0 | libgtk-3-0,
+endif
 dlopen_jre_depends += libxrandr2, libxinerama1,
 ifneq (,$(filter $(distrel),squeeze wheezy jessie stretch lucid precise xenial))
   dlopen_jre_depends += libgl1-mesa-glx | libgl1,
@@ -1893,7 +1899,7 @@ endif
 	dh_compress -a $(nodemo) $(nojrez) -Xexamples -Xdemo -Xpackage-list
 	dh_fixperms -a $(nodemo) $(nojrez)
 	dh_makeshlibs -p$(p_jrehl) -p$(p_jre)
-	dh_shlibdeps -v -a $(nodemo) $(nojrez) -L $(p_jrehl) \
+	dh_shlibdeps -a $(nodemo) $(nojrez) -L $(p_jrehl) \
 		-Xlibfontmanager -Xlibjsound \
 		-l$(shlibdeps_ld_path) \
 		--
@@ -1917,7 +1923,7 @@ endif
 	dh_builddeb -a $(nodemo) $(nojrez) #$(bd_options)
 
 git_project		= jdk21u
-git_tag			= jdk-21.0.2+13
+git_tag			= jdk-21.0.3+6
 package_version		= $(shell echo $(PKGVERSION) | sed 's/-[^-][^-]*$$//')
 ifneq ($(is_upstream_release),yes)
   package_version	:= $(subst +,~,$(package_version))

@@ -2,7 +2,6 @@ system-pcsclite.diff
 hotspot-mips-align.diff
 icc_loading_with_symlink.diff
 icedtea-override-redirect-compiz.diff
-libpcsclite-dlopen.diff
 #jexec.diff
 default-jvm-cfg.diff
 adlc-parser.diff
