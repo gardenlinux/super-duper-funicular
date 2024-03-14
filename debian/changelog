@@ -3,6 +3,9 @@ openjdk-22 (22~36ea-2) UNRELEASED; urgency=medium
   [ Pushkar Kulkarni ]
   * Corrections to patch arch-add-ports.diff.
 
+  [ Matthias Klose ]
+  * Remove the GTK 2.x bits.
+
  -- Matthias Klose <doko@ubuntu.com>  Thu, 14 Mar 2024 16:27:05 +0100
 
 openjdk-22 (22~36ea-1) unstable; urgency=medium
