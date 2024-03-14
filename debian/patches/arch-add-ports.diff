@@ -1,6 +1,6 @@
 --- a/src/java.base/share/classes/jdk/internal/util/Architecture.java
 +++ b/src/java.base/share/classes/jdk/internal/util/Architecture.java
-@@ -46,6 +46,13 @@ public enum Architecture {
+@@ -46,6 +46,13 @@
      LOONGARCH64(64, ByteOrder.LITTLE_ENDIAN),
      MIPSEL(32, ByteOrder.LITTLE_ENDIAN),
      MIPS64EL(64, ByteOrder.LITTLE_ENDIAN),
@@ -14,7 +14,7 @@
      OTHER(is64bit() ? 64 : 32, ByteOrder.nativeOrder()),
      PPC(32, ByteOrder.BIG_ENDIAN),
      PPC64(64, ByteOrder.BIG_ENDIAN),
-@@ -181,6 +188,69 @@ public enum Architecture {
+@@ -181,6 +188,69 @@
      }
  
      /**
@@ -86,7 +86,7 @@
      @ForceInline
 --- a/src/java.base/share/classes/jdk/internal/util/PlatformProps.java.template
 +++ b/src/java.base/share/classes/jdk/internal/util/PlatformProps.java.template
-@@ -65,5 +65,12 @@ class PlatformProps {
+@@ -65,5 +65,12 @@
      static final boolean TARGET_ARCH_IS_SPARCV9 = "@@OPENJDK_TARGET_CPU@@" == "sparcv9";
      static final boolean TARGET_ARCH_IS_X86     = "@@OPENJDK_TARGET_CPU@@" == "x86";
      static final boolean TARGET_ARCH_IS_X64     = "@@OPENJDK_TARGET_CPU@@" == "x64";
@@ -101,7 +101,7 @@
  }
 --- a/test/jdk/jdk/internal/util/ArchTest.java
 +++ b/test/jdk/jdk/internal/util/ArchTest.java
-@@ -41,6 +41,13 @@ import static jdk.internal.util.Architec
+@@ -41,6 +41,13 @@
  import static jdk.internal.util.Architecture.SPARCV9;
  import static jdk.internal.util.Architecture.X64;
  import static jdk.internal.util.Architecture.X86;
@@ -115,17 +115,19 @@
  
  import org.junit.jupiter.api.Test;
  import org.junit.jupiter.params.ParameterizedTest;
-@@ -92,6 +99,13 @@ public class ArchTest {
+@@ -91,7 +98,14 @@
+                 Arguments.of("sparcv9", SPARCV9, 64, ByteOrder.BIG_ENDIAN, Architecture.isSPARCV9()),
                  Arguments.of("x64", X64, 64, ByteOrder.LITTLE_ENDIAN, Architecture.isX64()),
                  Arguments.of("x86", X86, 32, ByteOrder.LITTLE_ENDIAN, Architecture.isX86()),
-                 Arguments.of("x86_64", X64, 64, ByteOrder.LITTLE_ENDIAN, Architecture.isX64())
+-                Arguments.of("x86_64", X64, 64, ByteOrder.LITTLE_ENDIAN, Architecture.isX64())
++                Arguments.of("x86_64", X64, 64, ByteOrder.LITTLE_ENDIAN, Architecture.isX64()),
 +                Arguments.of("alpha", ALPHA, 64, ByteOrder.LITTLE_ENDIAN, Architecture.isALPHA()),
 +                Arguments.of("arc", ARC, 32, ByteOrder.LITTLE_ENDIAN, Architecture.isARC()),
 +                Arguments.of("hppa", HPPA, 32, ByteOrder.BIG_ENDIAN, Architecture.isHPPA()),
 +                Arguments.of("ia64", IA64, 64, ByteOrder.LITTLE_ENDIAN, Architecture.isIA64()),
 +                Arguments.of("m68k", M68K, 32, ByteOrder.BIG_ENDIAN, Architecture.isM68K()),
 +                Arguments.of("sh", SH, 32, ByteOrder.LITTLE_ENDIAN, Architecture.isSH()),
-+                Arguments.of("x32", X32, 32, ByteOrder.LITTLE_ENDIAN, Architecture.isX32()),
++                Arguments.of("x32", X32, 32, ByteOrder.LITTLE_ENDIAN, Architecture.isX32())
          );
      }
  
