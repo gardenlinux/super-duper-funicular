@@ -474,7 +474,7 @@ ifeq ($(distribution),Debian)
 	--with-vendor-bug-url='https://bugs.debian.org/$(basename)' \
 	--with-vendor-vm-bug-url='https://bugs.debian.org/$(basename)'
 else ifeq ($(distribution),Ubuntu)
-  ppa_build := $(shell if echo 'v_pkgrel' | egrep '^[0-9]+(ubuntu[0-9]+)?(~[0-9.]+)?$$'; then echo no; else echo yes; fi)
+  ppa_build := $(shell if echo '$(v_pkgrel)' | egrep '^[0-9]+(ubuntu[0-9]+)?(~[0-9.]+)?$$'; then echo no; else echo yes; fi)
   ifeq ($(ppa_build),yes)
     COMMON_CONFIGURE_ARGS += \
 	--with-vendor-name='Private Build' \
@@ -599,7 +599,11 @@ all_tools	=  jar jarsigner java javac javadoc javap jcmd \
 jdk_hl_tools	= jar jarsigner javac javadoc javap jcmd jdb \
 	jdeprscan jdeps jfr jimage jinfo jlink jmap jmod jps \
 	jrunscript jshell jstack jstat jstatd serialver
-ifeq (,$(filter $(DEB_HOST_ARCH), alpha armel ia64 loong64 m68k mips mipsel mips64el powerpc s390x sh4 sparc64 x32))
+ifeq (,$(filter $(DEB_HOST_ARCH), alpha armel armhf ia64 loong64 m68k mips mipsel mips64el powerpc s390x sh4 sparc64 x32))
+  all_tools	+= jhsdb
+  jdk_hl_tools	+= jhsdb
+endif
+ifneq (,$(filter armhf,$(hotspot_archs)))
   all_tools	+= jhsdb
   jdk_hl_tools	+= jhsdb
 endif
