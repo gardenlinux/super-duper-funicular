@@ -29,10 +29,10 @@
          else
 --- a/make/RunTests.gmk
 +++ b/make/RunTests.gmk
-@@ -847,7 +847,7 @@ define SetupRunJtregTestBody
+@@ -849,7 +849,7 @@ define SetupRunJtregTestBody
  
    $1_COMMAND_LINE := \
-       $$(JAVA) $$($1_JTREG_LAUNCHER_OPTIONS) \
+       $$(JTREG_JAVA) $$($1_JTREG_LAUNCHER_OPTIONS) \
 -          -Dprogram=jtreg -jar $$(JT_HOME)/lib/jtreg.jar \
 +          -Dprogram=jtreg -jar $$(if $$(wildcard $$(JT_HOME)/lib/jtreg.jar),$$(JT_HOME)/lib/jtreg.jar,$$(JT_HOME)/share/java/jtreg.jar) \
            $$($1_JTREG_BASIC_OPTIONS) \

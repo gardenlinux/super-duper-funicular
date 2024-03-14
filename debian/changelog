@@ -1,3 +1,9 @@
+openjdk-17 (17.0.11~6ea-1) unstable; urgency=medium
+
+  * OpenJDK 17.0.11 early access, build 6.
+
+ -- Matthias Klose <doko@ubuntu.com>  Tue, 12 Mar 2024 18:37:33 +0100
+
 openjdk-17 (17.0.10+7-3) unstable; urgency=medium
 
   * d/changelog: Whitespace cleanup.
