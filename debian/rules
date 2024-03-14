@@ -664,8 +664,8 @@ bd_openjdk = \
 	libxinerama-dev, libkrb5-dev, xsltproc, libpcsclite-dev, libxrandr-dev, \
 	libelf-dev,
 # not needed?
-#bd_openjdk += libgtk2.0-0 | libgtk-3-0,
-#bd_openjdk += libgtk2.0-0t64 | libgtk-3-0t64,
+#bd_openjdk += libgtk-3-0,
+#bd_openjdk += libgtk-3-0t64,
 ifneq (,$(filter $(distrel),jessie stretch buster precise trusty xenial bionic focal))
   bd_openjdk += libfontconfig1-dev,
 else
@@ -766,8 +766,13 @@ endif
 
 dlopen_jre_depends =
 dlopen_jre_recommends =
-dlopen_jre_depends += libglib2.0-0t64 (>= 2.24),
-dlopen_jre_depends += libgtk2.0-0t64 | libgtk-3-0t64,
+ifneq (,$(filter $(distrel),squeeze wheezy jessie stretch buster bullseye bookworm lucid precise trusty xenial bionic focal jammy lunar mantic))
+  dlopen_jre_depends += libglib2.0-0 (>= 2.24),
+  dlopen_jre_depends += libgtk-3-0,
+else
+  dlopen_jre_depends += libglib2.0-0t64 (>= 2.24),
+  dlopen_jre_depends += libgtk-3-0t64,
+endif
 dlopen_jre_depends += libxrandr2, libxinerama1,
 ifneq (,$(filter $(distrel),squeeze wheezy jessie stretch lucid precise xenial))
   dlopen_jre_depends += libgl1-mesa-glx | libgl1,
