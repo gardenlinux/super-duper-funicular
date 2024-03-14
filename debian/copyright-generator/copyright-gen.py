@@ -19,10 +19,12 @@
 # The script must be able to look into "debian/rules" and deduce these exclusions.
 
 import os
+import re
 import sys
 import textwrap
 
 version = "";
+needs_cleanup = False
 packaged_by = "Matthias Klose <doko\@ubuntu.com>";
 common_licenses = {};
 
@@ -165,6 +167,7 @@ def gen_comment(component):
 which may be included with JRE {version}, JDK {version} and OpenJDK {version}"""
 
 def gen_license_text(license):
+  print("Gathering license content for " + license, file=sys.stderr)
   component, content = get_content(license)
   component = component.split("## ")[1].rstrip("\n");
   return f"""
@@ -177,7 +180,7 @@ def gen_license_text(license):
 ------------------------------------------------------------------------------"""
 
     
-def get_legal_dirs(path):
+def gather_legal_dirs(path):
   legal_dirs = []
   for root, dirs, files in os.walk(path):
     if "legal" in dirs and (root.endswith("share") or root.endswith("unix")):
@@ -185,33 +188,65 @@ def get_legal_dirs(path):
   return legal_dirs
 
 def gather_licenses(module):
-  legal_dirs = get_legal_dirs(module)
+  legal_dirs = gather_legal_dirs(module)
   licenses_text = ""
-  for dir in legal_dirs:
-    licenses = os.scandir(dir)
-    for license in licenses:
-      if not license.name in exclude_licenses:
-        licenses_text += gen_license_text(license.path)
+  for dir in sorted(legal_dirs):
+    licenses = os.listdir(dir)
+    for license in sorted(licenses):
+      if not license in exclude_licenses:
+        licenses_text += gen_license_text(dir + "/" + license)
   return licenses_text
 
 def gather_modules_licenses(srcdir):
   licenses = ""
-  modules = os.scandir(srcdir)
-  for module in modules:
-    licenses += gather_licenses(module)
+  modules = os.listdir(srcdir)
+  for module in sorted(modules):
+    licenses += gather_licenses(srcdir + "/" + module)
   return licenses
 
-def find_directory(prefix):
-  for file in os.scandir():
+def find_directory(prefix, path = '.'):
+  for file in os.scandir(path):
     if file.is_dir() and file.name.startswith(prefix):
       return file.path
-      
+
+def search_source_rootdir(level, path = '.'):
+  # The user might have already pulled the source package.
+  # Search for a downloaded package at three levels
+  #  - openjdk
+  #  - openjdk/debian
+  #  - openjdk/debian/copyright-generator
+  # if one none found, download the source package
+  rootdir = find_directory(f"openjdk-{version}", path)
+  if rootdir is not None:
+    return rootdir
+
+  match level:
+    case 0:
+      path = "./debian"
+      level= level + 1
+    case 1:
+      path = "./debian/copyright-generator"
+      level = level + 1
+    case 2:
+      print("No source package found. Downloading...", file = sys.stderr)
+      os.system(f"pull-debian-source openjdk-{version} > /dev/null 2>&1")
+      needs_cleanup = True
+      return find_directory(f"openjdk-{version}")
+    case  _:
+      print("Irrecoverable error while searching for source package")
+      exit(1)
+
+  return search_source_rootdir(level, path)
+
 def generate_copyright():
-  os.system(f"pull-debian-source openjdk-{version} > /dev/null 2>&1")
-  rootdir = find_directory(f"openjdk-{version}")
+  rootdir = search_source_rootdir(0)
+  if rootdir is None:
+    print("No source package found. Download also failed. Aborting.")
+    exit(2)
+  print(f"Using the source package at {rootdir}", file = sys.stderr)
   srcdir = f"{rootdir}/src"; 
 
-  os.system(f"/bin/sh strip-common-licenses.sh {rootdir} {version}")
+  os.system(f"/bin/sh ./debian/copyright-generator/strip-common-licenses.sh {rootdir} {version}")
   generate_header_stanza();
 
   licenses = f"""GPL with Classpath exception
@@ -228,24 +263,31 @@ The following licenses for third party code are taken from 'legal' \ndirectories
 
   print_file_stanza("*", "  " + "\n  ".join(openjdk_copyrights), fill_with_dots_and_indent(licenses), "")
   if (version != "11"):
-    print(open("bundled-stanzas").read())
-  print(open("debian-stanzas").read())
+    print(open("./debian/copyright-generator/bundled-stanzas").read())
+  print(open("./debian/copyright-generator/debian-stanzas").read())
 
   # clean-up
-  os.system(f"rm -rf {rootdir} *.debian.tar.xz *.orig.tar.xz *.dsc *googletest.tar.xz");
+  if needs_cleanup:
+    os.system(f"rm -rf *.debian.tar.xz *.orig.tar.xz *.dsc *googletest.tar.xz");
     
+
+
+def detect_version():
+  with open("debian/rules", 'r') as file:
+    content = file.read()
+    match = re.search(r'shortver\t=\s+(\d{2})', content)
+    if match:
+      return match.group(1)
 
 def main():
   global version
 
-  if (len(sys.argv) >= 1):
-    version = sys.argv[1]
+  version = detect_version()
 
-  if version == "" or version == "--help" or version == "-help" or version == "help":
-    print("Usage:\ncopyright-gen.py <version> > ../copyright")
-    print("version - 11 | 17 | 21 | 22")
-    print("Note: this script must be run from the `debian/copyright-generator` directory")
-  elif version == "11" or version == "17" or version == "21" or version == "22":
+  sys.stdout = open('./debian/copyright', 'w')
+  supported_versions = ["11", "17", "21", "22", "23"]
+
+  if version in supported_versions:
     generate_copyright()
   else:
     print("Version not supported.")
