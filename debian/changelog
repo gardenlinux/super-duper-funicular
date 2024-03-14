@@ -7,6 +7,10 @@ openjdk-22 (22~36ea-2) UNRELEASED; urgency=medium
   [ Matthias Klose ]
   * Remove the GTK 2.x bits.
 
+  [ Vladimir Petko ]
+  * d/p/jdk-8325028.patch: Apply upstream patch so that pipe channels
+    lazily set socket to non-blocking mode on first use by virtual thread.
+
  -- Matthias Klose <doko@ubuntu.com>  Thu, 14 Mar 2024 16:27:05 +0100
 
 openjdk-22 (22~36ea-1) unstable; urgency=medium

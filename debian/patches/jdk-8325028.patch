@@ -1,0 +1,219 @@
+Description:  8325028: (ch) Pipe channels should lazily set socket to non-blocking mode on first use by virtual thread
+ While investigating a JRuby bug report today, I discovered that
+ despite pipe streams being set O_NONBLOCK at a native level, the NIO
+ AbstractSelectableChannel.nonblock flag is still false.
+
+ This leads to a situation where we have an IO channel that is
+ non-blocking (at a native level) but claims it is blocking. Forcing it
+ back to blocking then requires both setting and clearing that flag.
+ See: https://mail.openjdk.org/pipermail/loom-dev/2024-January/006407.html
+Author: Alan Bateman <alanb@openjdk.org>
+Origin: upstream, https://github.com/openjdk/jdk/commit/d1099033ac63b9dd0dd6e3a7341db929e9e0e56e
+Bug: https://bugs.openjdk.org/browse/JDK-8325028
+Bug-Ubuntu: https://bugs.launchpad.net/ubuntu/+source/openjdk-21/+bug/2054943
+Applied-Upstream: commit, d1099033ac63b9dd0dd6e3a7341db929e9e0e56e
+Last-Update: 2024-02-29
+diff --git a/src/java.base/unix/classes/sun/nio/ch/SinkChannelImpl.java b/src/java.base/unix/classes/sun/nio/ch/SinkChannelImpl.java
+index b49b699fdce..d72a4892ef0 100644
+--- a/src/java.base/unix/classes/sun/nio/ch/SinkChannelImpl.java
++++ b/src/java.base/unix/classes/sun/nio/ch/SinkChannelImpl.java
+@@ -1,5 +1,5 @@
+ /*
+- * Copyright (c) 2000, 2022, Oracle and/or its affiliates. All rights reserved.
++ * Copyright (c) 2000, 2024, Oracle and/or its affiliates. All rights reserved.
+  * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
+  *
+  * This code is free software; you can redistribute it and/or modify it
+@@ -66,6 +66,13 @@ class SinkChannelImpl
+     // ID of native thread doing write, for signalling
+     private long thread;
+
++    // True if the channel's socket has been forced into non-blocking mode
++    // by a virtual thread. It cannot be reset. When the channel is in
++    // blocking mode and the channel's socket is in non-blocking mode then
++    // operations that don't complete immediately will poll the socket and
++    // preserve the semantics of blocking operations.
++    private volatile boolean forcedNonBlocking;
++
+     // -- End of fields protected by stateLock
+
+
+@@ -79,11 +86,34 @@ public int getFDVal() {
+
+     SinkChannelImpl(SelectorProvider sp, FileDescriptor fd) throws IOException {
+         super(sp);
+-        IOUtil.configureBlocking(fd, false);
+         this.fd = fd;
+         this.fdVal = IOUtil.fdVal(fd);
+     }
+
++    /**
++     * Checks that the channel is open.
++     *
++     * @throws ClosedChannelException if channel is closed (or closing)
++     */
++    private void ensureOpen() throws ClosedChannelException {
++        if (!isOpen())
++            throw new ClosedChannelException();
++    }
++
++    /**
++     * Ensures that the socket is configured non-blocking when on a virtual thread.
++     */
++    private void configureSocketNonBlockingIfVirtualThread() throws IOException {
++        assert writeLock.isHeldByCurrentThread();
++        if (!forcedNonBlocking && Thread.currentThread().isVirtual()) {
++            synchronized (stateLock) {
++                ensureOpen();
++                IOUtil.configureBlocking(fd, false);
++                forcedNonBlocking = true;
++            }
++        }
++    }
++
+     /**
+      * Closes the write end of the pipe if there are no write operation in
+      * progress and the channel is not registered with a Selector.
+@@ -183,9 +213,11 @@ protected void implConfigureBlocking(boolean block) throws IOException {
+         writeLock.lock();
+         try {
+             synchronized (stateLock) {
+-                if (!isOpen())
+-                    throw new ClosedChannelException();
+-                IOUtil.configureBlocking(fd, block);
++                ensureOpen();
++                // do nothing if virtual thread has forced the socket to be non-blocking
++                if (!forcedNonBlocking) {
++                    IOUtil.configureBlocking(fd, block);
++                }
+             }
+         } finally {
+             writeLock.unlock();
+@@ -241,8 +273,7 @@ private void beginWrite(boolean blocking) throws ClosedChannelException {
+             begin();
+         }
+         synchronized (stateLock) {
+-            if (!isOpen())
+-                throw new ClosedChannelException();
++            ensureOpen();
+             if (blocking)
+                 thread = NativeThread.current();
+         }
+@@ -279,6 +310,7 @@ public int write(ByteBuffer src) throws IOException {
+             int n = 0;
+             try {
+                 beginWrite(blocking);
++                configureSocketNonBlockingIfVirtualThread();
+                 n = IOUtil.write(fd, src, -1, nd);
+                 if (blocking) {
+                     while (IOStatus.okayToRetry(n) && isOpen()) {
+@@ -306,6 +338,7 @@ public long write(ByteBuffer[] srcs, int offset, int length) throws IOException
+             long n = 0;
+             try {
+                 beginWrite(blocking);
++                configureSocketNonBlockingIfVirtualThread();
+                 n = IOUtil.write(fd, srcs, offset, length, nd);
+                 if (blocking) {
+                     while (IOStatus.okayToRetry(n) && isOpen()) {
+diff --git a/src/java.base/unix/classes/sun/nio/ch/SourceChannelImpl.java b/src/java.base/unix/classes/sun/nio/ch/SourceChannelImpl.java
+index 7c2791609a7..7be17040b4c 100644
+--- a/src/java.base/unix/classes/sun/nio/ch/SourceChannelImpl.java
++++ b/src/java.base/unix/classes/sun/nio/ch/SourceChannelImpl.java
+@@ -1,5 +1,5 @@
+ /*
+- * Copyright (c) 2000, 2022, Oracle and/or its affiliates. All rights reserved.
++ * Copyright (c) 2000, 2024, Oracle and/or its affiliates. All rights reserved.
+  * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
+  *
+  * This code is free software; you can redistribute it and/or modify it
+@@ -66,6 +66,13 @@ class SourceChannelImpl
+     // ID of native thread doing read, for signalling
+     private long thread;
+
++    // True if the channel's socket has been forced into non-blocking mode
++    // by a virtual thread. It cannot be reset. When the channel is in
++    // blocking mode and the channel's socket is in non-blocking mode then
++    // operations that don't complete immediately will poll the socket and
++    // preserve the semantics of blocking operations.
++    private volatile boolean forcedNonBlocking;
++
+     // -- End of fields protected by stateLock
+
+
+@@ -79,11 +86,34 @@ public int getFDVal() {
+
+     SourceChannelImpl(SelectorProvider sp, FileDescriptor fd) throws IOException {
+         super(sp);
+-        IOUtil.configureBlocking(fd, false);
+         this.fd = fd;
+         this.fdVal = IOUtil.fdVal(fd);
+     }
+
++    /**
++     * Checks that the channel is open.
++     *
++     * @throws ClosedChannelException if channel is closed (or closing)
++     */
++    private void ensureOpen() throws ClosedChannelException {
++        if (!isOpen())
++            throw new ClosedChannelException();
++    }
++
++    /**
++     * Ensures that the socket is configured non-blocking when on a virtual thread.
++     */
++    private void configureSocketNonBlockingIfVirtualThread() throws IOException {
++        assert readLock.isHeldByCurrentThread();
++        if (!forcedNonBlocking && Thread.currentThread().isVirtual()) {
++            synchronized (stateLock) {
++                ensureOpen();
++                IOUtil.configureBlocking(fd, false);
++                forcedNonBlocking = true;
++            }
++        }
++    }
++
+     /**
+      * Closes the read end of the pipe if there are no read operation in
+      * progress and the channel is not registered with a Selector.
+@@ -183,9 +213,11 @@ protected void implConfigureBlocking(boolean block) throws IOException {
+         readLock.lock();
+         try {
+             synchronized (stateLock) {
+-                if (!isOpen())
+-                    throw new ClosedChannelException();
+-                IOUtil.configureBlocking(fd, block);
++                ensureOpen();
++                // do nothing if virtual thread has forced the socket to be non-blocking
++                if (!forcedNonBlocking) {
++                    IOUtil.configureBlocking(fd, block);
++                }
+             }
+         } finally {
+             readLock.unlock();
+@@ -241,8 +273,7 @@ private void beginRead(boolean blocking) throws ClosedChannelException {
+             begin();
+         }
+         synchronized (stateLock) {
+-            if (!isOpen())
+-                throw new ClosedChannelException();
++            ensureOpen();
+             if (blocking)
+                 thread = NativeThread.current();
+         }
+@@ -279,6 +310,7 @@ public int read(ByteBuffer dst) throws IOException {
+             int n = 0;
+             try {
+                 beginRead(blocking);
++                configureSocketNonBlockingIfVirtualThread();
+                 n = IOUtil.read(fd, dst, -1, nd);
+                 if (blocking) {
+                     while (IOStatus.okayToRetry(n) && isOpen()) {
+@@ -306,6 +338,7 @@ public long read(ByteBuffer[] dsts, int offset, int length) throws IOException {
+             long n = 0;
+             try {
+                 beginRead(blocking);
++                configureSocketNonBlockingIfVirtualThread();
+                 n = IOUtil.read(fd, dsts, offset, length, nd);
+                 if (blocking) {
+                     while (IOStatus.okayToRetry(n) && isOpen()) {
