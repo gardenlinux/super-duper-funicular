@@ -37,3 +37,4 @@ arch-add-ports.diff
 compile-preview.diff
 8307977-proposed.diff
 8242564-proposed.patch
+jdk-8325028.patch
