@@ -20,7 +20,6 @@ m68k-support.diff
 # reproducible-javadoc-timestamp.diff
 make-debug-print.diff
 Don-t-optimize-fdlibm-fork-for-Zero-on-linux-sparc-Z.patch
-keep-gtk2-as-default.patch
 reproducible-character-data.diff
 reproducible-module-info.diff
 #reproducible-copyright-headers.diff
