@@ -2034,14 +2034,12 @@ License:   GPL with Classpath exception
   --- end of LICENSE ---
   .
   ------------------------------------------------------------------------------
-  %% This notice is provided with respect to Harfbuzz v7.2.0,
+  %% This notice is provided with respect to Harfbuzz v8.2.2,
   which may be included with JRE 21, JDK 21 and OpenJDK 21
   .
   --- begin of LICENSE ---
   .
   Harfbuzz License
-  .
-  https://github.com/harfbuzz/harfbuzz/blob/7.2.0/COPYING
   .
   .
   .
@@ -2053,6 +2051,7 @@ License:   GPL with Classpath exception
   Copyright © 2018-2020  Ebrahim Byagowi
   Copyright © 2004-2013  Red Hat, Inc.
   Copyright © 2019  Facebook, Inc.
+  Copyright (C) 2012 Zilong Tan (eric.zltan@gmail.com)
   Copyright © 2007  Chris Wilson
   Copyright © 2018-2019 Adobe Inc.
   Copyright © 2006-2023 Behdad Esfahbod
@@ -2110,6 +2109,15 @@ License:   GPL with Classpath exception
   WHATSOEVER RESULTING FROM LOSS OF USE, DATA OR PROFITS, WHETHER IN AN
   ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF
   OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
+  .
+  ---------------------------------
+  The below license applies to the following files:
+  libharfbuzz/hb-unicode-emoji-table.hh
+  .
+  © 2023 Unicode®, Inc.
+  Unicode and the Unicode Logo are registered trademarks of Unicode, Inc.
+  in the U.S. and other countries.
+  For terms of use, see https://www.unicode.org/terms_of_use.html
   .
   .
   .
@@ -2936,60 +2944,6 @@ License:   GPL with Classpath exception
   LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING
   IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED
   OF THE POSSIBILITY OF SUCH DAMAGE.
-  .
-  .
-  4th Party Dependency
-  =============
-  org.fusesource.jansi version 2.4.0
-  org.apache.sshd 2.9.2
-  org.apache.felix.gogo.runtime 1.1.6
-  org.apache.felix.gogo.jline 1.1.8
-  =============
-  Apache 2.0 License: Refer to the copy under /usr/share/common-licenses
-  .
-  .
-  =============
-  juniversalchardet
-  .
-  The library is subject to the Mozilla Public License Version 1.1.
-  .
-  Alternatively, the library may be used under the terms of either the GNU General Public License Version 2 or later, or the GNU Lesser General Public License 2.1 or later.
-  .
-  ================
-  .
-  slf4j
-  .
-  SLF4J source code and binaries are distributed under the MIT license.
-  .
-  .
-  Copyright (c) 2004-2023 QOS.ch
-  All rights reserved.
-  .
-  Permission is hereby granted, free of charge, to any person obtaining
-  a copy of this software and associated documentation files (the
-  "Software"), to deal in the Software without restriction, including
-  without limitation the rights to use, copy, modify, merge, publish,
-  distribute, sublicense, and/or sell copies of the Software, and to
-  permit persons to whom the Software is furnished to do so, subject to
-  the following conditions:
-  .
-  The above copyright notice and this permission notice shall be
-  included in all copies or substantial portions of the Software.
-  .
-  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
-  EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
-  MERCHANTABILITY,   FITNESS   FOR   A  PARTICULAR   PURPOSE   AND
-  NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE
-  LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
-  OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
-  WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
-  .
-  These terms are identical to those of the MIT License, also called the X License
-  or the X11 License, which is a simple, permissive non-copyleft free software license.
-  It is deemed compatible with virtually all types of licenses, commercial or otherwise.
-  In particular, the Free Software Foundation has declared it compatible with GNU GPL.
-  It is also known to be approved by the Apache Software Foundation as compatible with
-  Apache Software License.
   .
   .
   .
