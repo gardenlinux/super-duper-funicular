@@ -1,4 +1,6 @@
-openjdk-23 (23~13ea-2) UNRELEASED; urgency=medium
+openjdk-23 (23~14ea-1) experimental; urgency=medium
+
+  * OpenJDK 23 snapshot, Build 14.
 
   [ Vladimir Petko ]
   * Run the hotspot and jdk autopkg tests on all architectures.
@@ -17,7 +19,7 @@ openjdk-23 (23~13ea-2) UNRELEASED; urgency=medium
   [ Matthias Klose ]
   * Remove the GTK 2.x bits.
 
- -- Matthias Klose <doko@ubuntu.com>  Wed, 13 Mar 2024 13:54:11 +0100
+ -- Matthias Klose <doko@ubuntu.com>  Thu, 14 Mar 2024 18:17:32 +0100
 
 openjdk-23 (23~13ea-1) unstable; urgency=medium
 

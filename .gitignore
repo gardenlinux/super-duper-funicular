@@ -42,6 +42,7 @@ debian/openjdk-23-jre-headless
 debian/openjdk-23-jre-zero
 debian/openjdk-23-jre
 debian/openjdk-23-source
+debian/openjdk-23-testsupport
 
 debian/README.alternatives
 debian/openjdk-23-archive.applications
@@ -70,3 +71,4 @@ debian/openjdk-23-jre.menu
 debian/openjdk-23-jre.overrides
 debian/openjdk-23-jre.postinst
 debian/openjdk-23-jre.prerm
+debian/openjdk-23-testsupport.overrides

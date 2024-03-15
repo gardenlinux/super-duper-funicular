@@ -9,7 +9,7 @@ s390x-opt.diff
 jdk-getAccessibleValue.diff
 #jtreg-location.diff FIXME
 jdk-i18n-pt_BR.diff
-machine-flag.diff
+#machine-flag.diff
 zero-x32.diff
 atk-wrapper-security.diff
 # java-access-bridge-security.diff
