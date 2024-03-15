@@ -12,6 +12,7 @@ openjdk-21 (21.0.3~6ea-2) UNRELEASED; urgency=medium
   [ Vladimir Petko ]
   * d/p/jdk-8325028.patch: Apply upstream patch so that pipe channels
     lazily set socket to non-blocking mode on first use by virtual thread.
+  * Fix installing the s390x build.
 
  -- Matthias Klose <doko@ubuntu.com>  Thu, 14 Mar 2024 16:25:36 +0100
 
