@@ -752,7 +752,7 @@ ifeq (,$(t64_suffix))
   dlopen_hl_depends += libcups2,
   dlopen_hl_depends += libfontconfig1,
 else
-  dlopen_hl_recommends += libcups2$$(t64_suffix),
+  dlopen_hl_recommends += libcups2$(t64_suffix),
   dlopen_hl_recommends += libfontconfig1,
 endif
 dlopen_hl_depends += liblcms2-2,
