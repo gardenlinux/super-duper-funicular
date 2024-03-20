@@ -1,6 +1,10 @@
 openjdk-11 (11.0.22+7-4) UNRELEASED; urgency=medium
 
+  [ Matthias Klose ]
   * Update cups dependencies for time_t64.
+
+  [ Pushkar Kulkarni ]
+  * copyright-generator: Derive release from debian/rules.
 
  -- Matthias Klose <doko@ubuntu.com>  Wed, 20 Mar 2024 14:22:13 +0100
 
