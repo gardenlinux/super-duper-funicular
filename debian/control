@@ -161,7 +161,7 @@ Priority: optional
 Section: debug
 Pre-Depends: ${dpkg:Depends}
 Depends: openjdk-23-jre-headless (= ${binary:Version}),
-   ${misc:Depends}
+   ${misc:Depends},${shlibs:Depends}
 Recommends: openjdk-23-jre (= ${binary:Version})
 Suggests: openjdk-23-jdk (= ${binary:Version})
 Conflicts: ${dbg:Conflicts}
