@@ -13,7 +13,7 @@ openjdk-17 (17.0.11~7ea-1) unstable; urgency=medium
   [ Vladimir Petko ]
   * Fix installing the s390x build.
 
- -- Matthias Klose <doko@ubuntu.com>  Wed, 20 Mar 2024 23:01:03 +0100
+ -- Matthias Klose <doko@ubuntu.com>  Thu, 21 Mar 2024 00:04:45 +0100
 
 openjdk-17 (17.0.11~6ea-1) unstable; urgency=medium
 
