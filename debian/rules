@@ -83,7 +83,7 @@ else
   is_default = yes
 endif
 
-#is_upstream_release = yes
+is_upstream_release = yes
 
 srcdir		= .
 builddir	= build

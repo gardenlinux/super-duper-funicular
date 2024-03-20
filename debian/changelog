@@ -1,4 +1,6 @@
-openjdk-22 (22~36ea-2) UNRELEASED; urgency=medium
+openjdk-22 (22+36-1) unstable; urgency=medium
+
+  * OpenJDK 22, Build 36 (release build).
 
   [ Pushkar Kulkarni ]
   * Corrections to patch arch-add-ports.diff.
@@ -17,7 +19,7 @@ openjdk-22 (22~36ea-2) UNRELEASED; urgency=medium
     used, but only openjdk-*-jre-headless is installed.
   * Add support to build --with-hsdis=binutils, but keep it off by default.
 
- -- Matthias Klose <doko@ubuntu.com>  Thu, 14 Mar 2024 16:27:05 +0100
+ -- Matthias Klose <doko@ubuntu.com>  Wed, 20 Mar 2024 21:26:53 +0100
 
 openjdk-22 (22~36ea-1) unstable; urgency=medium
 
