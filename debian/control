@@ -164,7 +164,7 @@ Priority: optional
 Section: debug
 Pre-Depends: ${dpkg:Depends}
 Depends: openjdk-21-jre-headless (= ${binary:Version}),
-   ${misc:Depends}
+   ${misc:Depends},${shlibs:Depends}
 Recommends: openjdk-21-jre (= ${binary:Version})
 Suggests: openjdk-21-jdk (= ${binary:Version})
 Conflicts: ${dbg:Conflicts}

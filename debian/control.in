@@ -164,7 +164,7 @@ Priority: optional
 Section: debug
 Pre-Depends: ${dpkg:Depends}
 Depends: @basename@-jre-headless (= ${binary:Version}),
-   ${misc:Depends}
+   ${misc:Depends},${shlibs:Depends}
 Recommends: @basename@-jre (= ${binary:Version})
 Suggests: @basename@-jdk (= ${binary:Version})
 Conflicts: ${dbg:Conflicts}

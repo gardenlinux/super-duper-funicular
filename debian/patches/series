@@ -39,3 +39,6 @@ compile-preview.diff
 8242564-proposed.patch
 jdk-8325028.patch
 warn-fontmanager.patch
+jdk-8318418.patch
+jdk-8295795.patch
+hsdis-fpic.patch
