@@ -397,9 +397,9 @@ COMMON_CONFIGURE_ARGS += --with-jni-libpath=/usr/lib/$(DEB_HOST_MULTIARCH)/jni:/
 # FIXME: --with-jvm-variants=server,zero not supported upstream
 ifneq (,$(filter $(DEB_HOST_ARCH),$(hotspot_archs)))
   ifneq (,$(filter $(DEB_HOST_ARCH),i386))
-    DEFAULT_CONFIGURE_ARGS += --with-jvm-variants=client,server
+    DEFAULT_CONFIGURE_ARGS += --with-jvm-variants=client,server$(if $(alternate_vms),$(COMMA)zero)
   else
-    DEFAULT_CONFIGURE_ARGS += --with-jvm-variants=server
+    DEFAULT_CONFIGURE_ARGS += --with-jvm-variants=server$(if $(alternate_vms),$(COMMA)zero)
   endif
 else
   DEFAULT_CONFIGURE_ARGS += --host=$(DEB_HOST_GNU_TYPE) --build=$(DEB_BUILD_GNU_TYPE)
@@ -790,8 +790,8 @@ endif
 
 dlopen_jre_depends =
 dlopen_jre_recommends =
-dlopen_jre_depends += libglib2.0-0(t64_suffix),
-dlopen_jre_depends += libgtk-3-0(t64_suffix),
+dlopen_jre_depends += libglib2.0-0$(t64_suffix),
+dlopen_jre_depends += libgtk-3-0$(t64_suffix),
 dlopen_jre_depends += libxrandr2, libxinerama1,
 ifneq (,$(filter $(distrel),squeeze wheezy jessie stretch lucid precise xenial))
   dlopen_jre_depends += libgl1-mesa-glx | libgl1,
@@ -802,7 +802,7 @@ ifeq ($(with_system_hb),yes)
   dlopen_jre_depends += libharfbuzz0b,
 endif
 ifeq (,$(findstring libcups, $(dlopen_hl_depends)))
-  dlopen_jre_depends += libcups2(t64_suffix),
+  dlopen_jre_depends += libcups2$(t64_suffix),
 endif
 ifeq (,$(findstring libfontconfig, $(dlopen_hl_depends)))
   dlopen_jre_depends += libfontconfig1,
