@@ -443,6 +443,20 @@ ifneq (,$(filter $(DEB_HOST_ARCH),$(hotspot_archs)))
   DEFAULT_CONFIGURE_ARGS += --with-jvm-features=$(subst $(SPACE),$(COMMA),$(strip $(jvm_features)))
 endif
 
+# enable hotspot disassembler
+enable_hsdis =
+ifneq (,$(filter $(DEB_HOST_ARCH), $(hotspot_archs)))
+  # binutils-dev 2.42 is the first binutils having libopcodes_pic.a and libbfd_pic.a
+  ifeq (,$(filter $(distrel), precise trusty xenial bionic focal jammy mantic bookworm bullseye))
+    # keep it off for licensing reasons. binutils is GPLv3+
+    #enable_hsdis = yes
+  endif
+endif
+
+ifeq ($(enable_hsdis),yes)
+  DEFAULT_CONFIGURE_ARGS += --with-hsdis=binutils --with-binutils=system --enable-hsdis-bundling
+endif
+
 vendor := $(shell dpkg-vendor --query Vendor)
 ifeq ($(vendor),Debian)
   vendor_url  = https://tracker.debian.org/pkg/$(basename)
@@ -667,6 +681,9 @@ bd_openjdk = \
 	libasound2-dev, liblcms2-dev, \
 	libxinerama-dev, libkrb5-dev, xsltproc, libpcsclite-dev, libxrandr-dev, \
 	libelf-dev,
+ifeq ($(enable_hsdis),yes)
+  bd_openjdk += binutils-dev, libiberty-dev,
+endif
 # not needed?
 #bd_openjdk += libgtk-3-0,
 #bd_openjdk += libgtk-3-0t64,
@@ -1462,6 +1479,7 @@ endif
 	for i in $(basedir)/lib/*.so; do \
 	  case "$$i" in \
 	    */libawt_xawt.so|*/libjawt.so|*/libsplashscreen.so|*/xawt) echo $$i >> ../$(p_jre).install;; \
+	    */hsdis*.so) ;; \
 	    */zero) echo $$i >> ../$(p_jrez).install;; \
 	    *) echo $$i >> ../$(p_jrehl).install; \
 	  esac; \
@@ -1600,6 +1618,11 @@ endif
 	  fi; \
 	done;
 	find $(d)/usr/lib/debug/ -type d -empty -delete
+
+# add hsdis if we've built it to the -dbg package
+ifeq ($(enable_hsdis),yes)
+	echo $(basedir)/lib/hsdis-*.so >> debian/$(p_dbg).install
+endif
 
 #	: # FIXME: the targets are not installed ...
 #	rm -rfv $(d)/$(basedir)/lib/jfr

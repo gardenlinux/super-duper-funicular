@@ -160,7 +160,7 @@ Priority: optional
 Section: debug
 Pre-Depends: ${dpkg:Depends}
 Depends: openjdk-22-jre-headless (= ${binary:Version}),
-   ${misc:Depends}
+   ${misc:Depends},${shlibs:Depends}
 Recommends: openjdk-22-jre (= ${binary:Version})
 Suggests: openjdk-22-jdk (= ${binary:Version})
 Conflicts: ${dbg:Conflicts}
