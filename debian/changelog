@@ -1,3 +1,9 @@
+openjdk-11 (11.0.22+7-4) UNRELEASED; urgency=medium
+
+  * Update cups dependencies for time_t64.
+
+ -- Matthias Klose <doko@ubuntu.com>  Wed, 20 Mar 2024 14:22:13 +0100
+
 openjdk-11 (11.0.22+7-3) unstable; urgency=medium
 
   * libcups2, libfontconfig1: Make it a recommends in jre-headless,
