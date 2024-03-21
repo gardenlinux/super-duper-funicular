@@ -1,4 +1,6 @@
-openjdk-11 (11.0.22+7-4) UNRELEASED; urgency=medium
+openjdk-11 (11.0.23~7ea-1) unstable; urgency=medium
+
+  * OpenJDK 11.0.23+7 build (early access).
 
   [ Matthias Klose ]
   * Update cups dependencies for time_t64.
@@ -6,7 +8,7 @@ openjdk-11 (11.0.22+7-4) UNRELEASED; urgency=medium
   [ Pushkar Kulkarni ]
   * copyright-generator: Derive release from debian/rules.
 
- -- Matthias Klose <doko@ubuntu.com>  Wed, 20 Mar 2024 14:22:13 +0100
+ -- Matthias Klose <doko@ubuntu.com>  Thu, 21 Mar 2024 01:56:26 +0100
 
 openjdk-11 (11.0.22+7-3) unstable; urgency=medium
 
