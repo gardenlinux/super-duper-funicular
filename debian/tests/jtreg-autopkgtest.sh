@@ -45,7 +45,7 @@ if [ ! -x "${BOOTJDK_HOME}/bin/java" ]; then
 fi
 
 # restrict the tests to a few archs (set from debian/rules)
-if ! echo "${host_arch}" | grep -qE "^($(echo amd64 i386 arm64 armhf ppc64 ppc64el riscv64 s390x alpha ia64 powerpc ppc64 sh4 x32 armel mipsel mips64el riscv64 | tr ' ' '|'))$"; then
+if ! echo "${host_arch}" | grep -qE "^($(echo amd64 i386 arm64 armhf ppc64 ppc64el riscv64 s390x alpha ia64 powerpc ppc64 sh4 x32 armel loong64 mipsel mips64el riscv64 | tr ' ' '|'))$"; then
   echo "Error: ${host_arch} is not on the jtreg_archs list, ignoring it."
   exit 77
 fi
@@ -108,9 +108,9 @@ for i in 0 1 2; do
     -reportDir:"${report_dir}" \
     -jdk:${JDK_TO_TEST} \
     -vmoption:-Dtest.boot.jdk=${BOOTJDK_HOME} \
+    -vmoption:-XX:MaxRAMPercentage=25 \
     -vmoption:-Duser.home=${AUTOPKGTEST_TMP} \
     -vmoption:-Djava.io.tmpdir=${AUTOPKGTEST_TMP} \
-    -vmoption:-XX:MaxRAMPercentage=25 \
     -e:NSS_DEFAULT_DB_TYPE=sql \
     ${on_retry:-} $@ \
       && exit_code=0 || exit_code=$?

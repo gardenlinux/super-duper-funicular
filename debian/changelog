@@ -27,6 +27,14 @@ openjdk-21 (21.0.3~7ea-1) unstable; urgency=medium
   * Emit warning to install openjdk-*-jre package when fontmanager is
     used, but only openjdk-*-jre-headless is installed.
   * Add support to build --with-hsdis=binutils, but keep it off by default.
+  * Run the hotspot and jdk autopkg tests on all architectures.
+  * Add bash, lsb-release and xauth as dependencies for autopkg tests.
+  * Build openjdk-21-testsupport packages, containing the binaries
+    required to run the autopkg tests.
+  * d/t/{hotspot,jdk}-autopkgtest.{sh, in}: Set default arguments to
+    tier1 tests, otherwise pass user's arguments while setting correct
+    test directory and native path.
+  * Fix lintian override package name.
 
  -- Matthias Klose <doko@ubuntu.com>  Thu, 21 Mar 2024 00:10:02 +0100
 
