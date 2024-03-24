@@ -397,9 +397,9 @@ COMMON_CONFIGURE_ARGS += --with-jni-libpath=/usr/lib/$(DEB_HOST_MULTIARCH)/jni:/
 # FIXME: --with-jvm-variants=server,zero not supported upstream
 ifneq (,$(filter $(DEB_HOST_ARCH),$(hotspot_archs)))
   ifneq (,$(filter $(DEB_HOST_ARCH),i386))
-    DEFAULT_CONFIGURE_ARGS += --with-jvm-variants=client,server$(if $(alternate_vms),$(COMMA)zero)
+    DEFAULT_CONFIGURE_ARGS += --with-jvm-variants=client,server
   else
-    DEFAULT_CONFIGURE_ARGS += --with-jvm-variants=server$(if $(alternate_vms),$(COMMA)zero)
+    DEFAULT_CONFIGURE_ARGS += --with-jvm-variants=server
   endif
 else
   DEFAULT_CONFIGURE_ARGS += --host=$(DEB_HOST_GNU_TYPE) --build=$(DEB_BUILD_GNU_TYPE)
@@ -1960,7 +1960,7 @@ endif
 	dh_builddeb -a $(nodemo) $(nojrez) #$(bd_options)
 
 git_project		= jdk
-git_tag			= jdk-23+14
+git_tag			= jdk-23+15
 package_version		= $(shell echo $(PKGVERSION) | sed 's/-[^-][^-]*$$//')
 ifneq ($(is_upstream_release),yes)
   package_version	:= $(subst +,~,$(package_version))
