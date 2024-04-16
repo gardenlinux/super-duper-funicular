@@ -42,3 +42,4 @@ warn-fontmanager.patch
 jdk-8318418.patch
 jdk-8295795.patch
 hsdis-fpic.patch
+jdk-8329983.patch

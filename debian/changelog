@@ -1,3 +1,11 @@
+openjdk-21 (21.0.3~7ea-2) UNRELEASED; urgency=medium
+
+  [ Vladimir Petko ]
+  * d/p/jdk-8329983.patch: apply workaround for JDK-8329983, link failure
+    against libjvm.so on armhf due to undefined symbol.
+
+ -- Matthias Klose <doko@ubuntu.com>  Tue, 16 Apr 2024 15:39:22 +0200
+
 openjdk-21 (21.0.3~7ea-1) unstable; urgency=medium
 
   * OpenJDK 21.0.3, build 7 (early access).
