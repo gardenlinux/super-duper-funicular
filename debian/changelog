@@ -1,3 +1,11 @@
+openjdk-23 (23~15ea-2) UNRELEASED; urgency=medium
+
+  [ Vladimir Petko ]
+  * Add autopkgtest to test that JNI application using invocation API
+    can be linked.
+
+ -- Matthias Klose <doko@ubuntu.com>  Tue, 16 Apr 2024 15:44:41 +0200
+
 openjdk-23 (23~15ea-1) unstable; urgency=medium
 
   * OpenJDK 23 snapshot, Build 15.
