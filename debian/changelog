@@ -1,3 +1,9 @@
+openjdk-11 (11.0.23+9-1) UNRELEASED; urgency=medium
+
+  * OpenJDK 11.0.23 release, build 9.
+
+ -- Matthias Klose <doko@ubuntu.com>  Wed, 17 Apr 2024 15:39:11 +0200
+
 openjdk-11 (11.0.23~7ea-1) unstable; urgency=medium
 
   * OpenJDK 11.0.23+7 build (early access).
