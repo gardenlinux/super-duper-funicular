@@ -1,6 +1,12 @@
 openjdk-21 (21.0.3+9-1) UNRELEASED; urgency=medium
 
   * OpenJDK 21.0.3 release, build 9.
+    - 8329838: [21u] Remove designator DEFAULT_PROMOTED_VERSION_PRE=ea
+      for release 21.0.3.
+    - 8319851: Improve exception logging.
+    - 8322122: Enhance generation of addresses.
+    - 8318340: Improve RSA key implementations.
+    - 8315708: Enhance HTTP/2 client usage.
 
   [ Vladimir Petko ]
   * d/p/jdk-8329983.patch: apply workaround for JDK-8329983, link failure
