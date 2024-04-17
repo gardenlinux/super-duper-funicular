@@ -2,6 +2,9 @@ openjdk-11 (11.0.23+9-1) UNRELEASED; urgency=medium
 
   * OpenJDK 11.0.23 release, build 9.
 
+  [ Pushkar Kulkarni ]
+  * Use 64-bit clock_* function on archs like armhf.
+
  -- Matthias Klose <doko@ubuntu.com>  Wed, 17 Apr 2024 15:39:11 +0200
 
 openjdk-11 (11.0.23~7ea-1) unstable; urgency=medium

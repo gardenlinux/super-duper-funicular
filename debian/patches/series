@@ -41,3 +41,4 @@ test-use-ip-address.patch
 nss-limited-ecc-tests.patch
 loong64-autoconf-config.diff
 8307977-proposed.diff
+use_clock64_fns_armhf.patch
