@@ -42,6 +42,7 @@ debian/openjdk-21-jre-headless
 debian/openjdk-21-jre-zero
 debian/openjdk-21-jre
 debian/openjdk-21-source
+debian/openjdk-21-testsupport
 
 debian/README.alternatives
 debian/openjdk-21-archive.applications
@@ -69,3 +70,4 @@ debian/openjdk-21-jre.menu
 debian/openjdk-21-jre.overrides
 debian/openjdk-21-jre.postinst
 debian/openjdk-21-jre.prerm
+debian/openjdk-21-testsupport.overrides
