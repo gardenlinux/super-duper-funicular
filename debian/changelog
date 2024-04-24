@@ -3,8 +3,10 @@ openjdk-22 (22.0.1+8-1) UNRELEASED; urgency=medium
   * OpenJDK 22.0.1, Build 8.
 
   [ Vladimir Petko ]
-  * d/p/jdk-8329983.patch: apply workaround for JDK-8329983, link failure
+  * d/p/jdk-8329983.patch: Apply workaround for JDK-8329983, link failure
     against libjvm.so on armhf due to undefined symbol.
+  * d/p/8295111.patch: Apply upstream patch to resolve jpackage failure
+    to create a deb package.
 
  -- Matthias Klose <doko@ubuntu.com>  Wed, 24 Apr 2024 13:45:27 +0200
 
