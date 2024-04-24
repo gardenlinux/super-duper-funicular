@@ -1,3 +1,10 @@
+openjdk-17 (17.0.11+9-2) noble; urgency=medium
+
+  [ Vladimir Petko ]
+  * 
+
+ -- Matthias Klose <doko@ubuntu.com>  Wed, 24 Apr 2024 13:35:40 +0200
+
 openjdk-17 (17.0.11+9-1) unstable; urgency=high
 
   * OpenJDK 17.0.11 release, build 9.
