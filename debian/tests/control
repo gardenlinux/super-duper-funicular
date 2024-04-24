@@ -17,3 +17,7 @@ Restrictions: allow-stderr, skippable, flaky, rw-build-tree
 Tests: jni-link.sh
 Depends: @, build-essential, bash
 Restrictions: allow-stderr
+
+Tests: dependencies.sh
+Depends: @, build-essential, bash
+Restrictions: allow-stderr, skippable, flaky
