@@ -954,6 +954,7 @@ debian/tests/control: debian/tests/control.in debian/rules
 
 debian/tests/%.sh: debian/tests/%.in debian/rules
 	sed \
+		-e 's/@basename@/$(basename)/g' \
 		-e 's,@JDK_DIR@,/$(basedir),g' \
 		-e 's,@jtreg_pkg@,$(jtreg_pkg),g' \
 		-e 's/@jtreg_archs@/$(jtreg_archs)/g' \
@@ -961,7 +962,11 @@ debian/tests/%.sh: debian/tests/%.in debian/rules
 		$< > $@;
 	chmod +x $@
 
-gen-autopkgtests: debian/tests/jtdiff-autopkgtest.sh debian/tests/jtreg-autopkgtest.sh debian/tests/jdk-autopkgtest.sh debian/tests/hotspot-autopkgtest.sh
+gen-autopkgtests: debian/tests/jtdiff-autopkgtest.sh \
+	debian/tests/jtreg-autopkgtest.sh \
+	debian/tests/jdk-autopkgtest.sh \
+	debian/tests/hotspot-autopkgtest.sh \
+	debian/tests/jni-link.sh
 
 packaging-files:
 	for f in debian/*.in; do \

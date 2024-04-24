@@ -13,6 +13,8 @@ openjdk-22 (22.0.1+8-1) unstable; urgency=high
     against libjvm.so on armhf due to undefined symbol.
   * d/p/8295111.patch: Apply upstream patch to resolve jpackage failure
     to create a deb package.
+  * Add autopkgtest to test that JNI applications using the invocation API
+    can be linked.
 
  -- Matthias Klose <doko@ubuntu.com>  Wed, 24 Apr 2024 13:45:27 +0200
 
