@@ -260,11 +260,7 @@ else ifneq (,$(filter $(distrel),buster precise trusty xenial bionic cosmic disc
   ifneq (,$(filter $(distrel),buster bionic cosmic disco))
     bd_gcc = g++-8 <!cross>,
   endif
-else ifneq (,$(filter $(distrel),focal))
-  export CC = $(DEB_HOST_GNU_TYPE)-gcc-9
-  export CXX = $(DEB_HOST_GNU_TYPE)-g++-9
-  bd_gcc = g++-9 <!cross>,
-else ifneq (,$(filter $(distrel),bullseye groovy hirsute))
+else ifneq (,$(filter $(distrel),bullseye focal groovy hirsute))
   export CC = $(DEB_HOST_GNU_TYPE)-gcc-10
   export CXX = $(DEB_HOST_GNU_TYPE)-g++-10
   bd_gcc = g++-10 <!cross>,
