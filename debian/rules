@@ -1863,10 +1863,10 @@ ifeq ($(with_docs),yes)
 	  cp -a $$i $(d_doc)/usr/share/doc/$(p_jrehl)/; \
 	  ln -sf ../$(p_jrehl)/$$b $(d_doc)/usr/share/doc/$(p_doc)/$$b; \
 	done
-	rm -v $(d_doc)/usr/share/doc/$(p_jrehl)/api/script-files/jquery-3.6.1.min.js
+	rm -v $(d_doc)/usr/share/doc/$(p_jrehl)/api/script-files/jquery-3.7.1.min.js
 	dh_link -p$(p_doc) \
 	  /usr/share/javascript/jquery/jquery.min.js \
-	    /usr/share/doc/$(p_jrehl)/api/script-files/jquery-3.6.1.min.js
+	    /usr/share/doc/$(p_jrehl)/api/script-files/jquery-3.7.1.min.js
 
 endif
 # FIXME: desktop and menu files not ready for multiarch. #658321
