@@ -8,7 +8,7 @@
  ])
  
  ################################################################################
-@@ -309,3 +310,41 @@ AC_DEFUN_ONCE([LIB_SETUP_HARFBUZZ],
+@@ -313,3 +314,41 @@ AC_DEFUN_ONCE([LIB_SETUP_HARFBUZZ],
    AC_SUBST(HARFBUZZ_CFLAGS)
    AC_SUBST(HARFBUZZ_LIBS)
  ])
@@ -52,14 +52,16 @@
 +])
 --- a/make/modules/java.smartcardio/Lib.gmk
 +++ b/make/modules/java.smartcardio/Lib.gmk
-@@ -29,10 +29,10 @@ include LibCommon.gmk
+@@ -31,12 +31,12 @@ include LibCommon.gmk
  
  $(eval $(call SetupJdkLibrary, BUILD_LIBJ2PCSC, \
      NAME := j2pcsc, \
 -    CFLAGS_unix := -D__sun_jdk, \
--    EXTRA_HEADER_DIRS := libj2pcsc/MUSCLE, \
 +    CFLAGS_unix := -D__sun_jdk -DUSE_SYSTEM_LIBPCSCLITE, \
-+    EXTRA_HEADER_DIRS := /usr/include/PCSC, \
+     EXTRA_HEADER_DIRS := \
+-        libj2pcsc/MUSCLE \
++        /usr/include/PCSC \
+         java.base:libjava, \
      OPTIMIZATION := LOW, \
 -    LIBS_unix := $(LIBDL), \
 +    LIBS_unix := -lpcsclite $(LIBDL), \
