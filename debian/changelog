@@ -9,6 +9,7 @@ openjdk-23 (23~20ea-1) unstable; urgency=medium
 
   [ Matthias Klose ]
   * Build using GCC 10 for focal.
+  * Fix fontmanager build with system harfbuzz.
 
  -- Matthias Klose <doko@ubuntu.com>  Wed, 01 May 2024 04:11:49 +0200
 
