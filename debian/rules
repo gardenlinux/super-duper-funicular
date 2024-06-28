@@ -1376,10 +1376,13 @@ endif
 	cp debian/nss.cfg $(d)/$(basedir)/conf/security/nss.cfg
 
 	: # move config files to $(etcdir) and symlink them.
+	mv $(d)/$(basedir)/conf/jaxp-strict.properties.template \
+	  $(d)/$(basedir)/conf/jaxp-strict.properties
 	rm -f $(d_jrehl).links
 	for i in \
 	  conf/accessibility.properties \
 	  conf/jaxp.properties \
+	  conf/jaxp-strict.properties \
 	  conf/logging.properties \
 	  conf/sound.properties \
 	  conf/net.properties \
@@ -1962,7 +1965,7 @@ endif
 	dh_builddeb -a $(nodemo) $(nojrez) #$(bd_options)
 
 git_project		= jdk
-git_tag			= jdk-23+20
+git_tag			= jdk-23+28
 package_version		= $(shell echo $(PKGVERSION) | sed 's/-[^-][^-]*$$//')
 ifneq ($(is_upstream_release),yes)
   package_version	:= $(subst +,~,$(package_version))
