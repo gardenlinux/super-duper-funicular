@@ -5,7 +5,7 @@ set -o pipefail
 set -o nounset
 
 host_arch="${DEB_HOST_ARCH:-$(dpkg --print-architecture)}"
-jdk_path=$(echo /usr/lib/jvm/java-23-openjdk-amd64 | sed "s/-[^-]*$/-$host_arch/")
+jdk_path=$(echo /usr/lib/jvm/java-24-openjdk-amd64 | sed "s/-[^-]*$/-$host_arch/")
 
 
 echo Check that PC/SC support can be loaded

@@ -5,7 +5,7 @@ set -o pipefail
 set -o nounset
 
 host_arch="${DEB_HOST_ARCH:-$(dpkg --print-architecture)}"
-jdk_path=$(echo /usr/lib/jvm/java-23-openjdk-amd64 | sed "s/-[^-]*$/-$host_arch/")
+jdk_path=$(echo /usr/lib/jvm/java-24-openjdk-amd64 | sed "s/-[^-]*$/-$host_arch/")
 
 if ! $jdk_path/bin/java -version 2>/dev/null; then
     echo >&2 "error: $jdk_path/bin/java not found"

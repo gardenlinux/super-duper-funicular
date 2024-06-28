@@ -3,7 +3,7 @@ opts=\
 repack,repacksuffix=ea,oversionmangle=s/\+(\d+)/\~$1/,dversionmangle=s/\~(\d*)ea$/\+$1/,\
 compression=xz, \
     https://github.com/openjdk/jdk/tags \
-    (?:.*?/)?jdk-(23[\+\.\d]*)\.tar\.gz
+    (?:.*?/)?jdk-(24[\+\.\d]*)\.tar\.gz
 
 opts=\
 component=googletest,\

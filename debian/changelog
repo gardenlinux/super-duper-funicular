@@ -1,3 +1,9 @@
+openjdk-24 (24~4ea-1) experimental; urgency=medium
+
+  * OpenJDK 24 snapshot, Build 4.
+
+ -- Matthias Klose <doko@ubuntu.com>  Fri, 28 Jun 2024 19:36:22 +0200
+
 openjdk-23 (23~28ea-1) unstable; urgency=medium
 
   * OpenJDK 23 snapshot, Build 28.

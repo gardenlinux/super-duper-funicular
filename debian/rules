@@ -95,14 +95,14 @@ TOP		= usr/lib/jvm
 origin		= openjdk
 basename	= openjdk-$(shortver)
 ifneq (,$(filter $(DEB_HOST_ARCH), $(hotspot_archs)))
-  priority	= $(if $(filter yes, $(is_default)),2311,2309)
+  priority	= $(if $(filter yes, $(is_default)),2411,2409)
   vm_name	= Hotspot JIT
 else
-  priority	= $(if $(filter yes, $(is_default)),2304,2303)
+  priority	= $(if $(filter yes, $(is_default)),2404,2403)
   vm_name	= Hotspot Zero
 endif
-jvmver		= 1.23.0
-shortver	= 23
+jvmver		= 1.24.0
+shortver	= 24
 v_debian	:= $(shell echo $(PKGVERSION) | sed 's/ea//' | sed 's/\~us[[:digit:]]\+//')
 v_upstream	:= $(shell echo $(v_debian) | sed 's/-[^-][^-]*$$//')
 v_pkgrel	:= $(shell echo $(v_debian) | sed 's/^.*-//')
@@ -216,8 +216,8 @@ endif
 export DEBIAN_JDK_BASE_DIR := /$(basedir)
 
 BOOTJDK_HOME := $(strip $(subst /bin/javac,, $(firstword $(wildcard \
+			/usr/lib/jvm/java-24-openjdk-$(DEB_BUILD_ARCH)/bin/javac \
 			/usr/lib/jvm/java-23-openjdk-$(DEB_BUILD_ARCH)/bin/javac \
-			/usr/lib/jvm/java-22-openjdk-$(DEB_BUILD_ARCH)/bin/javac \
 		))))
 
 ifeq ($(DEB_BUILD_ARCH),$(DEB_HOST_ARCH))
@@ -632,12 +632,12 @@ else
 endif
 
 ifneq (,$(filter $(distrel),precise))
-    bd_bootstrap = openjdk-22-jdk-headless | openjdk-23-jdk-headless,
+    bd_bootstrap = openjdk-23-jdk-headless | openjdk-24-jdk-headless,
 else ifneq (,$(filter $(distrel),squeeze wheezy jessie trusty xenial))
-    bd_bootstrap = openjdk-22-jdk-headless:native | openjdk-23-jdk-headless:native,
+    bd_bootstrap = openjdk-23-jdk-headless:native | openjdk-24-jdk-headless:native,
 else
-    bd_bootstrap = openjdk-23-jdk-headless:native | openjdk-22-jdk-headless:native,
-    bd_bootstrap = openjdk-22-jdk-headless:native | openjdk-23-jdk-headless:native,
+    bd_bootstrap = openjdk-24-jdk-headless:native | openjdk-23-jdk-headless:native,
+    bd_bootstrap = openjdk-23-jdk-headless:native | openjdk-24-jdk-headless:native,
 endif
 
 ifeq (,$(filter $(distrel),squeeze wheezy jessie precise trusty xenial))
@@ -1965,7 +1965,7 @@ endif
 	dh_builddeb -a $(nodemo) $(nojrez) #$(bd_options)
 
 git_project		= jdk
-git_tag			= jdk-23+28
+git_tag			= jdk-24+4
 package_version		= $(shell echo $(PKGVERSION) | sed 's/-[^-][^-]*$$//')
 ifneq ($(is_upstream_release),yes)
   package_version	:= $(subst +,~,$(package_version))

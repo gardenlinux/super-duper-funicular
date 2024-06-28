@@ -35,4 +35,3 @@ test-use-ip-address.patch
 arch-add-ports.diff
 warn-fontmanager.patch
 hsdis-fpic.patch
-libfontmanager-build.diff

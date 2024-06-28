@@ -15,7 +15,7 @@ fi
 host_arch="${DEB_HOST_ARCH:-$(dpkg --print-architecture)}"
 
 if [ -z "${JDK_TO_TEST+x}" ]; then
-  JDK_TO_TEST=$(echo /usr/lib/jvm/java-23-openjdk-amd64 | sed "s/-[^-]*$/-$host_arch/")
+  JDK_TO_TEST=$(echo /usr/lib/jvm/java-24-openjdk-amd64 | sed "s/-[^-]*$/-$host_arch/")
 fi
 
 if [ -z "${BOOTJDK_HOME+x}" ]; then
