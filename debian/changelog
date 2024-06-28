@@ -1,3 +1,9 @@
+openjdk-23 (23~29ea-1) UNRELEASED; urgency=medium
+
+  * OpenJDK 23 snapshot, Build 29.
+
+ -- Matthias Klose <doko@ubuntu.com>  Fri, 28 Jun 2024 20:19:24 +0200
+
 openjdk-23 (23~28ea-1) unstable; urgency=medium
 
   * OpenJDK 23 snapshot, Build 28.
