@@ -12,8 +12,6 @@ Bug: https://github.com/openjdk/jdk/pull/17435
 Bug-Debian: https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=1057500
 Applied-Upstream: commit, 64c3642c57719940855b220025b33758950b3980
 Last-Update: 2024-01-24
-diff --git a/src/jdk.javadoc/share/classes/jdk/javadoc/internal/tool/ToolEnvironment.java b/src/jdk.javadoc/share/classes/jdk/javadoc/internal/tool/ToolEnvironment.java
-index 4b1e1c66258..5eed7cd9268 100644
 --- a/src/jdk.javadoc/share/classes/jdk/javadoc/internal/tool/ToolEnvironment.java
 +++ b/src/jdk.javadoc/share/classes/jdk/javadoc/internal/tool/ToolEnvironment.java
 @@ -1,5 +1,5 @@
@@ -23,7 +21,7 @@ index 4b1e1c66258..5eed7cd9268 100644
   * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
   *
   * This code is free software; you can redistribute it and/or modify it
-@@ -31,6 +31,7 @@
+@@ -31,6 +31,7 @@ import java.util.*;
  import javax.lang.model.element.Element;
  import javax.lang.model.element.TypeElement;
  import javax.lang.model.util.Elements;
@@ -31,17 +29,15 @@ index 4b1e1c66258..5eed7cd9268 100644
  import javax.tools.JavaFileManager;
  import javax.tools.JavaFileObject;
  import javax.tools.JavaFileObject.Kind;
-@@ -181,6 +182,8 @@ void setElementToTreePath(Element e, TreePath tree) {
+@@ -185,6 +186,8 @@ public class ToolEnvironment {
      }
-
+ 
      public Kind getFileKind(TypeElement te) {
 +        if (te.asType().getKind() == TypeKind.ERROR)
 +            return Kind.OTHER;
          JavaFileObject jfo = ((ClassSymbol)te).outermostClass().classfile;
          return jfo == null ? Kind.SOURCE : jfo.getKind();
      }
-diff --git a/test/langtools/jdk/javadoc/doclet/testClassTree/TestClassTree.java b/test/langtools/jdk/javadoc/doclet/testClassTree/TestClassTree.java
-index 52a0e3ff55c..778a9e762e0 100644
 --- a/test/langtools/jdk/javadoc/doclet/testClassTree/TestClassTree.java
 +++ b/test/langtools/jdk/javadoc/doclet/testClassTree/TestClassTree.java
 @@ -1,5 +1,5 @@
@@ -51,8 +47,8 @@ index 52a0e3ff55c..778a9e762e0 100644
   * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
   *
   * This code is free software; you can redistribute it and/or modify it
-@@ -23,26 +23,76 @@
-
+@@ -23,27 +23,77 @@
+ 
  /*
   * @test
 - * @bug      4632553 4973607 8026567
@@ -70,23 +66,23 @@ index 52a0e3ff55c..778a9e762e0 100644
 + * @build    toolbox.ToolBox javadoc.tester.*
   * @run main TestClassTree
   */
-
+ 
 +import java.io.IOException;
 +import java.nio.file.Path;
 +
  import javadoc.tester.JavadocTester;
 +import toolbox.ToolBox;
-
+ 
  public class TestClassTree extends JavadocTester {
-
+ 
 +    private final ToolBox tb = new ToolBox();
 +
      public static void main(String... args) throws Exception {
          var tester = new TestClassTree();
          tester.runTests();
      }
-
-+    @Test
+ 
+     @Test
 +    public void testBadPkg(Path base) throws IOException {
 +        // Given badpkg package containing class ChildClass with an undefined
 +        //       base class, implementing undefined interface and a defined
@@ -128,6 +124,7 @@ index 52a0e3ff55c..778a9e762e0 100644
 +        checkOutput("badpkg/ChildClass.html", false, "AnInterface");
 +    }
 +
-     @Test
++    @Test
      public void test() {
          javadoc("-d", "out",
+                 "--no-platform-links",
