@@ -6,6 +6,8 @@ openjdk-22 (22.0.1+8-2) unstable; urgency=medium
   [ Vladimir Petko ]
   * d/rules: Include /usr/share/dpkg/buildflags.mk to avoid configure failure
     due to the undefined variables.
+  * d/p/jdk-8331541.patch: add fix for the link failure against libjvm.so
+    on i386.
 
  -- Matthias Klose <doko@ubuntu.com>  Sat, 29 Jun 2024 10:00:35 +0200
 
