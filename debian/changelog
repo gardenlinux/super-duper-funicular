@@ -1,13 +1,31 @@
-openjdk-17 (17.0.11+9-2) noble; urgency=medium
+openjdk-17 (17.0.12~6ea-1) unstable; urgency=medium
+
+  * OpenJDK 17.0.12 early access, build 6.
 
   [ Vladimir Petko ]
   * d/p/8295111.patch: Apply upstream patch to resolve jpackage failure
     to create a deb package.
+  * d/t/problems-i386.txt: Update i386 test exclusions.
+  * d/t/problems-armhf.txt: Update armhf test exclusions.
+  * d/p/jdk-8307977.patch: Rename patch.
+  * d/p/jdk-8334502-proposed.patch: Add proposed fix for iso8601 time format
+    on ARM32.
+  * d/p/jdk-8334895-proposed.patch: Add proposed fix for configuration failure
+    when CDS is disabled on arm64.
+  * d/control: Regenerate control.
+  * d/rules: Enable early access release.
+  * d/rules: Enable jtreg tests.
+  * d/rules: Include /usr/share/dpkg/buildflags.mk to avoid configure failure
+    due to the undefined variables.
+  * d/p/jdk-8325567.patch: jspawnhelper without args fails with segfault.
+    LP: #2055280.
+  * d/p/jdk-8331541.patch: Add fix for the link failure against libjvm.so on
+    i386. Closes: #1057715.
 
   [ Matthias Klose ]
   * Build using GCC 10 for focal.
 
- -- Matthias Klose <doko@ubuntu.com>  Wed, 01 May 2024 04:44:00 +0200
+ -- Matthias Klose <doko@ubuntu.com>  Sat, 29 Jun 2024 09:05:11 +0200
 
 openjdk-17 (17.0.11+9-1) unstable; urgency=high
 
@@ -122,7 +140,7 @@ openjdk-17 (17.0.9+9-2) unstable; urgency=medium
 openjdk-17 (17.0.9+9-1) unstable; urgency=high
 
   * OpenJDK 17.0.9 release, build 9.
-    - CVE-2023-30589, CVE-2023-22081, CVE-2023-22091, CVE-2023-22025.	
+    - CVE-2023-30589, CVE-2023-22081, CVE-2023-22091, CVE-2023-22025.
       The patch for CVE-2023-30589 also addresses CVE-2023-30585,
       CVE-2023-30588, and CVE-2023-30590.
     - Release notes:
@@ -5688,4 +5706,3 @@ icedtea (7~b14-20070704-1) unstable; urgency=low
   * Initial version.
 
  -- Michael Koch <konqueror@gmx.de>  Wed, 04 Jul 2007 08:25:31 -0100
-

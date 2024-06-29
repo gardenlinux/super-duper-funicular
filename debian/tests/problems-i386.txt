@@ -17,3 +17,5 @@ java/net/httpclient/http2/HpackBinaryTestDriver.java 000000 generic-all
 # runner issue, disk space size exceeds 32 bit integer
 java/io/File/GetXSpace.java 000000 generic-all
 
+# CI issue
+java/lang/ProcessBuilder/PipelineLeaksFD.java 000000 generic-all

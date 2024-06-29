@@ -38,5 +38,8 @@ ldap-timeout-test-use-ip.patch
 test-use-ip-address.patch
 loong64-autoconf-config.diff
 googletest-version.diff
-8307977-proposed.diff
-8295111.patch
+jdk-8307977-proposed.patch
+jdk-8295111.patch
+jdk-8334502-proposed.patch
+jdk-8334895-proposed.patch
+jdk-8325567.patch
