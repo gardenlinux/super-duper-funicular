@@ -982,7 +982,6 @@ gen-autopkgtests: debian/tests/jtdiff-autopkgtest.sh \
 	debian/tests/jtreg-autopkgtest.sh \
 	debian/tests/jdk-autopkgtest.sh \
 	debian/tests/hotspot-autopkgtest.sh \
-	debian/tests/jni-link.sh \
 	debian/tests/dependencies.sh
 
 packaging-files:

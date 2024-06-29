@@ -7,6 +7,8 @@ openjdk-21 (21.0.4~6ea-1) UNRELEASED; urgency=medium
 
   [ Vladimir Petko ]
   * Update patches for the snapshot build.
+  * d/p/jdk-8331541.patch: Add fix for the link failure against libjvm.so
+    on i386. Closes: #1070476.
 
  -- Matthias Klose <doko@ubuntu.com>  Sat, 29 Jun 2024 07:21:02 +0200
 
