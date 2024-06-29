@@ -3,6 +3,7 @@
 
 # Uncomment this to turn on verbose mode.
 #export DH_VERBOSE=1
+include /usr/share/dpkg/buildflags.mk
 
 unexport LANG LC_ALL
 
@@ -78,6 +79,7 @@ else
 endif
 
 is_upstream_release = yes
+is_upstream_release =
 
 srcdir		= .
 builddir	= build
@@ -152,7 +154,7 @@ ifneq (,$(filter parallel=%,$(subst $(COMMA), ,$(DEB_BUILD_OPTIONS))))
   NJOBS = $(subst parallel=,,$(filter parallel=%,$(subst $(COMMA), ,$(DEB_BUILD_OPTIONS))))
 endif
 
-jtreg_pkg = jtreg6
+jtreg_pkg = jtreg7
 testng_pkg= libtestng7-java
 
 with_check = $(if $(findstring nocheck, $(DEB_BUILD_OPTIONS)),,yes)
@@ -169,7 +171,7 @@ with_docs = $(if $(findstring nodoc, $(DEB_BUILD_OPTIONS)),,yes)
 ifneq (,$(filter $(distrel), precise trusty))
   with_docs =
 endif
-with_check = disabled for this upload
+#with_check = disabled for this upload
 
 with_wqy_zenhai = $(if $(filter $(distrel),lenny),,yes)
 
@@ -1060,14 +1062,6 @@ stamps/zero-configure: stamps/build stamps/unpack
 	touch $@
 
 stamps/unpack:
-	: # apply some architecture specific patches ...
-#ifeq ($(DEB_HOST_ARCH),alpha)
-#	patch -p1 < debian/patches/alpha-float-const.diff
-#endif
-#ifeq ($(DEB_HOST_ARCH),powerpcspe)
-#	patch -p1 < debian/patches/powerpcspe-float-const.diff
-#endif
-
 	$(MAKE) -f debian/rules packaging-files
 
 	mkdir -p stamps
@@ -1937,7 +1931,7 @@ endif
 	dh_builddeb -a $(nodemo) $(nojrez) #$(bd_options)
 
 git_project		= jdk11u
-git_tag			= jdk-11.0.23+9
+git_tag			= jdk-11.0.24+7
 package_version		= $(subst jdk-,,$(git_tag))
 package_version		= $(shell echo $(PKGVERSION) | sed 's/-[^-][^-]*$$//')
 ifneq ($(is_upstream_release),yes)
@@ -1976,6 +1970,7 @@ get-orig:
 	  rm -v -rf $$d/src/java.smartcardio/unix/native/libj2pcsc/MUSCLE; \
 	  rm -v -rf $$d/.github; \
 	  rm -v -f $$d/.gitattributes; \
+	  rm -v -f $$d/test/jdk/sun/management/windows/revokeall.exe; \
 	esac; \
 	mv $$d $(topdir); \
 	XZ_OPT=-9v tar cfJ ../$(basename)_$(package_version).orig.tar.xz $(topdir); \

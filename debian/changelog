@@ -1,3 +1,25 @@
+openjdk-11 (11.0.24~7ea-1) unstable; urgency=medium
+
+  * OpenJDK 11.0.24+7 build (early access).
+
+  [ Vladimir Petko ]
+  * d/p/*: Refresh patches.
+  * d/rules, d/control: Use jtreg7, enable jtreg.
+  * d/JB-demo.overrides.in: Add jar-contains-source override
+    for SwingSet demo jar.
+  * d/rules, d/copyright-generator/copyright-gen.py, d/copyright: Exclude
+    test/jdk/sun/management/windows/revokeall.exe from orig tarball,
+    format d/copyright-generator/copyright-gen.py.
+  * d/p/8307977-proposed.diff: Rename to jdk-8307977-proposed.patch.
+  * d/p/jdk-8334502.patch: Fix iso8601_utctime armhf function.
+  * d/p/jtreg-location.diff: Drop patch as it is no longer needed for jtreg7.
+  * d/rules: Include buildflags.mk to avoid errors due to undefined variables.
+
+  [ Matthias Klose ]
+  * Remove references to obsolete patches. Closes: #1067613.
+
+ -- Matthias Klose <doko@ubuntu.com>  Sat, 29 Jun 2024 10:11:23 +0200
+
 openjdk-11 (11.0.23+9-1) unstable; urgency=high
 
   * OpenJDK 11.0.23 release, build 9.
