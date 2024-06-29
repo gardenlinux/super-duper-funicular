@@ -7,10 +7,10 @@ Forwarded: not-needed
 Last-Update: 2023-03-27
 --- a/test/jdk/java/lang/invoke/lambda/LogGeneratedClassesTest.java
 +++ b/test/jdk/java/lang/invoke/lambda/LogGeneratedClassesTest.java
-@@ -206,14 +206,21 @@
+@@ -207,14 +207,21 @@
  
      @Test
-     public void testDumpDirNotWritable() throws IOException {
+     public void testDumpDirNotWritable() throws Exception {
 -        if (!Files.getFileStore(Paths.get("."))
 -                  .supportsFileAttributeView(PosixFileAttributeView.class)) {
 -            // No easy way to setup readonly directory without POSIX
@@ -22,7 +22,7 @@ Last-Update: 2023-03-27
 +        try
 +        {
 +            if (!Files.getFileStore(Paths.get("."))
-+                    .supportsFileAttributeView(PosixFileAttributeView.class)) {
++            .supportsFileAttributeView(PosixFileAttributeView.class)) {
 +                // No easy way to setup readonly directory without POSIX
 +                // We would like to skip the test with a cause with
 +                //     throw new SkipException("Posix not supported");

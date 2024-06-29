@@ -40,7 +40,3 @@ java/lang/invoke/lambda/LambdaFileEncodingSerialization.java 8249079 generic-all
 
 jdk/incubator/concurrent/ScopedValue/StressStackOverflow.java 000000 generic-all
 java/lang/ScopedValue/StressStackOverflow.java 000000 generic-all
-
-# https://bugs.openjdk.org/browse/JDK-8309214
-sun/security/pkcs11/KeyStore/CertChainRemoval.java 000000 generic-all
-

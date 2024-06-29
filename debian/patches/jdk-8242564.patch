@@ -1,6 +1,6 @@
 Description: javadoc crashes: class cast exeception com.sun.tools.javac.code.Symtab$6
  This is a proposed fix for JDK-8242564. Javadoc option '--ignore-source-errors'
- allows generating Javadoc for the packages that contain compilation errors. 
+ allows generating Javadoc for the packages that contain compilation errors.
  jdk.javadoc.internal.doclets.toolkit.util.ClassTree generates a type hierarchy
  for javadoc that may include error types such as class Foo extends Bar {}
  where Bar is undefined.
@@ -10,6 +10,7 @@ Description: javadoc crashes: class cast exeception com.sun.tools.javac.code.Sym
 Author: Vladimir Petko <vladimir.petko@canonical.com>
 Bug: https://github.com/openjdk/jdk/pull/17435
 Bug-Debian: https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=1057500
+Applied-Upstream: commit, 64c3642c57719940855b220025b33758950b3980
 Last-Update: 2024-01-24
 diff --git a/src/jdk.javadoc/share/classes/jdk/javadoc/internal/tool/ToolEnvironment.java b/src/jdk.javadoc/share/classes/jdk/javadoc/internal/tool/ToolEnvironment.java
 index 4b1e1c66258..5eed7cd9268 100644
@@ -32,7 +33,7 @@ index 4b1e1c66258..5eed7cd9268 100644
  import javax.tools.JavaFileObject.Kind;
 @@ -181,6 +182,8 @@ void setElementToTreePath(Element e, TreePath tree) {
      }
- 
+
      public Kind getFileKind(TypeElement te) {
 +        if (te.asType().getKind() == TypeKind.ERROR)
 +            return Kind.OTHER;
@@ -51,7 +52,7 @@ index 52a0e3ff55c..778a9e762e0 100644
   *
   * This code is free software; you can redistribute it and/or modify it
 @@ -23,26 +23,76 @@
- 
+
  /*
   * @test
 - * @bug      4632553 4973607 8026567
@@ -69,22 +70,22 @@ index 52a0e3ff55c..778a9e762e0 100644
 + * @build    toolbox.ToolBox javadoc.tester.*
   * @run main TestClassTree
   */
- 
+
 +import java.io.IOException;
 +import java.nio.file.Path;
 +
  import javadoc.tester.JavadocTester;
 +import toolbox.ToolBox;
- 
+
  public class TestClassTree extends JavadocTester {
- 
+
 +    private final ToolBox tb = new ToolBox();
 +
      public static void main(String... args) throws Exception {
          var tester = new TestClassTree();
          tester.runTests();
      }
- 
+
 +    @Test
 +    public void testBadPkg(Path base) throws IOException {
 +        // Given badpkg package containing class ChildClass with an undefined

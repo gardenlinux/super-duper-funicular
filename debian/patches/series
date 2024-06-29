@@ -35,12 +35,12 @@ ldap-timeout-test-use-ip.patch
 test-use-ip-address.patch
 arch-add-ports.diff
 compile-preview.diff
-8307977-proposed.diff
-8242564-proposed.patch
-jdk-8325028.patch
+jdk-8307977-proposed.patch
+jdk-8242564.patch
 warn-fontmanager.patch
 jdk-8318418.patch
 jdk-8295795.patch
 hsdis-fpic.patch
 jdk-8329983.patch
-8295111.patch
+jdk-8334502-proposed.patch
+jdk-8334895-proposed.patch

@@ -1,8 +1,14 @@
-openjdk-21 (21.0.3+9-3) UNRELEASED; urgency=medium
+openjdk-21 (21.0.4~6ea-1) UNRELEASED; urgency=medium
 
+  * OpenJDK 21.0.4, build 6 (early access).
+
+  [ Matthias Klose ]
   * Build using GCC 10 for focal.
 
- -- Matthias Klose <doko@ubuntu.com>  Wed, 01 May 2024 04:05:06 +0200
+  [ Vladimir Petko ]
+  * Update patches for the snapshot build.
+
+ -- Matthias Klose <doko@ubuntu.com>  Sat, 29 Jun 2024 07:21:02 +0200
 
 openjdk-21 (21.0.3+9-2) unstable; urgency=medium
 
@@ -5707,4 +5713,3 @@ icedtea (7~b14-20070704-1) unstable; urgency=low
   * Initial version.
 
  -- Michael Koch <konqueror@gmx.de>  Wed, 04 Jul 2007 08:25:31 -0100
-
