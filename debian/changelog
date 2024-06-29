@@ -1,8 +1,13 @@
-openjdk-22 (22.0.1+8-2) UNRELEASED; urgency=medium
+openjdk-22 (22.0.1+8-2) unstable; urgency=medium
 
+  [ Matthias Klose ]
   * Build using GCC 10 for focal.
 
- -- Matthias Klose <doko@ubuntu.com>  Wed, 01 May 2024 04:07:36 +0200
+  [ Vladimir Petko ]
+  * d/rules: Include /usr/share/dpkg/buildflags.mk to avoid configure failure
+    due to the undefined variables.
+
+ -- Matthias Klose <doko@ubuntu.com>  Sat, 29 Jun 2024 10:00:35 +0200
 
 openjdk-22 (22.0.1+8-1) unstable; urgency=high
 
