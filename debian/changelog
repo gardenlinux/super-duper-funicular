@@ -1,3 +1,19 @@
+openjdk-24 (24~4ea-2) UNRELEASED; urgency=medium
+
+  [ Vladimir Petko ]
+  * d/rules: Enable jtreg again.
+  * d/t/jni-link.{in,sh}: Drop obsolete test. After JDK-8331541 the build
+    will fail if JVM contains undefined symbols.
+  * d/rules: Add missing file.
+  * d/p/jdk-8334502.patch: Fix iso8601_utctime armhf function.
+  * d/p/jdk-8334895-proposed.patch: Resolve configure issue on arm64.
+  * d/rules: Include /usr/share/dpkg/buildflags.mk to avoid configure failure
+    due to undefined environment variables.
+  * d/p/jdk-8335238-workaround.patch: Temporary revert fix for JDK-8320886
+    on i386 to fix the ftbfs due to hanging jtreg tests.
+
+ -- Matthias Klose <doko@ubuntu.com>  Thu, 11 Jul 2024 09:54:25 +0200
+
 openjdk-24 (24~4ea-1) experimental; urgency=medium
 
   * OpenJDK 24 snapshot, Build 4.
