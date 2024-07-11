@@ -1,0 +1,24 @@
+Description: disable UnsafeGuard in Unsafe_SetMemory0 for i386
+ x86 hotspot aseembler incorrectly returns next instruction's PC
+ for rep stos %eax,%es:(%edi) causing an infinite loop.
+ This patch removes UnsafeGuard for i386, so that VM crashes
+ instead of hanging indefinitely.
+ Patch should not be forwarded as it reverses JDK-8320886 for
+ i386.
+Author: Vladimir Petko <vladimir.petko@canonical.com>
+Bug: https://bugs.openjdk.org/browse/JDK-8335238
+Forwarded: not-needed
+Last-Update: 2024-07-01
+
+--- a/src/hotspot/share/prims/unsafe.cpp
++++ b/src/hotspot/share/prims/unsafe.cpp
+@@ -388,7 +388,9 @@
+   void* p = index_oop_from_field_offset_long(base, offset);
+ 
+   {
++#if !defined(IA32) || !defined(TARGET_ARCH_x86)
+     GuardUnsafeAccess guard(thread);
++#endif
+     if (StubRoutines::unsafe_setmemory() != nullptr) {
+       MACOS_AARCH64_ONLY(ThreadWXEnable wx(WXExec, thread));
+       StubRoutines::UnsafeSetMemory_stub()(p, sz, value);

@@ -2,6 +2,18 @@ openjdk-23 (23~29ea-1) UNRELEASED; urgency=medium
 
   * OpenJDK 23 snapshot, Build 29.
 
+  [ Vladimir Petko ]
+  * d/rules: Enable jtreg again.
+  * d/t/jni-link.{in,sh}: Drop obsolete test. After JDK-8331541 the build
+    will fail if JVM contains undefined symbols.
+  * d/rules: Add missing file.
+  * d/p/jdk-8334502.patch: Fix iso8601_utctime armhf function.
+  * d/p/jdk-8334895-proposed.patch: Resolve configure issue on arm64.
+  * d/rules: Include /usr/share/dpkg/buildflags.mk to avoid configure failure
+    due to undefined environment variables.
+  * d/p/jdk-8335238-workaround.patch: Temporary revert fix for JDK-8320886
+    on i386 to fix the ftbfs due to hanging jtreg tests.
+
  -- Matthias Klose <doko@ubuntu.com>  Fri, 28 Jun 2024 20:19:24 +0200
 
 openjdk-23 (23~28ea-1) unstable; urgency=medium
