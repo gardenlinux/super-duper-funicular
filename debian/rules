@@ -965,7 +965,12 @@ debian/tests/%.sh: debian/tests/%.in debian/rules
 		$< > $@;
 	chmod +x $@
 
-gen-autopkgtests: debian/tests/jtdiff-autopkgtest.sh debian/tests/jtreg-autopkgtest.sh
+gen-autopkgtests: debian/tests/jtdiff-autopkgtest.sh \
+	debian/tests/jtreg-autopkgtest.sh \
+	debian/tests/jdk-autopkgtest.sh \
+	debian/tests/hotspot-autopkgtest.sh \
+	debian/tests/dependencies.sh \
+	debian/tests/write-problems.sh
 
 packaging-files:
 	for f in debian/*.in; do \
