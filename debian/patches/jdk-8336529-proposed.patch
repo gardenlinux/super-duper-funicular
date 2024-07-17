@@ -15,7 +15,7 @@ Last-Update: 2024-07-17
 
 --- a/src/java.base/unix/native/libnio/fs/UnixNativeDispatcher.c
 +++ b/src/java.base/unix/native/libnio/fs/UnixNativeDispatcher.c
-@@ -247,6 +247,20 @@
+@@ -280,6 +280,20 @@
  }
  #endif
  
@@ -36,7 +36,7 @@ Last-Update: 2024-07-17
  #if defined(__linux__)
  static int statx_wrapper(int dirfd, const char *restrict pathname, int flags,
                           unsigned int mask, struct my_statx *restrict statxbuf) {
-@@ -352,10 +366,13 @@
+@@ -384,10 +398,13 @@
      my_unlinkat_func = (unlinkat_func*) dlsym(RTLD_DEFAULT, "unlinkat");
      my_renameat_func = (renameat_func*) dlsym(RTLD_DEFAULT, "renameat");
  #ifndef _ALLBSD_SOURCE
@@ -51,5 +51,5 @@ Last-Update: 2024-07-17
 +    my_futimens_func = (futimens_func*) lookup_time_function("__futimens64",
 +        "futimens");
  #if defined(_AIX)
-     // Make sure we link to the 64-bit version of the function
      my_fdopendir_func = (fdopendir_func*) dlsym(RTLD_DEFAULT, "fdopendir64");
+ #else
