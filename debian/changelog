@@ -1,3 +1,9 @@
+openjdk-11 (11.0.24+8-1) unstable; urgency=medium
+
+  * OpenJDK 11.0.24 release, build 8.
+
+ -- Matthias Klose <doko@ubuntu.com>  Wed, 17 Jul 2024 13:18:57 +0200
+
 openjdk-11 (11.0.24~7ea-1) unstable; urgency=medium
 
   * OpenJDK 11.0.24+7 build (early access).
