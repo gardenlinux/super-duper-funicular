@@ -968,8 +968,8 @@ gen-autopkgtests: debian/tests/jtdiff-autopkgtest.sh \
 	debian/tests/jtreg-autopkgtest.sh \
 	debian/tests/jdk-autopkgtest.sh \
 	debian/tests/hotspot-autopkgtest.sh \
-	debian/tests/jni-link.sh \
-	debian/tests/dependencies.sh
+	debian/tests/dependencies.sh \
+	debian/tests/write-problems.sh
 
 packaging-files:
 	for f in debian/*.in; do \
