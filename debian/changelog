@@ -1,9 +1,11 @@
-openjdk-22 (22.0.1+8-3) UNRELEASED; urgency=medium
+openjdk-22 (22.0.2+9-1) unstable; urgency=medium
+
+  * OpenJDK 22.0.2, Build 9.
 
   [ Vladimir Petko ]
   * Enable jtreg again.
 
- -- Matthias Klose <doko@ubuntu.com>  Thu, 11 Jul 2024 09:45:03 +0200
+ -- Matthias Klose <doko@ubuntu.com>  Wed, 17 Jul 2024 11:51:14 +0200
 
 openjdk-22 (22.0.1+8-2) unstable; urgency=medium
 
