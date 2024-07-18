@@ -13,6 +13,12 @@ openjdk-23 (23~29ea-1) UNRELEASED; urgency=medium
     due to undefined environment variables.
   * d/p/jdk-8335238-workaround.patch: Temporary revert fix for JDK-8320886
     on i386 to fix the ftbfs due to hanging jtreg tests.
+  * d/rules, d/t/*: Collate all excluded tests into d/problemlist.csv.
+  * d/rules: enable Fallback linker for Foreign Function and Memory API
+    on i386 and armhf.
+  * d/watch: Use fixed googletest version.
+  * d/p/jdk-8336529-proposed.patch: Fix time_t migration issue on armhf,
+    unable to set file last modified timestamp.
 
  -- Matthias Klose <doko@ubuntu.com>  Fri, 28 Jun 2024 20:19:24 +0200
 

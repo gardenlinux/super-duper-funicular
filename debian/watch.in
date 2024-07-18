@@ -10,4 +10,4 @@ component=googletest,\
 repack,\
 compression=xz \
     @gtest_repo@ \
-    (?:.*?/)?v([\.\d]+)\.tar\.gz @gtest_tag@
+    (?:.*?/)?v(@gtest_tag@)\.tar\.gz @gtest_tag@
