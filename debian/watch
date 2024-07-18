@@ -10,4 +10,4 @@ component=googletest,\
 repack,\
 compression=xz \
     https://github.com/google/googletest/tags \
-    (?:.*?/)?v([\.\d]+)\.tar\.gz 1.14.0
+    (?:.*?/)?v(1.14.0)\.tar\.gz 1.14.0

@@ -20,6 +20,9 @@ openjdk-23 (23~29ea-1) UNRELEASED; urgency=medium
   * d/p/jdk-8336529-proposed.patch: Fix time_t migration issue on armhf,
     unable to set file last modified timestamp.
 
+  [ Matthias Klose ]
+  * Build using GCC 14.
+
  -- Matthias Klose <doko@ubuntu.com>  Fri, 28 Jun 2024 20:19:24 +0200
 
 openjdk-23 (23~28ea-1) unstable; urgency=medium
