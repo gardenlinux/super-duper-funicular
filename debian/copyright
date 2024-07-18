@@ -420,7 +420,7 @@ License:   GPL with Classpath exception
   --- end of LICENSE ---
   .
   ------------------------------------------------------------------------------
-  The following licenses for third party code are taken from 'legal'
+  The following licenses for third party code are taken from 'legal' 
   directories of modules under src/
   ------------------------------------------------------------------------------
   .
@@ -720,7 +720,7 @@ License:   GPL with Classpath exception
   .
   Software distributed under the License is distributed on an "AS IS" basis,
   WITHOUT WARRANTY OF ANY KIND, either express or implied. See the License
-  for the specific language governing rights and limitations under the License.
+  for the specific language governing rights and limitations under the License. 
   .
   .
   MPL v2.0
@@ -762,7 +762,7 @@ License:   GPL with Classpath exception
       means any form of the work other than Source Code Form.
   .
   1.7. "Larger Work"
-      means a work that combines Covered Software with other material, in
+      means a work that combines Covered Software with other material, in 
       a separate file or files, that is not Covered Software.
   .
   1.8. "License"
@@ -1563,7 +1563,7 @@ License:   GPL with Classpath exception
   .
   .
   GPL v2: Refer to the copy under /usr/share/common-licenses
-  : Refer to the copy under /usr/share/common-licenses
+  .
   Additional Freetype Attributions
   .
   .
@@ -2079,7 +2079,7 @@ License:   GPL with Classpath exception
   .
   .
   Apache 2.0 License: Refer to the copy under /usr/share/common-licenses
-  : Refer to the copy under /usr/share/common-licenses
+  .
   .
   --- end of LICENSE ---
   .
@@ -2222,8 +2222,8 @@ License:   GPL with Classpath exception
      This product includes software developed by
      The Apache Software Foundation (http://www.apache.org/).
   .
-     Specifically, we only include the XSLTC portion of the source from the Xalan distribution.
-     The Xalan project has two processors: an interpretive one (Xalan Interpretive) and a
+     Specifically, we only include the XSLTC portion of the source from the Xalan distribution. 
+     The Xalan project has two processors: an interpretive one (Xalan Interpretive) and a 
      compiled one (The XSLT Compiler (XSLTC)). We *only* use the XSLTC part of Xalan; We use
      the source from the packages that are part of the XSLTC sources.
   .
@@ -2238,7 +2238,7 @@ License:   GPL with Classpath exception
   .
   .
   Apache 2.0 License: Refer to the copy under /usr/share/common-licenses
-  : Refer to the copy under /usr/share/common-licenses
+  .
   .
   --- end of LICENSE ---
   .
@@ -2270,7 +2270,7 @@ License:   GPL with Classpath exception
   .
   .
   Apache 2.0 License: Refer to the copy under /usr/share/common-licenses
-  : Refer to the copy under /usr/share/common-licenses
+  .
   .
   --- end of LICENSE ---
   .
@@ -2281,7 +2281,7 @@ License:   GPL with Classpath exception
   --- begin of LICENSE ---
   .
   Apache 2.0 License: Refer to the copy under /usr/share/common-licenses
-  : Refer to the copy under /usr/share/common-licenses
+  .
   Apache Santuario Notice
   .
   .
@@ -2465,14 +2465,14 @@ License:   GPL with Classpath exception
   Written Offer for Source Code
   .
   .
-  For third party technology that you receive from Oracle in binary form
+  For third party technology that you receive from Oracle in binary form 
   which is licensed under an open source license that gives you the right
-  to receive the source code for that binary, you can obtain a copy of
+  to receive the source code for that binary, you can obtain a copy of 
   the applicable source code from this page:
       http://hg.openjdk.java.net/jdk9/jdk9/jdk/file/tip/src/jdk.crypto.ec/share/native/libsunec/impl
   .
-  If the source code for the technology was not provided to you with the
-  binary, you can also receive a copy of the source code on physical
+  If the source code for the technology was not provided to you with the 
+  binary, you can also receive a copy of the source code on physical 
   media by submitting a written request to:
   .
      Oracle America, Inc.
@@ -2501,11 +2501,11 @@ License:   GPL with Classpath exception
   .
     - A telephone number in the event we need to reach you.
   .
-  We may charge you a fee to cover the cost of physical media and processing.
-  Your request must be sent (i) within three (3) years of the date you
-  received the Oracle product that included the component or binary
-  file(s) that are the subject of your request, or (ii) in the case of
-  code licensed under the GPL v3, for as long as Oracle offers spare
+  We may charge you a fee to cover the cost of physical media and processing. 
+  Your request must be sent (i) within three (3) years of the date you 
+  received the Oracle product that included the component or binary 
+  file(s) that are the subject of your request, or (ii) in the case of 
+  code licensed under the GPL v3, for as long as Oracle offers spare 
   parts or customer support for that product model.
   .
   .
@@ -4217,3 +4217,4 @@ License: LGPL
   .
   On Debian systems a full copy of the GNU General Public License, GPL, can be
   found in the file /usr/share/common-licenses/GPL-2.
+
