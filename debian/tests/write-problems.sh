@@ -9,5 +9,5 @@ host_arch="${DEB_HOST_ARCH:-$(dpkg --print-architecture)}"
 
 grep -e ${host_arch} -e "arch-all" debian/tests/problems.csv | \
   grep -e ${distrel} -e "release-all" | \
-  grep -e "openjdk-24" | \
+  grep -e "openjdk-11" | \
   awk -F',|:' '{print $2" 000000 generic-all" }' debian/tests/problems.csv  >> ${problem_list}
