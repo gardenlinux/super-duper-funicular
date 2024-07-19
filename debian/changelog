@@ -1,6 +1,6 @@
-openjdk-23 (23~29ea-1) UNRELEASED; urgency=medium
+openjdk-23 (23~32ea-1) unstable; urgency=medium
 
-  * OpenJDK 23 snapshot, Build 29.
+  * OpenJDK 23 snapshot, Build 32.
 
   [ Vladimir Petko ]
   * d/rules: Enable jtreg again.
@@ -23,7 +23,7 @@ openjdk-23 (23~29ea-1) UNRELEASED; urgency=medium
   [ Matthias Klose ]
   * Build using GCC 14.
 
- -- Matthias Klose <doko@ubuntu.com>  Fri, 28 Jun 2024 20:19:24 +0200
+ -- Matthias Klose <doko@ubuntu.com>  Thu, 18 Jul 2024 21:30:38 +0200
 
 openjdk-23 (23~28ea-1) unstable; urgency=medium
 
