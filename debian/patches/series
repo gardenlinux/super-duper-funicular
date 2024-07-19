@@ -35,6 +35,5 @@ test-use-ip-address.patch
 arch-add-ports.diff
 warn-fontmanager.patch
 hsdis-fpic.patch
-jdk-8334895-proposed.patch
 jdk-8335238-workaround.patch
 jdk-8336529-proposed.patch
