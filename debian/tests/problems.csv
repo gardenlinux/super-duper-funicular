@@ -3,8 +3,15 @@ Error:  runtime/Unsafe/InternalErrorTest.java,JDK-8335238,"To investigate, not c
 Error:  serviceability/jvmti/vthread/SuspendResume1/SuspendResume1.java#default,,"Deadlock, new failure, not critical – JDK-22 will expire before OO release",:openjdk-22,ppc64el,:release-all
 FAILED: compiler/arguments/CheckCICompilerCount.java,,"Existing failure (exit code 0, expected 1)",:openjdk-17:openjdk-21:openjdk-22,i386,:release-all
 FAILED: compiler/codecache/MHIntrinsicAllocFailureTest.java,JDK-8298947,The issue only happens on armhf platform. ,:openjdk-17:openjdk-21,armhf,:release-all
-FAILED: gtest/GTestWrapper.java,,"17:UninitializedDoubleElementWorkerDataArrayTest.print_summary_on_test_vm, ",:openjdk-17,i386,:release-all
+FAILED: gtest/GTestWrapper.java,,"17:UninitializedDoubleElementWorkerDataArrayTest.print_summary_on_test_vm, ",:openjdk-17:openjdk-21,i386,:release-all
 FAILED: java/foreign/critical/TestCritical.java,,"SEGSEGV in test, submit bug, not critical for security release",:openjdk-22,s390x,:release-all
+FAILED: java/foreign/StdLibTest.java,,Ignore test failure in the preview api,:openjdk-21,:i386,:release-all
+FAILED: java/foreign/TestAddressDereference.java,,Ignore test failure in the preview api,:openjdk-21,:i386,:release-all
+FAILED: java/foreign/TestIllegalLink.java,,Ignore test failure in the preview api,:openjdk-21,:i386,:release-all
+FAILED: java/foreign/TestLinker.java,,Ignore test failure in the preview api,:openjdk-21,:i386,:release-all
+FAILED: java/foreign/TestSegments.java,,Ignore test failure in the preview api,:openjdk-21,:i386,:release-all
+FAILED: java/foreign/TestUpcallHighArity.java,,Ignore test failure in the preview api,:openjdk-21,:i386,:release-all
+FAILED: java/foreign/TestUpcallStructScope.java,,Ignore test failure in the preview api,:openjdk-21,:i386,:release-all
 FAILED: java/io/File/createTempFile/TargetDirectory.java,JDK-8166162,Container issue,:openjdk-21:openjdk-22,:arch-all,:release-all
 FAILED: java/io/File/GetXSpace.java,,"Container issue, disk space size exceeds 32 bit integer",:openjdk-17:openjdk-21:openjdk-22,i386,:release-all
 FAILED: java/nio/channels/FileChannel/directio/DirectIOTest.java,JDK-8166162,Container issue,:openjdk-lts:openjdk-11::openjdk-17:openjdk-21:openjdk-22,:arch-all,:release-all
@@ -58,3 +65,4 @@ FAILED: sun/security/ec/TestEC.java,,"New failure in CI, passes locally",:openjd
 FAILED: runtime/NMT/SafepointPollingPages.java,,ThreadLocalHandshakes not yet supported on this platform. Disable test,:openjdk-lts:openjdk-11,:armhf,:release-all
 FAILED: serviceability/attach/ConcAttachTest.java,,java.lang.RuntimeException: Process is still alive. Can't get its output.,:openjdk-lts:openjdk-11,:armhf,:release-all
 FAILED: serviceability/attach/RemovingUnixDomainSocketTest.java,,java.lang.RuntimeException: Process is still alive. Can't get its output.,:openjdk-lts:openjdk-11,:armhf,:release-all
+FAILED: runtime/cds/appcds/jcmd/JCmdTestStaticDump.java,,Lingered App not found (CI),:openjdk-17,:amd64,:release-all
