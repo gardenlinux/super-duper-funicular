@@ -607,12 +607,12 @@ endif
 # have jrunscript in the jdk packages
 
 all_tools	=  jar jarsigner java javac javadoc javap jcmd \
-	jconsole jdb jdeprscan jdeps jfr jimage jinfo jlink jmap \
+	jconsole jdb jdeprscan jdeps jfr jimage jinfo jlink jmap jnativescan \
 	jmod jpackage jps jrunscript jshell jstack jstat jstatd jwebserver \
 	keytool rmiregistry serialver
 
 jdk_hl_tools	= jar jarsigner javac javadoc javap jcmd jdb \
-	jdeprscan jdeps jfr jimage jinfo jlink jmap jmod jps \
+	jdeprscan jdeps jfr jimage jinfo jlink jmap jmod jnativescan jps \
 	jrunscript jshell jstack jstat jstatd jwebserver serialver
 ifeq (,$(filter $(DEB_HOST_ARCH), alpha armel armhf ia64 loong64 m68k mips mipsel mips64el powerpc s390x sh4 sparc64 x32))
   all_tools	+= jhsdb

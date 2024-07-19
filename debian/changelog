@@ -22,8 +22,9 @@ openjdk-24 (24~7ea-1) unstable; urgency=medium
 
   [ Matthias Klose ]
   * Build using GCC 14.
+  * Install jnativescan into jdk-headless.
 
- -- Matthias Klose <doko@ubuntu.com>  Thu, 18 Jul 2024 21:39:31 +0200
+ -- Matthias Klose <doko@ubuntu.com>  Fri, 19 Jul 2024 09:01:13 +0200
 
 openjdk-24 (24~4ea-1) experimental; urgency=medium
 
