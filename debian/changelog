@@ -1,3 +1,14 @@
+openjdk-24 (24~7ea-2) UNRELEASED; urgency=medium
+
+  [ Vladimir Petko ]
+  * d/t/write-problems.in: Fix typo that caused all tests present
+    in d/t/problems.csv to be excluded.
+  * d/t/{jdk,hotspot}-autopkgtest.in: Call d/t/write-problems.sh
+    instead of d/t/write-problems.
+  * d/t/*.sh: Regenerate tests.
+
+ -- Matthias Klose <doko@ubuntu.com>  Sat, 20 Jul 2024 10:17:04 +0200
+
 openjdk-24 (24~7ea-1) unstable; urgency=medium
 
   * OpenJDK 24 snapshot, Build 7.
