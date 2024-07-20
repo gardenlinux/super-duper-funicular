@@ -42,7 +42,7 @@ JDK_JTREG_NATIVE_PATH=${jdk_path}/testsuite/jdk/jtreg/native
 
 problem_list=${AUTOPKGTEST_TMP}/problems.txt
 
-debian/tests/write-problems ${problem_list} ${JDK_JTREG_PATH}/ProblemList.txt jdk
+debian/tests/write-problems.sh ${problem_list} ${JDK_JTREG_PATH}/ProblemList.txt jdk
 
 ARGS="$*"
 JT_DEFAULT_ARGS="-exclude:${problem_list} -k:!stress :tier1"
