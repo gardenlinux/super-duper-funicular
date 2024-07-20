@@ -417,6 +417,10 @@ ifneq (,$(filter $(DEB_HOST_ARCH),$(hotspot_archs)))
   DEFAULT_CONFIGURE_ARGS += --disable-precompiled-headers
 endif
 
+ifneq (,$(filter $(DEB_HOST_ARCH), armhf i386))
+  DEFAULT_CONFIGURE_ARGS += --enable-fallback-linker
+endif
+
 ifneq (,$(filter $(DEB_HOST_ARCH), powerpc))
   DEFAULT_CONFIGURE_ARGS += --with-boot-jdk-jvmargs="-XX:ThreadStackSize=2240"
 endif
@@ -986,7 +990,8 @@ gen-autopkgtests: debian/tests/jtdiff-autopkgtest.sh \
 	debian/tests/jtreg-autopkgtest.sh \
 	debian/tests/jdk-autopkgtest.sh \
 	debian/tests/hotspot-autopkgtest.sh \
-	debian/tests/dependencies.sh
+	debian/tests/dependencies.sh \
+	debian/tests/write-problems.sh
 
 packaging-files:
 	for f in debian/*.in; do \
