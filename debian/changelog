@@ -1,6 +1,32 @@
+openjdk-11 (11.0.24+8-2) UNRELEASED; urgency=medium
+
+  [ Vladimir Petko ]
+  * d/copyright: Regenerate copyright.
+  * d/rules, d/t/*: Collate all excluded tests into d/problemlist.csv.
+  * d/p/jdk-8336529-proposed.patch: Fix time_t migration issue on armhf
+    openjdk is unable to set file last modified timestamp.
+  * d/p/jdk-8334895-proposed.patch: Refresh patch.
+  * d/rules: Relax jtreg7 version condition for backports.
+
+ -- Matthias Klose <doko@ubuntu.com>  Sat, 20 Jul 2024 10:47:22 +0200
+
 openjdk-11 (11.0.24+8-1) unstable; urgency=medium
 
   * OpenJDK 11.0.24 release, build 8.
+    - CVEs:
+      + CVE-2024-21147
+      + CVE-2024-21145
+      + CVE-2024-21140
+      + CVE-2024-21144
+      + CVE-2024-21131
+      + CVE-2024-21138
+    - Security Fixes:
+      + JDK-8281658: New security category for -XshowSettings launcher
+        option.
+      + JDK-8316138: Added GlobalSign R46 and E46 root CA certificates.
+      + JDK-8256660: Disabled DTLS 1.0.
+      + JDK-8326891: Native executables and libraries on Linux use
+        RPATH instead of RUNPATH.
 
  -- Matthias Klose <doko@ubuntu.com>  Wed, 17 Jul 2024 13:18:57 +0200
 
