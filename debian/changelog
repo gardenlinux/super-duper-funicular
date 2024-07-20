@@ -1,6 +1,30 @@
+openjdk-22 (22.0.2+9-2) UNRELEASED; urgency=medium
+
+  [ Vladimir Petko ]
+  * d/copyright: Regenerate copyright.
+  * d/watch: Use fixed googletest version.
+  * d/rules, d/t/*: Collate all excluded tests into d/problemlist.csv.
+  * d/rules: Enable fallback linker for Foreign Function and Memory API
+    on i386 and armhf.
+  * d/p/jdk-8336529-proposed.patch: Fix time_t migration issue on armhf.
+    openjdk is unable to set file last modified timestamp.
+
+ -- Matthias Klose <doko@ubuntu.com>  Sat, 20 Jul 2024 10:33:28 +0200
+
 openjdk-22 (22.0.2+9-1) unstable; urgency=medium
 
   * OpenJDK 22.0.2, Build 9.
+    - CVEs:
+      + CVE-2024-21147
+      + CVE-2024-21145
+      + CVE-2024-21140
+      + CVE-2024-21131
+      + CVE-2024-21138
+    - Security Fixes:
+      + JDK-8316138: Added GlobalSign R46 and E46 root CA certificates.
+      + JDK-8326891: Native executables and libraries on Linux Use RPATH
+        instead of RUNPATH.
+      + JDK-8328638: Fallback option for POST-only OCSP requests.
 
   [ Vladimir Petko ]
   * Enable jtreg again.
