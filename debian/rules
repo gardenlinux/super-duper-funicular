@@ -720,6 +720,13 @@ endif
 bd_ant = ant, ant-optional,
 
 bd_fastjar = fastjar (>= 2:0.96-0ubuntu2),
+
+ifneq (,$(filter $(distrel), wheezy jessie stretch buster bullseye bionic focal jammy))
+  bd_pkgconf = pkg-config,
+else
+  bd_pkgconf = pkgconf,
+endif
+
 ifeq ($(with_nss),yes)
   ifneq (,$(filter $(distrel),squeeze lucid precise quantal))
     bd_nss = libnss3-dev (>= 3.12.3),
@@ -928,6 +935,7 @@ debian/control: debian/control.in debian/tests/control debian/rules debian/watch
 	      -e 's/@bd_zero@/$(bd_zero)/g' \
 	      -e 's/@bd_gcc@/$(bd_gcc)/g' \
 	      -e 's/@bd_syslibs@/$(bd_syslibs)/g' \
+	      -e 's/@bd_pkgconf@/$(bd_pkgconf)/g' \
 	      -e 's/@bd_fastjar@/$(bd_fastjar)/g' \
 	      -e 's/@bd_nss@/$(bd_nss)/g' \
 	      -e 's/@bd_systemtap@/$(bd_systemtap)/g' \
