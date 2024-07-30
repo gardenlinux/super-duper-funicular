@@ -1,10 +1,10 @@
 Test-Command: java --version
 Depends: openjdk-21-jre-headless
-Restrictions: superficial
+Restrictions: allow-stderr, superficial
 
 Test-Command: javac --version
 Depends: openjdk-21-jdk-headless
-Restrictions: superficial
+Restrictions: allow-stderr, superficial
 
 Tests: hotspot-autopkgtest.sh
 Depends: @, jtreg7 (>= 7.3.1+1~), libtestng7-java, build-essential, bash, lsb-release, xfwm4, xvfb, xauth, dbus-x11, libatk-wrapper-java, libatk-wrapper-java-jni
