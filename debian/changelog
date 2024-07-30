@@ -8,8 +8,14 @@ openjdk-24 (24~7ea-2) UNRELEASED; urgency=medium
   * d/t/*.sh: Regenerate tests.
   * d/rules: Enable fallback linker for architectures that do not
     provide a native one.
+  * d/rules, d/control.in: Depend on pkgconf rather than pkg-config in
+    bookworm and later releases. This resolves lintian warning
+    build-depends-on-obsolete-package Build-Depends: pkg-config => pkgconf.
+  * d/rules: Drop autotools-dev dependency for the modern debhelper.
+    This resolves obsolete autotools-dev dependency lintian warning.
+    See #844191.
 
- -- Matthias Klose <doko@ubuntu.com>  Sat, 20 Jul 2024 10:17:04 +0200
+ -- Matthias Klose <doko@ubuntu.com>  Tue, 30 Jul 2024 06:17:37 +0200
 
 openjdk-24 (24~7ea-1) unstable; urgency=medium
 
