@@ -1,4 +1,6 @@
-openjdk-23 (23~33ea-2) UNRELEASED; urgency=medium
+openjdk-23 (23~34ea-1) unstable; urgency=medium
+
+  * OpenJDK 23 snapshot, Build 34.
 
   [ Vladimir Petko ]
   * d/rules: Enable fallback linker for architectures that do not
