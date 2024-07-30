@@ -635,12 +635,6 @@ jre_hl_tools	:= $(filter-out $(jre_tools), $(all_jre_tools))
 
 # build dependencies
 ifneq (,$(filter $(distrel),precise))
-  bd_autotools = autoconf2.69, automake, autotools-dev,
-else
-  bd_autotools = autoconf, automake, autotools-dev,
-endif
-
-ifneq (,$(filter $(distrel),precise))
     bd_bootstrap = openjdk-21-jdk-headless | openjdk-22-jdk-headless,
 else ifneq (,$(filter $(distrel),squeeze wheezy jessie trusty xenial))
     bd_bootstrap = openjdk-21-jdk-headless:native | openjdk-22-jdk-headless:native,
@@ -665,6 +659,14 @@ else ifneq (,$(filter $(distrel), stretch xenial))
   bd_debhelper = debhelper (>= 9.20141010), dpkg-dev (>= 1.17.14),
 else
   bd_debhelper = debhelper (>= 11),
+endif
+
+ifneq (,$(filter $(distrel),precise))
+  bd_autotools = autoconf2.69, automake, autotools-dev,
+else ifneq (,$(filter $(old_debhelper), old veryold))
+  bd_autotools = autoconf, automake, autotools-dev,
+else
+  bd_autotools = autoconf, automake,
 endif
 
 ifneq (,$(filter $(distrel),precise))
@@ -715,6 +717,13 @@ endif
 bd_ant = ant, ant-optional,
 
 bd_fastjar = fastjar (>= 2:0.96-0ubuntu2),
+
+ifneq (,$(filter $(distrel), wheezy jessie stretch buster bullseye bionic focal jammy))
+  bd_pkgconf = pkg-config,
+else
+  bd_pkgconf = pkgconf,
+endif
+
 ifeq ($(with_nss),yes)
   ifneq (,$(filter $(distrel),squeeze lucid precise quantal))
     bd_nss = libnss3-dev (>= 3.12.3),
@@ -923,6 +932,7 @@ debian/control: debian/control.in debian/tests/control debian/rules debian/watch
 	      -e 's/@bd_zero@/$(bd_zero)/g' \
 	      -e 's/@bd_gcc@/$(bd_gcc)/g' \
 	      -e 's/@bd_syslibs@/$(bd_syslibs)/g' \
+	      -e 's/@bd_pkgconf@/$(bd_pkgconf)/g' \
 	      -e 's/@bd_fastjar@/$(bd_fastjar)/g' \
 	      -e 's/@bd_nss@/$(bd_nss)/g' \
 	      -e 's/@bd_systemtap@/$(bd_systemtap)/g' \

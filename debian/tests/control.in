@@ -1,10 +1,10 @@
 Test-Command: java --version
 Depends: @basename@-jre-headless
-Restrictions: superficial
+Restrictions: allow-stderr, superficial
 
 Test-Command: javac --version
 Depends: @basename@-jdk-headless
-Restrictions: superficial
+Restrictions: allow-stderr, superficial
 
 Tests: hotspot-autopkgtest.sh
 Depends: @, @jtreg_dep@, @testng_dep@, build-essential, bash, lsb-release, xfwm4, xvfb, xauth, dbus-x11, libatk-wrapper-java, libatk-wrapper-java-jni
