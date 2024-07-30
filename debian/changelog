@@ -1,4 +1,6 @@
-openjdk-24 (24~7ea-2) UNRELEASED; urgency=medium
+openjdk-24 (24~8ea-1) unstable; urgency=medium
+
+  * OpenJDK 24 snapshot, Build 8.
 
   [ Vladimir Petko ]
   * d/t/write-problems.in: Fix typo that caused all tests present
