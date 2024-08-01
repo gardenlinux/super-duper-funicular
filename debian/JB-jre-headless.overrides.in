@@ -12,4 +12,7 @@
 @basename@-jre-headless binary: spelling-error-in-binary
 
 # Override due to upstream copyright
-@basename@-jre-headless: spelling-error-in-copyright "GNU Public License" "GNU General Public License"
+@basename@-jre-headless binary: spelling-error-in-copyright "GNU Public License" "GNU General Public License"
+
+# repeated lib due to upstream implementation directory layout
+@basename@-jre-headless binary: repeated-path-segment

@@ -4,3 +4,6 @@
 # Upstream implementation
 @basename@-jre-zero binary: exit-in-shared-library
 @basename@-jre-zero binary: spelling-error-in-binary
+
+# repeated lib due to upstream implementation directory layout
+@basename@-jre-zero binary: repeated-path-segment
