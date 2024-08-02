@@ -1,0 +1,5 @@
+# Override due to upstream copyright
+@basename@-doc binary: spelling-error-in-copyright "GNU Public License" "GNU General Public License"
+# chromium and firefox snaps are unable to load scripts from /usr/share/javascript
+# LP: 2032992
+@basename@-doc binary: embedded-javascript-library

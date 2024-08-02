@@ -8,4 +8,14 @@
 @basename@-jre-headless binary: image-file-in-usr-lib
 
 # Just an empty directory
-@basename@-jre-headless binary: debug-package-should-be-named-dbg
+@basename@-jre-headless binary: debug-suffix-not-dbg
+
+# Upstream implementation
+@basename@-jre-headless binary: exit-in-shared-library
+@basename@-jre-headless binary: spelling-error-in-binary
+
+# Override due to upstream copyright
+@basename@-jre-headless binary: spelling-error-in-copyright "GNU Public License" "GNU General Public License"
+
+# repeated lib due to upstream implementation directory layout
+@basename@-jre-headless binary: repeated-path-segment
