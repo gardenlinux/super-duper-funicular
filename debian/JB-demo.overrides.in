@@ -12,3 +12,7 @@
 
 # allow repeated path segments, e.g. nbproject
 @basename@-demo binary: repeated-path-segment
+
+# false positive:  Java21 version (Class format: 65)
+# openjdk compiles examples using current Java version
+@basename@-demo: incompatible-java-bytecode-format
