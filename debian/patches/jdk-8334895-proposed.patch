@@ -1,7 +1,7 @@
 Description: set default compatible cds alignment to auto for arm64
  ARM64 requires cds alignment option to be enabled if CDS is enabled.
  Setting it to true will enable the option even if CDS is disabled
- causing a configuration error. Setting option to auto allows to
+ causing a configuration error. Setting option to auto allows one to
  enable it only when CDS is enabled.
 Author: Vladimir Petko <vladimir.petko@canonical.com>
 Bug: https://bugs.openjdk.org/browse/JDK-8334895
