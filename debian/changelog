@@ -1,3 +1,17 @@
+openjdk-23 (23~34ea-1ubuntu1) UNRELEASED; urgency=medium
+
+  [ Vladimir Petko ]
+  * d/copyright-generator/strip-common-licenses.sh: Add GPLv3 to the list
+    of common licenses.
+  * d/p/jdk-8334895-proposed.patch: Fix typo in the patch description.
+  * d/JB-*.overrides.in: Update lintian overrides.
+  * d/s/lintian-override: Add source-contains-prebuilt-javascript-object
+    due to LP: 2032992.
+  * d/control.in: Remove duplicate Provides:.
+  * d/control: Regenerate.
+
+ -- Matthias Klose <doko@ubuntu.com>  Thu, 08 Aug 2024 08:20:35 +0200
+
 openjdk-23 (23~34ea-1) unstable; urgency=medium
 
   * OpenJDK 23 snapshot, Build 34.
