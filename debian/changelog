@@ -1,3 +1,15 @@
+openjdk-11 (11.0.24+8-3) UNRELEASED; urgency=medium
+
+  [ Vladimir Petko ]
+  * d/changelog: Remove trailing empty line.
+  * d/copyright-generator/strip-common-licenses.sh: Add GPLv3 to the
+    list of common licenses.
+  * d/JB-*.overrides.in, d/s/lintian-overrides: Update lintian overrides.
+  * d/p/jdk-8334895-proposed.patch: Fix typo in the patch description.
+  * d/copyright: Regenerate.
+
+ -- Matthias Klose <doko@ubuntu.com>  Thu, 08 Aug 2024 08:28:33 +0200
+
 openjdk-11 (11.0.24+8-2) unstable; urgency=medium
 
   [ Vladimir Petko ]
