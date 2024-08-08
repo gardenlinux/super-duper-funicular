@@ -1,6 +1,6 @@
-Description: javadoc crashes: class cast exeception com.sun.tools.javac.code.Symtab$6
- This is a proposed fix for JDK-8242564. Javadoc option '--ignore-source-errors'
- allows generating Javadoc for the packages that contain compilation errors.
+Description: javadoc crashes: class cast exception com.sun.tools.javac.code.Symtab$6
+ Javadoc option '--ignore-source-errors' allows generating Javadoc for the packages
+ that contain compilation errors.
  jdk.javadoc.internal.doclets.toolkit.util.ClassTree generates a type hierarchy
  for javadoc that may include error types such as class Foo extends Bar {}
  where Bar is undefined.

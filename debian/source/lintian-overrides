@@ -1,2 +1,24 @@
 # parts of the test suite, not installed
 openjdk-21 source: source-is-missing
+
+# openjdk packages use old standards version as they need to support
+# backports
+openjdk-21 source: newer-standards-version
+openjdk-21 source: uses-debhelper-compat-file
+openjdk-21 source: package-uses-old-debhelper-compat-version
+
+# suppress warnings about experimental patches
+openjdk-21 source: patch-file-present-but-not-mentioned-in-series
+
+# jtreg test suite contains pre-built jars
+openjdk-21 source: source-contains-prebuilt-java-object
+
+# upstream code formatting
+openjdk-21 source: very-long-line-length-in-source-file
+
+# false positive, jtreg tests contain example/ directories
+openjdk-21 source: package-does-not-install-examples
+
+# chromium and firefox snaps are unable to load scripts from /usr/share/javascript
+# LP: 2032992
+openjdk-21 source: source-contains-prebuilt-javascript-object
