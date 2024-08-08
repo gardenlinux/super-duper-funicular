@@ -9,6 +9,8 @@ openjdk-21 (21.0.4+7-3) UNRELEASED; urgency=medium
     due to LP: 2032992.
   * d/control.in: Remove duplicate Provides.
   * d/control: Regenerate.
+  * d/t/problemlist.csv: Update problemlist.csv for July release
+  * d/t/jtreg-autopkgtest.{in,sh}: Increase jtreg test timeouts.
 
  -- Matthias Klose <doko@ubuntu.com>  Thu, 08 Aug 2024 08:25:17 +0200
 
