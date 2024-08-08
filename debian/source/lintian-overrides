@@ -18,3 +18,7 @@ openjdk-22 source: very-long-line-length-in-source-file
 
 # false positive, jtreg tests contain example/ directories
 openjdk-22 source: package-does-not-install-examples
+
+# chromium and firefox snaps are unable to load scripts from /usr/share/javascript
+# LP: 2032992
+openjdk-22 source: source-contains-prebuilt-javascript-object
