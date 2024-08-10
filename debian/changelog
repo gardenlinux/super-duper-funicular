@@ -1,4 +1,6 @@
-openjdk-23 (23~34ea-1ubuntu1) UNRELEASED; urgency=medium
+openjdk-23 (23~36ea-1) unstable; urgency=medium
+
+  * OpenJDK 23 snapshot, Build 36 (release candidate).
 
   [ Vladimir Petko ]
   * d/copyright-generator/strip-common-licenses.sh: Add GPLv3 to the list
@@ -15,7 +17,7 @@ openjdk-23 (23~34ea-1ubuntu1) UNRELEASED; urgency=medium
   [ Emmanuel Bourg ]
   * Restore and update the reproducible-properties-timestamp patch.
 
- -- Matthias Klose <doko@ubuntu.com>  Thu, 08 Aug 2024 08:20:35 +0200
+ -- Matthias Klose <doko@ubuntu.com>  Sat, 10 Aug 2024 15:38:28 +0200
 
 openjdk-23 (23~34ea-1) unstable; urgency=medium
 
