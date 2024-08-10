@@ -11,6 +11,9 @@ openjdk-22 (22.0.2+9-3) UNRELEASED; urgency=medium
   * d/t/problemlist.csv: Update problemlist.csv for July release
   * d/t/jtreg-autopkgtest.{in,sh}: Increase jtreg test timeouts.
 
+  [ Emmanuel Bourg ]
+  * Restore and update the reproducible-properties-timestamp patch.
+
  -- Matthias Klose <doko@ubuntu.com>  Thu, 08 Aug 2024 08:22:59 +0200
 
 openjdk-22 (22.0.2+9-2) unstable; urgency=medium
