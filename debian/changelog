@@ -1,4 +1,6 @@
-openjdk-24 (24~8ea-2) UNRELEASED; urgency=medium
+openjdk-24 (24~10ea-1) unstable; urgency=medium
+
+  * OpenJDK 24 snapshot, Build 10.
 
   [ Vladimir Petko ]
   * d/changelog: Remove trailing empty line.
@@ -12,7 +14,7 @@ openjdk-24 (24~8ea-2) UNRELEASED; urgency=medium
   [ Emmanuel Bourg ]
   * Restore and update the reproducible-properties-timestamp patch.
 
- -- Matthias Klose <doko@ubuntu.com>  Thu, 08 Aug 2024 08:17:19 +0200
+ -- Matthias Klose <doko@ubuntu.com>  Sat, 10 Aug 2024 15:50:51 +0200
 
 openjdk-24 (24~8ea-1) unstable; urgency=medium
 
