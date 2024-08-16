@@ -1,4 +1,4 @@
-'''Apport package hook for openjdk-11 packages.
+'''Apport package hook for openjdk packages.
 
 Copyright (C) 2017 Canonical Ltd.
 Author: Tiago Stürmer Daitx <tiago.daitx@canonical.com>'''
@@ -16,7 +16,7 @@ def si_units(size):
     return '{0:.1f} {1}'.format(size, unit)
 
 def add_info(report, ui=None):
-    attach_conffiles(report,'openjdk-11-jre-headless', ui=ui)
+    attach_conffiles(report,'openjdk-21-jre-headless', ui=ui)
 
     if report['ProblemType'] == 'Crash' and 'ProcCwd' in report:
         # attach hs_err_<pid>.pid file
