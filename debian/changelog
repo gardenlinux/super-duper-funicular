@@ -1,4 +1,6 @@
-openjdk-24 (24~10ea-3) UNRELEASED; urgency=medium
+openjdk-24 (24~11ea-1) UNRELEASED; urgency=medium
+
+  * OpenJDK 24 snapshot, Build 11.
 
   * Stop providing the versioned names javaNN-sdk-headless, javaNN-sdk,
     javaNN-runtime-headless, javaNN-runtime-headless. The versioned
