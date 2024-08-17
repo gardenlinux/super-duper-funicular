@@ -1,3 +1,12 @@
+openjdk-24 (24~10ea-3) UNRELEASED; urgency=medium
+
+  * Stop providing the versioned names javaNN-sdk-headless, javaNN-sdk,
+    javaNN-runtime-headless, javaNN-runtime-headless. The versioned
+    provides java-sdk-headless, java-sdk, java-runtime-headless and
+    java-runtime-headless exist since OpenJDK 17.
+
+ -- Matthias Klose <doko@ubuntu.com>  Sat, 17 Aug 2024 09:20:49 +0200
+
 openjdk-24 (24~10ea-2) unstable; urgency=medium
 
   * Fix typo in jre-headless dependencies.
