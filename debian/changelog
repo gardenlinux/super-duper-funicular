@@ -1,7 +1,16 @@
+openjdk-22 (22.0.2+9-4) UNRELEASED; urgency=medium
+
+  * Stop providing the versioned names javaNN-sdk-headless, javaNN-sdk,
+    javaNN-runtime-headless, javaNN-runtime-headless. The versioned
+    provides java-sdk-headless, java-sdk, java-runtime-headless and
+    java-runtime-headless exist since OpenJDK 17.
+
+ -- Matthias Klose <doko@ubuntu.com>  Sat, 17 Aug 2024 09:30:38 +0200
+
 openjdk-22 (22.0.2+9-3) unstable; urgency=medium
 
   [ Vladimir Petko ]
-  * d/copyright-generator/strip-common-licenses.sh: Add GPLv3 to the 
+  * d/copyright-generator/strip-common-licenses.sh: Add GPLv3 to the
     list of common licenses.
   * d/JB-*.overrides.in: Update lintian overrides.
   * d/s/lintian-override: Add source-contains-prebuilt-javascript-object
