@@ -406,9 +406,7 @@ else ifeq ($(with_nss),no)
   CONFIGURE_ARGS += --disable-nss
 endif
 
-ifeq ($(with_systemtap),yes)
-  CONFIGURE_ARGS += --enable-systemtap --with-abs-install-dir=/$(basedir)
-endif
+CONFIGURE_ARGS += --enable-dtrace
 
 COMMON_CONFIGURE_ARGS =
 DEFAULT_CONFIGURE_ARGS =
@@ -700,9 +698,7 @@ ifeq ($(with_nss),yes)
     bd_nss = libnss3-dev (>= 2:3.17.1),
   endif
 endif
-ifeq ($(with_systemtap),yes)
-  bd_systemtap = systemtap-sdt-dev [!sh4],
-endif
+bd_systemtap = systemtap-sdt-dev [!sh4],
 
 ifeq (,$(filter $(distrel),jessie stretch buster precise trusty xenial bionic focal groovy))
   with_debugedit = yes
@@ -1810,11 +1806,6 @@ endif
 	mkdir -p $(d_jrehl)/usr/lib/debug/usr/lib/jvm/$(jdirname)
 	ln -sf $(jdirname) $(d_jrehl)/usr/lib/debug/usr/lib/jvm/$(jdiralias)
 
-ifeq ($(with_systemtap),yes FIXME)
-	: # systemtap support
-	mkdir -p $(d_jrehl)/usr/share/systemtap/tapset
-	cp -p build/tapset/hotspot.stp $(d_jrehl)/usr/share/systemtap/tapset/
-endif
 
 	: # install lintian overrides
 	for FILE in debian/*.overrides; do \
