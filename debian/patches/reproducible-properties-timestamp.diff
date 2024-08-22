@@ -3,7 +3,16 @@ Author: Emmanuel Bourg <ebourg@apache.org>
 Forwarded: no
 --- a/src/java.base/share/classes/java/util/Properties.java
 +++ b/src/java.base/share/classes/java/util/Properties.java
-@@ -955,7 +955,7 @@
+@@ -41,6 +41,8 @@
+ import java.nio.charset.Charset;
+ import java.nio.charset.IllegalCharsetNameException;
+ import java.nio.charset.UnsupportedCharsetException;
++import java.security.AccessController;
++import java.security.PrivilegedAction;
+ import java.util.concurrent.ConcurrentHashMap;
+ import java.util.function.BiConsumer;
+ import java.util.function.BiFunction;
+@@ -955,7 +957,7 @@
          if (sysPropVal != null && !sysPropVal.isEmpty()) {
              writeComments(bw, sysPropVal);
          } else {
@@ -12,7 +21,7 @@ Forwarded: no
              bw.newLine();
          }
      }
-@@ -1600,4 +1600,23 @@
+@@ -1600,4 +1602,25 @@
          }
          this.map = map;
      }
@@ -23,8 +32,10 @@ Forwarded: no
 +     * environment variable is specified. In this case the format used is
 +     * locale and timezone insensitive to ensure the output is reproducible.
 +     */
++    @SuppressWarnings("removal")
 +    private static String getFormattedTimestamp() {
-+        String epoch = System.getenv("SOURCE_DATE_EPOCH");
++        final String epoch = AccessController.doPrivileged(
++            (PrivilegedAction<String>)() -> System.getenv("SOURCE_DATE_EPOCH"));
 +        if (epoch == null) {
 +            return new Date().toString();
 +        } else {
