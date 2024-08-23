@@ -7,6 +7,10 @@ openjdk-24 (24~11ea-1) UNRELEASED; urgency=medium
     provides java-sdk-headless, java-sdk, java-runtime-headless and
     java-runtime-headless exist since OpenJDK 17.
 
+  [ Vladimir Petko ]
+  * d/p/reproducible-properties-timestamp.diff: Use PrivilegedAction
+    to avoid SecurityManager exception.
+
  -- Matthias Klose <doko@ubuntu.com>  Sat, 17 Aug 2024 09:20:49 +0200
 
 openjdk-24 (24~10ea-2) unstable; urgency=medium
