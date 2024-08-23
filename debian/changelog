@@ -9,6 +9,7 @@ openjdk-17 (17.0.12+7-3) UNRELEASED; urgency=medium
   * d/p/jdk-8334895-proposed.patch: Fix typo in the patch description.
   * d/t/problemlist.csv: Update problemlist.csv for July release
   * d/t/jtreg-autopkgtest.{in,sh}: Increase jtreg test timeouts.
+  * Enable dtrace support.
 
  -- Matthias Klose <doko@ubuntu.com>  Thu, 08 Aug 2024 08:27:23 +0200
 
