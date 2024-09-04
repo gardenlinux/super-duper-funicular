@@ -8,6 +8,7 @@ openjdk-22 (22.0.2+9-4) UNRELEASED; urgency=medium
   [ Vladimir Petko ]
   * d/p/reproducible-properties-timestamp.diff: Use PrivilegedAction 
     to avoid SecurityManager exception.
+  * Enable dtrace support.
 
  -- Matthias Klose <doko@ubuntu.com>  Sat, 17 Aug 2024 09:30:38 +0200
 
