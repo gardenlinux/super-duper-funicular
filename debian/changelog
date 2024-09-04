@@ -10,6 +10,7 @@ openjdk-24 (24~11ea-1) UNRELEASED; urgency=medium
   [ Vladimir Petko ]
   * d/p/reproducible-properties-timestamp.diff: Use PrivilegedAction
     to avoid SecurityManager exception.
+  * Enable dtrace support.
 
  -- Matthias Klose <doko@ubuntu.com>  Sat, 17 Aug 2024 09:20:49 +0200
 
