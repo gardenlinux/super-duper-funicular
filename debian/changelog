@@ -1,4 +1,6 @@
-openjdk-23 (23~36ea-2) UNRELEASED; urgency=medium
+openjdk-23 (23~37ea-1) unstable; urgency=medium
+
+  * OpenJDK 23 snapshot, Build 37 (release candidate).
 
   * Stop providing the versioned names javaNN-sdk-headless, javaNN-sdk,
     javaNN-runtime-headless, javaNN-runtime-headless. The versioned
@@ -10,7 +12,7 @@ openjdk-23 (23~36ea-2) UNRELEASED; urgency=medium
     to avoid SecurityManager exception.
   * Enable dtrace support.
 
- -- Matthias Klose <doko@ubuntu.com>  Sat, 17 Aug 2024 09:27:26 +0200
+ -- Matthias Klose <doko@ubuntu.com>  Thu, 05 Sep 2024 22:22:04 +0200
 
 openjdk-23 (23~36ea-1) unstable; urgency=medium
 
