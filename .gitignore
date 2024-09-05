@@ -56,6 +56,7 @@ debian/openjdk-24-doc.overrides
 debian/openjdk-24-fonts.defoma-hints
 debian/openjdk-24-java.desktop
 debian/openjdk-24-jconsole.desktop
+debian/openjdk-24-jdk-headless.overrides
 debian/openjdk-24-jdk-headless.postinst
 debian/openjdk-24-jdk-headless.preinst
 debian/openjdk-24-jdk-headless.prerm
@@ -71,4 +72,5 @@ debian/openjdk-24-jre.menu
 debian/openjdk-24-jre.overrides
 debian/openjdk-24-jre.postinst
 debian/openjdk-24-jre.prerm
+debian/openjdk-24-source.overrides
 debian/openjdk-24-testsupport.overrides

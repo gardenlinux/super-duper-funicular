@@ -1,6 +1,6 @@
-openjdk-24 (24~11ea-1) UNRELEASED; urgency=medium
+openjdk-24 (24~14ea-1) unstable; urgency=medium
 
-  * OpenJDK 24 snapshot, Build 11.
+  * OpenJDK 24 snapshot, Build 14.
 
   * Stop providing the versioned names javaNN-sdk-headless, javaNN-sdk,
     javaNN-runtime-headless, javaNN-runtime-headless. The versioned
@@ -12,7 +12,7 @@ openjdk-24 (24~11ea-1) UNRELEASED; urgency=medium
     to avoid SecurityManager exception.
   * Enable dtrace support.
 
- -- Matthias Klose <doko@ubuntu.com>  Sat, 17 Aug 2024 09:20:49 +0200
+ -- Matthias Klose <doko@ubuntu.com>  Thu, 05 Sep 2024 22:24:27 +0200
 
 openjdk-24 (24~10ea-2) unstable; urgency=medium
 

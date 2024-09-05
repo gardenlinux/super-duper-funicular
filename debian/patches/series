@@ -29,7 +29,6 @@ reproducible-build-jmod.diff
 mips.diff
 #nspr+nss-headers.diff
 misalign-pointer-for-armhf.patch
-log-generated-classes-test.patch
 update-permission-test.patch
 ldap-timeout-test-use-ip.patch
 test-use-ip-address.patch
@@ -37,4 +36,3 @@ arch-add-ports.diff
 warn-fontmanager.patch
 hsdis-fpic.patch
 jdk-8335238-workaround.patch
-jdk-8336529-proposed.patch
