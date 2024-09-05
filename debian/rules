@@ -79,6 +79,7 @@ else
 endif
 
 is_upstream_release = yes
+is_upstream_release =
 
 srcdir		= .
 builddir	= build
