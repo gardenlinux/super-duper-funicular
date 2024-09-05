@@ -1,6 +1,6 @@
 version=4
 opts=\
-repack,\
+repack,repacksuffix=ea,oversionmangle=s/\+(\d+)/\~$1/,dversionmangle=s/\~(\d*)ea$/\+$1/,\
 compression=xz, \
     https://github.com/openjdk/jdk17u/tags \
     (?:.*?/)?jdk-(17[\+\.\d]*)\.tar\.gz
