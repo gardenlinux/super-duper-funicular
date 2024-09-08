@@ -1,11 +1,12 @@
 openjdk-21 (21.0.5~6ea-1) UNRELEASED; urgency=medium
 
   [ Vladimir Petko ]
+  * OpenJDK 21.0.5 early access, build 6.
   * d/p/reproducible-properties-timestamp.diff: Use PrivilegedAction
     to avoid SecurityManager exception.
   * Enable dtrace support.
 
- -- Matthias Klose <doko@ubuntu.com>  Fri, 23 Aug 2024 10:08:18 +0200
+ -- Vladimir Petko <vladimir.petko@canonical.com>  Mon, 09 Sep 2024 11:33:45 +1200
 
 openjdk-21 (21.0.4+7-3) unstable; urgency=medium
 
