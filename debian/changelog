@@ -1,7 +1,8 @@
-openjdk-17 (17.0.13~6ea-1) UNRELEASED; urgency=medium
+openjdk-17 (17.0.13~6ea-1) unstable; urgency=medium
+
+  * OpenJDK 17.0.13 early access, build 6.
 
   [ Vladimir Petko ]
-  * OpenJDK 17.0.13 early access, build 6.
   * d/copyright-generator/strip-common-licenses.sh: Add GPLv3 to the
     list of common licenses.
   * d/JB-*.override.in: Update lintian overrides.
@@ -12,7 +13,7 @@ openjdk-17 (17.0.13~6ea-1) UNRELEASED; urgency=medium
   * d/t/jtreg-autopkgtest.{in,sh}: Increase jtreg test timeouts.
   * Enable dtrace support.
 
- -- Vladimir Petko <vladimir.petko@canonical.com>  Fri, 06 Sep 2024 11:45:23 +1200
+ -- Matthias Klose <doko@ubuntu.com>  Mon, 09 Sep 2024 15:48:20 +0200
 
 openjdk-17 (17.0.12+7-2) unstable; urgency=medium
 
