@@ -1,7 +1,8 @@
-openjdk-11 (11.0.25~5ea-1) UNRELEASED; urgency=medium
+openjdk-11 (11.0.25~5ea-1) unstable; urgency=medium
+
+  * OpenJDK 11.0.25+5 build (early access).
 
   [ Vladimir Petko ]
-  * OpenJDK 11.0.25+5 build (early access).
   * d/changelog: Remove trailing empty line.
   * d/copyright-generator/strip-common-licenses.sh: Add GPLv3 to the
     list of common licenses.
@@ -12,7 +13,7 @@ openjdk-11 (11.0.25~5ea-1) UNRELEASED; urgency=medium
   * d/t/jtreg-autopkgtest.{in,sh}: Increase jtreg test timeouts.
   * Enable dtrace support.
 
- -- Vladimir Petko <vladimir.petko@canonical.com>  Fri, 06 Sep 2024 10:06:39 +1200
+ -- Matthias Klose <doko@ubuntu.com>  Mon, 09 Sep 2024 16:06:26 +0200
 
 openjdk-11 (11.0.24+8-2) unstable; urgency=medium
 
