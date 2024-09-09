@@ -30,14 +30,12 @@ reproducible-build-jmod.diff
 mips.diff
 #nspr+nss-headers.diff
 misalign-pointer-for-armhf.patch
-log-generated-classes-test.patch
 update-permission-test.patch
 ldap-timeout-test-use-ip.patch
 test-use-ip-address.patch
 arch-add-ports.diff
 compile-preview.diff
 jdk-8307977-proposed.patch
-jdk-8242564.patch
 warn-fontmanager.patch
 jdk-8318418.patch
 jdk-8295795.patch
