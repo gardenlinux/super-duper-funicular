@@ -29,7 +29,6 @@ reproducible-build-jmod.diff
 mips.diff
 #nspr+nss-headers.diff
 8314491-jexec.patch
-build_gtest.patch
 update-assertion-for-armhf.patch
 misalign-pointer-for-armhf.patch
 log-generated-classes-test.patch
@@ -37,11 +36,8 @@ update-permission-test.patch
 ldap-timeout-test-use-ip.patch
 test-use-ip-address.patch
 loong64-autoconf-config.diff
-googletest-version.diff
 jdk-8307977-proposed.patch
-jdk-8295111.patch
 jdk-8334502-proposed.patch
 jdk-8334895-proposed.patch
-jdk-8325567.patch
 jdk-8336529-proposed.patch
 jdk-8312488.patch
