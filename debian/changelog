@@ -1,3 +1,10 @@
+openjdk-23 (23+37-1) unstable; urgency=medium
+
+  * Release build (no changes).
+  * Bump standards version.
+
+ -- Matthias Klose <doko@ubuntu.com>  Wed, 18 Sep 2024 08:40:48 +0200
+
 openjdk-23 (23~37ea-1) unstable; urgency=medium
 
   * OpenJDK 23 snapshot, Build 37 (release candidate).
