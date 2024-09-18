@@ -1,3 +1,9 @@
+openjdk-24 (24~14ea-2) UNRELEASED; urgency=medium
+
+  * Bump standards version.
+
+ -- Matthias Klose <doko@ubuntu.com>  Wed, 18 Sep 2024 08:48:50 +0200
+
 openjdk-24 (24~14ea-1) unstable; urgency=medium
 
   * OpenJDK 24 snapshot, Build 14.
