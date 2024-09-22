@@ -3,7 +3,7 @@ Author: Emmanuel Bourg <ebourg@apache.org>
 Forwarded: no
 --- a/src/java.base/share/classes/java/util/Properties.java
 +++ b/src/java.base/share/classes/java/util/Properties.java
-@@ -41,6 +41,8 @@
+@@ -41,6 +41,8 @@ import java.io.UnsupportedEncodingExcept
  import java.nio.charset.Charset;
  import java.nio.charset.IllegalCharsetNameException;
  import java.nio.charset.UnsupportedCharsetException;
@@ -12,7 +12,7 @@ Forwarded: no
  import java.util.concurrent.ConcurrentHashMap;
  import java.util.function.BiConsumer;
  import java.util.function.BiFunction;
-@@ -955,7 +957,7 @@
+@@ -956,7 +958,7 @@ public class Properties extends Hashtabl
          if (sysPropVal != null && !sysPropVal.isEmpty()) {
              writeComments(bw, sysPropVal);
          } else {
@@ -21,7 +21,7 @@ Forwarded: no
              bw.newLine();
          }
      }
-@@ -1600,4 +1602,25 @@
+@@ -1601,4 +1603,25 @@ public class Properties extends Hashtabl
          }
          this.map = map;
      }

@@ -1,6 +1,6 @@
 --- a/make/Main.gmk
 +++ b/make/Main.gmk
-@@ -1306,6 +1306,7 @@ ALL_TARGETS += default jdk images docs b
+@@ -1328,6 +1328,7 @@ ALL_TARGETS += default jdk images docs b
  
  # Aliases used for running tests.
  

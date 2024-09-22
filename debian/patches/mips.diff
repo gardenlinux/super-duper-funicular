@@ -2,7 +2,7 @@
 
 --- a/src/java.base/unix/native/libnio/fs/UnixNativeDispatcher.c
 +++ b/src/java.base/unix/native/libnio/fs/UnixNativeDispatcher.c
-@@ -238,7 +238,7 @@ static statx_func* my_statx_func = NULL;
+@@ -227,7 +227,7 @@ static statx_func* my_statx_func = NULL;
  /**
   * fstatat missing from glibc on Linux.
   */

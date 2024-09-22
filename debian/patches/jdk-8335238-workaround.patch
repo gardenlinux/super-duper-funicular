@@ -12,7 +12,7 @@ Last-Update: 2024-07-01
 
 --- a/src/hotspot/share/prims/unsafe.cpp
 +++ b/src/hotspot/share/prims/unsafe.cpp
-@@ -388,7 +388,9 @@
+@@ -392,7 +392,9 @@ UNSAFE_ENTRY_SCOPED(void, Unsafe_SetMemo
    void* p = index_oop_from_field_offset_long(base, offset);
  
    {

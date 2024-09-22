@@ -5,7 +5,7 @@ Forwarded: not-needed
 Last-Update: 2024-03-19
 --- a/make/autoconf/lib-hsdis.m4
 +++ b/make/autoconf/lib-hsdis.m4
-@@ -244,8 +244,8 @@
+@@ -257,8 +257,8 @@ AC_DEFUN([LIB_SETUP_HSDIS_BINUTILS],
    disasm_header="<dis-asm.h>"
  
    if test "x$BINUTILS_INSTALL_DIR" = xsystem; then
