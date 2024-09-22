@@ -15,7 +15,7 @@ Last-Update: 2024-07-17
 
 --- a/src/java.base/unix/native/libnio/fs/UnixNativeDispatcher.c
 +++ b/src/java.base/unix/native/libnio/fs/UnixNativeDispatcher.c
-@@ -280,6 +280,20 @@
+@@ -281,6 +281,20 @@ static int fstatat64_wrapper(int dfd, co
  }
  #endif
  
@@ -36,7 +36,7 @@ Last-Update: 2024-07-17
  #if defined(__linux__)
  static int statx_wrapper(int dirfd, const char *restrict pathname, int flags,
                           unsigned int mask, struct my_statx *restrict statxbuf) {
-@@ -384,10 +398,13 @@
+@@ -385,10 +399,13 @@ Java_sun_nio_fs_UnixNativeDispatcher_ini
      my_unlinkat_func = (unlinkat_func*) dlsym(RTLD_DEFAULT, "unlinkat");
      my_renameat_func = (renameat_func*) dlsym(RTLD_DEFAULT, "renameat");
  #ifndef _ALLBSD_SOURCE

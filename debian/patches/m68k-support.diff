@@ -1081,7 +1081,7 @@ Last Update: 2019-04-29
  #endif // SHARE_OOPS_CONSTMETHOD_HPP
 --- a/src/hotspot/share/oops/oop.hpp
 +++ b/src/hotspot/share/oops/oop.hpp
-@@ -321,7 +321,7 @@ class oopDesc {
+@@ -323,7 +323,7 @@ class oopDesc {
    static void* load_oop_raw(oop obj, int offset);
  
    DEBUG_ONLY(bool size_might_change();)
