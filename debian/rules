@@ -407,7 +407,11 @@ else ifeq ($(with_nss),no)
   CONFIGURE_ARGS += --disable-nss
 endif
 
-CONFIGURE_ARGS += --enable-dtrace
+# S390x does not support dtrace probes
+# https://github.com/openjdk/jdk/pull/13228
+ifeq ($(DEB_HOST_ARCH),s390x)
+  CONFIGURE_ARGS += --enable-dtrace
+endif
 
 COMMON_CONFIGURE_ARGS =
 DEFAULT_CONFIGURE_ARGS =
@@ -699,7 +703,7 @@ ifeq ($(with_nss),yes)
     bd_nss = libnss3-dev (>= 2:3.17.1),
   endif
 endif
-bd_systemtap = systemtap-sdt-dev [!sh4],
+bd_systemtap = systemtap-sdt-dev [!sh4, !s390x],
 
 ifeq (,$(filter $(distrel),jessie stretch buster precise trusty xenial bionic focal groovy))
   with_debugedit = yes
