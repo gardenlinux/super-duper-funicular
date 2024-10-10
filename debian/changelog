@@ -1,3 +1,10 @@
+openjdk-23 (23+37-2) UNRELEASED; urgency=medium
+
+  [ Vladimir Petko ]
+  * d/t/problems.csv: Add missing exclusions.
+
+ -- Matthias Klose <doko@ubuntu.com>  Thu, 10 Oct 2024 13:59:09 +0200
+
 openjdk-23 (23+37-1) unstable; urgency=medium
 
   * Release build (no changes).
