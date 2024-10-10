@@ -1,3 +1,10 @@
+openjdk-21 (21.0.5~8ea-2) UNRELEASED; urgency=medium
+
+  [ Vladimir Petko ]
+  * d/rules: do not include dtrace support for S390x (JDK-8305174).
+
+ -- Matthias Klose <doko@ubuntu.com>  Thu, 10 Oct 2024 14:10:35 +0200
+
 openjdk-21 (21.0.5~8ea-1) unstable; urgency=medium
 
   * OpenJDK 21.0.5 early access, build 8.
