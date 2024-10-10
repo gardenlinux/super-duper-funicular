@@ -2,6 +2,7 @@ openjdk-23 (23+37-2) UNRELEASED; urgency=medium
 
   [ Vladimir Petko ]
   * d/t/problems.csv: Add missing exclusions.
+  * d/rules: do not include dtrace support for S390x (JDK-8305174).
 
  -- Matthias Klose <doko@ubuntu.com>  Thu, 10 Oct 2024 13:59:09 +0200
 
@@ -22,7 +23,7 @@ openjdk-23 (23~37ea-1) unstable; urgency=medium
     java-runtime-headless exist since OpenJDK 17.
 
   [ Vladimir Petko ]
-  * d/p/reproducible-properties-timestamp.diff: Use PrivilegedAction 
+  * d/p/reproducible-properties-timestamp.diff: Use PrivilegedAction
     to avoid SecurityManager exception.
   * Enable dtrace support.
 
