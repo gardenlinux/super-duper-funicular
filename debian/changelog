@@ -1,3 +1,10 @@
+openjdk-22 (22.0.2+9-5) UNRELEASED; urgency=medium
+
+  [ Vladimir Petko ]
+  * d/rules: do not include dtrace support for S390x (JDK-8305174).
+
+ -- Matthias Klose <doko@ubuntu.com>  Thu, 10 Oct 2024 14:09:26 +0200
+
 openjdk-22 (22.0.2+9-4) unstable; urgency=medium
 
   * Stop providing the versioned names javaNN-sdk-headless, javaNN-sdk,
@@ -6,7 +13,7 @@ openjdk-22 (22.0.2+9-4) unstable; urgency=medium
     java-runtime-headless exist since OpenJDK 17.
 
   [ Vladimir Petko ]
-  * d/p/reproducible-properties-timestamp.diff: Use PrivilegedAction 
+  * d/p/reproducible-properties-timestamp.diff: Use PrivilegedAction
     to avoid SecurityManager exception.
   * Enable dtrace support.
 
