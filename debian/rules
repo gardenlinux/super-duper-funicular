@@ -83,7 +83,6 @@ else
 endif
 
 is_upstream_release = yes
-is_upstream_release =
 
 srcdir		= .
 builddir	= build
@@ -736,7 +735,7 @@ ifeq ($(with_nss),yes)
     bd_nss = libnss3-dev (>= 2:3.17.1),
   endif
 endif
-bd_systemtap = systemtap-sdt-dev [!sh4, !s390x],
+bd_systemtap = systemtap-sdt-dev [!sh4 !s390x],
 
 ifeq (,$(filter $(distrel),jessie stretch buster precise trusty xenial bionic focal groovy))
   with_debugedit = yes
@@ -1998,7 +1997,7 @@ endif
 	dh_builddeb -a $(nodemo) $(nojrez) #$(bd_options)
 
 git_project		= jdk21u
-git_tag			= jdk-21.0.5+8
+git_tag			= jdk-21.0.5+11
 package_version		= $(shell echo $(PKGVERSION) | sed 's/-[^-][^-]*$$//')
 ifneq ($(is_upstream_release),yes)
   package_version	:= $(subst +,~,$(package_version))
