@@ -383,15 +383,15 @@ else ifeq ($(with_nss),no)
   CONFIGURE_ARGS += --disable-nss
 endif
 
-# S390x does not support dtrace probes
-# https://github.com/openjdk/jdk/pull/13228
-ifeq ($(DEB_HOST_ARCH),s390x)
-  CONFIGURE_ARGS += --enable-dtrace
-endif
-
 COMMON_CONFIGURE_ARGS =
 DEFAULT_CONFIGURE_ARGS =
 ZERO_CONFIGURE_ARGS =
+
+# S390x does not support dtrace probes
+# https://github.com/openjdk/jdk/pull/13228
+ifeq (,$(filter $(DEB_HOST_ARCH),s390x))
+  COMMON_CONFIGURE_ARGS += --enable-dtrace
+endif
 
 COMMON_CONFIGURE_ARGS += --with-jni-libpath=/usr/lib/$(DEB_HOST_MULTIARCH)/jni:/lib/$(DEB_HOST_MULTIARCH):/usr/lib/$(DEB_HOST_MULTIARCH):/usr/lib/jni:/lib:/usr/lib
 
