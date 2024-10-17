@@ -133,7 +133,7 @@ def generate_comment_str():
 def generate_header_stanza():
   format = "https://www.debian.org/doc/packaging-manuals/copyright-format/1.0/"
   excluded = generate_excluded_files_str()
-  source = "https://github.com/openjdk/jdk"
+  source = "https://github.com/openjdk/jdk23u"
   comment = generate_comment_str()
   print_header_stanza(format, excluded, source, comment)
 
