@@ -12,6 +12,7 @@ LICENSE
 make
 Makefile
 README.md
+SECURITY.md
 src
 test
 
