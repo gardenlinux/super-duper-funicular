@@ -1,4 +1,4 @@
-openjdk-24 (24~22ea-1) UNRELEASED; urgency=medium
+openjdk-24 (24~22ea-1) unstable; urgency=medium
 
   * OpenJDK 24 snapshot, Build 22.
   * Consolidate setting of dtrace architectures.
