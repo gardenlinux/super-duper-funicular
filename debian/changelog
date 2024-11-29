@@ -1,4 +1,4 @@
-openjdk-24 (24~26ea-1) UNRELEASED; urgency=medium
+openjdk-24 (24~26ea-1) unstable; urgency=medium
 
   * OpenJDK 24 snapshot, Build 26.
 
@@ -10,7 +10,7 @@ openjdk-24 (24~26ea-1) UNRELEASED; urgency=medium
   * For jammy, work around GCC ICE on armhf. See LP #1953128.
   * d/t/problems.csv: Update based on recent JTREG runs.
 
- -- Matthias Klose <doko@ubuntu.com>  Fri, 29 Nov 2024 09:07:47 +0100
+ -- Matthias Klose <doko@ubuntu.com>  Fri, 29 Nov 2024 12:21:53 +0100
 
 openjdk-24 (24~22ea-1) unstable; urgency=medium
 
