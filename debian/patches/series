@@ -11,7 +11,7 @@ jdk-getAccessibleValue.diff
 jdk-i18n-pt_BR.diff
 #machine-flag.diff
 zero-x32.diff
-atk-wrapper-security.diff
+#atk-wrapper-security.diff
 # java-access-bridge-security.diff
 # jdk-pulseaudio.diff
 dnd-files.diff
@@ -29,7 +29,7 @@ reproducible-build-jmod.diff
 mips.diff
 #nspr+nss-headers.diff
 misalign-pointer-for-armhf.patch
-update-permission-test.patch
+#update-permission-test.patch
 ldap-timeout-test-use-ip.patch
 test-use-ip-address.patch
 arch-add-ports.diff

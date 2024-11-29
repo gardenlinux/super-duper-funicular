@@ -7,19 +7,18 @@ Forwarded: not-needed
 
 --- a/src/java.desktop/share/classes/sun/font/FontManagerNativeLibrary.java
 +++ b/src/java.desktop/share/classes/sun/font/FontManagerNativeLibrary.java
-@@ -55,7 +55,14 @@
-                           shared library in order to avoid dependency. */
-                    System.loadLibrary("freetype");
-                }
--               System.loadLibrary("fontmanager");
+@@ -52,7 +52,13 @@ public class FontManagerNativeLibrary {
+                   shared library in order to avoid dependency. */
+            System.loadLibrary("freetype");
+        }
+-       System.loadLibrary("fontmanager");
 +
-+               try {
-+                    System.loadLibrary("fontmanager");
-+               } catch (Throwable t) {
-+                    System.err.println("Please install the openjdk-*-jre package or recommended packages for openjdk-*-jre-headless.");
-+                    throw t;
-+               }
-+
++       try {
++	   System.loadLibrary("fontmanager");
++       } catch (Throwable t) {
++	   System.err.println("Please install the openjdk-*-jre package or recommended packages for openjdk-*-jre-headless.");
++	   throw t;
++       }
+     }
  
-                return null;
-             }
+     /*
