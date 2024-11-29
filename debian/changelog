@@ -1,3 +1,10 @@
+openjdk-17 (17.0.13+11-3) UNRELEASED; urgency=medium
+
+  [ Pushkar Kulkarni ]
+  * d/t/problems.csv: Update based on recent JTREG runs.
+
+ -- Matthias Klose <doko@ubuntu.com>  Fri, 29 Nov 2024 09:33:36 +0100
+
 openjdk-17 (17.0.13+11-2) unstable; urgency=high
 
   * Don't enable dtrace on POWER* architectures.
