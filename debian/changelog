@@ -1,8 +1,14 @@
 openjdk-24 (24~26ea-1) UNRELEASED; urgency=medium
 
   * OpenJDK 24 snapshot, Build 26.
+
+  [ Matthias Klose ]
   * d/patches/{atk-wrapper-security,update-permission-test}: Disable.
   * d/patches/warn-fontmanager: Update.
+
+  [ Pushkar Kulkarni ]
+  * For jammy, work around GCC ICE on armhf. See LP #1953128.
+  * Update problems.csv based on recent JTREG runs.
 
  -- Matthias Klose <doko@ubuntu.com>  Fri, 29 Nov 2024 09:07:47 +0100
 
