@@ -1,3 +1,9 @@
+openjdk-25 (25~0ea-1) UNRELEASED; urgency=medium
+
+  * OpenJDK 25 snapshot, Build 0.
+
+ -- Matthias Klose <doko@ubuntu.com>  Fri, 06 Dec 2024 11:27:05 +0100
+
 openjdk-24 (24~26ea-1) unstable; urgency=medium
 
   * OpenJDK 24 snapshot, Build 26.

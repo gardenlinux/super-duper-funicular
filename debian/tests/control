@@ -1,9 +1,9 @@
 Test-Command: java --version
-Depends: openjdk-24-jre-headless
+Depends: openjdk-25-jre-headless
 Restrictions: allow-stderr, superficial
 
 Test-Command: javac --version
-Depends: openjdk-24-jdk-headless
+Depends: openjdk-25-jdk-headless
 Restrictions: allow-stderr, superficial
 
 Tests: hotspot-autopkgtest.sh

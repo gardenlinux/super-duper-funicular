@@ -1,7 +1,7 @@
-Source: openjdk-24
+Source: openjdk-25
 Section: java
 Priority: optional
-Maintainer: OpenJDK Team <openjdk-24@packages.debian.org>
+Maintainer: OpenJDK Team <openjdk-25@packages.debian.org>
 Uploaders: Matthias Klose <doko@ubuntu.com>
 Build-Depends: debhelper (>= 11),
   m4, lsb-release, zip, unzip,
@@ -10,12 +10,12 @@ Build-Depends: debhelper (>= 11),
   jtreg7 (>= 7.4+1~) <!nocheck>, libtestng7-java <!nocheck>, xvfb <!nocheck>, xauth <!nocheck>, xfonts-base <!nocheck>, libgl1-mesa-dri [!x32] <!nocheck>, xfwm4 <!nocheck>, x11-xkb-utils <!nocheck>, dbus-x11 <!nocheck>, libasmtools-java <!nocheck>, xvfb  <!nocheck>,
   autoconf, automake, ant, ant-optional,
   g++-14 <!cross>,
-  openjdk-23-jdk-headless:native | openjdk-24-jdk-headless:native,
+  openjdk-24-jdk-headless:native | openjdk-25-jdk-headless:native,
   libxtst-dev, libxi-dev, libxt-dev, libxaw7-dev, libxrender-dev, libcups2-dev, libasound2-dev, liblcms2-dev, libxinerama-dev, libkrb5-dev, xsltproc, libpcsclite-dev, libxrandr-dev, libelf-dev, libfontconfig-dev, libfreetype-dev, libharfbuzz-dev,
   libffi-dev, libffi-dev:native,
   zlib1g-dev:native, zlib1g-dev, libattr1-dev, libpng-dev, libjpeg-dev, libgif-dev, systemtap-sdt-dev [!powerpc !ppc64 !ppc64el !sh4 !s390x],
   libnss3-dev (>= 2:3.17.1),
-  openjdk-24-jdk-headless <cross>,
+  openjdk-25-jdk-headless <cross>,
 Build-Depends-Indep: graphviz, pandoc,
 Rules-Requires-Root: no
 Standards-Version: 4.7.0
@@ -23,19 +23,19 @@ Homepage: https://openjdk.java.net/
 Vcs-Browser: https://salsa.debian.org/openjdk-team/openjdk
 Vcs-Git: https://salsa.debian.org/openjdk-team/openjdk.git
 
-Package: openjdk-24-jdk-headless
+Package: openjdk-25-jdk-headless
 Architecture: alpha amd64 arc armel armhf arm64 hppa i386 ia64 loong64 mips mipsel mips64 mips64el powerpc ppc64 ppc64el m68k riscv64 sh4 sparc sparc64 s390x x32
 Multi-Arch: same
 Pre-Depends: ${dpkg:Depends}
-Depends: openjdk-24-jre-headless (= ${binary:Version}),
+Depends: openjdk-25-jre-headless (= ${binary:Version}),
   ${shlibs:Depends}, ${misc:Depends}
-Suggests: openjdk-24-demo, openjdk-24-source
+Suggests: openjdk-25-demo, openjdk-25-source
 Provides: java-sdk-headless (= ${vm:Version}), java-compiler
 Description: OpenJDK Development Kit (JDK) (headless)
  OpenJDK is a development environment for building applications,
  applets, and components using the Java programming language.
 
-Package: openjdk-24-jre-headless
+Package: openjdk-25-jre-headless
 Architecture: alpha amd64 arc armel armhf arm64 hppa i386 ia64 loong64 mips mipsel mips64 mips64el powerpc ppc64 ppc64el m68k riscv64 sh4 sparc sparc64 s390x x32
 Multi-Arch: same
 Pre-Depends: ${dpkg:Depends}
@@ -54,25 +54,25 @@ Description: OpenJDK Java runtime, using ${vm:Name} (headless)
  Minimal Java runtime - needed for executing non GUI Java programs,
  using ${vm:Name}.
 
-Package: openjdk-24-jdk
+Package: openjdk-25-jdk
 Architecture: alpha amd64 arc armel armhf arm64 hppa i386 ia64 loong64 mips mipsel mips64 mips64el powerpc ppc64 ppc64el m68k riscv64 sh4 sparc sparc64 s390x x32
 Multi-Arch: same
 Pre-Depends: ${dpkg:Depends}
-Depends: openjdk-24-jre (= ${binary:Version}),
-  openjdk-24-jdk-headless (= ${binary:Version}),
+Depends: openjdk-25-jre (= ${binary:Version}),
+  openjdk-25-jdk-headless (= ${binary:Version}),
   ${shlibs:Depends}, ${misc:Depends}
 Recommends: libxt-dev
-Suggests: openjdk-24-demo, openjdk-24-source, visualvm
+Suggests: openjdk-25-demo, openjdk-25-source, visualvm
 Provides: java-sdk (= ${vm:Version}), java-compiler
 Description: OpenJDK Development Kit (JDK)
  OpenJDK is a development environment for building applications,
  applets, and components using the Java programming language.
 
-Package: openjdk-24-jre
+Package: openjdk-25-jre
 Architecture: alpha amd64 arc armel armhf arm64 hppa i386 ia64 loong64 mips mipsel mips64 mips64el powerpc ppc64 ppc64el m68k riscv64 sh4 sparc sparc64 s390x x32
 Multi-Arch: same
 Pre-Depends: ${dpkg:Depends}
-Depends: openjdk-24-jre-headless (= ${binary:Version}),
+Depends: openjdk-25-jre-headless (= ${binary:Version}),
   ${dlopenjre:Depends}, ${fontmanager:Depends}, ${jsound:Depends},
   ${shlibs:Depends}, ${misc:Depends}
 Recommends: ${dlopenjre:Recommends}, ${bridge:Recommends}, fonts-dejavu-extra
@@ -81,21 +81,21 @@ Description: OpenJDK Java runtime, using ${vm:Name}
  Full Java runtime environment - needed for executing Java GUI and Webstart
  programs, using ${vm:Name}.
 
-Package: openjdk-24-demo
+Package: openjdk-25-demo
 Architecture: alpha amd64 arc armel armhf arm64 hppa i386 ia64 loong64 mips mipsel mips64 mips64el powerpc ppc64 ppc64el m68k riscv64 sh4 sparc sparc64 s390x x32
 Priority: optional
 Pre-Depends: ${dpkg:Depends}
-Depends: openjdk-24-jre (= ${binary:Version}),
+Depends: openjdk-25-jre (= ${binary:Version}),
   ${shlibs:Depends}, ${misc:Depends}
 Description: Java runtime based on OpenJDK (demos and examples)
  OpenJDK Java runtime
 
-Package: openjdk-24-source
+Package: openjdk-25-source
 Architecture: all
 Multi-Arch: foreign
 Priority: optional
 Pre-Depends: ${dpkg:Depends}
-Depends: openjdk-24-jdk (>= ${source:Version}),
+Depends: openjdk-25-jdk (>= ${source:Version}),
   ${misc:Depends}
 Description: OpenJDK Development Kit (JDK) source files
  OpenJDK is a development environment for building applications,
@@ -104,7 +104,7 @@ Description: OpenJDK Development Kit (JDK) source files
  This package contains the Java programming language source files
  (src.zip) for all classes that make up the Java core API.
 
-Package: openjdk-24-doc
+Package: openjdk-25-doc
 Section: doc
 Pre-Depends: ${dpkg:Depends}
 Architecture: all
@@ -114,23 +114,23 @@ Depends: ${misc:Depends},
   libjs-jquery,
   libjs-jquery-ui,
   libjs-jquery-ui-theme-base,
-Suggests: openjdk-24-jdk
+Suggests: openjdk-25-jdk
 Description: OpenJDK Development Kit (JDK) documentation
  OpenJDK is a development environment for building applications,
  applets, and components using the Java programming language.
  .
  This package contains the API documentation.
 
-Package: openjdk-24-dbg
+Package: openjdk-25-dbg
 Architecture: alpha amd64 arc armel armhf arm64 hppa i386 ia64 loong64 mips mipsel mips64 mips64el powerpc ppc64 ppc64el m68k riscv64 sh4 sparc sparc64 s390x x32
 Multi-Arch: same
 Priority: optional
 Section: debug
 Pre-Depends: ${dpkg:Depends}
-Depends: openjdk-24-jre-headless (= ${binary:Version}),
+Depends: openjdk-25-jre-headless (= ${binary:Version}),
    ${misc:Depends},${shlibs:Depends}
-Recommends: openjdk-24-jre (= ${binary:Version})
-Suggests: openjdk-24-jdk (= ${binary:Version})
+Recommends: openjdk-25-jre (= ${binary:Version})
+Suggests: openjdk-25-jdk (= ${binary:Version})
 Conflicts: ${dbg:Conflicts}
 Description: Java runtime based on OpenJDK (debugging symbols)
  OpenJDK is a development environment for building applications,
@@ -138,10 +138,10 @@ Description: Java runtime based on OpenJDK (debugging symbols)
  .
  This package contains the debugging symbols.
 
-Package: openjdk-24-testsupport
+Package: openjdk-25-testsupport
 Architecture: alpha amd64 arc armel armhf arm64 hppa i386 ia64 loong64 mips mipsel mips64 mips64el powerpc ppc64 ppc64el m68k riscv64 sh4 sparc sparc64 s390x x32
 Multi-Arch: same
-Depends: openjdk-24-jdk (= ${binary:Version}),
+Depends: openjdk-25-jdk (= ${binary:Version}),
   build-essential, xfwm4, xvfb, dbus-x11, libatk-wrapper-java,
   libatk-wrapper-java-jni, jtreg7 (>= 7.4+1~), libtestng7-java,
   ${shlibs:Depends},
@@ -153,12 +153,12 @@ Description: Java runtime based on OpenJDK (regression test support)
  This package contains all the binary files needed to run the
  OpenJDK autopkg tests.
 
-Package: openjdk-24-jre-zero
+Package: openjdk-25-jre-zero
 Architecture: amd64 arm64 ppc64 ppc64el riscv64 s390x
 Multi-Arch: same
 Priority: optional
 Pre-Depends: ${dpkg:Depends}
-Depends: openjdk-24-jre-headless (= ${binary:Version}), ${shlibs:Depends}, ${misc:Depends}
+Depends: openjdk-25-jre-headless (= ${binary:Version}), ${shlibs:Depends}, ${misc:Depends}
 Provides: ${zerovm:Provides}
 Description: Alternative JVM for OpenJDK, using Zero
  The package provides an alternative runtime using the Zero VM. Built on
