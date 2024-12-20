@@ -1,9 +1,11 @@
-openjdk-17 (17.0.13+11-3) UNRELEASED; urgency=medium
+openjdk-17 (17.0.14~6ea-1) unstable; urgency=medium
+
+  * OpenJDK 17.0.14 early access, build 6.
 
   [ Pushkar Kulkarni ]
   * d/t/problems.csv: Update based on recent JTREG runs.
 
- -- Matthias Klose <doko@ubuntu.com>  Fri, 29 Nov 2024 09:33:36 +0100
+ -- Matthias Klose <doko@ubuntu.com>  Fri, 20 Dec 2024 11:09:22 +0100
 
 openjdk-17 (17.0.13+11-2) unstable; urgency=high
 
