@@ -1,8 +1,9 @@
-openjdk-21 (21.0.5+11-2) UNRELEASED; urgency=medium
+openjdk-21 (21.0.6~6ea-1) unstable; urgency=medium
 
+  * OpenJDK 21.0.6 early access, build 6.
   * Really configure with --enable-dtrace on !s390x.
 
- -- Matthias Klose <doko@ubuntu.com>  Wed, 16 Oct 2024 13:17:47 +0200
+ -- Matthias Klose <doko@ubuntu.com>  Fri, 20 Dec 2024 09:54:05 +0100
 
 openjdk-21 (21.0.5+11-1) unstable; urgency=high
 
