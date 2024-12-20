@@ -1,9 +1,11 @@
-openjdk-11 (11.0.25+9-2) UNRELEASED; urgency=medium
+openjdk-11 (11.0.26~6ea-1) unstable; urgency=medium
+
+  * OpenJDK 11.0.26+3 build (early access).
 
   [ Pushkar Kulkarni ]
   * d/t/problems.csv: Update based on recent JTREG runs.
 
- -- Matthias Klose <doko@ubuntu.com>  Fri, 29 Nov 2024 09:34:19 +0100
+ -- Matthias Klose <doko@ubuntu.com>  Fri, 20 Dec 2024 11:23:17 +0100
 
 openjdk-11 (11.0.25+9-1) unstable; urgency=high
 
