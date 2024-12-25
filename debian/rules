@@ -431,6 +431,11 @@ ifneq (,$(filter $(DEB_HOST_ARCH), ppc64 ppc64el))
   ZERO_CONFIGURE_ARGS += --with-boot-jdk-jvmargs="-XX:ThreadStackSize=2240"
 endif
 
+# Disable C2 compiler due to the bug in 21.0.5+11 update
+ifneq (,$(filter $(DEB_HOST_ARCH), s390x))
+  COMMON_CONFIGURE_ARGS += --with-boot-jdk-jvmargs="-XX:TieredStopAtLevel=1"
+endif
+
 ifeq ($(with_check),yes)
   COMMON_CONFIGURE_ARGS += --with-jtreg=/usr/share/jtreg
 else
