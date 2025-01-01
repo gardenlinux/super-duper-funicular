@@ -1,3 +1,10 @@
+openjdk-21 (21.0.6~6ea-2) UNRELEASED; urgency=medium
+
+  [ Vladimir Petko ]
+  * d/rules: disable c2 compiler for boot jdk on s390x to avoid ftbfs.
+
+ -- Matthias Klose <doko@ubuntu.com>  Wed, 01 Jan 2025 10:39:19 +0100
+
 openjdk-21 (21.0.6~6ea-1) unstable; urgency=medium
 
   * OpenJDK 21.0.6 early access, build 6.
