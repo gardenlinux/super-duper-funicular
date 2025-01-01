@@ -427,12 +427,8 @@ ifneq (,$(filter $(DEB_HOST_ARCH),$(hotspot_archs)))
   DEFAULT_CONFIGURE_ARGS += --disable-precompiled-headers
 endif
 
-ifneq (,$(filter $(DEB_HOST_ARCH), powerpc))
-  DEFAULT_CONFIGURE_ARGS += --with-boot-jdk-jvmargs="-XX:ThreadStackSize=2240"
-endif
-
-ifneq (,$(filter $(DEB_HOST_ARCH), ppc64 ppc64el))
-  ZERO_CONFIGURE_ARGS += --with-boot-jdk-jvmargs="-XX:ThreadStackSize=2240"
+ifneq (,$(filter $(DEB_HOST_ARCH), ppc64 ppc64el powerpc s390x))
+  COMMON_CONFIGURE_ARGS += --with-boot-jdk-jvmargs="-XX:ThreadStackSize=2240 -Xss4M"
 endif
 
 ifeq ($(with_check),yes)

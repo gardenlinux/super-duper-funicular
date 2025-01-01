@@ -1,3 +1,11 @@
+openjdk-24 (24~29ea-2) UNRELEASED; urgency=medium
+
+  [ Vladimir Petko ]
+  * d/rules: Set JVM thread size and Java thread size for power architectures and S390x
+    to avoid a stack overflow error.
+
+ -- Matthias Klose <doko@ubuntu.com>  Wed, 01 Jan 2025 10:36:10 +0100
+
 openjdk-24 (24~29ea-1) unstable; urgency=medium
 
   * OpenJDK 24 snapshot, Build 29.
