@@ -1,4 +1,4 @@
-openjdk-25 (25~4ea-1) UNRELEASED; urgency=medium
+openjdk-25 (25~4ea-1) experimental; urgency=medium
 
   * OpenJDK 25 snapshot, Build 4.
 
@@ -10,7 +10,7 @@ openjdk-25 (25~4ea-1) UNRELEASED; urgency=medium
   * d/rules: Also do the above fix for alpha and sparc64.
   * Try to work-around a ftbfs on alpha.
 
- -- Matthias Klose <doko@ubuntu.com>  Sun, 05 Jan 2025 11:15:22 +0100
+ -- Matthias Klose <doko@ubuntu.com>  Sun, 05 Jan 2025 13:09:04 +0100
 
 openjdk-25 (25~0ea-1) experimental; urgency=medium
 
