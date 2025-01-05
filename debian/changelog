@@ -7,6 +7,7 @@ openjdk-22 (22.0.2+9-5) unstable; urgency=medium
 
   [ Matthias Klose ]
   * Try to work-around a ftbfs on alpha.
+  * Bump standards version.
 
  -- Matthias Klose <doko@ubuntu.com>  Sun, 05 Jan 2025 13:25:08 +0100
 
