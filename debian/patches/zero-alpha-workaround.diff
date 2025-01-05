@@ -1,5 +1,5 @@
---- src/hotspot/os/linux/os_linux.cpp~	2024-12-31 07:26:39.000000000 +0100
-+++ src/hotspot/os/linux/os_linux.cpp	2025-01-05 10:26:10.266071715 +0100
+--- a/src/hotspot/os/linux/os_linux.cpp
++++ b/src/hotspot/os/linux/os_linux.cpp
 @@ -2985,6 +2985,10 @@
  // Note that the value for MAP_FIXED_NOREPLACE differs between architectures, but all architectures
  // supported by OpenJDK share the same flag value.
