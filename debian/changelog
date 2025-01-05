@@ -1,11 +1,14 @@
-openjdk-22 (22.0.2+9-5) UNRELEASED; urgency=medium
+openjdk-22 (22.0.2+9-5) unstable; urgency=medium
 
   [ Vladimir Petko ]
   * d/rules: do not include dtrace support for S390x (JDK-8305174).
   * d/t/problems.csv: Disable jdk/sun/security/util/Debug/DebugOptions.java
     due to JDK-8339713.
 
- -- Matthias Klose <doko@ubuntu.com>  Thu, 10 Oct 2024 14:09:26 +0200
+  [ Matthias Klose ]
+  * Try to work-around a ftbfs on alpha.
+
+ -- Matthias Klose <doko@ubuntu.com>  Sun, 05 Jan 2025 13:25:08 +0100
 
 openjdk-22 (22.0.2+9-4) unstable; urgency=medium
 
