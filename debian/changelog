@@ -6,6 +6,10 @@ openjdk-25 (25~4ea-1) UNRELEASED; urgency=medium
   * d/rules: Set JVM thread size and Java thread size for power architectures and S390x
     to avoid a stack overflow error.
 
+  [ Matthias Klose ]
+  * d/rules: Also do the above fix for alpha and sparc64.
+  * Try to work-around a ftbfs on alpha.
+
  -- Matthias Klose <doko@ubuntu.com>  Sun, 05 Jan 2025 11:15:22 +0100
 
 openjdk-25 (25~0ea-1) experimental; urgency=medium
