@@ -8,6 +8,7 @@ openjdk-24 (24~30ea-1) unstable; urgency=medium
 
   [ Matthias Klose ]
   * d/rules: Also do the above fix for alpha and sparc64.
+  * Try to work-around a ftbfs on alpha.
 
  -- Matthias Klose <doko@ubuntu.com>  Sun, 05 Jan 2025 09:55:53 +0100
 
