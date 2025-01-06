@@ -36,4 +36,4 @@ arch-add-ports.diff
 warn-fontmanager.patch
 hsdis-fpic.patch
 jdk-8335238-workaround.patch
-zero-alpha-workaround.diff
+jdk-8347014-proposed.patch
