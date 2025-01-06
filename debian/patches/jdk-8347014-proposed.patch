@@ -1,0 +1,26 @@
+Description: set MAP_FIXED_NOREPLACE_value for alpha
+ OpenJDK fails to build on alpha platform due to the failing assertion
+ STATIC_ASSERT(MAP_FIXED_NOREPLACE == MAP_FIXED_NOREPLACE_value);
+ Set MAP_FIXED_NOREPLACE_value to 0x200000 for alpha.
+Author: Vladimir Petko <vladimir.petko@canonical.com>
+Bug: https://bugs.openjdk.org/browse/JDK-8347014
+Forwarded: no
+Last-Update: 2025-01-06
+
+--- a/src/hotspot/os/linux/os_linux.cpp
++++ b/src/hotspot/os/linux/os_linux.cpp
+@@ -2982,9 +2982,12 @@
+   STATIC_ASSERT(MADV_POPULATE_WRITE == MADV_POPULATE_WRITE_value);
+ #endif
+
+-// Note that the value for MAP_FIXED_NOREPLACE differs between architectures, but all architectures
+-// supported by OpenJDK share the same flag value.
++#if defined(ALPHA)
++#define MAP_FIXED_NOREPLACE_value 0x200000
++#else
+ #define MAP_FIXED_NOREPLACE_value 0x100000
++#endif
++
+ #ifndef MAP_FIXED_NOREPLACE
+   #define MAP_FIXED_NOREPLACE MAP_FIXED_NOREPLACE_value
+ #else
