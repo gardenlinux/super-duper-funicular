@@ -4,6 +4,7 @@ openjdk-22 (22.0.2+9-5) unstable; urgency=medium
   * d/rules: do not include dtrace support for S390x (JDK-8305174).
   * d/t/problems.csv: Disable jdk/sun/security/util/Debug/DebugOptions.java
     due to JDK-8339713.
+  * d/p/jdk-8347014-proposed.patch: Define MAP_FIXED_NOREPLACE_value for alpha.
 
   [ Matthias Klose ]
   * Try to work-around a ftbfs on alpha.
