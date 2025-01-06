@@ -2,6 +2,7 @@ openjdk-24 (24~30ea-2) UNRELEASED; urgency=medium
 
   [ Vladimir Petko ]
   * d/p/jdk-8347014-proposed.patch: Define MAP_FIXED_NOREPLACE_value for alpha.
+  * d/t/problems.csv: add openjdk-24 and openjdk-25 to the problems.csv.
 
  -- Matthias Klose <doko@ubuntu.com>  Mon, 06 Jan 2025 05:57:01 +0100
 
