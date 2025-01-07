@@ -297,8 +297,8 @@ dpkg_buildflags_hs = \
 	DEB_BUILD_MAINT_OPTIONS="$(DEB_BUILD_MAINT_OPTIONS)" \
 	DEB_CFLAGS_MAINT_STRIP="-O2 -Werror=format-security" \
 	DEB_CXXFLAGS_MAINT_STRIP="-O2 -Werror=format-security" \
-	DEB_CFLAGS_MAINT_APPEND="-fno-stack-protector -Wno-deprecated-declarations" \
-	DEB_CXXFLAGS_MAINT_APPEND="-fno-stack-protector -Wno-deprecated-declarations$(if $(filter $(DEB_HOST_ARCH), armel armhf), -fpermissive)"
+	DEB_CFLAGS_MAINT_APPEND="-fno-stack-protector -Wno-deprecated-declarations$(if $(filter $(DEB_HOST_ARCH), armel armhf), -fno-delete-null-pointer-checks)" \
+	DEB_CXXFLAGS_MAINT_APPEND="-fno-stack-protector -Wno-deprecated-declarations$(if $(filter $(DEB_HOST_ARCH), armel armhf), -fpermissive -fno-delete-null-pointer-checks)"
 # jdk/make/CompileDemos.gmk (SetupJVMTIDemo) doesn't like commas in flags
 dpkg_buildflags_hs += \
 	DEB_LDFLAGS_MAINT_STRIP="-Wl,-z,relro -Wl,-Bsymbolic-functions" \
@@ -313,8 +313,8 @@ dpkg_buildflags_zero = \
 	DEB_BUILD_MAINT_OPTIONS="$(DEB_BUILD_MAINT_OPTIONS)" \
 	DEB_CFLAGS_MAINT_STRIP="-O2 -Werror=format-security -fstack-protector -fstack-protector-strong" \
 	DEB_CXXFLAGS_MAINT_STRIP="-O2 -Werror=format-security -fstack-protector -fstack-protector-strong" \
-	DEB_CFLAGS_MAINT_APPEND="-fno-stack-protector -Wno-deprecated-declarations" \
-	DEB_CXXFLAGS_MAINT_APPEND="-fno-stack-protector -Wno-deprecated-declarations"
+	DEB_CFLAGS_MAINT_APPEND="-fno-stack-protector -Wno-deprecated-declarations$(if $(filter $(DEB_HOST_ARCH), armel armhf), -fno-delete-null-pointer-checks)" \
+	DEB_CXXFLAGS_MAINT_APPEND="-fno-stack-protector -Wno-deprecated-declarations$(if $(filter $(DEB_HOST_ARCH), armel armhf), -fno-delete-null-pointer-checks)"
 # jdk/make/CompileDemos.gmk (SetupJVMTIDemo) doesn't like commas in flags
 dpkg_buildflags_zero += \
 	DEB_LDFLAGS_MAINT_STRIP="-Wl,-z,relro -Wl,-Bsymbolic-functions" \
