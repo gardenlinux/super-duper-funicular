@@ -1,3 +1,10 @@
+openjdk-22 (22.0.2+9-6) UNRELEASED; urgency=medium
+
+  [ Vladimir Petko ]
+  * d/rules: Dump complete hs_err_pid and replay_pid logs to stdout.
+
+ -- Matthias Klose <doko@ubuntu.com>  Fri, 17 Jan 2025 09:04:15 +0100
+
 openjdk-22 (22.0.2+9-5) unstable; urgency=medium
 
   [ Vladimir Petko ]
