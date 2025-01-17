@@ -1,3 +1,13 @@
+openjdk-11 (11.0.26~6ea-2) UNRELEASED; urgency=medium
+
+  [ Matthias Klose ]
+  * Bump standards version.
+
+  [ Vladimir Petko ]
+  * d/rules: Dump complete hs_err_pid and replay_pid logs to stdout.
+
+ -- Matthias Klose <doko@ubuntu.com>  Sat, 11 Jan 2025 18:41:45 +0100
+
 openjdk-11 (11.0.26~6ea-1) unstable; urgency=medium
 
   * OpenJDK 11.0.26+3 build (early access).
