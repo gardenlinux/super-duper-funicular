@@ -2,6 +2,7 @@ openjdk-11 (11.0.26~6ea-2) UNRELEASED; urgency=medium
 
   [ Matthias Klose ]
   * Bump standards version.
+  * d/rules: Also dump logs for zero builds and for build failures.
 
   [ Vladimir Petko ]
   * d/rules: Dump complete hs_err_pid and replay_pid logs to stdout.
