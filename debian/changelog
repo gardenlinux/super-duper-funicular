@@ -6,6 +6,7 @@ openjdk-23 (23.0.1+11-3) UNRELEASED; urgency=medium
   [ Matthias Klose ]
   * Try to work-around a ftbfs on alpha. For now we keep the
     zero-alpha-workaround patch enabled instead of jdk-8347014-proposed.
+  * d/rules: Also dump logs for zero builds and for build failures.
 
  -- Matthias Klose <doko@ubuntu.com>  Fri, 17 Jan 2025 09:02:27 +0100
 
