@@ -1,0 +1,13 @@
+--- a/src/hotspot/os/linux/os_linux.cpp
++++ b/src/hotspot/os/linux/os_linux.cpp
+@@ -2985,6 +2985,10 @@
+ // Note that the value for MAP_FIXED_NOREPLACE differs between architectures, but all architectures
+ // supported by OpenJDK share the same flag value.
+ #define MAP_FIXED_NOREPLACE_value 0x100000
++// on ALPHA, that triggers with 0x1000000 == 0x100000. why?
++#if defined(ALPHA) && defined(MAP_FIXED_NOREPLACE)
++#undef MAP_FIXED_NOREPLACE
++#endif
+ #ifndef MAP_FIXED_NOREPLACE
+   #define MAP_FIXED_NOREPLACE MAP_FIXED_NOREPLACE_value
+ #else
