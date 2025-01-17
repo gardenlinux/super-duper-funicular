@@ -1,3 +1,10 @@
+openjdk-23 (23.0.1+11-3) UNRELEASED; urgency=medium
+
+  [ Vladimir Petko ]
+  * d/rules: Dump complete hs_err_pid and replay_pid logs to stdout.
+
+ -- Matthias Klose <doko@ubuntu.com>  Fri, 17 Jan 2025 09:02:27 +0100
+
 openjdk-23 (23.0.1+11-2) unstable; urgency=medium
 
   [ Pushkar Kulkarni ]
