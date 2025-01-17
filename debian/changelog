@@ -1,4 +1,4 @@
-openjdk-23 (23.0.1+11-3) UNRELEASED; urgency=medium
+openjdk-23 (23.0.1+11-3) unstable; urgency=medium
 
   [ Vladimir Petko ]
   * d/rules: Dump complete hs_err_pid and replay_pid logs to stdout.
@@ -8,7 +8,7 @@ openjdk-23 (23.0.1+11-3) UNRELEASED; urgency=medium
     zero-alpha-workaround patch enabled instead of jdk-8347014-proposed.
   * d/rules: Also dump logs for zero builds and for build failures.
 
- -- Matthias Klose <doko@ubuntu.com>  Fri, 17 Jan 2025 09:02:27 +0100
+ -- Matthias Klose <doko@ubuntu.com>  Fri, 17 Jan 2025 11:37:25 +0100
 
 openjdk-23 (23.0.1+11-2) unstable; urgency=medium
 
