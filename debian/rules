@@ -1172,7 +1172,11 @@ ifneq (,$(filter $(DEB_HOST_ARCH), alpha armel armhf ia64 loong64 m68k mips mips
 	sh -c 'sh debian/buildwatch.sh $(CURDIR)/$(builddir) &'
 endif
 	if $(EXTRA_BUILD_ENV) $(MAKE) --no-print-directory -C $(builddir) $(build_target); then \
-	  : ; \
+	  for log in `find $(CURDIR) -name 'hs_err_pid*.log' -o -name 'replay_pid*.log`; do \
+	    echo "=== $$log ==="; \
+	    cat $$log; \
+	    echo "======"; \
+	  done; \
 	else \
 	  if [ -f buildwatch.pid ]; then \
 	    pid=$$(cat buildwatch.pid); \
