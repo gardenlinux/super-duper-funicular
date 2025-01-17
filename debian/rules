@@ -1141,26 +1141,39 @@ stamps/build: stamps/configure
 ifneq (,$(filter $(DEB_HOST_ARCH), alpha armel armhf ia64 loong64 m68k mips mipsel mips64 mips64el powerpc riscv64 s390x sh4 sparc sparc64))
 	sh -c 'sh debian/buildwatch.sh $(CURDIR)/$(builddir) &'
 endif
-	if $(EXTRA_BUILD_ENV) $(MAKE) --no-print-directory -C $(builddir) $(build_target); then \
-	  for log in `find $(CURDIR) -name 'hs_err_pid*.log' -o -name 'replay_pid*.log`; do \
-	    echo "=== $$log ==="; \
-	    cat $$log; \
-	    echo "======"; \
-	  done; \
-	else \
-	  if [ -f buildwatch.pid ]; then \
-	    pid=$$(cat buildwatch.pid); \
-	    kill -1 $$pid || :; sleep 1; kill -9 $$pid || :; \
-	  fi; \
-	  false; \
-	fi
+	$(EXTRA_BUILD_ENV) $(MAKE) --no-print-directory -C $(builddir) $(build_target); \
+	rv=$$?; \
+	for log in `find $(builddir) -name 'hs_err_pid*.log' -o -name 'replay_pid*.log'`; do \
+	  [ -f $$log ] || continue; \
+	  echo "=== $$log ==="; \
+	  cat $$log; \
+	  echo "======"; \
+	done; \
+	if [ -f buildwatch.pid ]; then \
+	  pid=$$(cat buildwatch.pid); \
+	  kill -1 $$pid || :; sleep 1; kill -9 $$pid || :; \
+	fi; \
+	exit $$rv
 
 	touch $@
 
 stamps/zero-build: stamps/zero-configure
 	@echo '========== $@ =========='
 	: # FIXME: build using the just built jdk, and build the vm only
-	$(EXTRA_BUILD_ENV) $(MAKE) --no-print-directory -C $(zbuilddir) $(zbuild_target)
+	$(EXTRA_BUILD_ENV) $(MAKE) --no-print-directory -C $(zbuilddir) $(zbuild_target); \
+	rv=$$?; \
+	for log in `find $(zbuilddir) -name 'hs_err_pid*.log' -o -name 'replay_pid*.log'`; do \
+	  [ -f $$log ] || continue; \
+	  echo "=== $$log ==="; \
+	  cat $$log; \
+	  echo "======"; \
+	done; \
+	if [ -f buildwatch.pid ]; then \
+	  pid=$$(cat buildwatch.pid); \
+	  kill -1 $$pid || :; sleep 1; kill -9 $$pid || :; \
+	fi; \
+	exit $$rv
+
 	rm -rf $(builddir)/$(sdkimg)/lib/zero
 	cp -a $(zbuilddir)/$(zsdkimg)/lib/zero \
 		$(builddir)/$(sdkimg)/lib/.
