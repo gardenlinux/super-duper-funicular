@@ -46,4 +46,6 @@ jdk-8334895-proposed.patch
 jdk-8331541.patch
 jdk-8336529-proposed.patch
 jdk-8312488.patch
-jdk-8347014-proposed.patch
+# FIXME: which one of these two?
+zero-alpha-workaround.diff
+#jdk-8347014-proposed.patch

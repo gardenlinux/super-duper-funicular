@@ -7,7 +7,8 @@ openjdk-21 (21.0.6~6ea-2) UNRELEASED; urgency=medium
     The flag was removed in JDK-8316893 causing JVM lockup.
 
   [ Matthias Klose ]
-  * Try to work-around a ftbfs on alpha.
+  * Try to work-around a ftbfs on alpha. For now we keep the
+    zero-alpha-workaround patch enabled instead of jdk-8347014-proposed.
 
  -- Matthias Klose <doko@ubuntu.com>  Sun, 05 Jan 2025 15:12:34 +0100
 
