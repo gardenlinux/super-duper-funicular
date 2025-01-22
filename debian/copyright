@@ -826,7 +826,7 @@ License:   GPL with Classpath exception
   .
   The Source Code of this file is available under the
   Mozilla Public License, v. 2.0 and is located at
-  https://raw.githubusercontent.com/publicsuffix/list/b5bf572c52988dbe9d865b8f090ea819024a9936/public_suffix_list.dat.
+  https://raw.githubusercontent.com/publicsuffix/list/1cbd6e71a9b83620b1d0b11e49d3d9ff48c27e22/public_suffix_list.dat.
   If a copy of the MPL was not distributed with this file, you can obtain one
   at https://mozilla.org/MPL/2.0/.
   .
@@ -2121,6 +2121,54 @@ License:   GPL with Classpath exception
   --- end of LICENSE ---
   .
   ------------------------------------------------------------------------------
+  %% This notice is provided with respect to PipeWire 0.3.68,
+  which may be included with JRE 17, JDK 17 and OpenJDK 17
+  .
+  --- begin of LICENSE ---
+  .
+  PipeWire license:
+  .
+  All PipeWire header files are licensed under the MIT License:
+  .
+  .
+  .
+  Copyright © 2018-2023 Wim Taymans
+  .
+  Permission is hereby granted, free of charge, to any person obtaining a
+  copy of this software and associated documentation files (the "Software"),
+  to deal in the Software without restriction, including without limitation
+  the rights to use, copy, modify, merge, publish, distribute, sublicense,
+  and/or sell copies of the Software, and to permit persons to whom the
+  Software is furnished to do so, subject to the following conditions:
+  .
+  The above copyright notice and this permission notice (including the next
+  paragraph) shall be included in all copies or substantial portions of the
+  Software.
+  .
+  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.  IN NO EVENT SHALL
+  THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+  FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
+  DEALINGS IN THE SOFTWARE.
+  .
+  .
+  The below copyright applies to the following files:
+  .
+  spa/include/spa/monitor/type-info.h
+  .
+  Copyright © 2021 Collabora Ltd.
+  .
+  .
+  spa/include/spa/utils/string.h
+  .
+  Copyright © 2021 Red Hat, Inc.
+  .
+  .
+  --- end of LICENSE ---
+  .
+  ------------------------------------------------------------------------------
   %% This notice is provided with respect to xwd v1.0.7,
   which may be included with JRE 17, JDK 17 and OpenJDK 17
   .
@@ -2657,14 +2705,14 @@ License:   GPL with Classpath exception
   --- end of LICENSE ---
   .
   ------------------------------------------------------------------------------
-  %% This notice is provided with respect to jQuery v3.6.1,
+  %% This notice is provided with respect to jQuery v3.7.1,
   which may be included with JRE 17, JDK 17 and OpenJDK 17
   .
   --- begin of LICENSE ---
   .
   jQuery License
   .
-  jQuery v 3.6.1
+  jQuery v 3.7.1
   Copyright OpenJS Foundation and other contributors, https://openjsf.org/
   .
   Permission is hereby granted, free of charge, to any person obtaining
@@ -2685,52 +2733,6 @@ License:   GPL with Classpath exception
   LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
   OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
   WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
-  .
-  ******************************************
-  .
-  The jQuery JavaScript Library v3.6.1 also includes Sizzle.js
-  .
-  Sizzle.js includes the following license:
-  .
-  Copyright JS Foundation and other contributors, https://js.foundation/
-  .
-  This software consists of voluntary contributions made by many
-  individuals. For exact contribution history, see the revision history
-  available at https://github.com/jquery/sizzle
-  .
-  The following license applies to all parts of this software except as
-  documented below:
-  .
-  ====
-  .
-  Permission is hereby granted, free of charge, to any person obtaining
-  a copy of this software and associated documentation files (the
-  "Software"), to deal in the Software without restriction, including
-  without limitation the rights to use, copy, modify, merge, publish,
-  distribute, sublicense, and/or sell copies of the Software, and to
-  permit persons to whom the Software is furnished to do so, subject to
-  the following conditions:
-  .
-  The above copyright notice and this permission notice shall be
-  included in all copies or substantial portions of the Software.
-  .
-  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
-  EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
-  MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
-  NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE
-  LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
-  OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
-  WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
-  .
-  ====
-  .
-  All files located in the node_modules and external directories are
-  externally maintained libraries used by this software which have their
-  own licenses; we recommend you read them, as their terms may differ from
-  the terms above.
-  .
-  *********************
-  .
   .
   .
   --- end of LICENSE ---
