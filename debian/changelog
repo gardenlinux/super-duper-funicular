@@ -1,3 +1,20 @@
+openjdk-23 (23.0.2+7-1) unstable; urgency=medium
+
+  * OpenJDK 23.0.2 release, build 7. Release notes:
+    https://jdk.java.net/23/release-notes
+
+    - CVEs:
+      +  CVE-2025-21502 - 8330045: Enhance array handling.
+
+  [ Vladimir Petko ]
+  * d/p/log-generated-classes-test.patch: Drop patch. The fix applied upstream.
+  * d/rules: Disable c2 compiler for the boot jdk on s390x to avoid SIGSEGV.
+    The issue is specific to the qemu version ran on Launchpad builders
+    and is not reproducible with the latest qemu version in oracular
+    (LP: #2095441).
+
+ -- Matthias Klose <doko@ubuntu.com>  Wed, 22 Jan 2025 10:03:53 +0100
+
 openjdk-23 (23.0.1+11-3) unstable; urgency=medium
 
   [ Vladimir Petko ]
