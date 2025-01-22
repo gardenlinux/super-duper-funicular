@@ -1884,7 +1884,7 @@ ifeq ($(with_docs),yes)
 	rm -v $(d_doc)/usr/share/doc/$(p_jrehl)/api/script-dir/{jquery-3.7.1.min.js,jquery-ui.min.css,jquery-ui.min.js}
 	dh_link -p$(p_doc) \
 	  /usr/share/javascript/jquery/jquery.min.js \
-	    /usr/share/doc/$(p_jrehl)/api/script-dir/jquery-3.6.1.min.js \
+	    /usr/share/doc/$(p_jrehl)/api/script-dir/jquery-3.7.1.min.js \
 	  /usr/share/javascript/jquery-ui/themes/base/jquery-ui.min.css \
 	    /usr/share/doc/$(p_jrehl)/api/script-dir/jquery-ui.min.css \
 	  /usr/share/javascript/jquery-ui/jquery-ui.min.js \
