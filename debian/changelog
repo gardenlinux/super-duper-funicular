@@ -1,13 +1,22 @@
-openjdk-17 (17.0.14~6ea-2) UNRELEASED; urgency=medium
+openjdk-17 (17.0.14+7-1) unstable; urgency=medium
+
+  * OpenJDK 17.0.14 release, build 7. Release notes:
+    https://mail.openjdk.org/pipermail/jdk-updates-dev/2025-January/040827.html
+
+    - CVEs:
+      + CVE-2025-21502 - 8330045: Enhance array handling.
 
   [ Vladimir Petko ]
   * d/rules: Dump complete hs_err_pid and replay_pid logs to stdout.
   * d/t/problems.csv: Add openjdk-24 and openjdk-25 to the problems.csv.
+  * d/rules: Create link to jquery-3.7.1.min.js instead of jquery-3.6.1.min.js
+    (LP: #2095455).
+  * d/copyright: Regenerate.
 
   [ Matthias Klose ]
   * d/rules: Also dump logs for zero builds and for build failures.
 
- -- Matthias Klose <doko@ubuntu.com>  Fri, 17 Jan 2025 09:05:34 +0100
+ -- Matthias Klose <doko@ubuntu.com>  Wed, 22 Jan 2025 10:17:58 +0100
 
 openjdk-17 (17.0.14~6ea-1) unstable; urgency=medium
 
