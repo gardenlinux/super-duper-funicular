@@ -79,7 +79,6 @@ else
 endif
 
 is_upstream_release = yes
-is_upstream_release =
 
 srcdir		= .
 builddir	= build
@@ -1958,7 +1957,7 @@ endif
 	dh_builddeb -a $(nodemo) $(nojrez) #$(bd_options)
 
 git_project		= jdk11u
-git_tag			= jdk-11.0.26+3
+git_tag			= jdk-11.0.26+4
 package_version		= $(subst jdk-,,$(git_tag))
 package_version		= $(shell echo $(PKGVERSION) | sed 's/-[^-][^-]*$$//')
 ifneq ($(is_upstream_release),yes)
