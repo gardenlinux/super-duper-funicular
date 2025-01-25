@@ -1,4 +1,6 @@
-openjdk-25 (25~4ea-2) UNRELEASED; urgency=medium
+openjdk-25 (25~7ea-1) UNRELEASED; urgency=medium
+
+  * OpenJDK 25 snapshot, Build 7.
 
   [ Vladimir Petko ]
   * d/p/jdk-8347014-proposed.patch: Define MAP_FIXED_NOREPLACE_value for alpha.
@@ -6,9 +8,11 @@ openjdk-25 (25~4ea-2) UNRELEASED; urgency=medium
   * d/rules: Dump complete hs_err_pid and replay_pid logs to stdout.
 
   [ Matthias Klose ]
+  * Try to work-around a ftbfs on alpha. For now we keep the
+    zero-alpha-workaround patch enabled instead of jdk-8347014-proposed.
   * d/rules: Also dump logs for zero builds and for build failures.
 
- -- Matthias Klose <doko@ubuntu.com>  Mon, 06 Jan 2025 05:59:44 +0100
+ -- Matthias Klose <doko@ubuntu.com>  Sat, 25 Jan 2025 17:27:56 +0100
 
 openjdk-25 (25~4ea-1) experimental; urgency=medium
 
