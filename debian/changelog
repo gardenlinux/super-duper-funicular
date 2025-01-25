@@ -1,3 +1,10 @@
+openjdk-21 (21.0.6+7-2) UNRELEASED; urgency=medium
+
+  [ Vladimir Petko ]
+  * d/t/problems.csv: Synchronize problemlist with the master branch.
+
+ -- Matthias Klose <doko@ubuntu.com>  Sat, 25 Jan 2025 20:46:45 +0100
+
 openjdk-21 (21.0.6+7-1) unstable; urgency=high
 
   * OpenJDK 21.0.6 release, build 7. Release notes:
