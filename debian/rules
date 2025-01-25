@@ -398,7 +398,16 @@ no_dtrace_archs = powerpc ppc64 ppc64el sh4 s390x
 # PPC*, S390x and SH do not support dtrace probes
 # https://github.com/openjdk/jdk/pull/13228
 ifeq (,$(filter $(DEB_HOST_ARCH),$(no_dtrace_archs)))
-  COMMON_CONFIGURE_ARGS += --enable-dtrace
+  # disable dtrace due to GCC ICE in jammy: https://launchpad.net/bugs/2091225
+  ifneq (,$(filter $(DEB_HOST_ARCH),armhf))
+    ifneq (,$(filter $(distrel),jammy))
+        COMMON_CONFIGURE_ARGS += --disable-dtrace
+    else
+        COMMON_CONFIGURE_ARGS += --enable-dtrace
+    endif
+  else
+    COMMON_CONFIGURE_ARGS += --enable-dtrace
+  endif
 endif
 
 COMMON_CONFIGURE_ARGS += --with-jni-libpath=/usr/lib/$(DEB_HOST_MULTIARCH)/jni:/lib/$(DEB_HOST_MULTIARCH):/usr/lib/$(DEB_HOST_MULTIARCH):/usr/lib/jni:/lib:/usr/lib
