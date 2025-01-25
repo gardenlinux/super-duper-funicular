@@ -4,8 +4,12 @@ openjdk-25 (25~7ea-1) UNRELEASED; urgency=medium
 
   [ Vladimir Petko ]
   * d/p/jdk-8347014-proposed.patch: Define MAP_FIXED_NOREPLACE_value for alpha.
-  * d/t/problems.csv: add openjdk-24 and openjdk-25 to the problems.csv.
+  * d/t/problems.csv: Add openjdk-24 and openjdk-25 to the problems.csv.
   * d/rules: Dump complete hs_err_pid and replay_pid logs to stdout.
+  * d/t/problems.csv: Fix typo - remove jdk prefix for
+    sun/security/util/Debug/DebugOptions.java.
+  * d/rules: Disable dtrace on jammy armhf (was not enabled before and cannot
+    be built due to a GCC ICE (see LP #2091225).
 
   [ Matthias Klose ]
   * Try to work-around a ftbfs on alpha. For now we keep the
