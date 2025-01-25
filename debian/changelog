@@ -1,4 +1,4 @@
-openjdk-25 (25~7ea-1) UNRELEASED; urgency=medium
+openjdk-25 (25~7ea-1) unstable; urgency=medium
 
   * OpenJDK 25 snapshot, Build 7.
 
@@ -16,7 +16,7 @@ openjdk-25 (25~7ea-1) UNRELEASED; urgency=medium
     zero-alpha-workaround patch enabled instead of jdk-8347014-proposed.
   * d/rules: Also dump logs for zero builds and for build failures.
 
- -- Matthias Klose <doko@ubuntu.com>  Sat, 25 Jan 2025 17:27:56 +0100
+ -- Matthias Klose <doko@ubuntu.com>  Sat, 25 Jan 2025 21:12:03 +0100
 
 openjdk-25 (25~4ea-1) experimental; urgency=medium
 
