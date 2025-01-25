@@ -1,4 +1,4 @@
-openjdk-24 (24~33ea-1) UNRELEASED; urgency=medium
+openjdk-24 (24~33ea-1) unstable; urgency=medium
 
   * OpenJDK 24 snapshot, Build 33.
 
@@ -16,7 +16,7 @@ openjdk-24 (24~33ea-1) UNRELEASED; urgency=medium
     zero-alpha-workaround patch enabled instead of jdk-8347014-proposed.
   * d/rules: Also dump logs for zero builds and for build failures.
 
- -- Matthias Klose <doko@ubuntu.com>  Sat, 25 Jan 2025 17:23:30 +0100
+ -- Matthias Klose <doko@ubuntu.com>  Sat, 25 Jan 2025 21:08:07 +0100
 
 openjdk-24 (24~30ea-1) unstable; urgency=medium
 
