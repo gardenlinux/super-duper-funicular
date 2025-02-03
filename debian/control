@@ -162,7 +162,7 @@ Depends: ${jredefault:Depends}, ${cacert:Depends},
   ${jcommon:Depends}, ${dlopenhl:Depends},
   ${mountpoint:Depends},
   ${shlibs:Depends}, ${misc:Depends}
-Description: JVMCI-enabled JVM for building graalvm
+Description: JVMCI-enabled SDK for building graalvm
   This package provides a JVMCI-enabled GraalVM builder Java SDK.
 
 Package: openjdk-24-jre-zero
