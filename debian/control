@@ -153,6 +153,18 @@ Description: Java runtime based on OpenJDK (regression test support)
  This package contains all the binary files needed to run the
  OpenJDK autopkg tests.
 
+Package: openjdk-24-jvmci-jdk
+Architecture: amd64
+Multi-Arch: same
+Priority: optional
+Pre-Depends: ${dpkg:Depends}
+Depends: ${jredefault:Depends}, ${cacert:Depends},
+  ${jcommon:Depends}, ${dlopenhl:Depends},
+  ${mountpoint:Depends},
+  ${shlibs:Depends}, ${misc:Depends}
+Description: JVMCI-enabled JVM for building graalvm
+  This package provides a JVMCI-enabled GraalVM builder Java SDK.
+
 Package: openjdk-24-jre-zero
 Architecture: amd64 arm64 ppc64 ppc64el riscv64 s390x
 Multi-Arch: same
