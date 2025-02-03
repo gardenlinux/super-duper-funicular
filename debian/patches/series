@@ -39,3 +39,4 @@ jdk-8335238-workaround.patch
 # FIXME: which one of these two?
 zero-alpha-workaround.diff
 #jdk-8347014-proposed.patch
+power-opt.diff

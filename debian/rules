@@ -431,7 +431,7 @@ ZERO_CONFIGURE_ARGS += --with-boot-jdk=$(BUILDJDK_HOME)
 COMMON_CONFIGURE_ARGS += --disable-ccache
 
 # FIXME: zero not ready for --disable-precompiled-headers
-#COMMON_CONFIGURE_ARGS += --disable-precompiled-headers
+COMMON_CONFIGURE_ARGS += --disable-precompiled-headers
 ifneq (,$(filter $(DEB_HOST_ARCH),$(hotspot_archs)))
   DEFAULT_CONFIGURE_ARGS += --disable-precompiled-headers
 endif
@@ -2011,7 +2011,7 @@ endif
 	dh_builddeb -a $(nodemo) $(nojrez) #$(bd_options)
 
 git_project		= jdk
-git_tag			= jdk-25+7
+git_tag			= jdk-25+8
 package_version		= $(shell echo $(PKGVERSION) | sed 's/-[^-][^-]*$$//')
 ifneq ($(is_upstream_release),yes)
   package_version	:= $(subst +,~,$(package_version))

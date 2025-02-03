@@ -1,3 +1,11 @@
+openjdk-25 (25~8ea-1) unstable; urgency=medium
+
+  * OpenJDK 25 snapshot, Build 8.
+  * Disable explicit power8 optimization on ppc64el.
+  * Build zero with --disable-precompiled-headers.
+
+ -- Matthias Klose <doko@ubuntu.com>  Sun, 02 Feb 2025 13:57:28 +0100
+
 openjdk-25 (25~7ea-1) unstable; urgency=medium
 
   * OpenJDK 25 snapshot, Build 7.
