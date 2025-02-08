@@ -1400,6 +1400,13 @@ endif
 	ls -l $(d)/$(basedir)/lib
 	cp debian/jvm.cfg-default $(d)/$(basedir)/lib/.
 
+	: # FIXME, these appeared with 24~36ea without binaries
+	rm -f $(d)/$(basedir)/man/man1/jabswitch.1
+	rm -f $(d)/$(basedir)/man/man1/jaccess*.1
+	rm -f $(d)/$(basedir)/man/man1/kinit.1
+	rm -f $(d)/$(basedir)/man/man1/klist.1
+	rm -f $(d)/$(basedir)/man/man1/ktab.1
+
 	: # compress manpages
 	find $(d)/$(basedir)/man -type f ! -type l | xargs gzip -9v -n
 
