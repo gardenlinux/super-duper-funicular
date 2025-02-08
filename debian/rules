@@ -1378,6 +1378,9 @@ ifneq (,$(filter $(DEB_HOST_ARCH), $(jvmci_archs)))
 	mkdir -p $(d)/$(jvmci_basedir)/
 	cp -a $(jvmci_builddir)/$(jvmci_img)/* $(d)/$(jvmci_basedir)/
 	find $(d)/$(jvmci_basedir)/ -type f -name "*.debuginfo" -exec rm {} \;
+	rm -rf $(d)/$(jvmci_basedir)/demo
+	rm -rf $(d)/$(jvmci_basedir)/legal
+	rm -rf $(d)/$(jvmci_basedir)/man
 endif
 
 # copy jtreg tests
