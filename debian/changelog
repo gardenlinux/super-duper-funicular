@@ -13,7 +13,7 @@ openjdk-24 (24~36ea-1) unstable; urgency=medium
   * Remove some man pages, that appear with 24~36ea without binaries:
     jabswitch.1, jaccess*.1, kinit.1, klist.1, ktab.1.
 
- -- Matthias Klose <doko@ubuntu.com>  Sat, 08 Feb 2025 12:11:41 +0100
+ -- Matthias Klose <doko@ubuntu.com>  Sat, 08 Feb 2025 14:41:09 +0100
 
 openjdk-24 (24~33ea-1) unstable; urgency=medium
 
