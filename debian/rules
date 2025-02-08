@@ -2000,6 +2000,11 @@ binary-arch: build install
 		debian/README.testsuite
 	$(call install_test_results,$(default_vm))
 
+ifneq (,$(filter $(DEB_HOST_ARCH), $(jvmci_archs)))
+	dh_installchangelogs -p$(p_jvmci)
+	dh_installdocs -p$(p_jvmci)
+endif
+
 ifneq (,$(filter zero, $(alternate_vms)))
 	$(call install_test_results,zero)
 endif
@@ -2047,7 +2052,7 @@ endif
 	dh_builddeb -a $(nodemo) $(nojrez) #$(bd_options)
 
 git_project		= jdk
-git_tag			= jdk-24+34
+git_tag			= jdk-24+36
 package_version		= $(shell echo $(PKGVERSION) | sed 's/-[^-][^-]*$$//')
 ifneq ($(is_upstream_release),yes)
   package_version	:= $(subst +,~,$(package_version))
