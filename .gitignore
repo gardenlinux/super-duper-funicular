@@ -21,6 +21,7 @@ googletest
 .pc
 build
 build-zero
+build-jvmci
 jtreg-test-output
 stamps
 config.log
@@ -42,6 +43,7 @@ debian/openjdk-25-jdk
 debian/openjdk-25-jre-headless
 debian/openjdk-25-jre-zero
 debian/openjdk-25-jre
+debian/openjdk-25-jvmci-jdk
 debian/openjdk-25-source
 debian/openjdk-25-testsupport
 
