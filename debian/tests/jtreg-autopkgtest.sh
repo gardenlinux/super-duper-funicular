@@ -15,7 +15,7 @@ fi
 host_arch="${DEB_HOST_ARCH:-$(dpkg --print-architecture)}"
 
 if [ -z "${JDK_TO_TEST+x}" ]; then
-  JDK_TO_TEST=$(echo /usr/lib/jvm/java-24-openjdk-amd64 | sed "s/-[^-]*$/-$host_arch/")
+  JDK_TO_TEST=$(echo /usr/lib/jvm/java-25-openjdk-amd64 | sed "s/-[^-]*$/-$host_arch/")
 fi
 
 if [ -z "${BOOTJDK_HOME+x}" ]; then
@@ -45,7 +45,7 @@ if [ ! -x "${BOOTJDK_HOME}/bin/java" ]; then
 fi
 
 # restrict the tests to a few archs (set from debian/rules)
-if ! echo "${host_arch}" | grep -qE "^($(echo amd64 i386 arm64 ppc64 ppc64el riscv64 s390x alpha ia64 powerpc ppc64 sh4 x32 armel loong64 mipsel mips64el riscv64 | tr ' ' '|'))$"; then
+if ! echo "${host_arch}" | grep -qE "^($(echo amd64 arm64 ppc64 ppc64el riscv64 s390x alpha ia64 powerpc ppc64 sh4 x32 armel loong64 mipsel mips64el riscv64 | tr ' ' '|'))$"; then
   echo "Error: ${host_arch} is not on the jtreg_archs list, ignoring it."
   exit 77
 fi
