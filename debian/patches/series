@@ -31,7 +31,6 @@ mips.diff
 8314491-jexec.patch
 update-assertion-for-armhf.patch
 misalign-pointer-for-armhf.patch
-log-generated-classes-test.patch
 update-permission-test.patch
 ldap-timeout-test-use-ip.patch
 test-use-ip-address.patch
