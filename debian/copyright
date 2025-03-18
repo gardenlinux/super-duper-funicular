@@ -18,7 +18,7 @@ Files-Excluded:
   src/java.desktop/share/native/libjavajpeg/jv*
   src/java.desktop/share/native/libjavajpeg/ju*
   src/java.desktop/share/native/libjavajpeg/README
-Source: https://github.com/openjdk/jdk
+Source: https://github.com/openjdk/jdk24u
 Comment:
   Upstream Authors:
     OpenJDK:
@@ -2838,7 +2838,7 @@ License: BSD-C3
   OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 Files: debian/*
-Copyright: Copyright © 2007-2023 Canonical Ltd.
+Copyright: Copyright © 2007-2025 Canonical Ltd.
 License: MIT
   Permission is hereby granted, free of charge, to any person obtaining
   a copy of this software and associated documentation files (the

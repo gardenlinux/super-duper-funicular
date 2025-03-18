@@ -133,7 +133,7 @@ def generate_comment_str():
 def generate_header_stanza():
   format = "https://www.debian.org/doc/packaging-manuals/copyright-format/1.0/"
   excluded = generate_excluded_files_str()
-  source = "https://github.com/openjdk/jdk"
+  source = "https://github.com/openjdk/jdk24u"
   comment = generate_comment_str()
   print_header_stanza(format, excluded, source, comment)
 
@@ -285,7 +285,7 @@ def main():
   version = detect_version()
 
   sys.stdout = open('./debian/copyright', 'w')
-  supported_versions = ["11", "17", "21", "22", "23"]
+  supported_versions = ["11", "17", "21", "22", "23", "24"]
 
   if version in supported_versions:
     generate_copyright()

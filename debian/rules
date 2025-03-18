@@ -89,7 +89,7 @@ else
   is_default = yes
 endif
 
-#is_upstream_release = yes
+is_upstream_release = yes
 
 srcdir		= .
 builddir	= build
@@ -2058,7 +2058,7 @@ endif
 	NO_PKG_MANGLE=1 \
 	dh_builddeb -a $(nodemo) $(nojrez) #$(bd_options)
 
-git_project		= jdk
+git_project		= jdk24u
 git_tag			= jdk-24+36
 package_version		= $(shell echo $(PKGVERSION) | sed 's/-[^-][^-]*$$//')
 ifneq ($(is_upstream_release),yes)

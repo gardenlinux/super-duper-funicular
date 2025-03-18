@@ -1,3 +1,9 @@
+openjdk-24 (24+36-1) unstable; urgency=medium
+
+  * OpenJDK 24 final release.
+
+ -- Matthias Klose <doko@ubuntu.com>  Tue, 18 Mar 2025 18:15:08 +0100
+
 openjdk-24 (24~36ea-1) unstable; urgency=medium
 
   * OpenJDK 24 snapshot, Build 36.
