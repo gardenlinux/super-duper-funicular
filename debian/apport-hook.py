@@ -16,7 +16,7 @@ def si_units(size):
     return '{0:.1f} {1}'.format(size, unit)
 
 def add_info(report, ui=None):
-    attach_conffiles(report,'openjdk-24-jre-headless', ui=ui)
+    attach_conffiles(report,'openjdk-25-jre-headless', ui=ui)
 
     if report['ProblemType'] == 'Crash' and 'ProcCwd' in report:
         # attach hs_err_<pid>.pid file
@@ -36,7 +36,7 @@ def add_info(report, ui=None):
                     report['Tags'] += ' openjdk-hs-err'
                 else:
                     report['HotspotError'] = content[:max_length] + \
-                            "\n[truncated by openjdk-11 apport hook]" + \
+                            "\n[truncated by openjdk-25 apport hook]" + \
                             "\n[max log size is %s, file size was %s]" % \
                             (si_units(max_length), si_units(sys.getsizeof(content)))
                     report['Tags'] += ' openjdk-hs-err'

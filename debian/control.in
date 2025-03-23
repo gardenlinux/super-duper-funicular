@@ -163,4 +163,4 @@ Depends: ${jredefault:Depends}, ${cacert:Depends},
   ${mountpoint:Depends},
   ${shlibs:Depends}, ${misc:Depends}
 Description: JVMCI-enabled SDK for building graalvm
-  This package provides a JVMCI-enabled GraalVM builder Java SDK.
+ This package provides a JVMCI-enabled GraalVM builder Java SDK.

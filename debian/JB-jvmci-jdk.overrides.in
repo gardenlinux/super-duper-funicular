@@ -1,0 +1,2 @@
+# Strip libjvm.so with --strip-debug instead of --strip-unneeded. LP: #574997.
+@basename@-jvmci-jdk binary: unstripped-binary-or-object

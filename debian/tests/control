@@ -7,11 +7,11 @@ Depends: openjdk-25-jdk-headless
 Restrictions: allow-stderr, superficial
 
 Tests: hotspot-autopkgtest.sh
-Depends: @, jtreg7 (>= 7.4+1~), libtestng7-java, build-essential, bash, lsb-release, xfwm4, xvfb, xauth, dbus-x11, libatk-wrapper-java, libatk-wrapper-java-jni
+Depends: @, jtreg7 (>= 7.5.1+1~), libtestng7-java, build-essential, bash, lsb-release, xfwm4, xvfb, xauth, dbus-x11, libatk-wrapper-java, libatk-wrapper-java-jni
 Restrictions: allow-stderr, skippable, flaky, rw-build-tree
 
 Tests: jdk-autopkgtest.sh
-Depends: @, jtreg7 (>= 7.4+1~), libtestng7-java, build-essential, bash, lsb-release, xfwm4, xvfb, xauth, dbus-x11, libatk-wrapper-java, libatk-wrapper-java-jni
+Depends: @, jtreg7 (>= 7.5.1+1~), libtestng7-java, build-essential, bash, lsb-release, xfwm4, xvfb, xauth, dbus-x11, libatk-wrapper-java, libatk-wrapper-java-jni
 Restrictions: allow-stderr, skippable, flaky, rw-build-tree
 
 Tests: dependencies.sh
