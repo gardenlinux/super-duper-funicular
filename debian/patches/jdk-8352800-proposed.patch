@@ -1,0 +1,15 @@
+Description: add missing header os_linux_ppc.inline.hpp
+Author: Vladimir Petko <vladimir.petko@canonical.com>
+Origin: https://github.com/openjdk/jdk/pull/24216 
+Bug: https://bugs.openjdk.org/browse/JDK-8352800
+
+--- a/src/hotspot/os_cpu/linux_ppc/javaThread_linux_ppc.cpp
++++ b/src/hotspot/os_cpu/linux_ppc/javaThread_linux_ppc.cpp
+@@ -24,6 +24,7 @@
+  */
+ 
+ #include "memory/metaspace.hpp"
++#include "os_linux_ppc.inline.hpp"
+ #include "runtime/frame.inline.hpp"
+ #include "runtime/javaThread.hpp"
+ 
