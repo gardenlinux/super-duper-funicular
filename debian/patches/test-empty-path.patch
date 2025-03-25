@@ -1,0 +1,35 @@
+Description: disable tests requiring FileStore
+ FileStore tests fail in container infrastructure due to JDK-8166162.
+ This patch disables individual test cases requiring FileStore.
+ The patch is not needed upstream as the bug only occurs in specific
+ container configuration.
+Author: Vladimir Petko <vladimir.petko@canonical.com>
+Bug: https://bugs.openjdk.org/browse/JDK-8166162
+Forwarded: not-needed
+
+diff --git a/test/jdk/java/io/File/EmptyPath.java b/test/jdk/java/io/File/EmptyPath.java
+index d3211f917..5daa08f0b 100644
+--- a/test/jdk/java/io/File/EmptyPath.java
++++ b/test/jdk/java/io/File/EmptyPath.java
+@@ -120,7 +120,6 @@ public class EmptyPath {
+         }
+     }
+ 
+-    @Test
+     public void getFreeSpace() throws IOException {
+         FileStore fs = Files.getFileStore(f.toPath());
+         checkSpace(fs.getUnallocatedSpace(), f.getFreeSpace());
+@@ -141,13 +140,11 @@ public class EmptyPath {
+         assertEquals(p.toString(), f.getPath());
+     }
+ 
+-    @Test
+     public void getTotalSpace() throws IOException {
+         FileStore fs = Files.getFileStore(f.toPath());
+         checkSpace(fs.getTotalSpace(), f.getTotalSpace());
+     }
+ 
+-    @Test
+     public void getUsableSpace() throws IOException {
+         FileStore fs = Files.getFileStore(f.toPath());
+         checkSpace(fs.getUsableSpace(), f.getUsableSpace());
