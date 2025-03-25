@@ -1,3 +1,10 @@
+openjdk-21 (21.0.7~7ea-2) UNRELEASED; urgency=medium
+
+  [ Vladimir Petko ]
+  * d/t/problems.csv: Disable tests failing due to upstream bugs.
+
+ -- Matthias Klose <doko@ubuntu.com>  Tue, 25 Mar 2025 12:42:08 +0100
+
 openjdk-21 (21.0.7~7ea-1) unstable; urgency=medium
 
   * OpenJDK 21.0.7 early access, build 4.
