@@ -1,4 +1,6 @@
-openjdk-25 (25~15ea-2) UNRELEASED; urgency=medium
+openjdk-25 (25~16ea-1) unstable; urgency=medium
+
+  * OpenJDK 25 snapshot, Build 16.
 
   [ Vladimir Petko ]
   * d/p/jdk-8352800-proposed.patch: Add missing header.
@@ -8,7 +10,7 @@ openjdk-25 (25~15ea-2) UNRELEASED; urgency=medium
     runtime/ErrorHandling/CreateCoredumpOnCrash.java.
   * d/t/problems.csv: Disable tests failing due to upstream bugs.
 
- -- Matthias Klose <doko@ubuntu.com>  Tue, 25 Mar 2025 12:32:13 +0100
+ -- Matthias Klose <doko@ubuntu.com>  Thu, 27 Mar 2025 19:35:18 +0100
 
 openjdk-25 (25~15ea-1) unstable; urgency=medium
 
