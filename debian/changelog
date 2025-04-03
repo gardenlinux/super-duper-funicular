@@ -3,7 +3,11 @@ openjdk-11 (11.0.27~4ea-2) UNRELEASED; urgency=medium
   [ Vladimir Petko ]
   * d/t/problems.csv: Disable tests failing due to upstream bugs.
 
- -- Matthias Klose <doko@ubuntu.com>  Tue, 25 Mar 2025 12:45:33 +0100
+  [ Matthias Klose ]
+  * Honour DEB_BUILD_OPTIONS=parallel=N while running jtreg tests (Helmut
+    Grohne). Addresses: #1095920.
+
+ -- Matthias Klose <doko@ubuntu.com>  Thu, 03 Apr 2025 13:08:44 +0200
 
 openjdk-11 (11.0.27~4ea-1) unstable; urgency=medium
 
