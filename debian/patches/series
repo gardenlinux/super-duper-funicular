@@ -41,4 +41,3 @@ zero-alpha-workaround.diff
 #jdk-8347014-proposed.patch
 power-opt.diff
 test-empty-path.patch
-jdk-8352800-proposed.patch
