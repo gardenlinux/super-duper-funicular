@@ -550,7 +550,6 @@ COMMON_CONFIGURE_ARGS += \
 	--with-libpng=system \
 	--with-libjpeg=system \
 	--with-lcms=system \
-	--with-pcsclite=system \
 	--disable-warnings-as-errors \
 	--disable-javac-server \
 	--with-gtest=$(CURDIR)/googletest \
