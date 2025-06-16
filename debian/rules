@@ -1459,6 +1459,8 @@ endif
 	  lib/psfont.properties.ja \
 	  lib/jfr/default.jfc \
 	  lib/jfr/profile.jfc \
+	  lib/jfr/gc.jfc \
+	  lib/jfr/gc_details.jfc \
 	  conf/swing.properties \
 	  conf/management/jmxremote.access \
 	  conf/management/management.properties \
