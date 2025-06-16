@@ -12,6 +12,7 @@ Build-Depends: @bd_debhelper@
   @bd_gcc@
   @bd_bootstrap@
   @bd_openjdk@
+  @bd_zero@
   @bd_syslibs@ @bd_systemtap@
   @bd_nss@
   @bd_cross@
