@@ -1228,12 +1228,13 @@ endif
 
 stamps/jtreg-check-default: stamps/build
 	$(MAKE) -f debian/rules jtreg-run-check VMNAME=$(default_vm) VMARGS= \
-		TEST_SUITES=''
+		$(if $(filter $(default_vm),hotspot),TEST_SUITES='hotspot langtools jaxp jdk',TEST_SUITES='hotspot langtools jaxp')
+#		TEST_SUITES='hotspot langtools jaxp'
 	touch $@
 
 stamps/jtreg-check-zero: stamps/build
 	$(MAKE) -f debian/rules jtreg-run-check VMNAME=zero VMARGS='-vmoption:-zero' \
-		TEST_SUITES=''
+		TEST_SUITES='hotspot langtools jaxp'
 	touch $@
 
 jtreg-run-check:
