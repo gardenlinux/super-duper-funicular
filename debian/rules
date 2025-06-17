@@ -458,7 +458,6 @@ ifeq (,$(filter $(DEB_HOST_ARCH), amd64 arm64 ppc64el riscv64 s390x))
 endif
 
 COMMON_CONFIGURE_ARGS += --disable-warnings-as-errors
-DISABLED_WARNINGS_gcc := implicit-function-declaration unused-variable
 
 ifneq (,$(filter $(DEB_HOST_ARCH),$(hotspot_archs)))
   ifneq (,$(filter $(DEB_HOST_ARCH), amd64))
