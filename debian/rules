@@ -934,21 +934,11 @@ ifeq (,$(filter $(DEB_HOST_ARCH), $(hotspot_archs)))
   control_vars += '-Vdefaultvm:Provides=$(p_jre)-zero'
 endif
 
-pkg_certs = ca-certificates-java
-ifneq (,$(filter $(distrel), squeeze wheezy jessie stretch precise trusty xenial bionic cosmic disco))
-  control_vars += '-Vcacert:Depends=$(pkg_certs)'
-else
-  control_vars += '-Vcacert:Depends=$(pkg_certs) (>= 20190405~)'
-endif
-
 ifneq (,$(filter $(distrel), squeeze wheezy jessie lucid precise quantal raring saucy trusty utopic vivid))
   control_vars += '-Vmountpoint:Depends=initscripts'
 else
   control_vars += '-Vmountpoint:Depends=util-linux (>= 2.26.2-4)'
 endif
-
-pkg_jcommon = java-common (>= 0.28)
-control_vars += '-Vjcommon:Depends=$(pkg_jcommon)'
 
 control_vars += '-Vjrehl:Breaks=$(jrehl_breaks)'
 
